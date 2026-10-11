@@ -1,0 +1,37 @@
+{% extends "paineis/painel.html" %}
+{% from "_macros.html" import icone %}
+{% block filtros %}
+<form id="escolas-filtro" class="quadro-card filtro filtro-busca" hidden role="search" aria-label="Buscar escola">
+  <div><label for="busca-escola">Nome da escola ou bairro</label><input id="busca-escola" type="search" autocomplete="off" placeholder="Ex.: Jardim Europa"></div>
+  <div><label for="rede">Rede de ensino</label><select id="rede"><option value="">Todas</option>{% for r in redes %}<option>{{ r }}</option>{% endfor %}</select></div>
+  <p class="pequeno suave" id="escolas-contagem" role="status" aria-live="polite"></p>
+</form>
+{% endblock %}
+{% block resumo %}
+<section aria-labelledby="resumo" class="resumo-real">
+  <h2 id="resumo" class="rotulo-resumo">Escolas em atividade no Censo {{ ano_censo }}</h2>
+  <p class="numero-grande">{{ escolas | length | num }}</p>
+  <p class="resumo-texto">escolas em Sorocaba: {% for r, n in por_rede %}{{ n }} {{ {"Municipal": ("municipal", "municipais"), "Estadual": ("estadual", "estaduais"), "Federal": ("federal", "federais"), "Privada": ("privada", "privadas")}[r][0 if n == 1 else 1] }}{{ ", " if not loop.last else "" }}{% endfor %}. Escolha uma para ver matrículas, IDEB e infraestrutura, sempre com o ano de cada dado.</p>
+  <p class="pequeno suave">Não há ranking: a ordem abaixo é alfabética.</p>
+</section>
+{% endblock %}
+{% block explorar %}
+<section aria-labelledby="lista-t" class="bloco-painel">
+  <h2 id="lista-t" class="h2-medio sem-topo">Todas as escolas</h2>
+  <ul class="lista-escolas" id="lista-escolas">
+    {% for e in escolas %}<li data-rede="{{ e.rede }}"><a href="{{ e.co_inep }}/">{{ e.escola }}</a> <span class="suave">{{ e.bairro or "bairro não informado" }} · {{ e.rede }}</span></li>{% endfor %}
+  </ul>
+</section>
+{% endblock %}
+{% block metodologia %}
+<ul class="lista-curta">{% for n in env.qualidade.notas %}{% if not n.startswith("SHA-256") %}<li>{{ n }}</li>{% endif %}{% endfor %}</ul>
+{% endblock %}
+{% block proveniencia %}
+<dl class="proveniencia">
+  <dt>Fonte</dt><dd><a href="{{ env.fonte.url }}">{{ env.fonte.nome }}</a> — {{ env.fonte.licenca }}</dd>
+  <dt>Referência</dt><dd>Censo Escolar {{ ano_censo }} · IDEB {{ ano_ideb }}</dd>
+  <dt>Coletado em</dt><dd>{{ env.fonte.acesso_em | data_br }}</dd>
+  <dt>Dados</dt><dd><a href="{{ raiz }}data/escolas.json">escolas.json</a></dd>
+  <dt>Código</dt><dd>{% if repo_url %}<a href="{{ repo_url }}/blob/main/{{ script }}">{{ script }}</a>{% else %}{{ script }}{% endif %}</dd>
+</dl>
+{% endblock %}

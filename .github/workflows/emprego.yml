@@ -7,7 +7,7 @@ on:
 
 permissions: {}
 
-concurrency: emprego
+concurrency: atualizacao-dados
 
 jobs:
   atualizar:
@@ -20,6 +20,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
         with:
+          ref: ${{ github.ref_name }}
           persist-credentials: false
       - uses: astral-sh/setup-uv@v5
       - run: uv sync --frozen

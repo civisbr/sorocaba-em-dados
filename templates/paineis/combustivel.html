@@ -1,0 +1,71 @@
+{% extends "paineis/painel.html" %}
+{% from "_macros.html" import icone %}
+{% block filtros %}
+<nav class="quadro-card filtro" aria-label="Ir para um combustível">
+  <p class="negrito">Combustível</p>
+  <div class="filtro-opcoes">{% for pr in produtos %}<a class="chip-link" href="#{{ pr.slug }}">{{ pr.nome }}</a>{% endfor %}</div>
+</nav>
+{% endblock %}
+{% block resumo %}
+<section aria-labelledby="resumo" class="resumo-real">
+  <h2 id="resumo" class="rotulo-resumo">Semana de {{ semana_ini | data_br }} a {{ semana_fim | data_br }}</h2>
+  {% set g = produtos[0] %}
+  <p class="numero-grande">R$ {{ g.ultimo.mediana | brl }}</p>
+  <p class="resumo-texto">é a mediana da {{ g.nome | lower }} entre os <strong>{{ g.ultimo.n_postos }} postos pesquisados</strong> pela ANP nessa semana. O menor preço foi R$ {{ g.ultimo.minimo | brl }} e o maior, R$ {{ g.ultimo.maximo | brl }}.</p>
+  {% if g.ultimo.amostra_pequena %}<p class="aviso-amostra">{{ icone("alerta") }} Amostra pequena ({{ g.ultimo.n_postos }} postos): compare com cautela.</p>{% endif %}
+  <p class="pequeno suave">A ANP visita só alguns postos por semana. Estes números descrevem a amostra pesquisada, não todos os postos de Sorocaba.</p>
+</section>
+{% endblock %}
+{% block explorar %}
+{% for pr in produtos %}
+<section aria-labelledby="h-{{ pr.slug }}" id="{{ pr.slug }}" class="bloco-painel">
+  <h2 id="h-{{ pr.slug }}" class="h2-medio sem-topo">{{ pr.nome }}</h2>
+  <p class="suave">Mediana de {{ pr.ultimo.mediana | brl }} R$/litro na semana de {{ pr.ultimo.semana_inicio | data_br }}, entre {{ pr.ultimo.n_postos }} postos pesquisados.{% if pr.variacao is not none %} Variação da mediana desde {{ pr.semanas[0].semana_inicio | data_br }}: <strong>{{ pr.variacao | pct }}</strong> (reflete também mudanças nos postos pesquisados de uma semana para outra).{% endif %}</p>
+  {% if pr.ultimo.amostra_pequena %}<p class="aviso-amostra">{{ icone("alerta") }} Amostra pequena ({{ pr.ultimo.n_postos }} postos): compare com cautela.</p>{% endif %}
+  <div class="grade-2">
+    <article class="quadro-card">
+      <h3>Preço por semana</h3><p class="suave">Menor, mediana e maior preço entre os postos pesquisados (R$/litro).</p>
+      <svg class="grafico" viewBox="0 0 {{ pr.grafico.largura }} {{ pr.grafico.altura }}" role="img" aria-labelledby="c-{{ pr.slug }}-t c-{{ pr.slug }}-d">
+        <title id="c-{{ pr.slug }}-t">Preço semanal de {{ pr.nome | lower }} em Sorocaba</title>
+        <desc id="c-{{ pr.slug }}-d">Três linhas: menor preço, mediana e maior preço entre os postos pesquisados, por semana. Valores na tabela abaixo.</desc>
+        {% for g in pr.grafico.grade %}<line class="grade" x1="0" x2="{{ pr.grafico.largura }}" y1="{{ g.y }}" y2="{{ g.y }}"/><text class="eixo" x="2" y="{{ g.y - 3 }}">{{ g.valor | brl }}</text>{% endfor %}
+        <polyline class="l-max" points="{{ pr.grafico.series["Máximo"].pontos }}"/>
+        <polyline class="l-med" points="{{ pr.grafico.series["Mediana"].pontos }}"/>
+        {% for x, y in pr.grafico.series["Mediana"].marcas %}<circle class="marca" cx="{{ x }}" cy="{{ y }}" r="3"/>{% endfor %}
+        <polyline class="l-min" points="{{ pr.grafico.series["Mínimo"].pontos }}"/>
+        {% for t in pr.grafico.eixo_x %}<text class="eixo" x="{{ t.x }}" y="{{ pr.grafico.y_rotulos }}" text-anchor="{{ t.ancora }}">{{ t.texto }}</text>{% endfor %}
+      </svg>
+      <p class="legenda"><span class="amostra amostra-adm"></span> mediana <span class="amostra amostra-max"></span> maior <span class="amostra amostra-min"></span> menor</p>
+    </article>
+    <article class="quadro-card">
+      <h3>Semana a semana</h3>
+      <table class="tabela-simples">
+        <thead><tr><th scope="col">Semana de</th><th scope="col">Postos</th><th scope="col">Menor</th><th scope="col">Mediana</th><th scope="col">Maior</th></tr></thead>
+        <tbody>{% for r in pr.semanas | reverse %}<tr><th scope="row">{{ r.semana_inicio | data_br }}</th><td>{{ r.n_postos }}</td><td>{{ r.minimo | brl }}</td><td>{{ r.mediana | brl }}</td><td>{{ r.maximo | brl }}</td></tr>{% endfor %}</tbody>
+      </table>
+    </article>
+  </div>
+  <details class="tabela-mes">
+    <summary>Postos pesquisados na semana de {{ pr.ultimo.semana_inicio | data_br }} ({{ pr.postos | length }})</summary>
+    <p class="pequeno suave">Do menor para o maior preço. Diferença em relação à mediana da amostra da semana. Apenas os postos que a ANP pesquisou; outros postos da cidade não aparecem aqui.</p>
+    <div class="rolagem"><table>
+      <caption class="so-leitor">Postos pesquisados de {{ pr.nome | lower }}</caption>
+      <thead><tr><th scope="col">Posto</th><th scope="col">Bairro</th><th scope="col">Bandeira</th><th scope="col">R$/litro</th><th scope="col">Vs. mediana</th><th scope="col">Semanas acima da mediana</th></tr></thead>
+      <tbody>{% for r in pr.postos %}<tr><th scope="row">{{ r.posto }}</th><td>{{ r.bairro }}</td><td>{{ r.bandeira }}</td><td>{{ r.preco | brl }}</td><td>{{ r.dif_mediana_pct | pct }}</td><td>{% if r.semanas_acima_mediana is none %}histórico insuficiente ({{ r.semanas_observadas }} sem.){% else %}{{ r.semanas_acima_mediana }} de {{ r.semanas_observadas }}{% endif %}</td></tr>{% endfor %}</tbody>
+    </table></div>
+  </details>
+</section>
+{% endfor %}
+{% endblock %}
+{% block metodologia %}
+<ul class="lista-curta">{% for n in env.qualidade.notas %}{% if not n.startswith("SHA-256") %}<li>{{ n }}</li>{% endif %}{% endfor %}</ul>
+{% endblock %}
+{% block proveniencia %}
+<dl class="proveniencia">
+  <dt>Fonte</dt><dd><a href="{{ env.fonte.url }}">{{ env.fonte.nome }}</a> — {{ env.fonte.licenca }}</dd>
+  <dt>Período de referência</dt><dd>{{ env.referencia.inicio | data_br }} a {{ env.referencia.fim | data_br }}</dd>
+  <dt>Coletado em</dt><dd>{{ env.fonte.acesso_em | data_br }}</dd>
+  <dt>Dados</dt><dd><a href="{{ raiz }}data/combustivel.json">combustivel.json</a></dd>
+  <dt>Código</dt><dd>{% if repo_url %}<a href="{{ repo_url }}/blob/main/{{ script }}">{{ script }}</a>{% else %}{{ script }}{% endif %}</dd>
+</dl>
+{% endblock %}

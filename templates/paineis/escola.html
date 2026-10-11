@@ -1,0 +1,73 @@
+{% extends "base.html" %}
+{% set ativo = "escolas" %}
+{% from "_macros.html" import icone, selo %}
+{% block titulo %}{{ e.escola }} — escolas em Sorocaba | Sorocaba em Dados{% endblock %}
+{% block descricao %}Matrículas, IDEB e infraestrutura de {{ e.escola }}{% if e.bairro %}, no bairro {{ e.bairro }}{% endif %}, em Sorocaba, com o ano de referência de cada dado.{% endblock %}
+{% block conteudo %}
+<div class="contido pagina">
+  <nav aria-label="Trilha de navegação" class="trilha">
+    <ol><li><a href="{{ raiz }}">Início</a></li><li aria-hidden="true">→</li><li><a href="../">Escolas</a></li><li aria-hidden="true">→</li><li aria-current="page">{{ e.escola }}</li></ol>
+  </nav>
+  <header class="painel-cab">
+    <p class="etiqueta">Escola · {{ e.rede }} · {{ e.localizacao }}</p>
+    <h1 class="h1-grande">{{ e.escola }}</h1>
+    <p class="lead">{{ e.bairro or "Bairro não informado no Censo Escolar" }}, Sorocaba.</p>
+    <div class="selos"><span class="pilula">{{ icone("calendario") }} Censo Escolar {{ ano_censo }} · IDEB {{ ano_ideb }}</span></div>
+  </header>
+
+  <section aria-labelledby="mat" class="bloco-painel">
+    <h2 id="mat" class="h2-medio sem-topo">Matrículas (Censo {{ ano_censo }})</h2>
+    {% if e.mat_total %}
+    <p class="numero-medio">{{ e.mat_total | num }} <span class="suave">matrículas na educação básica</span></p>
+    <article class="quadro-card">
+      <svg class="grafico" viewBox="0 0 {{ grafico.largura }} {{ grafico.altura }}" role="img" aria-labelledby="gm-t gm-d">
+        <title id="gm-t">Matrículas por etapa em {{ e.escola }}</title>
+        <desc id="gm-d">{% for r, v in etapas %}{{ r }}: {{ v | num if v is not none else 'sem informação' }}{{ "; " if not loop.last else "." }}{% endfor %}</desc>
+        {% for b in grafico.barras %}<rect class="b-pos" x="{{ b.x }}" y="{{ b.y }}" width="{{ b.w }}" height="{{ b.h }}"><title>{{ b.rotulo }}: {{ b.valor | num }}</title></rect>{% endfor %}
+        <line class="zero" x1="0" x2="{{ grafico.largura }}" y1="{{ grafico.zero }}" y2="{{ grafico.zero }}"/>
+        {% for t in grafico.eixo_x %}<text class="eixo" x="{{ t.x }}" y="{{ grafico.y_rotulos }}" text-anchor="{{ t.ancora }}">{{ t.texto }}</text>{% endfor %}
+      </svg>
+      <table class="tabela-simples"><thead><tr><th scope="col">Etapa</th><th scope="col">Matrículas</th></tr></thead>
+      <tbody>{% for r, v in etapas %}<tr><th scope="row">{{ r }}</th><td>{{ v | num if v is not none else "—" }}</td></tr>{% endfor %}</tbody></table>
+      <p class="pequeno suave">Educação especial é contada dentro das etapas. “Outras” reúne modalidades não listadas (como a profissionalizante). Traço (—) indica que o Censo não traz o valor.</p>
+    </article>
+    {% else %}<p class="quadro-card">O Censo {{ ano_censo }} não traz matrículas para esta escola.</p>{% endif %}
+  </section>
+
+  <section aria-labelledby="ideb" class="bloco-painel">
+    <h2 id="ideb" class="h2-medio sem-topo">IDEB por edição</h2>
+    {% if tem_ideb %}
+    <article class="quadro-card">
+      <div class="rolagem"><table>
+        <caption class="so-leitor">IDEB de {{ e.escola }} por edição</caption>
+        <thead><tr><th scope="col">Etapa</th>{% for a in anos %}<th scope="col">{{ a }}</th>{% endfor %}</tr></thead>
+        <tbody>
+          {% for sigla, nome in [("ai", "Anos iniciais (1º ao 5º)"), ("af", "Anos finais (6º ao 9º)")] %}<tr><th scope="row">{{ nome }}</th>{% for a in anos %}{% set v = e["ideb_" ~ sigla ~ "_" ~ a] %}<td>{{ v | brl1 if v is not none else "—" }}</td>{% endfor %}</tr>{% endfor %}
+        </tbody>
+      </table></div>
+      {% set linhas_ref = [] %}
+      {% for sigla, nome in [("ai", "anos iniciais"), ("af", "anos finais")] %}{% if e["aprovacao_" ~ sigla] is not none %}{% set _ = linhas_ref.append(nome ~ ": aprovação " ~ (e["aprovacao_" ~ sigla] | pct_abs) ~ ", nota média do Saeb " ~ ((e["saeb_" ~ sigla] | brl1) if e["saeb_" ~ sigla] is not none else "—")) %}{% endif %}{% endfor %}
+      {% if linhas_ref %}<p class="pequeno suave">Edição {{ ano_ideb }} — {{ linhas_ref | join("; ") }}.</p>{% endif %}
+    </article>
+    <p class="suave">O traço (—) indica que o INEP não calculou o IDEB da escola naquela edição, geralmente por poucos alunos avaliados ou etapa que a escola não oferece. Não é nota zero.</p>
+    {% else %}<p class="quadro-card">Esta escola não tem IDEB publicado nas edições {{ anos | join(", ") }}. {% if e.rede == "Privada" %}O IDEB por escola cobre só escolas públicas.{% else %}Isso costuma ocorrer quando há poucos alunos avaliados.{% endif %}</p>{% endif %}
+  </section>
+
+  <section aria-labelledby="infra" class="bloco-painel">
+    <h2 id="infra" class="h2-medio sem-topo">Infraestrutura declarada (Censo {{ ano_censo }})</h2>
+    <ul class="infra quadro-card">
+      {% for chave, rotulo in infra %}{% set v = e[chave] %}<li><span>{{ rotulo }}</span> <strong>{{ "Sim" if v else ("Não" if v is not none else "Sem informação") }}</strong></li>{% endfor %}
+    </ul>
+    <p class="pequeno suave">Os dados são declarados pela própria escola. “Não” pode indicar ausência do espaço ou resposta não registrada.</p>
+  </section>
+
+  <section aria-labelledby="entender" class="entender">
+    <div><h2 id="entender" class="h2-medio sem-topo">Como interpretar</h2></div>
+    <dl class="definicoes quadro-card">
+      <div><dt>IDEB</dt><dd>Combina aprovação e desempenho nas avaliações nacionais. Reflete também o perfil socioeconômico dos alunos e não resume sozinho a qualidade da escola. Por isso não comparamos escolas entre si.</dd></div>
+      <div><dt>Ano de referência</dt><dd>Matrículas e infraestrutura são de {{ ano_censo }}; o IDEB mais recente é de {{ ano_ideb }}.</dd></div>
+    </dl>
+  </section>
+  <p class="proveniencia-linha">Fonte: <a href="{{ env.fonte.url }}">{{ env.fonte.nome }}</a> · coletado em {{ env.fonte.acesso_em | data_br }} · <a href="{{ raiz }}data/escolas.json">escolas.json</a></p>
+</div>
+{% endblock %}

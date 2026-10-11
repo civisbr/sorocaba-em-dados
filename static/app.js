@@ -1,4 +1,24 @@
 (function () {
+  var f = document.getElementById("escolas-filtro");
+  if (!f) return;
+  f.hidden = false;
+  var q = document.getElementById("busca-escola"), rede = document.getElementById("rede"), n = document.getElementById("escolas-contagem");
+  var itens = Array.prototype.slice.call(document.querySelectorAll("#lista-escolas li"));
+  function norm(s) { return s.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, ""); }
+  function filtrar() {
+    var t = norm(q.value.trim()), r = rede.value, vistos = 0;
+    itens.forEach(function (li) {
+      var ok = (!t || norm(li.textContent).indexOf(t) !== -1) && (!r || li.dataset.rede === r);
+      li.hidden = !ok;
+      if (ok) vistos++;
+    });
+    n.textContent = (t || r) ? vistos + " de " + itens.length + " escolas" : "";
+  }
+  q.addEventListener("input", filtrar);
+  rede.addEventListener("change", filtrar);
+  f.addEventListener("submit", function (e) { e.preventDefault(); });
+})();
+(function () {
   var form = document.getElementById("busca-form");
   if (!form) return;
   form.hidden = false;

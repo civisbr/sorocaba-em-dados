@@ -4,7 +4,7 @@ from pathlib import Path
 
 import pytest
 
-from scripts.charts import barras_mensais, linhas
+from scripts.charts import barras_mensais, linhas, linhas_preco
 from scripts.mapa import gerar
 from scripts.render import RAIZ, renderizar, sinal
 
@@ -51,11 +51,33 @@ def test_proveniencia_no_rodape_do_painel(site):
         assert trecho in html
 
 
-def test_paineis_pendentes_nao_exibem_numeros_inventados(site):
-    for pid in ("combustivel", "escolas"):
-        html = (site / pid / "index.html").read_text(encoding="utf-8")
-        assert "ainda não estão disponíveis" in html
-        assert "Gráfico pendente" in html
+def test_escolas_sem_ranking_e_com_ano_de_referencia(site):
+    html = (site / "escolas/index.html").read_text(encoding="utf-8")
+    env = json.loads((PUBLIC / "escolas.json").read_text(encoding="utf-8"))
+    assert "Não há ranking" in html and f"Censo Escolar {env['dados'][0]['ano_censo']}" in html
+    assert "municipals" not in html and "estaduals" not in html
+    assert html.count('<li data-rede=') == len(env["dados"])
+    for e in env["dados"][:3]:
+        assert (site / "escolas" / e["co_inep"] / "index.html").exists()
+
+
+def test_pagina_de_escola_mostra_traco_quando_sem_ideb(site):
+    env = json.loads((PUBLIC / "escolas.json").read_text(encoding="utf-8"))
+    sem = next(e for e in env["dados"] if all(v is None for k, v in e.items() if k.startswith("ideb_")))
+    html = (site / "escolas" / sem["co_inep"] / "index.html").read_text(encoding="utf-8")
+    assert "não tem IDEB publicado" in html
+
+
+def test_filtro_de_escolas_fica_oculto_sem_js(site):
+    assert 'id="escolas-filtro"' in (site / "escolas/index.html").read_text(encoding="utf-8")
+    assert "[hidden]{display:none!important}" in (site / "style.css").read_text(encoding="utf-8")
+
+
+def test_combustivel_usa_linguagem_de_amostra(site):
+    html = (site / "combustivel/index.html").read_text(encoding="utf-8")
+    assert "postos pesquisados" in html
+    assert "mais barato de Sorocaba" not in html
+    assert "combustivel.json" in html and (site / "data/combustivel.json").exists()
 
 
 def test_sem_js_o_conteudo_existe(site):
@@ -106,3 +128,8 @@ def test_render_recusa_apagar_diretorio_alheio(tmp_path):
     with pytest.raises(SystemExit):
         renderizar(PUBLIC, alheio)
     assert (alheio / "importante.txt").exists()
+
+
+def test_linhas_preco_eixo_cobre_os_dados():
+    g = linhas_preco({"a": [5.74, 6.0], "b": [6.69, 6.5]}, {0: "x"})
+    assert g["grade"][0]["valor"] <= 5.74 and g["grade"][-1]["valor"] >= 6.69

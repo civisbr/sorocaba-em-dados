@@ -237,10 +237,10 @@ postos numa cidade com centenas. Nunca escrever "o posto mais barato de Sorocaba
 "o mais barato entre os N postos pesquisados pela ANP na semana de DD/MM". Isso vai no
 template, não fica a cargo de quem escreve o copy.
 
-**Bloqueio ativo:** o status da fonte é `parcial`, não `verificada`. Falta confirmar no CSV
-primário se Sorocaba continua na amostra depois de 21/08/2026 — o dado mais recente observado
-na verificação. Hipótese eliminatória: Sorocaba ter saído da amostra num corte posterior.
-Rodar a checagem descrita no fim de `docs/fontes.md` antes de escrever o fetch.
+**Bloqueio resolvido (2026-10-11):** Sorocaba segue na amostra (24 CNPJs, coleta de 08/10/2026).
+O fetch usa os arquivos "últimas 4 semanas" (gasolina/etanol e diesel/GNV); o histórico se forma
+pela acumulação de instantâneos em `data/raw/anp/`. Produtos no painel: gasolina comum, etanol e
+diesel S10. Diesel tem 10–13 postos por semana, abaixo do piso de 15, e a página avisa.
 
 **Risco estrutural:** o LPC encolheu de 459 para 390 municípios em jun/2025 por
 contingenciamento orçamentário, e já havia encolhido antes. A fonte pode sumir por decisão
@@ -263,8 +263,8 @@ socioeconômico do alunado; um ranking cru penaliza escola de periferia e premia
 seleciona aluno. Exibir por proximidade e por rede, com o IDEB como um dado entre outros e
 uma nota explicando a limitação. Esta regra não é negociável por "mas fica mais atraente".
 
-Atenção à checagem de concorrência: QEdu e similares já cobrem IDEB por escola. Mesmo risco
-que derrubou o combustível — resolver em `docs/fontes.md` antes de construir.
+Concorrência: QEdu e similares já cobrem IDEB por escola. Registro e ângulo (sem ranking, ano em cada
+dado, dado aberto) em `docs/fontes.md`; a ressalva de reavaliação continua lá.
 
 ---
 
@@ -374,7 +374,7 @@ Um painel só é considerado pronto quando:
 
 ## IDENTIDADE
 
-Repositório público sob a org CivisBR, dissociado da identidade pessoal.
+Repositório privado por decisão do responsável; a hospedagem do site será resolvida à parte (GitHub Pages no plano Free exige repositório público). Os commits atuais usam a identidade pessoal, aceito enquanto privado; antes de abrir, reescrever autoria.
 
 ```bash
 git config user.name  "<identidade CivisBR>"

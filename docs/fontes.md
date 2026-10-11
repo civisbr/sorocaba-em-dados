@@ -208,33 +208,42 @@ cobrir isso bem, reavaliar.
 
 ## INEP — IDEB e Censo Escolar
 
-**Status:** `pendente`
+**Status:** `verificada` em 2026-10-11 contra os arquivos primários.
 
-A verificar antes de implementar:
-- [ ] Ano mais recente de IDEB divulgado
-- [ ] Disponibilidade de IDEB por escola para Sorocaba (não só agregado municipal)
-- [ ] Layout do Censo Escolar e quais variáveis de infraestrutura são publicáveis
-- [ ] Concorrência: QEdu e similares já cobrem isso — mesmo risco do combustível,
-      **checar antes de construir**
+- **IDEB por escola:** `download.inep.gov.br/ideb/resultados/divulgacao_anos_{iniciais,finais}_escolas_AAAA.zip`
+  (xlsx). Edição mais recente: **2025**, publicada em 05/08/2026. Sorocaba (código 3552205):
+  96 escolas nos anos iniciais e 77 nos finais, 69 e 71 com IDEB calculado em 2025. Só rede
+  pública (Municipal e Estadual); escola privada não tem IDEB. O INEP declara MD5 dentro do zip e
+  o `fetch_inep.py` confere.
+- **Censo Escolar:** `download.inep.gov.br/dados_abertos/microdados_censo_escolar_AAAA.zip`. Edição
+  **2024** (a de 2025 ainda não existe sob esse nome; o fetch tenta os últimos 4 anos). Arquivo
+  `microdados_ed_basica_2024.csv`, uma linha por escola, em Latin-1, 426 colunas, sem dado pessoal.
+  Sorocaba: 490 estabelecimentos, 452 em atividade (183 municipais, 90 estaduais, 1 federal,
+  178 privados). A pasta do zip chama-se `..._defeso`; o conteúdo é o mesmo layout.
+- **TLS:** o servidor do INEP não envia o certificado intermediário (RNP ICPEdu GR46 OV TLS CA 2025,
+  emitido pela GlobalSign Root R46). Em vez de desligar a verificação, `certs/` guarda o
+  intermediário público (SHA-256 E1:07:47:D4:DA:7B:AB:09:CB:A9:95:2F:01:9D:35:34:CB:9F:BA:07:0B:F1:3D:87:91:B1:69:9C:D2:FF:59:DD,
+  válido até 19/11/2030) e a cadeia é validada até a raiz do sistema. Renovar o arquivo quando expirar.
+- **Armazenamento:** só as linhas de Sorocaba, com hash do zip e MD5 declarado no manifesto. Os
+  zips (até 112 MB) não entram no repositório. O fetch só baixa de novo se `Last-Modified` ou o
+  tamanho mudar.
+- **Concorrência:** QEdu e similares publicam IDEB por escola. A página do QEdu respondeu 403 ao
+  `curl` (CloudFront), então a comparação é pela descrição conhecida, não por inspeção. Ângulo
+  deste painel, que o equivalente não precisa ter: sem ranking nem nota agregada, ano de
+  referência em cada dado, dado aberto em JSON com fonte e hash, página leve e sem JS obrigatório.
+  Se o QEdu cobrir isso melhor, o painel perde razão de existir; reavaliar antes de promover.
+- **Limitações:** infraestrutura é autodeclarada; IDEB ausente quase sempre significa poucos
+  alunos avaliados. Sete escolas do IDEB 2025 não aparecem em atividade no Censo 2024 (abertas
+  depois ou renomeadas) e ficam fora até o Censo seguinte.
 
 ---
 
-## Limitação do ambiente de verificação
+## Limitação do ambiente de verificação (resolvida)
 
-Esta verificação foi feita sem acesso direto ao CSV primário: o ambiente usado bloqueia
-`www.gov.br` por política de rede. As conclusões sobre presença de Sorocaba na amostra e
-tamanho da amostra vieram de agregador terceiro e de documentação oficial da ANP, não do dado
-bruto.
-
-**Portanto a entrada da ANP permanece `parcial` até alguém rodar, em máquina sem esse bloqueio:**
-
-```bash
-# baixar o semestre e contar postos de Sorocaba na semana mais recente
-curl -O https://www.gov.br/anp/pt-br/centrais-de-conteudo/dados-abertos/arquivos/shpc/dsas/ca/ca-2026-02.csv
-```
-
-e confirmar: (a) Sorocaba presente, (b) data da coleta mais recente, (c) contagem de CNPJs
-distintos. Só então o status vira `verificada` e o painel sai do bloqueio.
+A verificação inicial da ANP foi feita sem acesso ao CSV primário (bloqueio de rede). Superada
+em 2026-10-11: o arquivo "últimas 4 semanas" foi baixado e Sorocaba confirmada (ver ANP acima).
+O caminho dos CSV semestrais e a série histórica anterior a 4 semanas continuam sem uso; o
+histórico agora nasce da acumulação dos instantâneos em `data/raw/anp/`.
 
 ---
 

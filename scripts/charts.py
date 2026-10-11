@@ -82,3 +82,36 @@ def linhas(series: dict[str, list[int]], rotulos: dict[int, str]) -> dict:
         ],
         "y_rotulos": ALTURA - 8,
     }
+
+
+def linhas_preco(series: dict[str, list[float]], rotulos: dict[int, str]) -> dict:
+    """Séries de preço com eixo vertical ajustado aos dados (preço não começa em zero)."""
+    n = len(next(iter(series.values())))
+    todos = [v for serie in series.values() for v in serie]
+    vmin = int(min(todos) * 2) / 2 - 0.5
+    vmax = -(-max(todos) * 2 // 1) / 2 + 0.5
+    area = ALTURA - TOPO - BASE_ROTULOS
+    passo = LARGURA / n
+
+    def y(v: float) -> float:
+        return TOPO + area * (1 - (v - vmin) / (vmax - vmin))
+
+    saida = {}
+    for nome, serie in series.items():
+        pts = [(round(i * passo + passo / 2, 1), round(y(v), 1)) for i, v in enumerate(serie)]
+        saida[nome] = {"pontos": " ".join(f"{x},{yy}" for x, yy in pts), "marcas": pts}
+    return {
+        "largura": LARGURA,
+        "altura": ALTURA,
+        "series": saida,
+        "grade": [{"y": round(y(v), 1), "valor": v} for v in (vmin, (vmin + vmax) / 2, vmax)],
+        "eixo_x": [
+            {
+                "x": round(i * passo + (passo * 0.9 if i == n - 1 else passo / 2), 1),
+                "texto": t,
+                "ancora": "end" if i == n - 1 else "middle",
+            }
+            for i, t in sorted(rotulos.items())
+        ],
+        "y_rotulos": ALTURA - 8,
+    }

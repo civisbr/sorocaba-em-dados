@@ -56,7 +56,6 @@ PAINEIS = {
             "Se a fonte não publicar dados recentes, mantemos a última referência válida com sua data.",
             "Não usamos médias de outras regiões para preencher lacunas.",
         ],
-        "filtro": {"legenda": "Escolha o combustível", "opcoes": ["Gasolina comum", "Etanol", "Diesel S10"]},
     },
     "escolas": {
         "nav": "Escolas",

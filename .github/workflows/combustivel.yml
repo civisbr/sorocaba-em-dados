@@ -1,0 +1,64 @@
+name: combustivel
+
+on:
+  schedule:
+    - cron: "0 12 * * 1"
+  workflow_dispatch:
+
+permissions: {}
+
+concurrency: atualizacao-dados
+
+jobs:
+  atualizar:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      issues: write
+      actions: write
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.ref_name }}
+          persist-credentials: false
+      - uses: astral-sh/setup-uv@v5
+      - run: uv sync --frozen
+      - name: Fetch
+        run: uv run python -m scripts.fetch_anp --acesso-em "$(date -u +%F)"
+      - name: Build
+        run: uv run python -m scripts.build_combustivel
+      - run: uv run pytest -q
+      - name: Commitar se mudou
+        id: commit
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          git add data/public data/raw/anp
+          if git diff --cached --quiet; then
+            echo "mudou=false" >> "$GITHUB_OUTPUT"
+          else
+            git config user.name "github-actions[bot]"
+            git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+            git commit -m "Atualiza combustivel.json" -m "Execução: ${GITHUB_SERVER_URL}/${GITHUB_REPOSITORY}/actions/runs/${GITHUB_RUN_ID}"
+            git push "https://x-access-token:${GH_TOKEN}@github.com/${GITHUB_REPOSITORY}.git" HEAD:"${GITHUB_REF_NAME}"
+            echo "mudou=true" >> "$GITHUB_OUTPUT"
+          fi
+      - name: Disparar deploy
+        if: steps.commit.outputs.mudou == 'true'
+        run: gh workflow run deploy.yml
+        env:
+          GH_TOKEN: ${{ github.token }}
+      - name: Abrir issue em falha
+        if: failure()
+        run: |
+          url="${GITHUB_SERVER_URL}/${GITHUB_REPOSITORY}/actions/runs/${GITHUB_RUN_ID}"
+          titulo="Falha na atualização de combustivel"
+          aberta=$(gh issue list --state open --search "$titulo in:title" --json number --jq '.[0].number')
+          if [ -n "$aberta" ]; then
+            gh issue comment "$aberta" --body "Nova falha: $url"
+          else
+            gh issue create --title "$titulo" --body "Execução: $url. O site continua servindo o JSON anterior."
+          fi
+        env:
+          GH_TOKEN: ${{ github.token }}
