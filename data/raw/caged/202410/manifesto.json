@@ -1,0 +1,21 @@
+{
+  "acesso_em": "2026-10-11",
+  "arquivos": {
+    "EXC": {
+      "bytes_origem": 105951,
+      "linhas": 20,
+      "sha256_origem": "837c4be96745c226629d3286806637e020aacdff3a87e251237d9c00c954fc58"
+    },
+    "FOR": {
+      "bytes_origem": 554962,
+      "linhas": 121,
+      "sha256_origem": "39dbd081e2f20872395c88b132ef40552ef5b169acddb060ab0dbe3dc4b729d9"
+    },
+    "MOV": {
+      "bytes_origem": 54686311,
+      "linhas": 24747,
+      "sha256_origem": "4eed8cb25f1993a44abfeab17bb02715f50c6def9ceaf8197e70ec7b2105e312"
+    }
+  },
+  "competencia": "202410"
+}
