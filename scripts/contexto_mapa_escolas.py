@@ -7,8 +7,9 @@ from collections.abc import Callable
 
 REDES = (("municipal", "Municipal", "Escola municipal"), ("estadual", "Estadual", "Escola estadual"), ("federal", "Federal", "Escola federal"), ("privada", "Privada", "Escola particular"))
 ETAPAS = (("infantil", "Educação infantil", "mat_infantil"), ("iniciais", "Anos iniciais (1º ao 5º)", "mat_anos_iniciais"), ("finais", "Anos finais (6º ao 9º)", "mat_anos_finais"),
-          ("medio", "Ensino médio", "mat_medio"), ("eja", "Educação de jovens e adultos", "mat_eja"))
-POSICAO = {"porta": "pelo endereço do Censo Escolar", "rua": "pela rua, em trecho curto (aproximada)"}
+          ("medio", "Ensino médio", "mat_medio"), ("eja", "Educação de jovens e adultos", "mat_eja"),
+          ("outras", "Outras (técnica, profissional, especial ou sem matrícula regular)", None))
+POSICAO = {"porta": "pelo endereço do Censo Escolar", "rua": "pela rua, em trecho curto (aproximada)"}  # "rua" só para endereço sem número
 
 
 def _endereco(e: dict, nome_br: Callable[[str], str]) -> str:
@@ -28,7 +29,7 @@ def contexto_mapa_escolas(env: dict, nome_br: Callable[[str], str], f: Callable[
             sem_posicao += 1
             continue
         grupo = next(g for g, rede, _ in REDES if rede == e["rede"])
-        etapas = [k for k, _, campo in ETAPAS if (e.get(campo) or 0) > 0]
+        etapas = [k for k, _, campo in ETAPAS if campo and (e.get(campo) or 0) > 0] or ["outras"]
         x, y = f(e["lat"], e["lon"])
         pontos.append({"g": grupo, "n": nome_br(re.sub(r"\s+", " ", e["escola"])), "e": " ".join(etapas), "x": round(x), "y": round(y), "la": f"{e['lat']:.4f}", "lo": f"{e['lon']:.4f}",
                        "u": f"{e['co_inep']}/", "en": _endereco(e, nome_br), "b": nome_br(e["bairro"]) if e.get("bairro") else "", "p": e["posicao"]})
@@ -42,4 +43,4 @@ def contexto_mapa_escolas(env: dict, nome_br: Callable[[str], str], f: Callable[
             "redes": [{"id": g, "nome": r, "n": contagem[g]} for g, r, _ in REDES if contagem[g]],
             "etapas": [{"id": k, "nome": n, "n": cont_etapa[k]} for k, n, _ in ETAPAS if cont_etapa[k]],
             "nomes": {g: rotulo for g, _, rotulo in REDES}, "ordem": ",".join(g for g, _, _ in REDES if contagem[g]),
-            "n_porta": sum(1 for e in env["dados"] if e.get("posicao") == "porta"), "n_rua": sum(1 for e in env["dados"] if e.get("posicao") == "rua")}
+            "n_porta": sum(1 for p in pontos if p["p"] == "porta"), "n_rua": sum(1 for p in pontos if p["p"] == "rua")}

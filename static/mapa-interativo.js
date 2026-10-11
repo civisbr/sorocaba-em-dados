@@ -50,7 +50,14 @@
     var secao = raiz.closest("section") || raiz;
     secao.querySelectorAll("[data-so-js]").forEach(function (e) { e.hidden = false; });
     secao.querySelectorAll("[data-sem-js]").forEach(function (e) { e.hidden = true; });
-    unidades.forEach(function (u) { u.setAttribute("tabindex", "0"); u.setAttribute("role", "button"); });
+    unidades.forEach(function (u, i) { u.setAttribute("tabindex", i === 0 ? "0" : "-1"); u.setAttribute("role", "button"); });
+    // uma só parada de Tab no mapa; setas, Home e End percorrem os pontos visíveis
+    function irPara(u) { unidades.forEach(function (x) { x.setAttribute("tabindex", x === u ? "0" : "-1"); }); u.focus(); }
+    function navegar(u, e) {
+      var vis = unidades.filter(function (x) { return !x.classList.contains("ms-off"); }), i = vis.indexOf(u);
+      var alvo = { ArrowRight: vis[i + 1], ArrowDown: vis[i + 1], ArrowLeft: vis[i - 1], ArrowUp: vis[i - 1], Home: vis[0], End: vis[vis.length - 1] }[e.key];
+      if (alvo) { e.preventDefault(); irPara(alvo); }
+    }
     svg.querySelectorAll(".ms-u > title, .ms-c > title").forEach(function (t) { t.parentNode.removeChild(t); }); // a dica própria substitui a nativa
 
     function limitar() {
@@ -195,13 +202,14 @@
       u.addEventListener("mouseenter", function () { if (!arrastou) mostrarDica(u); });
       u.addEventListener("mouseleave", esconderDica);
       u.addEventListener("focus", function () {
+        unidades.forEach(function (x) { x.setAttribute("tabindex", x === u ? "0" : "-1"); });
         var p = ponto(u);
         if (p.x < view.x || p.x > view.x + view.w || p.y < view.y || p.y > view.y + view.h) { view.x = p.x - view.w / 2; view.y = p.y - view.h / 2; aplicar(); }
         mostrarDica(u);
       });
       u.addEventListener("blur", esconderDica);
       u.addEventListener("click", function (e) { e.stopPropagation(); if (!arrastou) selecionar(u); });
-      u.addEventListener("keydown", function (e) { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); selecionar(u); } });
+      u.addEventListener("keydown", function (e) { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); selecionar(u); } else navegar(u, e); });
     });
     celulas.forEach(function (c) {
       c.addEventListener("mouseenter", function () { if (!arrastou) mostrarDica(c); });
@@ -230,6 +238,7 @@
     }
     function refiltrar() {
       unidades.forEach(function (u) { u.classList.toggle("ms-off", !passa(u)); });
+      if (atual && atual.classList.contains("ms-off") && painelSel) { painelSel.textContent = ""; var h0 = document.createElement("h3"); h0.textContent = "Unidade selecionada"; var p0 = document.createElement("p"); p0.className = "suave pequeno"; p0.textContent = "A unidade escolhida saiu do mapa com esses filtros."; painelSel.appendChild(h0); painelSel.appendChild(p0); atual = null; }
       celulas.forEach(function (c) { c.classList.toggle("ms-off", !passa(c)); });
       if (posicao) listarProximas(false);
     }
@@ -257,6 +266,7 @@
     function marcar(lat, lon, rotulo) {
       if (!dentroDoMunicipio(lat, lon)) {
         posicao = null; distancias.clear(); gAneis.textContent = ""; gVoce.setAttribute("hidden", ""); if (painelProx) painelProx.hidden = true;
+        if (atual) selecionar(atual);
         aviso("Esse ponto fica fora de Sorocaba, então não mostro distâncias. Escolha um bairro da cidade.");
         return;
       }
@@ -299,6 +309,7 @@
         li.appendChild(b); ul.appendChild(li);
       });
       painelProx.appendChild(ul);
+      if (!achou.length) { var vazio = document.createElement("p"); vazio.className = "suave pequeno"; vazio.textContent = "Nenhuma unidade com esses filtros."; painelProx.appendChild(vazio); }
       if (NOTA) { var nota = document.createElement("p"); nota.className = "pequeno suave"; nota.textContent = NOTA; painelProx.appendChild(nota); }
       painelProx.hidden = false;
       if (reenquadrar !== false && achou.length) enquadrar(achou.concat([xy(posicao.lat, posicao.lon)]), 0.35);

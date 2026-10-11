@@ -79,7 +79,10 @@ def _coordenadas(arq: Path, codigos: set[str]) -> dict[str, dict]:
             raise ValueError(f"coordenadas de escola inexistente no Censo: {r['co_inep']}")
         if not r["precisao"]:
             continue
-        lat, lon = float(r["lat"]), float(r["lon"])
+        try:
+            lat, lon = float(r["lat"]), float(r["lon"])
+        except ValueError:
+            raise ValueError(f"coordenada inválida para {r['co_inep']}") from None
         if r["precisao"] not in ("porta", "rua") or not dentro(contorno, lat, lon):
             raise ValueError(f"coordenada inválida para {r['co_inep']}")
         saida[r["co_inep"]] = {"lat": round(lat, 5), "lon": round(lon, 5), "posicao": r["precisao"]}

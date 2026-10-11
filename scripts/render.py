@@ -242,7 +242,7 @@ def mapa_de_calor(d: list[dict], grupo: str, malha: Path) -> dict:
     for r in celulas:
         x0, y0 = ponto(r["lat"] + lado / 2, r["lon"] - lado / 2)
         x1, y1 = ponto(r["lat"] - lado / 2, r["lon"] + lado / 2)
-        retangulos.append({"x": round(x0), "y": round(y0), "w": round(x1 - x0, 1), "h": round(y1 - y0, 1), "n": r["n"], "nivel": nivel(r["n"])})
+        retangulos.append({"x": round(x0, 1), "y": round(y0, 1), "w": round(x1 - x0, 1), "h": round(y1 - y0, 1), "n": r["n"], "nivel": nivel(r["n"])})
     retangulos.sort(key=lambda q: (q["y"], q["x"]))
     limites = [valores[0], *cortes, valores[-1]]
     legenda = []

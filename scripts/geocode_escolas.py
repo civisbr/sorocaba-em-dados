@@ -15,11 +15,13 @@ import json
 import math
 import re
 import time
+import unicodedata
 from datetime import date
 from pathlib import Path
 
 import httpx
 
+from scripts.mapa_base import BASE as BASE_OSM
 from scripts.geo import carregar_contorno, dentro
 from scripts.geocode_radares import NOMINATIM, contexto_http, expandir, palavras
 
@@ -28,11 +30,32 @@ CENSO = RAIZ / "data" / "raw" / "inep" / "censo_escolar.csv"
 SAIDA = RAIZ / "data" / "raw" / "inep" / "coordenadas.csv"
 CAMPOS = ["co_inep", "lat", "lon", "precisao", "osm_ref", "endereco_consultado", "geocodificado_em"]
 RUA_CURTA_M = 400
+DIST_BAIRRO_PORTA_M = 3000  # ponto muito longe do bairro informado no Censo costuma ser rua homônima de outro bairro
+DIST_BAIRRO_RUA_M = 1500
 
 
 def numero_da_porta(texto: str) -> str | None:
     t = (texto or "").strip()
+    if re.fullmatch(r"\d{1,3}( \d{3})", t):  # o Censo grava milhar com espaço ("5 515")
+        t = t.replace(" ", "")
     return t if re.fullmatch(r"\d{1,6}", t) else None
+
+
+def normaliza(texto: str) -> str:
+    sem = unicodedata.normalize("NFD", texto.upper()).encode("ascii", "ignore").decode()
+    return " ".join(re.sub(r"[^A-Z0-9 ]", " ", sem).split())
+
+
+def centros_de_bairro() -> dict[str, list[tuple[float, float]]]:
+    base = json.loads(BASE_OSM.read_text(encoding="utf-8"))
+    centros: dict[str, list[tuple[float, float]]] = {}
+    for b in base["bairros"]:
+        centros.setdefault(normaliza(b["nome"]), []).append((b["lat"], b["lon"]))
+    return centros
+
+
+def metros(a: tuple[float, float], lat: float, lon: float) -> float:
+    return math.hypot((a[1] - lon) * 111_000 * math.cos(math.radians(lat)), (a[0] - lat) * 111_000)
 
 
 def diagonal_m(caixa: list[str]) -> float:
@@ -40,7 +63,7 @@ def diagonal_m(caixa: list[str]) -> float:
     return math.hypot((e - w) * 111_000 * math.cos(math.radians((s + n) / 2)), (n - s) * 111_000)
 
 
-def buscar(c: httpx.Client, rua: str, numero: str | None, contorno) -> tuple[float, float, str, str] | None:
+def buscar(c: httpx.Client, rua: str, numero: str | None, contorno, cep: str = "", centros: list[tuple[float, float]] | None = None) -> tuple[float, float, str, str] | None:
     consulta = f"{numero} {rua.title()}" if numero else rua.title()
     r = c.get(NOMINATIM, params={"street": consulta, "city": "Sorocaba", "state": "São Paulo", "country": "Brasil", "format": "jsonv2", "addressdetails": 1, "limit": 1})
     r.raise_for_status()
@@ -48,18 +71,24 @@ def buscar(c: httpx.Client, rua: str, numero: str | None, contorno) -> tuple[flo
     if not achados:
         return None
     a, end = achados[0], achados[0].get("address", {})
-    pedida = palavras(rua)
-    if not pedida or not pedida <= palavras(end.get("road", "")):
+    if palavras(rua) != palavras(end.get("road", "")) or not palavras(rua):  # nome da via igual, não subconjunto
+        return None
+    postal = re.sub(r"\D", "", end.get("postcode", ""))
+    if len(postal) == 8 and len(cep) == 8 and postal[:5] != cep[:5]:
         return None
     lat, lon = float(a["lat"]), float(a["lon"])
     if not dentro(contorno, lat, lon):
         return None
     ref = f"{a.get('osm_type')}/{a.get('osm_id')}"
     if numero and str(end.get("house_number", "")).strip() == numero and a.get("category") != "highway":
-        return lat, lon, "porta", ref
-    if a.get("category") == "highway" and a.get("boundingbox") and diagonal_m(a["boundingbox"]) <= RUA_CURTA_M:
-        return lat, lon, "rua", ref
-    return None
+        nivel, limite = "porta", DIST_BAIRRO_PORTA_M
+    elif not numero and a.get("category") == "highway" and a.get("boundingbox") and diagonal_m(a["boundingbox"]) <= RUA_CURTA_M:
+        nivel, limite = "rua", DIST_BAIRRO_RUA_M  # com número pedido e só a via achada, o ponto seria o meio de um trecho qualquer: descarta
+    else:
+        return None
+    if centros and min(metros(c0, lat, lon) for c0 in centros) > limite:
+        return None
+    return lat, lon, nivel, ref
 
 
 def main() -> None:
@@ -68,6 +97,7 @@ def main() -> None:
     p.add_argument("--limite", type=int, default=0, help="só as primeiras N escolas (teste)")
     a = p.parse_args()
     contorno = carregar_contorno()
+    centros_bairro = centros_de_bairro()
     feitos: dict[str, dict] = {}
     if SAIDA.exists() and not a.refazer:
         feitos = {r["co_inep"]: r for r in csv.DictReader(SAIDA.open(encoding="utf-8"), delimiter=";")}
@@ -85,7 +115,7 @@ def main() -> None:
                 continue
             rua = expandir(e["DS_ENDERECO"])
             try:
-                achado = buscar(c, rua, numero_da_porta(e["NU_ENDERECO"]), contorno)
+                achado = buscar(c, rua, numero_da_porta(e["NU_ENDERECO"]), contorno, re.sub(r"\D", "", e.get("CO_CEP", "")), centros_bairro.get(normaliza(e.get("NO_BAIRRO", ""))))
             except ValueError as err:
                 raise SystemExit(f"{cod}: resposta recusada ({err}); abortando") from None
             except httpx.HTTPStatusError as err:

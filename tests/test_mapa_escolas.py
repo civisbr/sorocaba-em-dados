@@ -60,7 +60,7 @@ def test_geocode_rua_so_quando_curta():
     longa = {**via, "boundingbox": ["-23.55", "-23.45", "-47.5", "-47.4"]}
     assert g.buscar(_cliente([curta]), "RUA BETSAIDA", None, CONTORNO)[2] == "rua"
     assert g.buscar(_cliente([longa]), "RUA BETSAIDA", None, CONTORNO) is None
-    assert g.buscar(_cliente([curta]), "RUA BETSAIDA", "75", CONTORNO)[2] == "rua"  # sem a porta, a rua curta ainda serve como aproximação
+    assert g.buscar(_cliente([curta]), "RUA BETSAIDA", "75", CONTORNO) is None  # com número pedido e só a via achada, o ponto seria o meio de um trecho qualquer
 
 
 def test_pagina_de_escolas_tem_mapa_quando_ha_coordenadas(tmp_path):
@@ -113,3 +113,24 @@ def test_dados_publicos_marcam_as_unidades_restritas():
     d = json.loads((Path(__file__).resolve().parent.parent / "data" / "public" / "escolas.json").read_text(encoding="utf-8"))["dados"]
     restritas = [e["escola"] for e in d if e["atendimento_restrito"]]
     assert any("PENITENCIARIA" in n or "SOCIOEDUC" in n or "CASA" in n for n in restritas)
+
+
+def test_geocode_nome_da_via_precisa_ser_igual_e_cep_e_bairro_conferem():
+    ok = {"lat": "-23.50", "lon": "-47.45", "category": "amenity", "osm_type": "node", "osm_id": 1, "address": {"road": "Rua Betsaida", "house_number": "75", "postcode": "18071-490"}}
+    assert g.buscar(_cliente([{**ok, "address": {**ok["address"], "road": "Rua Betsaida Velha"}}]), "RUA BETSAIDA", "75", CONTORNO) is None
+    assert g.buscar(_cliente([ok]), "RUA BETSAIDA", "75", CONTORNO, "18071490") is not None
+    assert g.buscar(_cliente([ok]), "RUA BETSAIDA", "75", CONTORNO, "18900000") is None  # CEP de outra região
+    assert g.buscar(_cliente([ok]), "RUA BETSAIDA", "75", CONTORNO, "", [(-23.40, -47.35)]) is None  # a mais de 3 km do bairro do Censo
+    assert g.buscar(_cliente([ok]), "RUA BETSAIDA", "75", CONTORNO, "", [(-23.499, -47.449)]) is not None
+
+
+def test_numero_com_milhar_em_espaco():
+    assert g.numero_da_porta("5 515") == "5515" and g.numero_da_porta("KM 7 5") is None
+
+
+def test_etapa_outras_para_escola_sem_matricula_regular():
+    env = {"dados": [_escola("1"), _escola("2", mat_medio=10)]}
+    ctx = contexto_mapa_escolas(env, lambda n: n, lambda la, lo: (la, lo))
+    por = {p["u"]: p for p in ctx["pontos"]}
+    assert por["1/"]["e"] == "outras" and por["2/"]["e"] == "medio"
+    assert ctx["n_porta"] == 2 and ctx["n_rua"] == 0
