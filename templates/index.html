@@ -83,7 +83,7 @@
         <span class="cartao-ctx">habitantes, estimativa do IBGE para {{ cid.ind.populacao_estimada.ano }}</span>
         {% elif p.id == "representantes" %}
         <span class="cartao-numero">{{ rep.prefeito.nome | nome_br }}</span>
-        <span class="cartao-ctx">prefeito, eleito em 2024 (mandato 2025–2028)</span>
+        <span class="cartao-ctx">prefeito, eleito em {{ rep.prefeito.eleicao }} (mandato {{ rep.prefeito.mandato }})</span>
         {% elif p.id == "escolas" %}
         <span class="cartao-numero">{{ esc.escolas | length | num }}</span>
         <span class="cartao-ctx">escolas em atividade no Censo Escolar {{ esc.ano_censo }}</span>

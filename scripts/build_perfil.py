@@ -49,7 +49,7 @@ def construir(raw: Path) -> Envelope:
     censo = series(ler(raw, "censo_2022"))
     est = series(ler(raw, "estimativa"))
     pib = series(ler(raw, "pib"))
-    vab = series(ler(raw, "vab_2021"))
+    vab = series(ler(raw, "vab"))
     dados: list[dict] = []
 
     micro = loc["microrregiao"]
@@ -65,6 +65,7 @@ def construir(raw: Path) -> Envelope:
         dados.append(registro("territorio", chave, rotulo, texto=texto))
 
     ano_est, v_est = next(iter(est["9324"].items()))
+    censo_ano = max(censo["93"])
     for chave, rotulo, valor, ano, unidade in (
         ("populacao_censo", "População (Censo)", censo["93"]["2022"], 2022, "pessoas"),
         ("populacao_estimada", "População estimada", v_est, int(ano_est), "pessoas"),
@@ -74,20 +75,26 @@ def construir(raw: Path) -> Envelope:
         dados.append(registro("indicador", chave, rotulo, ano, valor, unidade))
 
     for ano, valor in sorted(pib["37"].items()):
-        dados.append(registro("pib_serie", "pib", "PIB a preços correntes", int(ano), valor, "R$ mil"))
-    ano_pib = max(pib["37"])
+        if valor is not None:
+            dados.append(registro("pib_serie", "pib", "PIB a preços correntes", int(ano), valor, "R$ mil"))
+    ano_pib = max(a for a, v in pib["37"].items() if v is not None)
     for vid, rotulo in PARTICIPACOES.items():
-        dados.append(registro("pib_participacao", vid, rotulo, int(ano_pib), pib[vid][ano_pib], "%"))
+        if pib[vid].get(ano_pib) is not None:
+            dados.append(registro("pib_participacao", vid, rotulo, int(ano_pib), pib[vid][ano_pib], "%"))
 
-    total = vab["498"]["2021"]
-    for vid, (chave, rotulo) in SETORES.items():
-        v = vab[vid]["2021"]
-        # Parcela = valor do setor / VAB total, ambos da mesma tabela do IBGE e do mesmo ano.
-        dados.append(registro("vab_setor", chave, rotulo, 2021, v, "R$ mil", pct=round(v / total * 100, 1) if v is not None and total else None))
-    soma = sum(vab[v]["2021"] or 0 for v in SETORES)
-    if total is not None and abs(soma - total) > 1:
-        raise ValueError(f"setores ({soma}) não somam o VAB total ({total})")
-    dados.append(registro("vab_setor", "total", "Valor adicionado bruto total", 2021, total, "R$ mil", pct=100.0))
+    # Estrutura do valor adicionado: último ano em que o IBGE publicou o total e todos os setores.
+    anos_vab = [a for a in sorted(vab["498"]) if vab["498"][a] is not None and all(vab[v].get(a) is not None for v in SETORES)]
+    ano_vab = anos_vab[-1] if anos_vab else None
+    if ano_vab:
+        total = vab["498"][ano_vab]
+        for vid, (chave, rotulo) in SETORES.items():
+            v = vab[vid][ano_vab]
+            # Parcela = valor do setor / VAB total, ambos da mesma tabela do IBGE e do mesmo ano.
+            dados.append(registro("vab_setor", chave, rotulo, int(ano_vab), v, "R$ mil", pct=round(v / total * 100, 1)))
+        soma = sum(vab[v][ano_vab] for v in SETORES)
+        if abs(soma - total) > 1:
+            raise ValueError(f"setores ({soma}) não somam o VAB total ({total})")
+        dados.append(registro("vab_setor", "total", "Valor adicionado bruto total", int(ano_vab), total, "R$ mil", pct=100.0))
 
     h = hashlib.sha256((raw / "manifesto.json").read_bytes()).hexdigest()
     return Envelope(
@@ -99,16 +106,16 @@ def construir(raw: Path) -> Envelope:
             acesso_em=date.fromisoformat(man["acesso_em"]),
         ),
         referencia=Referencia(
-            inicio=date(int(min(pib["37"])), 1, 1), fim=date(int(ano_est), 12, 31), granularidade=Granularidade.ANUAL
+            inicio=date(int(min(a for a, v in pib["37"].items() if v is not None)), 1, 1), fim=date(int(ano_est), 12, 31), granularidade=Granularidade.ANUAL
         ),
         cobertura=Cobertura(municipio="Sorocaba", ibge="3552205", uf="SP"),
         qualidade=Qualidade(
             flag=Flag.REAL,
             n_registros=len(dados),
             notas=[
-                "Cada indicador traz o seu ano: Censo 2022, estimativa de população mais recente e PIB até 2023.",
+                f"Cada indicador traz o seu ano: Censo {censo_ano}, estimativa de população de {ano_est} e PIB até {ano_pib}.",
                 "PIB a preços correntes (nominal): os valores de anos diferentes não descontam inflação.",
-                "Estrutura do valor adicionado só existe para 2021; o IBGE não publicou os setores de 2022 e 2023 para o município.",
+                (f"Estrutura do valor adicionado: {ano_vab}, o último ano em que o IBGE publicou os setores para o município." if ano_vab else "O IBGE ainda não publicou a estrutura do valor adicionado por setor para o município."),
                 "O IBGE não publica PIB per capita nessa tabela, e não calculamos por conta própria.",
                 f"SHA-256 do manifesto de coleta: {h}",
             ],

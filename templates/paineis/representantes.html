@@ -2,9 +2,9 @@
 {% from "_macros.html" import icone %}
 {% block resumo %}
 <section aria-labelledby="resumo" class="resumo-real">
-  <h2 id="resumo" class="rotulo-resumo">Prefeitura de Sorocaba, 2025–2028</h2>
+  <h2 id="resumo" class="rotulo-resumo">Prefeitura de Sorocaba, {{ prefeito.mandato }}</h2>
   <p class="numero-grande nome-grande">{{ prefeito.nome | nome_br }}</p>
-  <p class="resumo-texto">{{ prefeito.partido }}, prefeito eleito em {{ prefeito.eleicao }}. Vice: <strong>{{ vice.nome | nome_br }}</strong> ({{ vice.partido }}). Mandato de {{ prefeito.mandato_inicio | data_br }} a {{ prefeito.mandato_fim | data_br }}.</p>
+  <p class="resumo-texto">{{ prefeito.partido }}, prefeito eleito em {{ prefeito.eleicao }}. Vice: <strong>{{ vice.nome | nome_br }}</strong> ({{ vice.partido }}). Mandato {{ prefeito.mandato }}.</p>
   <p class="pequeno suave">O TSE informa quem foi eleito. Afastamentos ou substituições durante o mandato não aparecem nesta lista.</p>
 </section>
 {% endblock %}
@@ -25,7 +25,7 @@
 
 <section aria-labelledby="dep-t" class="bloco-painel">
   <h2 id="dep-t" class="h2-medio sem-topo">Deputados mais votados em Sorocaba</h2>
-  <p class="suave">Deputados são eleitos pelo estado inteiro. Abaixo, os 5 eleitos que mais receberam votos nominais em Sorocaba em cada eleição.</p>
+  <p class="suave">Deputados são eleitos pelo estado inteiro. Abaixo, os {{ topo }} eleitos que mais receberam votos nominais em Sorocaba em cada eleição.</p>
   {% for titulo, blocos in deputados %}
   <h3 class="h3-sec">{{ titulo }}</h3>
   <div class="grade-2">
@@ -34,7 +34,7 @@
       <h4>{{ sub }}</h4>
       <div class="rolagem"><table>
         <caption class="so-leitor">{{ titulo }}: {{ sub }}</caption>
-        <thead><tr><th scope="col">Nome</th><th scope="col">Partido</th><th scope="col">Votos na cidade</th><th scope="col">% na cidade</th>{% if lista and lista[0].eleicao == 2022 %}<th scope="col">Em exercício</th>{% endif %}</tr></thead>
+        <thead><tr><th scope="col">Nome</th><th scope="col">Partido na eleição</th><th scope="col">Votos na cidade</th><th scope="col">% na cidade</th>{% if lista and lista[0].eleicao == 2022 %}<th scope="col">Em exercício em {{ env.fonte.acesso_em | data_br }}</th>{% endif %}</tr></thead>
         <tbody>{% for r in lista %}<tr><th scope="row">{{ r.nome | nome_br }}</th><td>{{ r.partido }}</td><td>{{ r.votos_na_cidade | num }}</td><td>{{ r.pct_votos_na_cidade | brl1 }}%</td>{% if r.eleicao == 2022 %}<td>{{ "Confirmado" if r.em_exercicio else "Sem confirmação" }}</td>{% endif %}</tr>{% endfor %}</tbody>
       </table></div>
     </article>

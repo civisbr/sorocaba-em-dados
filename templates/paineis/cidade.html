@@ -49,9 +49,11 @@
       <ul class="setores">{% for r in participacoes %}<li><span class="nome">{{ r.rotulo }}</span><span class="val">{{ r.valor | brl2 }}%</span></li>{% endfor %}</ul>
     </article>
     <article class="quadro-card">
-      <h3>De onde vem a riqueza ({{ vab_total.ano }})</h3><p class="suave">Parte de cada setor no valor adicionado bruto de R$ {{ vab_total.valor | bi }} bilhões.</p>
+      <h3>De onde vem a riqueza{% if vab_total %} ({{ vab_total.ano }}){% endif %}</h3>
+      {% if vab_total %}<p class="suave">Parte de cada setor no valor adicionado bruto de R$ {{ vab_total.valor | bi }} bilhões.</p>
       <ul class="setores">{% for r in vab %}<li><span class="nome">{{ r.rotulo }}</span><span class="val">{{ r.pct | brl1 }}%</span><span class="setor-barra pos" style="width: {{ r.pct }}%"></span></li>{% endfor %}</ul>
-      <p class="pequeno suave">Os percentuais dividem o valor de cada setor pelo total, ambos do IBGE em {{ vab_total.ano }}. O IBGE não divulgou essa divisão para 2022 e 2023.</p>
+      <p class="pequeno suave">Os percentuais dividem o valor de cada setor pelo total, ambos do IBGE em {{ vab_total.ano }}. Os anos mais recentes ainda não têm essa divisão publicada para o município.</p>
+      {% else %}<p class="pendente-texto">{{ icone("relogio") }} O IBGE ainda não publicou a divisão por setor para o município.</p>{% endif %}
     </article>
   </div>
 </section>
@@ -62,7 +64,7 @@
 {% block proveniencia %}
 <dl class="proveniencia">
   <dt>Fonte</dt><dd><a href="{{ env.fonte.url }}">{{ env.fonte.nome }}</a> — {{ env.fonte.licenca }}</dd>
-  <dt>Referência</dt><dd>{{ ref_cidade }} · estimativa {{ ind.populacao_estimada.ano }} · valor adicionado {{ vab_total.ano }}</dd>
+  <dt>Referência</dt><dd>{{ ref_cidade }} · estimativa {{ ind.populacao_estimada.ano }} {% if vab_total %}· valor adicionado {{ vab_total.ano }}{% endif %}</dd>
   <dt>Coletado em</dt><dd>{{ env.fonte.acesso_em | data_br }}</dd>
   <dt>Dados</dt><dd><a href="{{ raiz }}data/perfil.json">perfil.json</a></dd>
   <dt>Código</dt><dd><a href="{{ repo_url }}/blob/main/{{ script }}">{{ script }}</a></dd>

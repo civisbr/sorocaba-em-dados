@@ -17,9 +17,9 @@
       "sha256": "1af8ebacea32dcd79a943e2f675aa6aac03f9a0340214e70470b1edeb9fdff2f",
       "url": "https://servicodados.ibge.gov.br/api/v3/agregados/5938/periodos/-6/variaveis/37|553|552|497|530|496?localidades=N6[3552205]"
     },
-    "vab_2021": {
-      "sha256": "42109b569c10a4d8800c94d8e1be68d869fc922edd2d68c37fc1bc4d63dc45bf",
-      "url": "https://servicodados.ibge.gov.br/api/v3/agregados/5938/periodos/2021/variaveis/498|513|517|6575|525?localidades=N6[3552205]"
+    "vab": {
+      "sha256": "458e56e92048789f125da677613e8ccf56345508eb5a87a5af557c32fc1c1271",
+      "url": "https://servicodados.ibge.gov.br/api/v3/agregados/5938/periodos/-6/variaveis/498|513|517|6575|525?localidades=N6[3552205]"
     }
   }
 }

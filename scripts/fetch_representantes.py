@@ -13,13 +13,13 @@ import io
 import json
 import tempfile
 import time
-import xml.etree.ElementTree as ET
 import zipfile
 from collections import defaultdict
 from datetime import date
 from pathlib import Path
 
 import httpx
+from defusedxml import ElementTree as ET
 
 RAIZ = Path(__file__).resolve().parent.parent
 DESTINO = RAIZ / "data" / "raw" / "representantes"
@@ -31,6 +31,9 @@ TSE_MUNICIPIO = "71455"  # Sorocaba no TSE (não é o código do IBGE)
 ANOS_MUNICIPAL = (2024,)
 ANOS_GERAIS = (2022, 2026)
 LIMITE_ZIP = 900 * 1024 * 1024
+LIMITE_JSON = 5 * 1024 * 1024
+LIMITE_MEMBRO = 3 * 1024 * 1024 * 1024
+ENCERRADAS = (2022, 2024)  # resultado final: não vale baixar 600 MB de novo se o recorte já existe
 CARGOS_MUNICIPAIS = ("PREFEITO", "VICE-PREFEITO", "VEREADOR")
 CARGOS_DEPUTADO = ("Deputado Federal", "Deputado Estadual")
 CAMPOS_ELEITOS = ["ano", "cargo", "nome_urna", "partido", "situacao", "turno"]
@@ -38,14 +41,15 @@ CAMPOS_VOTOS = ["ano", "cargo", "nome_urna", "partido", "situacao", "votos"]
 CAMPOS_TOTAIS = ["ano", "cargo", "votos_nominais_validos"]
 
 
-def so_host_confiavel(r: httpx.Response) -> None:
+def so_host_confiavel(r: httpx.Request) -> None:
+    # Hook de requisição: barra o salto de redirecionamento antes de ele ser enviado.
     if r.url.scheme != "https" or r.url.host not in HOSTS:
-        raise ValueError(f"resposta fora dos hosts esperados: {r.url}")
+        raise ValueError(f"requisição fora dos hosts esperados: {r.url}")
 
 
 def cliente() -> httpx.Client:
     return httpx.Client(
-        timeout=httpx.Timeout(60, read=900), follow_redirects=True, event_hooks={"response": [so_host_confiavel]},
+        timeout=httpx.Timeout(60, read=900), follow_redirects=True, event_hooks={"request": [so_host_confiavel]},
         headers={"User-Agent": "Mozilla/5.0 (X11; Linux x86_64) SorocabaEmDados/1.0"},
     )
 
@@ -75,7 +79,20 @@ def baixar_zip(c: httpx.Client, url: str, destino: Path) -> str:
     return h.hexdigest()
 
 
+def baixar_curto(c: httpx.Client, url: str) -> bytes:
+    with c.stream("GET", url) as r:
+        r.raise_for_status()
+        corpo = bytearray()
+        for pedaco in r.iter_bytes(64 * 1024):
+            corpo += pedaco
+            if len(corpo) > LIMITE_JSON:
+                raise ValueError(f"{url} acima do limite esperado")
+    return bytes(corpo)
+
+
 def linhas_csv(z: zipfile.ZipFile, membro: str):
+    if z.getinfo(membro).file_size > LIMITE_MEMBRO:
+        raise ValueError(f"{membro} acima do limite esperado")
     with z.open(membro) as f:
         yield from csv.DictReader(io.TextIOWrapper(f, encoding="latin-1", newline=""), delimiter=";")
 
@@ -119,12 +136,14 @@ def votos_deputados(z: zipfile.ZipFile, ano: int) -> tuple[list[dict], list[dict
 
 
 def camara(c: httpx.Client) -> list[dict]:
-    dados = com_tentativas(lambda: c.get(CAMARA).raise_for_status().json())["dados"]
+    dados = json.loads(com_tentativas(lambda: baixar_curto(c, CAMARA)))["dados"]
+    if len(dados) >= 100:
+        raise ValueError("lista da Câmara no limite de itens por página; implementar paginação")
     return sorted(({"id": d["id"], "nome": d["nome"], "partido": d["siglaPartido"], "uf": d["siglaUf"]} for d in dados), key=lambda d: d["id"])
 
 
 def alesp(c: httpx.Client) -> list[dict]:
-    corpo = com_tentativas(lambda: c.get(ALESP).raise_for_status().content)
+    corpo = com_tentativas(lambda: baixar_curto(c, ALESP))
     raiz = ET.fromstring(corpo)
     saida = [
         {"id": d.findtext("IdDeputado"), "nome": espaco(d.findtext("NomeParlamentar") or ""), "partido": d.findtext("Partido"), "situacao": d.findtext("Situacao")}
@@ -141,21 +160,29 @@ def csv_texto(campos: list[str], linhas: list[dict]) -> str:
     return buf.getvalue()
 
 
-def coletar(acesso_em: date, destino: Path = DESTINO) -> list[str]:
+def coletar(acesso_em: date, destino: Path = DESTINO, forcar: bool = False) -> list[str]:
     produtos: dict[str, tuple[str, str]] = {}  # arquivo -> (texto, url de origem)
     origens: dict[str, str] = {}
     with cliente() as c, tempfile.TemporaryDirectory() as tmp_s:
         tmp = Path(tmp_s)
         for ano in ANOS_MUNICIPAL:
+            if ano in ENCERRADAS and (destino / f"eleitos_municipais_{ano}.csv").exists() and not forcar:
+                continue
             url = f"{TSE}consulta_cand/consulta_cand_{ano}.zip"
             sha = com_tentativas(lambda: baixar_zip(c, url, tmp / "m.zip"))
             with zipfile.ZipFile(tmp / "m.zip") as z:
                 linhas = eleitos_municipais(z, ano)
             if not linhas:
                 raise ValueError(f"nenhum eleito de Sorocaba em {ano}")
+            cargos = [r["cargo"] for r in linhas]
+            if cargos.count("PREFEITO") != 1 or cargos.count("VICE-PREFEITO") != 1:
+                raise ValueError(f"esperava 1 prefeito e 1 vice eleitos em {ano}: {cargos.count('PREFEITO')}/{cargos.count('VICE-PREFEITO')}")
             produtos[f"eleitos_municipais_{ano}.csv"] = (csv_texto(CAMPOS_ELEITOS, linhas), url)
             origens[url] = sha
+            (tmp / "m.zip").unlink()
         for ano in ANOS_GERAIS:
+            if ano in ENCERRADAS and (destino / f"votos_deputados_{ano}.csv").exists() and not forcar:
+                continue
             url = f"{TSE}votacao_candidato_munzona/votacao_candidato_munzona_{ano}.zip"
             sha = com_tentativas(lambda: baixar_zip(c, url, tmp / "g.zip"))
             with zipfile.ZipFile(tmp / "g.zip") as z:
@@ -171,8 +198,10 @@ def coletar(acesso_em: date, destino: Path = DESTINO) -> list[str]:
 
     destino.mkdir(parents=True, exist_ok=True)
     antigo = json.loads((destino / "manifesto.json").read_text(encoding="utf-8")) if (destino / "manifesto.json").exists() else {}
-    novo = {"acesso_em": acesso_em.isoformat(), "arquivos": {}}
+    novo = {"verificado_em": acesso_em.isoformat(), "arquivos": {}}
     mudou = []
+    for nome in sorted(set(antigo.get("arquivos", {})) - set(produtos)):
+        novo["arquivos"][nome] = antigo["arquivos"][nome]  # eleição encerrada, mantida sem novo download
     for nome, (texto, url) in produtos.items():
         sha = hashlib.sha256(texto.encode("utf-8")).hexdigest()
         anterior = antigo.get("arquivos", {}).get(nome)
@@ -181,18 +210,22 @@ def coletar(acesso_em: date, destino: Path = DESTINO) -> list[str]:
             continue
         (destino / nome).write_text(texto, encoding="utf-8")
         mudou.append(nome)
-        # O zip do TSE é regerado todo dia: o hash do zip só entra para o arquivo que mudou.
-        novo["arquivos"][nome] = {"url": url, "sha256": sha, **({"sha256_zip": origens[url]} if url in origens else {})}
-    if mudou:
-        (destino / "manifesto.json").write_text(json.dumps(novo, indent=2, sort_keys=True) + "\n", encoding="utf-8")
+        # O zip do TSE é regerado todo dia: o hash do zip e a data só entram para o arquivo que mudou.
+        novo["arquivos"][nome] = {
+            "url": url, "sha256": sha, "coletado_em": acesso_em.isoformat(),
+            **({"sha256_zip": origens[url]} if url in origens else {}),
+        }
+    # `verificado_em` muda a cada execução: o site mostra a data da última conferência das listas de exercício.
+    (destino / "manifesto.json").write_text(json.dumps(novo, indent=2, sort_keys=True) + "\n", encoding="utf-8")
     return mudou
 
 
 def main() -> None:
     p = argparse.ArgumentParser()
     p.add_argument("--acesso-em", required=True, type=date.fromisoformat)
+    p.add_argument("--forcar", action="store_true", help="rebaixa também as eleições encerradas")
     args = p.parse_args()
-    print("atualizados:", coletar(args.acesso_em) or "nenhum")
+    print("atualizados:", coletar(args.acesso_em, forcar=args.forcar) or "nenhum")
 
 
 if __name__ == "__main__":

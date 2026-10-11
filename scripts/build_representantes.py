@@ -15,11 +15,9 @@ from schemas.envelope import Cobertura, Envelope, Flag, Fonte, Granularidade, Qu
 
 RAIZ = Path(__file__).resolve().parent.parent
 TOP_DEPUTADOS = 5
-MANDATOS = {
-    ("municipal", 2024): (date(2025, 1, 1), date(2028, 12, 31)),
-    ("geral", 2022): (date(2023, 2, 1), date(2027, 1, 31)),
-    ("geral", 2026): (date(2027, 2, 1), date(2031, 1, 31)),
-}
+# Prefeito, vice e vereadores tomam posse em 1º de janeiro (CF, art. 29). Para deputados guardamos só
+# o período em anos: a data de posse dos estaduais é regimental e não foi verificada em fonte.
+MANDATOS = {2024: "2025–2028", 2022: "2023–2027", 2026: "2027–2031"}
 GRUPOS = {
     "PREFEITO": "prefeito", "VICE-PREFEITO": "vice_prefeito", "VEREADOR": "vereador",
     "Deputado Federal": "deputado_federal", "Deputado Estadual": "deputado_estadual",
@@ -54,7 +52,7 @@ def ler_csv(caminho: Path) -> list[dict[str, str]]:
 
 def registro(grupo, eleicao, mandato, nome, partido, situacao, votos=None, pct=None, posicao=None, exercicio=None) -> dict:
     return {
-        "grupo": grupo, "eleicao": eleicao, "mandato_inicio": mandato[0].isoformat(), "mandato_fim": mandato[1].isoformat(),
+        "grupo": grupo, "eleicao": eleicao, "mandato": mandato,
         "nome": nome, "partido": partido, "situacao_tse": situacao, "votos_na_cidade": votos,
         "pct_votos_na_cidade": pct, "posicao_na_cidade": posicao, "em_exercicio": exercicio,
     }
@@ -68,7 +66,7 @@ def construir(raw: Path) -> Envelope:
 
     dados: list[dict] = []
     for r in ler_csv(raw / "eleitos_municipais_2024.csv"):
-        dados.append(registro(GRUPOS[r["cargo"]], 2024, MANDATOS[("municipal", 2024)], r["nome_urna"], r["partido"], r["situacao"]))
+        dados.append(registro(GRUPOS[r["cargo"]], 2024, MANDATOS[2024], r["nome_urna"], r["partido"], r["situacao"]))
 
     for ano in (2022, 2026):
         totais = {r["cargo"]: int(r["votos_nominais_validos"]) for r in ler_csv(raw / f"totais_votos_{ano}.csv")}
@@ -81,7 +79,7 @@ def construir(raw: Path) -> Envelope:
                 v = int(r["votos"])
                 # Só a legislatura em curso (eleitos em 2022) tem lista oficial de exercício para conferir.
                 ex = em_exercicio(r["nome_urna"], listas[cargo]) if ano == 2022 else None
-                dados.append(registro(GRUPOS[cargo], ano, MANDATOS[("geral", ano)], r["nome_urna"], r["partido"], r["situacao"], v, round(v / totais[cargo] * 100, 1), pos, ex))
+                dados.append(registro(GRUPOS[cargo], ano, MANDATOS[ano], r["nome_urna"], r["partido"], r["situacao"], v, round(v / totais[cargo] * 100, 1), pos, ex))
 
     h = hashlib.sha256((raw / "manifesto.json").read_bytes()).hexdigest()
     return Envelope(
@@ -90,7 +88,7 @@ def construir(raw: Path) -> Envelope:
             nome="TSE (resultados), Câmara dos Deputados e Alesp (dados abertos)",
             url="https://dadosabertos.tse.jus.br/",
             licenca="Dados abertos",
-            acesso_em=date.fromisoformat(man["acesso_em"]),
+            acesso_em=date.fromisoformat(man["verificado_em"]),
         ),
         referencia=Referencia(inicio=date(2022, 1, 1), fim=date(2026, 12, 31), granularidade=Granularidade.ANUAL),
         cobertura=Cobertura(municipio="Sorocaba", ibge="3552205", uf="SP"),
@@ -101,8 +99,8 @@ def construir(raw: Path) -> Envelope:
                 "O TSE registra quem foi eleito, não quem exerce o mandato hoje: vereador licenciado ou suplente que assumiu não aparece.",
                 "Deputados são eleitos pelo estado inteiro. Mostramos os eleitos mais votados em Sorocaba, com a eleição e o critério explícitos; isso não significa que sejam 'da cidade'.",
                 f"Percentual = votos nominais válidos do candidato em Sorocaba ÷ total de votos nominais válidos para o cargo na cidade. Lista dos {TOP_DEPUTADOS} mais votados entre os eleitos.",
-                "Situação em exercício: conferida por nome nas listas oficiais da Câmara e da Alesp; sem correspondência única fica sem confirmação.",
-                "Eleitos em 2026 assumem em 1º/02/2027 (resultado do 1º turno; o 2º turno de governador ainda não afeta deputados).",
+                "Em exercício: conferido por nome nas listas oficiais da Câmara e da Alesp na data da coleta. Sem correspondência única fica sem confirmação, o que pode vir de licença, renúncia ou de nome de urna diferente do nome parlamentar.",
+                "Eleitos em 2026 assumem em 2027 (resultado do 1º turno; o 2º turno não envolve deputados).",
                 f"SHA-256 do manifesto de coleta: {h}",
             ],
         ),

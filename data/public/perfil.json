@@ -267,11 +267,11 @@
     "flag": "real",
     "n_registros": 25,
     "notas": [
-      "Cada indicador traz o seu ano: Censo 2022, estimativa de população mais recente e PIB até 2023.",
+      "Cada indicador traz o seu ano: Censo 2022, estimativa de população de 2026 e PIB até 2023.",
       "PIB a preços correntes (nominal): os valores de anos diferentes não descontam inflação.",
-      "Estrutura do valor adicionado só existe para 2021; o IBGE não publicou os setores de 2022 e 2023 para o município.",
+      "Estrutura do valor adicionado: 2021, o último ano em que o IBGE publicou os setores para o município.",
       "O IBGE não publica PIB per capita nessa tabela, e não calculamos por conta própria.",
-      "SHA-256 do manifesto de coleta: 7465382b173f4f083a33fe2cccbbb4358bee349a57e80f9aff81ef78d4ee4b3b"
+      "SHA-256 do manifesto de coleta: a6d775893b0547dfd41dfd166b368961c3203784e90be8125858c94f2e6e6002"
     ]
   },
   "referencia": {

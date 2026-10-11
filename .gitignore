@@ -6,3 +6,6 @@ dist/
 *.7z
 CAGED*.txt
 *.zip
+data/raw/tse/
+consulta_cand_*.csv
+votacao_candidato_munzona_*.csv

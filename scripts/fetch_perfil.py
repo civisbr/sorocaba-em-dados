@@ -19,30 +19,34 @@ LIMITE_BYTES = 2 * 1024 * 1024
 DESTINO = Path(__file__).resolve().parent.parent / "data" / "raw" / "ibge" / "perfil"
 LOC = f"N6[{MUNICIPIO}]"
 
-# O VAB por setor vem vazio ("...") para 2022 e 2023; 2021 é o último ano com valores.
+# O VAB por setor vem vazio ("...") nos anos mais recentes; o build usa o último ano com valor.
 CONSULTAS = {
     "localidade": f"/v1/localidades/municipios/{MUNICIPIO}",
     "censo_2022": f"/v3/agregados/4714/periodos/2022/variaveis/93|614|6318?localidades={LOC}",
     "estimativa": f"/v3/agregados/6579/periodos/-1/variaveis/9324?localidades={LOC}",
     "pib": f"/v3/agregados/5938/periodos/-6/variaveis/37|553|552|497|530|496?localidades={LOC}",
-    "vab_2021": f"/v3/agregados/5938/periodos/2021/variaveis/498|513|517|6575|525?localidades={LOC}",
+    "vab": f"/v3/agregados/5938/periodos/-6/variaveis/498|513|517|6575|525?localidades={LOC}",
 }
 
 
-def so_host_confiavel(r: httpx.Response) -> None:
+def so_host_confiavel(r: httpx.Request) -> None:
+    # Hook de requisição: barra o salto de redirecionamento antes de ele ser enviado.
     if r.url.scheme != "https" or r.url.host != HOST:
-        raise ValueError(f"resposta fora de https://{HOST}: {r.url}")
+        raise ValueError(f"requisição fora de https://{HOST}: {r.url}")
 
 
 def baixar(client: httpx.Client, caminho: str, tentativas: int = 4) -> bytes:
     url = API + quote(caminho, safe="/?=&|[]:%")
     for n in range(tentativas):
         try:
-            r = client.get(url)
-            r.raise_for_status()
-            if len(r.content) > LIMITE_BYTES:
-                raise ValueError(f"{caminho} acima do limite esperado")
-            return r.content
+            with client.stream("GET", url) as r:
+                r.raise_for_status()
+                corpo = bytearray()
+                for pedaco in r.iter_bytes(64 * 1024):
+                    corpo += pedaco
+                    if len(corpo) > LIMITE_BYTES:
+                        raise ValueError(f"{caminho} acima do limite esperado")
+                return bytes(corpo)
         except (httpx.TransportError, httpx.HTTPStatusError) as e:
             permanente = isinstance(e, httpx.HTTPStatusError) and e.response.status_code < 500
             if permanente or n == tentativas - 1:
@@ -56,7 +60,7 @@ def coletar(acesso_em: date, destino: Path = DESTINO) -> list[str]:
     antigo = json.loads((destino / "manifesto.json").read_text(encoding="utf-8")) if (destino / "manifesto.json").exists() else {}
     novo = {"acesso_em": acesso_em.isoformat(), "arquivos": {}}
     mudou = []
-    with httpx.Client(timeout=60, follow_redirects=True, event_hooks={"response": [so_host_confiavel]}) as c:
+    with httpx.Client(timeout=60, follow_redirects=True, event_hooks={"request": [so_host_confiavel]}) as c:
         corpos = {nome: baixar(c, caminho) for nome, caminho in CONSULTAS.items()}
     for nome, corpo in corpos.items():
         # Reserializa para o arquivo ser estável; JSON inválido aborta aqui.

@@ -93,7 +93,7 @@ PAINEIS = {
         "tom": "secundario",
         "descricao": "População, território, PIB e estrutura da economia de Sorocaba, cada número com o ano a que se refere.",
         "meta_desc": "Perfil de Sorocaba: população, área, densidade, PIB e estrutura da economia, com fonte e ano de cada dado.",
-        "palavras": ["cidade", "população", "habitantes", "pib", "economia", "área", "território", "ibge", "prefeito", "vereadores", "deputados"],
+        "palavras": ["cidade", "população", "habitantes", "pib", "economia", "área", "território", "ibge"],
         "blocos": [],
         "glossario": [
             ("Censo 2022", "Contagem completa da população feita pelo IBGE. É a base mais confiável, mas já tem alguns anos."),
@@ -103,7 +103,7 @@ PAINEIS = {
         ],
         "limitacoes": [
             "Cada indicador tem seu ano; nem todos são do mesmo período.",
-            "O IBGE não divulgou a divisão por setor de 2022 e 2023 para Sorocaba, por isso usamos 2021.",
+            "A divisão por setor usa o último ano que o IBGE publicou para Sorocaba, indicado no próprio gráfico.",
             "Não calculamos PIB per capita: o IBGE não publica esse valor nessa tabela.",
         ],
     },
@@ -122,7 +122,7 @@ PAINEIS = {
         "glossario": [
             ("Eleito não é o mesmo que em exercício", "O TSE informa quem ganhou a eleição. Licenças, renúncias e suplentes que assumem podem alterar quem exerce o mandato hoje."),
             ("Deputado da cidade?", "Deputados federais e estaduais são eleitos pelo estado inteiro. Aqui listamos os eleitos que mais receberam votos em Sorocaba; isso não os torna representantes exclusivos da cidade."),
-            ("Mandato", "Prefeito, vice e vereadores: 4 anos a partir de 1º de janeiro após a eleição. Deputados: 4 anos a partir de 1º de fevereiro."),
+            ("Mandato", "Prefeito, vice e vereadores: 4 anos, a partir de 1º de janeiro após a eleição. Deputados federais e estaduais: 4 anos, começando no ano seguinte à eleição."),
         ],
         "limitacoes": [
             "A lista de vereadores é a dos eleitos em 2024, sem conferência de exercício: não há fonte confirmada para isso.",

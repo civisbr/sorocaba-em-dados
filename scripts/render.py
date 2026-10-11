@@ -4,6 +4,8 @@ from __future__ import annotations
 
 import argparse
 import json
+import re
+import unicodedata
 import shutil
 from pathlib import Path
 
@@ -127,8 +129,20 @@ def contexto_escola(e: dict, base: dict) -> dict:
 
 def nome_br(nome: str) -> str:
     miudas = {"da", "de", "do", "das", "dos", "e"}
-    palavras = nome.lower().split()
-    return " ".join(w if (i and w in miudas) else w.capitalize() for i, w in enumerate(palavras))
+    romanos = {"ii", "iii", "iv", "jr", "pm", "pt", "pl", "mc"}
+
+    def parte(w: str, primeira: bool) -> str:
+        if w in romanos:
+            return w.upper()
+        if not primeira and w in miudas:
+            return w
+        return re.sub(r"(^|[-'’])(\w)", lambda m: m.group(1) + m.group(2).upper(), w)
+
+    return " ".join(parte(w, i == 0) for i, w in enumerate(nome.lower().split()))
+
+
+def chave_alfabetica(texto: str) -> str:
+    return unicodedata.normalize("NFKD", texto).encode("ascii", "ignore").decode().lower()
 
 
 def bi(v: float) -> str:
@@ -146,7 +160,7 @@ def contexto_cidade(env: dict) -> dict:
     ind = {r["chave"]: r for r in por["indicador"]}
     pib = por["pib_serie"]
     rotulos = {i: str(r["ano"]) for i, r in enumerate(pib)}
-    vab = [r for r in por["vab_setor"] if r["chave"] != "total"]
+    vab = [r for r in por.get("vab_setor", []) if r["chave"] != "total"]
     return {
         "territorio": por["territorio"],
         "ind": ind,
@@ -155,8 +169,9 @@ def contexto_cidade(env: dict) -> dict:
         "pib_grafico": barras_mensais([(str(r["ano"]), round(r["valor"] / 1_000_000, 1)) for r in pib], rotulos),
         "participacoes": por["pib_participacao"],
         "vab": vab,
-        "vab_total": next(r for r in por["vab_setor"] if r["chave"] == "total"),
+        "vab_total": next((r for r in por.get("vab_setor", []) if r["chave"] == "total"), None),
         "ref_cidade": f"Censo {ind['populacao_censo']['ano']} · PIB {pib[-1]['ano']}",
+        "ano_vab": vab[0]["ano"] if vab else None,
     }
 
 
@@ -164,7 +179,7 @@ def contexto_representantes(env: dict) -> dict:
     d = env["dados"]
     def grupo(g, ano=None):
         return [r for r in d if r["grupo"] == g and (ano is None or r["eleicao"] == ano)]
-    vereadores = sorted(grupo("vereador"), key=lambda r: r["nome"])
+    vereadores = sorted(grupo("vereador"), key=lambda r: chave_alfabetica(r["nome"]))
     partidos: dict[str, int] = {}
     for r in vereadores:
         partidos[r["partido"]] = partidos.get(r["partido"], 0) + 1
@@ -174,10 +189,11 @@ def contexto_representantes(env: dict) -> dict:
         "vereadores": vereadores,
         "partidos": sorted(partidos.items(), key=lambda kv: (-kv[1], kv[0])),
         "deputados": [
-            ("Deputados federais", [("Mandato atual: eleitos em 2022", grupo("deputado_federal", 2022)), ("Eleitos em 2026, assumem em 01/02/2027", grupo("deputado_federal", 2026))]),
-            ("Deputados estaduais", [("Mandato atual: eleitos em 2022", grupo("deputado_estadual", 2022)), ("Eleitos em 2026, assumem em 01/02/2027", grupo("deputado_estadual", 2026))]),
+            ("Deputados federais", [("Mandato atual: eleitos em 2022", grupo("deputado_federal", 2022)), ("Eleitos em 2026, assumem em 2027", grupo("deputado_federal", 2026))]),
+            ("Deputados estaduais", [("Mandato atual: eleitos em 2022", grupo("deputado_estadual", 2022)), ("Eleitos em 2026, assumem em 2027", grupo("deputado_estadual", 2026))]),
         ],
-        "ref_rep": "Eleições de 2022, 2024 e 2026",
+        "topo": max(r["posicao_na_cidade"] for r in d if r["posicao_na_cidade"]),
+        "ref_rep": "Eleições de " + ", ".join(str(a) for a in sorted({r["eleicao"] for r in d})),
     }
 
 
