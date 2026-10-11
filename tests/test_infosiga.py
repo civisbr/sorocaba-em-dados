@@ -16,7 +16,7 @@ def test_agrega_so_sorocaba_separa_notificacao_e_converte_decimal():
     assert cont["mensal"][(2025, 1, "NOTIFICACAO", "sinistros")] == 1
     assert cont["mensal"][(2025, 1, "SINISTRO FATAL", "vitimas_fatais")] == 1
     assert sum(cont["hora"].values()) == 1 and sum(cont["via"].values()) == 1  # notificação fica fora do detalhe
-    assert list(cont["grade"]) == [(2025, -23.5025, -47.4525)]
+    assert list(cont["grade"]) == [(2025, -23.4975, -47.4475)]  # centro da célula [-23,500; -23,495) x [-47,450; -47,445)
 
 
 def test_build_deterministico_sem_ponto_individual_nem_data():
