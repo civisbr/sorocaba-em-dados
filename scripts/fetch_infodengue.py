@@ -7,6 +7,9 @@ import csv
 import hashlib
 import io
 import json
+import math
+import os
+import re
 import time
 from datetime import date, datetime, timezone
 from pathlib import Path
@@ -19,7 +22,8 @@ HOST = "info.dengue.mat.br"
 API = f"https://{HOST}/api/alertcity"
 IBGE = "3552205"
 DOENCAS = ("dengue", "chikungunya", "zika")
-ANOS_ATRAS = 3
+ANO_INICIAL = 2023  # fixo: janela móvel faria a série "encolher" a cada virada de ano e travaria a coleta
+DIAS_FONTE_PARADA = 56
 LIMITE_BYTES = 4 * 1024 * 1024
 CAMPOS = ["se", "data_inicio", "casos", "casos_est", "casos_est_min", "casos_est_max", "nivel", "p_inc100k", "rt"]
 
@@ -29,21 +33,42 @@ def so_host_confiavel(r: httpx.Request) -> None:
         raise ValueError(f"requisição fora de https://{HOST}: {r.url.host}")
 
 
+def _numero(r: dict, campo: str, se: int) -> float | None:
+    v = r.get(campo)
+    if v is None:
+        return None
+    if isinstance(v, bool) or not isinstance(v, (int, float)) or not math.isfinite(v) or v < 0:
+        raise ValueError(f"{campo} inválido na SE {se}: {v!r}")
+    return v
+
+
 def normalizar(r: dict) -> dict:
     """Uma linha da API vira um registro validado. `notif_accum_year` é descartado de propósito: não bate com a soma semanal."""
+    if not isinstance(r, dict):
+        raise ValueError("item da resposta não é um objeto")
     se = r.get("SE")
-    if not isinstance(se, int) or not 190001 <= se <= 299953:
+    if not isinstance(se, int) or isinstance(se, bool) or not (190001 <= se <= 299953 and 1 <= se % 100 <= 53):
         raise ValueError(f"SE inválida: {se!r}")
     if r.get("nivel") not in (1, 2, 3, 4):
         raise ValueError(f"nível inválido na SE {se}: {r.get('nivel')!r}")
-    if not isinstance(r.get("casos"), (int, float)) or r["casos"] < 0:
+    casos = r.get("casos")
+    if isinstance(casos, bool) or not isinstance(casos, (int, float)) or not math.isfinite(casos) or casos < 0:
         raise ValueError(f"casos inválidos na SE {se}")
-    inicio = datetime.fromtimestamp(r["data_iniSE"] / 1000, tz=timezone.utc).date().isoformat()
-    return {
-        "se": se, "data_inicio": inicio, "casos": int(r["casos"]),
-        "casos_est": r.get("casos_est"), "casos_est_min": r.get("casos_est_min"), "casos_est_max": r.get("casos_est_max"),
-        "nivel": r["nivel"], "p_inc100k": r.get("p_inc100k"), "rt": r.get("Rt"),
-    }
+    ms = r.get("data_iniSE")
+    if isinstance(ms, bool) or not isinstance(ms, int) or not 0 < ms < 4_000_000_000_000:
+        raise ValueError(f"data_iniSE inválida na SE {se}")
+    est, lo, hi = (_numero(r, c, se) for c in ("casos_est", "casos_est_min", "casos_est_max"))
+    if lo is not None and hi is not None and lo > hi:
+        raise ValueError(f"intervalo de estimativa invertido na SE {se}")
+    if est is not None and lo is not None and est < lo:
+        raise ValueError(f"estimativa abaixo do mínimo na SE {se}")
+    inicio = datetime.fromtimestamp(ms / 1000, tz=timezone.utc).date().isoformat()
+    return {"se": se, "data_inicio": inicio, "casos": int(casos), "casos_est": est, "casos_est_min": lo, "casos_est_max": hi,
+            "nivel": r["nivel"], "p_inc100k": _numero(r, "p_inc100k", se), "rt": _numero(r, "Rt", se)}
+
+
+def _constante_invalida(nome: str):
+    raise ValueError(f"constante JSON inválida na resposta: {nome}")
 
 
 def baixar(c: httpx.Client, doenca: str, ano_ini: int, ano_fim: int) -> tuple[list[dict], str | None]:
@@ -62,11 +87,11 @@ def baixar(c: httpx.Client, doenca: str, ano_ini: int, ano_fim: int) -> tuple[li
             if t == 2 or (isinstance(e, httpx.HTTPStatusError) and e.response.status_code < 500):
                 raise RuntimeError(f"falha ao consultar {doenca} ({type(e).__name__})") from None
             time.sleep(2**t * 2)
-    dados = json.loads(bytes(corpo))
+    dados = json.loads(bytes(corpo), parse_constant=_constante_invalida)
     if not isinstance(dados, list):
         raise ValueError(f"resposta inesperada para {doenca}")
     linhas = {r["se"]: r for r in map(normalizar, dados)}
-    versao = max((d.get("versao_modelo") for d in dados if d.get("versao_modelo")), default=None)
+    versao = max((d["versao_modelo"] for d in dados if isinstance(d.get("versao_modelo"), str) and re.fullmatch(r"\d{4}-\d{2}-\d{2}", d["versao_modelo"])), default=None)
     return [linhas[k] for k in sorted(linhas)], versao
 
 
@@ -85,10 +110,10 @@ def coletar(acesso_em: date, destino: Path = DESTINO, transporte: httpx.BaseTran
     arq = destino / "manifesto.json"
     man = json.loads(arq.read_text(encoding="utf-8")) if arq.exists() else {"doencas": {}}
     pendentes: dict[str, tuple[str, dict]] = {}
-    with httpx.Client(timeout=30, follow_redirects=True, max_redirects=3, headers={"User-Agent": "SorocabaEmDados/1.0 (+https://github.com/civisbr/sorocaba-em-dados)"},
+    with httpx.Client(timeout=30, follow_redirects=True, max_redirects=3, headers={"User-Agent": "SorocabaEmDados/1.0 (+https://github.com/civisbr/sorocaba-em-dados)", "Accept-Encoding": "identity"},
                       event_hooks={"request": [so_host_confiavel]}, transport=transporte) as c:
         for d in DOENCAS:
-            linhas, versao = baixar(c, d, acesso_em.year - ANOS_ATRAS, acesso_em.year)
+            linhas, versao = baixar(c, d, ANO_INICIAL, acesso_em.year)
             if not linhas:
                 if d == "dengue":
                     raise ValueError("InfoDengue não devolveu nenhuma semana de dengue")
@@ -96,15 +121,22 @@ def coletar(acesso_em: date, destino: Path = DESTINO, transporte: httpx.BaseTran
             antigo = man["doencas"].get(d)
             if antigo and len(linhas) < antigo["n_semanas"]:
                 raise ValueError(f"{d}: a série encolheu de {antigo['n_semanas']} para {len(linhas)} semanas")
+            parada = (acesso_em - date.fromisoformat(linhas[-1]["data_inicio"])).days
+            if d in ("dengue", "chikungunya") and parada > DIAS_FONTE_PARADA:
+                raise ValueError(f"{d}: última semana publicada tem {parada} dias; a fonte parece parada")
             texto = csv_texto(linhas)
             pendentes[d] = (texto, {"n_semanas": len(linhas), "primeira_se": linhas[0]["se"], "ultima_se": linhas[-1]["se"],
                                     "sha256_csv": hashlib.sha256(texto.encode("utf-8")).hexdigest(), "versao_modelo": versao, "coletado_em": acesso_em.isoformat()})
     for d, (texto, meta) in pendentes.items():  # só grava depois que tudo foi baixado e validado
-        (destino / f"{d}.csv").write_text(texto, encoding="utf-8")
+        tmp = destino / f"{d}.csv.tmp"
+        tmp.write_text(texto, encoding="utf-8")
+        os.replace(tmp, destino / f"{d}.csv")
         man["doencas"][d] = meta
     man["fonte"] = "InfoDengue (Fiocruz/FGV), alertcity, geocódigo IBGE 3552205"
     man["verificado_em"] = acesso_em.isoformat()
-    arq.write_text(json.dumps(man, indent=2, sort_keys=True, ensure_ascii=False) + "\n", encoding="utf-8")
+    tmp = arq.with_suffix(".tmp")
+    tmp.write_text(json.dumps(man, indent=2, sort_keys=True, ensure_ascii=False, allow_nan=False) + "\n", encoding="utf-8")
+    os.replace(tmp, arq)
     return list(pendentes)
 
 

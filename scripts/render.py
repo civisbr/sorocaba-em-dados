@@ -344,7 +344,7 @@ NIVEIS = {1: "Verde: baixa incidência", 2: "Amarelo: condições favoráveis ao
 NOMES_DOENCA = {"dengue": "Dengue", "chikungunya": "Chikungunya", "zika": "Zika"}
 
 
-def contexto_saude_doencas(env: dict) -> dict:
+def contexto_saude_doencas(env: dict, hoje: date | None = None) -> dict:
     d = env["dados"]
     sit = {r["grupo"]: r for r in d if r["recorte"] == "situacao"}
     doencas, antigas = [], []
@@ -357,13 +357,14 @@ def contexto_saude_doencas(env: dict) -> dict:
         if sit[nome]["categoria"] != "atual":
             antigas.append({"nome": nome, "rotulo": rotulo, "ultima_semana": f"semana {ultima['semana']} de {ultima['ano']}"})
             continue
-        janela = [r for r in sem if ultima["se"] - 7 <= r["se"] <= ultima["se"] and r["ano"] == ultima["ano"]]
+        janela = sem[-8:]
         cruza_ano = ultima["semana"] < 8
         comparacao = None
         if not cruza_ano:
-            comparacao = []
-            for ano in sorted({r["ano"] for r in sem}, reverse=True):
-                alvo = [r for r in sem if r["ano"] == ano and ultima["semana"] - 7 <= r["semana"] <= ultima["semana"]]
+            comparacao = [{"ano": ultima["ano"], "casos": sum(r["casos"] for r in janela)}]
+            for ano in sorted({r["ano"] for r in sem if r["ano"] != ultima["ano"]}, reverse=True):
+                fim = ultima["semana"] if any(r["ano"] == ano and r["semana"] == ultima["semana"] for r in sem) else 52  # ano sem semana 53
+                alvo = [r for r in sem if r["ano"] == ano and fim - 7 <= r["semana"] <= fim]
                 if len(alvo) == 8:
                     comparacao.append({"ano": ano, "casos": sum(r["casos"] for r in alvo)})
         ult52 = sem[-52:]
@@ -377,7 +378,8 @@ def contexto_saude_doencas(env: dict) -> dict:
             "tabela": [{"rotulo": f"S{r['semana']}/{r['ano']}", "casos": r["casos"], "casos_est": r["casos_est"], "nivel_rotulo": NIVEIS[r["nivel"]]} for r in reversed(ult52)],
         })
     ref = f"semana {doencas[0]['semana']} de {doencas[0]['ano']}" if doencas else "sem dado recente"
-    return {"doencas": doencas, "sem_dado_recente": antigas, "ref_saude": ref, "niveis": NIVEIS}
+    sem_coleta = (hoje - date.fromisoformat(env["fonte"]["acesso_em"])).days if hoje else 0
+    return {"doencas": doencas, "sem_dado_recente": antigas, "ref_saude": ref, "niveis": NIVEIS, "dias_sem_coleta": sem_coleta if sem_coleta > 21 else None}
 
 
 def contexto_clima(clima: dict, previsao: dict | None) -> dict:
@@ -562,7 +564,7 @@ def renderizar(public: Path, saida: Path) -> None:
     previsao = json.loads(arq_prev.read_text(encoding="utf-8")) if arq_prev.exists() else None
     ctx_clima = contexto_clima(clima, previsao)
     saude = json.loads((public / "saude_doencas.json").read_text(encoding="utf-8"))
-    ctx_saude = contexto_saude_doencas(saude)
+    ctx_saude = contexto_saude_doencas(saude, date.today())
     radares = json.loads((public / "radares.json").read_text(encoding="utf-8"))
     ctx_trans = contexto_transito(radares)
     acidentes = json.loads((public / "infosiga.json").read_text(encoding="utf-8"))

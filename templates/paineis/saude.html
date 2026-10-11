@@ -3,12 +3,13 @@
 {% block resumo %}
 <section aria-labelledby="resumo" class="resumo-real">
   <h2 id="resumo" class="rotulo-resumo">Situação nesta semana ({{ ref_saude }})</h2>
+  {% if dias_sem_coleta %}<p class="aviso-amostra">{{ icone("alerta") }} Os dados não são atualizados há {{ dias_sem_coleta }} dias; a situação pode ter mudado.</p>{% endif %}
   <ul class="doencas-faixas">
     {% for d in doencas %}
     <li class="doenca-faixa nivel-{{ d.nivel }}">
       <p class="doenca-nome">{{ d.rotulo }}</p>
       <p class="doenca-nivel"><span class="nivel-ponto" aria-hidden="true"></span>{{ d.nivel_rotulo }}</p>
-      <p class="pequeno">{{ d.casos_8s | num }} casos notificados nas últimas 8 semanas · incidência estimada {{ d.inc100k | brl1 }} por 100 mil na última semana</p>
+      <p class="pequeno">Semana {{ d.semana }} de {{ d.ano }}: {{ d.casos_8s | num }} casos notificados nas últimas 8 semanas · incidência estimada {{ d.inc100k | brl1 }} por 100 mil na última semana</p>
     </li>
     {% endfor %}
   </ul>
@@ -39,7 +40,7 @@
     </article>
     <article class="quadro-card"><h3>Mesmas 8 semanas, ano a ano</h3>
       {% if d.comparacao %}<ul class="setores">{% for c in d.comparacao %}<li><span class="nome">{{ c.ano }}</span><span class="val">{{ c.casos | num }}</span></li>{% endfor %}</ul>
-      <p class="pequeno suave">Casos notificados da semana {{ d.semana - 7 }} à {{ d.semana }} de cada ano.</p>
+      <p class="pequeno suave">Casos notificados nas 8 semanas epidemiológicas até a semana {{ d.semana }} de cada ano (na 53, os anos sem ela usam a 52). As últimas semanas de {{ d.ano }} ainda vão subir com as notificações atrasadas, então a diferença para os anos fechados tende a ser menor do que parece.</p>
       {% else %}<p class="suave">Comparação indisponível no começo do ano (a janela de 8 semanas cruza a virada).</p>{% endif %}
     </article>
   </div>

@@ -6,6 +6,8 @@ import httpx
 import pytest
 
 from scripts import fetch_infodengue as f
+from scripts.build_infodengue import DIAS_DESATUALIZADO, construir
+from scripts.fetch_infodengue import CAMPOS, csv_texto
 
 HOJE = date(2026, 10, 11)
 
@@ -28,7 +30,9 @@ def test_normalizar_converte_epoch_e_ignora_notif_accum_year():
                  "nivel": 1, "p_inc100k": 1.5, "rt": 1.1}
 
 
-@pytest.mark.parametrize("ruim", [{"nivel": 0}, {"nivel": 5}, {"SE": 2026}, {"SE": "x"}, {"casos": None}])
+@pytest.mark.parametrize("ruim", [{"nivel": 0}, {"nivel": 5}, {"SE": 2026}, {"SE": "x"}, {"casos": None}, {"SE": 202699}, {"SE": 202600},
+                                  {"casos_est": float("nan")}, {"casos_est": float("inf")}, {"casos_est": "7"}, {"p_inc100k": -1}, {"Rt": float("inf")},
+                                  {"casos_est_min": 10, "casos_est": 7.0}, {"data_iniSE": "x"}, {"data_iniSE": 10**20}])
 def test_normalizar_rejeita_linha_invalida(ruim):
     with pytest.raises(ValueError):
         f.normalizar({**linha(202638), **ruim})
@@ -64,17 +68,13 @@ def test_host_fora_da_lista_e_barrado(tmp_path):
         f.coletar(HOJE, tmp_path, transporte=httpx.MockTransport(tratar))
 
 
-import csv as _csv
-
-from scripts.build_infodengue import DIAS_DESATUALIZADO, construir
-from scripts.fetch_infodengue import CAMPOS, csv_texto
 
 
 def _raw(tmp_path, series, verificado="2026-10-11"):
     man = {"doencas": {}, "fonte": "x", "verificado_em": verificado}
     for d, linhas in series.items():
         (tmp_path / f"{d}.csv").write_text(csv_texto(linhas), encoding="utf-8")
-        man["doencas"][d] = {"n_semanas": len(linhas), "ultima_se": linhas[-1]["se"], "versao_modelo": "2026-10-07"}
+        man["doencas"][d] = {"n_semanas": len(linhas), "ultima_se": linhas[-1]["se"], "versao_modelo": "2026-10-07", "sha256_csv": __import__("hashlib").sha256(csv_texto(linhas).encode("utf-8")).hexdigest()}
     (tmp_path / "manifesto.json").write_text(json.dumps(man), encoding="utf-8")
     return tmp_path
 
@@ -142,3 +142,79 @@ def test_render_gera_pagina_de_saude_com_nivel_em_texto(tmp_path):
     assert any(n in html for n in ("Verde", "Amarelo", "Laranja", "Vermelho"))
     assert (tmp_path / "data" / "saude_doencas.json").exists()
     assert "Saúde" in (tmp_path / "index.html").read_text(encoding="utf-8")
+
+
+def test_resposta_com_nan_no_json_e_rejeitada(tmp_path):
+    def tratar(req):
+        return httpx.Response(200, content=b'[{"SE": 202638, "data_iniSE": 1790467200000, "casos": 1, "casos_est": NaN, "casos_est_min": 1, "casos_est_max": 2, "nivel": 1, "p_inc100k": 1.0, "Rt": 1.0}]')
+    with pytest.raises(ValueError):
+        f.coletar(HOJE, tmp_path, transporte=httpx.MockTransport(tratar))
+    assert not (tmp_path / "dengue.csv").exists()
+
+
+def test_versao_do_modelo_fora_do_formato_e_ignorada(tmp_path):
+    ruim = {**linha(202638), "versao_modelo": "<script>"}
+    f.coletar(HOJE, tmp_path, transporte=transporte({"dengue": [ruim]}))
+    assert json.loads((tmp_path / "manifesto.json").read_text(encoding="utf-8"))["doencas"]["dengue"]["versao_modelo"] is None
+
+
+def test_virada_de_ano_nao_encolhe_a_janela_de_coleta(tmp_path):
+    pedidos = []
+
+    def tratar(req):
+        pedidos.append(req.url.params["ey_start"])
+        return httpx.Response(200, json=[linha(202639, ini=1790467200000)] if req.url.params["disease"] != "zika" else [])
+    f.coletar(date.today(), tmp_path, transporte=httpx.MockTransport(tratar))
+    assert set(pedidos) == {str(f.ANO_INICIAL)}
+
+
+def test_fonte_parada_aborta_a_coleta(tmp_path):
+    antiga = linha(202401, ini=1704067200000)
+    with pytest.raises(ValueError, match="parada"):
+        f.coletar(HOJE, tmp_path, transporte=transporte({"dengue": [antiga]}))
+    assert not (tmp_path / "dengue.csv").exists()
+
+
+def test_build_recusa_csv_alterado_a_mao(tmp_path):
+    raw = _raw(tmp_path, {"dengue": [_l(202639, "2026-09-27")]})
+    (raw / "dengue.csv").write_text((raw / "dengue.csv").read_text(encoding="utf-8").replace(";3;", ";9;"), encoding="utf-8")
+    with pytest.raises(ValueError, match="hash"):
+        construir(raw)
+
+
+def test_janela_de_8_semanas_em_janeiro_pega_as_ultimas_8_linhas():
+    from scripts.render import contexto_saude_doencas
+    sem = [(202552 + 0, "2025-12-21", 3, 1)] + [(202600 + w, "2026-01-05", 3, 1) for w in range(1, 6)] + [(202545, "2025-11-02", 3, 1), (202546, "2025-11-09", 3, 1), (202547, "2025-11-16", 3, 1)]
+    sem.sort()
+    assert contexto_saude_doencas(_env(sem))["doencas"][0]["casos_8s"] == 24
+
+
+def test_aviso_quando_a_coleta_esta_velha():
+    from scripts.render import contexto_saude_doencas
+    env = _env([(202639, "2026-09-27", 3, 1)])
+    env["fonte"] = {"acesso_em": "2026-08-01"}
+    assert contexto_saude_doencas(env, date(2026, 10, 11))["dias_sem_coleta"] == 71
+    assert contexto_saude_doencas(env, date(2026, 8, 5))["dias_sem_coleta"] is None
+
+
+def test_comparacao_na_semana_53_usa_a_52_nos_anos_sem_ela():
+    from scripts.render import contexto_saude_doencas
+    sem = [(202400 + w, "2024-06-01", 5, 1) for w in range(40, 53)] + [(202500 + w, "2025-06-01", 7, 1) for w in range(40, 54)]
+    comp = contexto_saude_doencas(_env(sem))["doencas"][0]["comparacao"]
+    assert {"ano": 2025, "casos": 56} in comp and {"ano": 2024, "casos": 40} in comp
+
+
+def test_build_recusa_csv_so_com_cabecalho(tmp_path):
+    raw = _raw(tmp_path, {"dengue": [_l(202639, "2026-09-27")]})
+    cab = "se;data_inicio;casos;casos_est;casos_est_min;casos_est_max;nivel;p_inc100k;rt\n"
+    (raw / "dengue.csv").write_text(cab, encoding="utf-8")
+    man = json.loads((raw / "manifesto.json").read_text(encoding="utf-8"))
+    man["doencas"]["dengue"]["sha256_csv"] = __import__("hashlib").sha256(cab.encode("utf-8")).hexdigest()
+    (raw / "manifesto.json").write_text(json.dumps(man), encoding="utf-8")
+    with pytest.raises(ValueError, match="sem semanas"):
+        construir(raw)
+
+
+def test_item_que_nao_e_objeto_e_rejeitado():
+    with pytest.raises(ValueError):
+        f.normalizar([1, 2])

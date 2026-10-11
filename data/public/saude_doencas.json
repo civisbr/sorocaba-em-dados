@@ -6794,7 +6794,7 @@
   ],
   "fonte": {
     "acesso_em": "2026-10-11",
-    "licenca": "Dados abertos do InfoDengue; citar a fonte",
+    "licenca": "Dados públicos do InfoDengue (Fiocruz/FGV); citar a fonte. Termos em https://info.dengue.mat.br/ (não verificados em texto)",
     "nome": "InfoDengue (Fiocruz/FGV) — alertas municipais de arboviroses",
     "url": "https://info.dengue.mat.br/"
   },
@@ -6807,7 +6807,7 @@
       "As últimas semanas costumam subir depois, porque as notificações chegam com atraso. O InfoDengue estima o número final (casos estimados, com intervalo).",
       "O nível de alerta (verde, amarelo, laranja, vermelho) é calculado pelo modelo do InfoDengue com casos, clima e transmissão; não é um aviso oficial da Prefeitura.",
       "O campo de notificações acumuladas do ano da API não é usado: não bate com a soma das semanas.",
-      "Uma doença sem semanas nos últimos 56 dias (hoje, o zika) aparece como sem dado recente.",
+      "Sem semanas nos últimos 56 dias, aparece como sem dado recente: zika.",
       "SHA-256 do manifesto de coleta: 1339045d32aa73cd01f365564809c467de65e5df91ce425bca78a93a036847e0"
     ]
   },
