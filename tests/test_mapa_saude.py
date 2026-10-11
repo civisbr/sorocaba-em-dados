@@ -82,12 +82,12 @@ def test_pagina_tem_mapa_sem_terceiros_e_funciona_sem_js(tmp_path):
     r = subprocess.run([sys.executable, "-m", "scripts.render", "--saida", str(tmp_path)], capture_output=True, text=True)
     assert r.returncode == 0, r.stderr
     html = (tmp_path / "hospitais" / "index.html").read_text(encoding="utf-8")
-    assert 'id="mapa-saude"' in html and html.count('class="ms-u ') >= 30
-    assert re.search(r'<g id="ms-voce" hidden>', html) and "data-so-js hidden" in html  # recursos que dependem de JS só aparecem com JS
-    assert 'src="../mapa-saude.js"' in html and "mapa-base.svg" in html
+    assert 'class="ms-svg"' in html and html.count('class="ms-u ') >= 30
+    assert re.search(r'<g class="ms-voce" hidden>', html) and "data-so-js hidden" in html  # recursos que dependem de JS só aparecem com JS
+    assert 'src="../mapa-interativo.js"' in html and "mapa-base.svg" in html
     externos = {h for h in re.findall(r'(?:src|href)="(https?://[^"/]+)', html)}
     assert externos <= {"https://www.openstreetmap.org", "https://datasus.saude.gov.br", "https://github.com"}
-    assert (tmp_path / "mapa-base.svg").exists() and (tmp_path / "mapa-saude.js").exists() and (tmp_path / "data" / "mapa-bairros.json").exists()
+    assert (tmp_path / "mapa-base.svg").exists() and (tmp_path / "mapa-interativo.js").exists() and (tmp_path / "data" / "mapa-bairros.json").exists()
     assert "<script" not in (tmp_path / "mapa-base.svg").read_text(encoding="utf-8")
 
 
@@ -98,7 +98,7 @@ def test_svg_base_so_tem_elementos_de_desenho(base):
 
 
 def test_js_do_mapa_nao_envia_nem_guarda_a_posicao():
-    js = (RAIZ / "static" / "mapa-saude.js").read_text(encoding="utf-8")
+    js = (RAIZ / "static" / "mapa-interativo.js").read_text(encoding="utf-8")
     assert js.count("fetch(") == 1 and "fetch(svg.dataset.bairros)" in js
     for proibido in ("localStorage", "sessionStorage", "XMLHttpRequest", "sendBeacon", "innerHTML", "document.cookie", "console.log"):
         assert proibido not in js

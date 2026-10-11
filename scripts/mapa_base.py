@@ -48,3 +48,25 @@ def gerar_svg(base: dict, malha: Path = MALHA) -> tuple[str, dict]:
 def bairros_json(base: dict, f) -> str:
     itens = [{"n": b["nome"], "x": round(f(b["lat"], b["lon"])[0], 1), "y": round(f(b["lat"], b["lon"])[1], 1), "la": b["lat"], "lo": b["lon"]} for b in base["bairros"]]
     return json.dumps({"fonte": base.get("fonte"), "licenca": "ODbL 1.0, https://www.openstreetmap.org/copyright", "acesso_em": base.get("acesso_em"), "bairros": itens}, ensure_ascii=False, separators=(",", ":"))
+
+
+_PROJ = None
+
+
+def proj_grande():
+    """(mapa, f) do quadro grande, que serve a todos os mapas interativos."""
+    global _PROJ
+    if _PROJ is None:
+        _PROJ = projetar(MALHA, LARGURA, ALTURA, MARGEM)
+    return _PROJ
+
+
+def contexto_base(raiz: str) -> dict:
+    """Dados que os macros de templates/_mapa.html precisam para montar um mapa interativo."""
+    from scripts.fetch_osm_base import simplificar
+    from scripts.geo import carregar_contorno
+
+    mapa, _ = proj_grande()
+    contorno = carregar_contorno()
+    return {"largura": mapa["largura"], "altura": mapa["altura"], "k": mapa["afim"]["k"], "escala": mapa["afim"]["escala"], "dx": mapa["afim"]["dx"], "dy": mapa["afim"]["dy"],
+            "contorno": ";".join(f"{la:.4f},{lo:.4f}" for lo, la in simplificar(contorno, 0.0004)), "base_url": f"{raiz}mapa-base.svg", "bairros_url": f"{raiz}data/mapa-bairros.json"}

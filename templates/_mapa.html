@@ -1,0 +1,50 @@
+{#- Mapa interativo: base do OpenStreetMap própria, zoom, arraste e dica. Quem chama preenche as camadas (células, marcadores). -#}
+{% macro simbolos() -%}
+<symbol id="s-hospital" overflow="visible"><rect x="-12" y="-12" width="24" height="24" rx="5" class="mk-hospital"/><path d="M-6 0H6M0 -6V6" class="mk-cruz"/></symbol>
+<symbol id="s-upa" overflow="visible"><path d="M0 -14L13 10H-13Z" class="mk-upa"/><path d="M0 -4V3M0 6.5V7" class="mk-cruz"/></symbol>
+<symbol id="s-ubs" overflow="visible"><circle r="9" class="mk-ubs"/><circle r="3" class="mk-miolo"/></symbol>
+<symbol id="s-caps" overflow="visible"><path d="M0 -12L12 0L0 12L-12 0Z" class="mk-caps"/><circle r="3" class="mk-miolo"/></symbol>
+<symbol id="s-escola" overflow="visible"><circle r="11" class="mk-escola"/><path d="M-6 -2L0 -5.5L6 -2L0 1.5Z" class="mk-livro"/><path d="M-3.4 .6V3.6C-1.4 5.4 1.4 5.4 3.4 3.6V.6" class="mk-livro-linha"/></symbol>
+<symbol id="s-radar" overflow="visible"><circle r="7" class="mk-radar"/><circle r="2.2" class="mk-miolo"/></symbol>
+<symbol id="s-radar-grupo" overflow="visible"><circle r="8" class="mk-radar-grupo"/></symbol>
+{%- endmacro %}
+
+{% macro quadro(mb, rotulo, nomes={}, ordem="", nota="", vista=none) -%}
+<div class="mapa-quadro ms-longe" tabindex="-1">
+  <svg class="ms-svg" viewBox="{{ vista or ('0 0 ' ~ mb.largura ~ ' ' ~ mb.altura) }}" role="group" aria-label="{{ rotulo }}" tabindex="0"
+       data-largura="{{ mb.largura }}" data-altura="{{ mb.altura }}" data-k="{{ mb.k }}" data-escala="{{ mb.escala }}" data-dx="{{ mb.dx }}" data-dy="{{ mb.dy }}"
+       data-contorno="{{ mb.contorno }}" data-bairros="{{ mb.bairros_url }}" data-nomes="{{ nomes | tojson | forceescape }}" data-ordem="{{ ordem }}" data-nota="{{ nota }}">
+    <defs>{{ simbolos() }}</defs>
+    <image href="{{ mb.base_url }}" x="0" y="0" width="{{ mb.largura }}" height="{{ mb.altura }}"/>
+    <g class="ms-aneis"></g>
+    {{ caller() }}
+    <g class="ms-voce" hidden></g>
+  </svg>
+  <div class="ms-botoes" data-so-js hidden>
+    <button type="button" class="ms-mais" aria-label="Aproximar o mapa">+</button>
+    <button type="button" class="ms-menos" aria-label="Afastar o mapa">−</button>
+    <button type="button" class="ms-tudo" aria-label="Voltar à vista inicial">⤢</button>
+  </div>
+  <div class="ms-dica" role="tooltip" hidden></div>
+  <p class="ms-credito pequeno">Mapa: contorno do IBGE; vias e rios © <a href="https://www.openstreetmap.org/copyright">colaboradores do OpenStreetMap</a> (ODbL)</p>
+</div>
+{%- endmacro %}
+
+{% macro local(uid, titulo="Onde você está?") -%}
+<div class="ms-local" data-so-js hidden>
+  <h3>{{ titulo }}</h3>
+  <button type="button" class="ms-gps botao-mapa">Usar minha localização</button>
+  <form class="ms-bairro-form" autocomplete="off">
+    <label>ou digite o seu bairro
+      <span class="ms-bairro-linha"><input class="ms-bairro" list="{{ uid }}-bairros" type="text" placeholder="Ex.: Vila Hortência"><button type="submit" class="botao-mapa botao-mapa-leve">Ver</button></span>
+    </label>
+    <datalist class="ms-bairros" id="{{ uid }}-bairros"></datalist>
+  </form>
+  <p class="ms-msg pequeno suave" role="status" aria-live="polite">Sua localização é calculada no seu navegador e não é guardada. Só vai ao OpenStreetMap se você abrir “Como chegar”.</p>
+</div>
+<div class="ms-proximas" aria-live="polite" hidden></div>
+{%- endmacro %}
+
+{% macro selecionada() -%}
+<div class="ms-selecionada" aria-live="polite" data-so-js hidden><h3>Unidade selecionada</h3><p class="suave pequeno">Toque ou clique num ponto do mapa (ou use Tab e Enter) para ver os detalhes.</p></div>
+{%- endmacro %}

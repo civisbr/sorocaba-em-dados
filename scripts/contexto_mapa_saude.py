@@ -4,7 +4,6 @@ from __future__ import annotations
 
 from collections.abc import Callable
 
-from scripts.fetch_osm_base import simplificar
 from scripts.contexto_hospitais import _endereco, _telefone, nome_unidade
 from scripts.geo import carregar_contorno, dentro
 from scripts.saude_codigos import ATENCAO_BASICA, HOSPITALAR, URGENCIA
@@ -27,8 +26,9 @@ def contexto_mapa_saude(env: dict, nome_br: Callable[[str], str], mapa: dict, f:
             "grupo": grupo, "nome": nome_unidade(u["nome"], nome_br), "natureza": u["natureza"], "endereco": _endereco(u, nome_br), "telefone": _telefone(u["telefone"]),
             "sus": "Atende pelo SUS" if u["atende_sus"] else "Não atende pelo SUS" if grupo == "hospital" else "", "x": round(x, 1), "y": round(y, 1), "lat": f"{u['lat']:.5f}", "lon": f"{u['lon']:.5f}",
         })
+        p = pontos[-1]
+        p["detalhes"] = [["Natureza", p["natureza"]], ["SUS", p["sus"]], ["Endereço", p["endereco"]], ["Telefone", p["telefone"]]]
     pontos.sort(key=lambda p: (p["y"], p["x"]))  # em baixo por último: sobreposições mostram o ponto da frente
-    lons, lats = [x for x, _ in contorno], [y for _, y in contorno]
     contagem = {g: sum(1 for p in pontos if p["grupo"] == g) for g, _, _ in GRUPOS}
     return {"pontos": pontos, "sem_posicao": sem_posicao, "grupos": [{"id": g, "nome": n, "n": contagem[g]} for g, n, _ in GRUPOS if contagem[g]],
-            "mapa": mapa, "contorno": ";".join(f"{la:.4f},{lo:.4f}" for lo, la in simplificar(contorno, 0.0004)), "caixa": f"{min(lats):.4f},{min(lons):.4f},{max(lats):.4f},{max(lons):.4f}"}
+            "nomes": {g: n for g, n, _ in GRUPOS}, "ordem": ",".join(g for g, _, _ in GRUPOS)}

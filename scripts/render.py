@@ -19,7 +19,7 @@ from scripts.mapa import projetar as projetar_mapa
 from scripts.contexto_hospitais import contexto_hospitais
 from scripts.contexto_mapa_saude import contexto_mapa_saude
 from scripts.contexto_panorama import contexto_panorama
-from scripts.mapa_base import BASE as BASE_OSM, bairros_json, gerar_svg
+from scripts.mapa_base import BASE as BASE_OSM, bairros_json, contexto_base, gerar_svg
 from scripts.contexto_vacinas import contexto_vacinas
 from scripts.paineis import GRUPOS, PAINEIS
 
@@ -635,7 +635,7 @@ def renderizar(public: Path, saida: Path) -> None:
         shutil.rmtree(saida)
     (saida / "data").mkdir(parents=True)
     (saida / MARCADOR).write_text("saída gerada por scripts/render.py\n", encoding="utf-8")
-    for nome in ("style.css", "app.js", "mapa-saude.js"):
+    for nome in ("style.css", "app.js", "mapa-interativo.js"):
         shutil.copy(RAIZ / "static" / nome, saida / nome)
     for nome in ("favicon.svg", "favicon-32.png", "apple-touch-icon.png", "logo-icone.svg"):
         shutil.copy(RAIZ / "static" / nome, saida / nome)
@@ -653,7 +653,7 @@ def renderizar(public: Path, saida: Path) -> None:
             raise ValueError(f"destino fora de {saida}: {destino}")
         alvo.parent.mkdir(parents=True, exist_ok=True)
         alvo.write_text(
-            jinja.get_template(template).render(raiz=raiz, **comum, **ctx), encoding="utf-8"
+            jinja.get_template(template).render(raiz=raiz, mb=contexto_base(raiz), **comum, **ctx), encoding="utf-8"
         )
 
     escrever("index.html", "index.html", "", mapa=mapa, emprego=ctx_emprego, comb=ctx_comb, esc=ctx_esc, cid=ctx_cid, rep=ctx_rep, seg=ctx_seg, comp=ctx_comp, clima=ctx_clima, trans=ctx_trans, saude=ctx_saude, hosp=ctx_hosp, pan=ctx_pan, vac=ctx_vac)

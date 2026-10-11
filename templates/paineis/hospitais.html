@@ -12,59 +12,34 @@
   <p class="pequeno suave">Não existe dado aberto de lotação ou fila. O uso estimado de cada hospital, mostrado no cartão, é só uma ordem de grandeza dos leitos SUS usados nos últimos 12 meses; diferenças de poucos pontos entre hospitais não significam nada.</p>
 </section>
 {% endblock %}
-{% block scripts %}<script src="{{ raiz }}mapa-saude.js" defer></script>{% endblock %}
+{% block scripts %}<script src="{{ raiz }}mapa-interativo.js" defer></script>{% endblock %}
+{% from "_mapa.html" import quadro, local, selecionada %}
 {% block explorar %}
 {% set ms = mapa_saude %}
 <section aria-labelledby="mapa" class="bloco-painel">
   <h2 id="mapa" class="h2-medio sem-topo">Mapa das unidades de saúde</h2>
   <p class="suave">{{ ms.pontos | length }} unidades no mapa. Passe o mouse ou toque num ponto para ver o nome, abra para ver endereço e telefone. <span data-so-js hidden>Informe onde você está para ver as mais próximas.</span></p>
-  <div class="mapa-saude">
-    <div class="mapa-quadro ms-longe" tabindex="-1">
-      <svg id="mapa-saude" viewBox="0 0 {{ ms.mapa.largura }} {{ ms.mapa.altura }}" role="group" aria-label="Mapa de Sorocaba com hospitais, UPAs, unidades básicas de saúde e CAPS" tabindex="0"
-           data-k="{{ ms.mapa.afim.k }}" data-escala="{{ ms.mapa.afim.escala }}" data-dx="{{ ms.mapa.afim.dx }}" data-dy="{{ ms.mapa.afim.dy }}" data-caixa="{{ ms.caixa }}" data-bairros="{{ raiz }}data/mapa-bairros.json" data-contorno="{{ ms.contorno }}">
-        <defs>
-          <symbol id="s-hospital" overflow="visible"><rect x="-12" y="-12" width="24" height="24" rx="5" class="mk-hospital"/><path d="M-6 0H6M0 -6V6" class="mk-cruz"/></symbol>
-          <symbol id="s-upa" overflow="visible"><path d="M0 -14L13 10H-13Z" class="mk-upa"/><path d="M0 -4V3M0 6.5V7" class="mk-cruz"/></symbol>
-          <symbol id="s-ubs" overflow="visible"><circle r="9" class="mk-ubs"/><circle r="3" class="mk-miolo"/></symbol>
-          <symbol id="s-caps" overflow="visible"><path d="M0 -12L12 0L0 12L-12 0Z" class="mk-caps"/><circle r="3" class="mk-miolo"/></symbol>
-        </defs>
-        <image href="{{ raiz }}mapa-base.svg" x="0" y="0" width="{{ ms.mapa.largura }}" height="{{ ms.mapa.altura }}"/>
-        <g id="ms-aneis"></g>
-        <g id="ms-unidades">{% for p in ms.pontos %}
-          <g class="ms-u g-{{ p.grupo }}" transform="translate({{ p.x }} {{ p.y }})" aria-label="{{ p.nome }}. {{ p.endereco }}"
-             data-grupo="{{ p.grupo }}" data-nome="{{ p.nome }}" data-natureza="{{ p.natureza }}" data-sus="{{ p.sus }}" data-endereco="{{ p.endereco }}" data-telefone="{{ p.telefone }}" data-lat="{{ p.lat }}" data-lon="{{ p.lon }}">
-            <title>{{ p.nome }}</title><use class="mk" href="#s-{{ p.grupo }}"/>
-          </g>{% endfor %}
-        </g>
-        <g id="ms-voce" hidden></g>
-      </svg>
-      <div class="ms-botoes" data-so-js hidden>
-        <button type="button" id="ms-mais" aria-label="Aproximar o mapa">+</button>
-        <button type="button" id="ms-menos" aria-label="Afastar o mapa">−</button>
-        <button type="button" id="ms-tudo" aria-label="Ver a cidade inteira">⤢</button>
-      </div>
-      <div id="mapa-dica" role="tooltip" hidden></div>
-      <p class="ms-credito pequeno">Mapa: contorno do IBGE; vias e rios © <a href="https://www.openstreetmap.org/copyright">colaboradores do OpenStreetMap</a> (ODbL)</p>
-    </div>
+  <div class="mapa-saude mapa-interativo">
+    {% call quadro(mb, "Mapa de Sorocaba com hospitais, UPAs, unidades básicas de saúde e CAPS", ms.nomes, ms.ordem, "Distância em linha reta, não pelo caminho. Em emergência, ligue 192 (SAMU).") %}
+    <g class="ms-unidades">{% for p in ms.pontos %}
+      <g class="ms-u g-{{ p.grupo }}" transform="translate({{ p.x }} {{ p.y }})" aria-label="{{ p.nome }}. {{ p.endereco }}"
+         data-grupo="{{ p.grupo }}" data-nome="{{ p.nome }}" data-resumo="{{ p.sus }}" data-detalhes="{{ p.detalhes | tojson | forceescape }}" data-lat="{{ p.lat }}" data-lon="{{ p.lon }}">
+        <title>{{ p.nome }}</title><use class="mk" href="#s-{{ p.grupo }}"/>
+      </g>{% endfor %}
+    </g>
+    {% endcall %}
     <div class="mapa-lateral">
       <fieldset class="ms-filtro" data-so-js hidden><legend>Legenda e filtro</legend>
-        {% for g in ms.grupos %}<label><input type="checkbox" value="{{ g.id }}" checked><svg class="ms-chave" viewBox="-16 -16 32 32" aria-hidden="true"><use href="#s-{{ g.id }}"/></svg><span>{{ g.nome }} <span class="suave">({{ g.n }})</span></span></label>{% endfor %}
+        {% for g in ms.grupos %}<label><input type="checkbox" value="{{ g.id }}" data-filtro="grupo" checked><svg class="ms-chave" viewBox="-16 -16 32 32" aria-hidden="true"><use href="#s-{{ g.id }}"/></svg><span>{{ g.nome }} <span class="suave">({{ g.n }})</span></span></label>{% endfor %}
       </fieldset>
-      <div class="ms-local" data-so-js hidden>
-        <h3>Onde você está?</h3>
-        <button type="button" id="ms-gps" class="botao-mapa">Usar minha localização</button>
-        <form id="ms-bairro-form" class="ms-bairro" autocomplete="off">
-          <label for="ms-bairro">ou digite o seu bairro</label>
-          <div><input id="ms-bairro" list="ms-bairros" type="text" placeholder="Ex.: Vila Hortência"><datalist id="ms-bairros"></datalist><button type="submit" class="botao-mapa botao-mapa-leve">Ver</button></div>
-        </form>
-        <p id="ms-msg" class="pequeno suave" role="status" aria-live="polite">Sua localização é calculada no seu navegador e não é guardada. Só vai ao OpenStreetMap se você abrir “Como chegar”.</p>
-      </div>
-      <div id="ms-proximas" aria-live="polite" hidden></div>
-      <div id="ms-selecionada" aria-live="polite" data-so-js hidden><h3>Unidade selecionada</h3><p class="suave pequeno">Toque ou clique num ponto do mapa (ou use Tab e Enter) para ver endereço, telefone e como chegar.</p></div>
+      <ul class="ms-legenda-estatica" data-sem-js>{% for g in ms.grupos %}<li><svg class="ms-chave" viewBox="-16 -16 32 32" aria-hidden="true"><use href="#s-{{ g.id }}"/></svg>{{ g.nome }} ({{ g.n }})</li>{% endfor %}</ul>
+      {{ local("saude") }}
+      {{ selecionada() }}
     </div>
   </div>
   <p class="pequeno suave"><span data-so-js hidden>Aproxime com + e −, ou com Ctrl e a roda do mouse; arraste para mover. </span>{% if ms.sem_posicao %}{{ ms.sem_posicao }} unidades do cadastro não têm coordenada válida e aparecem só nas listas abaixo. {% endif %}A distância é em linha reta, não pelo caminho, e as posições vêm do cadastro do CNES, que pode ter erros.</p>
 </section>
+
 <section aria-labelledby="hospitais" class="bloco-painel">
   <h2 id="hospitais" class="h2-medio sem-topo">Hospitais</h2>
   <p class="suave">Em ordem de internações SUS nos últimos 12 meses. O que cada hospital trata vem do diagnóstico principal das internações; os leitos, do cadastro do CNES.</p>

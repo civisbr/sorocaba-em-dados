@@ -137,7 +137,7 @@ def test_linhas_preco_eixo_cobre_os_dados():
 
 def test_orcamento_dos_recursos_do_mapa_de_saude(site):
     assert (site / "mapa-base.svg").stat().st_size < 260_000
-    assert (site / "mapa-saude.js").stat().st_size < 20_000
+    assert (site / "mapa-interativo.js").stat().st_size < 20_000
     assert (site / "data" / "mapa-bairros.json").stat().st_size < 80_000
 
 
