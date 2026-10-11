@@ -7,6 +7,7 @@ import json
 import re
 import unicodedata
 import shutil
+from datetime import date
 from pathlib import Path
 
 from jinja2 import Environment, FileSystemLoader, select_autoescape
@@ -338,6 +339,28 @@ def contexto_comparativo(env: dict) -> dict:
     return {"blocos": blocos, "ref_comp": "posição " + str(max(b["ultimo"]["ano"] for b in blocos))}
 
 
+def contexto_clima(clima: dict, previsao: dict | None) -> dict:
+    mensal = [r for r in clima["dados"] if r["recorte"] == "mensal"]
+    anual = next(r for r in clima["dados"] if r["recorte"] == "anual")
+    rot = {i: MESES[i][:3] for i in range(12)}
+    chuva = barras_mensais([(MESES[i], r["chuva_mm"]) for i, r in enumerate(mensal)], rot)
+    temp = linhas_preco(
+        {"Máxima": [r["tmax_media"] for r in mensal], "Mínima": [r["tmin_media"] for r in mensal]}, rot,
+    )
+    prev = None
+    if previsao:
+        por_fonte: dict[str, list[dict]] = {}
+        for r in previsao["dados"]:
+            por_fonte.setdefault(r["fonte"], []).append(r)
+        prev = {"inmet": por_fonte.get("inmet", []), "modelo": por_fonte.get("open-meteo", []), "env": previsao}
+    return {"mensal": mensal, "anual": anual, "grafico_chuva": chuva, "grafico_temp": temp, "meses": MESES, "prev": prev,
+            "mes_mais_chuvoso": max(mensal, key=lambda r: r["chuva_mm"]), "mes_mais_seco": min(mensal, key=lambda r: r["chuva_mm"])}
+
+
+def dia_semana(iso_data: str) -> str:
+    return ["segunda", "terça", "quarta", "quinta", "sexta", "sábado", "domingo"][date.fromisoformat(iso_data).weekday()]
+
+
 def contexto_combustivel(env: dict) -> dict:
     produtos = []
     for nome in dict.fromkeys(r["produto"] for r in env["dados"]):
@@ -374,6 +397,7 @@ def contexto_combustivel(env: dict) -> dict:
 def renderizar(public: Path, saida: Path) -> None:
     jinja = Environment(loader=FileSystemLoader(RAIZ / "templates"), autoescape=select_autoescape(["html"]))
     jinja.globals["fmt_ind"] = formata_ind
+    jinja.globals["dia_semana"] = dia_semana
     jinja.globals["rotulo_bloco"] = lambda b: {"esquerda": "Esquerda", "centro": "Centro", "direita": "Direita"}.get(b, "Sem classificação")
     jinja.filters.update(num=num, sinal=sinal, data_br=data_br, mes_curto=mes_curto, brl=brl, pct=pct, brl1=brl1, brl2=brl2, pct_abs=pct_abs, bi=bi, inteiro_br=inteiro_br, nome_br=nome_br)
 
@@ -389,6 +413,10 @@ def renderizar(public: Path, saida: Path) -> None:
     ctx_seg = contexto_seguranca(seg)
     comp = json.loads((public / "comparativo.json").read_text(encoding="utf-8"))
     ctx_comp = contexto_comparativo(comp)
+    clima = json.loads((public / "clima.json").read_text(encoding="utf-8"))
+    arq_prev = public / "previsao.json"
+    previsao = json.loads(arq_prev.read_text(encoding="utf-8")) if arq_prev.exists() else None
+    ctx_clima = contexto_clima(clima, previsao)
     escolas = json.loads((public / "escolas.json").read_text(encoding="utf-8"))
     ctx_esc = contexto_escolas(escolas)
     mapa = gerar_mapa(RAIZ / "data" / "raw" / "ibge" / "malha_3552205.geojson")
@@ -416,6 +444,10 @@ def renderizar(public: Path, saida: Path) -> None:
     paineis["seguranca"].update(status=flag_s, rotulo_status=ROTULO_STATUS[flag_s], referencia=ctx_seg["ref_seg"])
     flag_c2 = comp["qualidade"]["flag"]
     paineis["comparativo"].update(status=flag_c2, rotulo_status=ROTULO_STATUS[flag_c2], referencia="anos de " + str(comp["referencia"]["inicio"][:4]) + " a " + str(comp["referencia"]["fim"][:4]))
+    paineis["clima"].update(
+        status="real", rotulo_status="Dado real",
+        referencia=("previsão de " + data_br(previsao["referencia"]["inicio"])[:5] + " a " + data_br(previsao["referencia"]["fim"])[:5]) if previsao else "normais 1991–2020",
+    )
     ordem = list(paineis.values())
 
     if saida.exists():
@@ -426,7 +458,7 @@ def renderizar(public: Path, saida: Path) -> None:
     (saida / MARCADOR).write_text("saída gerada por scripts/render.py\n", encoding="utf-8")
     for nome in ("style.css", "app.js"):
         shutil.copy(RAIZ / "static" / nome, saida / nome)
-    for nome in ("emprego.json", "combustivel.json", "escolas.json", "perfil.json", "representantes.json", "seguranca.json", "comparativo.json"):
+    for nome in ("emprego.json", "combustivel.json", "escolas.json", "perfil.json", "representantes.json", "seguranca.json", "comparativo.json", "clima.json"):
         shutil.copy(public / nome, saida / "data" / nome)
 
     comum = {"paineis": ordem, "repo_url": REPO_URL}
@@ -440,7 +472,7 @@ def renderizar(public: Path, saida: Path) -> None:
             jinja.get_template(template).render(raiz=raiz, **comum, **ctx), encoding="utf-8"
         )
 
-    escrever("index.html", "index.html", "", mapa=mapa, emprego=ctx_emprego, comb=ctx_comb, esc=ctx_esc, cid=ctx_cid, rep=ctx_rep, seg=ctx_seg, comp=ctx_comp)
+    escrever("index.html", "index.html", "", mapa=mapa, emprego=ctx_emprego, comb=ctx_comb, esc=ctx_esc, cid=ctx_cid, rep=ctx_rep, seg=ctx_seg, comp=ctx_comp, clima=ctx_clima)
     escrever("sobre/index.html", "sobre.html", "../", fontes=[
         ("Emprego", "Novo CAGED — Ministério do Trabalho e Emprego", flag),
         ("Combustível", "Levantamento de Preços de Combustíveis — ANP", flag_c),
@@ -449,6 +481,7 @@ def renderizar(public: Path, saida: Path) -> None:
         ("Representantes", "TSE, Câmara dos Deputados e Alesp", flag_r),
         ("Segurança", "SSP-SP — ocorrências registradas", flag_s),
         ("Comparativo", "IBGE e INEP — posição entre municípios", flag_c2),
+        ("Clima", "INMET e Open-Meteo (ERA5)", "real"),
     ])
     escrever(
         "emprego/index.html", "paineis/emprego.html", "../",
@@ -477,6 +510,10 @@ def renderizar(public: Path, saida: Path) -> None:
     escrever(
         "comparativo/index.html", "paineis/comparativo.html", "../",
         p=paineis["comparativo"], env=comp, script="scripts/build_comparativo.py", **ctx_comp,
+    )
+    escrever(
+        "clima/index.html", "paineis/clima.html", "../",
+        p=paineis["clima"], env=clima, script="scripts/build_clima.py", **ctx_clima,
     )
     for e in ctx_esc["escolas"]:
         escrever(

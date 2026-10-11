@@ -14,6 +14,7 @@ Dados públicos de Sorocaba/SP em um site estático, leve e com fonte à vista. 
 | [Representantes](https://civisbr.github.io/sorocaba-em-dados/representantes/) | Quem governa e quem representa Sorocaba? | TSE, Câmara dos Deputados e Alesp | por eleição |
 | [Segurança](https://civisbr.github.io/sorocaba-em-dados/seguranca/) | Que ocorrências são registradas, quando e com que tendência? | SSP-SP | mensal |
 | [Comparativo](https://civisbr.github.io/sorocaba-em-dados/comparativo/) | Em que posição Sorocaba está entre os municípios, e como isso mudou? | IBGE e INEP | anual |
+| [Clima](https://civisbr.github.io/sorocaba-em-dados/clima/) | Como é o clima e o que esperar nesta semana? | INMET e Open-Meteo (ERA5) | diária (previsão) |
 | [A cidade](https://civisbr.github.io/sorocaba-em-dados/cidade/) | Qual o tamanho da cidade, em gente e economia? | Censo 2022, estimativas e PIB (IBGE) | anual |
 
 Cada painel mostra a fonte primária, a data de referência, a data da coleta e as limitações conhecidas. Os dados publicados ficam em `data/public/*.json` e também são servidos pelo site em `/data/`.

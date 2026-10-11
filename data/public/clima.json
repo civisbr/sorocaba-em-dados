@@ -1,0 +1,176 @@
+{
+  "cobertura": {
+    "ibge": "3552205",
+    "municipio": "Sorocaba",
+    "uf": "SP"
+  },
+  "dados": [
+    {
+      "chuva_max_dia_mm": 103.8,
+      "chuva_mm": 222.3,
+      "dias_chuva": 21.5,
+      "mes": 1,
+      "recorte": "mensal",
+      "tmax_media": 27.7,
+      "tmax_recorde": 37.3,
+      "tmin_media": 19.7,
+      "tmin_recorde": 12.6
+    },
+    {
+      "chuva_max_dia_mm": 77.8,
+      "chuva_mm": 151.4,
+      "dias_chuva": 18.2,
+      "mes": 2,
+      "recorte": "mensal",
+      "tmax_media": 27.9,
+      "tmax_recorde": 38.0,
+      "tmin_media": 19.7,
+      "tmin_recorde": 13.9
+    },
+    {
+      "chuva_max_dia_mm": 43.8,
+      "chuva_mm": 111.4,
+      "dias_chuva": 16.2,
+      "mes": 3,
+      "recorte": "mensal",
+      "tmax_media": 27.1,
+      "tmax_recorde": 32.3,
+      "tmin_media": 19.0,
+      "tmin_recorde": 12.3
+    },
+    {
+      "chuva_max_dia_mm": 60.5,
+      "chuva_mm": 57.4,
+      "dias_chuva": 7.4,
+      "mes": 4,
+      "recorte": "mensal",
+      "tmax_media": 26.1,
+      "tmax_recorde": 32.7,
+      "tmin_media": 17.2,
+      "tmin_recorde": 7.9
+    },
+    {
+      "chuva_max_dia_mm": 53.9,
+      "chuva_mm": 57.2,
+      "dias_chuva": 6.6,
+      "mes": 5,
+      "recorte": "mensal",
+      "tmax_media": 23.4,
+      "tmax_recorde": 30.6,
+      "tmin_media": 14.5,
+      "tmin_recorde": 6.3
+    },
+    {
+      "chuva_max_dia_mm": 61.5,
+      "chuva_mm": 48.5,
+      "dias_chuva": 5.1,
+      "mes": 6,
+      "recorte": "mensal",
+      "tmax_media": 22.6,
+      "tmax_recorde": 28.6,
+      "tmin_media": 13.0,
+      "tmin_recorde": 2.0
+    },
+    {
+      "chuva_max_dia_mm": 63.8,
+      "chuva_mm": 42.9,
+      "dias_chuva": 4.9,
+      "mes": 7,
+      "recorte": "mensal",
+      "tmax_media": 22.7,
+      "tmax_recorde": 30.6,
+      "tmin_media": 12.4,
+      "tmin_recorde": 2.4
+    },
+    {
+      "chuva_max_dia_mm": 43.0,
+      "chuva_mm": 35.3,
+      "dias_chuva": 4.3,
+      "mes": 8,
+      "recorte": "mensal",
+      "tmax_media": 24.6,
+      "tmax_recorde": 33.9,
+      "tmin_media": 13.3,
+      "tmin_recorde": 3.6
+    },
+    {
+      "chuva_max_dia_mm": 51.4,
+      "chuva_mm": 75.9,
+      "dias_chuva": 8.5,
+      "mes": 9,
+      "recorte": "mensal",
+      "tmax_media": 26.1,
+      "tmax_recorde": 37.9,
+      "tmin_media": 15.3,
+      "tmin_recorde": 5.3
+    },
+    {
+      "chuva_max_dia_mm": 60.8,
+      "chuva_mm": 100.7,
+      "dias_chuva": 12,
+      "mes": 10,
+      "recorte": "mensal",
+      "tmax_media": 27.0,
+      "tmax_recorde": 39.6,
+      "tmin_media": 16.9,
+      "tmin_recorde": 9.9
+    },
+    {
+      "chuva_max_dia_mm": 60.4,
+      "chuva_mm": 126.0,
+      "dias_chuva": 14.0,
+      "mes": 11,
+      "recorte": "mensal",
+      "tmax_media": 26.8,
+      "tmax_recorde": 36.1,
+      "tmin_media": 17.5,
+      "tmin_recorde": 10.2
+    },
+    {
+      "chuva_max_dia_mm": 82.7,
+      "chuva_mm": 168.7,
+      "dias_chuva": 18.2,
+      "mes": 12,
+      "recorte": "mensal",
+      "tmax_media": 27.7,
+      "tmax_recorde": 35.1,
+      "tmin_media": 19.0,
+      "tmin_recorde": 10.9
+    },
+    {
+      "chuva_max_dia_mm": 103.8,
+      "chuva_mm": 1198.0,
+      "dias_chuva": 137.0,
+      "mes": null,
+      "recorte": "anual",
+      "tmax_media": 25.8,
+      "tmax_recorde": 39.6,
+      "tmin_media": 16.4,
+      "tmin_recorde": 2.0
+    }
+  ],
+  "fonte": {
+    "acesso_em": "2026-10-11",
+    "licenca": "CC BY 4.0 (Open-Meteo; dados Copernicus)",
+    "nome": "Open-Meteo (reanálise ERA5, Copernicus/ECMWF)",
+    "url": "https://open-meteo.com/en/docs/historical-weather-api"
+  },
+  "painel": "clima",
+  "qualidade": {
+    "flag": "estimativa",
+    "n_registros": 13,
+    "notas": [
+      "Normais de 30 anos (1991 a 2020), a janela padrão da Organização Meteorológica Mundial, calculadas aqui sobre a série diária da reanálise ERA5.",
+      "ERA5 é um modelo que combina observações do mundo todo, não uma estação meteorológica em Sorocaba. Os valores são da célula de grade em -23.51°, -47.46° (altitude do modelo 564 m), de cerca de 25 km; podem diferir do que um termômetro na cidade mede, sobretudo na chuva.",
+      "Temperaturas médias são médias das máximas e das mínimas diárias de cada mês. Chuva do mês é a média, entre os 30 anos, do total de cada mês. Dia de chuva = 1 mm ou mais.",
+      "Recordes são os extremos diários do modelo nos 30 anos, não registros oficiais de estação.",
+      "SHA-256 do manifesto de coleta: 7f48f1048b1b984478ccd282db49f98a337d9ea682f8f41f561a9ad16f52e208"
+    ]
+  },
+  "referencia": {
+    "fim": "2020-12-31",
+    "granularidade": "mensal",
+    "inicio": "1991-01-01"
+  },
+  "schema_version": "1.0"
+}

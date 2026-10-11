@@ -1,0 +1,16 @@
+{
+  "altitude_grade_m": 564.0,
+  "coletado_em": "2026-10-11",
+  "fonte": "Open-Meteo Historical Weather API (reanálise ERA5, Copernicus/ECMWF)",
+  "latitude_grade": -23.514938,
+  "latitude_pedida": -23.5015,
+  "licenca": "CC BY 4.0 (Open-Meteo; dados Copernicus)",
+  "longitude_grade": -47.463165,
+  "longitude_pedida": -47.4526,
+  "periodo": [
+    "1991-01-01",
+    "2020-12-31"
+  ],
+  "sha256_csv": "7628494f58c9890d8a84f4e32f42c6880abf2c7a072e63782ca799fc015b5a30",
+  "url": "https://archive-api.open-meteo.com/v1/archive?latitude=-23.5015&longitude=-47.4526&start_date=1991-01-01&end_date=2020-12-31&daily=temperature_2m_max,temperature_2m_min,precipitation_sum&timezone=America%2FSao_Paulo"
+}

@@ -344,3 +344,13 @@ estarem prontos (`project.md` §1 e §11). Status abaixo reflete só o que foi v
 - **Alagamentos:** a Defesa Civil monitora cerca de 88 pontos críticos (reportagem sem data) e há registro de ocorrências usado em pesquisa da Unesp, mas não foi achado mapa nem dado aberto. Candidatos para chuva: CEMADEN e INMET (dado de precipitação, não de alagamento).
 - **Câmeras ao vivo:** só como link para a página oficial de quem as opera (prefeitura ou concessionária); incorporar transmissão de terceiros exige conferir termos de uso. Não verificado se Sorocaba tem câmeras públicas ao vivo.
 - **Acidentes:** SSP-SP publica ocorrências de trânsito (homicídio culposo e lesão culposa no trânsito já existem no bruto de Segurança, hoje não exibidas), e o Infosiga SP traz sinistros por local; a verificar.
+
+## Clima e previsão do tempo (painel "Clima")
+
+**Status:** `verificada` e **implementada** (`fetch_clima.py`, `build_clima.py`, `fetch_previsao.py`, `build_previsao.py`).
+
+- **Previsão oficial:** INMET, `apiprevmet3.inmet.gov.br/previsao/3552205` (código IBGE do município), 5 dias; nos primeiros dias vem por manhã, tarde e noite, nos demais em bloco único. A resposta traz ícones em base64 (~270 KB), que são descartados.
+- **Previsão por modelo:** Open-Meteo Forecast API, ponto central da cidade, 7 dias (temperatura, chuva prevista e probabilidade, vento). Licença CC BY 4.0, uso gratuito não comercial; atribuição na página. As duas fontes **não são misturadas**: a página mostra uma tabela de cada e avisa que podem divergir.
+- **Efêmera:** a previsão não vai para o git. O `deploy.yml` a busca antes de cada publicação e roda todo dia às 06h30 (Brasília); se a coleta falhar, o site sai sem ela e a página avisa.
+- **Clima (normais 1991-2020):** o INMET não tem estação em Sorocaba (as mais próximas na lista da API são Itapeva e Piracicaba). Usa-se a reanálise ERA5 (Copernicus/ECMWF) pela Open-Meteo Historical API, célula de grade de ~25 km (-23,51°, -47,46°, altitude do modelo 564 m), série diária de 30 anos guardada em `data/raw/clima/` (10.958 dias, 308 KB, período encerrado). Médias das máximas e mínimas, chuva média mensal, dias com 1 mm ou mais e extremos do modelo. Marcado como `estimativa`, não como observação.
+- **Limite:** ERA5 suaviza extremos e chuva local; não substitui a série de uma estação. Se houver dado de estação aberto para a cidade (por exemplo, da Defesa Civil ou da UNESP), vale substituir ou comparar.

@@ -81,6 +81,11 @@
         {% elif p.id == "cidade" %}
         <span class="cartao-numero">{{ cid.ind.populacao_estimada.valor | inteiro_br }}</span>
         <span class="cartao-ctx">habitantes, estimativa do IBGE para {{ cid.ind.populacao_estimada.ano }}</span>
+        {% elif p.id == "clima" %}
+        {% if clima.prev and clima.prev.inmet %}<span class="cartao-numero">{{ clima.prev.inmet[0].tmax }}° / {{ clima.prev.inmet[0].tmin }}°</span>
+        <span class="cartao-ctx">previsão do INMET para {{ clima.prev.inmet[0].dia | data_br }}: {{ clima.prev.inmet[0].resumo | lower }}</span>
+        {% else %}<span class="cartao-numero">{{ clima.anual.tmax_media | brl1 }}° / {{ clima.anual.tmin_media | brl1 }}°</span>
+        <span class="cartao-ctx">máxima e mínima médias do ano, normais 1991–2020</span>{% endif %}
         {% elif p.id == "comparativo" %}
         <span class="cartao-numero">{{ comp.blocos[0].ultimo.pos_sp }}º</span>
         <span class="cartao-ctx">maior município paulista em população, entre {{ comp.blocos[0].ultimo.n_sp }} ({{ comp.blocos[0].ultimo.ano }})</span>

@@ -1,0 +1,79 @@
+{% extends "paineis/painel.html" %}
+{% from "_macros.html" import icone %}
+{% block resumo %}
+<section aria-labelledby="resumo" class="resumo-real">
+  <h2 id="resumo" class="rotulo-resumo">Clima de Sorocaba, 1991 a 2020</h2>
+  <p class="numero-grande">{{ anual.tmax_media | brl1 }}° / {{ anual.tmin_media | brl1 }}°</p>
+  <p class="resumo-texto">média das máximas e das mínimas ao longo do ano. Chovem cerca de <strong>{{ anual.chuva_mm | inteiro_br }} mm por ano</strong> em {{ anual.dias_chuva | inteiro_br }} dias. O mês mais chuvoso é {{ meses[mes_mais_chuvoso.mes - 1] }} ({{ mes_mais_chuvoso.chuva_mm | inteiro_br }} mm) e o mais seco, {{ meses[mes_mais_seco.mes - 1] }} ({{ mes_mais_seco.chuva_mm | inteiro_br }} mm).</p>
+  <p class="pequeno suave">Valores de modelo (reanálise ERA5), não de uma estação na cidade.</p>
+</section>
+{% endblock %}
+{% block explorar %}
+<section aria-labelledby="prev-t" class="bloco-painel">
+  <h2 id="prev-t" class="h2-medio sem-topo">Previsão da semana</h2>
+  {% if prev %}
+  {% if prev.inmet %}
+  <h3 class="h3-sec">Previsão oficial do INMET ({{ prev.inmet | length }} dias)</h3>
+  <div class="rolagem"><table class="tabela-quebra tabela-clima">
+    <caption class="so-leitor">Previsão do INMET para Sorocaba</caption>
+    <thead><tr><th scope="col">Dia</th><th scope="col">Tempo</th><th scope="col">Mín.</th><th scope="col">Máx.</th><th scope="col">Umidade</th><th scope="col">Vento</th></tr></thead>
+    <tbody>{% for r in prev.inmet %}<tr><th scope="row">{{ r.dia | data_br | truncate(5, True, "") }} <span class="suave">{{ dia_semana(r.dia) }}</span></th><td>{{ r.resumo }}</td><td>{{ r.tmin }}°</td><td>{{ r.tmax }}°</td><td>{% if r.umidade_min is not none %}{{ r.umidade_min }}–{{ r.umidade_max }}%{% else %}—{% endif %}</td><td>{{ r.vento or "—" }}</td></tr>{% endfor %}</tbody>
+  </table></div>
+  {% endif %}
+  {% if prev.modelo %}
+  <h3 class="h3-sec">Modelo numérico Open-Meteo ({{ prev.modelo | length }} dias)</h3>
+  <div class="rolagem"><table class="tabela-quebra tabela-clima">
+    <caption class="so-leitor">Previsão do modelo Open-Meteo para Sorocaba</caption>
+    <thead><tr><th scope="col">Dia</th><th scope="col">Tempo</th><th scope="col">Mín.</th><th scope="col">Máx.</th><th scope="col">Chuva</th><th scope="col">Chance</th></tr></thead>
+    <tbody>{% for r in prev.modelo %}<tr><th scope="row">{{ r.dia | data_br | truncate(5, True, "") }} <span class="suave">{{ dia_semana(r.dia) }}</span></th><td>{{ r.resumo }}</td><td>{{ r.tmin | brl1 }}°</td><td>{{ r.tmax | brl1 }}°</td><td>{{ r.chuva_mm | brl1 }} mm</td><td>{{ r.prob_chuva }}%</td></tr>{% endfor %}</tbody>
+  </table></div>
+  {% endif %}
+  <p class="pequeno suave">Atualizada em {{ prev.env.fonte.acesso_em | data_br }}. Previsão muda a cada atualização e perde precisão com os dias; as duas fontes podem divergir. Em risco de temporal, siga a Defesa Civil.</p>
+  {% else %}
+  <p class="quadro-card pendente-texto">{{ icone("relogio") }} A previsão não está disponível no momento. O clima típico de cada mês continua abaixo.</p>
+  {% endif %}
+</section>
+
+<section aria-labelledby="norm-t" class="bloco-painel">
+  <h2 id="norm-t" class="h2-medio sem-topo">Como é o clima mês a mês</h2>
+  <div class="grade-2">
+    <article class="quadro-card">
+      <h3>Temperatura</h3><p class="suave">Média das máximas e das mínimas diárias de cada mês, em °C.</p>
+      <svg class="grafico" viewBox="0 0 {{ grafico_temp.largura }} {{ grafico_temp.altura }}" role="img" aria-labelledby="gt-t gt-d">
+        <title id="gt-t">Temperaturas máxima e mínima médias por mês em Sorocaba</title><desc id="gt-d">Duas linhas, de janeiro a dezembro. Os valores estão na tabela abaixo.</desc>
+        {% for g in grafico_temp.grade %}<line class="grade" x1="0" x2="{{ grafico_temp.largura }}" y1="{{ g.y }}" y2="{{ g.y }}"/><text class="eixo" x="2" y="{{ g.y - 3 }}">{{ g.valor | brl1 }}</text>{% endfor %}
+        <polyline class="l-max" points="{{ grafico_temp.series["Máxima"].pontos }}"/><polyline class="l-med" points="{{ grafico_temp.series["Mínima"].pontos }}"/>
+        {% for t in grafico_temp.eixo_x %}<text class="eixo" x="{{ t.x }}" y="{{ grafico_temp.y_rotulos }}" text-anchor="{{ t.ancora }}">{{ t.texto }}</text>{% endfor %}
+      </svg>
+      <p class="legenda"><span class="amostra amostra-max"></span> máxima <span class="amostra amostra-adm"></span> mínima</p>
+    </article>
+    <article class="quadro-card">
+      <h3>Chuva</h3><p class="suave">Média do total de cada mês, em mm.</p>
+      <svg class="grafico" viewBox="0 0 {{ grafico_chuva.largura }} {{ grafico_chuva.altura }}" role="img" aria-labelledby="gc-t gc-d">
+        <title id="gc-t">Chuva média por mês em Sorocaba</title><desc id="gc-d">Barras de janeiro a dezembro. Os valores estão na tabela abaixo.</desc>
+        {% for b in grafico_chuva.barras %}<rect class="b-pos" x="{{ b.x }}" y="{{ b.y }}" width="{{ b.w }}" height="{{ b.h }}"><title>{{ b.rotulo }}: {{ b.valor | brl1 }} mm</title></rect>{% endfor %}
+        <line class="zero" x1="0" x2="{{ grafico_chuva.largura }}" y1="{{ grafico_chuva.zero }}" y2="{{ grafico_chuva.zero }}"/>
+        {% for t in grafico_chuva.eixo_x %}<text class="eixo" x="{{ t.x }}" y="{{ grafico_chuva.y_rotulos }}" text-anchor="{{ t.ancora }}">{{ t.texto }}</text>{% endfor %}
+      </svg>
+    </article>
+  </div>
+  <details class="tabela-mes"><summary>Ver os números de cada mês</summary>
+    <div class="rolagem"><table>
+      <caption class="so-leitor">Normais climatológicas de Sorocaba por mês</caption>
+      <thead><tr><th scope="col">Mês</th><th scope="col">Máx. média</th><th scope="col">Mín. média</th><th scope="col">Chuva (mm)</th><th scope="col">Dias de chuva</th><th scope="col">Máx. recorde</th><th scope="col">Mín. recorde</th><th scope="col">Maior chuva em 1 dia</th></tr></thead>
+      <tbody>{% for r in mensal %}<tr><th scope="row">{{ meses[r.mes - 1] | capitalize }}</th><td>{{ r.tmax_media | brl1 }}°</td><td>{{ r.tmin_media | brl1 }}°</td><td>{{ r.chuva_mm | brl1 }}</td><td>{{ r.dias_chuva | brl1 }}</td><td>{{ r.tmax_recorde | brl1 }}°</td><td>{{ r.tmin_recorde | brl1 }}°</td><td>{{ r.chuva_max_dia_mm | brl1 }} mm</td></tr>{% endfor %}</tbody>
+    </table></div>
+  </details>
+</section>
+{% endblock %}
+{% block metodologia %}
+<ul class="lista-curta">{% for n in env.qualidade.notas %}{% if not n.startswith("SHA-256") %}<li>{{ n }}</li>{% endif %}{% endfor %}</ul>
+{% endblock %}
+{% block proveniencia %}
+<dl class="proveniencia">
+  <dt>Clima</dt><dd><a href="{{ env.fonte.url }}">{{ env.fonte.nome }}</a> — {{ env.fonte.licenca }}. Período {{ env.referencia.inicio | data_br }} a {{ env.referencia.fim | data_br }}</dd>
+  <dt>Previsão</dt><dd><a href="https://previsaodotempo.inmet.gov.br/">INMET</a> e <a href="https://open-meteo.com/">Open-Meteo</a> (CC BY 4.0), atualizada a cada publicação do site</dd>
+  <dt>Dados</dt><dd><a href="{{ raiz }}data/clima.json">clima.json</a></dd>
+  <dt>Código</dt><dd><a href="{{ repo_url }}/blob/main/{{ script }}">{{ script }}</a></dd>
+</dl>
+{% endblock %}

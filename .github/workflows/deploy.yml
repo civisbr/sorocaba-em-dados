@@ -4,6 +4,8 @@ on:
   push:
     branches: [main]
     paths: [data/public/**, templates/**, static/**, scripts/render.py, scripts/charts.py, scripts/mapa.py, scripts/paineis.py, data/raw/ibge/**]
+  schedule:
+    - cron: "30 9 * * *"  # renova a previsão do tempo todo dia (06h30 em Brasília)
   workflow_dispatch:
 
 permissions: {}
@@ -24,6 +26,9 @@ jobs:
       - uses: astral-sh/setup-uv@37802adc94f370d6bfd71619e3f0bf239e1f3b78 # v7
       - run: uv sync --frozen
       - run: uv run pytest -q
+      - name: Previsão do tempo (efêmera, não vai para o git)
+        run: |
+          uv run python -m scripts.fetch_previsao --acesso-em "$(date -u +%F)" && uv run python -m scripts.build_previsao || echo "previsão indisponível; o site sai sem ela"
       - run: uv run python -m scripts.render
       - uses: actions/upload-pages-artifact@fc324d3547104276b827a68afc52ff2a11cc49c9 # v5
         with:

@@ -178,4 +178,28 @@ PAINEIS = {
             "Não há ranking de qualidade de vida: só indicadores com fonte oficial e comparáveis entre municípios.",
         ],
     },
+    "clima": {
+        "nav": "Clima",
+        "titulo": "O tempo e o clima da cidade",
+        "h1": "Como é o clima de Sorocaba e o que esperar nesta semana?",
+        "pergunta": "Qual a previsão dos próximos dias e como são as temperaturas e a chuva em cada mês do ano?",
+        "fonte": "INMET e Open-Meteo (previsão); ERA5/Copernicus via Open-Meteo (clima)",
+        "cta": "Ver o clima",
+        "tom": "acento",
+        "descricao": "Previsão dos próximos dias e o clima típico de cada mês em Sorocaba: temperatura, chuva e extremos.",
+        "meta_desc": "Previsão do tempo da semana e clima de Sorocaba mês a mês: temperaturas médias, chuva e extremos, com fonte e limitações.",
+        "palavras": ["clima", "tempo", "previsão", "chuva", "temperatura", "calor", "frio", "inmet", "semana"],
+        "blocos": [],
+        "glossario": [
+            ("Previsão e clima", "Previsão diz o que se espera nos próximos dias. Clima é o que costuma acontecer em cada mês ao longo de muitos anos; aqui, de 1991 a 2020."),
+            ("Normal climatológica", "Média de 30 anos. Um mês pode fugir bastante da normal; ela mostra o comportamento típico, não o que vai acontecer."),
+            ("Reanálise ERA5", "Modelo que combina observações do mundo todo para reconstruir o tempo passado numa grade de cerca de 25 km. Serve bem para temperatura; para chuva, difere mais de um pluviômetro na cidade."),
+            ("Dia de chuva", "Dia com 1 mm ou mais de chuva."),
+        ],
+        "limitacoes": [
+            "Previsão perde precisão com os dias e muda a cada atualização; em risco de temporal, vale a Defesa Civil.",
+            "O clima mostrado vem de modelo, não de uma estação em Sorocaba: o INMET não tem estação na cidade.",
+            "Recordes são extremos do modelo em 30 anos, não registros oficiais.",
+        ],
+    },
 }
