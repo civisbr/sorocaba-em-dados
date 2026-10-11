@@ -21,7 +21,7 @@
   <div class="mapa-saude">
     <div class="mapa-quadro ms-longe" tabindex="-1">
       <svg id="mapa-saude" viewBox="0 0 {{ ms.mapa.largura }} {{ ms.mapa.altura }}" role="group" aria-label="Mapa de Sorocaba com hospitais, UPAs, unidades básicas de saúde e CAPS" tabindex="0"
-           data-k="{{ ms.mapa.afim.k }}" data-escala="{{ ms.mapa.afim.escala }}" data-dx="{{ ms.mapa.afim.dx }}" data-dy="{{ ms.mapa.afim.dy }}" data-caixa="{{ ms.caixa }}" data-bairros="{{ raiz }}data/mapa-bairros.json">
+           data-k="{{ ms.mapa.afim.k }}" data-escala="{{ ms.mapa.afim.escala }}" data-dx="{{ ms.mapa.afim.dx }}" data-dy="{{ ms.mapa.afim.dy }}" data-caixa="{{ ms.caixa }}" data-bairros="{{ raiz }}data/mapa-bairros.json" data-contorno="{{ ms.contorno }}">
         <defs>
           <symbol id="s-hospital" overflow="visible"><rect x="-12" y="-12" width="24" height="24" rx="5" class="mk-hospital"/><path d="M-6 0H6M0 -6V6" class="mk-cruz"/></symbol>
           <symbol id="s-upa" overflow="visible"><path d="M0 -14L13 10H-13Z" class="mk-upa"/><path d="M0 -4V3M0 6.5V7" class="mk-cruz"/></symbol>
@@ -31,7 +31,7 @@
         <image href="{{ raiz }}mapa-base.svg" x="0" y="0" width="{{ ms.mapa.largura }}" height="{{ ms.mapa.altura }}"/>
         <g id="ms-aneis"></g>
         <g id="ms-unidades">{% for p in ms.pontos %}
-          <g class="ms-u g-{{ p.grupo }}" transform="translate({{ p.x }} {{ p.y }})" tabindex="0" role="button" aria-label="{{ p.nome }}. {{ p.endereco }}"
+          <g class="ms-u g-{{ p.grupo }}" transform="translate({{ p.x }} {{ p.y }})" aria-label="{{ p.nome }}. {{ p.endereco }}"
              data-grupo="{{ p.grupo }}" data-nome="{{ p.nome }}" data-natureza="{{ p.natureza }}" data-sus="{{ p.sus }}" data-endereco="{{ p.endereco }}" data-telefone="{{ p.telefone }}" data-lat="{{ p.lat }}" data-lon="{{ p.lon }}">
             <title>{{ p.nome }}</title><use class="mk" href="#s-{{ p.grupo }}"/>
           </g>{% endfor %}
@@ -47,7 +47,7 @@
       <p class="ms-credito pequeno">Mapa: contorno do IBGE; vias e rios © <a href="https://www.openstreetmap.org/copyright">colaboradores do OpenStreetMap</a> (ODbL)</p>
     </div>
     <div class="mapa-lateral">
-      <fieldset class="ms-filtro"><legend>Legenda e filtro</legend>
+      <fieldset class="ms-filtro" data-so-js hidden><legend>Legenda e filtro</legend>
         {% for g in ms.grupos %}<label><input type="checkbox" value="{{ g.id }}" checked><svg class="ms-chave" viewBox="-16 -16 32 32" aria-hidden="true"><use href="#s-{{ g.id }}"/></svg><span>{{ g.nome }} <span class="suave">({{ g.n }})</span></span></label>{% endfor %}
       </fieldset>
       <div class="ms-local" data-so-js hidden>
@@ -60,10 +60,10 @@
         <p id="ms-msg" class="pequeno suave" role="status" aria-live="polite">Sua localização é calculada no seu navegador e não é guardada. Só vai ao OpenStreetMap se você abrir “Como chegar”.</p>
       </div>
       <div id="ms-proximas" aria-live="polite" hidden></div>
-      <div id="ms-selecionada" aria-live="polite"><h3>Unidade selecionada</h3><p class="suave pequeno">Toque ou clique num ponto do mapa (ou use Tab e Enter) para ver endereço, telefone e como chegar.</p></div>
+      <div id="ms-selecionada" aria-live="polite" data-so-js hidden><h3>Unidade selecionada</h3><p class="suave pequeno">Toque ou clique num ponto do mapa (ou use Tab e Enter) para ver endereço, telefone e como chegar.</p></div>
     </div>
   </div>
-  <p class="pequeno suave">Aproxime com + e −, ou com Ctrl e a roda do mouse; arraste para mover. {% if ms.sem_posicao %}{{ ms.sem_posicao }} unidades do cadastro não têm coordenada válida e aparecem só nas listas abaixo. {% endif %}A distância é em linha reta, não pelo caminho, e as posições vêm do cadastro do CNES, que pode ter erros.</p>
+  <p class="pequeno suave"><span data-so-js hidden>Aproxime com + e −, ou com Ctrl e a roda do mouse; arraste para mover. </span>{% if ms.sem_posicao %}{{ ms.sem_posicao }} unidades do cadastro não têm coordenada válida e aparecem só nas listas abaixo. {% endif %}A distância é em linha reta, não pelo caminho, e as posições vêm do cadastro do CNES, que pode ter erros.</p>
 </section>
 <section aria-labelledby="hospitais" class="bloco-painel">
   <h2 id="hospitais" class="h2-medio sem-topo">Hospitais</h2>

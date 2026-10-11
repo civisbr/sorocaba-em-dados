@@ -133,3 +133,9 @@ def test_render_recusa_apagar_diretorio_alheio(tmp_path):
 def test_linhas_preco_eixo_cobre_os_dados():
     g = linhas_preco({"a": [5.74, 6.0], "b": [6.69, 6.5]}, {0: "x"})
     assert g["grade"][0]["valor"] <= 5.74 and g["grade"][-1]["valor"] >= 6.69
+
+
+def test_orcamento_dos_recursos_do_mapa_de_saude(site):
+    assert (site / "mapa-base.svg").stat().st_size < 260_000
+    assert (site / "mapa-saude.js").stat().st_size < 20_000
+    assert (site / "data" / "mapa-bairros.json").stat().st_size < 80_000

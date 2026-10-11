@@ -16,10 +16,11 @@
   var msg = document.getElementById("ms-msg");
   var gVoce = document.getElementById("ms-voce");
   var gAneis = document.getElementById("ms-aneis");
-  var posicao = null, distancias = new Map(), bairrosFalhou = false;
+  var atual = null, posicao = null, distancias = new Map(), bairrosFalhou = false;
   var NOMES = { hospital: "Hospital", upa: "UPA ou pronto atendimento", ubs: "Unidade básica de saúde", caps: "CAPS (saúde mental)" };
 
   document.querySelectorAll("[data-so-js]").forEach(function (e) { e.hidden = false; });
+  unidades.forEach(function (u) { u.setAttribute("tabindex", "0"); u.setAttribute("role", "button"); });
   svg.querySelectorAll(".ms-u > title").forEach(function (t) { t.parentNode.removeChild(t); }); // a dica própria substitui a nativa
 
   function limitar() {
@@ -60,7 +61,7 @@
   var ptrs = {}, ultimoDist = 0, arrastou = false;
   svg.addEventListener("pointerdown", function (e) {
     ptrs[e.pointerId] = { x: e.clientX, y: e.clientY };
-    arrastou = false;
+    if (Object.keys(ptrs).length === 1) arrastou = false;
     if (Object.keys(ptrs).length === 2) { var a = Object.keys(ptrs).map(function (i) { return ptrs[i]; }); ultimoDist = Math.hypot(a[0].x - a[1].x, a[0].y - a[1].y); }
   });
   svg.addEventListener("pointermove", function (e) {
@@ -81,7 +82,7 @@
       ultimoDist = d; arrastou = true;
     }
   });
-  function soltar(e) { delete ptrs[e.pointerId]; ultimoDist = 0; svg.classList.remove("ms-arrastando"); }
+  function soltar(e) { delete ptrs[e.pointerId]; ultimoDist = 0; svg.classList.remove("ms-arrastando"); setTimeout(function () { arrastou = false; }, 0); }
   svg.addEventListener("pointerup", soltar);
   svg.addEventListener("pointercancel", soltar);
   svg.addEventListener("wheel", function (e) {
@@ -89,7 +90,7 @@
     e.preventDefault();
     zoom(e.deltaY > 0 ? 1.2 : 1 / 1.2, paraSvg(e.clientX, e.clientY));
   }, { passive: false });
-  svg.addEventListener("dblclick", function (e) { zoom(0.5, paraSvg(e.clientX, e.clientY)); });
+  svg.addEventListener("dblclick", function (e) { if (e.target.closest(".ms-u")) return; zoom(0.5, paraSvg(e.clientX, e.clientY)); });
   quadro.addEventListener("keydown", function (e) {
     if (e.target !== svg && e.target !== quadro) return;
     var passo = view.w * 0.12;
@@ -111,15 +112,19 @@
     dica.hidden = false;
     var r = u.getBoundingClientRect(), q = quadro.getBoundingClientRect();
     var x = r.left - q.left + r.width / 2, y = r.top - q.top;
-    dica.style.left = Math.min(Math.max(x, 90), q.width - 90) + "px";
-    dica.style.top = (y < 70 ? y + r.height + 8 : y - 8) + "px";
+    var meia = dica.offsetWidth / 2;
+    dica.style.left = Math.min(Math.max(x, meia + 4), q.width - meia - 4) + "px";
+    dica.style.top = Math.min(Math.max(y < 70 ? y + r.height + 8 : y - 8, 4), q.height - 4) + "px";
     dica.classList.toggle("abaixo", y < 70);
   }
   function esconderDica() { dica.hidden = true; }
   function linha(rotulo, valor) { var d = document.createElement("div"), t = document.createElement("dt"), v = document.createElement("dd"); t.textContent = rotulo; v.textContent = valor; d.appendChild(t); d.appendChild(v); return d; }
   function selecionar(u) {
     unidades.forEach(function (x) { x.classList.toggle("ms-sel", x === u); });
+    var tinhaFoco = document.activeElement === u;
     u.parentNode.appendChild(u);
+    if (tinhaFoco) u.focus({ preventScroll: true });
+    atual = u;
     painelSel.textContent = "";
     var h = document.createElement("h3"); h.textContent = u.dataset.nome; painelSel.appendChild(h);
     var dl = document.createElement("dl"); dl.className = "ms-dl";
@@ -147,18 +152,22 @@
   unidades.forEach(function (u) {
     u.addEventListener("mouseenter", function () { if (!arrastou) mostrarDica(u); });
     u.addEventListener("mouseleave", esconderDica);
-    u.addEventListener("focus", function () { mostrarDica(u); });
+    u.addEventListener("focus", function () {
+      var p = ponto(u);
+      if (p.x < view.x || p.x > view.x + view.w || p.y < view.y || p.y > view.y + view.h) { view.x = p.x - view.w / 2; view.y = p.y - view.h / 2; aplicar(); }
+      mostrarDica(u);
+    });
     u.addEventListener("blur", esconderDica);
     u.addEventListener("click", function (e) { e.stopPropagation(); if (!arrastou) selecionar(u); });
     u.addEventListener("keydown", function (e) { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); selecionar(u); } });
-    u.addEventListener("pointerdown", function (e) { e.stopPropagation(); });
+    
   });
 
   // filtro por tipo
   document.querySelectorAll(".ms-filtro input").forEach(function (c) {
     c.addEventListener("change", function () {
       unidades.forEach(function (u) { if (u.dataset.grupo === c.value) u.classList.toggle("ms-off", !c.checked); });
-      if (posicao) listarProximas();
+      if (posicao) listarProximas(false);
     });
   });
   function visivel(u) { return !u.classList.contains("ms-off"); }
@@ -172,10 +181,19 @@
   function xy(lat, lon) { return { x: lon * afim.k * afim.escala + afim.dx, y: -lat * afim.escala + afim.dy }; }
   function elem(nome, attrs) { var e = document.createElementNS(NS, nome); Object.keys(attrs || {}).forEach(function (k) { e.setAttribute(k, attrs[k]); }); return e; }
   function aviso(t) { msg.textContent = t; }
+  var contorno = (svg.dataset.contorno || "").split(";").map(function (p) { var v = p.split(",").map(Number); return { la: v[0], lo: v[1] }; });
+  function dentroDoMunicipio(lat, lon) {
+    var ok = false;
+    for (var i = 0, j = contorno.length - 1; i < contorno.length; j = i++) {
+      var a = contorno[i], b = contorno[j];
+      if ((a.la > lat) !== (b.la > lat) && lon < (b.lo - a.lo) * (lat - a.la) / (b.la - a.la) + a.lo) ok = !ok;
+    }
+    return ok;
+  }
   function marcar(lat, lon, rotulo) {
-    if (lat < caixa[0] - 0.04 || lat > caixa[2] + 0.04 || lon < caixa[1] - 0.04 || lon > caixa[3] + 0.04) {
+    if (!dentroDoMunicipio(lat, lon)) {
       posicao = null; distancias.clear(); gAneis.textContent = ""; gVoce.setAttribute("hidden", ""); painelProx.hidden = true;
-      aviso("Esse ponto fica fora de Sorocaba, então não mostro distâncias.");
+      aviso("Esse ponto fica fora de Sorocaba, então não mostro distâncias. Escolha um bairro da cidade.");
       return;
     }
     posicao = { lat: lat, lon: lon };
@@ -183,7 +201,7 @@
     gAneis.textContent = ""; gVoce.textContent = "";
     [1000, 2000, 5000].forEach(function (m) {
       gAneis.appendChild(elem("circle", { cx: p.x, cy: p.y, r: m * upm, class: "ms-anel" }));
-      var t = elem("text", { x: p.x, y: p.y - m * upm, class: "ms-anel-t", "text-anchor": "middle" }); t.textContent = m / 1000 + " km"; gAneis.appendChild(t);
+      var t = elem("text", { x: p.x, y: p.y - m * upm, class: "ms-anel-t", "text-anchor": "middle", dy: "-0.35em" }); t.textContent = m / 1000 + " km"; gAneis.appendChild(t);
     });
     var g = elem("g", { transform: "translate(" + p.x.toFixed(1) + " " + p.y.toFixed(1) + ")" });
     g.appendChild(elem("circle", { r: 15, class: "ms-voce-halo" }));
@@ -194,8 +212,9 @@
     unidades.forEach(function (u) { distancias.set(u, Math.round(metros(lat, lon, +u.dataset.lat, +u.dataset.lon))); });
     aviso("Posição marcada: " + rotulo + ". Ela fica só no seu navegador; só vai ao OpenStreetMap se você abrir “Como chegar”.");
     listarProximas();
+    if (atual) selecionar(atual);
   }
-  function listarProximas() {
+  function listarProximas(reenquadrar) {
     painelProx.textContent = "";
     var titulo = document.createElement("h3"); titulo.textContent = "Mais perto de você"; painelProx.appendChild(titulo);
     var ul = document.createElement("ul"); ul.className = "ms-prox";
@@ -209,7 +228,7 @@
       b.type = "button"; b.className = "ms-prox-b";
       var tipo = document.createElement("span"); tipo.className = "ms-prox-t"; tipo.textContent = NOMES[g];
       var nome = document.createElement("strong"); nome.textContent = u.dataset.nome;
-      var d = document.createElement("span"); d.className = "ms-prox-d"; d.textContent = fmtKm(distancias.get(u)) + " em linha reta";
+      var d = document.createElement("span"); d.className = "ms-prox-d"; d.textContent = fmtKm(distancias.get(u)) + " em linha reta" + (u.dataset.sus ? " · " + u.dataset.sus : "");
       b.appendChild(tipo); b.appendChild(nome); b.appendChild(d);
       b.addEventListener("click", function () { selecionar(u); var p = ponto(u), q = xy(posicao.lat, posicao.lon); enquadrar([p, q], 0.6); });
       li.appendChild(b); ul.appendChild(li);
@@ -218,7 +237,7 @@
     var nota = document.createElement("p"); nota.className = "pequeno suave"; nota.textContent = "Distância em linha reta, não pelo caminho. Em emergência, ligue 192 (SAMU).";
     painelProx.appendChild(nota);
     painelProx.hidden = false;
-    if (achou.length) enquadrar(achou.concat([xy(posicao.lat, posicao.lon)]), 0.35);
+    if (reenquadrar !== false && achou.length) enquadrar(achou.concat([xy(posicao.lat, posicao.lon)]), 0.35);
   }
   var btnGps = document.getElementById("ms-gps");
   btnGps.addEventListener("click", function () {
@@ -227,7 +246,8 @@
     btnGps.disabled = true;
     navigator.geolocation.getCurrentPosition(function (p) {
       btnGps.disabled = false;
-      marcar(p.coords.latitude, p.coords.longitude, "sua localização" + (p.coords.accuracy > 1500 ? " (aproximada)" : ""));
+      if (p.coords.accuracy > 3000) { aviso("O navegador só soube sua posição com erro de vários quilômetros. Escolha o bairro para ver as unidades mais perto."); return; }
+      marcar(p.coords.latitude, p.coords.longitude, "sua localização" + (p.coords.accuracy > 1000 ? " (aproximada)" : ""));
     }, function (err) {
       btnGps.disabled = false;
       aviso(err.code === 1 ? "A localização foi negada. Escolha o bairro ao lado." : "Não consegui sua posição. Escolha o bairro ao lado.");
@@ -235,27 +255,34 @@
   });
 
   // bairro como alternativa, sem permissão de localização
-  var campo = document.getElementById("ms-bairro"), lista = document.getElementById("ms-bairros"), bairros = null;
+  var campo = document.getElementById("ms-bairro"), lista = document.getElementById("ms-bairros"), bairros = null, carregando = null;
   function norm(s) { return s.toLowerCase().normalize("NFD").replace(/[̀-ͯ]/g, "").trim(); }
   function carregar() {
-    if (bairros || bairrosFalhou) return;
-    bairros = [];
-    fetch(svg.dataset.bairros).then(function (r) { if (!r.ok) throw new Error("http"); return r.json(); }).then(function (d) {
+    if (carregando) return carregando;
+    carregando = fetch(svg.dataset.bairros).then(function (r) { if (!r.ok) throw new Error("http"); return r.json(); }).then(function (d) {
       bairros = d.bairros;
       var visto = {};
       bairros.forEach(function (b) { if (visto[b.n]) return; visto[b.n] = 1; var o = document.createElement("option"); o.value = b.n; lista.appendChild(o); });
-    }).catch(function () { bairros = null; bairrosFalhou = true; aviso("Não consegui carregar a lista de bairros."); });
+    }).catch(function () { aviso("Não consegui carregar a lista de bairros."); });
+    return carregando;
   }
   campo.addEventListener("focus", carregar);
-  campo.addEventListener("input", carregar);
   document.getElementById("ms-bairro-form").addEventListener("submit", function (e) {
     e.preventDefault();
-    bairrosFalhou = false; carregar();
-    var q = norm(campo.value);
-    var b = (bairros || []).filter(function (x) { return norm(x.n) === q; })[0] || (q.length > 2 ? (bairros || []).filter(function (x) { return norm(x.n).indexOf(q) !== -1; })[0] : null);
-    if (!b) { aviso("Não achei esse bairro. Escolha um da lista."); return; }
-    marcar(b.la, b.lo, "centro do bairro " + b.n + ", aproximado");
+    carregar().then(function () {
+      var q = norm(campo.value);
+      if (!bairros || q.length < 3) { aviso("Digite o nome do bairro e escolha um da lista."); return; }
+      var iguais = bairros.filter(function (x) { return norm(x.n) === q; });
+      var achados = iguais.length ? iguais : bairros.filter(function (x) { return norm(x.n).indexOf(q) !== -1; });
+      var nomes = {};
+      achados.forEach(function (x) { nomes[x.n] = 1; });
+      if (!achados.length) { aviso("Não achei esse bairro. Escolha um da lista."); return; }
+      if (Object.keys(nomes).length > 1) { aviso("Vários bairros combinam com “" + campo.value + "”. Digite mais letras e escolha da lista."); return; }
+      var b = achados[0];
+      marcar(b.la, b.lo, "centro do bairro " + b.n + (achados.length > 1 ? " (há mais de um com esse nome; usei o primeiro)" : "") + ", aproximado");
+    });
   });
+  document.addEventListener("keydown", function (e) { if (e.key === "Escape") esconderDica(); });
   svg.addEventListener("click", function () { esconderDica(); });
   aplicar();
 })();
