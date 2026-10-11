@@ -102,3 +102,5 @@ Abra uma issue ou um pull request. O CI roda os testes e o render em todo PR. Mu
 Os dados pertencem às fontes originais e seguem as licenças delas, citadas em cada painel. A licença do código ainda não foi definida.
 
 Dados derivados do OpenStreetMap: © colaboradores do OpenStreetMap, licença ODbL 1.0 (https://www.openstreetmap.org/copyright). As posições dos radares (`data/raw/radares/coordenadas.csv`) e a base cartográfica do mapa de saúde (`data/raw/osm/base_sorocaba.json`, com vias, rios e 692 bairros do município) vêm do OSM. A base cartográfica é um extrato substancial: ela, o `mapa-base.svg` e o `data/mapa-bairros.json` publicados no site estão sob a ODbL 1.0 (veja `data/raw/osm/LICENCA.txt`).
+
+Fonte do logotipo: Orbitron, © 2018 The Orbitron Project Authors (https://github.com/theleagueof/orbitron), licença SIL Open Font License 1.1 (`static/fonts/OFL-Orbitron.txt`). O arquivo `static/fonts/orbitron-subset.woff2` é uma versão modificada (subconjunto de glifos), renomeada "SED Wordmark" conforme a condição de nome reservado da licença.

@@ -149,3 +149,18 @@ def test_identidade_visual_favicon_logo_e_fonte_propria(site):
     assert (site / "fonts" / "OFL-Orbitron.txt").exists()
     for svg in ("favicon.svg", "logo-icone.svg"):
         assert "<script" not in (site / svg).read_text(encoding="utf-8")
+
+
+def test_todo_asset_estatico_vai_para_a_saida(site):
+    raiz = Path(__file__).resolve().parent.parent / "static"
+    for arq in raiz.rglob("*"):
+        if arq.is_file() and not arq.name.startswith("."):
+            assert (site / arq.relative_to(raiz)).exists(), f"static/{arq.relative_to(raiz)} não é copiado para a saída"
+
+
+def test_identidade_em_pagina_aninhada_e_csp_sem_terceiros(site):
+    escola = next((site / "escolas").glob("*/index.html")).read_text(encoding="utf-8")
+    for alvo in ("../../favicon.svg", "../../logo-icone.svg", "../../fonts/orbitron-subset.woff2"):
+        assert alvo in escola, alvo
+    csp = re.search(r'Content-Security-Policy" content="([^"]+)"', escola).group(1)
+    assert not re.search(r"https?:|\*", csp)

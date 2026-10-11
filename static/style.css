@@ -246,11 +246,11 @@ table{width:100%;border-collapse:collapse;font-size:.95rem}th,td{padding:.4rem .
 .ms-link{display:inline-block;font-weight:700;color:var(--primary)}
 @media(max-width:899px){.ms-dl>div{grid-template-columns:6rem 1fr}}
 
-@font-face{font-family:"Orbitron";src:url("fonts/orbitron-subset.woff2") format("woff2");font-weight:400 900;font-style:normal;font-display:swap}
+@font-face{font-family:"SED Wordmark";src:url("fonts/orbitron-subset.woff2") format("woff2");font-weight:400 900;font-style:normal;font-display:swap}
 :root{--verde:#00c896;--verde-texto:#007f63;--ciano:#00bfff;--ambar:#ffb020}
 .logo{width:2.75rem;height:2.75rem;flex:none;border-radius:.7rem;display:block}
-.marca{gap:.7rem}.marca-texto{display:flex;flex-direction:column;font-family:"Orbitron",system-ui,sans-serif;text-transform:uppercase;letter-spacing:.16em;line-height:1.1;font-size:.78rem;font-weight:700}
+.marca{gap:.7rem}.marca-texto{display:flex;flex-direction:column;font-family:"SED Wordmark",system-ui,sans-serif;text-transform:uppercase;letter-spacing:.16em;line-height:1.1;font-size:.78rem;font-weight:700}
 .marca-texto b{font-weight:700}.marca-texto .marca-verde{color:var(--verde-texto);font-weight:600}
 .rodape-marca .marca-texto{font-size:.9rem;color:var(--navy-foreground)}.rodape-marca .marca-verde{color:var(--verde)}
 .cabecalho{border-bottom:0;box-shadow:0 1px 0 var(--border)}
-.cabecalho::after{content:"";position:absolute;left:0;right:0;bottom:-1px;height:2px;background:linear-gradient(90deg,var(--ciano),var(--verde) 55%,var(--ambar));opacity:.85}
+.cabecalho::after{content:"";position:absolute;left:0;right:0;bottom:-1px;height:2px;z-index:-1;background:linear-gradient(90deg,var(--ciano),var(--verde) 55%,var(--ambar));opacity:.85}
