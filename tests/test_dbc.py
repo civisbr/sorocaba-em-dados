@@ -77,3 +77,16 @@ def test_dbc_para_dbf_junta_cabecalho_e_payload():
 def test_ler_dbc_nao_aceita_arquivo_sem_payload():
     with pytest.raises(DbcInvalido):
         list(ler_dbc(b"\0" * 20))
+
+
+def test_blast_distancia_alem_do_inicio_e_codigo_invalido():
+    # bits manipulados à mão: marcador de cópia logo no início, sem nada na saída
+    with pytest.raises(DbcInvalido):
+        descomprimir(bytes([0, 4, 0xFF, 0xFF, 0xFF, 0xFF]))
+
+
+def test_ler_dbf_campos_maiores_que_o_registro():
+    dbf = bytearray(_dbf([("0001", "355220", "12")]))
+    struct.pack_into("<H", dbf, 10, 5)
+    with pytest.raises(DbcInvalido):
+        list(ler_dbf(bytes(dbf)))

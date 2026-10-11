@@ -33,6 +33,6 @@ def contexto_panorama(env: dict) -> dict:
     causas = [{"nome": c, "n": n, "pct": _pct(n, obitos), "anterior": v.get((anterior, "obito_capitulo", c)) if anterior else None} for c, n in caps[:8]]
     faixas = [{"nome": f, "n": v[(atual, "obito_faixa", f)], "pct": _pct(v[(atual, "obito_faixa", f)], obitos)} for f in ORDEM_FAIXAS if (atual, "obito_faixa", f) in v]
     externas = [{"nome": g, "por_ano": [{"ano": a, "n": v.get((a, "obito_externa", g))} for a in anos]} for g in ORDEM_EXTERNAS]
-    nascimentos = [{"nome": nome, "por_ano": [{"ano": a, "pct": _pct(v.get((a, num, ""), 0), total(a, den))} for a in anos]} for nome, num, den in INDICADORES_NASC]
+    nascimentos = [{"nome": nome, "por_ano": [{"ano": a, "pct": (_pct(v[(a, num, "")], total(a, den)) if (a, num, "") in v else None)} for a in anos]} for nome, num, den in INDICADORES_NASC]
     return {"anos": anos, "ano_atual": atual, "obitos": obitos, "nascidos": nasc, "por_ano": por_ano, "causas": causas, "faixas": faixas, "externas": externas,
             "nascimentos": nascimentos, "ref_pan": str(atual), "tmi": por_ano[-1]["tmi"], "saldo": nasc - obitos}

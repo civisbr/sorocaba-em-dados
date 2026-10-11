@@ -26,6 +26,8 @@ MUNICIPIO = "355220"
 HOST_API = "apidadosabertos.saude.gov.br"
 API = f"https://{HOST_API}/cnes/estabelecimentos"
 MAX_DIAS_COMPETENCIA = 150
+VARIACAO_LEITOS = (0.8, 1.2)  # entre coletas; o FTP não tem TLS nem checksum
+TAM_TEXTO = 120
 TIPOS_MANTIDOS = frozenset(HOSPITALAR + URGENCIA + ATENCAO_BASICA + ("70",))
 CAMPOS_ESTAB = ["cnes", "tipo", "nat_jur", "vinc_sus", "urgencia", "centro_cirurgico", "centro_obstetrico", "neonatal", "nome", "logradouro", "numero", "bairro", "telefone", "lat", "lon"]
 CAMPOS_LEITO = ["cnes", "tp_leito", "cod_leito", "existentes", "sus"]
@@ -74,6 +76,14 @@ def nomes_api(c: httpx.Client, tipos: set[str]) -> dict[str, dict]:
     return saida
 
 
+def _texto(v) -> str:
+    """Texto de campo vindo da API: só str, sem quebra de linha, tamanho limitado e sem prefixo que planilhas leiam como fórmula."""
+    if not isinstance(v, str):
+        return ""
+    t = " ".join(v.split())[:TAM_TEXTO]
+    return "'" + t if t[:1] in ("=", "+", "-", "@") else t
+
+
 def _coord(v) -> str:
     if isinstance(v, (int, float)) and not isinstance(v, bool) and -90 <= v <= 90:
         return f"{v:.5f}"
@@ -100,9 +110,9 @@ def montar(st_rows: list[dict], lt_rows: list[dict], nomes: dict[str, dict]) -> 
         estab.append({
             "cnes": r["CNES"], "tipo": r["TP_UNID"], "nat_jur": r["NAT_JUR"], "vinc_sus": _inteiro(r["VINC_SUS"]),
             "urgencia": _inteiro(r["URGEMERG"]), "centro_cirurgico": _inteiro(r["CENTRCIR"]), "centro_obstetrico": _inteiro(r["CENTROBS"]), "neonatal": _inteiro(r["CENTRNEO"]),
-            "nome": (n.get("nome_fantasia") or "").strip(), "logradouro": (n.get("endereco_estabelecimento") or "").strip(),
-            "numero": str(n.get("numero_estabelecimento") or "").strip(), "bairro": (n.get("bairro_estabelecimento") or "").strip(),
-            "telefone": (n.get("numero_telefone_estabelecimento") or "").strip(),
+            "nome": _texto(n.get("nome_fantasia")), "logradouro": _texto(n.get("endereco_estabelecimento")),
+            "numero": _texto(str(n.get("numero_estabelecimento") or "")), "bairro": _texto(n.get("bairro_estabelecimento")),
+            "telefone": _texto(n.get("numero_telefone_estabelecimento")),
             "lat": _coord(n.get("latitude_estabelecimento_decimo_grau")), "lon": _coord(n.get("longitude_estabelecimento_decimo_grau")),
         })
     estab.sort(key=lambda e: (e["tipo"], e["cnes"]))
@@ -147,6 +157,12 @@ def coletar(acesso_em: date, destino: Path = DESTINO, listar: Lista = ftp_datasu
     hospitais = [e for e in estab if e["tipo"] in HOSPITALAR]
     if len(hospitais) < 5 or sum(r["existentes"] for r in leitos) < 500:
         raise ValueError("recorte de Sorocaba implausível (poucos hospitais ou leitos); a fonte mudou?")
+    total_leitos = sum(r["existentes"] for r in leitos)
+    mant = destino / "manifesto.json"
+    if mant.exists():
+        antes = json.loads(mant.read_text(encoding="utf-8")).get("leitos_total")
+        if antes and not VARIACAO_LEITOS[0] <= total_leitos / antes <= VARIACAO_LEITOS[1]:
+            raise ValueError(f"leitos foram de {antes} para {total_leitos} entre coletas; confira a fonte antes de aceitar")
     sem_nome = [e for e in estab if not e["nome"]]
     if len(sem_nome) > 0.2 * len(estab):
         raise ValueError(f"{len(sem_nome)} de {len(estab)} estabelecimentos sem nome no cadastro aberto")
@@ -160,7 +176,7 @@ def coletar(acesso_em: date, destino: Path = DESTINO, listar: Lista = ftp_datasu
         os.replace(tmp, destino / nome)
     man = {"fonte": "CNES/DATASUS: arquivos ST e LT de SP (FTP) + cadastro aberto de estabelecimentos (nomes e endereços)", "competencia": comp, "verificado_em": acesso_em.isoformat(),
            "origem": arquivos, "sha256_csv": {n: hashlib.sha256(t.encode("utf-8")).hexdigest() for n, t in textos.items()},
-           "n_estabelecimentos": len(estab), "n_hospitais": len(hospitais), "n_sem_nome": len(sem_nome)}
+           "n_estabelecimentos": len(estab), "leitos_total": total_leitos, "n_hospitais": len(hospitais), "n_sem_nome": len(sem_nome)}
     tmp = destino / "manifesto.tmp"
     tmp.write_text(json.dumps(man, indent=2, sort_keys=True, ensure_ascii=False, allow_nan=False) + "\n", encoding="utf-8")
     os.replace(tmp, destino / "manifesto.json")

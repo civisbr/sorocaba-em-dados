@@ -25,8 +25,10 @@ MUNICIPIO = "355220"
 MESES = 12
 REVISAO_MESES = 3  # o SIH reprocessa os meses recentes; os mais antigos ficam como já coletados
 MAX_DIAS_COMPETENCIA = 200
+VARIACAO_MAXIMA = (0.7, 1.3)  # mês já coletado que muda além disso entre coletas indica fonte alterada; o FTP não tem TLS nem checksum
 CELULA_MINIMA = 5
 OUTROS = "Outros capítulos"
+ESPEC_OUTRAS = "99"
 CAMPOS = ["competencia", "cnes", "espec", "capitulo", "residente", "internacoes", "dias", "dias_uti"]
 
 
@@ -78,8 +80,23 @@ def agregar(rd: list[dict], competencia: str) -> list[dict]:
         f[0] += n
         f[1] += d
         f[2] += u
-    return [{"competencia": competencia, "cnes": c, "espec": e, "capitulo": cap, "residente": res, "internacoes": n, "dias": d, "dias_uti": u}
-            for (c, e, cap, res), (n, d, u) in sorted(fundido.items())]
+    return proteger([{"competencia": competencia, "cnes": c, "espec": e, "capitulo": cap, "residente": res, "internacoes": n, "dias": d, "dias_uti": u}
+                     for (c, e, cap, res), (n, d, u) in sorted(fundido.items())])
+
+
+def proteger(linhas: list[dict]) -> list[dict]:
+    """Nenhuma célula publicada com menos de CELULA_MINIMA internações aponta uma especialidade nem traz dias de permanência. Idempotente."""
+    acc: dict[tuple, list[int]] = defaultdict(lambda: [0, 0, 0])
+    for r in linhas:
+        n = int(r["internacoes"])
+        espec = r["espec"] if n >= CELULA_MINIMA else ESPEC_OUTRAS
+        cap = r["capitulo"] if n >= CELULA_MINIMA else OUTROS
+        a = acc[(r["competencia"], r["cnes"], espec, cap, int(r["residente"]))]
+        a[0] += n
+        a[1] += int(r["dias"])
+        a[2] += int(r["dias_uti"])
+    return [{"competencia": c, "cnes": h, "espec": e, "capitulo": cap, "residente": res, "internacoes": n, "dias": d if n >= CELULA_MINIMA else 0, "dias_uti": u if n >= CELULA_MINIMA else 0}
+            for (c, h, e, cap, res), (n, d, u) in sorted(acc.items())]
 
 
 def _csv(linhas: list[dict]) -> str:
@@ -119,9 +136,13 @@ def coletar(acesso_em: date, destino: Path = DESTINO, listar: Callable[[str], li
         origem[m] = {"bytes": len(dados), "sha256": h}
         if not novos[m]:
             raise ValueError(f"nenhuma internação em Sorocaba em {m}; a fonte mudou?")
+        if m in antigo:
+            antes, depois = sum(int(r["internacoes"]) for r in antigo[m]), sum(r["internacoes"] for r in novos[m])
+            if antes and not VARIACAO_MAXIMA[0] <= depois / antes <= VARIACAO_MAXIMA[1]:
+                raise ValueError(f"{m}: internações foram de {antes} para {depois} entre coletas; confira a fonte antes de aceitar")
     linhas: list[dict] = []
     for m in meses:
-        linhas += novos[m] if m in novos else [{k: (int(v) if k in ("residente", "internacoes", "dias", "dias_uti") else v) for k, v in r.items()} for r in antigo[m]]
+        linhas += novos[m] if m in novos else proteger(antigo[m])
     texto = _csv(linhas)
     destino.mkdir(parents=True, exist_ok=True)
     tmp = destino / "internacoes.csv.tmp"

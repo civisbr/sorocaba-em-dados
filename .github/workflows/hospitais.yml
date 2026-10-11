@@ -61,8 +61,8 @@ jobs:
         run: |
           url="${GITHUB_SERVER_URL}/${GITHUB_REPOSITORY}/actions/runs/${GITHUB_RUN_ID}"
           titulo="Falha na atualização dos hospitais e leitos"
-          aberta=$(gh issue list --state open --search "$titulo in:title" --json number --jq '.[0].number')
-          if [ -n "$aberta" ]; then
+          aberta=$(gh issue list --state open --search "\"$titulo\" in:title" --json number,title --jq "[.[] | select(.title == \"$titulo\")][0].number")
+          if [ -n "$aberta" ] && [ "$aberta" != "null" ]; then
             gh issue comment "$aberta" --body "Nova falha: $url"
           else
             gh issue create --title "$titulo" --body "Execução: $url. O site continua servindo o JSON anterior."

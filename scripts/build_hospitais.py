@@ -17,6 +17,7 @@ from scripts.saude_codigos import ESPEC_SIH, GRUPO_LEITO, HOSPITALAR, LEITOS, TI
 RAIZ = Path(__file__).resolve().parent.parent
 LEITOS_SUS_MINIMOS = 20  # abaixo disso o "uso estimado" oscila demais para ser mostrado
 TOP_CAPITULOS = 6
+CELULA_MINIMA = 5
 
 
 def _csv(raw: Path, nome: str, esperado: str) -> list[dict]:
@@ -76,8 +77,12 @@ def construir(raw_cnes: Path, raw_sih: Path) -> Envelope:
         esp[(c, ESPEC_SIH[r["espec"]])] += n
         cap[(c, r["capitulo"])] += n
     for (c, m), n in sorted(mes.items()):
+        if n < CELULA_MINIMA:
+            continue
         dados.append({"recorte": "internacao_mes", "cnes": c, "competencia": m, "internacoes": n})
     for (c, nome), n in sorted(esp.items()):
+        if n < CELULA_MINIMA:
+            continue
         dados.append({"recorte": "internacao_especialidade", "cnes": c, "especialidade": nome, "internacoes": n})
     por_hosp: dict[str, list[tuple[str, int]]] = defaultdict(list)
     for (c, nome), n in cap.items():

@@ -50,7 +50,7 @@
     <div class="rolagem"><table>
       <caption class="so-leitor">Indicadores dos nascidos vivos, por ano, em porcentagem dos casos com informação válida</caption>
       <thead><tr><th scope="col">Indicador</th>{% for a in anos %}<th scope="col">{{ a }}</th>{% endfor %}</tr></thead>
-      <tbody>{% for n in nascimentos %}<tr><th scope="row">{{ n.nome }}</th>{% for x in n.por_ano %}<td>{{ x.pct | brl1 if x.pct is not none else "—" }}%</td>{% endfor %}</tr>{% endfor %}</tbody>
+      <tbody>{% for n in nascimentos %}<tr><th scope="row">{{ n.nome }}</th>{% for x in n.por_ano %}<td>{% if x.pct is not none %}{{ x.pct | brl1 }}%{% else %}menos de 5 casos{% endif %}</td>{% endfor %}</tr>{% endfor %}</tbody>
     </table></div>
     <details class="tabela-mes"><summary>Nascimentos, óbitos e mortalidade infantil por ano</summary>
       <div class="rolagem"><table>

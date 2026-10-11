@@ -192,3 +192,36 @@ def test_pagina_de_hospitais_renderizada():
         html = (Path(d) / "hospitais" / "index.html").read_text(encoding="utf-8")
         assert "Uso estimado dos leitos SUS" in html and "Leitos por especialidade" in html
         assert "lotação do dia" in html
+
+
+def test_sih_nenhuma_celula_publicada_descreve_uma_internacao():
+    rd = [_rd("1", diag="S720")] * 7 + [_rd("1", espec="03", diag="J189", dias="40", uti="12")] + [_rd("1", espec="02", diag="O800", dias="9")] * 2
+    linhas = fetch_sih.agregar(rd, "202607")
+    assert sum(l["internacoes"] for l in linhas) == 10
+    for l in linhas:
+        if l["internacoes"] < fetch_sih.CELULA_MINIMA:
+            assert l["dias"] == 0 and l["dias_uti"] == 0
+    assert not any(l["espec"] == "03" for l in linhas)  # fundida em "outras especialidades"
+    assert any(l["espec"] == fetch_sih.ESPEC_OUTRAS and l["internacoes"] == 3 for l in linhas)
+
+
+def test_cnes_texto_da_api_e_sanitizado():
+    assert fetch_cnes._texto("=HYPERLINK(1)") == "'=HYPERLINK(1)"
+    assert fetch_cnes._texto("  A\nB  ") == "A B" and fetch_cnes._texto(123) == "" and len(fetch_cnes._texto("x" * 500)) == fetch_cnes.TAM_TEXTO
+
+
+def test_cnes_variacao_grande_de_leitos_entre_coletas_aborta(tmp_path):
+    _coletar_cnes(tmp_path)
+    man = json.loads((tmp_path / "manifesto.json").read_text(encoding="utf-8"))
+    man["leitos_total"] = man["leitos_total"] * 3
+    (tmp_path / "manifesto.json").write_text(json.dumps(man), encoding="utf-8")
+    with pytest.raises(ValueError, match="entre coletas"):
+        _coletar_cnes(tmp_path)
+
+
+def test_sih_variacao_grande_entre_coletas_aborta(tmp_path):
+    meses = [f"2025{m:02d}" for m in range(8, 13)] + [f"2026{m:02d}" for m in range(1, 8)]
+    listar = lambda p: [f"RDSP{m[2:]}.dbc" for m in meses]
+    fetch_sih.coletar(HOJE, tmp_path, listar, lambda c: (b"x", "h"), lambda d, f: iter([_rd("1")] * 10))
+    with pytest.raises(ValueError, match="entre coletas"):
+        fetch_sih.coletar(HOJE, tmp_path, listar, lambda c: (b"x", "h"), lambda d, f: iter([_rd("1")] * 40))

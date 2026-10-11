@@ -39,7 +39,7 @@ UTI = {"61", "62", "63", "74", "75", "76", "77", "78", "79", "80", "81", "82", "
 ESPEC_SIH = {
     "01": "Cirurgia", "02": "Obstetrícia", "03": "Clínica médica", "04": "Crônicos", "05": "Psiquiatria",
     "06": "Pneumologia sanitária", "07": "Pediatria", "08": "Reabilitação", "09": "Hospital-dia cirúrgico",
-    "10": "Hospital-dia Aids", "11": "Hospital-dia geriatria", "12": "Hospital-dia saúde mental",
+    "10": "Hospital-dia Aids", "11": "Hospital-dia geriatria", "12": "Hospital-dia saúde mental", "99": "Outras especialidades",
 }
 
 CAPITULOS_CID = (

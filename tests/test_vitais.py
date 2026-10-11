@@ -95,3 +95,17 @@ def test_pagina_do_panorama_renderizada(tmp_path):
     assert r.returncode == 0, r.stderr
     html = (tmp_path / "panorama" / "index.html").read_text(encoding="utf-8")
     assert "Grupos de causas" in html and "Partos cesáreos" in html
+
+
+def test_variacao_grande_do_ano_recente_aborta(tmp_path):
+    _coletar(tmp_path)
+    listar = lambda pasta: [f"{'DO' if 'SIM' in pasta else 'DN'}SP{a}.dbc" for a in ("2022", "2023", "2024")]
+    with pytest.raises(ValueError, match="entre coletas"):
+        fetch_vitais.coletar(HOJE, tmp_path, listar, lambda c: (b"DO" if "/DO" in c else b"DN", "h"), lambda d, f: iter([_do()] * 30 if d == b"DO" else [_dn()] * 6))
+
+
+def test_numerador_suprimido_nao_vira_zero_por_cento():
+    env = {"dados": [{"recorte": "indicador", "ano": 2024, "bloco": b, "categoria": c, "n": n} for b, c, n in
+                     [("obito_total", "", 10), ("nasc_total", "", 100), ("nasc_parto_valido", "", 100)]]}
+    cesarea = contexto_panorama(env)["nascimentos"][0]["por_ano"][0]["pct"]
+    assert cesarea is None

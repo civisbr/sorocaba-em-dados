@@ -24,6 +24,7 @@ PASTA_SIM = "SIM/CID10/DORES"
 PASTA_SINASC = "SINASC/1996_/Dados/DNRES"
 MUNICIPIO = "355220"
 ANOS = 3
+VARIACAO_MAXIMA = (0.85, 1.15)  # ano já coletado que muda além disso entre coletas indica fonte alterada (FTP sem TLS)
 CELULA_MINIMA = 5
 CAMPOS = ["ano", "bloco", "categoria", "n"]
 FAIXAS = ((0, 1, "Menos de 1 ano"), (1, 15, "1 a 14 anos"), (15, 30, "15 a 29 anos"), (30, 60, "30 a 59 anos"), (60, 80, "60 a 79 anos"), (80, 200, "80 anos ou mais"))
@@ -135,6 +136,12 @@ def coletar(acesso_em: date, destino: Path = DESTINO, listar: Callable[[str], li
                 raise ValueError(f"nenhum registro de Sorocaba em {sigla}SP{a}")
             novas += linhas
             origem.setdefault(str(a), {})[sigla] = {"bytes": len(dados), "sha256": h}
+    for a in refazer:
+        for bloco in ("obito_total", "nasc_total"):
+            antes = next((r["n"] for r in existente if r["ano"] == a and r["bloco"] == bloco), None)
+            depois = next(r["n"] for r in novas if r["ano"] == a and r["bloco"] == bloco)
+            if antes and not VARIACAO_MAXIMA[0] <= depois / antes <= VARIACAO_MAXIMA[1]:
+                raise ValueError(f"{a} {bloco}: foi de {antes} para {depois} entre coletas; confira a fonte antes de aceitar")
     todas = [r for r in existente if r["ano"] in anos and r["ano"] not in refazer] + novas
     todas.sort(key=lambda r: (r["ano"], r["bloco"], r["categoria"]))
     texto = _csv(todas)

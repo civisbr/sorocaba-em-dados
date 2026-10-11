@@ -3349,151 +3349,193 @@
     {
       "cnes": "0605484",
       "especialidade": "Cirurgia",
-      "internacoes": 326,
+      "internacoes": 309,
       "recorte": "internacao_especialidade"
     },
     {
       "cnes": "0605484",
       "especialidade": "Clínica médica",
-      "internacoes": 646,
+      "internacoes": 621,
+      "recorte": "internacao_especialidade"
+    },
+    {
+      "cnes": "0605484",
+      "especialidade": "Outras especialidades",
+      "internacoes": 42,
       "recorte": "internacao_especialidade"
     },
     {
       "cnes": "2078813",
       "especialidade": "Cirurgia",
-      "internacoes": 1884,
+      "internacoes": 1851,
       "recorte": "internacao_especialidade"
     },
     {
       "cnes": "2078813",
       "especialidade": "Clínica médica",
-      "internacoes": 89,
+      "internacoes": 52,
+      "recorte": "internacao_especialidade"
+    },
+    {
+      "cnes": "2078813",
+      "especialidade": "Outras especialidades",
+      "internacoes": 70,
       "recorte": "internacao_especialidade"
     },
     {
       "cnes": "2079321",
       "especialidade": "Cirurgia",
-      "internacoes": 958,
+      "internacoes": 943,
       "recorte": "internacao_especialidade"
     },
     {
       "cnes": "2079321",
       "especialidade": "Clínica médica",
-      "internacoes": 533,
+      "internacoes": 511,
+      "recorte": "internacao_especialidade"
+    },
+    {
+      "cnes": "2079321",
+      "especialidade": "Outras especialidades",
+      "internacoes": 40,
       "recorte": "internacao_especialidade"
     },
     {
       "cnes": "2079321",
       "especialidade": "Pediatria",
-      "internacoes": 1617,
+      "internacoes": 1614,
       "recorte": "internacao_especialidade"
     },
     {
       "cnes": "2081695",
       "especialidade": "Cirurgia",
-      "internacoes": 8100,
+      "internacoes": 8095,
       "recorte": "internacao_especialidade"
     },
     {
       "cnes": "2081695",
       "especialidade": "Clínica médica",
-      "internacoes": 5824,
+      "internacoes": 5823,
       "recorte": "internacao_especialidade"
     },
     {
       "cnes": "2081695",
       "especialidade": "Hospital-dia cirúrgico",
-      "internacoes": 1274,
+      "internacoes": 1261,
       "recorte": "internacao_especialidade"
     },
     {
       "cnes": "2081695",
       "especialidade": "Obstetrícia",
-      "internacoes": 2459,
+      "internacoes": 2445,
+      "recorte": "internacao_especialidade"
+    },
+    {
+      "cnes": "2081695",
+      "especialidade": "Outras especialidades",
+      "internacoes": 67,
       "recorte": "internacao_especialidade"
     },
     {
       "cnes": "2081695",
       "especialidade": "Pediatria",
-      "internacoes": 2115,
+      "internacoes": 2096,
       "recorte": "internacao_especialidade"
     },
     {
       "cnes": "2081695",
       "especialidade": "Psiquiatria",
-      "internacoes": 383,
+      "internacoes": 368,
       "recorte": "internacao_especialidade"
     },
     {
       "cnes": "2708566",
       "especialidade": "Cirurgia",
-      "internacoes": 369,
+      "internacoes": 338,
       "recorte": "internacao_especialidade"
     },
     {
       "cnes": "2708566",
       "especialidade": "Clínica médica",
-      "internacoes": 34,
+      "internacoes": 5,
+      "recorte": "internacao_especialidade"
+    },
+    {
+      "cnes": "2708566",
+      "especialidade": "Outras especialidades",
+      "internacoes": 60,
       "recorte": "internacao_especialidade"
     },
     {
       "cnes": "2708779",
       "especialidade": "Cirurgia",
-      "internacoes": 4548,
+      "internacoes": 4530,
       "recorte": "internacao_especialidade"
     },
     {
       "cnes": "2708779",
       "especialidade": "Clínica médica",
-      "internacoes": 9261,
+      "internacoes": 9248,
       "recorte": "internacao_especialidade"
     },
     {
       "cnes": "2708779",
       "especialidade": "Hospital-dia cirúrgico",
-      "internacoes": 251,
+      "internacoes": 232,
       "recorte": "internacao_especialidade"
     },
     {
       "cnes": "2708779",
       "especialidade": "Obstetrícia",
-      "internacoes": 2244,
+      "internacoes": 2218,
+      "recorte": "internacao_especialidade"
+    },
+    {
+      "cnes": "2708779",
+      "especialidade": "Outras especialidades",
+      "internacoes": 104,
       "recorte": "internacao_especialidade"
     },
     {
       "cnes": "2708779",
       "especialidade": "Pediatria",
-      "internacoes": 295,
+      "internacoes": 267,
       "recorte": "internacao_especialidade"
     },
     {
       "cnes": "2765942",
       "especialidade": "Cirurgia",
-      "internacoes": 3040,
+      "internacoes": 3017,
       "recorte": "internacao_especialidade"
     },
     {
       "cnes": "2765942",
       "especialidade": "Clínica médica",
-      "internacoes": 1197,
+      "internacoes": 1187,
       "recorte": "internacao_especialidade"
     },
     {
       "cnes": "2765942",
       "especialidade": "Obstetrícia",
-      "internacoes": 2440,
+      "internacoes": 2415,
+      "recorte": "internacao_especialidade"
+    },
+    {
+      "cnes": "2765942",
+      "especialidade": "Outras especialidades",
+      "internacoes": 65,
       "recorte": "internacao_especialidade"
     },
     {
       "cnes": "2765942",
       "especialidade": "Pediatria",
-      "internacoes": 707,
+      "internacoes": 700,
       "recorte": "internacao_especialidade"
     },
     {
       "cnes": "9491112",
       "especialidade": "Cirurgia",
-      "internacoes": 6864,
+      "internacoes": 6856,
       "recorte": "internacao_especialidade"
     },
     {
@@ -3505,7 +3547,13 @@
     {
       "cnes": "9491112",
       "especialidade": "Hospital-dia cirúrgico",
-      "internacoes": 890,
+      "internacoes": 866,
+      "recorte": "internacao_especialidade"
+    },
+    {
+      "cnes": "9491112",
+      "especialidade": "Outras especialidades",
+      "internacoes": 32,
       "recorte": "internacao_especialidade"
     },
     {
@@ -3774,18 +3822,18 @@
     },
     {
       "cnes": "0605484",
-      "dias": 5410,
+      "dias": 5168,
       "dias_uti": 0,
       "internacoes": 972,
       "leitos_sus": 33,
       "meses": 12,
       "pct_de_fora": 2.4,
       "recorte": "internacao_total",
-      "uso_estimado_pct": 44.9
+      "uso_estimado_pct": 42.9
     },
     {
       "cnes": "2078813",
-      "dias": 502,
+      "dias": 476,
       "dias_uti": 0,
       "internacoes": 1973,
       "leitos_sus": 10,
@@ -3796,30 +3844,30 @@
     },
     {
       "cnes": "2079321",
-      "dias": 15539,
-      "dias_uti": 1243,
+      "dias": 15358,
+      "dias_uti": 1227,
       "internacoes": 3108,
       "leitos_sus": 66,
       "meses": 12,
       "pct_de_fora": 16.5,
       "recorte": "internacao_total",
-      "uso_estimado_pct": 64.5
+      "uso_estimado_pct": 63.8
     },
     {
       "cnes": "2081695",
-      "dias": 127965,
-      "dias_uti": 18318,
+      "dias": 127727,
+      "dias_uti": 18262,
       "internacoes": 20155,
       "leitos_sus": 413,
       "meses": 12,
       "pct_de_fora": 69.6,
       "recorte": "internacao_total",
-      "uso_estimado_pct": 84.9
+      "uso_estimado_pct": 84.7
     },
     {
       "cnes": "2708566",
-      "dias": 843,
-      "dias_uti": 67,
+      "dias": 481,
+      "dias_uti": 59,
       "internacoes": 403,
       "leitos_sus": 13,
       "meses": 12,
@@ -3829,30 +3877,30 @@
     },
     {
       "cnes": "2708779",
-      "dias": 82356,
-      "dias_uti": 19704,
+      "dias": 82205,
+      "dias_uti": 19645,
       "internacoes": 16599,
       "leitos_sus": 265,
       "meses": 12,
       "pct_de_fora": 7.7,
       "recorte": "internacao_total",
-      "uso_estimado_pct": 85.1
+      "uso_estimado_pct": 85.0
     },
     {
       "cnes": "2765942",
-      "dias": 22701,
+      "dias": 22652,
       "dias_uti": 3607,
       "internacoes": 7384,
       "leitos_sus": 102,
       "meses": 12,
       "pct_de_fora": 14.3,
       "recorte": "internacao_total",
-      "uso_estimado_pct": 61.0
+      "uso_estimado_pct": 60.8
     },
     {
       "cnes": "9491112",
-      "dias": 54422,
-      "dias_uti": 10570,
+      "dias": 54395,
+      "dias_uti": 10567,
       "internacoes": 11527,
       "leitos_sus": 240,
       "meses": 12,
@@ -3870,14 +3918,14 @@
   "painel": "saude_hospitais",
   "qualidade": {
     "flag": "estimativa",
-    "n_registros": 414,
+    "n_registros": 422,
     "notas": [
       "Cadastro de estabelecimentos e leitos do CNES, competência 08/2026. O cadastro é declarado pelos próprios estabelecimentos e pode estar defasado.",
       "Internações do SIH/SUS de 08/2025 a 07/2026: só as pagas pelo SUS, sem as de convênios e particulares. Contam hospitais localizados em Sorocaba, inclusive pacientes de outras cidades.",
       "Não existe dado aberto de ocupação ou fila de hospital. O 'uso estimado dos leitos SUS' divide os dias de internação SUS dos últimos 12 meses pelos leitos SUS existentes vezes 365. É uma ordem de grandeza, não a lotação do dia.",
       "O uso estimado só aparece para hospitais com 20 leitos SUS ou mais.",
       "Contagem de internações e de dias não mede qualidade do hospital: depende do porte, da especialidade e da gravidade dos casos.",
-      "SHA-256 dos recortes de coleta: 05993e7f0d6aa5a297cf86cffe18661ad04b72d49dffbe7dc3c1b352584234dc"
+      "SHA-256 dos recortes de coleta: 13cebc54eabba9d0134830649d8df2dda336e2e48128172b479d3a00e15e8fb9"
     ]
   },
   "referencia": {
