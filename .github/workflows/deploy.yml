@@ -28,7 +28,12 @@ jobs:
       - run: uv run pytest -q
       - name: Previsão do tempo (efêmera, não vai para o git)
         run: |
-          uv run python -m scripts.fetch_previsao --acesso-em "$(date -u +%F)" && uv run python -m scripts.build_previsao || echo "previsão indisponível; o site sai sem ela"
+          if uv run python -m scripts.fetch_previsao --acesso-em "$(date -u +%F)" && uv run python -m scripts.build_previsao; then
+            echo "previsão publicada; sha256 de data/public/previsao.json: $(sha256sum data/public/previsao.json | cut -d' ' -f1)" | tee -a "$GITHUB_STEP_SUMMARY"
+          else
+            echo "::warning::previsão indisponível; o site sai sem ela"
+            echo "Previsão indisponível neste deploy." >> "$GITHUB_STEP_SUMMARY"
+          fi
       - run: uv run python -m scripts.render
       - uses: actions/upload-pages-artifact@fc324d3547104276b827a68afc52ff2a11cc49c9 # v5
         with:
