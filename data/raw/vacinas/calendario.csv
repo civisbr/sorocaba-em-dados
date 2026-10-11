@@ -1,0 +1,53 @@
+publico;idade;vacina;protege;nota
+Crianças;Ao nascer;Hepatite B;Hepatite B e D;1ª dose
+Crianças;Ao nascer;BCG;Formas graves de tuberculose;Dose única
+Crianças;2 meses;Penta (DTP, Hib e hepatite B);Difteria, tétano, coqueluche, meningite e outras doenças por Haemophilus influenzae b, hepatite B;1ª dose
+Crianças;2 meses;Poliomielite inativada (VIP);Poliomielite (paralisia infantil);1ª dose
+Crianças;4 meses;Penta (DTP, Hib e hepatite B);Difteria, tétano, coqueluche, meningite e outras doenças por Haemophilus influenzae b, hepatite B;2ª dose
+Crianças;4 meses;Poliomielite inativada (VIP);Poliomielite (paralisia infantil);2ª dose
+Crianças;6 meses;Penta (DTP, Hib e hepatite B);Difteria, tétano, coqueluche, meningite e outras doenças por Haemophilus influenzae b, hepatite B;3ª dose
+Crianças;6 meses;Poliomielite inativada (VIP);Poliomielite (paralisia infantil);3ª dose
+Crianças;2 meses;Rotavírus;Diarreia grave por rotavírus;1ª dose
+Crianças;2 meses;Pneumocócica conjugada;Pneumonia, meningite e outras doenças pneumocócicas graves;1ª dose
+Crianças;4 meses;Rotavírus;Diarreia grave por rotavírus;2ª dose
+Crianças;4 meses;Pneumocócica conjugada;Pneumonia, meningite e outras doenças pneumocócicas graves;2ª dose
+Crianças;3 meses;Meningocócica C;Meningite meningocócica C;1ª dose
+Crianças;5 meses;Meningocócica C;Meningite meningocócica C;2ª dose
+Crianças;6 meses;Influenza (gripe);Gripe;"Anual, de 6 meses a menores de 6 anos; na primeira vez, 2 doses com 30 dias de intervalo"
+Crianças;6 meses;Covid-19;Formas graves de covid-19;"1ª dose; 2ª aos 7 meses e 3ª aos 9 meses"
+Crianças;9 meses;Febre amarela;Febre amarela;1ª dose
+Crianças;12 meses;Pneumocócica conjugada;Doenças pneumocócicas graves;Reforço
+Crianças;12 meses;Meningocócica ACWY;Meningite meningocócica A, C, W e Y;1 dose
+Crianças;12 meses;Tríplice viral (SCR);Sarampo, caxumba e rubéola;1ª dose
+Crianças;15 meses;DTP;Difteria, tétano e coqueluche;1º reforço
+Crianças;15 meses;Poliomielite inativada (VIP);Poliomielite;1º reforço
+Crianças;15 meses;Tríplice viral (SCR);Sarampo, caxumba e rubéola;2ª dose
+Crianças;15 meses;Varicela;Catapora;1ª dose
+Crianças;15 meses;Hepatite A;Hepatite A;1 dose
+Crianças;4 anos;DTP;Difteria, tétano e coqueluche;2º reforço
+Crianças;4 anos;Poliomielite inativada (VIP);Poliomielite;2º reforço
+Crianças;4 anos;Varicela;Catapora;2ª dose
+Crianças;4 anos;Febre amarela;Febre amarela;Reforço
+Crianças;9 anos;HPV;Infecções pelo papilomavírus humano, que causam câncer de colo do útero e outros;Em atraso, vacinar até 14 anos, 11 meses e 29 dias
+Adolescentes e jovens (10 a 24 anos);10 anos;Dengue;Dengue dos sorotipos 1 a 4;"2 doses com 3 meses de intervalo; em atraso, até 14 anos, 11 meses e 29 dias"
+Adolescentes e jovens (10 a 24 anos);11 anos;Meningocócica ACWY;Meningite meningocócica A, C, W e Y;"1 dose; em atraso, até 14 anos, 11 meses e 29 dias"
+Adolescentes e jovens (10 a 24 anos);14 anos;dT (dupla adulto);Difteria e tétano;3ª dose, reforço
+Adolescentes e jovens (10 a 24 anos);24 anos;dT (dupla adulto);Difteria e tétano;4ª dose, reforço
+Adolescentes e jovens (10 a 24 anos);Conforme o histórico;Hepatite B;Hepatite B e D;3 doses
+Adolescentes e jovens (10 a 24 anos);Conforme o histórico;Tríplice viral (SCR);Sarampo, caxumba e rubéola;2 doses até os 29 anos
+Adolescentes e jovens (10 a 24 anos);Conforme o histórico;Febre amarela;Febre amarela;1 dose, para quem mora ou viaja a áreas com circulação do vírus
+Adultos (25 a 59 anos);Conforme o histórico;Hepatite B;Hepatite B e D;3 doses
+Adultos (25 a 59 anos);Conforme o histórico;dT (dupla adulto);Difteria e tétano;Reforço a cada 10 anos (5 anos em caso de ferimento)
+Adultos (25 a 59 anos);Conforme o histórico;Tríplice viral (SCR);Sarampo, caxumba e rubéola;"Até 29 anos, 2 doses; de 30 a 59 anos, 1 dose"
+Adultos (25 a 59 anos);Conforme o histórico;Febre amarela;Febre amarela;1 dose, para quem mora ou viaja a áreas com circulação do vírus
+Idosos (60 anos ou mais);Todo ano;Influenza (gripe);Gripe;1 dose por temporada
+Idosos (60 anos ou mais);A cada 6 meses;Covid-19;Formas graves de covid-19;1 dose semestral
+Idosos (60 anos ou mais);Conforme o histórico;dT (dupla adulto);Difteria e tétano;Reforço a cada 10 anos
+Idosos (60 anos ou mais);Conforme o histórico;Hepatite B;Hepatite B e D;3 doses
+Idosos (60 anos ou mais);Acamados ou institucionalizados;Pneumocócica conjugada;Doenças pneumocócicas graves;1 dose, se nunca vacinados
+Gestantes;Ao saber da gravidez;Hepatite B;Hepatite B e D;3 doses, se não vacinada antes
+Gestantes;Ao saber da gravidez;dT (dupla adulto);Difteria e tétano;3 doses, se não vacinada antes
+Gestantes;Ao saber da gravidez;Influenza (gripe);Gripe;1 dose por temporada
+Gestantes;Ao saber da gravidez;Covid-19;Formas graves de covid-19;1 dose a cada gestação
+Gestantes;A partir da 20ª semana;dTpa;Difteria, tétano e coqueluche (protege também o bebê);1 dose a cada gestação
+Gestantes;A partir da 28ª semana;Vírus sincicial respiratório (VSR);Bronquiolite e pneumonia por VSR no bebê;1 dose a cada gestação

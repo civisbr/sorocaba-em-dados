@@ -1,0 +1,41 @@
+{% extends "paineis/painel.html" %}
+{% from "_macros.html" import icone %}
+{% block resumo %}
+<section aria-labelledby="resumo" class="resumo-real">
+  <h2 id="resumo" class="rotulo-resumo">Campanhas de vacinação</h2>
+  {% if dias_conferencia %}<p class="aviso-amostra">{{ icone("alerta") }} As campanhas não são conferidas há {{ dias_conferencia }} dias; consulte a Prefeitura.</p>{% endif %}
+  {% if ativas %}
+  <ul class="rede-lista">{% for c in ativas %}<li><strong>{{ c.nome }} ({{ c.situacao }})</strong><span>{{ c.inicio_br }} a {{ c.fim_br }} · {{ c.publico }}</span><span class="pequeno suave">{{ c.resumo }} <a href="{{ c.fonte_url }}">Fonte</a></span></li>{% endfor %}</ul>
+  {% else %}<p><strong>Nenhuma campanha em andamento ou prevista foi encontrada</strong> ({{ ref_vac }}). As vacinas do calendário abaixo seguem disponíveis nas UBS durante todo o ano.</p>{% endif %}
+  {% set enc = campanhas | selectattr("situacao", "equalto", "encerrada") | list %}
+  {% if enc %}<details class="tabela-mes"><summary>Campanhas recentes já encerradas</summary>
+    <ul class="rede-lista">{% for c in enc %}<li><strong>{{ c.nome }}</strong><span>{{ c.inicio_br }} a {{ c.fim_br }} · {{ c.publico }}</span><span class="pequeno suave">{{ c.resumo }} <a href="{{ c.fonte_url }}">Fonte</a></span></li>{% endfor %}</ul>
+  </details>{% endif %}
+  <p class="pequeno suave">Dúvida sobre qual vacina tomar ou onde? Procure a UBS do seu bairro (lista no painel Hospitais e leitos) com a caderneta de vacinação.</p>
+</section>
+{% endblock %}
+{% block explorar %}
+<section aria-labelledby="calendario" class="bloco-painel">
+  <h2 id="calendario" class="h2-medio sem-topo">Calendário de vacinação do SUS</h2>
+  <p class="suave">Vacinas gratuitas por fase da vida, segundo o Ministério da Saúde. Abra a sua fase para ver as idades.</p>
+  {% for g in publicos %}
+  <details class="tabela-mes quadro-card"{% if loop.first %} open{% endif %}><summary>{{ g.nome }}</summary>
+    <div class="rolagem"><table>
+      <caption class="so-leitor">Vacinas para {{ g.nome | lower }}</caption>
+      <thead><tr><th scope="col">Quando</th><th scope="col">Vacina</th><th scope="col">Protege contra</th><th scope="col">Observação</th></tr></thead>
+      <tbody>{% for i in g.idades %}{% for v in i.vacinas %}<tr>{% if loop.first %}<th scope="row" rowspan="{{ i.vacinas | length }}">{{ i.idade }}</th>{% endif %}<td>{{ v.vacina }}</td><td>{{ v.protege }}</td><td>{{ v.nota }}</td></tr>{% endfor %}{% endfor %}</tbody>
+    </table></div>
+  </details>
+  {% endfor %}
+  <p class="pequeno suave">Fonte: <a href="{{ env.fonte.url }}">{{ env.fonte.nome }}</a>, conferido em {{ conferido_em | data_br }}. <a href="{{ raiz }}data/saude_vacinas.json">saude_vacinas.json</a>.</p>
+</section>
+{% endblock %}
+{% block metodologia %}<ul class="lista-curta">{% for n in env.qualidade.notas %}{% if not n.startswith("SHA-256") %}<li>{{ n }}</li>{% endif %}{% endfor %}</ul>{% endblock %}
+{% block proveniencia %}
+<dl class="proveniencia">
+  <dt>Fonte</dt><dd><a href="{{ env.fonte.url }}">{{ env.fonte.nome }}</a></dd>
+  <dt>Conferido em</dt><dd>{{ conferido_em | data_br }}</dd>
+  <dt>Dados</dt><dd><a href="{{ raiz }}data/saude_vacinas.json">saude_vacinas.json</a></dd>
+  <dt>Código</dt><dd><a href="{{ repo_url }}/blob/main/{{ script }}">{{ script }}</a></dd>
+</dl>
+{% endblock %}

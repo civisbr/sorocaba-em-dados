@@ -1,0 +1,14 @@
+{
+  "calendario": {
+    "fonte": "Calendário Nacional de Vacinação — Ministério da Saúde",
+    "url": "https://www.gov.br/saude/pt-br/vacinacao/calendario",
+    "conferido_em": "2026-10-11",
+    "observacao": "A página oficial não traz data de atualização."
+  },
+  "campanhas": {
+    "fonte": "Prefeitura de Sorocaba (Secretaria da Saúde)",
+    "url": "https://saude.sorocaba.sp.gov.br/",
+    "conferido_em": "2026-10-11",
+    "observacao": "Conferência manual por busca; nenhuma campanha com data futura ou em andamento foi encontrada."
+  }
+}

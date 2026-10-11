@@ -91,6 +91,9 @@
         {% elif p.id == "panorama" %}
         <span class="cartao-numero">{{ pan.nascidos | num }}</span>
         <span class="cartao-ctx">nascidos vivos e {{ pan.obitos | num }} óbitos de moradores em {{ pan.ano_atual }}</span>
+        {% elif p.id == "vacinas" %}
+        <span class="cartao-numero">{{ vac.n_vacinas }}</span>
+        <span class="cartao-ctx">vacinas no calendário do SUS; {% if vac.ativas %}campanha: {{ vac.ativas[0].nome }}{% else %}nenhuma campanha em andamento conhecida{% endif %}</span>
         {% elif p.id == "seguranca" %}
         <span class="cartao-numero">{{ seg.roubos_atual | num }}</span>
         <span class="cartao-ctx">roubos registrados nos 12 meses até {{ seg.mes_fim_curto }}</span>

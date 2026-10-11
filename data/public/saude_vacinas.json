@@ -1,0 +1,458 @@
+{
+  "cobertura": {
+    "ibge": "3552205",
+    "municipio": "Sorocaba",
+    "uf": "SP"
+  },
+  "dados": [
+    {
+      "idade": "Ao nascer",
+      "nota": "1ª dose",
+      "protege": "Hepatite B e D",
+      "publico": "Crianças",
+      "recorte": "calendario",
+      "vacina": "Hepatite B"
+    },
+    {
+      "idade": "Ao nascer",
+      "nota": "Dose única",
+      "protege": "Formas graves de tuberculose",
+      "publico": "Crianças",
+      "recorte": "calendario",
+      "vacina": "BCG"
+    },
+    {
+      "idade": "2 meses",
+      "nota": "1ª dose",
+      "protege": "Difteria, tétano, coqueluche, meningite e outras doenças por Haemophilus influenzae b, hepatite B",
+      "publico": "Crianças",
+      "recorte": "calendario",
+      "vacina": "Penta (DTP, Hib e hepatite B)"
+    },
+    {
+      "idade": "2 meses",
+      "nota": "1ª dose",
+      "protege": "Poliomielite (paralisia infantil)",
+      "publico": "Crianças",
+      "recorte": "calendario",
+      "vacina": "Poliomielite inativada (VIP)"
+    },
+    {
+      "idade": "4 meses",
+      "nota": "2ª dose",
+      "protege": "Difteria, tétano, coqueluche, meningite e outras doenças por Haemophilus influenzae b, hepatite B",
+      "publico": "Crianças",
+      "recorte": "calendario",
+      "vacina": "Penta (DTP, Hib e hepatite B)"
+    },
+    {
+      "idade": "4 meses",
+      "nota": "2ª dose",
+      "protege": "Poliomielite (paralisia infantil)",
+      "publico": "Crianças",
+      "recorte": "calendario",
+      "vacina": "Poliomielite inativada (VIP)"
+    },
+    {
+      "idade": "6 meses",
+      "nota": "3ª dose",
+      "protege": "Difteria, tétano, coqueluche, meningite e outras doenças por Haemophilus influenzae b, hepatite B",
+      "publico": "Crianças",
+      "recorte": "calendario",
+      "vacina": "Penta (DTP, Hib e hepatite B)"
+    },
+    {
+      "idade": "6 meses",
+      "nota": "3ª dose",
+      "protege": "Poliomielite (paralisia infantil)",
+      "publico": "Crianças",
+      "recorte": "calendario",
+      "vacina": "Poliomielite inativada (VIP)"
+    },
+    {
+      "idade": "2 meses",
+      "nota": "1ª dose",
+      "protege": "Diarreia grave por rotavírus",
+      "publico": "Crianças",
+      "recorte": "calendario",
+      "vacina": "Rotavírus"
+    },
+    {
+      "idade": "2 meses",
+      "nota": "1ª dose",
+      "protege": "Pneumonia, meningite e outras doenças pneumocócicas graves",
+      "publico": "Crianças",
+      "recorte": "calendario",
+      "vacina": "Pneumocócica conjugada"
+    },
+    {
+      "idade": "4 meses",
+      "nota": "2ª dose",
+      "protege": "Diarreia grave por rotavírus",
+      "publico": "Crianças",
+      "recorte": "calendario",
+      "vacina": "Rotavírus"
+    },
+    {
+      "idade": "4 meses",
+      "nota": "2ª dose",
+      "protege": "Pneumonia, meningite e outras doenças pneumocócicas graves",
+      "publico": "Crianças",
+      "recorte": "calendario",
+      "vacina": "Pneumocócica conjugada"
+    },
+    {
+      "idade": "3 meses",
+      "nota": "1ª dose",
+      "protege": "Meningite meningocócica C",
+      "publico": "Crianças",
+      "recorte": "calendario",
+      "vacina": "Meningocócica C"
+    },
+    {
+      "idade": "5 meses",
+      "nota": "2ª dose",
+      "protege": "Meningite meningocócica C",
+      "publico": "Crianças",
+      "recorte": "calendario",
+      "vacina": "Meningocócica C"
+    },
+    {
+      "idade": "6 meses",
+      "nota": "Anual, de 6 meses a menores de 6 anos; na primeira vez, 2 doses com 30 dias de intervalo",
+      "protege": "Gripe",
+      "publico": "Crianças",
+      "recorte": "calendario",
+      "vacina": "Influenza (gripe)"
+    },
+    {
+      "idade": "6 meses",
+      "nota": "1ª dose; 2ª aos 7 meses e 3ª aos 9 meses",
+      "protege": "Formas graves de covid-19",
+      "publico": "Crianças",
+      "recorte": "calendario",
+      "vacina": "Covid-19"
+    },
+    {
+      "idade": "9 meses",
+      "nota": "1ª dose",
+      "protege": "Febre amarela",
+      "publico": "Crianças",
+      "recorte": "calendario",
+      "vacina": "Febre amarela"
+    },
+    {
+      "idade": "12 meses",
+      "nota": "Reforço",
+      "protege": "Doenças pneumocócicas graves",
+      "publico": "Crianças",
+      "recorte": "calendario",
+      "vacina": "Pneumocócica conjugada"
+    },
+    {
+      "idade": "12 meses",
+      "nota": "1 dose",
+      "protege": "Meningite meningocócica A, C, W e Y",
+      "publico": "Crianças",
+      "recorte": "calendario",
+      "vacina": "Meningocócica ACWY"
+    },
+    {
+      "idade": "12 meses",
+      "nota": "1ª dose",
+      "protege": "Sarampo, caxumba e rubéola",
+      "publico": "Crianças",
+      "recorte": "calendario",
+      "vacina": "Tríplice viral (SCR)"
+    },
+    {
+      "idade": "15 meses",
+      "nota": "1º reforço",
+      "protege": "Difteria, tétano e coqueluche",
+      "publico": "Crianças",
+      "recorte": "calendario",
+      "vacina": "DTP"
+    },
+    {
+      "idade": "15 meses",
+      "nota": "1º reforço",
+      "protege": "Poliomielite",
+      "publico": "Crianças",
+      "recorte": "calendario",
+      "vacina": "Poliomielite inativada (VIP)"
+    },
+    {
+      "idade": "15 meses",
+      "nota": "2ª dose",
+      "protege": "Sarampo, caxumba e rubéola",
+      "publico": "Crianças",
+      "recorte": "calendario",
+      "vacina": "Tríplice viral (SCR)"
+    },
+    {
+      "idade": "15 meses",
+      "nota": "1ª dose",
+      "protege": "Catapora",
+      "publico": "Crianças",
+      "recorte": "calendario",
+      "vacina": "Varicela"
+    },
+    {
+      "idade": "15 meses",
+      "nota": "1 dose",
+      "protege": "Hepatite A",
+      "publico": "Crianças",
+      "recorte": "calendario",
+      "vacina": "Hepatite A"
+    },
+    {
+      "idade": "4 anos",
+      "nota": "2º reforço",
+      "protege": "Difteria, tétano e coqueluche",
+      "publico": "Crianças",
+      "recorte": "calendario",
+      "vacina": "DTP"
+    },
+    {
+      "idade": "4 anos",
+      "nota": "2º reforço",
+      "protege": "Poliomielite",
+      "publico": "Crianças",
+      "recorte": "calendario",
+      "vacina": "Poliomielite inativada (VIP)"
+    },
+    {
+      "idade": "4 anos",
+      "nota": "2ª dose",
+      "protege": "Catapora",
+      "publico": "Crianças",
+      "recorte": "calendario",
+      "vacina": "Varicela"
+    },
+    {
+      "idade": "4 anos",
+      "nota": "Reforço",
+      "protege": "Febre amarela",
+      "publico": "Crianças",
+      "recorte": "calendario",
+      "vacina": "Febre amarela"
+    },
+    {
+      "idade": "9 anos",
+      "nota": "Em atraso, vacinar até 14 anos, 11 meses e 29 dias",
+      "protege": "Infecções pelo papilomavírus humano, que causam câncer de colo do útero e outros",
+      "publico": "Crianças",
+      "recorte": "calendario",
+      "vacina": "HPV"
+    },
+    {
+      "idade": "10 anos",
+      "nota": "2 doses com 3 meses de intervalo; em atraso, até 14 anos, 11 meses e 29 dias",
+      "protege": "Dengue dos sorotipos 1 a 4",
+      "publico": "Adolescentes e jovens (10 a 24 anos)",
+      "recorte": "calendario",
+      "vacina": "Dengue"
+    },
+    {
+      "idade": "11 anos",
+      "nota": "1 dose; em atraso, até 14 anos, 11 meses e 29 dias",
+      "protege": "Meningite meningocócica A, C, W e Y",
+      "publico": "Adolescentes e jovens (10 a 24 anos)",
+      "recorte": "calendario",
+      "vacina": "Meningocócica ACWY"
+    },
+    {
+      "idade": "14 anos",
+      "nota": "3ª dose, reforço",
+      "protege": "Difteria e tétano",
+      "publico": "Adolescentes e jovens (10 a 24 anos)",
+      "recorte": "calendario",
+      "vacina": "dT (dupla adulto)"
+    },
+    {
+      "idade": "24 anos",
+      "nota": "4ª dose, reforço",
+      "protege": "Difteria e tétano",
+      "publico": "Adolescentes e jovens (10 a 24 anos)",
+      "recorte": "calendario",
+      "vacina": "dT (dupla adulto)"
+    },
+    {
+      "idade": "Conforme o histórico",
+      "nota": "3 doses",
+      "protege": "Hepatite B e D",
+      "publico": "Adolescentes e jovens (10 a 24 anos)",
+      "recorte": "calendario",
+      "vacina": "Hepatite B"
+    },
+    {
+      "idade": "Conforme o histórico",
+      "nota": "2 doses até os 29 anos",
+      "protege": "Sarampo, caxumba e rubéola",
+      "publico": "Adolescentes e jovens (10 a 24 anos)",
+      "recorte": "calendario",
+      "vacina": "Tríplice viral (SCR)"
+    },
+    {
+      "idade": "Conforme o histórico",
+      "nota": "1 dose, para quem mora ou viaja a áreas com circulação do vírus",
+      "protege": "Febre amarela",
+      "publico": "Adolescentes e jovens (10 a 24 anos)",
+      "recorte": "calendario",
+      "vacina": "Febre amarela"
+    },
+    {
+      "idade": "Conforme o histórico",
+      "nota": "3 doses",
+      "protege": "Hepatite B e D",
+      "publico": "Adultos (25 a 59 anos)",
+      "recorte": "calendario",
+      "vacina": "Hepatite B"
+    },
+    {
+      "idade": "Conforme o histórico",
+      "nota": "Reforço a cada 10 anos (5 anos em caso de ferimento)",
+      "protege": "Difteria e tétano",
+      "publico": "Adultos (25 a 59 anos)",
+      "recorte": "calendario",
+      "vacina": "dT (dupla adulto)"
+    },
+    {
+      "idade": "Conforme o histórico",
+      "nota": "Até 29 anos, 2 doses; de 30 a 59 anos, 1 dose",
+      "protege": "Sarampo, caxumba e rubéola",
+      "publico": "Adultos (25 a 59 anos)",
+      "recorte": "calendario",
+      "vacina": "Tríplice viral (SCR)"
+    },
+    {
+      "idade": "Conforme o histórico",
+      "nota": "1 dose, para quem mora ou viaja a áreas com circulação do vírus",
+      "protege": "Febre amarela",
+      "publico": "Adultos (25 a 59 anos)",
+      "recorte": "calendario",
+      "vacina": "Febre amarela"
+    },
+    {
+      "idade": "Todo ano",
+      "nota": "1 dose por temporada",
+      "protege": "Gripe",
+      "publico": "Idosos (60 anos ou mais)",
+      "recorte": "calendario",
+      "vacina": "Influenza (gripe)"
+    },
+    {
+      "idade": "A cada 6 meses",
+      "nota": "1 dose semestral",
+      "protege": "Formas graves de covid-19",
+      "publico": "Idosos (60 anos ou mais)",
+      "recorte": "calendario",
+      "vacina": "Covid-19"
+    },
+    {
+      "idade": "Conforme o histórico",
+      "nota": "Reforço a cada 10 anos",
+      "protege": "Difteria e tétano",
+      "publico": "Idosos (60 anos ou mais)",
+      "recorte": "calendario",
+      "vacina": "dT (dupla adulto)"
+    },
+    {
+      "idade": "Conforme o histórico",
+      "nota": "3 doses",
+      "protege": "Hepatite B e D",
+      "publico": "Idosos (60 anos ou mais)",
+      "recorte": "calendario",
+      "vacina": "Hepatite B"
+    },
+    {
+      "idade": "Acamados ou institucionalizados",
+      "nota": "1 dose, se nunca vacinados",
+      "protege": "Doenças pneumocócicas graves",
+      "publico": "Idosos (60 anos ou mais)",
+      "recorte": "calendario",
+      "vacina": "Pneumocócica conjugada"
+    },
+    {
+      "idade": "Ao saber da gravidez",
+      "nota": "3 doses, se não vacinada antes",
+      "protege": "Hepatite B e D",
+      "publico": "Gestantes",
+      "recorte": "calendario",
+      "vacina": "Hepatite B"
+    },
+    {
+      "idade": "Ao saber da gravidez",
+      "nota": "3 doses, se não vacinada antes",
+      "protege": "Difteria e tétano",
+      "publico": "Gestantes",
+      "recorte": "calendario",
+      "vacina": "dT (dupla adulto)"
+    },
+    {
+      "idade": "Ao saber da gravidez",
+      "nota": "1 dose por temporada",
+      "protege": "Gripe",
+      "publico": "Gestantes",
+      "recorte": "calendario",
+      "vacina": "Influenza (gripe)"
+    },
+    {
+      "idade": "Ao saber da gravidez",
+      "nota": "1 dose a cada gestação",
+      "protege": "Formas graves de covid-19",
+      "publico": "Gestantes",
+      "recorte": "calendario",
+      "vacina": "Covid-19"
+    },
+    {
+      "idade": "A partir da 20ª semana",
+      "nota": "1 dose a cada gestação",
+      "protege": "Difteria, tétano e coqueluche (protege também o bebê)",
+      "publico": "Gestantes",
+      "recorte": "calendario",
+      "vacina": "dTpa"
+    },
+    {
+      "idade": "A partir da 28ª semana",
+      "nota": "1 dose a cada gestação",
+      "protege": "Bronquiolite e pneumonia por VSR no bebê",
+      "publico": "Gestantes",
+      "recorte": "calendario",
+      "vacina": "Vírus sincicial respiratório (VSR)"
+    },
+    {
+      "fim": "2026-09-01",
+      "fonte_url": "https://noticias.sorocaba.sp.gov.br/campanha-de-multivacinacao-para-menores-de-15-anos-vai-ate-o-dia-1o-de-setembro/",
+      "inicio": "2026-08-03",
+      "nome": "Campanha Nacional de Multivacinação 2026",
+      "publico": "Crianças e adolescentes menores de 15 anos",
+      "recorte": "campanha",
+      "resumo": "Atualização da caderneta com as vacinas do calendário em atraso, nas 33 UBS de Sorocaba. Dia D em 22/08."
+    }
+  ],
+  "fonte": {
+    "acesso_em": "2026-10-11",
+    "licenca": "Informação pública do Ministério da Saúde; transcrita e conferida manualmente",
+    "nome": "Calendário Nacional de Vacinação — Ministério da Saúde",
+    "url": "https://www.gov.br/saude/pt-br/vacinacao/calendario"
+  },
+  "painel": "saude_vacinas",
+  "qualidade": {
+    "flag": "real",
+    "n_registros": 53,
+    "notas": [
+      "Calendário Nacional de Vacinação do Ministério da Saúde, transcrito e conferido em 2026-10-11. A página oficial não traz data de atualização.",
+      "Campanhas conferidas em 2026-10-11 por busca nas páginas da Prefeitura e da imprensa. Conferência manual por busca; nenhuma campanha com data futura ou em andamento foi encontrada.",
+      "O esquema de cada vacina pode mudar por orientação do Ministério ou do estado; na dúvida, vale a orientação da UBS e a caderneta de vacinação.",
+      "Não há dado aberto confiável de cobertura vacinal por município que dispense registros individuais, por isso o painel não mostra cobertura.",
+      "SHA-256 dos arquivos de curadoria: a4b5cadb373af96ed1662a36adb8068ffa302580abbb471d4ad40e2b26ce2432"
+    ]
+  },
+  "referencia": {
+    "fim": "2026-10-11",
+    "granularidade": "mensal",
+    "inicio": "2026-10-11"
+  },
+  "schema_version": "1.0"
+}

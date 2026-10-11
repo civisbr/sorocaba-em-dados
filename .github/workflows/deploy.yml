@@ -3,7 +3,7 @@ name: deploy
 on:
   push:
     branches: [main]
-    paths: [data/public/**, templates/**, static/**, scripts/render.py, scripts/charts.py, scripts/mapa.py, scripts/paineis.py, scripts/contexto_hospitais.py, scripts/contexto_panorama.py, scripts/saude_codigos.py, scripts/infosiga_regras.py, scripts/geo.py, data/raw/ibge/**]
+    paths: [data/public/**, templates/**, static/**, scripts/render.py, scripts/charts.py, scripts/mapa.py, scripts/paineis.py, scripts/contexto_hospitais.py, scripts/contexto_panorama.py, scripts/contexto_vacinas.py, scripts/saude_codigos.py, scripts/infosiga_regras.py, scripts/geo.py, data/raw/ibge/**]
   schedule:
     - cron: "30 9 * * *"  # renova a previsão do tempo todo dia (06h30 em Brasília)
   workflow_dispatch:

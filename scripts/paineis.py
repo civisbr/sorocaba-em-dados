@@ -5,7 +5,7 @@ from __future__ import annotations
 GRUPOS = [
     ("A cidade", ["cidade", "comparativo", "clima"]),
     ("Economia", ["emprego", "combustivel"]),
-    ("Saúde", ["saude", "hospitais", "panorama"]),
+    ("Saúde", ["saude", "hospitais", "panorama", "vacinas"]),
     ("Serviços e segurança", ["escolas", "seguranca", "transito"]),
     ("Política", ["representantes"]),
 ]
@@ -188,6 +188,31 @@ PAINEIS = {
             "Mortes por causas mal definidas ou ainda em investigação aparecem em grupos próprios e podem mudar de categoria depois.",
             "Números pequenos oscilam de um ano para o outro por acaso; não leia uma alta ou queda isolada como tendência.",
             "Atendimentos de UBS e UPA e consultas não têm dado aberto equivalente e não estão aqui.",
+        ],
+    },
+    "vacinas": {
+        "nav": "Vacinas",
+        "titulo": "Calendário de vacinação",
+        "h1": "Quais vacinas tomar em cada idade e há campanha acontecendo?",
+        "pergunta": "Quais vacinas o SUS oferece em cada fase da vida, e existe alguma campanha de vacinação em andamento em Sorocaba?",
+        "fonte": "Calendário Nacional de Vacinação — Ministério da Saúde; campanhas: Prefeitura de Sorocaba",
+        "cta": "Ver o calendário de vacinas",
+        "tom": "card",
+        "descricao": "Calendário nacional de vacinação por fase da vida e as campanhas de vacinação em andamento ou recentes em Sorocaba.",
+        "meta_desc": "Calendário de vacinação do SUS por idade (crianças, adolescentes, adultos, idosos e gestantes) e campanhas recentes em Sorocaba.",
+        "palavras": ["vacina", "vacinas", "vacinação", "calendário", "campanha", "multivacinação", "gripe", "sarampo", "hpv", "dengue", "caderneta", "pni"],
+        "blocos": [],
+        "glossario": [
+            ("Calendário Nacional de Vacinação", "Lista do Ministério da Saúde das vacinas oferecidas gratuitamente pelo SUS e das idades em que devem ser tomadas."),
+            ("Dia D", "Dia de mobilização em que as unidades de saúde abrem em horário especial para vacinar, normalmente num sábado."),
+            ("Multivacinação", "Campanha para atualizar a caderneta de crianças e adolescentes com as vacinas do calendário que estão em atraso."),
+            ("Reforço", "Dose adicional que mantém a proteção depois do esquema inicial."),
+        ],
+        "limitacoes": [
+            "O calendário é transcrito da página do Ministério da Saúde, que não informa a data de atualização; esquemas podem mudar sem aviso aqui.",
+            "As campanhas são conferidas manualmente. Uma campanha nova pode demorar a aparecer; a Prefeitura e as UBS têm a informação mais atual.",
+            "Não há dado aberto de cobertura vacinal por município que dispense registros individuais, por isso o painel não mostra quantos já se vacinaram.",
+            "Este painel não substitui a orientação da UBS nem a caderneta de vacinação de cada pessoa.",
         ],
     },
     "saude": {
