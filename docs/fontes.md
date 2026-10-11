@@ -252,7 +252,7 @@ histórico agora nasce da acumulação dos instantâneos em `data/raw/anp/`.
 **Status:** `verificada` em 2026-10-11. `servicodados.ibge.gov.br/api/v3/malhas/municipios/3552205`
 com `qualidade=maxima`: um polígono, 472 pontos, 10 KB. Arquivo bruto em
 `data/raw/ibge/malha_3552205.geojson` (commitável: sem dado pessoal), hash no manifesto. O
-centroide exibido é calculado do polígono; não é "centro" administrativo nem verificado
+ponto marcado no mapa é calculado do polígono (sem rótulo); não é "centro" administrativo nem verificado
 como tal. Substitui o contorno OpenStreetMap do protótipo para manter fonte oficial e evitar
 a obrigação de atribuição ODbL.
 
