@@ -40,13 +40,13 @@
       {{ selecionada() }}
     </div>
   </div>
-  <p class="pequeno suave"><span data-so-js hidden>Aproxime com + e −, ou com Ctrl e a roda do mouse; arraste para mover. </span>Posições aproximadas: {{ me.n_porta }} pelo endereço do Censo Escolar e {{ me.n_rua }} pela rua (trecho curto). Escolas sem posição segura aparecem só na lista abaixo. Mapa e posições: © <a href="https://www.openstreetmap.org/copyright" rel="noreferrer">colaboradores do OpenStreetMap</a> (ODbL).</p>
+  <p class="pequeno suave"><span data-so-js hidden>Aproxime com + e −, ou com Ctrl e a roda do mouse; arraste para mover. </span>Posições aproximadas: {{ me.n_porta }} pelo endereço do Censo Escolar e {{ me.n_rua }} pela rua (trecho curto). Escolas sem posição segura aparecem só na lista abaixo. {% if me.restritas %}{{ me.restritas }} unidades prisionais ou socioeducativas ficam fora do mapa e marcadas na lista.{% endif %} Mapa e posições: © <a href="https://www.openstreetmap.org/copyright" rel="noreferrer">colaboradores do OpenStreetMap</a> (ODbL).</p>
 </section>
 {% endif %}
 <section aria-labelledby="lista-t" class="bloco-painel">
   <h2 id="lista-t" class="h2-medio sem-topo">Todas as escolas</h2>
   <ul class="lista-escolas" id="lista-escolas">
-    {% for e in escolas %}<li data-rede="{{ e.rede }}"><a href="{{ e.co_inep }}/">{{ e.escola }}</a> <span class="suave">{{ e.bairro or "bairro não informado" }} · {{ e.rede }}</span></li>{% endfor %}
+    {% for e in escolas %}<li data-rede="{{ e.rede }}"><a href="{{ e.co_inep }}/">{{ e.escola }}</a> <span class="suave">{{ e.bairro or "bairro não informado" }} · {{ e.rede }}{% if e.atendimento_restrito %} · atendimento restrito (unidade prisional ou socioeducativa){% endif %}</span></li>{% endfor %}
   </ul>
 </section>
 {% endblock %}

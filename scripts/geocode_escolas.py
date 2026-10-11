@@ -88,6 +88,13 @@ def main() -> None:
                 achado = buscar(c, rua, numero_da_porta(e["NU_ENDERECO"]), contorno)
             except ValueError as err:
                 raise SystemExit(f"{cod}: resposta recusada ({err}); abortando") from None
+            except httpx.HTTPStatusError as err:
+                if err.response.status_code in (403, 429):  # bloqueio ou limite de uso: insistir violaria a política do Nominatim
+                    gravar(feitos)
+                    raise SystemExit(f"{cod}: Nominatim respondeu {err.response.status_code}; abortando (retry-after: {err.response.headers.get('retry-after')})") from None
+                print(f"{cod}: falha HTTP {err.response.status_code}; fica para a próxima rodada")
+                time.sleep(5)
+                continue
             except httpx.HTTPError as err:
                 print(f"{cod}: falha ({type(err).__name__}); fica para a próxima rodada")
                 time.sleep(5)

@@ -126,6 +126,7 @@ def construir(raw: Path) -> Envelope:
             "bairro": " ".join(r["NO_BAIRRO"].split()) or None,
             "ano_censo": int(r["NU_ANO_CENSO"]),
             "endereco": _endereco(r),
+            "atendimento_restrito": any(r[c] == "1" for c in ("IN_LOCAL_FUNC_SOCIOEDUCATIVO", "IN_LOCAL_FUNC_UNID_PRISIONAL", "IN_LOCAL_FUNC_PRISIONAL_SOCIO")),
             **coords.get(r["CO_ENTIDADE"], {"lat": None, "lon": None, "posicao": None}),
             "rede": REDES[r["TP_DEPENDENCIA"]],
             "localizacao": LOCALIZACAO[r["TP_LOCALIZACAO"]],

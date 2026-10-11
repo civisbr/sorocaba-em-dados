@@ -19,11 +19,11 @@
         var u = document.createElementNS(NS, "use"); u.setAttribute("class", "mk"); u.setAttribute("href", "#" + (svg.dataset.simbolo || "s-escola"));
         el.appendChild(u); g.appendChild(el);
       });
-      iniciar(raiz);
-    }).catch(function () {
+      return true;
+    }, function () {
       var m = raiz.querySelector(".ms-msg"); if (m) m.textContent = "Não consegui carregar os pontos do mapa.";
-      iniciar(raiz);
-    });
+      return false;
+    }).then(function () { iniciar(raiz); });
   }
 
   function iniciar(raiz) {
@@ -85,7 +85,7 @@
       view.w = w; view.x = (minx + maxx) / 2 - w / 2; view.y = (miny + maxy) / 2 - w * (QUADRO_H / QUADRO_W) / 2;
       aplicar();
     }
-    function ponto(el) { var t = el.getAttribute("transform").match(/translate\(([-\d.]+) ([-\d.]+)\)/); return { x: +t[1], y: +t[2] }; }
+    function ponto(el) { var t = el.getAttribute("transform").match(/translate\(([-\d.eE+]+) ([-\d.eE+]+)\)/); return t ? { x: +t[1], y: +t[2] } : { x: 0, y: 0 }; }
 
     var ptrs = {}, ultimoDist = 0, arrastou = false;
     svg.addEventListener("pointerdown", function (e) {
@@ -170,11 +170,11 @@
       });
       if (distancias.has(u)) dl.appendChild(linha("Distância em linha reta", fmtKm(distancias.get(u))));
       painelSel.appendChild(dl);
-      if (u.dataset.url && /^[\w./-]+$/.test(u.dataset.url)) {
+      if (u.dataset.url && /^(?!\/\/)[\w.-][\w./-]*$/.test(u.dataset.url)) {
         var a0 = document.createElement("a"); a0.className = "ms-link"; a0.href = u.dataset.url; a0.textContent = u.dataset.urlRotulo || svg.dataset.rotuloUrl || "Ver detalhes";
         painelSel.appendChild(a0); painelSel.appendChild(document.createElement("br"));
       }
-      if (u.dataset.lat && u.dataset.lon) {
+      if (/^-?\d{1,3}\.\d+$/.test(u.dataset.lat || "") && /^-?\d{1,3}\.\d+$/.test(u.dataset.lon || "")) {
         var a = document.createElement("a");
         a.rel = "noopener noreferrer"; a.className = "ms-link";
         var la = u.dataset.lat, lo = u.dataset.lon;

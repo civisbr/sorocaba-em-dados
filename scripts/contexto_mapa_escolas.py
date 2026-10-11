@@ -19,8 +19,11 @@ def _endereco(e: dict, nome_br: Callable[[str], str]) -> str:
 
 
 def contexto_mapa_escolas(env: dict, nome_br: Callable[[str], str], f: Callable[[float, float], tuple[float, float]]) -> dict | None:
-    pontos, sem_posicao = [], 0
+    pontos, sem_posicao, restritas = [], 0, 0
     for e in env["dados"]:
+        if e.get("atendimento_restrito"):  # unidade prisional ou socioeducativa: não é opção de matrícula e não vai ao mapa
+            restritas += 1
+            continue
         if e.get("lat") is None:
             sem_posicao += 1
             continue
@@ -35,7 +38,7 @@ def contexto_mapa_escolas(env: dict, nome_br: Callable[[str], str], f: Callable[
     contagem = {g: sum(1 for p in pontos if p["g"] == g) for g, _, _ in REDES}
     cont_etapa = {k: sum(1 for p in pontos if k in p["e"].split()) for k, _, _ in ETAPAS}
     valores = {**{k: n for k, n, _ in ETAPAS}, **{k: v[0].upper() + v[1:] for k, v in POSICAO.items()}}
-    return {"pontos": pontos, "campos": [["etapas", "Etapas"], ["end", "Endereço"], ["bairro", "Bairro"], ["pos", "Posição no mapa"]], "valores": valores, "sem_posicao": sem_posicao, "total": len(env["dados"]),
+    return {"pontos": pontos, "campos": [["etapas", "Etapas"], ["end", "Endereço"], ["bairro", "Bairro"], ["pos", "Posição no mapa"]], "valores": valores, "sem_posicao": sem_posicao, "total": len(env["dados"]) - restritas, "restritas": restritas,
             "redes": [{"id": g, "nome": r, "n": contagem[g]} for g, r, _ in REDES if contagem[g]],
             "etapas": [{"id": k, "nome": n, "n": cont_etapa[k]} for k, n, _ in ETAPAS if cont_etapa[k]],
             "nomes": {g: rotulo for g, _, rotulo in REDES}, "ordem": ",".join(g for g, _, _ in REDES if contagem[g]),

@@ -99,3 +99,17 @@ def test_manifesto_de_coordenadas_confere_o_hash(tmp_path):
     with pytest.raises(ValueError, match="hash"):
         _manifesto_coordenadas(tmp_path)
     assert _manifesto_coordenadas(tmp_path / "vazio") is None
+
+
+def test_unidades_prisionais_e_socioeducativas_ficam_fora_do_mapa():
+    env = {"dados": [_escola("1"), _escola("2", atendimento_restrito=True), _escola("3", lat=None, lon=None, posicao=None, atendimento_restrito=True)]}
+    ctx = contexto_mapa_escolas(env, lambda n: n, lambda la, lo: (la, lo))
+    assert [p["u"] for p in ctx["pontos"]] == ["1/"] and ctx["restritas"] == 2 and ctx["total"] == 1 and ctx["sem_posicao"] == 0
+
+
+def test_dados_publicos_marcam_as_unidades_restritas():
+    import json
+    from pathlib import Path
+    d = json.loads((Path(__file__).resolve().parent.parent / "data" / "public" / "escolas.json").read_text(encoding="utf-8"))["dados"]
+    restritas = [e["escola"] for e in d if e["atendimento_restrito"]]
+    assert any("PENITENCIARIA" in n or "SOCIOEDUC" in n or "CASA" in n for n in restritas)
