@@ -1,0 +1,120 @@
+{
+  "anos": {
+    "2022": {
+      "abas": [
+        "JAN-JUN_2022",
+        "JUL-DEZ_2022"
+      ],
+      "bytes_xlsx": 199282273,
+      "coletado_em": "2026-10-11",
+      "fora_do_ano": 0,
+      "fora_dos_grupos": 744,
+      "last_modified": "Tue, 30 Jun 2026 13:29:04 GMT",
+      "registros_sorocaba": 15212,
+      "sem_coordenada_valida": 4690,
+      "sem_natureza": 0,
+      "sha256_csv": {
+        "bairro": "29ee165e817d2bda0d40de536cec203de10cd3310def4c469387342fbed86fab",
+        "conduta": "a5afd3c47d99d1f2f1f81eb88bd96fbeb27c226dea904954c1e8815a1f9c216e",
+        "grade": "dcf2b65c5d99f5c373ce4ee650d197a1fea75b4a5c6f88bd3f7766428ecb3809",
+        "hora": "57d09a5811461d14d3a41f7838fd181731863e06c456c14d73ad8cf5af715943",
+        "mensal": "092ea3706dc744890c9d0dfbd8e3ab7642c0f11b09af5d9058a9c332e861cc44"
+      },
+      "sha256_xlsx": "608399e58e40da0d8dbb30d73db62add1408b4f354191c12f629b108b8f7e810",
+      "url": "https://www.ssp.sp.gov.br/assets/estatistica/transparencia/spDados/SPDadosCriminais_2022.xlsx"
+    },
+    "2023": {
+      "abas": [
+        "JAN-JUN_2023",
+        "JUL-DEZ_2023"
+      ],
+      "bytes_xlsx": 218413769,
+      "coletado_em": "2026-10-11",
+      "fora_do_ano": 0,
+      "fora_dos_grupos": 987,
+      "last_modified": "Tue, 30 Jun 2026 12:48:58 GMT",
+      "registros_sorocaba": 16944,
+      "sem_coordenada_valida": 4701,
+      "sem_natureza": 0,
+      "sha256_csv": {
+        "bairro": "6025220ce0b891798adf4784abc680609e614ed144a0b9cb74f62745f21d00fa",
+        "conduta": "2100402b8e47ea95b69d7902007635a45747e0ec38d97f6fdd73a19f1020616b",
+        "grade": "f13f19af292fded283abd39a67922a19a8da6c46d9cf475e20a36eacffac72ea",
+        "hora": "13ce2b2e13d71c39a6d09cc4912e404a7e692167d8761e41c94dd7d909c25b2d",
+        "mensal": "1a1917483611effd3dd8241d2c5a010946502a40249038a402573fecf116ec96"
+      },
+      "sha256_xlsx": "84c595a451251b3c532f4483a672134813e5ec3e224ca27db58ec4854ee801df",
+      "url": "https://www.ssp.sp.gov.br/assets/estatistica/transparencia/spDados/SPDadosCriminais_2023.xlsx"
+    },
+    "2024": {
+      "abas": [
+        "JAN-JUN_2024",
+        "JUL-DEZ_2024"
+      ],
+      "bytes_xlsx": 197574881,
+      "coletado_em": "2026-10-11",
+      "fora_do_ano": 0,
+      "fora_dos_grupos": 1171,
+      "last_modified": "Tue, 30 Jun 2026 12:51:30 GMT",
+      "registros_sorocaba": 16363,
+      "sem_coordenada_valida": 4260,
+      "sem_natureza": 0,
+      "sha256_csv": {
+        "bairro": "9631e38cf376c4b76321780a6dd6285e3b6194103f8effa3b1f731b04d581e2c",
+        "conduta": "915617187e20ecc0c2d0e1e39f33137fda879afe2ac759b8b90b048727ae9439",
+        "grade": "7c86575dbd52883ad00924624a5dcdc26c31be488ed09720793809f561445e46",
+        "hora": "2852df6bd40d2ae391c0312acec2f71964c2ed7902e50e8d35d972f7edb002dd",
+        "mensal": "3271432abc7d8b8b0dade11835b5e339e54dd744623cb8b1836d4b0b265a1613"
+      },
+      "sha256_xlsx": "b58715efaf1128c971fc5113b5a856cbb29e3e09ece8706e2eec1827fbf10d26",
+      "url": "https://www.ssp.sp.gov.br/assets/estatistica/transparencia/spDados/SPDadosCriminais_2024.xlsx"
+    },
+    "2025": {
+      "abas": [
+        "JAN-JUN_2025",
+        "JUL-DEZ_2025"
+      ],
+      "bytes_xlsx": 195899014,
+      "coletado_em": "2026-10-11",
+      "fora_do_ano": 0,
+      "fora_dos_grupos": 1162,
+      "last_modified": "Tue, 30 Jun 2026 12:53:42 GMT",
+      "registros_sorocaba": 16807,
+      "sem_coordenada_valida": 4863,
+      "sem_natureza": 0,
+      "sha256_csv": {
+        "bairro": "1c2939f144c3b99733c3cad483ad43fc8679414436d06223f0b7b3332b4ad5c0",
+        "conduta": "662226de5bbfa5eb6396ea19466788e35c387e90c5a5e5e10f259e8a0764b5c1",
+        "grade": "0dc5289327d0bab06c944fcc404f953547279af38a4378ebb05158a2bf46274c",
+        "hora": "4dd0c6a63589741dff49680f982d65a1ca317ffca38f0058264de6be58a830a8",
+        "mensal": "4873bc9da53b15c51160dca5d40bc0059c5007ccb664de19b0c2a06e719f3136"
+      },
+      "sha256_xlsx": "4ab5b40229d245a0f50b65e74ea9e9b7750bbdb3bff7b02d961d78b9c4143d8c",
+      "url": "https://www.ssp.sp.gov.br/assets/estatistica/transparencia/spDados/SPDadosCriminais_2025.xlsx"
+    },
+    "2026": {
+      "abas": [
+        "JAN-JUN_2026",
+        "JUL-DEZ_2026"
+      ],
+      "bytes_xlsx": 126209129,
+      "coletado_em": "2026-10-11",
+      "fora_do_ano": 0,
+      "fora_dos_grupos": 816,
+      "last_modified": "Thu, 08 Oct 2026 14:27:12 GMT",
+      "registros_sorocaba": 10421,
+      "sem_coordenada_valida": 2063,
+      "sem_natureza": 0,
+      "sha256_csv": {
+        "bairro": "1510a6cd64398b4e120a14c6aaf72a75a4b36b1714d38e6a85c0bd7010393cb1",
+        "conduta": "58aaf66afc099890872dbac1b1f0227717e8ae1725e8bd98e381d385336fba93",
+        "grade": "3525f701a624a9db7fb4212984f73f231806003b545f568380002d2aaacf3b65",
+        "hora": "64c8c844cd8702b6d28769c32a4bb79c9bd5a2310eb7e3cbe57444ea25e3d073",
+        "mensal": "83bcc4cd0507f03c50303863a98e672c22f64cc357a1ad53ee8ea51a34632480"
+      },
+      "sha256_xlsx": "a2f003954f8c1c9912d242081fabb5736439af5fb2f7792298f9dc13305eff29",
+      "url": "https://www.ssp.sp.gov.br/assets/estatistica/transparencia/spDados/SPDadosCriminais_2026.xlsx"
+    }
+  },
+  "verificado_em": "2026-10-11"
+}
