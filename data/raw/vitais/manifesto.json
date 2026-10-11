@@ -1,0 +1,39 @@
+{
+  "anos": {
+    "2022": {
+      "DN": {
+        "bytes": 25153015,
+        "sha256": "09c3eed7c97ae81a5d9e44f697964e17f505c8c7b9693d9fdc408a53d48e6a56"
+      },
+      "DO": {
+        "bytes": 28630082,
+        "sha256": "34f6f7aef94545b88748982d0891a2b014c21dd43db8fd3b656643e0d6c17540"
+      }
+    },
+    "2023": {
+      "DN": {
+        "bytes": 24768225,
+        "sha256": "99db1eef810115189eb76fbabe8bafd4825c94c0a7b959f464367a1e69b4aeda"
+      },
+      "DO": {
+        "bytes": 27790415,
+        "sha256": "7743903b55efa96c3da9457fdfd300e2081051a3dc01afe0685544d51cf823e2"
+      }
+    },
+    "2024": {
+      "DN": {
+        "bytes": 23067589,
+        "sha256": "157372ff2173745c922441a3e9c19d24ea4197f7866c28c945572619c9d89808"
+      },
+      "DO": {
+        "bytes": 29254325,
+        "sha256": "fac57a15fe3d7efa3b0f2d797043a9335ef3d9dd6e824623031d71471533daf8"
+      }
+    }
+  },
+  "fonte": "SIM (DO) e SINASC (DN) de SP, DATASUS; recorte: residentes em Sorocaba (CODMUNRES 355220)",
+  "primeiro": 2022,
+  "sha256_csv": "842f93ee2c1cb6336f3fff62906226ff484c78a68d7cfe184a100fc63dc54b9d",
+  "ultimo": 2024,
+  "verificado_em": "2026-10-11"
+}

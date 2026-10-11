@@ -88,6 +88,9 @@
         {% elif p.id == "hospitais" %}
         <span class="cartao-numero">{{ hosp.resumo.leitos_sus | num }}</span>
         <span class="cartao-ctx">leitos SUS em {{ hosp.resumo.n_hospitais_sus }} hospitais; {{ hosp.resumo.internacoes | num }} internações SUS em 12 meses</span>
+        {% elif p.id == "panorama" %}
+        <span class="cartao-numero">{{ pan.nascidos | num }}</span>
+        <span class="cartao-ctx">nascidos vivos e {{ pan.obitos | num }} óbitos de moradores em {{ pan.ano_atual }}</span>
         {% elif p.id == "seguranca" %}
         <span class="cartao-numero">{{ seg.roubos_atual | num }}</span>
         <span class="cartao-ctx">roubos registrados nos 12 meses até {{ seg.mes_fim_curto }}</span>

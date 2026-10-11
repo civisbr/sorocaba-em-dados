@@ -5,7 +5,7 @@ from __future__ import annotations
 GRUPOS = [
     ("A cidade", ["cidade", "comparativo", "clima"]),
     ("Economia", ["emprego", "combustivel"]),
-    ("Saúde", ["saude", "hospitais"]),
+    ("Saúde", ["saude", "hospitais", "panorama"]),
     ("Serviços e segurança", ["escolas", "seguranca", "transito"]),
     ("Política", ["representantes"]),
 ]
@@ -162,6 +162,32 @@ PAINEIS = {
             "Número de internações e de dias não mede qualidade: depende do porte, da especialidade e da gravidade dos casos.",
             "Hospitais que atendem pouco ou nenhum SUS aparecem com poucas ou nenhuma internação, porque o dado cobre só o SUS.",
             "Lotação em tempo real e tempo de espera não são publicados como dado aberto; consulte o hospital ou a UPA antes de ir, em casos que não sejam emergência.",
+        ],
+    },
+    "panorama": {
+        "nav": "Mortes e nascimentos",
+        "titulo": "De que se morre, quantos nascem",
+        "h1": "De que as pessoas morrem e quantas crianças nascem em Sorocaba?",
+        "pergunta": "Quantas pessoas morreram e quantas nasceram nos últimos anos, quais as principais causas de morte e como estão os indicadores de nascimento?",
+        "fonte": "SIM e SINASC — DATASUS, Ministério da Saúde",
+        "cta": "Ver mortes e nascimentos",
+        "tom": "card",
+        "descricao": "Óbitos por grupo de causas e faixa etária, mortes no trânsito, homicídios e suicídios, e indicadores de nascimento: partos, prematuridade, peso e pré-natal.",
+        "meta_desc": "Óbitos por causa e faixa etária e indicadores de nascimentos de moradores de Sorocaba, a partir do SIM e do SINASC (DATASUS).",
+        "palavras": ["mortes", "óbitos", "nascimentos", "nascidos", "mortalidade", "mortalidade infantil", "causas de morte", "cesárea", "pré-natal", "homicídios", "suicídios", "sim", "sinasc"],
+        "blocos": [],
+        "glossario": [
+            ("Causa básica", "A doença ou lesão que iniciou a sequência de eventos que levou à morte, registrada na declaração de óbito e classificada pelo CID-10."),
+            ("Mortalidade infantil", "Mortes de crianças com menos de 1 ano para cada 1.000 nascidos vivos no mesmo ano."),
+            ("Morador", "As contagens seguem o local de residência, não o de ocorrência. Quem mora em Sorocaba e morreu em outra cidade entra aqui."),
+            ("Prematuro", "Bebê nascido com menos de 37 semanas de gestação."),
+            ("Baixo peso", "Bebê nascido com menos de 2.500 gramas."),
+        ],
+        "limitacoes": [
+            "Os dados têm defasagem: o ano mais recente publicado é de dois anos atrás ou mais e pode ser revisado.",
+            "Mortes por causas mal definidas ou ainda em investigação aparecem em grupos próprios e podem mudar de categoria depois.",
+            "Números pequenos oscilam de um ano para o outro por acaso; não leia uma alta ou queda isolada como tendência.",
+            "Atendimentos de UBS e UPA e consultas não têm dado aberto equivalente e não estão aqui.",
         ],
     },
     "saude": {

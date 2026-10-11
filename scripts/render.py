@@ -17,6 +17,7 @@ from scripts.charts import barras_mensais, linhas, linhas_posicao, linhas_preco
 from scripts.mapa import gerar as gerar_mapa
 from scripts.mapa import projetar as projetar_mapa
 from scripts.contexto_hospitais import contexto_hospitais
+from scripts.contexto_panorama import contexto_panorama
 from scripts.paineis import GRUPOS, PAINEIS
 
 RAIZ = Path(__file__).resolve().parent.parent
@@ -568,6 +569,8 @@ def renderizar(public: Path, saida: Path) -> None:
     ctx_saude = contexto_saude_doencas(saude, date.today())
     hospitais = json.loads((public / "saude_hospitais.json").read_text(encoding="utf-8"))
     ctx_hosp = contexto_hospitais(hospitais, nome_br)
+    panorama = json.loads((public / "saude_panorama.json").read_text(encoding="utf-8"))
+    ctx_pan = contexto_panorama(panorama)
     radares = json.loads((public / "radares.json").read_text(encoding="utf-8"))
     ctx_trans = contexto_transito(radares)
     acidentes = json.loads((public / "infosiga.json").read_text(encoding="utf-8"))
@@ -612,6 +615,8 @@ def renderizar(public: Path, saida: Path) -> None:
     paineis["saude"].update(status=flag_sa, rotulo_status=ROTULO_STATUS[flag_sa], referencia=ctx_saude["ref_saude"])
     flag_h = hospitais["qualidade"]["flag"]
     paineis["hospitais"].update(status=flag_h, rotulo_status=ROTULO_STATUS[flag_h], referencia=ctx_hosp["ref_hosp"])
+    flag_pa = panorama["qualidade"]["flag"]
+    paineis["panorama"].update(status=flag_pa, rotulo_status=ROTULO_STATUS[flag_pa], referencia=ctx_pan["ref_pan"])
     ordem = [p for g in grupos for p in g["paineis"]]
 
     if saida.exists():
@@ -622,7 +627,7 @@ def renderizar(public: Path, saida: Path) -> None:
     (saida / MARCADOR).write_text("saída gerada por scripts/render.py\n", encoding="utf-8")
     for nome in ("style.css", "app.js"):
         shutil.copy(RAIZ / "static" / nome, saida / nome)
-    for nome in ("emprego.json", "combustivel.json", "escolas.json", "perfil.json", "representantes.json", "seguranca.json", "comparativo.json", "clima.json", "radares.json", "infosiga.json", "saude_doencas.json", "saude_hospitais.json"):
+    for nome in ("emprego.json", "combustivel.json", "escolas.json", "perfil.json", "representantes.json", "seguranca.json", "comparativo.json", "clima.json", "radares.json", "infosiga.json", "saude_doencas.json", "saude_hospitais.json", "saude_panorama.json"):
         shutil.copy(public / nome, saida / "data" / nome)
 
     comum = {"paineis": ordem, "grupos": grupos, "repo_url": REPO_URL}
@@ -636,7 +641,7 @@ def renderizar(public: Path, saida: Path) -> None:
             jinja.get_template(template).render(raiz=raiz, **comum, **ctx), encoding="utf-8"
         )
 
-    escrever("index.html", "index.html", "", mapa=mapa, emprego=ctx_emprego, comb=ctx_comb, esc=ctx_esc, cid=ctx_cid, rep=ctx_rep, seg=ctx_seg, comp=ctx_comp, clima=ctx_clima, trans=ctx_trans, saude=ctx_saude, hosp=ctx_hosp)
+    escrever("index.html", "index.html", "", mapa=mapa, emprego=ctx_emprego, comb=ctx_comb, esc=ctx_esc, cid=ctx_cid, rep=ctx_rep, seg=ctx_seg, comp=ctx_comp, clima=ctx_clima, trans=ctx_trans, saude=ctx_saude, hosp=ctx_hosp, pan=ctx_pan)
     escrever("sobre/index.html", "sobre.html", "../", fontes=[
         ("Emprego", "Novo CAGED — Ministério do Trabalho e Emprego", flag),
         ("Combustível", "Levantamento de Preços de Combustíveis — ANP", flag_c),
@@ -648,6 +653,7 @@ def renderizar(public: Path, saida: Path) -> None:
         ("Clima", "INMET e Open-Meteo (ERA5)", "real"),
         ("Doenças do momento", "InfoDengue (Fiocruz/FGV)", flag_sa),
         ("Hospitais e leitos", "CNES e SIH/SUS — DATASUS", flag_h),
+        ("Mortes e nascimentos", "SIM e SINASC — DATASUS", flag_pa),
         ("Trânsito", "Semob Sorocaba (radares) e Infosiga SP (Detran-SP)", "real"),
     ])
     escrever(
@@ -679,6 +685,7 @@ def renderizar(public: Path, saida: Path) -> None:
         p=paineis["comparativo"], env=comp, script="scripts/build_comparativo.py", **ctx_comp,
     )
     escrever("saude/index.html", "paineis/saude.html", "../", p=paineis["saude"], env=saude, script="scripts/build_infodengue.py", **ctx_saude)
+    escrever("panorama/index.html", "paineis/panorama.html", "../", p=paineis["panorama"], env=panorama, script="scripts/build_vitais.py", **ctx_pan)
     escrever("hospitais/index.html", "paineis/hospitais.html", "../", p=paineis["hospitais"], env=hospitais, script="scripts/build_hospitais.py", **ctx_hosp)
     escrever(
         "clima/index.html", "paineis/clima.html", "../",

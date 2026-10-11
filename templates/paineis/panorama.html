@@ -1,0 +1,74 @@
+{% extends "paineis/painel.html" %}
+{% from "_macros.html" import icone %}
+{% block resumo %}
+<section aria-labelledby="resumo" class="resumo-real">
+  <h2 id="resumo" class="rotulo-resumo">Sorocaba em {{ ano_atual }}</h2>
+  <ul class="hosp-numeros">
+    <li><span class="cartao-numero">{{ nascidos | num }}</span><span class="pequeno">crianças nasceram, filhas de moradoras da cidade</span></li>
+    <li><span class="cartao-numero">{{ obitos | num }}</span><span class="pequeno">moradores morreram (sem contar natimortos)</span></li>
+    <li><span class="cartao-numero">{{ tmi | brl1 }}</span><span class="pequeno">mortes de bebês com menos de 1 ano por mil nascidos vivos</span></li>
+  </ul>
+  <p class="pequeno suave">O dado do SIM e do SINASC sai com defasagem e o ano mais recente pode ser revisado. Números pequenos mudam por acaso de um ano para o outro.</p>
+</section>
+{% endblock %}
+{% block explorar %}
+<section aria-labelledby="causas" class="bloco-painel">
+  <h2 id="causas" class="h2-medio sem-topo">De que as pessoas morreram em {{ ano_atual }}</h2>
+  <div class="grade-2">
+    <article class="quadro-card"><h3>Grupos de causas</h3>
+      <ul class="setores">{% for c in causas %}<li><span class="nome">{{ c.nome }}</span><span class="val">{{ c.n | num }} ({{ c.pct | brl1 }}%)</span><span class="setor-barra pos" style="width: {{ c.pct }}%"></span></li>{% endfor %}</ul>
+      <p class="pequeno suave">Os 8 maiores grupos. A causa é a registrada na declaração de óbito, agrupada por capítulo do CID-10.</p>
+      <details class="tabela-mes"><summary>Comparar com {{ ano_atual - 1 }}</summary>
+        <div class="rolagem"><table>
+          <caption class="so-leitor">Óbitos por grupo de causas, {{ ano_atual }} e {{ ano_atual - 1 }}</caption>
+          <thead><tr><th scope="col">Grupo</th><th scope="col">{{ ano_atual - 1 }}</th><th scope="col">{{ ano_atual }}</th></tr></thead>
+          <tbody>{% for c in causas %}<tr><th scope="row">{{ c.nome }}</th><td>{{ c.anterior | num if c.anterior is not none else "—" }}</td><td>{{ c.n | num }}</td></tr>{% endfor %}</tbody>
+        </table></div>
+      </details>
+    </article>
+    <article class="quadro-card"><h3>Por faixa etária</h3>
+      <ul class="setores">{% for f in faixas %}<li><span class="nome">{{ f.nome }}</span><span class="val">{{ f.n | num }} ({{ f.pct | brl1 }}%)</span><span class="setor-barra pos" style="width: {{ f.pct }}%"></span></li>{% endfor %}</ul>
+    </article>
+  </div>
+</section>
+
+<section aria-labelledby="externas" class="bloco-painel">
+  <h2 id="externas" class="h2-medio sem-topo">Mortes violentas e no trânsito</h2>
+  <article class="quadro-card">
+    <div class="rolagem"><table>
+      <caption class="so-leitor">Óbitos por acidentes de transporte, homicídios e suicídios, por ano</caption>
+      <thead><tr><th scope="col">Causa</th>{% for a in anos %}<th scope="col">{{ a }}</th>{% endfor %}</tr></thead>
+      <tbody>{% for e in externas %}<tr><th scope="row">{{ e.nome }}</th>{% for x in e.por_ano %}<td>{{ x.n | num if x.n is not none else "—" }}</td>{% endfor %}</tr>{% endfor %}</tbody>
+    </table></div>
+    <p class="pequeno suave">Mortes de moradores, mesmo as ocorridas em outra cidade. Por isso os números diferem dos de sinistros no painel Trânsito e de ocorrências no painel Segurança, que contam fatos ocorridos em Sorocaba.</p>
+  </article>
+</section>
+
+<section aria-labelledby="nascimentos" class="bloco-painel">
+  <h2 id="nascimentos" class="h2-medio sem-topo">Nascimentos</h2>
+  <article class="quadro-card">
+    <div class="rolagem"><table>
+      <caption class="so-leitor">Indicadores dos nascidos vivos, por ano, em porcentagem dos casos com informação válida</caption>
+      <thead><tr><th scope="col">Indicador</th>{% for a in anos %}<th scope="col">{{ a }}</th>{% endfor %}</tr></thead>
+      <tbody>{% for n in nascimentos %}<tr><th scope="row">{{ n.nome }}</th>{% for x in n.por_ano %}<td>{{ x.pct | brl1 if x.pct is not none else "—" }}%</td>{% endfor %}</tr>{% endfor %}</tbody>
+    </table></div>
+    <details class="tabela-mes"><summary>Nascimentos, óbitos e mortalidade infantil por ano</summary>
+      <div class="rolagem"><table>
+        <caption class="so-leitor">Totais por ano</caption>
+        <thead><tr><th scope="col">Ano</th><th scope="col">Nascidos vivos</th><th scope="col">Óbitos</th><th scope="col">Óbitos de menores de 1 ano</th><th scope="col">Por mil nascidos</th></tr></thead>
+        <tbody>{% for a in por_ano %}<tr><th scope="row">{{ a.ano }}</th><td>{{ a.nascidos | num }}</td><td>{{ a.obitos | num }}</td><td>{{ a.infantis | num }}</td><td>{{ a.tmi | brl1 if a.tmi is not none else "—" }}</td></tr>{% endfor %}</tbody>
+      </table></div>
+    </details>
+  </article>
+</section>
+<p class="pequeno suave">Fonte: <a href="{{ env.fonte.url }}">SIM e SINASC (DATASUS)</a>, coletado em {{ env.fonte.acesso_em | data_br }}. <a href="{{ raiz }}data/saude_panorama.json">saude_panorama.json</a>.</p>
+{% endblock %}
+{% block metodologia %}<ul class="lista-curta">{% for n in env.qualidade.notas %}{% if not n.startswith("SHA-256") %}<li>{{ n }}</li>{% endif %}{% endfor %}</ul>{% endblock %}
+{% block proveniencia %}
+<dl class="proveniencia">
+  <dt>Fonte</dt><dd><a href="{{ env.fonte.url }}">{{ env.fonte.nome }}</a></dd>
+  <dt>Verificado em</dt><dd>{{ env.fonte.acesso_em | data_br }}</dd>
+  <dt>Dados</dt><dd><a href="{{ raiz }}data/saude_panorama.json">saude_panorama.json</a></dd>
+  <dt>Código</dt><dd><a href="{{ repo_url }}/blob/main/{{ script }}">{{ script }}</a></dd>
+</dl>
+{% endblock %}
