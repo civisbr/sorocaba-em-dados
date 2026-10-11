@@ -12,7 +12,7 @@ from schemas.envelope import Cobertura, Envelope, Flag, Fonte, Granularidade, Qu
 RAIZ = Path(__file__).resolve().parent.parent
 CODIGOS_WMO = {
     0: "Céu limpo", 1: "Predominantemente limpo", 2: "Parcialmente nublado", 3: "Nublado", 45: "Neblina", 48: "Neblina com geada",
-    51: "Garoa fraca", 53: "Garoa moderada", 55: "Garoa forte", 61: "Chuva fraca", 63: "Chuva moderada", 65: "Chuva forte",
+    51: "Garoa fraca", 56: "Garoa congelante fraca", 57: "Garoa congelante forte", 66: "Chuva congelante fraca", 67: "Chuva congelante forte", 53: "Garoa moderada", 55: "Garoa forte", 61: "Chuva fraca", 63: "Chuva moderada", 65: "Chuva forte",
     80: "Pancadas de chuva fracas", 81: "Pancadas de chuva moderadas", 82: "Pancadas de chuva fortes",
     95: "Trovoadas", 96: "Trovoadas com granizo fraco", 99: "Trovoadas com granizo forte",
 }
@@ -35,7 +35,7 @@ def construir(raw: Path) -> Envelope:
         for i, dia in enumerate(d["time"]):
             cod = d["weather_code"][i]
             dados.append({
-                "fonte": "open-meteo", "dia": dia, "resumo": CODIGOS_WMO.get(cod, "Condição não classificada"),
+                "fonte": "open-meteo", "dia": dia, "resumo": CODIGOS_WMO.get(cod, "Condição não classificada") if cod is not None else "—",
                 "tmax": d["temperature_2m_max"][i], "tmin": d["temperature_2m_min"][i], "chuva_mm": d["precipitation_sum"][i],
                 "prob_chuva": d["precipitation_probability_max"][i], "vento_kmh": d["wind_speed_10m_max"][i],
                 "umidade_max": None, "umidade_min": None, "vento": None, "nascer": None, "ocaso": None,

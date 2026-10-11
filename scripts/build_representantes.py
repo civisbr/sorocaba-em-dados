@@ -126,7 +126,7 @@ def construir(raw: Path, raw_ideologia: Path | None = None) -> Envelope:
                 f"Percentual = votos nominais válidos do candidato em Sorocaba ÷ total de votos nominais válidos para o cargo na cidade. Lista dos {TOP_DEPUTADOS} mais votados entre os eleitos.",
                 "Em exercício: conferido por nome nas listas oficiais da Câmara e da Alesp na data da coleta. Sem correspondência única fica sem confirmação, o que pode vir de licença, renúncia ou de nome de urna diferente do nome parlamentar.",
                 "Eleitos em 2026 assumem em 2027 (resultado do 1º turno; o 2º turno não envolve deputados).",
-                f"Posição ideológica do partido: classificação de especialistas em ciência política (survey de 2022; Bolognesi, Ribeiro, Codato e Silva, Opinião Pública, 2025, doi {man_ideo['doi']}). É a posição do partido, não do político, e a fonte avalia partidos, não pessoas.",
+                f"Posição ideológica do partido: classificação de especialistas em ciência política (surveys de 2018 e 2022, categoria final pela média ponderada; Bolognesi, Ribeiro, Codato e Silva, Opinião Pública, 2025, doi {man_ideo['doi']}). É a posição do partido, não do político, e a fonte avalia partidos, não pessoas.",
                 "Blocos: esquerda = extrema esquerda e esquerda; centro = centro-esquerda, centro e centro-direita; direita = direita e extrema direita. É um agrupamento deste projeto sobre as sete categorias da fonte, mostradas no detalhe.",
                 "Partido sem classificação na fonte (por exemplo, criado depois de 2022) fica fora das porcentagens e é contado à parte.",
                 f"SHA-256 do manifesto de coleta: {h}",

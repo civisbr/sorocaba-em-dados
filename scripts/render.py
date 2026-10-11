@@ -77,8 +77,8 @@ def pct(v: float) -> str:
     return ("+" if v > 0 else "−" if v < 0 else "") + f"{abs(v):.1f}".replace(".", ",") + "%"
 
 
-def brl1(v: float) -> str:
-    return f"{v:.1f}".replace(".", ",")
+def brl1(v: float | None) -> str:
+    return "—" if v is None else f"{v:.1f}".replace(".", ",")
 
 
 def pct_abs(v: float) -> str:

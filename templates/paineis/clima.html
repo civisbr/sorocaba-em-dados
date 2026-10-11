@@ -17,7 +17,7 @@
   <div class="rolagem"><table class="tabela-quebra tabela-clima">
     <caption class="so-leitor">Previsão do INMET para Sorocaba</caption>
     <thead><tr><th scope="col">Dia</th><th scope="col">Tempo</th><th scope="col">Mín.</th><th scope="col">Máx.</th><th scope="col">Umidade</th><th scope="col">Vento</th></tr></thead>
-    <tbody>{% for r in prev.inmet %}<tr><th scope="row">{{ r.dia | data_br | truncate(5, True, "") }} <span class="suave">{{ dia_semana(r.dia) }}</span></th><td>{{ r.resumo }}</td><td>{{ r.tmin }}°</td><td>{{ r.tmax }}°</td><td>{% if r.umidade_min is not none %}{{ r.umidade_min }}–{{ r.umidade_max }}%{% else %}—{% endif %}</td><td>{{ r.vento or "—" }}</td></tr>{% endfor %}</tbody>
+    <tbody>{% for r in prev.inmet %}<tr><th scope="row">{{ (r.dia | data_br)[:5] }} <span class="suave">{{ dia_semana(r.dia) }}</span></th><td>{{ r.resumo }}</td><td>{{ r.tmin if r.tmin is not none else "—" }}°</td><td>{{ r.tmax if r.tmax is not none else "—" }}°</td><td>{% if r.umidade_min is not none %}{{ r.umidade_min }}–{{ r.umidade_max }}%{% else %}—{% endif %}</td><td>{{ r.vento or "—" }}</td></tr>{% endfor %}</tbody>
   </table></div>
   {% endif %}
   {% if prev.modelo %}
@@ -25,7 +25,7 @@
   <div class="rolagem"><table class="tabela-quebra tabela-clima">
     <caption class="so-leitor">Previsão do modelo Open-Meteo para Sorocaba</caption>
     <thead><tr><th scope="col">Dia</th><th scope="col">Tempo</th><th scope="col">Mín.</th><th scope="col">Máx.</th><th scope="col">Chuva</th><th scope="col">Chance</th></tr></thead>
-    <tbody>{% for r in prev.modelo %}<tr><th scope="row">{{ r.dia | data_br | truncate(5, True, "") }} <span class="suave">{{ dia_semana(r.dia) }}</span></th><td>{{ r.resumo }}</td><td>{{ r.tmin | brl1 }}°</td><td>{{ r.tmax | brl1 }}°</td><td>{{ r.chuva_mm | brl1 }} mm</td><td>{{ r.prob_chuva }}%</td></tr>{% endfor %}</tbody>
+    <tbody>{% for r in prev.modelo %}<tr><th scope="row">{{ (r.dia | data_br)[:5] }} <span class="suave">{{ dia_semana(r.dia) }}</span></th><td>{{ r.resumo }}</td><td>{{ r.tmin | brl1 }}°</td><td>{{ r.tmax | brl1 }}°</td><td>{{ r.chuva_mm | brl1 }}{% if r.chuva_mm is not none %} mm{% endif %}</td><td>{{ (r.prob_chuva ~ "%") if r.prob_chuva is not none else "—" }}</td></tr>{% endfor %}</tbody>
   </table></div>
   {% endif %}
   <p class="pequeno suave">Atualizada em {{ prev.env.fonte.acesso_em | data_br }}. Previsão muda a cada atualização e perde precisão com os dias; as duas fontes podem divergir. Em risco de temporal, siga a Defesa Civil.</p>
@@ -45,7 +45,7 @@
         <polyline class="l-max" points="{{ grafico_temp.series["Máxima"].pontos }}"/><polyline class="l-med" points="{{ grafico_temp.series["Mínima"].pontos }}"/>
         {% for t in grafico_temp.eixo_x %}<text class="eixo" x="{{ t.x }}" y="{{ grafico_temp.y_rotulos }}" text-anchor="{{ t.ancora }}">{{ t.texto }}</text>{% endfor %}
       </svg>
-      <p class="legenda"><span class="amostra amostra-max"></span> máxima <span class="amostra amostra-adm"></span> mínima</p>
+      <p class="legenda"><svg class="traco" width="22" height="8" viewBox="0 0 22 8" aria-hidden="true"><line x1="0" y1="4" x2="22" y2="4" stroke="var(--neg)" stroke-width="3" stroke-dasharray="6 4"/></svg> máxima (tracejada) <svg class="traco" width="22" height="8" viewBox="0 0 22 8" aria-hidden="true"><line x1="0" y1="4" x2="22" y2="4" stroke="var(--primary)" stroke-width="3"/></svg> mínima</p>
     </article>
     <article class="quadro-card">
       <h3>Chuva</h3><p class="suave">Média do total de cada mês, em mm.</p>

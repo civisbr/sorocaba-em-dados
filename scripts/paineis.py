@@ -198,7 +198,7 @@ PAINEIS = {
         ],
         "limitacoes": [
             "Previsão perde precisão com os dias e muda a cada atualização; em risco de temporal, vale a Defesa Civil.",
-            "O clima mostrado vem de modelo, não de uma estação em Sorocaba: o INMET não tem estação na cidade.",
+            "O clima mostrado vem de modelo, não de uma estação em Sorocaba: o INMET não tem estação no município (a mais próxima é a de Iperó, em operação desde 2006, sem série de 30 anos).",
             "Recordes são extremos do modelo em 30 anos, não registros oficiais.",
         ],
     },

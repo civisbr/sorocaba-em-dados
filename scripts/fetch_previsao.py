@@ -39,7 +39,7 @@ def baixar(c: httpx.Client, url: str) -> dict:
                 corpo = bytearray()
                 for pedaco in r.iter_bytes(64 * 1024):
                     corpo += pedaco
-                    if len(corpo) > 8 * LIMITE_BYTES:  # a resposta do INMET traz ícones em base64 (~270 KB)
+                    if len(corpo) > LIMITE_BYTES:  # a resposta do INMET traz ícones em base64 (~270 KB)
                         raise ValueError(f"{url} acima do limite esperado")
                 return json.loads(bytes(corpo))
         except (httpx.TransportError, httpx.HTTPStatusError) as e:
@@ -58,7 +58,7 @@ def coletar(acesso_em: date, destino: Path = DESTINO) -> list[str]:
         for nome, url in (("open_meteo", OPEN_METEO), ("inmet", INMET)):
             try:
                 dados = baixar(c, url)
-            except (httpx.HTTPError, ValueError) as e:  # uma fonte fora do ar não derruba a outra
+            except (httpx.HTTPError, ValueError, KeyError, TypeError, AttributeError) as e:  # uma fonte fora do ar não derruba a outra
                 print(f"{nome}: indisponível ({type(e).__name__})")
                 (destino / f"{nome}.json").unlink(missing_ok=True)
                 continue

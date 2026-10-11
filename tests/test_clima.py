@@ -54,3 +54,21 @@ def test_pagina_clima_sai_sem_previsao(tmp_path):
     renderizar(public, tmp_path / "dist")
     html = (tmp_path / "dist/clima/index.html").read_text(encoding="utf-8")
     assert "A previsão não está disponível" in html and "Como é o clima mês a mês" in html
+
+
+def test_pagina_clima_com_previsao_e_campos_nulos(tmp_path):
+    import json as _j
+
+    from scripts.render import renderizar
+
+    public = tmp_path / "public"
+    shutil.copytree(RAIZ / "data/public", public)
+    raw = tmp_path / "raw"
+    raw.mkdir()
+    (raw / "open_meteo.json").write_text(_j.dumps({"coletado_em": "2026-10-11", "dados": {"daily": {
+        "time": ["2026-10-11", "2026-10-12"], "weather_code": [95, None], "temperature_2m_max": [28.0, None], "temperature_2m_min": [18.0, None],
+        "precipitation_sum": [3.0, None], "precipitation_probability_max": [80, None], "wind_speed_10m_max": [10.0, None]}}}), encoding="utf-8")
+    (public / "previsao.json").write_text(previsao(raw).model_dump_json(), encoding="utf-8")
+    renderizar(public, tmp_path / "dist")
+    html = (tmp_path / "dist/clima/index.html").read_text(encoding="utf-8")
+    assert "Trovoadas" in html and "None" not in html
