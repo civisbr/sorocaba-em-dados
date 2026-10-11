@@ -9,18 +9,13 @@
       <h1>Sorocaba, em dados.<br><span class="destaque">A cidade, mais compreensível.</span></h1>
       <p class="heroi-texto">Informações públicas sobre a nossa cidade, organizadas para ajudar você a entender o que está acontecendo e tomar decisões melhores.</p>
 
+      <a href="#paineis" class="botao-hero">Ver os painéis {{ icone("seta") }}</a>
       <div class="busca">
         <form role="search" id="busca-form" hidden>
           <label for="busca-q">O que você quer descobrir sobre Sorocaba?</label>
           <div class="busca-campo">{{ icone("busca") }}<input id="busca-q" type="search" placeholder="Ex.: gasolina, vagas, IDEB" autocomplete="off"></div>
         </form>
-        <p class="busca-rotulo" id="busca-rotulo-semjs">Comece por um painel:</p>
         <div aria-live="polite" id="busca-resultados"></div>
-        <ul class="chips" aria-label="Sugestões de busca">
-          <li><a href="emprego/" data-q="emprego">Empregos na cidade</a></li>
-          <li><a href="combustivel/" data-q="combustível">Evolução dos combustíveis</a></li>
-          <li><a href="escolas/" data-q="escolas">Buscar uma escola</a></li>
-        </ul>
         <ul id="busca-indice" hidden>
           {% for p in paineis %}<li><a href="{{ p.id }}/" data-palavras="{{ p.palavras | join(' ') }} {{ p.nav | lower }} {{ p.titulo | lower }}"><strong>{{ "Painel de " ~ p.nav if p.id != "cidade" else p.nav }}</strong> — {{ p.titulo }}</a></li>{% endfor %}
         </ul>
@@ -51,24 +46,16 @@
         </div>
         <figcaption class="hud-pe"><span>LAT {{ mapa.lat }} · LON {{ mapa.lon }}</span><span>Limite: IBGE, malha municipal</span></figcaption>
       </figure>
-
-      <section aria-labelledby="status-t" class="hud-quadro status">
-        <h2 id="status-t">Status dos painéis</h2>
-        <ul>
-          {% for p in paineis %}
-          <li><a href="{{ p.id }}/"><span class="status-nome">{{ p.nav }}</span>
-            <span class="status-{{ p.status }}"><span class="status-txt"><span class="status-ponto" aria-hidden="true"></span>{% if p.status == "real" %}ATUALIZADO<small>{{ p.referencia }}</small>{% else %}PENDENTE{% endif %}</span></span></a></li>
-          {% endfor %}
-        </ul>
-      </section>
     </div>
   </div>
 </section>
 
 <section aria-labelledby="paineis" class="contido bloco">
   <h2 id="paineis" class="h2-grande">Escolha um painel</h2>
-  <ul class="cartoes">
-    {% for p in paineis %}
+  {% for g in grupos %}
+  <h3 class="grupo-titulo" id="gc-{{ loop.index }}">{{ g.nome }}</h3>
+  <ul class="cartoes" aria-labelledby="gc-{{ loop.index }}">
+    {% for p in g.paineis %}
     <li>
       <a href="{{ p.id }}/" class="cartao quadro tom-{{ p.tom }}">
         <span class="cartao-topo"><span>{{ p.nav }}</span><span class="cartao-status-{{ p.status }}"><span aria-hidden="true">● </span>{{ "Atualizado" if p.status == "real" else "Pendente" }}</span></span>
@@ -82,8 +69,10 @@
         <span class="cartao-numero">{{ cid.ind.populacao_estimada.valor | inteiro_br }}</span>
         <span class="cartao-ctx">habitantes, estimativa do IBGE para {{ cid.ind.populacao_estimada.ano }}</span>
         {% elif p.id == "transito" %}
-        <span class="cartao-numero">{{ trans.n_radares }}</span>
-        <span class="cartao-ctx">radares fixos na lista oficial da Semob</span>
+        {% if trans.ac_ult12 is not none %}<span class="cartao-numero">{{ trans.ac_ult12 | num }}</span>
+        <span class="cartao-ctx">sinistros de trânsito com vítima nos 12 meses até {{ trans.ac_fim }}; {{ trans.n_radares }} radares fixos na lista da Semob</span>
+        {% else %}<span class="cartao-numero">{{ trans.n_radares }}</span>
+        <span class="cartao-ctx">radares fixos na lista oficial da Semob</span>{% endif %}
         {% elif p.id == "clima" %}
         {% if clima.prev and clima.prev.inmet %}<span class="cartao-numero">{{ clima.prev.inmet[0].tmax }}° / {{ clima.prev.inmet[0].tmin }}°</span>
         <span class="cartao-ctx">previsão do INMET para {{ clima.prev.inmet[0].dia | data_br }}: {{ clima.prev.inmet[0].resumo | lower }}</span>
@@ -112,6 +101,7 @@
     </li>
     {% endfor %}
   </ul>
+  {% endfor %}
 </section>
 
 <section aria-labelledby="ajuda" class="contido bloco-largo">

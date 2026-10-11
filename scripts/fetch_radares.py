@@ -61,6 +61,9 @@ def linhas(fragmento: str) -> list[dict[str, str]]:
     return saida
 
 
+MARGEM_QUEDA = 10  # a lista pode encolher de verdade, mas não de uma vez por falha de paginação
+
+
 def coletar(acesso_em: date, destino: Path = DESTINO) -> bool:
     if acesso_em > date.today():
         raise ValueError(f"acesso_em {acesso_em} está no futuro")
@@ -79,6 +82,8 @@ def coletar(acesso_em: date, destino: Path = DESTINO) -> bool:
     # A página declara 172 radares, mas a paginação (16 páginas de 10) só lista 160; o manifesto guarda os dois números.
     if not todos or (total_declarado is not None and len(todos) > total_declarado):
         raise ValueError(f"contagem incoerente: declarados {total_declarado}, coletados {len(todos)}")
+    if total_declarado is None:
+        print("aviso: total declarado não encontrado na página; só a margem de queda protege a coleta")
     buf = io.StringIO()
     w = csv.DictWriter(buf, fieldnames=CAMPOS, delimiter=";", lineterminator="\n")
     w.writeheader()
@@ -88,6 +93,8 @@ def coletar(acesso_em: date, destino: Path = DESTINO) -> bool:
     destino.mkdir(parents=True, exist_ok=True)
     arq = destino / "manifesto.json"
     antigo = json.loads(arq.read_text(encoding="utf-8")) if arq.exists() else {}
+    if len(todos) < antigo.get("n_radares", 0) - MARGEM_QUEDA:
+        raise ValueError(f"coletados {len(todos)} radares, abaixo dos {antigo['n_radares']} do manifesto; paginação possivelmente incompleta")
     novo = {"url": PAGINA, "n_radares": len(todos), "n_declarado_pela_pagina": total_declarado, "sha256_csv": sha, "coletado_em": antigo.get("coletado_em", acesso_em.isoformat()), "verificado_em": acesso_em.isoformat()}
     mudou = antigo.get("sha256_csv") != sha
     if mudou:

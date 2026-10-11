@@ -2,6 +2,13 @@
 
 from __future__ import annotations
 
+GRUPOS = [
+    ("A cidade", ["cidade", "comparativo", "clima"]),
+    ("Economia", ["emprego", "combustivel"]),
+    ("Serviços e segurança", ["escolas", "seguranca", "transito"]),
+    ("Política", ["representantes"]),
+]
+
 PAINEIS = {
     "emprego": {
         "nav": "Emprego",
@@ -206,17 +213,17 @@ PAINEIS = {
         "nav": "Trânsito",
         "titulo": "Radares e mobilidade",
         "h1": "Como estão os acidentes de trânsito e onde ficam os radares em Sorocaba?",
-        "pergunta": "Quais radares fixos operam na cidade, em que velocidade, e que dados de trânsito são públicos?",
+        "pergunta": "Quantos sinistros de trânsito acontecem em Sorocaba, onde, e quais radares fixos operam na cidade?",
         "fonte": "Semob Sorocaba (radares) e Infosiga SP (Detran-SP)",
         "cta": "Ver radares e trânsito",
         "tom": "card",
-        "descricao": "Lista oficial dos radares fixos da cidade, com a velocidade fiscalizada, e o que ainda não é público sobre o trânsito.",
-        "meta_desc": "Radares fixos de Sorocaba por local e velocidade, conforme a Semob, e o estado dos dados públicos de trânsito.",
+        "descricao": "Sinistros de trânsito por mês, hora, tipo, via e mapa de calor (Infosiga SP), a lista oficial dos radares fixos e o que ainda não é público.",
+        "meta_desc": "Sinistros de trânsito em Sorocaba conforme o Infosiga SP, radares fixos por local e velocidade conforme a Semob, e o estado dos dados públicos de trânsito.",
         "palavras": ["trânsito", "radar", "radares", "velocidade", "multas", "semob", "urbes", "mobilidade", "acidentes"],
         "blocos": [],
         "glossario": [
             ("Radar fixo", "Equipamento instalado em um ponto para medir a velocidade e registrar quem passa acima do limite. A velocidade indicada é a fiscalizada naquele ponto."),
-            ("Lista oficial", "A Semob publica por decreto os locais onde os radares fixos operam. Este painel reproduz essa lista; não mede multas nem acidentes."),
+            ("Lista oficial", "A Semob publica por decreto os locais onde os radares fixos operam. Este painel reproduz essa lista; ela não mede multas nem sinistros (os sinistros vêm do Infosiga SP, em outro bloco)."),
         ],
         "limitacoes": [
             "A lista não diz quantas multas cada radar aplicou; esse dado só sai por pedido de acesso à informação.",

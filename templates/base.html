@@ -7,7 +7,6 @@
 <meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; style-src 'self'; style-src-attr 'unsafe-inline'; img-src 'self' data:; connect-src 'self'; base-uri 'none'; form-action 'none'">
 <title>{% block titulo %}Sorocaba em Dados | Uma iniciativa CivisBR{% endblock %}</title>
 <meta name="description" content="{% block descricao %}Informações públicas sobre Sorocaba organizadas de forma clara: emprego, combustíveis e escolas.{% endblock %}">
-<script>document.documentElement.classList.add("js")</script>
 <link rel="stylesheet" href="{{ raiz }}style.css">
 </head>
 <body>
@@ -17,17 +16,30 @@
     <a class="marca" href="{{ raiz or './' }}">{{ logo() }}<span>Sorocaba em Dados</span></a>
     <nav aria-label="Principal" class="nav-desktop">
       <ul>
-        {% for p in paineis %}<li><a href="{{ raiz }}{{ p.id }}/"{% if ativo == p.id %} aria-current="page"{% endif %}>{{ p.nav }}</a></li>{% endfor %}
-        <li><a href="{{ raiz }}sobre/"{% if ativo == "sobre" %} aria-current="page"{% endif %}>Sobre o projeto</a></li>
+        {% for g in grupos %}
+        {% if g.paineis | length == 1 %}{% set p = g.paineis[0] %}
+        <li><a class="nav-link" href="{{ raiz }}{{ p.id }}/"{% if ativo == p.id %} aria-current="page"{% endif %}>{{ g.nome }}</a></li>
+        {% else %}
+        <li class="nav-grupo">
+          <details{% if ativo in g.paineis | map(attribute="id") %} class="tem-ativo"{% endif %}>
+            <summary>{{ g.nome }}{% if ativo in g.paineis | map(attribute="id") %}<span class="so-leitor"> (grupo da página atual)</span>{% endif %}{{ icone("seta-baixo", "ico-seta") }}</summary>
+            <ul>{% for p in g.paineis %}<li><a href="{{ raiz }}{{ p.id }}/"{% if ativo == p.id %} aria-current="page"{% endif %}>{{ p.nav }}</a></li>{% endfor %}</ul>
+          </details>
+        </li>
+        {% endif %}
+        {% endfor %}
+        <li><a class="nav-link" href="{{ raiz }}sobre/"{% if ativo == "sobre" %} aria-current="page"{% endif %}>Sobre</a></li>
       </ul>
     </nav>
     <details class="menu-movel">
-      <summary aria-label="Abrir menu">{{ icone("menu") }}</summary>
+      <summary aria-label="Menu">{{ icone("menu") }}</summary>
       <nav aria-label="Principal (celular)">
-        <ul>
-          {% for p in paineis %}<li><a href="{{ raiz }}{{ p.id }}/">{{ p.nav }}</a></li>{% endfor %}
-          <li><a href="{{ raiz }}sobre/">Sobre o projeto</a></li>
-        </ul>
+        {% for g in grupos %}
+        <p class="menu-grupo" id="mg-{{ loop.index }}">{{ g.nome }}</p>
+        <ul aria-labelledby="mg-{{ loop.index }}">{% for p in g.paineis %}<li><a href="{{ raiz }}{{ p.id }}/"{% if ativo == p.id %} aria-current="page"{% endif %}>{{ p.nav }}</a></li>{% endfor %}</ul>
+        {% endfor %}
+        <p class="menu-grupo">Projeto</p>
+        <ul><li><a href="{{ raiz }}sobre/"{% if ativo == "sobre" %} aria-current="page"{% endif %}>Sobre o projeto</a></li></ul>
       </nav>
     </details>
   </div>
@@ -44,7 +56,8 @@
     </div>
     <div>
       <h2>Painéis</h2>
-      <ul>{% for p in paineis %}<li><a href="{{ raiz }}{{ p.id }}/">{{ p.nav }}</a></li>{% endfor %}</ul>
+      {% for g in grupos %}<p class="rodape-grupo" id="rg-{{ loop.index }}">{{ g.nome }}</p>
+      <ul aria-labelledby="rg-{{ loop.index }}">{% for p in g.paineis %}<li><a href="{{ raiz }}{{ p.id }}/">{{ p.nav }}</a></li>{% endfor %}</ul>{% endfor %}
     </div>
     <div>
       <h2>Projeto</h2>

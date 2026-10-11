@@ -4,7 +4,7 @@
 <section aria-labelledby="resumo" class="resumo-real">
   <h2 id="resumo" class="rotulo-resumo">Radares fixos na lista oficial</h2>
   <p class="numero-grande">{{ n_radares }}</p>
-  <p class="resumo-texto">radares fixos com local e velocidade fiscalizada, segundo a Secretaria de Mobilidade (Semob). A maioria fiscaliza 50 km/h.</p>
+  <p class="resumo-texto">radares fixos com local e velocidade fiscalizada, segundo a Secretaria de Mobilidade (Semob). O limite mais comum é {{ vel_comum }} km/h.</p>
   <p class="pequeno suave">É a lista de onde os radares ficam, não de quantas multas aplicam.</p>
 </section>
 {% endblock %}
@@ -18,9 +18,17 @@
 {% block explorar %}
 <section aria-labelledby="ac-t" class="bloco-painel">
   <h2 id="ac-t" class="h2-medio sem-topo">Acidentes de trânsito (Infosiga SP)</h2>
-  <p class="suave">Nos 12 meses até {{ ac_fim }}: <strong>{{ ac_ult12 | num }} sinistros</strong> com vítima ou dano registrados em Sorocaba (contra {{ ac_ant12 | num }} nos 12 meses anteriores), com <strong>{{ ac_mortes12 | num }} mortes</strong>. O mês mais recente costuma subir quando o Detran-SP completa os registros.</p>
+  {% if ac_ult12 is not none %}<p class="suave">Nos 12 meses até {{ ac_fim }}: <strong>{{ ac_ult12 | num }} sinistros</strong> com vítima registrados em Sorocaba{% if ac_ant12 is not none %} (contra {{ ac_ant12 | num }} nos 12 meses anteriores){% endif %}, com <strong>{{ ac_mortes12 | num }} vítimas fatais</strong> registradas. O mês mais recente costuma subir quando o Detran-SP completa os registros.{% if ac_ant12 is none %} A comparação com os 12 meses anteriores não é mostrada: a parcela de notificações (registros incompletos, fora da contagem) mudou muito entre os períodos e a diferença não indicaria melhora ou piora.{% endif %}</p>{% else %}<p class="suave">Resumo dos últimos 12 meses indisponível: a série mensal tem meses faltando.</p>{% endif %}
+  {% if ac_notif_ano is not none %}<p class="pequeno suave">Em {{ ac_ano }}, {{ ac_notif_ano }}% dos registros são notificações e ficam fora de hora, dia, tipo, vias e mapa; esses detalhes subcontam {{ ac_ano }} e não se comparam com anos de menos notificações.</p>{% endif %}
   <div class="grade-2">
-    <article class="quadro-card"><h3>Sinistros por mês</h3><p class="suave">Sem as notificações, que têm informação incompleta.</p>{{ barras(ac_mensal, "ac-m", "Sinistros de trânsito por mês em Sorocaba") }}</article>
+    <article class="quadro-card"><h3>Sinistros por mês</h3><p class="suave">Sem as notificações, que têm informação incompleta.</p>{{ barras(ac_mensal, "ac-m", "Sinistros de trânsito por mês em Sorocaba") }}
+      <details class="tabela-mes"><summary>Ver os valores por mês</summary>
+        <div class="rolagem"><table>
+          <caption class="so-leitor">Sinistros, vítimas fatais e notificações por mês em Sorocaba</caption>
+          <thead><tr><th scope="col">Mês</th><th scope="col">Sinistros</th><th scope="col">Vítimas fatais</th><th scope="col">Notificações (fora da contagem)</th></tr></thead>
+          <tbody>{% for m in ac_tabela %}<tr><th scope="row">{{ m.rotulo }}</th><td>{{ m.n | num }}</td><td>{{ m.mortes | num }}</td><td>{{ m.notif | num }}</td></tr>{% endfor %}</tbody>
+        </table></div>
+      </details></article>
     <article class="quadro-card"><h3>Por hora do dia ({{ ac_ano }})</h3>{{ barras(ac_horas, "ac-h", "Sinistros por hora do dia em Sorocaba") }}</article>
     <article class="quadro-card"><h3>Por dia da semana ({{ ac_ano }})</h3><ul class="setores">{% for d in ac_dias %}<li><span class="nome">{{ d.nome }}</span><span class="val">{{ d.n | num }}</span><span class="setor-barra pos" style="width: {{ d.pct }}%"></span></li>{% endfor %}</ul></article>
     <article class="quadro-card"><h3>Tipo de sinistro ({{ ac_ano }})</h3><ul class="setores">{% for t in ac_tipos %}<li><span class="nome">{{ t.nome }}</span><span class="val">{{ t.n | num }} ({{ t.pct | brl1 }}%)</span><span class="setor-barra pos" style="width: {{ t.pct }}%"></span></li>{% endfor %}</ul></article>
@@ -28,17 +36,17 @@
   {% if ac_calor %}{% set c = ac_calor %}
   <article class="quadro-card" style="margin-top:1.5rem">
     <h3>Onde acontecem ({{ c.ano_ini }} a {{ c.ano }})</h3>
-    <p class="suave">Mapa de calor: áreas de cerca de {{ c.lado_m | num }} m; quanto mais escuro, mais sinistros. Áreas com menos de 5 registros não aparecem.</p>
-    <svg class="mapa-calor" viewBox="0 0 {{ c.mapa.largura }} {{ c.mapa.altura }}" role="img" aria-labelledby="mc-ac-t"><title id="mc-ac-t">Mapa de calor de sinistros de trânsito em Sorocaba</title>
+    <p class="suave">Mapa de calor: áreas de cerca de {{ c.lado_m | num }} m; quanto mais escuro, mais sinistros. Áreas com menos de {{ ac_celula_min }} registros no ano não aparecem.</p>
+    <svg class="mapa-calor" viewBox="0 0 {{ c.mapa.largura }} {{ c.mapa.altura }}" role="img" aria-labelledby="mc-ac-t"><title id="mc-ac-t">Mapa de calor de sinistros de trânsito em Sorocaba: {{ c.n_celulas }} áreas com {{ c.legenda[0].ini | num }} a {{ c.legenda[-1].fim | num }} sinistros em {{ c.ano_ini }} a {{ c.ano }}</title>
       <path class="contorno" d="{{ c.mapa.caminho }}"/>
       {% for q in c.celulas %}<rect class="calor-{{ q.nivel }}" x="{{ q.x }}" y="{{ q.y }}" width="{{ q.w }}" height="{{ q.h }}"><title>{{ q.n | num }} sinistros nesta área</title></rect>{% endfor %}
     </svg>
     <ul class="legenda-calor">{% for l in c.legenda %}<li><span class="amostra-calor calor-{{ l.nivel }}"></span>{{ l.ini | num }}{% if l.fim != l.ini %}–{{ l.fim | num }}{% endif %}</li>{% endfor %}</ul>
-    <p class="pequeno suave">{{ c.cobertura | brl1 }}% dos sinistros desses anos têm coordenada válida. Sinistros fatais não aparecem como pontos nem com data e hora exatas.</p>
+    <p class="pequeno suave">{{ c.cobertura | brl1 }}% dos sinistros desses anos têm coordenada válida. Não há pontos individuais nem data e hora exatas; sinistros fatais entram só na contagem mensal.</p>
   </article>{% endif %}
   <article class="quadro-card" style="margin-top:1.5rem">
     <h3>Vias com mais sinistros ({{ ac_ano }})</h3>
-    <p class="suave">Vias com 10 ou mais sinistros no ano. <strong>Mais sinistros não significa via mais perigosa:</strong> vias grandes e movimentadas acumulam mais registros.</p>
+    <p class="suave">Vias com {{ ac_via_min }} ou mais sinistros no ano. <strong>Mais sinistros não significa via mais perigosa:</strong> vias grandes e movimentadas acumulam mais registros.</p>
     <ol class="setores ranking">{% for v in ac_vias %}<li><span class="nome">{{ loop.index }}. {{ v.nome }}</span><span class="val">{{ v.n | num }}</span><span class="setor-barra pos" style="width: {{ v.pct }}%"></span></li>{% endfor %}</ol>
   </article>
   <p class="pequeno suave">Fonte: <a href="{{ env_ac.fonte.url }}">Infosiga SP (Detran-SP)</a>, {{ env_ac.fonte.licenca }}, coletado em {{ env_ac.fonte.acesso_em | data_br }}. <a href="{{ raiz }}data/infosiga.json">infosiga.json</a>.</p>
@@ -52,6 +60,18 @@
 </section>
 <section aria-labelledby="lista-t" class="bloco-painel">
   <h2 id="lista-t" class="h2-medio sem-topo">Onde ficam</h2>
+  {% if radar_mapa %}{% set rm = radar_mapa %}
+  <article class="quadro-card">
+    <h3>Mapa dos radares com posição conhecida ({{ rm.pontos | length }} individuais e {{ rm.pontos_grupo | length }} de grupo, de {{ n_radares }} radares)</h3>
+    <p class="suave">Posição aproximada, tirada do OpenStreetMap: a Semob não publica coordenadas.{% if rm.vista.split()[2] | float < rm.mapa.largura %} O mapa está aproximado da região dos pontos.{% endif %} Ponto cheio: posição de um radar. Anel: câmera de uma via com vários radares da lista; sabe-se que está ali, mas não qual radar é. Radares sem ponto não têm posição segura nos dados abertos; todos estão na lista abaixo.</p>
+    <svg class="mapa-calor" viewBox="{{ rm.vista }}" role="img" aria-labelledby="mr-t"><title id="mr-t">Mapa com a posição aproximada de radares fixos em Sorocaba: {{ rm.pontos | length }} individuais e {{ rm.pontos_grupo | length }} de grupo</title>
+      <path class="contorno" d="{{ rm.mapa.caminho }}"/>
+      {% for p in rm.pontos %}<circle class="radar-pt vel-{{ p.v }}" cx="{{ p.x }}" cy="{{ p.y }}" r="{{ [2, 3 + (p.v - 40) // 10] | max }}"><title>{{ p.local }} — {{ p.v }} km/h ({{ p.precisao }})</title></circle>{% endfor %}
+      {% for p in rm.pontos_grupo %}<circle class="radar-anel vel-{{ p.v }}" cx="{{ p.x }}" cy="{{ p.y }}" r="{{ [3, 4 + (p.v - 40) // 10] | max }}"><title>Uma câmera da via, {{ p.v }} km/h. Radares da lista nesta via: {{ p.locais | join("; ") }}</title></circle>{% endfor %}
+    </svg>
+    <ul class="legenda-calor">{% for v in rm.velocidades %}<li><span class="amostra-radar vel-{{ v }}"></span>{{ v }} km/h</li>{% endfor %}</ul>
+    <p class="pequeno suave">Quanto maior e mais escuro o ponto, maior a velocidade fiscalizada. © colaboradores do <a href="https://www.openstreetmap.org/copyright" rel="noreferrer">OpenStreetMap</a> (ODbL). Erro típico de dezenas de metros. Para ver a rua, procure o endereço da lista no <a href="https://www.openstreetmap.org/search?query=Sorocaba" rel="noreferrer">OpenStreetMap</a>.</p>
+  </article>{% endif %}
   <details class="tabela-mes"><summary>Ver os {{ n_radares }} locais, em ordem alfabética</summary>
     <div class="rolagem"><table>
       <caption class="so-leitor">Radares fixos de Sorocaba por local e velocidade</caption>

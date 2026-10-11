@@ -12,10 +12,11 @@ from pathlib import Path
 
 from jinja2 import Environment, FileSystemLoader, select_autoescape
 
+from scripts.infosiga_regras import CELULA_MINIMA, VIA_MINIMA
 from scripts.charts import barras_mensais, linhas, linhas_posicao, linhas_preco
 from scripts.mapa import gerar as gerar_mapa
 from scripts.mapa import projetar as projetar_mapa
-from scripts.paineis import PAINEIS
+from scripts.paineis import GRUPOS, PAINEIS
 
 RAIZ = Path(__file__).resolve().parent.parent
 REPO_URL = "https://github.com/civisbr/sorocaba-em-dados"
@@ -244,7 +245,7 @@ def mapa_de_calor(d: list[dict], grupo: str, malha: Path) -> dict:
         legenda.append({"nivel": k, "ini": ini, "fim": max(ini, fim)})
     return {
         "mapa": mapa, "celulas": retangulos, "legenda": legenda, "cobertura": cob["pct"], "com_coordenada": cob["n"],
-        "ano": cob["ano"], "ano_ini": cob["mes"] if grupo == "sinistros" else cob["ano"], "lado_m": round(lado * 111_000), "n_celulas": len(retangulos),
+        "ano": cob["ano"], "ano_ini": cob["n2"] if grupo == "sinistros" else cob["ano"], "lado_m": round(lado * 111_000), "n_celulas": len(retangulos),
     }
 
 
@@ -361,12 +362,43 @@ def dia_semana(iso_data: str) -> str:
     return ["segunda", "terça", "quarta", "quinta", "sexta", "sábado", "domingo"][date.fromisoformat(iso_data).weekday()]
 
 
+def janelas_12_meses(por_mes: dict[tuple[int, int], dict]) -> tuple[list[dict], list[dict]]:
+    """Últimos 12 meses do calendário e os 12 anteriores; lista vazia se faltar algum mês."""
+    if not por_mes:
+        return [], []
+    ano, mes = max(por_mes)
+    n = ano * 12 + mes - 1
+    def janela(fim: int) -> list[dict]:
+        ks = [((fim - i) // 12, (fim - i) % 12 + 1) for i in range(11, -1, -1)]
+        return [por_mes[k] for k in ks] if all(k in por_mes for k in ks) else []
+    return janela(n), janela(n - 12)
+
+
+def parcela_notificacoes(janela: list[dict]) -> float:
+    nt = sum(int(r["categoria"].split("|")[0]) for r in janela)
+    total = nt + sum(r["n"] for r in janela)
+    return nt / total if total else 0.0
+
+
+def comparacao_anterior(ult12: list[dict], ant12: list[dict]) -> int | None:
+    """Total dos 12 meses anteriores, ou None quando a comparação enganaria: as notificações ficam
+    fora da contagem e a parcela delas muda muito de um ano para outro, o que parece queda ou alta real."""
+    if not ult12 or not ant12 or abs(parcela_notificacoes(ult12) - parcela_notificacoes(ant12)) > 0.10:
+        return None
+    return sum(r["n"] for r in ant12)
+
+
+def notificacoes_do_ano(mensal: list[dict], ano: int) -> int:
+    ano_m = [r for r in mensal if r["ano"] == ano]
+    return round(parcela_notificacoes(ano_m) * 100)
+
+
 def contexto_acidentes(env: dict) -> dict:
     d = env["dados"]
     mensal = [r for r in d if r["recorte"] == "mensal"]
     rot = {i: f"{ABREV[r['mes'] - 1]}/{str(r['ano'])[2:]}" for i, r in enumerate(mensal) if (i % 12 == 0 and len(mensal) - 1 - i >= 9) or i == len(mensal) - 1}
-    ult12 = mensal[-12:]
-    ant12 = mensal[-24:-12]
+    por_mes = {(r["ano"], r["mes"]): r for r in mensal}
+    ult12, ant12 = janelas_12_meses(por_mes)
     horas = [r for r in d if r["recorte"] == "hora"]
     dias_ord = ["Segunda-feira", "Terça-feira", "Quarta-feira", "Quinta-feira", "Sexta-feira", "Sábado", "Domingo"]
     dias = sorted((r for r in d if r["recorte"] == "dia_semana"), key=lambda r: dias_ord.index(r["categoria"]) if r["categoria"] in dias_ord else 99)
@@ -378,8 +410,11 @@ def contexto_acidentes(env: dict) -> dict:
     return {
         "ac_ano": horas[0]["ano"] if horas else None,
         "ac_mensal": barras_mensais([(f"{ABREV[r['mes'] - 1]}/{r['ano']}", r["n"]) for r in mensal], rot),
-        "ac_ult12": sum(r["n"] for r in ult12), "ac_ant12": sum(r["n"] for r in ant12),
-        "ac_mortes12": sum(r["n2"] for r in ult12),
+        "ac_ult12": sum(r["n"] for r in ult12) if ult12 else None, "ac_ant12": comparacao_anterior(ult12, ant12),
+        "ac_mortes12": sum(r["n2"] for r in ult12) if ult12 else None,
+        "ac_notif_ano": notificacoes_do_ano(mensal, horas[0]["ano"]) if horas else None,
+        "ac_tabela": [{"rotulo": f"{ABREV[r['mes'] - 1]}/{r['ano']}", "n": r["n"], "mortes": r["n2"], "notif": int(r["categoria"].split("|")[0])} for r in mensal],
+        "ac_celula_min": CELULA_MINIMA, "ac_via_min": VIA_MINIMA,
         "ac_fim": f"{ABREV[mensal[-1]['mes'] - 1]}/{mensal[-1]['ano']}",
         "ac_horas": barras_mensais([(f"{r['categoria']}h", r["n"]) for r in horas], {i: f"{i:02d}h" for i in range(0, 24, 3)}) if horas else None,
         "ac_dias": [{"nome": r["categoria"], "n": r["n"], "pct": round(r["n"] / topo_d * 100, 1)} for r in dias],
@@ -389,13 +424,41 @@ def contexto_acidentes(env: dict) -> dict:
     }
 
 
+def vista_dos_pontos(pontos: list[dict], mapa: dict, folga: float = 0.35, minimo: float = 120.0) -> str:
+    """viewBox que aproxima o mapa da região dos pontos, mantendo a proporção do quadro inteiro e sem sair dele."""
+    xs, ys = [p["x"] for p in pontos], [p["y"] for p in pontos]
+    w = max(max(xs) - min(xs), minimo) * (1 + 2 * folga)
+    h = max(max(ys) - min(ys), minimo) * (1 + 2 * folga)
+    razao = mapa["largura"] / mapa["altura"]
+    w, h = max(w, h * razao), max(h, w / razao)
+    w, h = min(w, mapa["largura"]), min(h, mapa["altura"])
+    x = min(max((min(xs) + max(xs)) / 2 - w / 2, 0), mapa["largura"] - w)
+    y = min(max((min(ys) + max(ys)) / 2 - h / 2, 0), mapa["altura"] - h)
+    return f"{x:.1f} {y:.1f} {w:.1f} {h:.1f}"
+
+
 def contexto_transito(env: dict) -> dict:
     radares = env["dados"]
     por_vel: dict[int, int] = {}
     for r in radares:
         por_vel[r["velocidade_kmh"]] = por_vel.get(r["velocidade_kmh"], 0) + 1
     topo = max(por_vel.values())
+    mapa, ponto = projetar_mapa(RAIZ / "data" / "raw" / "ibge" / "malha_3552205.geojson")
+    pontos, grupos = [], {}
+    for r in radares:
+        if "lat" in r:
+            x, y = ponto(r["lat"], r["lon"])
+            pontos.append({"x": round(x, 1), "y": round(y, 1), "v": r["velocidade_kmh"], "local": r["local"], "precisao": r["precisao"]})
+        for texto in filter(None, r.get("posicoes_candidatas", "").split("|")):
+            lat, lon = (float(x) for x in texto.split(","))
+            g = grupos.setdefault((lat, lon), {"v": r["velocidade_kmh"], "locais": [], "xy": ponto(lat, lon)})
+            g["locais"].append(r["local"])
+    pontos_grupo = [{"x": round(g["xy"][0], 1), "y": round(g["xy"][1], 1), "v": g["v"], "locais": sorted(set(g["locais"]))} for g in grupos.values()]
+    todos = pontos + pontos_grupo
+    vel_comum = max(por_vel, key=lambda v: (por_vel[v], -v))  # empate: vale a menor velocidade
     return {
+        "vel_comum": vel_comum,
+        "radar_mapa": {"mapa": mapa, "pontos": pontos, "pontos_grupo": pontos_grupo, "velocidades": sorted({p["v"] for p in todos}), "vista": vista_dos_pontos(todos, mapa)} if todos else None,
         "radares": sorted(radares, key=lambda r: (chave_alfabetica(r["local"]), r["ponto"])),
         "por_vel": [{"v": v, "n": n, "pct": round(n / topo * 100, 1)} for v, n in sorted(por_vel.items())],
         "n_radares": len(radares),
@@ -494,8 +557,11 @@ def renderizar(public: Path, saida: Path) -> None:
         status="real", rotulo_status="Dado real",
         referencia=("previsão de " + data_br(previsao["referencia"]["inicio"])[:5] + " a " + data_br(previsao["referencia"]["fim"])[:5]) if previsao else "normais 1991–2020",
     )
-    paineis["transito"].update(status="real", rotulo_status="Dado real", referencia=f"{ctx_trans['n_radares']} radares fixos listados")
-    ordem = list(paineis.values())
+    paineis["transito"].update(status="real", rotulo_status="Dado real", referencia=f"sinistros até {ctx_trans['ac_fim']}; {ctx_trans['n_radares']} radares fixos listados")
+    if sorted(p for _, ids in GRUPOS for p in ids) != sorted(paineis):
+        raise ValueError("todo painel precisa estar em exatamente um grupo de scripts.paineis.GRUPOS")
+    grupos = [{"nome": nome, "paineis": [paineis[i] for i in ids]} for nome, ids in GRUPOS]
+    ordem = [p for g in grupos for p in g["paineis"]]
 
     if saida.exists():
         if any(saida.iterdir()) and not (saida / MARCADOR).exists():
@@ -508,7 +574,7 @@ def renderizar(public: Path, saida: Path) -> None:
     for nome in ("emprego.json", "combustivel.json", "escolas.json", "perfil.json", "representantes.json", "seguranca.json", "comparativo.json", "clima.json", "radares.json", "infosiga.json"):
         shutil.copy(public / nome, saida / "data" / nome)
 
-    comum = {"paineis": ordem, "repo_url": REPO_URL}
+    comum = {"paineis": ordem, "grupos": grupos, "repo_url": REPO_URL}
 
     def escrever(destino: str, template: str, raiz: str, **ctx) -> None:
         alvo = saida / destino
@@ -529,7 +595,7 @@ def renderizar(public: Path, saida: Path) -> None:
         ("Segurança", "SSP-SP — ocorrências registradas", flag_s),
         ("Comparativo", "IBGE e INEP — posição entre municípios", flag_c2),
         ("Clima", "INMET e Open-Meteo (ERA5)", "real"),
-        ("Trânsito", "Semob Sorocaba (radares)", "real"),
+        ("Trânsito", "Semob Sorocaba (radares) e Infosiga SP (Detran-SP)", "real"),
     ])
     escrever(
         "emprego/index.html", "paineis/emprego.html", "../",

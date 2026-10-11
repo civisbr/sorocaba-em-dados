@@ -100,3 +100,5 @@ Abra uma issue ou um pull request. O CI roda os testes e o render em todo PR. Mu
 ## Licença e dados
 
 Os dados pertencem às fontes originais e seguem as licenças delas, citadas em cada painel. A licença do código ainda não foi definida.
+
+As posições dos radares (`data/raw/radares/coordenadas.csv`) derivam do OpenStreetMap: © colaboradores do OpenStreetMap, licença ODbL 1.0 (https://www.openstreetmap.org/copyright). Hoje são poucas feições, abaixo do limiar de "extrato substancial" da fundação OSM, mas, se a cobertura crescer, esse arquivo e o `radares.json` passam a ser publicados sob a ODbL.

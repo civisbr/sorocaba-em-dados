@@ -36,8 +36,12 @@
       "velocidade_kmh": 40
     },
     {
+      "fonte_posicao": "© colaboradores do OpenStreetMap, ODbL 1.0",
+      "lat": -23.452036,
       "local": "RUA MICHEL CHICRI MALUF , 660 (C/B)",
+      "lon": -47.472933,
       "ponto": "F018",
+      "precisao": "câmera no OSM",
       "tipo": "FIXO - CONTROLADOR",
       "velocidade_kmh": 50
     },
@@ -54,8 +58,10 @@
       "velocidade_kmh": 50
     },
     {
+      "fonte_posicao": "© colaboradores do OpenStreetMap, ODbL 1.0",
       "local": "AV DOM AGUIRRE (B/C) , Nº 3303",
       "ponto": "F021",
+      "posicoes_candidatas": "-23.493750,-47.447386|-23.494352,-47.448155",
       "tipo": "FIXO - CONTROLADOR",
       "velocidade_kmh": 70
     },
@@ -102,8 +108,12 @@
       "velocidade_kmh": 50
     },
     {
+      "fonte_posicao": "© colaboradores do OpenStreetMap, ODbL 1.0",
+      "lat": -23.455261,
       "local": "RUA ADELAIDE LAMBERTI DIENER,PRÓX. AO N°187 (C/B)",
+      "lon": -47.463853,
       "ponto": "F029",
+      "precisao": "câmera no OSM",
       "tipo": "FIXO - CONTROLADOR",
       "velocidade_kmh": 40
     },
@@ -138,8 +148,10 @@
       "velocidade_kmh": 50
     },
     {
+      "fonte_posicao": "© colaboradores do OpenStreetMap, ODbL 1.0",
       "local": "AV. DR. GUALBERTO MOREIRA, PRÓX RUA UMBERTO MERIGHI",
       "ponto": "F035",
+      "posicoes_candidatas": "-23.437676,-47.512860|-23.437119,-47.512391|-23.436097,-47.508129|-23.435983,-47.508157",
       "tipo": "FIXO - CONTROLADOR",
       "velocidade_kmh": 50
     },
@@ -150,8 +162,10 @@
       "velocidade_kmh": 60
     },
     {
+      "fonte_posicao": "© colaboradores do OpenStreetMap, ODbL 1.0",
       "local": "AV. DR. GUALBERTO MOREIRA, PRÓX RUA DIRCEU DELLOSSO",
       "ponto": "F037",
+      "posicoes_candidatas": "-23.437676,-47.512860|-23.437119,-47.512391|-23.436097,-47.508129|-23.435983,-47.508157",
       "tipo": "FIXO - CONTROLADOR",
       "velocidade_kmh": 50
     },
@@ -228,8 +242,10 @@
       "velocidade_kmh": 60
     },
     {
+      "fonte_posicao": "© colaboradores do OpenStreetMap, ODbL 1.0",
       "local": "AV. SÃO PAULO , Nº 3445 (B/C)",
       "ponto": "F050",
+      "posicoes_candidatas": "-23.494090,-47.403288|-23.489067,-47.421343|-23.489229,-47.421453",
       "tipo": "FIXO - CONTROLADOR",
       "velocidade_kmh": 70
     },
@@ -246,8 +262,10 @@
       "velocidade_kmh": 60
     },
     {
+      "fonte_posicao": "© colaboradores do OpenStreetMap, ODbL 1.0",
       "local": "AV. SÃO PAULO , OPOSTO Nº 3445 (C/B)",
       "ponto": "F053",
+      "posicoes_candidatas": "-23.494090,-47.403288|-23.489067,-47.421343|-23.489229,-47.421453",
       "tipo": "FIXO - CONTROLADOR",
       "velocidade_kmh": 70
     },
@@ -282,14 +300,20 @@
       "velocidade_kmh": 50
     },
     {
+      "fonte_posicao": "© colaboradores do OpenStreetMap, ODbL 1.0",
+      "lat": -23.493862,
       "local": "RUA PROFESSOR TOLEDO , Nº 1156 (B/C)",
+      "lon": -47.467892,
       "ponto": "F059",
+      "precisao": "câmera no OSM",
       "tipo": "FIXO - CONTROLADOR",
       "velocidade_kmh": 50
     },
     {
+      "fonte_posicao": "© colaboradores do OpenStreetMap, ODbL 1.0",
       "local": "AV. DOM AGUIRRE OPOSTO , Nº 6003 (C/B)",
       "ponto": "F060",
+      "posicoes_candidatas": "-23.469253,-47.447446|-23.469266,-47.447478",
       "tipo": "FIXO - CONTROLADOR",
       "velocidade_kmh": 60
     },
@@ -300,8 +324,10 @@
       "velocidade_kmh": 60
     },
     {
+      "fonte_posicao": "© colaboradores do OpenStreetMap, ODbL 1.0",
       "local": "AV. DOM AGUIRRE , Nº 6003 (B/C)",
       "ponto": "F062",
+      "posicoes_candidatas": "-23.469253,-47.447446|-23.469266,-47.447478",
       "tipo": "FIXO - CONTROLADOR",
       "velocidade_kmh": 60
     },
@@ -336,8 +362,12 @@
       "velocidade_kmh": 50
     },
     {
+      "fonte_posicao": "© colaboradores do OpenStreetMap, ODbL 1.0",
+      "lat": -23.514538,
       "local": "RUA PROFESSORA GUIDA MARES , Nº 246 (C/B)",
+      "lon": -47.496976,
       "ponto": "F068",
+      "precisao": "câmera no OSM",
       "tipo": "FIXO - CONTROLADOR",
       "velocidade_kmh": 50
     },
@@ -414,8 +444,10 @@
       "velocidade_kmh": 40
     },
     {
+      "fonte_posicao": "© colaboradores do OpenStreetMap, ODbL 1.0",
       "local": "AV DOM AGUIRRE , PROX. A RUA ANA M. DE CARVALHO (C/B)",
       "ponto": "F081",
+      "posicoes_candidatas": "-23.493750,-47.447386|-23.494352,-47.448155",
       "tipo": "FIXO - CONTROLADOR",
       "velocidade_kmh": 70
     },
@@ -468,8 +500,12 @@
       "velocidade_kmh": 40
     },
     {
+      "fonte_posicao": "© colaboradores do OpenStreetMap, ODbL 1.0",
+      "lat": -23.47847,
       "local": "RUA ABBUD BACHIR ABDALLA COM PRAÇA AVELINO LEITE DE CAMARGO (B/C)",
+      "lon": -47.467211,
       "ponto": "F090",
+      "precisao": "câmera no OSM",
       "tipo": "FIXO - CONTROLADOR",
       "velocidade_kmh": 50
     },
@@ -576,8 +612,10 @@
       "velocidade_kmh": 50
     },
     {
+      "fonte_posicao": "© colaboradores do OpenStreetMap, ODbL 1.0",
       "local": "AV. SÃO PAULO , Nº 5347 (B/C)",
       "ponto": "F108",
+      "posicoes_candidatas": "-23.494090,-47.403288|-23.489067,-47.421343|-23.489229,-47.421453",
       "tipo": "FIXO - CONTROLADOR",
       "velocidade_kmh": 70
     },
@@ -594,8 +632,12 @@
       "velocidade_kmh": 50
     },
     {
+      "fonte_posicao": "© colaboradores do OpenStreetMap, ODbL 1.0",
+      "lat": -23.504477,
       "local": "RUA DIVA MUGNAINI RAVACCI (C/B) , Nº 15",
+      "lon": -47.50665,
       "ponto": "F111",
+      "precisao": "câmera no OSM",
       "tipo": "FIXO - CONTROLADOR",
       "velocidade_kmh": 50
     },
@@ -624,26 +666,34 @@
       "velocidade_kmh": 50
     },
     {
+      "fonte_posicao": "© colaboradores do OpenStreetMap, ODbL 1.0",
       "local": "AV. FERNANDO STECCA , Nº 831",
       "ponto": "F116",
+      "posicoes_candidatas": "-23.457255,-47.439038|-23.461003,-47.435799|-23.463060,-47.434264|-23.464288,-47.431078",
       "tipo": "FIXO - CONTROLADOR",
       "velocidade_kmh": 60
     },
     {
+      "fonte_posicao": "© colaboradores do OpenStreetMap, ODbL 1.0",
       "local": "AV. FERNANDO STECCA , PROX AO Nº 780",
       "ponto": "F117",
+      "posicoes_candidatas": "-23.457255,-47.439038|-23.461003,-47.435799|-23.463060,-47.434264|-23.464288,-47.431078",
       "tipo": "FIXO - CONTROLADOR",
       "velocidade_kmh": 60
     },
     {
+      "fonte_posicao": "© colaboradores do OpenStreetMap, ODbL 1.0",
       "local": "AV. FERNANDO STECCA (B/C) PROX AO N º 1555",
       "ponto": "F118",
+      "posicoes_candidatas": "-23.457255,-47.439038|-23.461003,-47.435799|-23.463060,-47.434264|-23.464288,-47.431078",
       "tipo": "FIXO - CONTROLADOR",
       "velocidade_kmh": 60
     },
     {
+      "fonte_posicao": "© colaboradores do OpenStreetMap, ODbL 1.0",
       "local": "AV. FERNANDO STECCA (C/B) PROX AO N º 1555",
       "ponto": "F119",
+      "posicoes_candidatas": "-23.457255,-47.439038|-23.461003,-47.435799|-23.463060,-47.434264|-23.464288,-47.431078",
       "tipo": "FIXO - CONTROLADOR",
       "velocidade_kmh": 60
     },
@@ -684,8 +734,12 @@
       "velocidade_kmh": 60
     },
     {
+      "fonte_posicao": "© colaboradores do OpenStreetMap, ODbL 1.0",
+      "lat": -23.460146,
       "local": "AV. IPANEMA, 4495",
+      "lon": -47.501132,
       "ponto": "F126",
+      "precisao": "endereço",
       "tipo": "FIXO - CONTROLADOR",
       "velocidade_kmh": 50
     },
@@ -726,8 +780,10 @@
       "velocidade_kmh": 50
     },
     {
+      "fonte_posicao": "© colaboradores do OpenStreetMap, ODbL 1.0",
       "local": "AV. DR. ULYSSES GUIMARÃES , Nº 574",
       "ponto": "F133",
+      "posicoes_candidatas": "-23.454198,-47.473174|-23.454769,-47.474704|-23.455028,-47.477339",
       "tipo": "FIXO - CONTROLADOR",
       "velocidade_kmh": 50
     },
@@ -744,8 +800,12 @@
       "velocidade_kmh": 50
     },
     {
+      "fonte_posicao": "© colaboradores do OpenStreetMap, ODbL 1.0",
+      "lat": -23.453592,
       "local": "RUA ATÁNAZIO SOARES , PRÓX AO Nº 2332",
+      "lon": -47.48435,
       "ponto": "F136",
+      "precisao": "câmera no OSM",
       "tipo": "FIXO - CONTROLADOR",
       "velocidade_kmh": 50
     },
@@ -762,8 +822,12 @@
       "velocidade_kmh": 50
     },
     {
+      "fonte_posicao": "© colaboradores do OpenStreetMap, ODbL 1.0",
+      "lat": -23.512851,
       "local": "RUA DELCIO FERREIRA DE AZEVEDO OPOSTO N.567",
+      "lon": -47.516473,
       "ponto": "F139",
+      "precisao": "câmera no OSM",
       "tipo": "FIXO - CONTROLADOR",
       "velocidade_kmh": 50
     },
@@ -774,14 +838,18 @@
       "velocidade_kmh": 50
     },
     {
+      "fonte_posicao": "© colaboradores do OpenStreetMap, ODbL 1.0",
       "local": "AV. CONDE ZEPPELIN, OPOSTO AO Nº 109",
       "ponto": "F141",
+      "posicoes_candidatas": "-23.430653,-47.399452|-23.423426,-47.406524",
       "tipo": "FIXO - CONTROLADOR",
       "velocidade_kmh": 60
     },
     {
+      "fonte_posicao": "© colaboradores do OpenStreetMap, ODbL 1.0",
       "local": "AV. CONDE ZEPPELIN OPOSTO Nº 1930",
       "ponto": "F142",
+      "posicoes_candidatas": "-23.430653,-47.399452|-23.423426,-47.406524",
       "tipo": "FIXO - CONTROLADOR",
       "velocidade_kmh": 60
     },
@@ -792,26 +860,38 @@
       "velocidade_kmh": 60
     },
     {
+      "fonte_posicao": "© colaboradores do OpenStreetMap, ODbL 1.0",
+      "lat": -23.436411,
       "local": "AV. DR. GUALBERTO MOREIRA , Nº 880",
+      "lon": -47.508414,
       "ponto": "F144",
+      "precisao": "endereço",
       "tipo": "FIXO - CONTROLADOR",
       "velocidade_kmh": 50
     },
     {
+      "fonte_posicao": "© colaboradores do OpenStreetMap, ODbL 1.0",
+      "lat": -23.435785,
       "local": "AV. DR. GUALBERTO MOREIRA , Nº 881",
+      "lon": -47.508102,
       "ponto": "F145",
+      "precisao": "endereço",
       "tipo": "FIXO - CONTROLADOR",
       "velocidade_kmh": 50
     },
     {
+      "fonte_posicao": "© colaboradores do OpenStreetMap, ODbL 1.0",
       "local": "AV. DR ULYSSES GUIMARÃES , Nº 850",
       "ponto": "F146",
+      "posicoes_candidatas": "-23.454198,-47.473174|-23.454769,-47.474704|-23.455028,-47.477339",
       "tipo": "FIXO - CONTROLADOR",
       "velocidade_kmh": 50
     },
     {
+      "fonte_posicao": "© colaboradores do OpenStreetMap, ODbL 1.0",
       "local": "AV. DR. ULYSSES GUIMARÃES , OPOSTO Nº 842",
       "ponto": "F147",
+      "posicoes_candidatas": "-23.454198,-47.473174|-23.454769,-47.474704|-23.455028,-47.477339",
       "tipo": "FIXO - CONTROLADOR",
       "velocidade_kmh": 50
     },
@@ -906,14 +986,18 @@
       "velocidade_kmh": 60
     },
     {
+      "fonte_posicao": "© colaboradores do OpenStreetMap, ODbL 1.0",
       "local": "AV. VINICIUS DE MORAES , Nº 1493",
       "ponto": "F163",
+      "posicoes_candidatas": "-23.436585,-47.505619|-23.429535,-47.507680",
       "tipo": "FIXO - CONTROLADOR",
       "velocidade_kmh": 50
     },
     {
+      "fonte_posicao": "© colaboradores do OpenStreetMap, ODbL 1.0",
       "local": "AV. VINICIUS DE MORAES , Nº 718",
       "ponto": "F164",
+      "posicoes_candidatas": "-23.436585,-47.505619|-23.429535,-47.507680",
       "tipo": "FIXO - CONTROLADOR",
       "velocidade_kmh": 50
     },
@@ -968,7 +1052,7 @@
   ],
   "fonte": {
     "acesso_em": "2026-10-11",
-    "licenca": "Informação pública publicada pela Prefeitura (sem licença explícita)",
+    "licenca": "Informação pública publicada pela Prefeitura (sem licença explícita); coordenadas (lat, lon, precisao): © colaboradores do OpenStreetMap, ODbL 1.0",
     "nome": "Semob Sorocaba — locais de operação dos radares",
     "url": "https://www.semobsorocaba.com.br/radares/locais-operacao"
   },
@@ -980,12 +1064,13 @@
       "Lista oficial de radares fixos em operação, publicada pela Semob. Não informa quantas multas cada radar aplicou.",
       "A página declara 172 radares, mas a paginação oficial lista 160; os 12 restantes não são acessíveis pela página e ficam fora.",
       "O número de série dos equipamentos não é reproduzido aqui.",
+      "A Semob não publica coordenadas. Posição aproximada (erro típico de dezenas de metros; o ponto do OSM é colaborativo e não confirmado pela Semob) para 11 dos 160 radares e, para outros 20, só o conjunto de posições possíveis na via (não se sabe qual câmera é de qual radar), obtidas no OpenStreetMap (© colaboradores do OpenStreetMap, licença ODbL): endereço com número ou câmera de velocidade mapeada que casa de forma única com a via e a velocidade da lista. Os demais ficam sem ponto no mapa para não apontar o lugar errado.",
       "SHA-256 do manifesto de coleta: b1ccbb04877fc9990755a90275e9539544fa47d752ff4fd3ec92acee09102f5d"
     ]
   },
   "referencia": {
     "fim": "2026-10-11",
-    "granularidade": "semanal",
+    "granularidade": "mensal",
     "inicio": "2026-10-11"
   },
   "schema_version": "1.0"

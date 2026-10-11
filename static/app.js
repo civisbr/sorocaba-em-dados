@@ -37,7 +37,7 @@
     });
     if (!achados.length) {
       var p = document.createElement("p");
-      p.textContent = "Nenhum painel encontrado. Por enquanto a busca encontra os painéis de Emprego, Combustível e Escolas.";
+      p.textContent = "Nenhum painel encontrado. Tente outro termo ou escolha um painel abaixo.";
       saida.appendChild(p);
       return;
     }
@@ -51,4 +51,21 @@
   }
   input.addEventListener("input", buscar);
   form.addEventListener("submit", function (e) { e.preventDefault(); });
+})();
+(function () {
+  var menus = Array.prototype.slice.call(document.querySelectorAll(".nav-grupo details, .menu-movel"));
+  if (!menus.length) return;
+  function fechar(menos) { menus.forEach(function (d) { if (d !== menos) d.open = false; }); }
+  menus.forEach(function (d) {
+    d.addEventListener("toggle", function () { if (d.open) fechar(d); });
+    d.addEventListener("focusout", function (e) { if (d.open && e.relatedTarget && !d.contains(e.relatedTarget)) d.open = false; });
+  });
+  document.addEventListener("click", function (e) { if (!e.target.closest(".nav-grupo, .menu-movel")) fechar(null); });
+  document.addEventListener("keydown", function (e) {
+    if (e.key !== "Escape") return;
+    var aberto = menus.filter(function (d) { return d.open; })[0];
+    if (!aberto) return;
+    aberto.open = false;
+    aberto.querySelector("summary").focus();
+  });
 })();
