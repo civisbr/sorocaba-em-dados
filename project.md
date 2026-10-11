@@ -374,7 +374,7 @@ Um painel só é considerado pronto quando:
 
 ## IDENTIDADE
 
-Repositório privado por decisão do responsável; a hospedagem do site será resolvida à parte (GitHub Pages no plano Free exige repositório público). Os commits atuais usam a identidade pessoal, aceito enquanto privado; antes de abrir, reescrever autoria.
+Repositório público `civisbr/sorocaba-em-dados`, com autoria `CivisBR <compact.chipmunk.sqpx@mask.me>` em todos os commits (autor e committer). Nunca usar a identidade pessoal nesta org.
 
 ```bash
 git config user.name  "<identidade CivisBR>"
