@@ -24,6 +24,26 @@ GRUPOS = {
 }
 
 
+# Sigla usada pelo TSE -> sigla usada na tabela dos especialistas (Bolognesi et al., 2025).
+# Siglas iguais passam direto; PP aparece como PROGRE (Progressistas) na tabela.
+SIGLA_ESPECIALISTAS = {
+    "REPUBLICANOS": "REP", "UNIÃO": "UNIAO", "SOLIDARIEDADE": "SDD", "CIDADANIA": "CDD",
+    "PC do B": "PCdoB", "PATRIOTA": "PATRI", "PP": "PROGRE",
+}
+# Três blocos a partir das sete categorias da fonte. É uma escolha deste projeto, não da fonte:
+# centro reúne centro-esquerda, centro e centro-direita; a tabela original separa as sete.
+BLOCOS = {
+    "extrema esquerda": "esquerda", "esquerda": "esquerda",
+    "centro-esquerda": "centro", "centro": "centro", "centro-direita": "centro",
+    "direita": "direita", "extrema direita": "direita",
+}
+
+
+def classificar(partido: str, tabela: dict[str, str]) -> tuple[str | None, str | None]:
+    categoria = tabela.get(SIGLA_ESPECIALISTAS.get(partido, partido))
+    return categoria, BLOCOS.get(categoria) if categoria else None
+
+
 def tokens(nome: str) -> frozenset[str]:
     sem_acento = unicodedata.normalize("NFKD", nome).encode("ascii", "ignore").decode()
     return frozenset(re.findall(r"[A-Z0-9]+", sem_acento.upper()))
@@ -50,23 +70,28 @@ def ler_csv(caminho: Path) -> list[dict[str, str]]:
         return list(csv.DictReader(f, delimiter=";"))
 
 
-def registro(grupo, eleicao, mandato, nome, partido, situacao, votos=None, pct=None, posicao=None, exercicio=None) -> dict:
+def registro(grupo, eleicao, mandato, nome, partido, situacao, votos=None, pct=None, posicao=None, exercicio=None, tabela=None) -> dict:
+    categoria, bloco = classificar(partido, tabela or {})
     return {
+        "ideologia": categoria, "bloco": bloco,
         "grupo": grupo, "eleicao": eleicao, "mandato": mandato,
         "nome": nome, "partido": partido, "situacao_tse": situacao, "votos_na_cidade": votos,
         "pct_votos_na_cidade": pct, "posicao_na_cidade": posicao, "em_exercicio": exercicio,
     }
 
 
-def construir(raw: Path) -> Envelope:
+def construir(raw: Path, raw_ideologia: Path | None = None) -> Envelope:
     man = json.loads((raw / "manifesto.json").read_text(encoding="utf-8"))
+    ideo = raw_ideologia or raw.parent / "ideologia"
+    tabela = {r["partido"]: r["categoria"] for r in ler_csv(ideo / "classificacao_experts.csv")}
+    man_ideo = json.loads((ideo / "manifesto.json").read_text(encoding="utf-8"))
     camara = [d["nome"] for d in json.loads((raw / "camara_deputados_sp.json").read_text(encoding="utf-8"))]
     alesp = [d["nome"] for d in json.loads((raw / "alesp_deputados.json").read_text(encoding="utf-8")) if d["situacao"] == "EXE"]
     listas = {"Deputado Federal": camara, "Deputado Estadual": alesp}
 
     dados: list[dict] = []
     for r in ler_csv(raw / "eleitos_municipais_2024.csv"):
-        dados.append(registro(GRUPOS[r["cargo"]], 2024, MANDATOS[2024], r["nome_urna"], r["partido"], r["situacao"]))
+        dados.append(registro(GRUPOS[r["cargo"]], 2024, MANDATOS[2024], r["nome_urna"], r["partido"], r["situacao"], tabela=tabela))
 
     for ano in (2022, 2026):
         totais = {r["cargo"]: int(r["votos_nominais_validos"]) for r in ler_csv(raw / f"totais_votos_{ano}.csv")}
@@ -79,7 +104,7 @@ def construir(raw: Path) -> Envelope:
                 v = int(r["votos"])
                 # Só a legislatura em curso (eleitos em 2022) tem lista oficial de exercício para conferir.
                 ex = em_exercicio(r["nome_urna"], listas[cargo]) if ano == 2022 else None
-                dados.append(registro(GRUPOS[cargo], ano, MANDATOS[ano], r["nome_urna"], r["partido"], r["situacao"], v, round(v / totais[cargo] * 100, 1), pos, ex))
+                dados.append(registro(GRUPOS[cargo], ano, MANDATOS[ano], r["nome_urna"], r["partido"], r["situacao"], v, round(v / totais[cargo] * 100, 1), pos, ex, tabela))
 
     h = hashlib.sha256((raw / "manifesto.json").read_bytes()).hexdigest()
     return Envelope(
@@ -101,6 +126,9 @@ def construir(raw: Path) -> Envelope:
                 f"Percentual = votos nominais válidos do candidato em Sorocaba ÷ total de votos nominais válidos para o cargo na cidade. Lista dos {TOP_DEPUTADOS} mais votados entre os eleitos.",
                 "Em exercício: conferido por nome nas listas oficiais da Câmara e da Alesp na data da coleta. Sem correspondência única fica sem confirmação, o que pode vir de licença, renúncia ou de nome de urna diferente do nome parlamentar.",
                 "Eleitos em 2026 assumem em 2027 (resultado do 1º turno; o 2º turno não envolve deputados).",
+                f"Posição ideológica do partido: classificação de especialistas em ciência política (survey de 2022; Bolognesi, Ribeiro, Codato e Silva, Opinião Pública, 2025, doi {man_ideo['doi']}). É a posição do partido, não do político, e a fonte avalia partidos, não pessoas.",
+                "Blocos: esquerda = extrema esquerda e esquerda; centro = centro-esquerda, centro e centro-direita; direita = direita e extrema direita. É um agrupamento deste projeto sobre as sete categorias da fonte, mostradas no detalhe.",
+                "Partido sem classificação na fonte (por exemplo, criado depois de 2022) fica fora das porcentagens e é contado à parte.",
                 f"SHA-256 do manifesto de coleta: {h}",
             ],
         ),

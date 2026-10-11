@@ -114,3 +114,30 @@ def test_csv_raw_com_cabecalho_exato():
 def test_cpf_formatado_tambem_barrado():
     for arq in list(RAW.glob("*.csv")) + list(RAW.glob("*.json")):
         assert not re.search(r"\d{3}\.\d{3}\.\d{3}-\d{2}", arq.read_text(encoding="utf-8")), arq
+
+
+def test_blocos_cobrem_so_partidos_classificados_e_somam_100():
+    from scripts.build_representantes import BLOCOS, classificar
+
+    tabela = {"PT": "esquerda", "REP": "extrema direita", "MDB": "centro-direita", "PSOL": "extrema esquerda"}
+    assert classificar("REPUBLICANOS", tabela) == ("extrema direita", "direita")  # sigla do TSE -> sigla da fonte
+    assert classificar("MDB", tabela) == ("centro-direita", "centro")
+    assert classificar("MISSÃO", tabela) == (None, None)
+    assert set(BLOCOS.values()) == {"esquerda", "centro", "direita"}
+
+
+def test_percentuais_de_bloco_dos_vereadores_fecham_100():
+    from scripts.render import contexto_representantes
+    import json
+
+    env = json.loads((RAIZ / "data/public/representantes.json").read_text(encoding="utf-8"))
+    ctx = contexto_representantes(env)
+    assert abs(sum(b["pct"] for b in ctx["blocos"]) - 100) < 0.2
+    assert sum(b["n"] for b in ctx["blocos"]) == ctx["bloco_classificados"] <= 25
+
+
+def test_fonte_da_classificacao_registrada():
+    import json
+
+    m = json.loads((RAIZ / "data/raw/ideologia/manifesto.json").read_text(encoding="utf-8"))
+    assert m["doi"].startswith("10.1590/") and m["sha256_csv"]

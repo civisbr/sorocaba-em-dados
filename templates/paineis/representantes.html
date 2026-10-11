@@ -4,17 +4,34 @@
 <section aria-labelledby="resumo" class="resumo-real">
   <h2 id="resumo" class="rotulo-resumo">Prefeitura de Sorocaba, {{ prefeito.mandato }}</h2>
   <p class="numero-grande nome-grande">{{ prefeito.nome | nome_br }}</p>
-  <p class="resumo-texto">{{ prefeito.partido }}, prefeito eleito em {{ prefeito.eleicao }}. Vice: <strong>{{ vice.nome | nome_br }}</strong> ({{ vice.partido }}). Mandato {{ prefeito.mandato }}.</p>
+  <p class="resumo-texto">{{ prefeito.partido }} ({{ rotulo_bloco(prefeito.bloco) | lower }}), prefeito eleito em {{ prefeito.eleicao }}. Vice: <strong>{{ vice.nome | nome_br }}</strong> ({{ vice.partido }}, {{ rotulo_bloco(vice.bloco) | lower }}). Mandato {{ prefeito.mandato }}.</p>
   <p class="pequeno suave">O TSE informa quem foi eleito. Afastamentos ou substituições durante o mandato não aparecem nesta lista.</p>
 </section>
 {% endblock %}
 {% block explorar %}
+<section aria-labelledby="ideo-t" class="bloco-painel">
+  <h2 id="ideo-t" class="h2-medio sem-topo">Posição dos partidos na Câmara Municipal</h2>
+  <p class="suave">Como os especialistas em ciência política classificam os partidos dos {{ bloco_classificados }} vereadores eleitos em 2024 que têm classificação. É a posição do <strong>partido</strong>, não do vereador, e a classificação é da pesquisa citada abaixo, não do site.</p>
+  <article class="quadro-card">
+    <div class="barra-bloco" role="img" aria-label="{% for b in blocos %}{{ b.nome }} {{ b.pct | brl1 }}% ({{ b.n }} vereadores){{ '; ' if not loop.last else '.' }}{% endfor %}">
+      {% for b in blocos if b.n %}<div class="seg-bloco bloco-{{ b.id }}" style="width: {{ b.pct }}%"><span>{% if b.pct >= 20 %}{{ b.nome }} {% endif %}{{ b.pct | brl1 }}%</span></div>{% endfor %}
+    </div>
+    <ul class="legenda-bloco">{% for b in blocos %}<li><span class="chip-bloco bloco-{{ b.id }}"></span>{{ b.nome }}: <strong>{{ b.n }}</strong> de {{ bloco_classificados }} ({{ b.pct | brl1 }}%)</li>{% endfor %}</ul>
+    <details class="tabela-mes"><summary>Ver os partidos de cada bloco</summary>
+      {% for b in blocos if b.n %}<h4 class="h3-sec"><span class="chip-bloco bloco-{{ b.id }}"></span>{{ b.nome }}</h4>
+      <ul class="lista-simples lista-1col">{% for p, c, n in b.partidos %}<li><span>{{ p }} <span class="suave">({{ n }})</span></span> <span class="suave">{{ c }}</span></li>{% endfor %}</ul>{% endfor %}
+    </details>
+    {% if bloco_sem_classificacao %}<p class="pequeno suave">Sem classificação na fonte, fora dos percentuais: {% for nome, partido in bloco_sem_classificacao %}{{ nome | nome_br }} ({{ partido }}){{ ", " if not loop.last else "." }}{% endfor %}</p>{% endif %}
+    <p class="pequeno suave">Esquerda reúne extrema esquerda e esquerda; centro reúne centro-esquerda, centro e centro-direita; direita reúne direita e extrema direita. Esse agrupamento em três blocos é uma escolha deste projeto sobre as sete categorias da pesquisa, e a fonte aponta que quase nenhum partido fica no centro exato. Fonte: Bolognesi, Ribeiro, Codato e Silva, <em>Opinião Pública</em> (2025), <a href="https://doi.org/10.1590/1807-0191202531120">doi 10.1590/1807-0191202531120</a>, pesquisa com especialistas de 2022.</p>
+  </article>
+</section>
+
 <section aria-labelledby="ver-t" class="bloco-painel">
   <h2 id="ver-t" class="h2-medio sem-topo">Câmara Municipal ({{ vereadores | length }} vereadores eleitos em 2024)</h2>
   <div class="grade-2">
     <article class="quadro-card">
       <h3>Vereadores</h3>
-      <ul class="lista-simples">{% for v in vereadores %}<li><span>{{ v.nome | nome_br }}</span> <span class="suave">{{ v.partido }}</span></li>{% endfor %}</ul>
+      <ul class="lista-simples">{% for v in vereadores %}<li><span>{{ v.nome | nome_br }}</span> <span class="suave"><span class="chip-bloco bloco-{{ v.bloco or 'nenhum' }}" title="{{ rotulo_bloco(v.bloco) }}"></span>{{ v.partido }}</span></li>{% endfor %}</ul>
     </article>
     <article class="quadro-card">
       <h3>Vagas por partido</h3><p class="suave">Quantos vereadores cada partido elegeu em 2024.</p>
@@ -35,7 +52,7 @@
       <div class="rolagem"><table>
         <caption class="so-leitor">{{ titulo }}: {{ sub }}</caption>
         <thead><tr><th scope="col">Nome</th><th scope="col">Partido na eleição</th><th scope="col">Votos na cidade</th><th scope="col">% na cidade</th>{% if lista and lista[0].eleicao == 2022 %}<th scope="col">Em exercício em {{ env.fonte.acesso_em | data_br }}</th>{% endif %}</tr></thead>
-        <tbody>{% for r in lista %}<tr><th scope="row">{{ r.nome | nome_br }}</th><td>{{ r.partido }}</td><td>{{ r.votos_na_cidade | num }}</td><td>{{ r.pct_votos_na_cidade | brl1 }}%</td>{% if r.eleicao == 2022 %}<td>{{ "Confirmado" if r.em_exercicio else "Sem confirmação" }}</td>{% endif %}</tr>{% endfor %}</tbody>
+        <tbody>{% for r in lista %}<tr><th scope="row">{{ r.nome | nome_br }}</th><td><span class="chip-bloco bloco-{{ r.bloco or 'nenhum' }}" title="{{ rotulo_bloco(r.bloco) }}"></span>{{ r.partido }}</td><td>{{ r.votos_na_cidade | num }}</td><td>{{ r.pct_votos_na_cidade | brl1 }}%</td>{% if r.eleicao == 2022 %}<td>{{ "Confirmado" if r.em_exercicio else "Sem confirmação" }}</td>{% endif %}</tr>{% endfor %}</tbody>
       </table></div>
     </article>
     {% endfor %}

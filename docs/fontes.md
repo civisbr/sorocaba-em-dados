@@ -293,6 +293,16 @@ estarem prontos (`project.md` §1 e §11). Status abaixo reflete só o que foi v
 - **Posse:** a data de início do mandato só é exibida para prefeito, vice e vereadores (1º de janeiro). Para deputados o site mostra apenas o período em anos, porque a data de posse dos estaduais não foi verificada em fonte.
 - **Base legal (LGPD):** nomes, partidos e votos de agentes políticos eleitos são dados tornados públicos pela Justiça Eleitoral (art. 7º, §§3º e 4º), publicados aqui com finalidade de transparência. Candidatos não eleitos não são gravados.
 
+## Classificação ideológica dos partidos (especialistas)
+
+**Status:** `verificada` e **implementada** na página Representantes (`fetch_ideologia.py`).
+
+- **Fonte:** Bolognesi, Ribeiro, Codato e Silva, *O desaparecimento do centro ideológico no sistema partidário brasileiro: a classificação mais atualizada dos experts*, Opinião Pública, 2025, doi 10.1590/1807-0191202531120 (SciELO). Tabela com a média de notas dos especialistas em 2018 e 2022 (0 = extrema esquerda, 10 = extrema direita) e a categoria em 7 níveis. Base aberta: Harvard Dataverse, doi 10.7910/DVN/MFIXKW. Metodologia anterior: Bolognesi, Ribeiro e Codato, Dados, 2023 (doi 10.1590/dados.2023.66.2.303).
+- **O que é e o que não é:** classifica **partidos**, pela opinião de especialistas, não políticos nem a conduta de cada um. A pesquisa é de 2022; partidos criados depois (Missão, 2025) e fusões posteriores (PRD) ficam "sem classificação" e fora dos percentuais. A fonte aponta que o centro quase desapareceu: nenhum partido cai na categoria "centro" exata.
+- **Mapeamento de siglas:** TSE REPUBLICANOS = REP; UNIÃO = UNIAO; SOLIDARIEDADE = SDD; CIDADANIA = CDD; PC do B = PCdoB; PATRIOTA = PATRI; **PP = PROGRE** (Progressistas; a tabela usa PROGRE, a correspondência com PP é inferida pelo nome, não declarada na fonte).
+- **Três blocos (escolha do projeto, não da fonte):** esquerda = extrema esquerda e esquerda; centro = centro-esquerda, centro e centro-direita; direita = direita e extrema direita. Com esse corte, MDB, PSDB, Solidariedade e Avante caem no centro, e PSB e PDT também. Outro corte mudaria os percentuais, por isso a página mostra as categorias originais e o agrupamento fica no código (`BLOCOS`).
+- **Cores:** vermelho = esquerda, amarelo = centro, azul = direita, com o nome do bloco escrito em cada segmento e na legenda (a cor não é o único sinal).
+
 ## SSP-SP — segurança pública
 
 **Status:** `verificada` e **implementada** (painel "Segurança", `fetch_ssp.py` e `build_seguranca.py`).

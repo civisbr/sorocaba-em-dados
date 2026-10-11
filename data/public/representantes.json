@@ -6,9 +6,11 @@
   },
   "dados": [
     {
+      "bloco": "direita",
       "eleicao": 2024,
       "em_exercicio": null,
       "grupo": "prefeito",
+      "ideologia": "extrema direita",
       "mandato": "2025–2028",
       "nome": "RODRIGO MANGA",
       "partido": "REPUBLICANOS",
@@ -18,9 +20,11 @@
       "votos_na_cidade": null
     },
     {
+      "bloco": "centro",
       "eleicao": 2024,
       "em_exercicio": null,
       "grupo": "vereador",
+      "ideologia": "centro-direita",
       "mandato": "2025–2028",
       "nome": "ALEXANDRE DA HORTA",
       "partido": "SOLIDARIEDADE",
@@ -30,9 +34,11 @@
       "votos_na_cidade": null
     },
     {
+      "bloco": "direita",
       "eleicao": 2024,
       "em_exercicio": null,
       "grupo": "vereador",
+      "ideologia": "extrema direita",
       "mandato": "2025–2028",
       "nome": "CAIO OLIVEIRA",
       "partido": "REPUBLICANOS",
@@ -42,9 +48,11 @@
       "votos_na_cidade": null
     },
     {
+      "bloco": "direita",
       "eleicao": 2024,
       "em_exercicio": null,
       "grupo": "vereador",
+      "ideologia": "direita",
       "mandato": "2025–2028",
       "nome": "CLAUDIO SOROCABA",
       "partido": "PSD",
@@ -54,9 +62,11 @@
       "votos_na_cidade": null
     },
     {
+      "bloco": "direita",
       "eleicao": 2024,
       "em_exercicio": null,
       "grupo": "vereador",
+      "ideologia": "extrema direita",
       "mandato": "2025–2028",
       "nome": "CRISTIANO PASSOS",
       "partido": "REPUBLICANOS",
@@ -66,9 +76,11 @@
       "votos_na_cidade": null
     },
     {
+      "bloco": "direita",
       "eleicao": 2024,
       "em_exercicio": null,
       "grupo": "vereador",
+      "ideologia": "extrema direita",
       "mandato": "2025–2028",
       "nome": "DYLAN DANTAS",
       "partido": "PL",
@@ -78,9 +90,11 @@
       "votos_na_cidade": null
     },
     {
+      "bloco": "direita",
       "eleicao": 2024,
       "em_exercicio": null,
       "grupo": "vereador",
+      "ideologia": "extrema direita",
       "mandato": "2025–2028",
       "nome": "FABIO SIMOA",
       "partido": "REPUBLICANOS",
@@ -90,9 +104,11 @@
       "votos_na_cidade": null
     },
     {
+      "bloco": "direita",
       "eleicao": 2024,
       "em_exercicio": null,
       "grupo": "vereador",
+      "ideologia": "direita",
       "mandato": "2025–2028",
       "nome": "FAUSTO PERES",
       "partido": "PODE",
@@ -102,9 +118,11 @@
       "votos_na_cidade": null
     },
     {
+      "bloco": "esquerda",
       "eleicao": 2024,
       "em_exercicio": null,
       "grupo": "vereador",
+      "ideologia": "extrema esquerda",
       "mandato": "2025–2028",
       "nome": "FERNANDA GARCIA",
       "partido": "PSOL",
@@ -114,9 +132,11 @@
       "votos_na_cidade": null
     },
     {
+      "bloco": "direita",
       "eleicao": 2024,
       "em_exercicio": null,
       "grupo": "vereador",
+      "ideologia": "direita",
       "mandato": "2025–2028",
       "nome": "FERNANDO DINI",
       "partido": "PP",
@@ -126,9 +146,11 @@
       "votos_na_cidade": null
     },
     {
+      "bloco": "centro",
       "eleicao": 2024,
       "em_exercicio": null,
       "grupo": "vereador",
+      "ideologia": "centro-direita",
       "mandato": "2025–2028",
       "nome": "HENRI ARIDA",
       "partido": "MDB",
@@ -138,9 +160,11 @@
       "votos_na_cidade": null
     },
     {
+      "bloco": "esquerda",
       "eleicao": 2024,
       "em_exercicio": null,
       "grupo": "vereador",
+      "ideologia": "esquerda",
       "mandato": "2025–2028",
       "nome": "IARA BERNARDI",
       "partido": "PT",
@@ -150,9 +174,11 @@
       "votos_na_cidade": null
     },
     {
+      "bloco": "direita",
       "eleicao": 2024,
       "em_exercicio": null,
       "grupo": "vereador",
+      "ideologia": "extrema direita",
       "mandato": "2025–2028",
       "nome": "ITALO MOREIRA",
       "partido": "UNIÃO",
@@ -162,9 +188,11 @@
       "votos_na_cidade": null
     },
     {
+      "bloco": "esquerda",
       "eleicao": 2024,
       "em_exercicio": null,
       "grupo": "vereador",
+      "ideologia": "esquerda",
       "mandato": "2025–2028",
       "nome": "IZIDIO",
       "partido": "PT",
@@ -174,9 +202,11 @@
       "votos_na_cidade": null
     },
     {
+      "bloco": "direita",
       "eleicao": 2024,
       "em_exercicio": null,
       "grupo": "vereador",
+      "ideologia": "extrema direita",
       "mandato": "2025–2028",
       "nome": "JOÃO DONIZETI",
       "partido": "UNIÃO",
@@ -186,9 +216,11 @@
       "votos_na_cidade": null
     },
     {
+      "bloco": "direita",
       "eleicao": 2024,
       "em_exercicio": null,
       "grupo": "vereador",
+      "ideologia": "extrema direita",
       "mandato": "2025–2028",
       "nome": "JUSSARA FERNANDES",
       "partido": "REPUBLICANOS",
@@ -198,9 +230,11 @@
       "votos_na_cidade": null
     },
     {
+      "bloco": "direita",
       "eleicao": 2024,
       "em_exercicio": null,
       "grupo": "vereador",
+      "ideologia": "extrema direita",
       "mandato": "2025–2028",
       "nome": "PASTOR LUIS SANTOS",
       "partido": "REPUBLICANOS",
@@ -210,9 +244,11 @@
       "votos_na_cidade": null
     },
     {
+      "bloco": "direita",
       "eleicao": 2024,
       "em_exercicio": null,
       "grupo": "vereador",
+      "ideologia": "direita",
       "mandato": "2025–2028",
       "nome": "PÉRICLES RÉGIS",
       "partido": "AGIR",
@@ -222,9 +258,11 @@
       "votos_na_cidade": null
     },
     {
+      "bloco": "esquerda",
       "eleicao": 2024,
       "em_exercicio": null,
       "grupo": "vereador",
+      "ideologia": "extrema esquerda",
       "mandato": "2025–2028",
       "nome": "RAUL MARCELO",
       "partido": "PSOL",
@@ -234,9 +272,11 @@
       "votos_na_cidade": null
     },
     {
+      "bloco": "direita",
       "eleicao": 2024,
       "em_exercicio": null,
       "grupo": "vereador",
+      "ideologia": "extrema direita",
       "mandato": "2025–2028",
       "nome": "ROBERTO FREITAS",
       "partido": "PL",
@@ -246,9 +286,11 @@
       "votos_na_cidade": null
     },
     {
+      "bloco": "direita",
       "eleicao": 2024,
       "em_exercicio": null,
       "grupo": "vereador",
+      "ideologia": "direita",
       "mandato": "2025–2028",
       "nome": "RODOLFO GANEM",
       "partido": "PODE",
@@ -258,9 +300,11 @@
       "votos_na_cidade": null
     },
     {
+      "bloco": "direita",
       "eleicao": 2024,
       "em_exercicio": null,
       "grupo": "vereador",
+      "ideologia": "direita",
       "mandato": "2025–2028",
       "nome": "ROGERIO MARQUES MUNHOZ",
       "partido": "AGIR",
@@ -270,9 +314,11 @@
       "votos_na_cidade": null
     },
     {
+      "bloco": "direita",
       "eleicao": 2024,
       "em_exercicio": null,
       "grupo": "vereador",
+      "ideologia": "extrema direita",
       "mandato": "2025–2028",
       "nome": "SILVANO JR",
       "partido": "REPUBLICANOS",
@@ -282,9 +328,11 @@
       "votos_na_cidade": null
     },
     {
+      "bloco": "direita",
       "eleicao": 2024,
       "em_exercicio": null,
       "grupo": "vereador",
+      "ideologia": "extrema direita",
       "mandato": "2025–2028",
       "nome": "TATIANE COSTA",
       "partido": "PL",
@@ -294,9 +342,11 @@
       "votos_na_cidade": null
     },
     {
+      "bloco": "direita",
       "eleicao": 2024,
       "em_exercicio": null,
       "grupo": "vereador",
+      "ideologia": "direita",
       "mandato": "2025–2028",
       "nome": "TONINHO CORREDOR",
       "partido": "AGIR",
@@ -306,9 +356,11 @@
       "votos_na_cidade": null
     },
     {
+      "bloco": "direita",
       "eleicao": 2024,
       "em_exercicio": null,
       "grupo": "vereador",
+      "ideologia": "extrema direita",
       "mandato": "2025–2028",
       "nome": "VINICIUS AITH",
       "partido": "REPUBLICANOS",
@@ -318,9 +370,11 @@
       "votos_na_cidade": null
     },
     {
+      "bloco": "direita",
       "eleicao": 2024,
       "em_exercicio": null,
       "grupo": "vice_prefeito",
+      "ideologia": "direita",
       "mandato": "2025–2028",
       "nome": "FERNANDO COSTA",
       "partido": "PSD",
@@ -330,9 +384,11 @@
       "votos_na_cidade": null
     },
     {
+      "bloco": "direita",
       "eleicao": 2022,
       "em_exercicio": true,
       "grupo": "deputado_estadual",
+      "ideologia": "extrema direita",
       "mandato": "2023–2027",
       "nome": "VITÃO DO CACHORRÃO",
       "partido": "REPUBLICANOS",
@@ -342,9 +398,11 @@
       "votos_na_cidade": 48286
     },
     {
+      "bloco": "direita",
       "eleicao": 2022,
       "em_exercicio": true,
       "grupo": "deputado_estadual",
+      "ideologia": "extrema direita",
       "mandato": "2023–2027",
       "nome": "AGENTE FEDERAL DANILO BALAS",
       "partido": "PL",
@@ -354,9 +412,11 @@
       "votos_na_cidade": 25247
     },
     {
+      "bloco": "centro",
       "eleicao": 2022,
       "em_exercicio": true,
       "grupo": "deputado_estadual",
+      "ideologia": "centro-direita",
       "mandato": "2023–2027",
       "nome": "MARIA LUCIA AMARY",
       "partido": "PSDB",
@@ -366,9 +426,11 @@
       "votos_na_cidade": 24879
     },
     {
+      "bloco": "direita",
       "eleicao": 2022,
       "em_exercicio": null,
       "grupo": "deputado_estadual",
+      "ideologia": "extrema direita",
       "mandato": "2023–2027",
       "nome": "CARLOS CEZAR",
       "partido": "PL",
@@ -378,9 +440,11 @@
       "votos_na_cidade": 11315
     },
     {
+      "bloco": "esquerda",
       "eleicao": 2022,
       "em_exercicio": true,
       "grupo": "deputado_estadual",
+      "ideologia": "esquerda",
       "mandato": "2023–2027",
       "nome": "EDUARDO SUPLICY",
       "partido": "PT",
@@ -390,9 +454,11 @@
       "votos_na_cidade": 8555
     },
     {
+      "bloco": "centro",
       "eleicao": 2022,
       "em_exercicio": true,
       "grupo": "deputado_federal",
+      "ideologia": "centro-direita",
       "mandato": "2023–2027",
       "nome": "VITOR LIPPI",
       "partido": "PSDB",
@@ -402,9 +468,11 @@
       "votos_na_cidade": 43090
     },
     {
+      "bloco": "direita",
       "eleicao": 2022,
       "em_exercicio": null,
       "grupo": "deputado_federal",
+      "ideologia": "extrema direita",
       "mandato": "2023–2027",
       "nome": "CAPITÃO DERRITE",
       "partido": "PL",
@@ -414,9 +482,11 @@
       "votos_na_cidade": 29135
     },
     {
+      "bloco": "direita",
       "eleicao": 2022,
       "em_exercicio": true,
       "grupo": "deputado_federal",
+      "ideologia": "extrema direita",
       "mandato": "2023–2027",
       "nome": "MARCOS PEREIRA",
       "partido": "REPUBLICANOS",
@@ -426,9 +496,11 @@
       "votos_na_cidade": 19347
     },
     {
+      "bloco": "direita",
       "eleicao": 2022,
       "em_exercicio": null,
       "grupo": "deputado_federal",
+      "ideologia": "extrema direita",
       "mandato": "2023–2027",
       "nome": "CARLA ZAMBELLI",
       "partido": "PL",
@@ -438,9 +510,11 @@
       "votos_na_cidade": 14736
     },
     {
+      "bloco": "direita",
       "eleicao": 2022,
       "em_exercicio": true,
       "grupo": "deputado_federal",
+      "ideologia": "extrema direita",
       "mandato": "2023–2027",
       "nome": "JEFFERSON CAMPOS",
       "partido": "PL",
@@ -450,9 +524,11 @@
       "votos_na_cidade": 9611
     },
     {
+      "bloco": "direita",
       "eleicao": 2026,
       "em_exercicio": null,
       "grupo": "deputado_estadual",
+      "ideologia": "extrema direita",
       "mandato": "2027–2031",
       "nome": "DANILO BALAS",
       "partido": "PL",
@@ -462,9 +538,11 @@
       "votos_na_cidade": 41432
     },
     {
+      "bloco": "direita",
       "eleicao": 2026,
       "em_exercicio": null,
       "grupo": "deputado_estadual",
+      "ideologia": "extrema direita",
       "mandato": "2027–2031",
       "nome": "EDUARDA CAMPOPIANO",
       "partido": "PL",
@@ -474,9 +552,11 @@
       "votos_na_cidade": 35486
     },
     {
+      "bloco": "esquerda",
       "eleicao": 2026,
       "em_exercicio": null,
       "grupo": "deputado_estadual",
+      "ideologia": "esquerda",
       "mandato": "2027–2031",
       "nome": "EDUARDO SUPLICY",
       "partido": "PT",
@@ -486,9 +566,11 @@
       "votos_na_cidade": 6931
     },
     {
+      "bloco": "esquerda",
       "eleicao": 2026,
       "em_exercicio": null,
       "grupo": "deputado_estadual",
+      "ideologia": "extrema esquerda",
       "mandato": "2027–2031",
       "nome": "SOFIA FAVERO",
       "partido": "PSOL",
@@ -498,9 +580,11 @@
       "votos_na_cidade": 6607
     },
     {
+      "bloco": "esquerda",
       "eleicao": 2026,
       "em_exercicio": null,
       "grupo": "deputado_estadual",
+      "ideologia": "extrema esquerda",
       "mandato": "2027–2031",
       "nome": "CARLOS GIANNAZI",
       "partido": "PSOL",
@@ -510,9 +594,11 @@
       "votos_na_cidade": 5306
     },
     {
+      "bloco": "direita",
       "eleicao": 2026,
       "em_exercicio": null,
       "grupo": "deputado_federal",
+      "ideologia": "extrema direita",
       "mandato": "2027–2031",
       "nome": "LUCAS PAVANATO",
       "partido": "PL",
@@ -522,9 +608,11 @@
       "votos_na_cidade": 64394
     },
     {
+      "bloco": "direita",
       "eleicao": 2026,
       "em_exercicio": null,
       "grupo": "deputado_federal",
+      "ideologia": "extrema direita",
       "mandato": "2027–2031",
       "nome": "SIRLANGE MANGA",
       "partido": "UNIÃO",
@@ -534,9 +622,11 @@
       "votos_na_cidade": 52734
     },
     {
+      "bloco": "esquerda",
       "eleicao": 2026,
       "em_exercicio": null,
       "grupo": "deputado_federal",
+      "ideologia": "extrema esquerda",
       "mandato": "2027–2031",
       "nome": "ERIKA HILTON",
       "partido": "PSOL",
@@ -546,9 +636,11 @@
       "votos_na_cidade": 23177
     },
     {
+      "bloco": null,
       "eleicao": 2026,
       "em_exercicio": null,
       "grupo": "deputado_federal",
+      "ideologia": null,
       "mandato": "2027–2031",
       "nome": "KIM KATAGUIRI",
       "partido": "MISSÃO",
@@ -558,9 +650,11 @@
       "votos_na_cidade": 9171
     },
     {
+      "bloco": "esquerda",
       "eleicao": 2026,
       "em_exercicio": null,
       "grupo": "deputado_federal",
+      "ideologia": "extrema esquerda",
       "mandato": "2027–2031",
       "nome": "SÂMIA BOMFIM",
       "partido": "PSOL",
@@ -571,7 +665,7 @@
     }
   ],
   "fonte": {
-    "acesso_em": "2026-10-12",
+    "acesso_em": "2026-10-11",
     "licenca": "Dados abertos",
     "nome": "TSE (resultados), Câmara dos Deputados e Alesp (dados abertos)",
     "url": "https://dadosabertos.tse.jus.br/"
@@ -586,7 +680,10 @@
       "Percentual = votos nominais válidos do candidato em Sorocaba ÷ total de votos nominais válidos para o cargo na cidade. Lista dos 5 mais votados entre os eleitos.",
       "Em exercício: conferido por nome nas listas oficiais da Câmara e da Alesp na data da coleta. Sem correspondência única fica sem confirmação, o que pode vir de licença, renúncia ou de nome de urna diferente do nome parlamentar.",
       "Eleitos em 2026 assumem em 2027 (resultado do 1º turno; o 2º turno não envolve deputados).",
-      "SHA-256 do manifesto de coleta: 270dafbd85b58b91a31215b37707934e01ca76b6ef0f877db8cf90bbb495a3fc"
+      "Posição ideológica do partido: classificação de especialistas em ciência política (survey de 2022; Bolognesi, Ribeiro, Codato e Silva, Opinião Pública, 2025, doi 10.1590/1807-0191202531120). É a posição do partido, não do político, e a fonte avalia partidos, não pessoas.",
+      "Blocos: esquerda = extrema esquerda e esquerda; centro = centro-esquerda, centro e centro-direita; direita = direita e extrema direita. É um agrupamento deste projeto sobre as sete categorias da fonte, mostradas no detalhe.",
+      "Partido sem classificação na fonte (por exemplo, criado depois de 2022) fica fora das porcentagens e é contado à parte.",
+      "SHA-256 do manifesto de coleta: fbf08c21d7165eee06ebf52ef8ca3a6a12133ed29a068decefa28b32fac3ebc0"
     ]
   },
   "referencia": {

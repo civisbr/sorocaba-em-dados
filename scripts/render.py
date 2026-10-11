@@ -184,7 +184,23 @@ def contexto_representantes(env: dict) -> dict:
     partidos: dict[str, int] = {}
     for r in vereadores:
         partidos[r["partido"]] = partidos.get(r["partido"], 0) + 1
+    rotulos_bloco = {"esquerda": "Esquerda", "centro": "Centro", "direita": "Direita"}
+    classificados = [r for r in vereadores if r["bloco"]]
+    por_bloco = []
+    for b in ("esquerda", "centro", "direita"):
+        membros = [r for r in classificados if r["bloco"] == b]
+        partidos_b: dict[tuple[str, str], int] = {}
+        for r in membros:
+            partidos_b[(r["partido"], r["ideologia"])] = partidos_b.get((r["partido"], r["ideologia"]), 0) + 1
+        por_bloco.append({
+            "id": b, "nome": rotulos_bloco[b], "n": len(membros),
+            "pct": round(len(membros) / len(classificados) * 100, 1) if classificados else 0,
+            "partidos": sorted(((p, c, n) for (p, c), n in partidos_b.items()), key=lambda t: (-t[2], t[0])),
+        })
     return {
+        "blocos": por_bloco,
+        "bloco_classificados": len(classificados),
+        "bloco_sem_classificacao": [(r["nome"], r["partido"]) for r in vereadores if not r["bloco"]],
         "prefeito": grupo("prefeito")[0],
         "vice": grupo("vice_prefeito")[0],
         "vereadores": vereadores,
@@ -358,6 +374,7 @@ def contexto_combustivel(env: dict) -> dict:
 def renderizar(public: Path, saida: Path) -> None:
     jinja = Environment(loader=FileSystemLoader(RAIZ / "templates"), autoescape=select_autoescape(["html"]))
     jinja.globals["fmt_ind"] = formata_ind
+    jinja.globals["rotulo_bloco"] = lambda b: {"esquerda": "Esquerda", "centro": "Centro", "direita": "Direita"}.get(b, "Sem classificação")
     jinja.filters.update(num=num, sinal=sinal, data_br=data_br, mes_curto=mes_curto, brl=brl, pct=pct, brl1=brl1, brl2=brl2, pct_abs=pct_abs, bi=bi, inteiro_br=inteiro_br, nome_br=nome_br)
 
     emprego = json.loads((public / "emprego.json").read_text(encoding="utf-8"))
