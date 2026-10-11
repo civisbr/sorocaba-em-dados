@@ -10,6 +10,8 @@ from __future__ import annotations
 
 import argparse
 import csv
+import hashlib
+import json
 import math
 import re
 import time
@@ -24,7 +26,7 @@ from scripts.geocode_radares import NOMINATIM, contexto_http, expandir, palavras
 RAIZ = Path(__file__).resolve().parent.parent
 CENSO = RAIZ / "data" / "raw" / "inep" / "censo_escolar.csv"
 SAIDA = RAIZ / "data" / "raw" / "inep" / "coordenadas.csv"
-CAMPOS = ["co_inep", "lat", "lon", "precisao", "osm_ref", "geocodificado_em"]
+CAMPOS = ["co_inep", "lat", "lon", "precisao", "osm_ref", "endereco_consultado", "geocodificado_em"]
 RUA_CURTA_M = 400
 
 
@@ -84,19 +86,30 @@ def main() -> None:
             rua = expandir(e["DS_ENDERECO"])
             try:
                 achado = buscar(c, rua, numero_da_porta(e["NU_ENDERECO"]), contorno)
-            except (httpx.HTTPError, ValueError) as err:
+            except ValueError as err:
+                raise SystemExit(f"{cod}: resposta recusada ({err}); abortando") from None
+            except httpx.HTTPError as err:
                 print(f"{cod}: falha ({type(err).__name__}); fica para a próxima rodada")
                 time.sleep(5)
                 continue
-            feitos[cod] = {"co_inep": cod, "lat": f"{achado[0]:.5f}" if achado else "", "lon": f"{achado[1]:.5f}" if achado else "", "precisao": achado[2] if achado else "", "osm_ref": achado[3] if achado else "", "geocodificado_em": hoje}
+            feitos[cod] = {"co_inep": cod, "lat": f"{achado[0]:.5f}" if achado else "", "lon": f"{achado[1]:.5f}" if achado else "", "precisao": achado[2] if achado else "", "osm_ref": achado[3] if achado else "", "endereco_consultado": f"{rua}, {e['NU_ENDERECO']}", "geocodificado_em": hoje}
             novas += 1
             if novas % 25 == 0:
                 gravar(feitos)
                 print(f"{i}/{len(escolas)}")
             time.sleep(1.1)
     gravar(feitos)
+    manifesto(feitos, hoje)
     ok = [r for r in feitos.values() if r["precisao"]]
     print(f"{len(ok)} com posição de {len(feitos)} tentadas; porta: {sum(r['precisao'] == 'porta' for r in ok)}, rua: {sum(r['precisao'] == 'rua' for r in ok)}")
+
+
+def manifesto(feitos: dict[str, dict], hoje: str) -> None:
+    ok = [r for r in feitos.values() if r["precisao"]]
+    m = {"fonte": "Nominatim (OpenStreetMap, ODbL 1.0) a partir de DS_ENDERECO e NU_ENDERECO do Censo Escolar (INEP)", "endpoint": NOMINATIM, "rua_curta_m": RUA_CURTA_M, "geocodificado_em": hoje,
+         "sha256_csv": hashlib.sha256(SAIDA.read_bytes()).hexdigest(), "n_tentadas": len(feitos), "n_porta": sum(r["precisao"] == "porta" for r in ok), "n_rua": sum(r["precisao"] == "rua" for r in ok),
+         "n_sem_posicao": len(feitos) - len(ok)}
+    (SAIDA.parent / "manifesto_coordenadas.json").write_text(json.dumps(m, ensure_ascii=False, indent=2, sort_keys=True) + "\n", encoding="utf-8")
 
 
 def gravar(feitos: dict[str, dict]) -> None:

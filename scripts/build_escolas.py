@@ -75,7 +75,7 @@ def _coordenadas(arq: Path, codigos: set[str]) -> dict[str, dict]:
     contorno = carregar_contorno()
     saida: dict[str, dict] = {}
     for r in csv.DictReader(arq.open(encoding="utf-8", newline=""), delimiter=";"):
-        if r["co_inep"] not in codigos:
+        if r["co_inep"] not in codigos:  # escola que deixou de funcionar continua no Censo; só código desconhecido é erro
             raise ValueError(f"coordenadas de escola inexistente no Censo: {r['co_inep']}")
         if not r["precisao"]:
             continue
@@ -84,6 +84,16 @@ def _coordenadas(arq: Path, codigos: set[str]) -> dict[str, dict]:
             raise ValueError(f"coordenada inválida para {r['co_inep']}")
         saida[r["co_inep"]] = {"lat": round(lat, 5), "lon": round(lon, 5), "posicao": r["precisao"]}
     return saida
+
+
+def _manifesto_coordenadas(raw: Path) -> dict | None:
+    arq = raw / "manifesto_coordenadas.json"
+    if not arq.exists():
+        return None
+    m = json.loads(arq.read_text(encoding="utf-8"))
+    if hashlib.sha256((raw / "coordenadas.csv").read_bytes()).hexdigest() != m["sha256_csv"]:
+        raise ValueError("coordenadas.csv não confere com o hash do manifesto de coordenadas")
+    return m
 
 
 def construir(raw: Path) -> Envelope:
@@ -99,14 +109,15 @@ def construir(raw: Path) -> Envelope:
     ultimo_ideb = max(a[-1] for a in anos_ideb.values())
     primeiro_ideb = min(a[0] for a in anos_ideb.values())
 
-    escolas = [r for r in ler(raw / arqs["censo_escolar"]["arquivo"]) if r["TP_SITUACAO_FUNCIONAMENTO"] == EM_ATIVIDADE]
+    censo = list(ler(raw / arqs["censo_escolar"]["arquivo"]))
+    escolas = [r for r in censo if r["TP_SITUACAO_FUNCIONAMENTO"] == EM_ATIVIDADE]
     ativas = {r["CO_ENTIDADE"] for r in escolas}
     sem_cadastro = sum(1 for s in ideb.values() for k in s if k not in ativas)
 
     invalidos = [r["CO_ENTIDADE"] for r in escolas if not re.fullmatch(r"\d{8}", r["CO_ENTIDADE"])]
     if invalidos:
         raise ValueError(f"código INEP fora do formato de 8 dígitos: {invalidos[:3]}")
-    coords = _coordenadas(raw / "coordenadas.csv", {r["CO_ENTIDADE"] for r in escolas})
+    coords = _coordenadas(raw / "coordenadas.csv", {r["CO_ENTIDADE"] for r in censo})
     dados = []
     for r in sorted(escolas, key=lambda r: (r["NO_ENTIDADE"], r["CO_ENTIDADE"])):
         reg: dict = {
@@ -130,6 +141,7 @@ def construir(raw: Path) -> Envelope:
         dados.append(reg)
 
     h = hashlib.sha256((raw / "manifesto.json").read_bytes()).hexdigest()
+    mc = _manifesto_coordenadas(raw)
     return Envelope(
         painel="escolas",
         fonte=Fonte(
@@ -151,6 +163,7 @@ def construir(raw: Path) -> Envelope:
                 "Campo vazio significa que o INEP não publicou o valor para aquela escola; não é zero.",
                 "Sem ranking e sem nota agregada: o IDEB reflete também o perfil socioeconômico dos alunos.",
                 *([f"{sem_cadastro} escola(s) do IDEB não constam como em atividade no Censo e ficaram de fora."] if sem_cadastro else []),
+                *(["Posições (lat, lon, posicao): © colaboradores do OpenStreetMap, ODbL 1.0, obtidas pelo Nominatim a partir do endereço do Censo Escolar; aproximadas, nível \"porta\" ou \"rua\" (trecho curto). " + f"SHA-256 de coordenadas.csv: {mc['sha256_csv']}."] if mc else []),
                 f"SHA-256 do manifesto de coleta: {h}",
             ],
         ),

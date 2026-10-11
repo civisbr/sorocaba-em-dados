@@ -646,7 +646,7 @@ def renderizar(public: Path, saida: Path) -> None:
     (saida / "mapa-base.svg").write_text(mapa_svg, encoding="utf-8")
     if ctx_esc.get("mapa_escolas"):
         me = ctx_esc["mapa_escolas"]
-        (saida / "data" / "mapa-escolas.json").write_text(json.dumps({"fonte": "INEP (endereço) e OpenStreetMap/Nominatim (posição, ODbL)", "pontos": me["pontos"]}, ensure_ascii=False, separators=(",", ":")), encoding="utf-8")
+        (saida / "data" / "mapa-escolas.json").write_text(json.dumps({"fonte": "INEP (endereço) e OpenStreetMap/Nominatim (posição)", "licenca": "Posições © colaboradores do OpenStreetMap, ODbL 1.0 (https://www.openstreetmap.org/copyright)", "pontos": me["pontos"]}, ensure_ascii=False, separators=(",", ":")), encoding="utf-8")
     (saida / "data" / "mapa-bairros.json").write_text(bairros_json(base_osm, proj["f"]), encoding="utf-8")
     for nome in ("emprego.json", "combustivel.json", "escolas.json", "perfil.json", "representantes.json", "seguranca.json", "comparativo.json", "clima.json", "radares.json", "infosiga.json", "saude_doencas.json", "saude_hospitais.json", "saude_panorama.json", "saude_vacinas.json"):
         shutil.copy(public / nome, saida / "data" / nome)

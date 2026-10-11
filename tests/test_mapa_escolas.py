@@ -70,3 +70,32 @@ def test_pagina_de_escolas_tem_mapa_quando_ha_coordenadas(tmp_path):
     assert r.returncode == 0, r.stderr
     html = (tmp_path / "escolas" / "index.html").read_text(encoding="utf-8")
     assert 'class="ms-svg"' in html and "Mapa das escolas" in html and "Não há ranking" in html
+
+
+def test_coordenadas_de_escola_inativa_nao_quebram_o_build(tmp_path):
+    from scripts.build_escolas import _coordenadas
+    arq = tmp_path / "coordenadas.csv"
+    arq.write_text("co_inep;lat;lon;precisao;osm_ref;geocodificado_em\n111;-23.50000;-47.45000;porta;node/1;2026-10-11\n", encoding="utf-8")
+    assert _coordenadas(arq, {"111", "222"})["111"]["posicao"] == "porta"
+    with pytest.raises(ValueError, match="inexistente"):
+        _coordenadas(arq, {"222"})
+
+
+def test_coordenadas_invalidas_sao_recusadas(tmp_path):
+    from scripts.build_escolas import _coordenadas
+    cab = "co_inep;lat;lon;precisao;osm_ref;geocodificado_em\n"
+    fora = tmp_path / "a.csv"; fora.write_text(cab + "111;-22.00000;-47.00000;porta;node/1;2026-10-11\n", encoding="utf-8")
+    nivel = tmp_path / "b.csv"; nivel.write_text(cab + "111;-23.50000;-47.45000;chute;node/1;2026-10-11\n", encoding="utf-8")
+    for arq in (fora, nivel):
+        with pytest.raises(ValueError, match="inválida"):
+            _coordenadas(arq, {"111"})
+
+
+def test_manifesto_de_coordenadas_confere_o_hash(tmp_path):
+    import json
+    from scripts.build_escolas import _manifesto_coordenadas
+    (tmp_path / "coordenadas.csv").write_text("x", encoding="utf-8")
+    (tmp_path / "manifesto_coordenadas.json").write_text(json.dumps({"sha256_csv": "0" * 64}), encoding="utf-8")
+    with pytest.raises(ValueError, match="hash"):
+        _manifesto_coordenadas(tmp_path)
+    assert _manifesto_coordenadas(tmp_path / "vazio") is None

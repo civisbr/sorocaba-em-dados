@@ -16746,6 +16746,7 @@
       "Campo vazio significa que o INEP não publicou o valor para aquela escola; não é zero.",
       "Sem ranking e sem nota agregada: o IDEB reflete também o perfil socioeconômico dos alunos.",
       "7 escola(s) do IDEB não constam como em atividade no Censo e ficaram de fora.",
+      "Posições (lat, lon, posicao): © colaboradores do OpenStreetMap, ODbL 1.0, obtidas pelo Nominatim a partir do endereço do Censo Escolar; aproximadas, nível \"porta\" ou \"rua\" (trecho curto). SHA-256 de coordenadas.csv: ad180e4de63b9bb115462220043fde8e1b2cbb5394aedc47cc3dc1386b43c848.",
       "SHA-256 do manifesto de coleta: 87caf91b02232b1f327ed1b4a4437ad810a432186b2cc84ed94be62889354cae"
     ]
   },

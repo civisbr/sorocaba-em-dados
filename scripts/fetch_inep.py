@@ -209,7 +209,7 @@ def coletar(acesso_em: date, destino: Path = DESTINO) -> list[str]:
         for nome, (modelo, padrao) in fontes.items():
             ano, caminho, info = descobrir(c, modelo, acesso_em)
             anterior = manifesto_atual.get("arquivos", {}).get(nome)
-            colunas_ok = nome != "censo_escolar" or (destino / "censo_escolar.csv").read_text(encoding="utf-8").split("\n", 1)[0] == ";".join(CENSO_COLUNAS)  # coluna nova no código pede nova extração
+            colunas_ok = nome != "censo_escolar" or ((destino / "censo_escolar.csv").exists() and (destino / "censo_escolar.csv").read_text(encoding="utf-8").split("\n", 1)[0] == ";".join(CENSO_COLUNAS))  # coluna nova no código pede nova extração
             if colunas_ok and anterior and anterior["ano"] == ano and anterior["last_modified"] == info["last_modified"] and anterior["bytes_zip"] == info["bytes"]:
                 novo["arquivos"][nome] = anterior
                 continue

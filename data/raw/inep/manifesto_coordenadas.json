@@ -1,0 +1,11 @@
+{
+  "endpoint": "https://nominatim.openstreetmap.org/search",
+  "fonte": "Nominatim (OpenStreetMap, ODbL 1.0) a partir de DS_ENDERECO e NU_ENDERECO do Censo Escolar (INEP)",
+  "geocodificado_em": "2026-10-11",
+  "n_porta": 210,
+  "n_rua": 150,
+  "n_sem_posicao": 92,
+  "n_tentadas": 452,
+  "rua_curta_m": 400,
+  "sha256_csv": "ad180e4de63b9bb115462220043fde8e1b2cbb5394aedc47cc3dc1386b43c848"
+}
