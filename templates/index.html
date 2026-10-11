@@ -81,6 +81,9 @@
         {% elif p.id == "cidade" %}
         <span class="cartao-numero">{{ cid.ind.populacao_estimada.valor | inteiro_br }}</span>
         <span class="cartao-ctx">habitantes, estimativa do IBGE para {{ cid.ind.populacao_estimada.ano }}</span>
+        {% elif p.id == "seguranca" %}
+        <span class="cartao-numero">{{ seg.roubos_atual | num }}</span>
+        <span class="cartao-ctx">roubos registrados nos 12 meses até {{ seg.mes_fim_curto }}</span>
         {% elif p.id == "representantes" %}
         <span class="cartao-numero">{{ rep.prefeito.nome | nome_br }}</span>
         <span class="cartao-ctx">prefeito, eleito em {{ rep.prefeito.eleicao }} (mandato {{ rep.prefeito.mandato }})</span>

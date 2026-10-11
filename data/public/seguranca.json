@@ -1,0 +1,4869 @@
+{
+  "cobertura": {
+    "ibge": "3552205",
+    "municipio": "Sorocaba",
+    "uf": "SP"
+  },
+  "dados": [
+    {
+      "ano": 2022,
+      "categoria": null,
+      "grupo": "estupros",
+      "mes": 1,
+      "n": 17,
+      "pct": null,
+      "recorte": "mensal"
+    },
+    {
+      "ano": 2022,
+      "categoria": null,
+      "grupo": "furtos",
+      "mes": 1,
+      "n": 877,
+      "pct": null,
+      "recorte": "mensal"
+    },
+    {
+      "ano": 2022,
+      "categoria": null,
+      "grupo": "lesao_dolosa",
+      "mes": 1,
+      "n": 131,
+      "pct": null,
+      "recorte": "mensal"
+    },
+    {
+      "ano": 2022,
+      "categoria": null,
+      "grupo": "mortes_dolosas",
+      "mes": 1,
+      "n": 3,
+      "pct": null,
+      "recorte": "mensal"
+    },
+    {
+      "ano": 2022,
+      "categoria": null,
+      "grupo": "roubos",
+      "mes": 1,
+      "n": 145,
+      "pct": null,
+      "recorte": "mensal"
+    },
+    {
+      "ano": 2022,
+      "categoria": null,
+      "grupo": "trafico",
+      "mes": 1,
+      "n": 32,
+      "pct": null,
+      "recorte": "mensal"
+    },
+    {
+      "ano": 2022,
+      "categoria": null,
+      "grupo": "estupros",
+      "mes": 2,
+      "n": 17,
+      "pct": null,
+      "recorte": "mensal"
+    },
+    {
+      "ano": 2022,
+      "categoria": null,
+      "grupo": "furtos",
+      "mes": 2,
+      "n": 643,
+      "pct": null,
+      "recorte": "mensal"
+    },
+    {
+      "ano": 2022,
+      "categoria": null,
+      "grupo": "lesao_dolosa",
+      "mes": 2,
+      "n": 120,
+      "pct": null,
+      "recorte": "mensal"
+    },
+    {
+      "ano": 2022,
+      "categoria": null,
+      "grupo": "mortes_dolosas",
+      "mes": 2,
+      "n": 1,
+      "pct": null,
+      "recorte": "mensal"
+    },
+    {
+      "ano": 2022,
+      "categoria": null,
+      "grupo": "roubos",
+      "mes": 2,
+      "n": 112,
+      "pct": null,
+      "recorte": "mensal"
+    },
+    {
+      "ano": 2022,
+      "categoria": null,
+      "grupo": "trafico",
+      "mes": 2,
+      "n": 32,
+      "pct": null,
+      "recorte": "mensal"
+    },
+    {
+      "ano": 2022,
+      "categoria": null,
+      "grupo": "estupros",
+      "mes": 3,
+      "n": 28,
+      "pct": null,
+      "recorte": "mensal"
+    },
+    {
+      "ano": 2022,
+      "categoria": null,
+      "grupo": "furtos",
+      "mes": 3,
+      "n": 836,
+      "pct": null,
+      "recorte": "mensal"
+    },
+    {
+      "ano": 2022,
+      "categoria": null,
+      "grupo": "lesao_dolosa",
+      "mes": 3,
+      "n": 145,
+      "pct": null,
+      "recorte": "mensal"
+    },
+    {
+      "ano": 2022,
+      "categoria": null,
+      "grupo": "mortes_dolosas",
+      "mes": 3,
+      "n": 5,
+      "pct": null,
+      "recorte": "mensal"
+    },
+    {
+      "ano": 2022,
+      "categoria": null,
+      "grupo": "roubos",
+      "mes": 3,
+      "n": 158,
+      "pct": null,
+      "recorte": "mensal"
+    },
+    {
+      "ano": 2022,
+      "categoria": null,
+      "grupo": "trafico",
+      "mes": 3,
+      "n": 34,
+      "pct": null,
+      "recorte": "mensal"
+    },
+    {
+      "ano": 2022,
+      "categoria": null,
+      "grupo": "estupros",
+      "mes": 4,
+      "n": 15,
+      "pct": null,
+      "recorte": "mensal"
+    },
+    {
+      "ano": 2022,
+      "categoria": null,
+      "grupo": "furtos",
+      "mes": 4,
+      "n": 804,
+      "pct": null,
+      "recorte": "mensal"
+    },
+    {
+      "ano": 2022,
+      "categoria": null,
+      "grupo": "lesao_dolosa",
+      "mes": 4,
+      "n": 124,
+      "pct": null,
+      "recorte": "mensal"
+    },
+    {
+      "ano": 2022,
+      "categoria": null,
+      "grupo": "mortes_dolosas",
+      "mes": 4,
+      "n": 6,
+      "pct": null,
+      "recorte": "mensal"
+    },
+    {
+      "ano": 2022,
+      "categoria": null,
+      "grupo": "roubos",
+      "mes": 4,
+      "n": 146,
+      "pct": null,
+      "recorte": "mensal"
+    },
+    {
+      "ano": 2022,
+      "categoria": null,
+      "grupo": "trafico",
+      "mes": 4,
+      "n": 37,
+      "pct": null,
+      "recorte": "mensal"
+    },
+    {
+      "ano": 2022,
+      "categoria": null,
+      "grupo": "estupros",
+      "mes": 5,
+      "n": 25,
+      "pct": null,
+      "recorte": "mensal"
+    },
+    {
+      "ano": 2022,
+      "categoria": null,
+      "grupo": "furtos",
+      "mes": 5,
+      "n": 946,
+      "pct": null,
+      "recorte": "mensal"
+    },
+    {
+      "ano": 2022,
+      "categoria": null,
+      "grupo": "lesao_dolosa",
+      "mes": 5,
+      "n": 121,
+      "pct": null,
+      "recorte": "mensal"
+    },
+    {
+      "ano": 2022,
+      "categoria": null,
+      "grupo": "mortes_dolosas",
+      "mes": 5,
+      "n": 2,
+      "pct": null,
+      "recorte": "mensal"
+    },
+    {
+      "ano": 2022,
+      "categoria": null,
+      "grupo": "roubos",
+      "mes": 5,
+      "n": 143,
+      "pct": null,
+      "recorte": "mensal"
+    },
+    {
+      "ano": 2022,
+      "categoria": null,
+      "grupo": "trafico",
+      "mes": 5,
+      "n": 31,
+      "pct": null,
+      "recorte": "mensal"
+    },
+    {
+      "ano": 2022,
+      "categoria": null,
+      "grupo": "estupros",
+      "mes": 6,
+      "n": 19,
+      "pct": null,
+      "recorte": "mensal"
+    },
+    {
+      "ano": 2022,
+      "categoria": null,
+      "grupo": "furtos",
+      "mes": 6,
+      "n": 847,
+      "pct": null,
+      "recorte": "mensal"
+    },
+    {
+      "ano": 2022,
+      "categoria": null,
+      "grupo": "lesao_dolosa",
+      "mes": 6,
+      "n": 122,
+      "pct": null,
+      "recorte": "mensal"
+    },
+    {
+      "ano": 2022,
+      "categoria": null,
+      "grupo": "mortes_dolosas",
+      "mes": 6,
+      "n": 1,
+      "pct": null,
+      "recorte": "mensal"
+    },
+    {
+      "ano": 2022,
+      "categoria": null,
+      "grupo": "roubos",
+      "mes": 6,
+      "n": 177,
+      "pct": null,
+      "recorte": "mensal"
+    },
+    {
+      "ano": 2022,
+      "categoria": null,
+      "grupo": "trafico",
+      "mes": 6,
+      "n": 34,
+      "pct": null,
+      "recorte": "mensal"
+    },
+    {
+      "ano": 2022,
+      "categoria": null,
+      "grupo": "estupros",
+      "mes": 7,
+      "n": 25,
+      "pct": null,
+      "recorte": "mensal"
+    },
+    {
+      "ano": 2022,
+      "categoria": null,
+      "grupo": "furtos",
+      "mes": 7,
+      "n": 816,
+      "pct": null,
+      "recorte": "mensal"
+    },
+    {
+      "ano": 2022,
+      "categoria": null,
+      "grupo": "lesao_dolosa",
+      "mes": 7,
+      "n": 129,
+      "pct": null,
+      "recorte": "mensal"
+    },
+    {
+      "ano": 2022,
+      "categoria": null,
+      "grupo": "mortes_dolosas",
+      "mes": 7,
+      "n": 4,
+      "pct": null,
+      "recorte": "mensal"
+    },
+    {
+      "ano": 2022,
+      "categoria": null,
+      "grupo": "roubos",
+      "mes": 7,
+      "n": 162,
+      "pct": null,
+      "recorte": "mensal"
+    },
+    {
+      "ano": 2022,
+      "categoria": null,
+      "grupo": "trafico",
+      "mes": 7,
+      "n": 29,
+      "pct": null,
+      "recorte": "mensal"
+    },
+    {
+      "ano": 2022,
+      "categoria": null,
+      "grupo": "estupros",
+      "mes": 8,
+      "n": 21,
+      "pct": null,
+      "recorte": "mensal"
+    },
+    {
+      "ano": 2022,
+      "categoria": null,
+      "grupo": "furtos",
+      "mes": 8,
+      "n": 990,
+      "pct": null,
+      "recorte": "mensal"
+    },
+    {
+      "ano": 2022,
+      "categoria": null,
+      "grupo": "lesao_dolosa",
+      "mes": 8,
+      "n": 124,
+      "pct": null,
+      "recorte": "mensal"
+    },
+    {
+      "ano": 2022,
+      "categoria": null,
+      "grupo": "mortes_dolosas",
+      "mes": 8,
+      "n": 3,
+      "pct": null,
+      "recorte": "mensal"
+    },
+    {
+      "ano": 2022,
+      "categoria": null,
+      "grupo": "roubos",
+      "mes": 8,
+      "n": 164,
+      "pct": null,
+      "recorte": "mensal"
+    },
+    {
+      "ano": 2022,
+      "categoria": null,
+      "grupo": "trafico",
+      "mes": 8,
+      "n": 30,
+      "pct": null,
+      "recorte": "mensal"
+    },
+    {
+      "ano": 2022,
+      "categoria": null,
+      "grupo": "estupros",
+      "mes": 9,
+      "n": 24,
+      "pct": null,
+      "recorte": "mensal"
+    },
+    {
+      "ano": 2022,
+      "categoria": null,
+      "grupo": "furtos",
+      "mes": 9,
+      "n": 948,
+      "pct": null,
+      "recorte": "mensal"
+    },
+    {
+      "ano": 2022,
+      "categoria": null,
+      "grupo": "lesao_dolosa",
+      "mes": 9,
+      "n": 128,
+      "pct": null,
+      "recorte": "mensal"
+    },
+    {
+      "ano": 2022,
+      "categoria": null,
+      "grupo": "mortes_dolosas",
+      "mes": 9,
+      "n": 6,
+      "pct": null,
+      "recorte": "mensal"
+    },
+    {
+      "ano": 2022,
+      "categoria": null,
+      "grupo": "roubos",
+      "mes": 9,
+      "n": 134,
+      "pct": null,
+      "recorte": "mensal"
+    },
+    {
+      "ano": 2022,
+      "categoria": null,
+      "grupo": "trafico",
+      "mes": 9,
+      "n": 21,
+      "pct": null,
+      "recorte": "mensal"
+    },
+    {
+      "ano": 2022,
+      "categoria": null,
+      "grupo": "estupros",
+      "mes": 10,
+      "n": 18,
+      "pct": null,
+      "recorte": "mensal"
+    },
+    {
+      "ano": 2022,
+      "categoria": null,
+      "grupo": "furtos",
+      "mes": 10,
+      "n": 857,
+      "pct": null,
+      "recorte": "mensal"
+    },
+    {
+      "ano": 2022,
+      "categoria": null,
+      "grupo": "lesao_dolosa",
+      "mes": 10,
+      "n": 172,
+      "pct": null,
+      "recorte": "mensal"
+    },
+    {
+      "ano": 2022,
+      "categoria": null,
+      "grupo": "roubos",
+      "mes": 10,
+      "n": 156,
+      "pct": null,
+      "recorte": "mensal"
+    },
+    {
+      "ano": 2022,
+      "categoria": null,
+      "grupo": "trafico",
+      "mes": 10,
+      "n": 31,
+      "pct": null,
+      "recorte": "mensal"
+    },
+    {
+      "ano": 2022,
+      "categoria": null,
+      "grupo": "estupros",
+      "mes": 11,
+      "n": 15,
+      "pct": null,
+      "recorte": "mensal"
+    },
+    {
+      "ano": 2022,
+      "categoria": null,
+      "grupo": "furtos",
+      "mes": 11,
+      "n": 968,
+      "pct": null,
+      "recorte": "mensal"
+    },
+    {
+      "ano": 2022,
+      "categoria": null,
+      "grupo": "lesao_dolosa",
+      "mes": 11,
+      "n": 127,
+      "pct": null,
+      "recorte": "mensal"
+    },
+    {
+      "ano": 2022,
+      "categoria": null,
+      "grupo": "mortes_dolosas",
+      "mes": 11,
+      "n": 3,
+      "pct": null,
+      "recorte": "mensal"
+    },
+    {
+      "ano": 2022,
+      "categoria": null,
+      "grupo": "roubos",
+      "mes": 11,
+      "n": 170,
+      "pct": null,
+      "recorte": "mensal"
+    },
+    {
+      "ano": 2022,
+      "categoria": null,
+      "grupo": "trafico",
+      "mes": 11,
+      "n": 37,
+      "pct": null,
+      "recorte": "mensal"
+    },
+    {
+      "ano": 2022,
+      "categoria": null,
+      "grupo": "estupros",
+      "mes": 12,
+      "n": 20,
+      "pct": null,
+      "recorte": "mensal"
+    },
+    {
+      "ano": 2022,
+      "categoria": null,
+      "grupo": "furtos",
+      "mes": 12,
+      "n": 844,
+      "pct": null,
+      "recorte": "mensal"
+    },
+    {
+      "ano": 2022,
+      "categoria": null,
+      "grupo": "lesao_dolosa",
+      "mes": 12,
+      "n": 161,
+      "pct": null,
+      "recorte": "mensal"
+    },
+    {
+      "ano": 2022,
+      "categoria": null,
+      "grupo": "mortes_dolosas",
+      "mes": 12,
+      "n": 7,
+      "pct": null,
+      "recorte": "mensal"
+    },
+    {
+      "ano": 2022,
+      "categoria": null,
+      "grupo": "roubos",
+      "mes": 12,
+      "n": 160,
+      "pct": null,
+      "recorte": "mensal"
+    },
+    {
+      "ano": 2022,
+      "categoria": null,
+      "grupo": "trafico",
+      "mes": 12,
+      "n": 28,
+      "pct": null,
+      "recorte": "mensal"
+    },
+    {
+      "ano": 2023,
+      "categoria": null,
+      "grupo": "estupros",
+      "mes": 1,
+      "n": 22,
+      "pct": null,
+      "recorte": "mensal"
+    },
+    {
+      "ano": 2023,
+      "categoria": null,
+      "grupo": "furtos",
+      "mes": 1,
+      "n": 903,
+      "pct": null,
+      "recorte": "mensal"
+    },
+    {
+      "ano": 2023,
+      "categoria": null,
+      "grupo": "lesao_dolosa",
+      "mes": 1,
+      "n": 150,
+      "pct": null,
+      "recorte": "mensal"
+    },
+    {
+      "ano": 2023,
+      "categoria": null,
+      "grupo": "mortes_dolosas",
+      "mes": 1,
+      "n": 3,
+      "pct": null,
+      "recorte": "mensal"
+    },
+    {
+      "ano": 2023,
+      "categoria": null,
+      "grupo": "roubos",
+      "mes": 1,
+      "n": 172,
+      "pct": null,
+      "recorte": "mensal"
+    },
+    {
+      "ano": 2023,
+      "categoria": null,
+      "grupo": "trafico",
+      "mes": 1,
+      "n": 32,
+      "pct": null,
+      "recorte": "mensal"
+    },
+    {
+      "ano": 2023,
+      "categoria": null,
+      "grupo": "estupros",
+      "mes": 2,
+      "n": 13,
+      "pct": null,
+      "recorte": "mensal"
+    },
+    {
+      "ano": 2023,
+      "categoria": null,
+      "grupo": "furtos",
+      "mes": 2,
+      "n": 807,
+      "pct": null,
+      "recorte": "mensal"
+    },
+    {
+      "ano": 2023,
+      "categoria": null,
+      "grupo": "lesao_dolosa",
+      "mes": 2,
+      "n": 120,
+      "pct": null,
+      "recorte": "mensal"
+    },
+    {
+      "ano": 2023,
+      "categoria": null,
+      "grupo": "mortes_dolosas",
+      "mes": 2,
+      "n": 2,
+      "pct": null,
+      "recorte": "mensal"
+    },
+    {
+      "ano": 2023,
+      "categoria": null,
+      "grupo": "roubos",
+      "mes": 2,
+      "n": 162,
+      "pct": null,
+      "recorte": "mensal"
+    },
+    {
+      "ano": 2023,
+      "categoria": null,
+      "grupo": "trafico",
+      "mes": 2,
+      "n": 28,
+      "pct": null,
+      "recorte": "mensal"
+    },
+    {
+      "ano": 2023,
+      "categoria": null,
+      "grupo": "estupros",
+      "mes": 3,
+      "n": 22,
+      "pct": null,
+      "recorte": "mensal"
+    },
+    {
+      "ano": 2023,
+      "categoria": null,
+      "grupo": "furtos",
+      "mes": 3,
+      "n": 1052,
+      "pct": null,
+      "recorte": "mensal"
+    },
+    {
+      "ano": 2023,
+      "categoria": null,
+      "grupo": "lesao_dolosa",
+      "mes": 3,
+      "n": 201,
+      "pct": null,
+      "recorte": "mensal"
+    },
+    {
+      "ano": 2023,
+      "categoria": null,
+      "grupo": "mortes_dolosas",
+      "mes": 3,
+      "n": 6,
+      "pct": null,
+      "recorte": "mensal"
+    },
+    {
+      "ano": 2023,
+      "categoria": null,
+      "grupo": "roubos",
+      "mes": 3,
+      "n": 193,
+      "pct": null,
+      "recorte": "mensal"
+    },
+    {
+      "ano": 2023,
+      "categoria": null,
+      "grupo": "trafico",
+      "mes": 3,
+      "n": 27,
+      "pct": null,
+      "recorte": "mensal"
+    },
+    {
+      "ano": 2023,
+      "categoria": null,
+      "grupo": "estupros",
+      "mes": 4,
+      "n": 19,
+      "pct": null,
+      "recorte": "mensal"
+    },
+    {
+      "ano": 2023,
+      "categoria": null,
+      "grupo": "furtos",
+      "mes": 4,
+      "n": 947,
+      "pct": null,
+      "recorte": "mensal"
+    },
+    {
+      "ano": 2023,
+      "categoria": null,
+      "grupo": "lesao_dolosa",
+      "mes": 4,
+      "n": 167,
+      "pct": null,
+      "recorte": "mensal"
+    },
+    {
+      "ano": 2023,
+      "categoria": null,
+      "grupo": "mortes_dolosas",
+      "mes": 4,
+      "n": 5,
+      "pct": null,
+      "recorte": "mensal"
+    },
+    {
+      "ano": 2023,
+      "categoria": null,
+      "grupo": "roubos",
+      "mes": 4,
+      "n": 166,
+      "pct": null,
+      "recorte": "mensal"
+    },
+    {
+      "ano": 2023,
+      "categoria": null,
+      "grupo": "trafico",
+      "mes": 4,
+      "n": 35,
+      "pct": null,
+      "recorte": "mensal"
+    },
+    {
+      "ano": 2023,
+      "categoria": null,
+      "grupo": "estupros",
+      "mes": 5,
+      "n": 24,
+      "pct": null,
+      "recorte": "mensal"
+    },
+    {
+      "ano": 2023,
+      "categoria": null,
+      "grupo": "furtos",
+      "mes": 5,
+      "n": 981,
+      "pct": null,
+      "recorte": "mensal"
+    },
+    {
+      "ano": 2023,
+      "categoria": null,
+      "grupo": "lesao_dolosa",
+      "mes": 5,
+      "n": 162,
+      "pct": null,
+      "recorte": "mensal"
+    },
+    {
+      "ano": 2023,
+      "categoria": null,
+      "grupo": "mortes_dolosas",
+      "mes": 5,
+      "n": 4,
+      "pct": null,
+      "recorte": "mensal"
+    },
+    {
+      "ano": 2023,
+      "categoria": null,
+      "grupo": "roubos",
+      "mes": 5,
+      "n": 197,
+      "pct": null,
+      "recorte": "mensal"
+    },
+    {
+      "ano": 2023,
+      "categoria": null,
+      "grupo": "trafico",
+      "mes": 5,
+      "n": 35,
+      "pct": null,
+      "recorte": "mensal"
+    },
+    {
+      "ano": 2023,
+      "categoria": null,
+      "grupo": "estupros",
+      "mes": 6,
+      "n": 18,
+      "pct": null,
+      "recorte": "mensal"
+    },
+    {
+      "ano": 2023,
+      "categoria": null,
+      "grupo": "furtos",
+      "mes": 6,
+      "n": 903,
+      "pct": null,
+      "recorte": "mensal"
+    },
+    {
+      "ano": 2023,
+      "categoria": null,
+      "grupo": "lesao_dolosa",
+      "mes": 6,
+      "n": 155,
+      "pct": null,
+      "recorte": "mensal"
+    },
+    {
+      "ano": 2023,
+      "categoria": null,
+      "grupo": "mortes_dolosas",
+      "mes": 6,
+      "n": 3,
+      "pct": null,
+      "recorte": "mensal"
+    },
+    {
+      "ano": 2023,
+      "categoria": null,
+      "grupo": "roubos",
+      "mes": 6,
+      "n": 133,
+      "pct": null,
+      "recorte": "mensal"
+    },
+    {
+      "ano": 2023,
+      "categoria": null,
+      "grupo": "trafico",
+      "mes": 6,
+      "n": 35,
+      "pct": null,
+      "recorte": "mensal"
+    },
+    {
+      "ano": 2023,
+      "categoria": null,
+      "grupo": "estupros",
+      "mes": 7,
+      "n": 19,
+      "pct": null,
+      "recorte": "mensal"
+    },
+    {
+      "ano": 2023,
+      "categoria": null,
+      "grupo": "furtos",
+      "mes": 7,
+      "n": 895,
+      "pct": null,
+      "recorte": "mensal"
+    },
+    {
+      "ano": 2023,
+      "categoria": null,
+      "grupo": "lesao_dolosa",
+      "mes": 7,
+      "n": 166,
+      "pct": null,
+      "recorte": "mensal"
+    },
+    {
+      "ano": 2023,
+      "categoria": null,
+      "grupo": "roubos",
+      "mes": 7,
+      "n": 150,
+      "pct": null,
+      "recorte": "mensal"
+    },
+    {
+      "ano": 2023,
+      "categoria": null,
+      "grupo": "trafico",
+      "mes": 7,
+      "n": 25,
+      "pct": null,
+      "recorte": "mensal"
+    },
+    {
+      "ano": 2023,
+      "categoria": null,
+      "grupo": "estupros",
+      "mes": 8,
+      "n": 28,
+      "pct": null,
+      "recorte": "mensal"
+    },
+    {
+      "ano": 2023,
+      "categoria": null,
+      "grupo": "furtos",
+      "mes": 8,
+      "n": 1038,
+      "pct": null,
+      "recorte": "mensal"
+    },
+    {
+      "ano": 2023,
+      "categoria": null,
+      "grupo": "lesao_dolosa",
+      "mes": 8,
+      "n": 165,
+      "pct": null,
+      "recorte": "mensal"
+    },
+    {
+      "ano": 2023,
+      "categoria": null,
+      "grupo": "mortes_dolosas",
+      "mes": 8,
+      "n": 3,
+      "pct": null,
+      "recorte": "mensal"
+    },
+    {
+      "ano": 2023,
+      "categoria": null,
+      "grupo": "roubos",
+      "mes": 8,
+      "n": 146,
+      "pct": null,
+      "recorte": "mensal"
+    },
+    {
+      "ano": 2023,
+      "categoria": null,
+      "grupo": "trafico",
+      "mes": 8,
+      "n": 21,
+      "pct": null,
+      "recorte": "mensal"
+    },
+    {
+      "ano": 2023,
+      "categoria": null,
+      "grupo": "estupros",
+      "mes": 9,
+      "n": 19,
+      "pct": null,
+      "recorte": "mensal"
+    },
+    {
+      "ano": 2023,
+      "categoria": null,
+      "grupo": "furtos",
+      "mes": 9,
+      "n": 1027,
+      "pct": null,
+      "recorte": "mensal"
+    },
+    {
+      "ano": 2023,
+      "categoria": null,
+      "grupo": "lesao_dolosa",
+      "mes": 9,
+      "n": 167,
+      "pct": null,
+      "recorte": "mensal"
+    },
+    {
+      "ano": 2023,
+      "categoria": null,
+      "grupo": "mortes_dolosas",
+      "mes": 9,
+      "n": 7,
+      "pct": null,
+      "recorte": "mensal"
+    },
+    {
+      "ano": 2023,
+      "categoria": null,
+      "grupo": "roubos",
+      "mes": 9,
+      "n": 168,
+      "pct": null,
+      "recorte": "mensal"
+    },
+    {
+      "ano": 2023,
+      "categoria": null,
+      "grupo": "trafico",
+      "mes": 9,
+      "n": 21,
+      "pct": null,
+      "recorte": "mensal"
+    },
+    {
+      "ano": 2023,
+      "categoria": null,
+      "grupo": "estupros",
+      "mes": 10,
+      "n": 23,
+      "pct": null,
+      "recorte": "mensal"
+    },
+    {
+      "ano": 2023,
+      "categoria": null,
+      "grupo": "furtos",
+      "mes": 10,
+      "n": 977,
+      "pct": null,
+      "recorte": "mensal"
+    },
+    {
+      "ano": 2023,
+      "categoria": null,
+      "grupo": "lesao_dolosa",
+      "mes": 10,
+      "n": 172,
+      "pct": null,
+      "recorte": "mensal"
+    },
+    {
+      "ano": 2023,
+      "categoria": null,
+      "grupo": "mortes_dolosas",
+      "mes": 10,
+      "n": 7,
+      "pct": null,
+      "recorte": "mensal"
+    },
+    {
+      "ano": 2023,
+      "categoria": null,
+      "grupo": "roubos",
+      "mes": 10,
+      "n": 191,
+      "pct": null,
+      "recorte": "mensal"
+    },
+    {
+      "ano": 2023,
+      "categoria": null,
+      "grupo": "trafico",
+      "mes": 10,
+      "n": 25,
+      "pct": null,
+      "recorte": "mensal"
+    },
+    {
+      "ano": 2023,
+      "categoria": null,
+      "grupo": "estupros",
+      "mes": 11,
+      "n": 22,
+      "pct": null,
+      "recorte": "mensal"
+    },
+    {
+      "ano": 2023,
+      "categoria": null,
+      "grupo": "furtos",
+      "mes": 11,
+      "n": 929,
+      "pct": null,
+      "recorte": "mensal"
+    },
+    {
+      "ano": 2023,
+      "categoria": null,
+      "grupo": "lesao_dolosa",
+      "mes": 11,
+      "n": 199,
+      "pct": null,
+      "recorte": "mensal"
+    },
+    {
+      "ano": 2023,
+      "categoria": null,
+      "grupo": "mortes_dolosas",
+      "mes": 11,
+      "n": 2,
+      "pct": null,
+      "recorte": "mensal"
+    },
+    {
+      "ano": 2023,
+      "categoria": null,
+      "grupo": "roubos",
+      "mes": 11,
+      "n": 167,
+      "pct": null,
+      "recorte": "mensal"
+    },
+    {
+      "ano": 2023,
+      "categoria": null,
+      "grupo": "trafico",
+      "mes": 11,
+      "n": 18,
+      "pct": null,
+      "recorte": "mensal"
+    },
+    {
+      "ano": 2023,
+      "categoria": null,
+      "grupo": "estupros",
+      "mes": 12,
+      "n": 22,
+      "pct": null,
+      "recorte": "mensal"
+    },
+    {
+      "ano": 2023,
+      "categoria": null,
+      "grupo": "furtos",
+      "mes": 12,
+      "n": 852,
+      "pct": null,
+      "recorte": "mensal"
+    },
+    {
+      "ano": 2023,
+      "categoria": null,
+      "grupo": "lesao_dolosa",
+      "mes": 12,
+      "n": 172,
+      "pct": null,
+      "recorte": "mensal"
+    },
+    {
+      "ano": 2023,
+      "categoria": null,
+      "grupo": "mortes_dolosas",
+      "mes": 12,
+      "n": 4,
+      "pct": null,
+      "recorte": "mensal"
+    },
+    {
+      "ano": 2023,
+      "categoria": null,
+      "grupo": "roubos",
+      "mes": 12,
+      "n": 185,
+      "pct": null,
+      "recorte": "mensal"
+    },
+    {
+      "ano": 2023,
+      "categoria": null,
+      "grupo": "trafico",
+      "mes": 12,
+      "n": 21,
+      "pct": null,
+      "recorte": "mensal"
+    },
+    {
+      "ano": 2024,
+      "categoria": null,
+      "grupo": "estupros",
+      "mes": 1,
+      "n": 26,
+      "pct": null,
+      "recorte": "mensal"
+    },
+    {
+      "ano": 2024,
+      "categoria": null,
+      "grupo": "furtos",
+      "mes": 1,
+      "n": 865,
+      "pct": null,
+      "recorte": "mensal"
+    },
+    {
+      "ano": 2024,
+      "categoria": null,
+      "grupo": "lesao_dolosa",
+      "mes": 1,
+      "n": 186,
+      "pct": null,
+      "recorte": "mensal"
+    },
+    {
+      "ano": 2024,
+      "categoria": null,
+      "grupo": "mortes_dolosas",
+      "mes": 1,
+      "n": 2,
+      "pct": null,
+      "recorte": "mensal"
+    },
+    {
+      "ano": 2024,
+      "categoria": null,
+      "grupo": "roubos",
+      "mes": 1,
+      "n": 145,
+      "pct": null,
+      "recorte": "mensal"
+    },
+    {
+      "ano": 2024,
+      "categoria": null,
+      "grupo": "trafico",
+      "mes": 1,
+      "n": 23,
+      "pct": null,
+      "recorte": "mensal"
+    },
+    {
+      "ano": 2024,
+      "categoria": null,
+      "grupo": "estupros",
+      "mes": 2,
+      "n": 21,
+      "pct": null,
+      "recorte": "mensal"
+    },
+    {
+      "ano": 2024,
+      "categoria": null,
+      "grupo": "furtos",
+      "mes": 2,
+      "n": 757,
+      "pct": null,
+      "recorte": "mensal"
+    },
+    {
+      "ano": 2024,
+      "categoria": null,
+      "grupo": "lesao_dolosa",
+      "mes": 2,
+      "n": 182,
+      "pct": null,
+      "recorte": "mensal"
+    },
+    {
+      "ano": 2024,
+      "categoria": null,
+      "grupo": "mortes_dolosas",
+      "mes": 2,
+      "n": 6,
+      "pct": null,
+      "recorte": "mensal"
+    },
+    {
+      "ano": 2024,
+      "categoria": null,
+      "grupo": "roubos",
+      "mes": 2,
+      "n": 119,
+      "pct": null,
+      "recorte": "mensal"
+    },
+    {
+      "ano": 2024,
+      "categoria": null,
+      "grupo": "trafico",
+      "mes": 2,
+      "n": 17,
+      "pct": null,
+      "recorte": "mensal"
+    },
+    {
+      "ano": 2024,
+      "categoria": null,
+      "grupo": "estupros",
+      "mes": 3,
+      "n": 20,
+      "pct": null,
+      "recorte": "mensal"
+    },
+    {
+      "ano": 2024,
+      "categoria": null,
+      "grupo": "furtos",
+      "mes": 3,
+      "n": 789,
+      "pct": null,
+      "recorte": "mensal"
+    },
+    {
+      "ano": 2024,
+      "categoria": null,
+      "grupo": "lesao_dolosa",
+      "mes": 3,
+      "n": 175,
+      "pct": null,
+      "recorte": "mensal"
+    },
+    {
+      "ano": 2024,
+      "categoria": null,
+      "grupo": "mortes_dolosas",
+      "mes": 3,
+      "n": 1,
+      "pct": null,
+      "recorte": "mensal"
+    },
+    {
+      "ano": 2024,
+      "categoria": null,
+      "grupo": "roubos",
+      "mes": 3,
+      "n": 154,
+      "pct": null,
+      "recorte": "mensal"
+    },
+    {
+      "ano": 2024,
+      "categoria": null,
+      "grupo": "trafico",
+      "mes": 3,
+      "n": 22,
+      "pct": null,
+      "recorte": "mensal"
+    },
+    {
+      "ano": 2024,
+      "categoria": null,
+      "grupo": "estupros",
+      "mes": 4,
+      "n": 22,
+      "pct": null,
+      "recorte": "mensal"
+    },
+    {
+      "ano": 2024,
+      "categoria": null,
+      "grupo": "furtos",
+      "mes": 4,
+      "n": 895,
+      "pct": null,
+      "recorte": "mensal"
+    },
+    {
+      "ano": 2024,
+      "categoria": null,
+      "grupo": "lesao_dolosa",
+      "mes": 4,
+      "n": 207,
+      "pct": null,
+      "recorte": "mensal"
+    },
+    {
+      "ano": 2024,
+      "categoria": null,
+      "grupo": "mortes_dolosas",
+      "mes": 4,
+      "n": 5,
+      "pct": null,
+      "recorte": "mensal"
+    },
+    {
+      "ano": 2024,
+      "categoria": null,
+      "grupo": "roubos",
+      "mes": 4,
+      "n": 182,
+      "pct": null,
+      "recorte": "mensal"
+    },
+    {
+      "ano": 2024,
+      "categoria": null,
+      "grupo": "trafico",
+      "mes": 4,
+      "n": 13,
+      "pct": null,
+      "recorte": "mensal"
+    },
+    {
+      "ano": 2024,
+      "categoria": null,
+      "grupo": "estupros",
+      "mes": 5,
+      "n": 27,
+      "pct": null,
+      "recorte": "mensal"
+    },
+    {
+      "ano": 2024,
+      "categoria": null,
+      "grupo": "furtos",
+      "mes": 5,
+      "n": 911,
+      "pct": null,
+      "recorte": "mensal"
+    },
+    {
+      "ano": 2024,
+      "categoria": null,
+      "grupo": "lesao_dolosa",
+      "mes": 5,
+      "n": 168,
+      "pct": null,
+      "recorte": "mensal"
+    },
+    {
+      "ano": 2024,
+      "categoria": null,
+      "grupo": "mortes_dolosas",
+      "mes": 5,
+      "n": 3,
+      "pct": null,
+      "recorte": "mensal"
+    },
+    {
+      "ano": 2024,
+      "categoria": null,
+      "grupo": "roubos",
+      "mes": 5,
+      "n": 129,
+      "pct": null,
+      "recorte": "mensal"
+    },
+    {
+      "ano": 2024,
+      "categoria": null,
+      "grupo": "trafico",
+      "mes": 5,
+      "n": 24,
+      "pct": null,
+      "recorte": "mensal"
+    },
+    {
+      "ano": 2024,
+      "categoria": null,
+      "grupo": "estupros",
+      "mes": 6,
+      "n": 20,
+      "pct": null,
+      "recorte": "mensal"
+    },
+    {
+      "ano": 2024,
+      "categoria": null,
+      "grupo": "furtos",
+      "mes": 6,
+      "n": 906,
+      "pct": null,
+      "recorte": "mensal"
+    },
+    {
+      "ano": 2024,
+      "categoria": null,
+      "grupo": "lesao_dolosa",
+      "mes": 6,
+      "n": 154,
+      "pct": null,
+      "recorte": "mensal"
+    },
+    {
+      "ano": 2024,
+      "categoria": null,
+      "grupo": "mortes_dolosas",
+      "mes": 6,
+      "n": 5,
+      "pct": null,
+      "recorte": "mensal"
+    },
+    {
+      "ano": 2024,
+      "categoria": null,
+      "grupo": "roubos",
+      "mes": 6,
+      "n": 149,
+      "pct": null,
+      "recorte": "mensal"
+    },
+    {
+      "ano": 2024,
+      "categoria": null,
+      "grupo": "trafico",
+      "mes": 6,
+      "n": 21,
+      "pct": null,
+      "recorte": "mensal"
+    },
+    {
+      "ano": 2024,
+      "categoria": null,
+      "grupo": "estupros",
+      "mes": 7,
+      "n": 23,
+      "pct": null,
+      "recorte": "mensal"
+    },
+    {
+      "ano": 2024,
+      "categoria": null,
+      "grupo": "furtos",
+      "mes": 7,
+      "n": 951,
+      "pct": null,
+      "recorte": "mensal"
+    },
+    {
+      "ano": 2024,
+      "categoria": null,
+      "grupo": "lesao_dolosa",
+      "mes": 7,
+      "n": 132,
+      "pct": null,
+      "recorte": "mensal"
+    },
+    {
+      "ano": 2024,
+      "categoria": null,
+      "grupo": "mortes_dolosas",
+      "mes": 7,
+      "n": 3,
+      "pct": null,
+      "recorte": "mensal"
+    },
+    {
+      "ano": 2024,
+      "categoria": null,
+      "grupo": "roubos",
+      "mes": 7,
+      "n": 140,
+      "pct": null,
+      "recorte": "mensal"
+    },
+    {
+      "ano": 2024,
+      "categoria": null,
+      "grupo": "trafico",
+      "mes": 7,
+      "n": 25,
+      "pct": null,
+      "recorte": "mensal"
+    },
+    {
+      "ano": 2024,
+      "categoria": null,
+      "grupo": "estupros",
+      "mes": 8,
+      "n": 21,
+      "pct": null,
+      "recorte": "mensal"
+    },
+    {
+      "ano": 2024,
+      "categoria": null,
+      "grupo": "furtos",
+      "mes": 8,
+      "n": 966,
+      "pct": null,
+      "recorte": "mensal"
+    },
+    {
+      "ano": 2024,
+      "categoria": null,
+      "grupo": "lesao_dolosa",
+      "mes": 8,
+      "n": 161,
+      "pct": null,
+      "recorte": "mensal"
+    },
+    {
+      "ano": 2024,
+      "categoria": null,
+      "grupo": "mortes_dolosas",
+      "mes": 8,
+      "n": 6,
+      "pct": null,
+      "recorte": "mensal"
+    },
+    {
+      "ano": 2024,
+      "categoria": null,
+      "grupo": "roubos",
+      "mes": 8,
+      "n": 125,
+      "pct": null,
+      "recorte": "mensal"
+    },
+    {
+      "ano": 2024,
+      "categoria": null,
+      "grupo": "trafico",
+      "mes": 8,
+      "n": 22,
+      "pct": null,
+      "recorte": "mensal"
+    },
+    {
+      "ano": 2024,
+      "categoria": null,
+      "grupo": "estupros",
+      "mes": 9,
+      "n": 17,
+      "pct": null,
+      "recorte": "mensal"
+    },
+    {
+      "ano": 2024,
+      "categoria": null,
+      "grupo": "furtos",
+      "mes": 9,
+      "n": 877,
+      "pct": null,
+      "recorte": "mensal"
+    },
+    {
+      "ano": 2024,
+      "categoria": null,
+      "grupo": "lesao_dolosa",
+      "mes": 9,
+      "n": 174,
+      "pct": null,
+      "recorte": "mensal"
+    },
+    {
+      "ano": 2024,
+      "categoria": null,
+      "grupo": "mortes_dolosas",
+      "mes": 9,
+      "n": 7,
+      "pct": null,
+      "recorte": "mensal"
+    },
+    {
+      "ano": 2024,
+      "categoria": null,
+      "grupo": "roubos",
+      "mes": 9,
+      "n": 113,
+      "pct": null,
+      "recorte": "mensal"
+    },
+    {
+      "ano": 2024,
+      "categoria": null,
+      "grupo": "trafico",
+      "mes": 9,
+      "n": 18,
+      "pct": null,
+      "recorte": "mensal"
+    },
+    {
+      "ano": 2024,
+      "categoria": null,
+      "grupo": "estupros",
+      "mes": 10,
+      "n": 22,
+      "pct": null,
+      "recorte": "mensal"
+    },
+    {
+      "ano": 2024,
+      "categoria": null,
+      "grupo": "furtos",
+      "mes": 10,
+      "n": 1054,
+      "pct": null,
+      "recorte": "mensal"
+    },
+    {
+      "ano": 2024,
+      "categoria": null,
+      "grupo": "lesao_dolosa",
+      "mes": 10,
+      "n": 179,
+      "pct": null,
+      "recorte": "mensal"
+    },
+    {
+      "ano": 2024,
+      "categoria": null,
+      "grupo": "mortes_dolosas",
+      "mes": 10,
+      "n": 2,
+      "pct": null,
+      "recorte": "mensal"
+    },
+    {
+      "ano": 2024,
+      "categoria": null,
+      "grupo": "roubos",
+      "mes": 10,
+      "n": 131,
+      "pct": null,
+      "recorte": "mensal"
+    },
+    {
+      "ano": 2024,
+      "categoria": null,
+      "grupo": "trafico",
+      "mes": 10,
+      "n": 21,
+      "pct": null,
+      "recorte": "mensal"
+    },
+    {
+      "ano": 2024,
+      "categoria": null,
+      "grupo": "estupros",
+      "mes": 11,
+      "n": 19,
+      "pct": null,
+      "recorte": "mensal"
+    },
+    {
+      "ano": 2024,
+      "categoria": null,
+      "grupo": "furtos",
+      "mes": 11,
+      "n": 901,
+      "pct": null,
+      "recorte": "mensal"
+    },
+    {
+      "ano": 2024,
+      "categoria": null,
+      "grupo": "lesao_dolosa",
+      "mes": 11,
+      "n": 175,
+      "pct": null,
+      "recorte": "mensal"
+    },
+    {
+      "ano": 2024,
+      "categoria": null,
+      "grupo": "mortes_dolosas",
+      "mes": 11,
+      "n": 7,
+      "pct": null,
+      "recorte": "mensal"
+    },
+    {
+      "ano": 2024,
+      "categoria": null,
+      "grupo": "roubos",
+      "mes": 11,
+      "n": 132,
+      "pct": null,
+      "recorte": "mensal"
+    },
+    {
+      "ano": 2024,
+      "categoria": null,
+      "grupo": "trafico",
+      "mes": 11,
+      "n": 18,
+      "pct": null,
+      "recorte": "mensal"
+    },
+    {
+      "ano": 2024,
+      "categoria": null,
+      "grupo": "estupros",
+      "mes": 12,
+      "n": 17,
+      "pct": null,
+      "recorte": "mensal"
+    },
+    {
+      "ano": 2024,
+      "categoria": null,
+      "grupo": "furtos",
+      "mes": 12,
+      "n": 1022,
+      "pct": null,
+      "recorte": "mensal"
+    },
+    {
+      "ano": 2024,
+      "categoria": null,
+      "grupo": "lesao_dolosa",
+      "mes": 12,
+      "n": 213,
+      "pct": null,
+      "recorte": "mensal"
+    },
+    {
+      "ano": 2024,
+      "categoria": null,
+      "grupo": "mortes_dolosas",
+      "mes": 12,
+      "n": 8,
+      "pct": null,
+      "recorte": "mensal"
+    },
+    {
+      "ano": 2024,
+      "categoria": null,
+      "grupo": "roubos",
+      "mes": 12,
+      "n": 126,
+      "pct": null,
+      "recorte": "mensal"
+    },
+    {
+      "ano": 2024,
+      "categoria": null,
+      "grupo": "trafico",
+      "mes": 12,
+      "n": 13,
+      "pct": null,
+      "recorte": "mensal"
+    },
+    {
+      "ano": 2025,
+      "categoria": null,
+      "grupo": "estupros",
+      "mes": 1,
+      "n": 34,
+      "pct": null,
+      "recorte": "mensal"
+    },
+    {
+      "ano": 2025,
+      "categoria": null,
+      "grupo": "furtos",
+      "mes": 1,
+      "n": 962,
+      "pct": null,
+      "recorte": "mensal"
+    },
+    {
+      "ano": 2025,
+      "categoria": null,
+      "grupo": "lesao_dolosa",
+      "mes": 1,
+      "n": 183,
+      "pct": null,
+      "recorte": "mensal"
+    },
+    {
+      "ano": 2025,
+      "categoria": null,
+      "grupo": "mortes_dolosas",
+      "mes": 1,
+      "n": 2,
+      "pct": null,
+      "recorte": "mensal"
+    },
+    {
+      "ano": 2025,
+      "categoria": null,
+      "grupo": "roubos",
+      "mes": 1,
+      "n": 122,
+      "pct": null,
+      "recorte": "mensal"
+    },
+    {
+      "ano": 2025,
+      "categoria": null,
+      "grupo": "trafico",
+      "mes": 1,
+      "n": 22,
+      "pct": null,
+      "recorte": "mensal"
+    },
+    {
+      "ano": 2025,
+      "categoria": null,
+      "grupo": "estupros",
+      "mes": 2,
+      "n": 26,
+      "pct": null,
+      "recorte": "mensal"
+    },
+    {
+      "ano": 2025,
+      "categoria": null,
+      "grupo": "furtos",
+      "mes": 2,
+      "n": 836,
+      "pct": null,
+      "recorte": "mensal"
+    },
+    {
+      "ano": 2025,
+      "categoria": null,
+      "grupo": "lesao_dolosa",
+      "mes": 2,
+      "n": 200,
+      "pct": null,
+      "recorte": "mensal"
+    },
+    {
+      "ano": 2025,
+      "categoria": null,
+      "grupo": "mortes_dolosas",
+      "mes": 2,
+      "n": 3,
+      "pct": null,
+      "recorte": "mensal"
+    },
+    {
+      "ano": 2025,
+      "categoria": null,
+      "grupo": "roubos",
+      "mes": 2,
+      "n": 99,
+      "pct": null,
+      "recorte": "mensal"
+    },
+    {
+      "ano": 2025,
+      "categoria": null,
+      "grupo": "trafico",
+      "mes": 2,
+      "n": 22,
+      "pct": null,
+      "recorte": "mensal"
+    },
+    {
+      "ano": 2025,
+      "categoria": null,
+      "grupo": "estupros",
+      "mes": 3,
+      "n": 29,
+      "pct": null,
+      "recorte": "mensal"
+    },
+    {
+      "ano": 2025,
+      "categoria": null,
+      "grupo": "furtos",
+      "mes": 3,
+      "n": 932,
+      "pct": null,
+      "recorte": "mensal"
+    },
+    {
+      "ano": 2025,
+      "categoria": null,
+      "grupo": "lesao_dolosa",
+      "mes": 3,
+      "n": 226,
+      "pct": null,
+      "recorte": "mensal"
+    },
+    {
+      "ano": 2025,
+      "categoria": null,
+      "grupo": "mortes_dolosas",
+      "mes": 3,
+      "n": 5,
+      "pct": null,
+      "recorte": "mensal"
+    },
+    {
+      "ano": 2025,
+      "categoria": null,
+      "grupo": "roubos",
+      "mes": 3,
+      "n": 117,
+      "pct": null,
+      "recorte": "mensal"
+    },
+    {
+      "ano": 2025,
+      "categoria": null,
+      "grupo": "trafico",
+      "mes": 3,
+      "n": 22,
+      "pct": null,
+      "recorte": "mensal"
+    },
+    {
+      "ano": 2025,
+      "categoria": null,
+      "grupo": "estupros",
+      "mes": 4,
+      "n": 27,
+      "pct": null,
+      "recorte": "mensal"
+    },
+    {
+      "ano": 2025,
+      "categoria": null,
+      "grupo": "furtos",
+      "mes": 4,
+      "n": 965,
+      "pct": null,
+      "recorte": "mensal"
+    },
+    {
+      "ano": 2025,
+      "categoria": null,
+      "grupo": "lesao_dolosa",
+      "mes": 4,
+      "n": 181,
+      "pct": null,
+      "recorte": "mensal"
+    },
+    {
+      "ano": 2025,
+      "categoria": null,
+      "grupo": "mortes_dolosas",
+      "mes": 4,
+      "n": 6,
+      "pct": null,
+      "recorte": "mensal"
+    },
+    {
+      "ano": 2025,
+      "categoria": null,
+      "grupo": "roubos",
+      "mes": 4,
+      "n": 106,
+      "pct": null,
+      "recorte": "mensal"
+    },
+    {
+      "ano": 2025,
+      "categoria": null,
+      "grupo": "trafico",
+      "mes": 4,
+      "n": 16,
+      "pct": null,
+      "recorte": "mensal"
+    },
+    {
+      "ano": 2025,
+      "categoria": null,
+      "grupo": "estupros",
+      "mes": 5,
+      "n": 26,
+      "pct": null,
+      "recorte": "mensal"
+    },
+    {
+      "ano": 2025,
+      "categoria": null,
+      "grupo": "furtos",
+      "mes": 5,
+      "n": 982,
+      "pct": null,
+      "recorte": "mensal"
+    },
+    {
+      "ano": 2025,
+      "categoria": null,
+      "grupo": "lesao_dolosa",
+      "mes": 5,
+      "n": 184,
+      "pct": null,
+      "recorte": "mensal"
+    },
+    {
+      "ano": 2025,
+      "categoria": null,
+      "grupo": "mortes_dolosas",
+      "mes": 5,
+      "n": 9,
+      "pct": null,
+      "recorte": "mensal"
+    },
+    {
+      "ano": 2025,
+      "categoria": null,
+      "grupo": "roubos",
+      "mes": 5,
+      "n": 117,
+      "pct": null,
+      "recorte": "mensal"
+    },
+    {
+      "ano": 2025,
+      "categoria": null,
+      "grupo": "trafico",
+      "mes": 5,
+      "n": 21,
+      "pct": null,
+      "recorte": "mensal"
+    },
+    {
+      "ano": 2025,
+      "categoria": null,
+      "grupo": "estupros",
+      "mes": 6,
+      "n": 17,
+      "pct": null,
+      "recorte": "mensal"
+    },
+    {
+      "ano": 2025,
+      "categoria": null,
+      "grupo": "furtos",
+      "mes": 6,
+      "n": 836,
+      "pct": null,
+      "recorte": "mensal"
+    },
+    {
+      "ano": 2025,
+      "categoria": null,
+      "grupo": "lesao_dolosa",
+      "mes": 6,
+      "n": 188,
+      "pct": null,
+      "recorte": "mensal"
+    },
+    {
+      "ano": 2025,
+      "categoria": null,
+      "grupo": "mortes_dolosas",
+      "mes": 6,
+      "n": 3,
+      "pct": null,
+      "recorte": "mensal"
+    },
+    {
+      "ano": 2025,
+      "categoria": null,
+      "grupo": "roubos",
+      "mes": 6,
+      "n": 119,
+      "pct": null,
+      "recorte": "mensal"
+    },
+    {
+      "ano": 2025,
+      "categoria": null,
+      "grupo": "trafico",
+      "mes": 6,
+      "n": 14,
+      "pct": null,
+      "recorte": "mensal"
+    },
+    {
+      "ano": 2025,
+      "categoria": null,
+      "grupo": "estupros",
+      "mes": 7,
+      "n": 24,
+      "pct": null,
+      "recorte": "mensal"
+    },
+    {
+      "ano": 2025,
+      "categoria": null,
+      "grupo": "furtos",
+      "mes": 7,
+      "n": 1151,
+      "pct": null,
+      "recorte": "mensal"
+    },
+    {
+      "ano": 2025,
+      "categoria": null,
+      "grupo": "lesao_dolosa",
+      "mes": 7,
+      "n": 160,
+      "pct": null,
+      "recorte": "mensal"
+    },
+    {
+      "ano": 2025,
+      "categoria": null,
+      "grupo": "mortes_dolosas",
+      "mes": 7,
+      "n": 6,
+      "pct": null,
+      "recorte": "mensal"
+    },
+    {
+      "ano": 2025,
+      "categoria": null,
+      "grupo": "roubos",
+      "mes": 7,
+      "n": 123,
+      "pct": null,
+      "recorte": "mensal"
+    },
+    {
+      "ano": 2025,
+      "categoria": null,
+      "grupo": "trafico",
+      "mes": 7,
+      "n": 27,
+      "pct": null,
+      "recorte": "mensal"
+    },
+    {
+      "ano": 2025,
+      "categoria": null,
+      "grupo": "estupros",
+      "mes": 8,
+      "n": 18,
+      "pct": null,
+      "recorte": "mensal"
+    },
+    {
+      "ano": 2025,
+      "categoria": null,
+      "grupo": "furtos",
+      "mes": 8,
+      "n": 972,
+      "pct": null,
+      "recorte": "mensal"
+    },
+    {
+      "ano": 2025,
+      "categoria": null,
+      "grupo": "lesao_dolosa",
+      "mes": 8,
+      "n": 180,
+      "pct": null,
+      "recorte": "mensal"
+    },
+    {
+      "ano": 2025,
+      "categoria": null,
+      "grupo": "mortes_dolosas",
+      "mes": 8,
+      "n": 6,
+      "pct": null,
+      "recorte": "mensal"
+    },
+    {
+      "ano": 2025,
+      "categoria": null,
+      "grupo": "roubos",
+      "mes": 8,
+      "n": 91,
+      "pct": null,
+      "recorte": "mensal"
+    },
+    {
+      "ano": 2025,
+      "categoria": null,
+      "grupo": "trafico",
+      "mes": 8,
+      "n": 26,
+      "pct": null,
+      "recorte": "mensal"
+    },
+    {
+      "ano": 2025,
+      "categoria": null,
+      "grupo": "estupros",
+      "mes": 9,
+      "n": 30,
+      "pct": null,
+      "recorte": "mensal"
+    },
+    {
+      "ano": 2025,
+      "categoria": null,
+      "grupo": "furtos",
+      "mes": 9,
+      "n": 1029,
+      "pct": null,
+      "recorte": "mensal"
+    },
+    {
+      "ano": 2025,
+      "categoria": null,
+      "grupo": "lesao_dolosa",
+      "mes": 9,
+      "n": 191,
+      "pct": null,
+      "recorte": "mensal"
+    },
+    {
+      "ano": 2025,
+      "categoria": null,
+      "grupo": "mortes_dolosas",
+      "mes": 9,
+      "n": 4,
+      "pct": null,
+      "recorte": "mensal"
+    },
+    {
+      "ano": 2025,
+      "categoria": null,
+      "grupo": "roubos",
+      "mes": 9,
+      "n": 101,
+      "pct": null,
+      "recorte": "mensal"
+    },
+    {
+      "ano": 2025,
+      "categoria": null,
+      "grupo": "trafico",
+      "mes": 9,
+      "n": 46,
+      "pct": null,
+      "recorte": "mensal"
+    },
+    {
+      "ano": 2025,
+      "categoria": null,
+      "grupo": "estupros",
+      "mes": 10,
+      "n": 27,
+      "pct": null,
+      "recorte": "mensal"
+    },
+    {
+      "ano": 2025,
+      "categoria": null,
+      "grupo": "furtos",
+      "mes": 10,
+      "n": 938,
+      "pct": null,
+      "recorte": "mensal"
+    },
+    {
+      "ano": 2025,
+      "categoria": null,
+      "grupo": "lesao_dolosa",
+      "mes": 10,
+      "n": 216,
+      "pct": null,
+      "recorte": "mensal"
+    },
+    {
+      "ano": 2025,
+      "categoria": null,
+      "grupo": "mortes_dolosas",
+      "mes": 10,
+      "n": 1,
+      "pct": null,
+      "recorte": "mensal"
+    },
+    {
+      "ano": 2025,
+      "categoria": null,
+      "grupo": "roubos",
+      "mes": 10,
+      "n": 94,
+      "pct": null,
+      "recorte": "mensal"
+    },
+    {
+      "ano": 2025,
+      "categoria": null,
+      "grupo": "trafico",
+      "mes": 10,
+      "n": 51,
+      "pct": null,
+      "recorte": "mensal"
+    },
+    {
+      "ano": 2025,
+      "categoria": null,
+      "grupo": "estupros",
+      "mes": 11,
+      "n": 26,
+      "pct": null,
+      "recorte": "mensal"
+    },
+    {
+      "ano": 2025,
+      "categoria": null,
+      "grupo": "furtos",
+      "mes": 11,
+      "n": 919,
+      "pct": null,
+      "recorte": "mensal"
+    },
+    {
+      "ano": 2025,
+      "categoria": null,
+      "grupo": "lesao_dolosa",
+      "mes": 11,
+      "n": 180,
+      "pct": null,
+      "recorte": "mensal"
+    },
+    {
+      "ano": 2025,
+      "categoria": null,
+      "grupo": "mortes_dolosas",
+      "mes": 11,
+      "n": 9,
+      "pct": null,
+      "recorte": "mensal"
+    },
+    {
+      "ano": 2025,
+      "categoria": null,
+      "grupo": "roubos",
+      "mes": 11,
+      "n": 65,
+      "pct": null,
+      "recorte": "mensal"
+    },
+    {
+      "ano": 2025,
+      "categoria": null,
+      "grupo": "trafico",
+      "mes": 11,
+      "n": 55,
+      "pct": null,
+      "recorte": "mensal"
+    },
+    {
+      "ano": 2025,
+      "categoria": null,
+      "grupo": "estupros",
+      "mes": 12,
+      "n": 15,
+      "pct": null,
+      "recorte": "mensal"
+    },
+    {
+      "ano": 2025,
+      "categoria": null,
+      "grupo": "furtos",
+      "mes": 12,
+      "n": 853,
+      "pct": null,
+      "recorte": "mensal"
+    },
+    {
+      "ano": 2025,
+      "categoria": null,
+      "grupo": "lesao_dolosa",
+      "mes": 12,
+      "n": 214,
+      "pct": null,
+      "recorte": "mensal"
+    },
+    {
+      "ano": 2025,
+      "categoria": null,
+      "grupo": "mortes_dolosas",
+      "mes": 12,
+      "n": 1,
+      "pct": null,
+      "recorte": "mensal"
+    },
+    {
+      "ano": 2025,
+      "categoria": null,
+      "grupo": "roubos",
+      "mes": 12,
+      "n": 97,
+      "pct": null,
+      "recorte": "mensal"
+    },
+    {
+      "ano": 2025,
+      "categoria": null,
+      "grupo": "trafico",
+      "mes": 12,
+      "n": 40,
+      "pct": null,
+      "recorte": "mensal"
+    },
+    {
+      "ano": 2026,
+      "categoria": null,
+      "grupo": "estupros",
+      "mes": 1,
+      "n": 16,
+      "pct": null,
+      "recorte": "mensal"
+    },
+    {
+      "ano": 2026,
+      "categoria": null,
+      "grupo": "furtos",
+      "mes": 1,
+      "n": 913,
+      "pct": null,
+      "recorte": "mensal"
+    },
+    {
+      "ano": 2026,
+      "categoria": null,
+      "grupo": "lesao_dolosa",
+      "mes": 1,
+      "n": 185,
+      "pct": null,
+      "recorte": "mensal"
+    },
+    {
+      "ano": 2026,
+      "categoria": null,
+      "grupo": "mortes_dolosas",
+      "mes": 1,
+      "n": 4,
+      "pct": null,
+      "recorte": "mensal"
+    },
+    {
+      "ano": 2026,
+      "categoria": null,
+      "grupo": "roubos",
+      "mes": 1,
+      "n": 100,
+      "pct": null,
+      "recorte": "mensal"
+    },
+    {
+      "ano": 2026,
+      "categoria": null,
+      "grupo": "trafico",
+      "mes": 1,
+      "n": 56,
+      "pct": null,
+      "recorte": "mensal"
+    },
+    {
+      "ano": 2026,
+      "categoria": null,
+      "grupo": "estupros",
+      "mes": 2,
+      "n": 21,
+      "pct": null,
+      "recorte": "mensal"
+    },
+    {
+      "ano": 2026,
+      "categoria": null,
+      "grupo": "furtos",
+      "mes": 2,
+      "n": 747,
+      "pct": null,
+      "recorte": "mensal"
+    },
+    {
+      "ano": 2026,
+      "categoria": null,
+      "grupo": "lesao_dolosa",
+      "mes": 2,
+      "n": 180,
+      "pct": null,
+      "recorte": "mensal"
+    },
+    {
+      "ano": 2026,
+      "categoria": null,
+      "grupo": "mortes_dolosas",
+      "mes": 2,
+      "n": 9,
+      "pct": null,
+      "recorte": "mensal"
+    },
+    {
+      "ano": 2026,
+      "categoria": null,
+      "grupo": "roubos",
+      "mes": 2,
+      "n": 74,
+      "pct": null,
+      "recorte": "mensal"
+    },
+    {
+      "ano": 2026,
+      "categoria": null,
+      "grupo": "trafico",
+      "mes": 2,
+      "n": 43,
+      "pct": null,
+      "recorte": "mensal"
+    },
+    {
+      "ano": 2026,
+      "categoria": null,
+      "grupo": "estupros",
+      "mes": 3,
+      "n": 24,
+      "pct": null,
+      "recorte": "mensal"
+    },
+    {
+      "ano": 2026,
+      "categoria": null,
+      "grupo": "furtos",
+      "mes": 3,
+      "n": 874,
+      "pct": null,
+      "recorte": "mensal"
+    },
+    {
+      "ano": 2026,
+      "categoria": null,
+      "grupo": "lesao_dolosa",
+      "mes": 3,
+      "n": 246,
+      "pct": null,
+      "recorte": "mensal"
+    },
+    {
+      "ano": 2026,
+      "categoria": null,
+      "grupo": "mortes_dolosas",
+      "mes": 3,
+      "n": 7,
+      "pct": null,
+      "recorte": "mensal"
+    },
+    {
+      "ano": 2026,
+      "categoria": null,
+      "grupo": "roubos",
+      "mes": 3,
+      "n": 92,
+      "pct": null,
+      "recorte": "mensal"
+    },
+    {
+      "ano": 2026,
+      "categoria": null,
+      "grupo": "trafico",
+      "mes": 3,
+      "n": 50,
+      "pct": null,
+      "recorte": "mensal"
+    },
+    {
+      "ano": 2026,
+      "categoria": null,
+      "grupo": "estupros",
+      "mes": 4,
+      "n": 18,
+      "pct": null,
+      "recorte": "mensal"
+    },
+    {
+      "ano": 2026,
+      "categoria": null,
+      "grupo": "furtos",
+      "mes": 4,
+      "n": 997,
+      "pct": null,
+      "recorte": "mensal"
+    },
+    {
+      "ano": 2026,
+      "categoria": null,
+      "grupo": "lesao_dolosa",
+      "mes": 4,
+      "n": 212,
+      "pct": null,
+      "recorte": "mensal"
+    },
+    {
+      "ano": 2026,
+      "categoria": null,
+      "grupo": "mortes_dolosas",
+      "mes": 4,
+      "n": 5,
+      "pct": null,
+      "recorte": "mensal"
+    },
+    {
+      "ano": 2026,
+      "categoria": null,
+      "grupo": "roubos",
+      "mes": 4,
+      "n": 77,
+      "pct": null,
+      "recorte": "mensal"
+    },
+    {
+      "ano": 2026,
+      "categoria": null,
+      "grupo": "trafico",
+      "mes": 4,
+      "n": 44,
+      "pct": null,
+      "recorte": "mensal"
+    },
+    {
+      "ano": 2026,
+      "categoria": null,
+      "grupo": "estupros",
+      "mes": 5,
+      "n": 25,
+      "pct": null,
+      "recorte": "mensal"
+    },
+    {
+      "ano": 2026,
+      "categoria": null,
+      "grupo": "furtos",
+      "mes": 5,
+      "n": 925,
+      "pct": null,
+      "recorte": "mensal"
+    },
+    {
+      "ano": 2026,
+      "categoria": null,
+      "grupo": "lesao_dolosa",
+      "mes": 5,
+      "n": 191,
+      "pct": null,
+      "recorte": "mensal"
+    },
+    {
+      "ano": 2026,
+      "categoria": null,
+      "grupo": "mortes_dolosas",
+      "mes": 5,
+      "n": 5,
+      "pct": null,
+      "recorte": "mensal"
+    },
+    {
+      "ano": 2026,
+      "categoria": null,
+      "grupo": "roubos",
+      "mes": 5,
+      "n": 77,
+      "pct": null,
+      "recorte": "mensal"
+    },
+    {
+      "ano": 2026,
+      "categoria": null,
+      "grupo": "trafico",
+      "mes": 5,
+      "n": 46,
+      "pct": null,
+      "recorte": "mensal"
+    },
+    {
+      "ano": 2026,
+      "categoria": null,
+      "grupo": "estupros",
+      "mes": 6,
+      "n": 15,
+      "pct": null,
+      "recorte": "mensal"
+    },
+    {
+      "ano": 2026,
+      "categoria": null,
+      "grupo": "furtos",
+      "mes": 6,
+      "n": 851,
+      "pct": null,
+      "recorte": "mensal"
+    },
+    {
+      "ano": 2026,
+      "categoria": null,
+      "grupo": "lesao_dolosa",
+      "mes": 6,
+      "n": 205,
+      "pct": null,
+      "recorte": "mensal"
+    },
+    {
+      "ano": 2026,
+      "categoria": null,
+      "grupo": "mortes_dolosas",
+      "mes": 6,
+      "n": 4,
+      "pct": null,
+      "recorte": "mensal"
+    },
+    {
+      "ano": 2026,
+      "categoria": null,
+      "grupo": "roubos",
+      "mes": 6,
+      "n": 85,
+      "pct": null,
+      "recorte": "mensal"
+    },
+    {
+      "ano": 2026,
+      "categoria": null,
+      "grupo": "trafico",
+      "mes": 6,
+      "n": 46,
+      "pct": null,
+      "recorte": "mensal"
+    },
+    {
+      "ano": 2026,
+      "categoria": null,
+      "grupo": "estupros",
+      "mes": 7,
+      "n": 19,
+      "pct": null,
+      "recorte": "mensal"
+    },
+    {
+      "ano": 2026,
+      "categoria": null,
+      "grupo": "furtos",
+      "mes": 7,
+      "n": 811,
+      "pct": null,
+      "recorte": "mensal"
+    },
+    {
+      "ano": 2026,
+      "categoria": null,
+      "grupo": "lesao_dolosa",
+      "mes": 7,
+      "n": 182,
+      "pct": null,
+      "recorte": "mensal"
+    },
+    {
+      "ano": 2026,
+      "categoria": null,
+      "grupo": "roubos",
+      "mes": 7,
+      "n": 79,
+      "pct": null,
+      "recorte": "mensal"
+    },
+    {
+      "ano": 2026,
+      "categoria": null,
+      "grupo": "trafico",
+      "mes": 7,
+      "n": 46,
+      "pct": null,
+      "recorte": "mensal"
+    },
+    {
+      "ano": 2026,
+      "categoria": null,
+      "grupo": "estupros",
+      "mes": 8,
+      "n": 14,
+      "pct": null,
+      "recorte": "mensal"
+    },
+    {
+      "ano": 2026,
+      "categoria": null,
+      "grupo": "furtos",
+      "mes": 8,
+      "n": 614,
+      "pct": null,
+      "recorte": "mensal"
+    },
+    {
+      "ano": 2026,
+      "categoria": null,
+      "grupo": "lesao_dolosa",
+      "mes": 8,
+      "n": 244,
+      "pct": null,
+      "recorte": "mensal"
+    },
+    {
+      "ano": 2026,
+      "categoria": null,
+      "grupo": "mortes_dolosas",
+      "mes": 8,
+      "n": 4,
+      "pct": null,
+      "recorte": "mensal"
+    },
+    {
+      "ano": 2026,
+      "categoria": null,
+      "grupo": "roubos",
+      "mes": 8,
+      "n": 80,
+      "pct": null,
+      "recorte": "mensal"
+    },
+    {
+      "ano": 2026,
+      "categoria": null,
+      "grupo": "trafico",
+      "mes": 8,
+      "n": 43,
+      "pct": null,
+      "recorte": "mensal"
+    },
+    {
+      "ano": 2026,
+      "categoria": null,
+      "grupo": "roubos",
+      "mes": 8,
+      "n": 1021,
+      "pct": null,
+      "recorte": "janela_atual"
+    },
+    {
+      "ano": 2025,
+      "categoria": null,
+      "grupo": "roubos",
+      "mes": 8,
+      "n": 1396,
+      "pct": null,
+      "recorte": "janela_anterior"
+    },
+    {
+      "ano": 2026,
+      "categoria": null,
+      "grupo": "furtos",
+      "mes": 8,
+      "n": 10471,
+      "pct": null,
+      "recorte": "janela_atual"
+    },
+    {
+      "ano": 2025,
+      "categoria": null,
+      "grupo": "furtos",
+      "mes": 8,
+      "n": 11490,
+      "pct": null,
+      "recorte": "janela_anterior"
+    },
+    {
+      "ano": 2026,
+      "categoria": null,
+      "grupo": "mortes_dolosas",
+      "mes": 8,
+      "n": 53,
+      "pct": null,
+      "recorte": "janela_atual"
+    },
+    {
+      "ano": 2025,
+      "categoria": null,
+      "grupo": "mortes_dolosas",
+      "mes": 8,
+      "n": 64,
+      "pct": null,
+      "recorte": "janela_anterior"
+    },
+    {
+      "ano": 2026,
+      "categoria": null,
+      "grupo": "lesao_dolosa",
+      "mes": 8,
+      "n": 2446,
+      "pct": null,
+      "recorte": "janela_atual"
+    },
+    {
+      "ano": 2025,
+      "categoria": null,
+      "grupo": "lesao_dolosa",
+      "mes": 8,
+      "n": 2243,
+      "pct": null,
+      "recorte": "janela_anterior"
+    },
+    {
+      "ano": 2026,
+      "categoria": null,
+      "grupo": "estupros",
+      "mes": 8,
+      "n": 250,
+      "pct": null,
+      "recorte": "janela_atual"
+    },
+    {
+      "ano": 2025,
+      "categoria": null,
+      "grupo": "estupros",
+      "mes": 8,
+      "n": 276,
+      "pct": null,
+      "recorte": "janela_anterior"
+    },
+    {
+      "ano": 2026,
+      "categoria": null,
+      "grupo": "trafico",
+      "mes": 8,
+      "n": 566,
+      "pct": null,
+      "recorte": "janela_atual"
+    },
+    {
+      "ano": 2025,
+      "categoria": null,
+      "grupo": "trafico",
+      "mes": 8,
+      "n": 240,
+      "pct": null,
+      "recorte": "janela_anterior"
+    },
+    {
+      "ano": 2025,
+      "categoria": "00",
+      "grupo": "roubos",
+      "mes": null,
+      "n": 51,
+      "pct": 4.1,
+      "recorte": "hora"
+    },
+    {
+      "ano": 2025,
+      "categoria": "01",
+      "grupo": "roubos",
+      "mes": null,
+      "n": 46,
+      "pct": 3.7,
+      "recorte": "hora"
+    },
+    {
+      "ano": 2025,
+      "categoria": "02",
+      "grupo": "roubos",
+      "mes": null,
+      "n": 47,
+      "pct": 3.8,
+      "recorte": "hora"
+    },
+    {
+      "ano": 2025,
+      "categoria": "03",
+      "grupo": "roubos",
+      "mes": null,
+      "n": 46,
+      "pct": 3.7,
+      "recorte": "hora"
+    },
+    {
+      "ano": 2025,
+      "categoria": "04",
+      "grupo": "roubos",
+      "mes": null,
+      "n": 63,
+      "pct": 5.0,
+      "recorte": "hora"
+    },
+    {
+      "ano": 2025,
+      "categoria": "05",
+      "grupo": "roubos",
+      "mes": null,
+      "n": 57,
+      "pct": 4.6,
+      "recorte": "hora"
+    },
+    {
+      "ano": 2025,
+      "categoria": "06",
+      "grupo": "roubos",
+      "mes": null,
+      "n": 47,
+      "pct": 3.8,
+      "recorte": "hora"
+    },
+    {
+      "ano": 2025,
+      "categoria": "07",
+      "grupo": "roubos",
+      "mes": null,
+      "n": 33,
+      "pct": 2.6,
+      "recorte": "hora"
+    },
+    {
+      "ano": 2025,
+      "categoria": "08",
+      "grupo": "roubos",
+      "mes": null,
+      "n": 26,
+      "pct": 2.1,
+      "recorte": "hora"
+    },
+    {
+      "ano": 2025,
+      "categoria": "09",
+      "grupo": "roubos",
+      "mes": null,
+      "n": 33,
+      "pct": 2.6,
+      "recorte": "hora"
+    },
+    {
+      "ano": 2025,
+      "categoria": "10",
+      "grupo": "roubos",
+      "mes": null,
+      "n": 36,
+      "pct": 2.9,
+      "recorte": "hora"
+    },
+    {
+      "ano": 2025,
+      "categoria": "11",
+      "grupo": "roubos",
+      "mes": null,
+      "n": 37,
+      "pct": 3.0,
+      "recorte": "hora"
+    },
+    {
+      "ano": 2025,
+      "categoria": "12",
+      "grupo": "roubos",
+      "mes": null,
+      "n": 34,
+      "pct": 2.7,
+      "recorte": "hora"
+    },
+    {
+      "ano": 2025,
+      "categoria": "13",
+      "grupo": "roubos",
+      "mes": null,
+      "n": 30,
+      "pct": 2.4,
+      "recorte": "hora"
+    },
+    {
+      "ano": 2025,
+      "categoria": "14",
+      "grupo": "roubos",
+      "mes": null,
+      "n": 47,
+      "pct": 3.8,
+      "recorte": "hora"
+    },
+    {
+      "ano": 2025,
+      "categoria": "15",
+      "grupo": "roubos",
+      "mes": null,
+      "n": 40,
+      "pct": 3.2,
+      "recorte": "hora"
+    },
+    {
+      "ano": 2025,
+      "categoria": "16",
+      "grupo": "roubos",
+      "mes": null,
+      "n": 42,
+      "pct": 3.4,
+      "recorte": "hora"
+    },
+    {
+      "ano": 2025,
+      "categoria": "17",
+      "grupo": "roubos",
+      "mes": null,
+      "n": 29,
+      "pct": 2.3,
+      "recorte": "hora"
+    },
+    {
+      "ano": 2025,
+      "categoria": "18",
+      "grupo": "roubos",
+      "mes": null,
+      "n": 52,
+      "pct": 4.2,
+      "recorte": "hora"
+    },
+    {
+      "ano": 2025,
+      "categoria": "19",
+      "grupo": "roubos",
+      "mes": null,
+      "n": 70,
+      "pct": 5.6,
+      "recorte": "hora"
+    },
+    {
+      "ano": 2025,
+      "categoria": "20",
+      "grupo": "roubos",
+      "mes": null,
+      "n": 82,
+      "pct": 6.6,
+      "recorte": "hora"
+    },
+    {
+      "ano": 2025,
+      "categoria": "21",
+      "grupo": "roubos",
+      "mes": null,
+      "n": 65,
+      "pct": 5.2,
+      "recorte": "hora"
+    },
+    {
+      "ano": 2025,
+      "categoria": "22",
+      "grupo": "roubos",
+      "mes": null,
+      "n": 69,
+      "pct": 5.5,
+      "recorte": "hora"
+    },
+    {
+      "ano": 2025,
+      "categoria": "23",
+      "grupo": "roubos",
+      "mes": null,
+      "n": 57,
+      "pct": 4.6,
+      "recorte": "hora"
+    },
+    {
+      "ano": 2025,
+      "categoria": "De madrugada",
+      "grupo": "roubos",
+      "mes": null,
+      "n": 344,
+      "pct": 27.5,
+      "recorte": "periodo"
+    },
+    {
+      "ano": 2025,
+      "categoria": "Pela manhã",
+      "grupo": "roubos",
+      "mes": null,
+      "n": 232,
+      "pct": 18.5,
+      "recorte": "periodo"
+    },
+    {
+      "ano": 2025,
+      "categoria": "A tarde",
+      "grupo": "roubos",
+      "mes": null,
+      "n": 239,
+      "pct": 19.1,
+      "recorte": "periodo"
+    },
+    {
+      "ano": 2025,
+      "categoria": "A noite",
+      "grupo": "roubos",
+      "mes": null,
+      "n": 434,
+      "pct": 34.7,
+      "recorte": "periodo"
+    },
+    {
+      "ano": 2025,
+      "categoria": "Horário não informado",
+      "grupo": "roubos",
+      "mes": null,
+      "n": 2,
+      "pct": 0.2,
+      "recorte": "periodo"
+    },
+    {
+      "ano": 2025,
+      "categoria": "00",
+      "grupo": "furtos",
+      "mes": null,
+      "n": 422,
+      "pct": 3.7,
+      "recorte": "hora"
+    },
+    {
+      "ano": 2025,
+      "categoria": "01",
+      "grupo": "furtos",
+      "mes": null,
+      "n": 384,
+      "pct": 3.4,
+      "recorte": "hora"
+    },
+    {
+      "ano": 2025,
+      "categoria": "02",
+      "grupo": "furtos",
+      "mes": null,
+      "n": 545,
+      "pct": 4.8,
+      "recorte": "hora"
+    },
+    {
+      "ano": 2025,
+      "categoria": "03",
+      "grupo": "furtos",
+      "mes": null,
+      "n": 655,
+      "pct": 5.8,
+      "recorte": "hora"
+    },
+    {
+      "ano": 2025,
+      "categoria": "04",
+      "grupo": "furtos",
+      "mes": null,
+      "n": 403,
+      "pct": 3.5,
+      "recorte": "hora"
+    },
+    {
+      "ano": 2025,
+      "categoria": "05",
+      "grupo": "furtos",
+      "mes": null,
+      "n": 295,
+      "pct": 2.6,
+      "recorte": "hora"
+    },
+    {
+      "ano": 2025,
+      "categoria": "06",
+      "grupo": "furtos",
+      "mes": null,
+      "n": 257,
+      "pct": 2.3,
+      "recorte": "hora"
+    },
+    {
+      "ano": 2025,
+      "categoria": "07",
+      "grupo": "furtos",
+      "mes": null,
+      "n": 279,
+      "pct": 2.5,
+      "recorte": "hora"
+    },
+    {
+      "ano": 2025,
+      "categoria": "08",
+      "grupo": "furtos",
+      "mes": null,
+      "n": 354,
+      "pct": 3.1,
+      "recorte": "hora"
+    },
+    {
+      "ano": 2025,
+      "categoria": "09",
+      "grupo": "furtos",
+      "mes": null,
+      "n": 327,
+      "pct": 2.9,
+      "recorte": "hora"
+    },
+    {
+      "ano": 2025,
+      "categoria": "10",
+      "grupo": "furtos",
+      "mes": null,
+      "n": 400,
+      "pct": 3.5,
+      "recorte": "hora"
+    },
+    {
+      "ano": 2025,
+      "categoria": "11",
+      "grupo": "furtos",
+      "mes": null,
+      "n": 330,
+      "pct": 2.9,
+      "recorte": "hora"
+    },
+    {
+      "ano": 2025,
+      "categoria": "12",
+      "grupo": "furtos",
+      "mes": null,
+      "n": 340,
+      "pct": 3.0,
+      "recorte": "hora"
+    },
+    {
+      "ano": 2025,
+      "categoria": "13",
+      "grupo": "furtos",
+      "mes": null,
+      "n": 281,
+      "pct": 2.5,
+      "recorte": "hora"
+    },
+    {
+      "ano": 2025,
+      "categoria": "14",
+      "grupo": "furtos",
+      "mes": null,
+      "n": 301,
+      "pct": 2.6,
+      "recorte": "hora"
+    },
+    {
+      "ano": 2025,
+      "categoria": "15",
+      "grupo": "furtos",
+      "mes": null,
+      "n": 345,
+      "pct": 3.0,
+      "recorte": "hora"
+    },
+    {
+      "ano": 2025,
+      "categoria": "16",
+      "grupo": "furtos",
+      "mes": null,
+      "n": 252,
+      "pct": 2.2,
+      "recorte": "hora"
+    },
+    {
+      "ano": 2025,
+      "categoria": "17",
+      "grupo": "furtos",
+      "mes": null,
+      "n": 285,
+      "pct": 2.5,
+      "recorte": "hora"
+    },
+    {
+      "ano": 2025,
+      "categoria": "18",
+      "grupo": "furtos",
+      "mes": null,
+      "n": 232,
+      "pct": 2.0,
+      "recorte": "hora"
+    },
+    {
+      "ano": 2025,
+      "categoria": "19",
+      "grupo": "furtos",
+      "mes": null,
+      "n": 271,
+      "pct": 2.4,
+      "recorte": "hora"
+    },
+    {
+      "ano": 2025,
+      "categoria": "20",
+      "grupo": "furtos",
+      "mes": null,
+      "n": 261,
+      "pct": 2.3,
+      "recorte": "hora"
+    },
+    {
+      "ano": 2025,
+      "categoria": "21",
+      "grupo": "furtos",
+      "mes": null,
+      "n": 246,
+      "pct": 2.2,
+      "recorte": "hora"
+    },
+    {
+      "ano": 2025,
+      "categoria": "22",
+      "grupo": "furtos",
+      "mes": null,
+      "n": 229,
+      "pct": 2.0,
+      "recorte": "hora"
+    },
+    {
+      "ano": 2025,
+      "categoria": "23",
+      "grupo": "furtos",
+      "mes": null,
+      "n": 312,
+      "pct": 2.7,
+      "recorte": "hora"
+    },
+    {
+      "ano": 2025,
+      "categoria": "De madrugada",
+      "grupo": "furtos",
+      "mes": null,
+      "n": 3761,
+      "pct": 33.1,
+      "recorte": "periodo"
+    },
+    {
+      "ano": 2025,
+      "categoria": "Pela manhã",
+      "grupo": "furtos",
+      "mes": null,
+      "n": 2591,
+      "pct": 22.8,
+      "recorte": "periodo"
+    },
+    {
+      "ano": 2025,
+      "categoria": "A tarde",
+      "grupo": "furtos",
+      "mes": null,
+      "n": 2546,
+      "pct": 22.4,
+      "recorte": "periodo"
+    },
+    {
+      "ano": 2025,
+      "categoria": "A noite",
+      "grupo": "furtos",
+      "mes": null,
+      "n": 2160,
+      "pct": 19.0,
+      "recorte": "periodo"
+    },
+    {
+      "ano": 2025,
+      "categoria": "Horário não informado",
+      "grupo": "furtos",
+      "mes": null,
+      "n": 317,
+      "pct": 2.8,
+      "recorte": "periodo"
+    },
+    {
+      "ano": 2025,
+      "categoria": "Outros",
+      "grupo": "furtos",
+      "mes": null,
+      "n": 6089,
+      "pct": 53.5,
+      "recorte": "furto_tipo"
+    },
+    {
+      "ano": 2025,
+      "categoria": "Veículo",
+      "grupo": "furtos",
+      "mes": null,
+      "n": 1731,
+      "pct": 15.2,
+      "recorte": "furto_tipo"
+    },
+    {
+      "ano": 2025,
+      "categoria": "Fios e Cabos",
+      "grupo": "furtos",
+      "mes": null,
+      "n": 1433,
+      "pct": 12.6,
+      "recorte": "furto_tipo"
+    },
+    {
+      "ano": 2025,
+      "categoria": "Residência",
+      "grupo": "furtos",
+      "mes": null,
+      "n": 726,
+      "pct": 6.4,
+      "recorte": "furto_tipo"
+    },
+    {
+      "ano": 2025,
+      "categoria": "Estabelecimento Comercial",
+      "grupo": "furtos",
+      "mes": null,
+      "n": 442,
+      "pct": 3.9,
+      "recorte": "furto_tipo"
+    },
+    {
+      "ano": 2025,
+      "categoria": "Transeunte",
+      "grupo": "furtos",
+      "mes": null,
+      "n": 308,
+      "pct": 2.7,
+      "recorte": "furto_tipo"
+    },
+    {
+      "ano": 2025,
+      "categoria": "Estabelecimento-Outros",
+      "grupo": "furtos",
+      "mes": null,
+      "n": 191,
+      "pct": 1.7,
+      "recorte": "furto_tipo"
+    },
+    {
+      "ano": 2025,
+      "categoria": "Interior de Veículo",
+      "grupo": "furtos",
+      "mes": null,
+      "n": 168,
+      "pct": 1.5,
+      "recorte": "furto_tipo"
+    },
+    {
+      "ano": 2025,
+      "categoria": "Interior Transporte Coletivo",
+      "grupo": "furtos",
+      "mes": null,
+      "n": 107,
+      "pct": 0.9,
+      "recorte": "furto_tipo"
+    },
+    {
+      "ano": 2025,
+      "categoria": "Interior Estabelecimento",
+      "grupo": "furtos",
+      "mes": null,
+      "n": 61,
+      "pct": 0.5,
+      "recorte": "furto_tipo"
+    },
+    {
+      "ano": 2025,
+      "categoria": "Estabelecimento Ensino",
+      "grupo": "furtos",
+      "mes": null,
+      "n": 50,
+      "pct": 0.4,
+      "recorte": "furto_tipo"
+    },
+    {
+      "ano": 2025,
+      "categoria": "Condomínio Residêncial",
+      "grupo": "furtos",
+      "mes": null,
+      "n": 38,
+      "pct": 0.3,
+      "recorte": "furto_tipo"
+    },
+    {
+      "ano": 2025,
+      "categoria": "Coletivo",
+      "grupo": "furtos",
+      "mes": null,
+      "n": 11,
+      "pct": 0.1,
+      "recorte": "furto_tipo"
+    },
+    {
+      "ano": 2025,
+      "categoria": "Caixa Eletrônico",
+      "grupo": "furtos",
+      "mes": null,
+      "n": 9,
+      "pct": 0.1,
+      "recorte": "furto_tipo"
+    },
+    {
+      "ano": 2025,
+      "categoria": "Derivação Clandestina",
+      "grupo": "furtos",
+      "mes": null,
+      "n": 4,
+      "pct": 0.0,
+      "recorte": "furto_tipo"
+    },
+    {
+      "ano": 2025,
+      "categoria": "Carga",
+      "grupo": "furtos",
+      "mes": null,
+      "n": 2,
+      "pct": 0.0,
+      "recorte": "furto_tipo"
+    },
+    {
+      "ano": 2025,
+      "categoria": "Saidinha de Banco",
+      "grupo": "furtos",
+      "mes": null,
+      "n": 2,
+      "pct": 0.0,
+      "recorte": "furto_tipo"
+    },
+    {
+      "ano": 2025,
+      "categoria": "Condomínio Comercial",
+      "grupo": "furtos",
+      "mes": null,
+      "n": 1,
+      "pct": 0.0,
+      "recorte": "furto_tipo"
+    },
+    {
+      "ano": 2025,
+      "categoria": "Estabelecimento Bancário (Roubo/Furto a Banco)",
+      "grupo": "furtos",
+      "mes": null,
+      "n": 1,
+      "pct": 0.0,
+      "recorte": "furto_tipo"
+    },
+    {
+      "ano": 2025,
+      "categoria": "Joalheria",
+      "grupo": "furtos",
+      "mes": null,
+      "n": 1,
+      "pct": 0.0,
+      "recorte": "furto_tipo"
+    },
+    {
+      "ano": 2025,
+      "categoria": "ALÉM PONTE",
+      "grupo": "roubos",
+      "mes": null,
+      "n": 18,
+      "pct": null,
+      "recorte": "bairro"
+    },
+    {
+      "ano": 2025,
+      "categoria": "ALÉM PONTE",
+      "grupo": "furtos",
+      "mes": null,
+      "n": 119,
+      "pct": null,
+      "recorte": "bairro"
+    },
+    {
+      "ano": 2025,
+      "categoria": "APARECIDINHA",
+      "grupo": "roubos",
+      "mes": null,
+      "n": 19,
+      "pct": null,
+      "recorte": "bairro"
+    },
+    {
+      "ano": 2025,
+      "categoria": "APARECIDINHA",
+      "grupo": "furtos",
+      "mes": null,
+      "n": 44,
+      "pct": null,
+      "recorte": "bairro"
+    },
+    {
+      "ano": 2025,
+      "categoria": "BRIGADEIRO TOBIAS",
+      "grupo": "roubos",
+      "mes": null,
+      "n": 13,
+      "pct": null,
+      "recorte": "bairro"
+    },
+    {
+      "ano": 2025,
+      "categoria": "BRIGADEIRO TOBIAS",
+      "grupo": "furtos",
+      "mes": null,
+      "n": 66,
+      "pct": null,
+      "recorte": "bairro"
+    },
+    {
+      "ano": 2025,
+      "categoria": "CAGUASSU",
+      "grupo": "roubos",
+      "mes": null,
+      "n": 13,
+      "pct": null,
+      "recorte": "bairro"
+    },
+    {
+      "ano": 2025,
+      "categoria": "CAGUASSU",
+      "grupo": "furtos",
+      "mes": null,
+      "n": 58,
+      "pct": null,
+      "recorte": "bairro"
+    },
+    {
+      "ano": 2025,
+      "categoria": "CAJURU DO SUL",
+      "grupo": "roubos",
+      "mes": null,
+      "n": 10,
+      "pct": null,
+      "recorte": "bairro"
+    },
+    {
+      "ano": 2025,
+      "categoria": "CAJURU DO SUL",
+      "grupo": "furtos",
+      "mes": null,
+      "n": 54,
+      "pct": null,
+      "recorte": "bairro"
+    },
+    {
+      "ano": 2025,
+      "categoria": "CENTRAL PARQUE SOROCABA",
+      "grupo": "roubos",
+      "mes": null,
+      "n": 5,
+      "pct": null,
+      "recorte": "bairro"
+    },
+    {
+      "ano": 2025,
+      "categoria": "CENTRAL PARQUE SOROCABA",
+      "grupo": "furtos",
+      "mes": null,
+      "n": 50,
+      "pct": null,
+      "recorte": "bairro"
+    },
+    {
+      "ano": 2025,
+      "categoria": "CENTRO",
+      "grupo": "roubos",
+      "mes": null,
+      "n": 96,
+      "pct": null,
+      "recorte": "bairro"
+    },
+    {
+      "ano": 2025,
+      "categoria": "CENTRO",
+      "grupo": "furtos",
+      "mes": null,
+      "n": 511,
+      "pct": null,
+      "recorte": "bairro"
+    },
+    {
+      "ano": 2025,
+      "categoria": "CONJUNTO RESIDENCIAL APARECIDINHA",
+      "grupo": "roubos",
+      "mes": null,
+      "n": 3,
+      "pct": null,
+      "recorte": "bairro"
+    },
+    {
+      "ano": 2025,
+      "categoria": "CONJUNTO RESIDENCIAL APARECIDINHA",
+      "grupo": "furtos",
+      "mes": null,
+      "n": 120,
+      "pct": null,
+      "recorte": "bairro"
+    },
+    {
+      "ano": 2025,
+      "categoria": "ÉDEN",
+      "grupo": "roubos",
+      "mes": null,
+      "n": 12,
+      "pct": null,
+      "recorte": "bairro"
+    },
+    {
+      "ano": 2025,
+      "categoria": "ÉDEN",
+      "grupo": "furtos",
+      "mes": null,
+      "n": 88,
+      "pct": null,
+      "recorte": "bairro"
+    },
+    {
+      "ano": 2025,
+      "categoria": "JARDIM COLINAS DE SAO GUILHERME",
+      "grupo": "roubos",
+      "mes": null,
+      "n": 5,
+      "pct": null,
+      "recorte": "bairro"
+    },
+    {
+      "ano": 2025,
+      "categoria": "JARDIM COLINAS DE SAO GUILHERME",
+      "grupo": "furtos",
+      "mes": null,
+      "n": 68,
+      "pct": null,
+      "recorte": "bairro"
+    },
+    {
+      "ano": 2025,
+      "categoria": "JARDIM FACULDADE",
+      "grupo": "roubos",
+      "mes": null,
+      "n": 1,
+      "pct": null,
+      "recorte": "bairro"
+    },
+    {
+      "ano": 2025,
+      "categoria": "JARDIM FACULDADE",
+      "grupo": "furtos",
+      "mes": null,
+      "n": 67,
+      "pct": null,
+      "recorte": "bairro"
+    },
+    {
+      "ano": 2025,
+      "categoria": "JARDIM J S CARVALHO",
+      "grupo": "roubos",
+      "mes": null,
+      "n": 9,
+      "pct": null,
+      "recorte": "bairro"
+    },
+    {
+      "ano": 2025,
+      "categoria": "JARDIM J S CARVALHO",
+      "grupo": "furtos",
+      "mes": null,
+      "n": 55,
+      "pct": null,
+      "recorte": "bairro"
+    },
+    {
+      "ano": 2025,
+      "categoria": "JARDIM JOCKEY CLUB",
+      "grupo": "roubos",
+      "mes": null,
+      "n": 13,
+      "pct": null,
+      "recorte": "bairro"
+    },
+    {
+      "ano": 2025,
+      "categoria": "JARDIM JOCKEY CLUB",
+      "grupo": "furtos",
+      "mes": null,
+      "n": 52,
+      "pct": null,
+      "recorte": "bairro"
+    },
+    {
+      "ano": 2025,
+      "categoria": "JARDIM LEOCADIA",
+      "grupo": "roubos",
+      "mes": null,
+      "n": 2,
+      "pct": null,
+      "recorte": "bairro"
+    },
+    {
+      "ano": 2025,
+      "categoria": "JARDIM LEOCADIA",
+      "grupo": "furtos",
+      "mes": null,
+      "n": 58,
+      "pct": null,
+      "recorte": "bairro"
+    },
+    {
+      "ano": 2025,
+      "categoria": "JARDIM MARIA DO CARMO",
+      "grupo": "roubos",
+      "mes": null,
+      "n": 6,
+      "pct": null,
+      "recorte": "bairro"
+    },
+    {
+      "ano": 2025,
+      "categoria": "JARDIM MARIA DO CARMO",
+      "grupo": "furtos",
+      "mes": null,
+      "n": 57,
+      "pct": null,
+      "recorte": "bairro"
+    },
+    {
+      "ano": 2025,
+      "categoria": "JARDIM MARIA EUGENIA",
+      "grupo": "roubos",
+      "mes": null,
+      "n": 12,
+      "pct": null,
+      "recorte": "bairro"
+    },
+    {
+      "ano": 2025,
+      "categoria": "JARDIM MARIA EUGENIA",
+      "grupo": "furtos",
+      "mes": null,
+      "n": 42,
+      "pct": null,
+      "recorte": "bairro"
+    },
+    {
+      "ano": 2025,
+      "categoria": "JARDIM NOVO HORIZONTE",
+      "grupo": "roubos",
+      "mes": null,
+      "n": 7,
+      "pct": null,
+      "recorte": "bairro"
+    },
+    {
+      "ano": 2025,
+      "categoria": "JARDIM NOVO HORIZONTE",
+      "grupo": "furtos",
+      "mes": null,
+      "n": 55,
+      "pct": null,
+      "recorte": "bairro"
+    },
+    {
+      "ano": 2025,
+      "categoria": "JARDIM SANTA CATARINA",
+      "grupo": "roubos",
+      "mes": null,
+      "n": 6,
+      "pct": null,
+      "recorte": "bairro"
+    },
+    {
+      "ano": 2025,
+      "categoria": "JARDIM SANTA CATARINA",
+      "grupo": "furtos",
+      "mes": null,
+      "n": 51,
+      "pct": null,
+      "recorte": "bairro"
+    },
+    {
+      "ano": 2025,
+      "categoria": "JARDIM SANTA CECILIA",
+      "grupo": "roubos",
+      "mes": null,
+      "n": 11,
+      "pct": null,
+      "recorte": "bairro"
+    },
+    {
+      "ano": 2025,
+      "categoria": "JARDIM SANTA CECILIA",
+      "grupo": "furtos",
+      "mes": null,
+      "n": 93,
+      "pct": null,
+      "recorte": "bairro"
+    },
+    {
+      "ano": 2025,
+      "categoria": "JARDIM SANTA CLARA",
+      "grupo": "roubos",
+      "mes": null,
+      "n": 5,
+      "pct": null,
+      "recorte": "bairro"
+    },
+    {
+      "ano": 2025,
+      "categoria": "JARDIM SANTA CLARA",
+      "grupo": "furtos",
+      "mes": null,
+      "n": 81,
+      "pct": null,
+      "recorte": "bairro"
+    },
+    {
+      "ano": 2025,
+      "categoria": "JARDIM SANTA LUIZA",
+      "grupo": "roubos",
+      "mes": null,
+      "n": 6,
+      "pct": null,
+      "recorte": "bairro"
+    },
+    {
+      "ano": 2025,
+      "categoria": "JARDIM SANTA LUIZA",
+      "grupo": "furtos",
+      "mes": null,
+      "n": 51,
+      "pct": null,
+      "recorte": "bairro"
+    },
+    {
+      "ano": 2025,
+      "categoria": "JARDIM SANTA ROSALIA",
+      "grupo": "roubos",
+      "mes": null,
+      "n": 7,
+      "pct": null,
+      "recorte": "bairro"
+    },
+    {
+      "ano": 2025,
+      "categoria": "JARDIM SANTA ROSALIA",
+      "grupo": "furtos",
+      "mes": null,
+      "n": 67,
+      "pct": null,
+      "recorte": "bairro"
+    },
+    {
+      "ano": 2025,
+      "categoria": "JARDIM SANTA ROSÁLIA",
+      "grupo": "roubos",
+      "mes": null,
+      "n": 10,
+      "pct": null,
+      "recorte": "bairro"
+    },
+    {
+      "ano": 2025,
+      "categoria": "JARDIM SANTA ROSÁLIA",
+      "grupo": "furtos",
+      "mes": null,
+      "n": 58,
+      "pct": null,
+      "recorte": "bairro"
+    },
+    {
+      "ano": 2025,
+      "categoria": "JARDIM SAO BENTO",
+      "grupo": "roubos",
+      "mes": null,
+      "n": 5,
+      "pct": null,
+      "recorte": "bairro"
+    },
+    {
+      "ano": 2025,
+      "categoria": "JARDIM SAO BENTO",
+      "grupo": "furtos",
+      "mes": null,
+      "n": 53,
+      "pct": null,
+      "recorte": "bairro"
+    },
+    {
+      "ano": 2025,
+      "categoria": "JARDIM SIMUS",
+      "grupo": "roubos",
+      "mes": null,
+      "n": 7,
+      "pct": null,
+      "recorte": "bairro"
+    },
+    {
+      "ano": 2025,
+      "categoria": "JARDIM SIMUS",
+      "grupo": "furtos",
+      "mes": null,
+      "n": 105,
+      "pct": null,
+      "recorte": "bairro"
+    },
+    {
+      "ano": 2025,
+      "categoria": "JARDIM VERA CRUZ",
+      "grupo": "roubos",
+      "mes": null,
+      "n": 10,
+      "pct": null,
+      "recorte": "bairro"
+    },
+    {
+      "ano": 2025,
+      "categoria": "JARDIM VERA CRUZ",
+      "grupo": "furtos",
+      "mes": null,
+      "n": 105,
+      "pct": null,
+      "recorte": "bairro"
+    },
+    {
+      "ano": 2025,
+      "categoria": "JARDIM VERGUEIRO",
+      "grupo": "roubos",
+      "mes": null,
+      "n": 7,
+      "pct": null,
+      "recorte": "bairro"
+    },
+    {
+      "ano": 2025,
+      "categoria": "JARDIM VERGUEIRO",
+      "grupo": "furtos",
+      "mes": null,
+      "n": 95,
+      "pct": null,
+      "recorte": "bairro"
+    },
+    {
+      "ano": 2025,
+      "categoria": "JARDIM WANEL VILLE V",
+      "grupo": "roubos",
+      "mes": null,
+      "n": 3,
+      "pct": null,
+      "recorte": "bairro"
+    },
+    {
+      "ano": 2025,
+      "categoria": "JARDIM WANEL VILLE V",
+      "grupo": "furtos",
+      "mes": null,
+      "n": 70,
+      "pct": null,
+      "recorte": "bairro"
+    },
+    {
+      "ano": 2025,
+      "categoria": "PARQUE CAMPOLIM",
+      "grupo": "roubos",
+      "mes": null,
+      "n": 27,
+      "pct": null,
+      "recorte": "bairro"
+    },
+    {
+      "ano": 2025,
+      "categoria": "PARQUE CAMPOLIM",
+      "grupo": "furtos",
+      "mes": null,
+      "n": 242,
+      "pct": null,
+      "recorte": "bairro"
+    },
+    {
+      "ano": 2025,
+      "categoria": "PARQUE DAS LARANJEIRAS",
+      "grupo": "roubos",
+      "mes": null,
+      "n": 9,
+      "pct": null,
+      "recorte": "bairro"
+    },
+    {
+      "ano": 2025,
+      "categoria": "PARQUE DAS LARANJEIRAS",
+      "grupo": "furtos",
+      "mes": null,
+      "n": 98,
+      "pct": null,
+      "recorte": "bairro"
+    },
+    {
+      "ano": 2025,
+      "categoria": "PARQUE DOS EUCALIPTOS",
+      "grupo": "roubos",
+      "mes": null,
+      "n": 3,
+      "pct": null,
+      "recorte": "bairro"
+    },
+    {
+      "ano": 2025,
+      "categoria": "PARQUE DOS EUCALIPTOS",
+      "grupo": "furtos",
+      "mes": null,
+      "n": 50,
+      "pct": null,
+      "recorte": "bairro"
+    },
+    {
+      "ano": 2025,
+      "categoria": "PARQUE ESMERALDA",
+      "grupo": "roubos",
+      "mes": null,
+      "n": 1,
+      "pct": null,
+      "recorte": "bairro"
+    },
+    {
+      "ano": 2025,
+      "categoria": "PARQUE ESMERALDA",
+      "grupo": "furtos",
+      "mes": null,
+      "n": 53,
+      "pct": null,
+      "recorte": "bairro"
+    },
+    {
+      "ano": 2025,
+      "categoria": "PARQUE RESERVA FAZENDA IMPERIAL",
+      "grupo": "roubos",
+      "mes": null,
+      "n": 3,
+      "pct": null,
+      "recorte": "bairro"
+    },
+    {
+      "ano": 2025,
+      "categoria": "PARQUE RESERVA FAZENDA IMPERIAL",
+      "grupo": "furtos",
+      "mes": null,
+      "n": 65,
+      "pct": null,
+      "recorte": "bairro"
+    },
+    {
+      "ano": 2025,
+      "categoria": "PARQUE SANTA ISABEL",
+      "grupo": "roubos",
+      "mes": null,
+      "n": 3,
+      "pct": null,
+      "recorte": "bairro"
+    },
+    {
+      "ano": 2025,
+      "categoria": "PARQUE SANTA ISABEL",
+      "grupo": "furtos",
+      "mes": null,
+      "n": 55,
+      "pct": null,
+      "recorte": "bairro"
+    },
+    {
+      "ano": 2025,
+      "categoria": "PARQUE SAO BENTO",
+      "grupo": "roubos",
+      "mes": null,
+      "n": 23,
+      "pct": null,
+      "recorte": "bairro"
+    },
+    {
+      "ano": 2025,
+      "categoria": "PARQUE SAO BENTO",
+      "grupo": "furtos",
+      "mes": null,
+      "n": 86,
+      "pct": null,
+      "recorte": "bairro"
+    },
+    {
+      "ano": 2025,
+      "categoria": "PARQUE SÃO BENTO",
+      "grupo": "roubos",
+      "mes": null,
+      "n": 15,
+      "pct": null,
+      "recorte": "bairro"
+    },
+    {
+      "ano": 2025,
+      "categoria": "PARQUE SÃO BENTO",
+      "grupo": "furtos",
+      "mes": null,
+      "n": 58,
+      "pct": null,
+      "recorte": "bairro"
+    },
+    {
+      "ano": 2025,
+      "categoria": "PARQUE VITORIA REGIA",
+      "grupo": "roubos",
+      "mes": null,
+      "n": 15,
+      "pct": null,
+      "recorte": "bairro"
+    },
+    {
+      "ano": 2025,
+      "categoria": "PARQUE VITORIA REGIA",
+      "grupo": "furtos",
+      "mes": null,
+      "n": 114,
+      "pct": null,
+      "recorte": "bairro"
+    },
+    {
+      "ano": 2025,
+      "categoria": "VILA BARAO",
+      "grupo": "roubos",
+      "mes": null,
+      "n": 5,
+      "pct": null,
+      "recorte": "bairro"
+    },
+    {
+      "ano": 2025,
+      "categoria": "VILA BARAO",
+      "grupo": "furtos",
+      "mes": null,
+      "n": 125,
+      "pct": null,
+      "recorte": "bairro"
+    },
+    {
+      "ano": 2025,
+      "categoria": "VILA BARCELONA",
+      "grupo": "roubos",
+      "mes": null,
+      "n": 7,
+      "pct": null,
+      "recorte": "bairro"
+    },
+    {
+      "ano": 2025,
+      "categoria": "VILA BARCELONA",
+      "grupo": "furtos",
+      "mes": null,
+      "n": 51,
+      "pct": null,
+      "recorte": "bairro"
+    },
+    {
+      "ano": 2025,
+      "categoria": "VILA CARVALHO",
+      "grupo": "roubos",
+      "mes": null,
+      "n": 7,
+      "pct": null,
+      "recorte": "bairro"
+    },
+    {
+      "ano": 2025,
+      "categoria": "VILA CARVALHO",
+      "grupo": "furtos",
+      "mes": null,
+      "n": 69,
+      "pct": null,
+      "recorte": "bairro"
+    },
+    {
+      "ano": 2025,
+      "categoria": "VILA DOUGLAS LARA",
+      "grupo": "roubos",
+      "mes": null,
+      "n": 2,
+      "pct": null,
+      "recorte": "bairro"
+    },
+    {
+      "ano": 2025,
+      "categoria": "VILA DOUGLAS LARA",
+      "grupo": "furtos",
+      "mes": null,
+      "n": 52,
+      "pct": null,
+      "recorte": "bairro"
+    },
+    {
+      "ano": 2025,
+      "categoria": "VILA FIORI",
+      "grupo": "roubos",
+      "mes": null,
+      "n": 1,
+      "pct": null,
+      "recorte": "bairro"
+    },
+    {
+      "ano": 2025,
+      "categoria": "VILA FIORI",
+      "grupo": "furtos",
+      "mes": null,
+      "n": 49,
+      "pct": null,
+      "recorte": "bairro"
+    },
+    {
+      "ano": 2025,
+      "categoria": "VILA GAGLIARI",
+      "grupo": "roubos",
+      "mes": null,
+      "n": 8,
+      "pct": null,
+      "recorte": "bairro"
+    },
+    {
+      "ano": 2025,
+      "categoria": "VILA GAGLIARI",
+      "grupo": "furtos",
+      "mes": null,
+      "n": 108,
+      "pct": null,
+      "recorte": "bairro"
+    },
+    {
+      "ano": 2025,
+      "categoria": "VILA HARO",
+      "grupo": "roubos",
+      "mes": null,
+      "n": 2,
+      "pct": null,
+      "recorte": "bairro"
+    },
+    {
+      "ano": 2025,
+      "categoria": "VILA HARO",
+      "grupo": "furtos",
+      "mes": null,
+      "n": 65,
+      "pct": null,
+      "recorte": "bairro"
+    },
+    {
+      "ano": 2025,
+      "categoria": "VILA HELENA",
+      "grupo": "roubos",
+      "mes": null,
+      "n": 7,
+      "pct": null,
+      "recorte": "bairro"
+    },
+    {
+      "ano": 2025,
+      "categoria": "VILA HELENA",
+      "grupo": "furtos",
+      "mes": null,
+      "n": 56,
+      "pct": null,
+      "recorte": "bairro"
+    },
+    {
+      "ano": 2025,
+      "categoria": "VILA JARDINI",
+      "grupo": "roubos",
+      "mes": null,
+      "n": 3,
+      "pct": null,
+      "recorte": "bairro"
+    },
+    {
+      "ano": 2025,
+      "categoria": "VILA JARDINI",
+      "grupo": "furtos",
+      "mes": null,
+      "n": 55,
+      "pct": null,
+      "recorte": "bairro"
+    },
+    {
+      "ano": 2025,
+      "categoria": "VILA LUCY",
+      "grupo": "roubos",
+      "mes": null,
+      "n": 12,
+      "pct": null,
+      "recorte": "bairro"
+    },
+    {
+      "ano": 2025,
+      "categoria": "VILA LUCY",
+      "grupo": "furtos",
+      "mes": null,
+      "n": 150,
+      "pct": null,
+      "recorte": "bairro"
+    },
+    {
+      "ano": 2025,
+      "categoria": "VILA MARIANA",
+      "grupo": "roubos",
+      "mes": null,
+      "n": 19,
+      "pct": null,
+      "recorte": "bairro"
+    },
+    {
+      "ano": 2025,
+      "categoria": "VILA MARIANA",
+      "grupo": "furtos",
+      "mes": null,
+      "n": 66,
+      "pct": null,
+      "recorte": "bairro"
+    },
+    {
+      "ano": 2025,
+      "categoria": "VILA NOVA SOROCABA",
+      "grupo": "roubos",
+      "mes": null,
+      "n": 5,
+      "pct": null,
+      "recorte": "bairro"
+    },
+    {
+      "ano": 2025,
+      "categoria": "VILA NOVA SOROCABA",
+      "grupo": "furtos",
+      "mes": null,
+      "n": 79,
+      "pct": null,
+      "recorte": "bairro"
+    },
+    {
+      "ano": 2025,
+      "categoria": "VILA OLÍMPIA",
+      "grupo": "roubos",
+      "mes": null,
+      "n": 6,
+      "pct": null,
+      "recorte": "bairro"
+    },
+    {
+      "ano": 2025,
+      "categoria": "VILA OLÍMPIA",
+      "grupo": "furtos",
+      "mes": null,
+      "n": 82,
+      "pct": null,
+      "recorte": "bairro"
+    },
+    {
+      "ano": 2025,
+      "categoria": "VILA PEDREIRA SOROCABA",
+      "grupo": "roubos",
+      "mes": null,
+      "n": 5,
+      "pct": null,
+      "recorte": "bairro"
+    },
+    {
+      "ano": 2025,
+      "categoria": "VILA PEDREIRA SOROCABA",
+      "grupo": "furtos",
+      "mes": null,
+      "n": 45,
+      "pct": null,
+      "recorte": "bairro"
+    },
+    {
+      "ano": 2025,
+      "categoria": "VILA PEDRO RIBEIRO",
+      "grupo": "roubos",
+      "mes": null,
+      "n": 7,
+      "pct": null,
+      "recorte": "bairro"
+    },
+    {
+      "ano": 2025,
+      "categoria": "VILA PEDRO RIBEIRO",
+      "grupo": "furtos",
+      "mes": null,
+      "n": 57,
+      "pct": null,
+      "recorte": "bairro"
+    },
+    {
+      "ano": 2025,
+      "categoria": "VILA SANTO ANTONIO",
+      "grupo": "roubos",
+      "mes": null,
+      "n": 9,
+      "pct": null,
+      "recorte": "bairro"
+    },
+    {
+      "ano": 2025,
+      "categoria": "VILA SANTO ANTONIO",
+      "grupo": "furtos",
+      "mes": null,
+      "n": 85,
+      "pct": null,
+      "recorte": "bairro"
+    },
+    {
+      "ano": 2025,
+      "categoria": "VILA SAO JOAO",
+      "grupo": "roubos",
+      "mes": null,
+      "n": 5,
+      "pct": null,
+      "recorte": "bairro"
+    },
+    {
+      "ano": 2025,
+      "categoria": "VILA SAO JOAO",
+      "grupo": "furtos",
+      "mes": null,
+      "n": 45,
+      "pct": null,
+      "recorte": "bairro"
+    },
+    {
+      "ano": 2025,
+      "categoria": "VILA ZULMIRA",
+      "grupo": "roubos",
+      "mes": null,
+      "n": 3,
+      "pct": null,
+      "recorte": "bairro"
+    },
+    {
+      "ano": 2025,
+      "categoria": "VILA ZULMIRA",
+      "grupo": "furtos",
+      "mes": null,
+      "n": 81,
+      "pct": null,
+      "recorte": "bairro"
+    },
+    {
+      "ano": 2025,
+      "categoria": "WANEL VILLE",
+      "grupo": "roubos",
+      "mes": null,
+      "n": 5,
+      "pct": null,
+      "recorte": "bairro"
+    },
+    {
+      "ano": 2025,
+      "categoria": "WANEL VILLE",
+      "grupo": "furtos",
+      "mes": null,
+      "n": 59,
+      "pct": null,
+      "recorte": "bairro"
+    },
+    {
+      "ano": 2025,
+      "categoria": "Demais bairros, grafias variantes e sem informação",
+      "grupo": "roubos",
+      "mes": null,
+      "n": 713,
+      "pct": null,
+      "recorte": "bairro"
+    },
+    {
+      "ano": 2025,
+      "categoria": "Demais bairros, grafias variantes e sem informação",
+      "grupo": "furtos",
+      "mes": null,
+      "n": 6782,
+      "pct": null,
+      "recorte": "bairro"
+    }
+  ],
+  "fonte": {
+    "acesso_em": "2026-10-11",
+    "licenca": "Dados abertos da SSP-SP",
+    "nome": "SSP-SP — Estatísticas de segurança (SPDados, ocorrências registradas)",
+    "url": "https://www.ssp.sp.gov.br/estatistica/dados-mensais"
+  },
+  "painel": "seguranca",
+  "qualidade": {
+    "flag": "real",
+    "n_registros": 537,
+    "notas": [
+      "Os números são boletins de ocorrência registrados, não crimes: crime não registrado não entra, e mudanças na forma de registrar alteram a série.",
+      "Ocorrências com município de circunscrição igual a Sorocaba (código IBGE 3552205), por mês de registro na estatística oficial, de 01/2022 a 08/2026.",
+      "O mês mais recente tende a subir quando registros atrasados são incluídos pela SSP-SP.",
+      "Mortes por crime doloso = homicídio doloso + latrocínio + lesão corporal seguida de morte. Não inclui mortes por intervenção policial nem homicídio no trânsito.",
+      "Período do dia, tipos de furto e bairros usam o ano completo mais recente (2025). Horário: usa a hora exata do boletim e, sem ela, a faixa do dia informada; a parcela sem nenhuma das duas é mostrada. A hora 00h pode estar inflada por preenchimento padrão (00:00 exato).",
+      "Bairros em ordem alfabética, sem ranking. O campo é digitado no boletim (grafias variam) e bairros com menos de 50 roubos e furtos no ano ficam em 'demais'. Contagem não mede risco: depende de população, comércio e fluxo de pessoas.",
+      "Séries antigas usam as mesmas categorias com grafia normalizada (ex.: TRAFICO e TRÁFICO). Categorias que só aparecem a partir de 2023 ficaram de fora para não distorcer a comparação.",
+      "SHA-256 do manifesto de coleta: 5255d29269aab53161b29ffc6e42719a5ad6e6a14a2dd1681eeec299987e2aff"
+    ]
+  },
+  "referencia": {
+    "fim": "2026-08-28",
+    "granularidade": "mensal",
+    "inicio": "2022-01-01"
+  },
+  "schema_version": "1.0"
+}

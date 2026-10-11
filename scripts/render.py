@@ -197,6 +197,57 @@ def contexto_representantes(env: dict) -> dict:
     }
 
 
+GRUPOS_SEG = {
+    "roubos": "Roubos", "furtos": "Furtos", "mortes_dolosas": "Mortes por crime doloso",
+    "lesao_dolosa": "Lesão corporal dolosa", "estupros": "Estupros", "trafico": "Tráfico de entorpecentes",
+}
+
+
+def contexto_seguranca(env: dict) -> dict:
+    d = env["dados"]
+    mensal = {g: [r for r in d if r["recorte"] == "mensal" and r["grupo"] == g] for g in GRUPOS_SEG}
+    atual = {r["grupo"]: r for r in d if r["recorte"] == "janela_atual"}
+    anterior = {r["grupo"]: r for r in d if r["recorte"] == "janela_anterior"}
+    series = {}
+    for g in ("roubos", "furtos", "mortes_dolosas"):
+        pts = mensal[g]
+        passo = 12
+        rot = {i: f"{ABREV[r['mes'] - 1]}/{str(r['ano'])[2:]}" for i, r in enumerate(pts) if i % passo == 0 or i == len(pts) - 1}
+        series[g] = barras_mensais([(f"{ABREV[r['mes'] - 1]}/{r['ano']}", r["n"]) for r in pts], rot)
+    horas = {}
+    for g in ("roubos", "furtos"):
+        pts = [r for r in d if r["recorte"] == "hora" and r["grupo"] == g]
+        horas[g] = barras_mensais([(f"{r['categoria']}h", r["n"]) for r in pts], {i: f"{i:02d}h" for i in range(0, 24, 3)})
+    comparacao = []
+    for g, nome in GRUPOS_SEG.items():
+        a, b = atual[g]["n"], anterior[g]["n"]
+        comparacao.append({"grupo": nome, "atual": a, "anterior": b, "var": round((a - b) / b * 100, 1) if b >= 30 else None})
+    bairros: dict[str, dict[str, int]] = {}
+    for r in d:
+        if r["recorte"] == "bairro":
+            bairros.setdefault(r["categoria"], {})[r["grupo"]] = r["n"]
+    demais = [k for k in bairros if k.startswith("Demais")]
+    lista_bairros = [(k, v.get("roubos", 0), v.get("furtos", 0)) for k, v in bairros.items() if k not in demais]
+    ano_ref = next(r["ano"] for r in d if r["recorte"] == "periodo")
+    ult = atual["roubos"]
+    return {
+        "grupos_nome": GRUPOS_SEG,
+        "series": series,
+        "horas": horas,
+        "faixas": {g: [r for r in d if r["recorte"] == "periodo" and r["grupo"] == g] for g in ("roubos", "furtos")},
+        "tipos_furto": [r for r in d if r["recorte"] == "furto_tipo"][:10],
+        "comparacao": comparacao,
+        "bairros": lista_bairros,
+        "bairros_demais": [(k, bairros[k].get("roubos", 0), bairros[k].get("furtos", 0)) for k in demais],
+        "ano_ref": ano_ref,
+        "mes_fim": f"{MESES[ult['mes'] - 1]} de {ult['ano']}",
+        "mes_fim_curto": f"{ABREV[ult['mes'] - 1]}/{str(ult['ano'])[2:]}",
+        "mes_ini_curto": f"{ABREV[(ult['mes']) % 12]}/{str(ult['ano'] - (0 if ult['mes'] == 12 else 1))[2:]}",
+        "roubos_atual": atual["roubos"]["n"],
+        "ref_seg": f"até {MESES[ult['mes'] - 1]} de {ult['ano']}",
+    }
+
+
 def contexto_combustivel(env: dict) -> dict:
     produtos = []
     for nome in dict.fromkeys(r["produto"] for r in env["dados"]):
@@ -242,6 +293,8 @@ def renderizar(public: Path, saida: Path) -> None:
     ctx_cid = contexto_cidade(perfil)
     rep = json.loads((public / "representantes.json").read_text(encoding="utf-8"))
     ctx_rep = contexto_representantes(rep)
+    seg = json.loads((public / "seguranca.json").read_text(encoding="utf-8"))
+    ctx_seg = contexto_seguranca(seg)
     escolas = json.loads((public / "escolas.json").read_text(encoding="utf-8"))
     ctx_esc = contexto_escolas(escolas)
     mapa = gerar_mapa(RAIZ / "data" / "raw" / "ibge" / "malha_3552205.geojson")
@@ -265,6 +318,8 @@ def renderizar(public: Path, saida: Path) -> None:
     paineis["cidade"].update(status=flag_p, rotulo_status=ROTULO_STATUS[flag_p], referencia=ctx_cid["ref_cidade"])
     flag_r = rep["qualidade"]["flag"]
     paineis["representantes"].update(status=flag_r, rotulo_status=ROTULO_STATUS[flag_r], referencia=ctx_rep["ref_rep"])
+    flag_s = seg["qualidade"]["flag"]
+    paineis["seguranca"].update(status=flag_s, rotulo_status=ROTULO_STATUS[flag_s], referencia=ctx_seg["ref_seg"])
     ordem = list(paineis.values())
 
     if saida.exists():
@@ -275,7 +330,7 @@ def renderizar(public: Path, saida: Path) -> None:
     (saida / MARCADOR).write_text("saída gerada por scripts/render.py\n", encoding="utf-8")
     for nome in ("style.css", "app.js"):
         shutil.copy(RAIZ / "static" / nome, saida / nome)
-    for nome in ("emprego.json", "combustivel.json", "escolas.json", "perfil.json", "representantes.json"):
+    for nome in ("emprego.json", "combustivel.json", "escolas.json", "perfil.json", "representantes.json", "seguranca.json"):
         shutil.copy(public / nome, saida / "data" / nome)
 
     comum = {"paineis": ordem, "repo_url": REPO_URL}
@@ -289,13 +344,14 @@ def renderizar(public: Path, saida: Path) -> None:
             jinja.get_template(template).render(raiz=raiz, **comum, **ctx), encoding="utf-8"
         )
 
-    escrever("index.html", "index.html", "", mapa=mapa, emprego=ctx_emprego, comb=ctx_comb, esc=ctx_esc, cid=ctx_cid, rep=ctx_rep)
+    escrever("index.html", "index.html", "", mapa=mapa, emprego=ctx_emprego, comb=ctx_comb, esc=ctx_esc, cid=ctx_cid, rep=ctx_rep, seg=ctx_seg)
     escrever("sobre/index.html", "sobre.html", "../", fontes=[
         ("Emprego", "Novo CAGED — Ministério do Trabalho e Emprego", flag),
         ("Combustível", "Levantamento de Preços de Combustíveis — ANP", flag_c),
         ("Escolas", "Censo Escolar e IDEB — INEP", flag_e),
         ("A cidade", "Censo 2022, estimativas e PIB dos Municípios — IBGE", flag_p),
         ("Representantes", "TSE, Câmara dos Deputados e Alesp", flag_r),
+        ("Segurança", "SSP-SP — ocorrências registradas", flag_s),
     ])
     escrever(
         "emprego/index.html", "paineis/emprego.html", "../",
@@ -316,6 +372,10 @@ def renderizar(public: Path, saida: Path) -> None:
     escrever(
         "representantes/index.html", "paineis/representantes.html", "../",
         p=paineis["representantes"], env=rep, script="scripts/build_representantes.py", **ctx_rep,
+    )
+    escrever(
+        "seguranca/index.html", "paineis/seguranca.html", "../",
+        p=paineis["seguranca"], env=seg, script="scripts/build_seguranca.py", **ctx_seg,
     )
     for e in ctx_esc["escolas"]:
         escrever(

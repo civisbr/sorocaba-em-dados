@@ -295,9 +295,18 @@ estarem prontos (`project.md` §1 e §11). Status abaixo reflete só o que foi v
 
 ## SSP-SP — segurança pública
 
-**Status:** `pendente`. Nenhum acesso testado. Checar: existência de dado por município com
-natureza, data, hora e bairro; defasagem; concorrência. Restrições de apresentação em
-`project.md` v2 (sem ranking de bairros).
+**Status:** `verificada` e **implementada** (painel "Segurança", `fetch_ssp.py` e `build_seguranca.py`).
+
+- **Arquivo:** `www.ssp.sp.gov.br/assets/estatistica/transparencia/spDados/SPDadosCriminais_AAAA.xlsx` (uma planilha por ano, 126 a 218 MB, duas abas semestrais). A de 2026 foi atualizada em 08/10/2026, com dados até agosto. Um boletim por linha, com número do BO, endereço, coordenadas, hora, bairro e natureza.
+- **Município:** o campo `NOME_MUNICIPIO` é o do registro e **não** serve de filtro (traz boletins de fatos em Piedade e Salto de Pirapora registrados em Sorocaba). O filtro correto é o código IBGE do local (`COD IBGE`, em 2022 `CD_IBGE`) igual a 3552205, que coincide com o município de circunscrição.
+- **Colunas variam entre anos** (`CIDADE` x `NOME_MUNICIPIO`, `DESCR_PERIODO` x `DESC_PERIODO`, `CIRCUNCRIÇÃO` com erro de grafia). O fetch resolve por lista de alternativas e falha se faltar alguma.
+- **Categorias:** `NATUREZA_APURADA` muda de grafia entre anos (`TRAFICO` x `TRÁFICO`, `HOMICIDIO` x `HOMICÍDIO`) e algumas categorias só existem a partir de 2023 (porte de arma, apreensão e porte de entorpecentes, homicídio culposo no trânsito). O painel usa só as categorias presentes em todos os anos, com grafia normalizada.
+- **Horário:** `DESC_PERIODO` vem vazio em mais da metade dos boletins, mas a hora exata existe em muitos deles (em roubos, 343 de 443 no 1º semestre de 2026). A faixa do dia corresponde exatamente a blocos de 6 horas (madrugada 0–5, manhã 6–11, tarde 12–17, noite 18–23), então o build deriva a faixa da hora. A hora 00:00 exata é frequente (provável preenchimento padrão).
+- **Mês:** usa `ANO_ESTATISTICA`/`MES_ESTATISTICA` (mês do registro na estatística oficial), não a data do fato. O mês mais recente sobe com registros atrasados.
+- **Minimização:** só contagens agregadas por mês, hora, bairro e tipo de furto são gravadas. Número do BO, endereço e coordenadas não saem da memória do fetch; um teste confere o cabeçalho dos CSVs.
+- **Bairro:** o campo é digitado (714 grafias distintas no 1º semestre de 2026 para uma cidade de cerca de 300 bairros). Sem ranking, em ordem alfabética, com piso de 50 roubos+furtos no ano; o resto vai para "demais".
+- **Concorrência:** a própria SSP-SP publica estatísticas por município e há mapas de terceiros; o ângulo deste painel é a série longa, a limitação explícita de cada número e a recusa de ranking de bairros. Não foi feita comparação sistemática.
+- **Limite:** contagem de registros não mede risco nem crime efetivo. Tráfico depende de ação policial.
 
 ## Emendas parlamentares com destino a Sorocaba
 

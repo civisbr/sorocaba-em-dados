@@ -130,4 +130,28 @@ PAINEIS = {
             "Não avaliamos desempenho nem fazemos ranking de mérito; a ordem dos deputados é só a de votos na cidade.",
         ],
     },
+    "seguranca": {
+        "nav": "Segurança",
+        "titulo": "O que a polícia registra",
+        "h1": "Que ocorrências são registradas em Sorocaba, quando e com que tendência?",
+        "pergunta": "Como evoluem os roubos, furtos e outras ocorrências registradas na cidade, e em que horários elas acontecem?",
+        "fonte": "SSP-SP — ocorrências registradas (SPDados)",
+        "cta": "Ver as ocorrências",
+        "tom": "acento",
+        "descricao": "Roubos, furtos, mortes dolosas e outras ocorrências registradas em Sorocaba, por mês, horário e tipo, com a limitação de cada número.",
+        "meta_desc": "Ocorrências registradas pela SSP-SP em Sorocaba: roubos, furtos, mortes dolosas, horários e tipos de furto, com fonte e limitações.",
+        "palavras": ["segurança", "crime", "crimes", "roubo", "roubos", "furto", "furtos", "assalto", "homicídio", "violência", "ssp", "polícia", "boletim"],
+        "blocos": [],
+        "glossario": [
+            ("Boletim de ocorrência (BO)", "Registro feito na polícia. A estatística conta registros, não crimes: o que não é registrado não aparece, e mudanças no jeito de registrar alteram a série."),
+            ("Roubo e furto", "Roubo envolve violência ou ameaça à pessoa (assalto). Furto é a subtração sem violência, como levar um objeto ou um veículo estacionado."),
+            ("Mortes por crime doloso", "Soma de homicídio doloso, latrocínio (roubo seguido de morte) e lesão corporal seguida de morte. Não inclui mortes em acidente de trânsito nem por intervenção policial."),
+            ("Mês de registro", "Cada ocorrência é contada no mês em que entrou na estatística oficial, que pode ser depois do fato. Por isso o mês mais recente costuma subir depois."),
+        ],
+        "limitacoes": [
+            "Contagem de registros não mede risco: depende de população, comércio, fluxo de pessoas e do hábito de registrar.",
+            "Não apresentamos ranking de bairros nem de ruas. Os bairros aparecem em ordem alfabética, com a ressalva de que o campo é digitado e as grafias variam.",
+            "Muitos boletins de furto não trazem horário: o furto costuma ser descoberto depois de ocorrer.",
+        ],
+    },
 }

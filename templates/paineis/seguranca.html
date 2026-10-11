@@ -1,0 +1,92 @@
+{% extends "paineis/painel.html" %}
+{% from "_macros.html" import icone %}
+{% macro barras(g, id, titulo, desc) %}
+<svg class="grafico" viewBox="0 0 {{ g.largura }} {{ g.altura }}" role="img" aria-labelledby="{{ id }}-t {{ id }}-d">
+  <title id="{{ id }}-t">{{ titulo }}</title><desc id="{{ id }}-d">{{ desc }}</desc>
+  {% for b in g.barras %}<rect class="b-pos" x="{{ b.x }}" y="{{ b.y }}" width="{{ b.w }}" height="{{ b.h }}"><title>{{ b.rotulo }}: {{ b.valor | num }}</title></rect>{% endfor %}
+  <line class="zero" x1="0" x2="{{ g.largura }}" y1="{{ g.zero }}" y2="{{ g.zero }}"/>
+  {% for t in g.eixo_x %}<text class="eixo" x="{{ t.x }}" y="{{ g.y_rotulos }}" text-anchor="{{ t.ancora }}">{{ t.texto }}</text>{% endfor %}
+</svg>
+{% endmacro %}
+{% block resumo %}
+<section aria-labelledby="resumo" class="resumo-real">
+  <h2 id="resumo" class="rotulo-resumo">12 meses até {{ mes_fim }}</h2>
+  <p class="numero-grande">{{ roubos_atual | num }}</p>
+  <p class="resumo-texto">roubos registrados em Sorocaba. Abaixo, esse e outros tipos de ocorrência, comparados aos 12 meses anteriores.</p>
+  <p class="pequeno suave">São boletins registrados, não o total de crimes. O mês mais recente costuma subir quando registros atrasados são incluídos.</p>
+</section>
+{% endblock %}
+{% block explorar %}
+<section aria-labelledby="comp-t" class="bloco-painel">
+  <h2 id="comp-t" class="h2-medio sem-topo">Últimos 12 meses contra os 12 anteriores</h2>
+  <article class="quadro-card">
+    <div class="rolagem"><table>
+      <caption class="so-leitor">Ocorrências registradas, últimos 12 meses e 12 meses anteriores</caption>
+      <thead><tr><th scope="col">Tipo</th><th scope="col">12 meses até {{ mes_fim_curto }}</th><th scope="col">12 meses anteriores</th><th scope="col">Variação</th></tr></thead>
+      <tbody>{% for c in comparacao %}<tr><th scope="row">{{ c.grupo }}</th><td>{{ c.atual | num }}</td><td>{{ c.anterior | num }}</td><td>{{ c.var | pct if c.var is not none else "números pequenos" }}</td></tr>{% endfor %}</tbody>
+    </table></div>
+    <p class="pequeno suave">Variação só aparece quando o período anterior tem 30 ocorrências ou mais; abaixo disso, poucos casos mudam muito o percentual. Tráfico de entorpecentes depende da ação policial (mais operações geram mais registros), então a variação não indica por si só mais ou menos tráfico.</p>
+  </article>
+</section>
+
+<section aria-labelledby="serie-t" class="bloco-painel">
+  <h2 id="serie-t" class="h2-medio sem-topo">Mês a mês</h2>
+  <div class="grade-2">
+    {% for g, titulo in [("roubos", "Roubos"), ("furtos", "Furtos"), ("mortes_dolosas", "Mortes por crime doloso")] %}
+    <article class="quadro-card">
+      <h3>{{ titulo }}</h3><p class="suave">Registros por mês, desde 2022.</p>
+      {{ barras(series[g], "s-" ~ g, titulo ~ " registrados por mês em Sorocaba", "Barras mensais desde janeiro de 2022 até " ~ mes_fim ~ ".") }}
+    </article>
+    {% endfor %}
+  </div>
+</section>
+
+<section aria-labelledby="hora-t" class="bloco-painel">
+  <h2 id="hora-t" class="h2-medio sem-topo">Em que horários ({{ ano_ref }})</h2>
+  <p class="suave">Hora do dia informada no boletim. Quando só há a faixa do dia, ela entra na tabela de faixas, não no gráfico por hora.</p>
+  <div class="grade-2">
+    {% for g, titulo in [("roubos", "Roubos"), ("furtos", "Furtos")] %}
+    <article class="quadro-card">
+      <h3>{{ titulo }} por hora</h3>
+      {{ barras(horas[g], "h-" ~ g, titulo ~ " por hora do dia em " ~ ano_ref, "Barras por hora, de 00h a 23h.") }}
+      <ul class="setores">{% for f in faixas[g] %}<li><span class="nome">{{ f.categoria }}</span><span class="val">{{ f.pct | brl1 }}%</span><span class="setor-barra pos" style="width: {{ f.pct }}%"></span></li>{% endfor %}</ul>
+      <p class="pequeno suave">A hora 00h pode estar inflada por preenchimento padrão (00:00 exato).{% if g == "furtos" %} O furto costuma ser descoberto depois de acontecer, então o horário é aproximado.{% endif %}</p>
+    </article>
+    {% endfor %}
+  </div>
+</section>
+
+<section aria-labelledby="furto-t" class="bloco-painel">
+  <h2 id="furto-t" class="h2-medio sem-topo">Tipos de furto ({{ ano_ref }})</h2>
+  <article class="quadro-card">
+    <p class="suave">Classificação do boletim para os furtos registrados. “Outros” reúne os que não se encaixam em uma categoria específica.</p>
+    <ul class="setores">{% for t in tipos_furto %}<li><span class="nome">{{ t.categoria }}</span><span class="val">{{ t.n | num }} ({{ t.pct | brl1 }}%)</span><span class="setor-barra pos" style="width: {{ t.pct }}%"></span></li>{% endfor %}</ul>
+  </article>
+</section>
+
+<section aria-labelledby="bairro-t" class="bloco-painel">
+  <h2 id="bairro-t" class="h2-medio sem-topo">Por bairro ({{ ano_ref }})</h2>
+  <p class="suave">Contagem de roubos e furtos registrados, em ordem alfabética. Não é ranking nem medida de risco: o número depende do tamanho do bairro, do comércio e do movimento de pessoas, e o nome do bairro é digitado no boletim, com grafias variadas.</p>
+  <details class="tabela-mes">
+    <summary>Ver os {{ bairros | length }} bairros com 50 ou mais roubos e furtos no ano</summary>
+    <div class="rolagem"><table>
+      <caption class="so-leitor">Roubos e furtos registrados por bairro em {{ ano_ref }}</caption>
+      <thead><tr><th scope="col">Bairro</th><th scope="col">Roubos</th><th scope="col">Furtos</th></tr></thead>
+      <tbody>{% for b, r, f in bairros %}<tr><th scope="row">{{ b }}</th><td>{{ r | num }}</td><td>{{ f | num }}</td></tr>{% endfor %}
+      {% for b, r, f in bairros_demais %}<tr><th scope="row">{{ b }}</th><td>{{ r | num }}</td><td>{{ f | num }}</td></tr>{% endfor %}</tbody>
+    </table></div>
+  </details>
+</section>
+{% endblock %}
+{% block metodologia %}
+<ul class="lista-curta">{% for n in env.qualidade.notas %}{% if not n.startswith("SHA-256") %}<li>{{ n }}</li>{% endif %}{% endfor %}</ul>
+{% endblock %}
+{% block proveniencia %}
+<dl class="proveniencia">
+  <dt>Fonte</dt><dd><a href="{{ env.fonte.url }}">{{ env.fonte.nome }}</a> — {{ env.fonte.licenca }}</dd>
+  <dt>Período de referência</dt><dd>de {{ env.referencia.inicio | data_br }} {{ ref_seg }}</dd>
+  <dt>Coletado em</dt><dd>{{ env.fonte.acesso_em | data_br }}</dd>
+  <dt>Dados</dt><dd><a href="{{ raiz }}data/seguranca.json">seguranca.json</a></dd>
+  <dt>Código</dt><dd><a href="{{ repo_url }}/blob/main/{{ script }}">{{ script }}</a></dd>
+</dl>
+{% endblock %}
