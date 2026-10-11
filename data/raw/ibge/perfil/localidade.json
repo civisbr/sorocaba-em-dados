@@ -1,0 +1,40 @@
+{
+ "id": 3552205,
+ "microrregiao": {
+  "id": 35046,
+  "mesorregiao": {
+   "UF": {
+    "id": 35,
+    "nome": "São Paulo",
+    "regiao": {
+     "id": 3,
+     "nome": "Sudeste",
+     "sigla": "SE"
+    },
+    "sigla": "SP"
+   },
+   "id": 3512,
+   "nome": "Macro Metropolitana Paulista"
+  },
+  "nome": "Sorocaba"
+ },
+ "nome": "Sorocaba",
+ "regiao-imediata": {
+  "id": 350003,
+  "nome": "Sorocaba",
+  "regiao-intermediaria": {
+   "UF": {
+    "id": 35,
+    "nome": "São Paulo",
+    "regiao": {
+     "id": 3,
+     "nome": "Sudeste",
+     "sigla": "SE"
+    },
+    "sigla": "SP"
+   },
+   "id": 3502,
+   "nome": "Sorocaba"
+  }
+ }
+}

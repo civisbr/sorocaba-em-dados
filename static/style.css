@@ -73,7 +73,7 @@ ul,ol{list-style:none;margin:0;padding:0}
 .bloco{margin-top:5rem}.bloco-largo{margin-top:6rem}
 .h2-grande{font-size:1.875rem;font-weight:700}.h2-medio{font-size:1.5rem;font-weight:700;margin-top:3rem}.sem-topo{margin-top:0}
 .lead{margin:.75rem 0 0;font-size:1.125rem;color:var(--muted-foreground)}.texto-estreito{max-width:42rem}
-.cartoes{display:grid;gap:1.5rem;margin-top:2rem}@media(min-width:768px){.cartoes{grid-template-columns:repeat(3,1fr)}}
+.cartoes{display:grid;gap:1.5rem;margin-top:2rem}@media(min-width:768px){.cartoes{grid-template-columns:repeat(auto-fit,minmax(15rem,1fr))}}
 .cartao{display:flex;flex-direction:column;height:100%;border:1px solid var(--border);border-radius:1rem;padding:1.5rem;text-decoration:none;transition:transform .15s,border-color .15s,box-shadow .15s}
 .cartao:hover{transform:translateY(-2px);border-color:var(--primary);box-shadow:0 10px 25px #0001}
 .tom-secundario{background:var(--secondary)}.tom-acento{background:var(--accent)}.tom-card{background:var(--card)}

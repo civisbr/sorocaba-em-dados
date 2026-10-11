@@ -265,7 +265,7 @@ estarem prontos (`project.md` §1 e §11). Status abaixo reflete só o que foi v
 
 ## IBGE — perfil geográfico e econômico
 
-**Status:** `verificada` (API SIDRA e API de localidades respondem sem cadastro).
+**Status:** `verificada` e **implementada** (painel "A cidade", `scripts/fetch_perfil.py` e `build_perfil.py`). API SIDRA e API de localidades respondem sem cadastro. Respostas guardadas em `data/raw/ibge/perfil/` com SHA-256. Estimativa de população 2026: 766.390 (tabela 6579, variável 9324). PIB nominal 2018–2023 (tabela 5938). VAB por setor só tem valor em 2021; a página usa 2021 com o ano explícito.
 
 - Código IBGE 3552205; microrregião, região imediata e intermediária de Sorocaba
   (`servicodados.ibge.gov.br/api/v1/localidades/municipios/3552205`).

@@ -1,0 +1,27 @@
+[
+ {
+  "id": "9324",
+  "resultados": [
+   {
+    "classificacoes": [],
+    "series": [
+     {
+      "localidade": {
+       "id": "3552205",
+       "nivel": {
+        "id": "N6",
+        "nome": "Município"
+       },
+       "nome": "Sorocaba (SP)"
+      },
+      "serie": {
+       "2026": "766390"
+      }
+     }
+    ]
+   }
+  ],
+  "unidade": "Pessoas",
+  "variavel": "População residente estimada"
+ }
+]

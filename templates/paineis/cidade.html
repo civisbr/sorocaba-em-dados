@@ -1,0 +1,70 @@
+{% extends "paineis/painel.html" %}
+{% from "_macros.html" import icone %}
+{% block resumo %}
+<section aria-labelledby="resumo" class="resumo-real">
+  <h2 id="resumo" class="rotulo-resumo">População estimada em {{ ind.populacao_estimada.ano }}</h2>
+  <p class="numero-grande">{{ ind.populacao_estimada.valor | inteiro_br }}</p>
+  <p class="resumo-texto">habitantes, segundo a estimativa mais recente do IBGE. O Censo {{ ind.populacao_censo.ano }} contou <strong>{{ ind.populacao_censo.valor | inteiro_br }}</strong> pessoas em {{ ind.area.valor | brl1 }} km².</p>
+  <p class="pequeno suave">A estimativa é uma projeção; só o Censo é contagem.</p>
+</section>
+{% endblock %}
+{% block explorar %}
+<section aria-labelledby="territorio-t" class="bloco-painel">
+  <h2 id="territorio-t" class="h2-medio sem-topo">Território</h2>
+  <div class="grade-2">
+    <article class="quadro-card">
+      <h3>Números do Censo {{ ind.area.ano }}</h3>
+      <dl class="proveniencia">
+        <dt>População (Censo {{ ind.populacao_censo.ano }})</dt><dd>{{ ind.populacao_censo.valor | inteiro_br }} pessoas</dd>
+        <dt>Área</dt><dd>{{ ind.area.valor | brl1 }} km²</dd>
+        <dt>Densidade demográfica</dt><dd>{{ ind.densidade.valor | inteiro_br }} hab/km²</dd>
+      </dl>
+    </article>
+    <article class="quadro-card">
+      <h3>Onde Sorocaba fica</h3>
+      <dl class="proveniencia">
+        {% for t in territorio %}<dt>{{ t.rotulo }}</dt><dd>{{ t.texto }}</dd>{% endfor %}
+      </dl>
+    </article>
+  </div>
+</section>
+
+<section aria-labelledby="economia-t" class="bloco-painel">
+  <h2 id="economia-t" class="h2-medio sem-topo">Economia</h2>
+  <div class="grade-2">
+    <article class="quadro-card">
+      <h3>PIB a preços correntes</h3><p class="suave">R$ bilhões por ano, de {{ pib[0].ano }} a {{ pib_ultimo.ano }}. Valores nominais, sem descontar a inflação.</p>
+      <svg class="grafico" viewBox="0 0 {{ pib_grafico.largura }} {{ pib_grafico.altura }}" role="img" aria-labelledby="pib-t pib-d">
+        <title id="pib-t">PIB de Sorocaba por ano</title>
+        <desc id="pib-d">{% for r in pib %}{{ r.ano }}: R$ {{ r.valor | bi }} bilhões{{ "; " if not loop.last else "." }}{% endfor %}</desc>
+        {% for b in pib_grafico.barras %}<rect class="b-pos" x="{{ b.x }}" y="{{ b.y }}" width="{{ b.w }}" height="{{ b.h }}"><title>{{ b.rotulo }}: R$ {{ b.valor | brl1 }} bi</title></rect>{% endfor %}
+        <line class="zero" x1="0" x2="{{ pib_grafico.largura }}" y1="{{ pib_grafico.zero }}" y2="{{ pib_grafico.zero }}"/>
+        {% for t in pib_grafico.eixo_x %}<text class="eixo" x="{{ t.x }}" y="{{ pib_grafico.y_rotulos }}" text-anchor="{{ t.ancora }}">{{ t.texto }}</text>{% endfor %}
+      </svg>
+      <table class="tabela-simples"><thead><tr><th scope="col">Ano</th><th scope="col">PIB (R$ bilhões)</th></tr></thead>
+      <tbody>{% for r in pib | reverse %}<tr><th scope="row">{{ r.ano }}</th><td>{{ r.valor | bi }}</td></tr>{% endfor %}</tbody></table>
+    </article>
+    <article class="quadro-card">
+      <h3>Peso de Sorocaba no PIB ({{ pib_ultimo.ano }})</h3><p class="suave">Quanto do PIB de cada região vem da cidade.</p>
+      <ul class="setores">{% for r in participacoes %}<li><span class="nome">{{ r.rotulo }}</span><span class="val">{{ r.valor | brl2 }}%</span></li>{% endfor %}</ul>
+    </article>
+    <article class="quadro-card">
+      <h3>De onde vem a riqueza ({{ vab_total.ano }})</h3><p class="suave">Parte de cada setor no valor adicionado bruto de R$ {{ vab_total.valor | bi }} bilhões.</p>
+      <ul class="setores">{% for r in vab %}<li><span class="nome">{{ r.rotulo }}</span><span class="val">{{ r.pct | brl1 }}%</span><span class="setor-barra pos" style="width: {{ r.pct }}%"></span></li>{% endfor %}</ul>
+      <p class="pequeno suave">Os percentuais dividem o valor de cada setor pelo total, ambos do IBGE em {{ vab_total.ano }}. O IBGE não divulgou essa divisão para 2022 e 2023.</p>
+    </article>
+  </div>
+</section>
+{% endblock %}
+{% block metodologia %}
+<ul class="lista-curta">{% for n in env.qualidade.notas %}{% if not n.startswith("SHA-256") %}<li>{{ n }}</li>{% endif %}{% endfor %}</ul>
+{% endblock %}
+{% block proveniencia %}
+<dl class="proveniencia">
+  <dt>Fonte</dt><dd><a href="{{ env.fonte.url }}">{{ env.fonte.nome }}</a> — {{ env.fonte.licenca }}</dd>
+  <dt>Referência</dt><dd>{{ ref_cidade }} · estimativa {{ ind.populacao_estimada.ano }} · valor adicionado {{ vab_total.ano }}</dd>
+  <dt>Coletado em</dt><dd>{{ env.fonte.acesso_em | data_br }}</dd>
+  <dt>Dados</dt><dd><a href="{{ raiz }}data/perfil.json">perfil.json</a></dd>
+  <dt>Código</dt><dd><a href="{{ repo_url }}/blob/main/{{ script }}">{{ script }}</a></dd>
+</dl>
+{% endblock %}

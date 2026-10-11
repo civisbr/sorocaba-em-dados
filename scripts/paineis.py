@@ -83,4 +83,28 @@ PAINEIS = {
         ],
         "busca": True,
     },
+    "cidade": {
+        "nav": "A cidade",
+        "titulo": "Quem somos em números",
+        "h1": "Quanta gente mora em Sorocaba e o que a economia produz?",
+        "pergunta": "Qual o tamanho da cidade, em população, território e economia, e a que região ela pertence?",
+        "fonte": "IBGE — Censo 2022, Estimativas de População e PIB dos Municípios",
+        "cta": "Ver o perfil da cidade",
+        "tom": "secundario",
+        "descricao": "População, território, PIB e estrutura da economia de Sorocaba, cada número com o ano a que se refere.",
+        "meta_desc": "Perfil de Sorocaba: população, área, densidade, PIB e estrutura da economia, com fonte e ano de cada dado.",
+        "palavras": ["cidade", "população", "habitantes", "pib", "economia", "área", "território", "ibge", "prefeito", "vereadores", "deputados"],
+        "blocos": [],
+        "glossario": [
+            ("Censo 2022", "Contagem completa da população feita pelo IBGE. É a base mais confiável, mas já tem alguns anos."),
+            ("Estimativa de população", "Projeção anual do IBGE entre um Censo e outro. É uma estimativa, não uma contagem."),
+            ("PIB a preços correntes", "Valor de tudo que a cidade produziu no ano, em reais da época. Como não desconta a inflação, comparar anos mostra também o efeito dos preços."),
+            ("Valor adicionado bruto (VAB)", "O que cada setor acrescenta à produção, sem contar os impostos. Mostra de onde vem a riqueza da cidade."),
+        ],
+        "limitacoes": [
+            "Cada indicador tem seu ano; nem todos são do mesmo período.",
+            "O IBGE não divulgou a divisão por setor de 2022 e 2023 para Sorocaba, por isso usamos 2021.",
+            "Não calculamos PIB per capita: o IBGE não publica esse valor nessa tabela.",
+        ],
+    },
 }

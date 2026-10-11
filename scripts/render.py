@@ -125,6 +125,35 @@ def contexto_escola(e: dict, base: dict) -> dict:
     return {"e": e, "etapas": etapas, "grafico": grafico, "tem_ideb": tem_ideb, "infra": INFRA_ROTULOS}
 
 
+def bi(v: float) -> str:
+    return f"{v / 1_000_000:.1f}".replace(".", ",")
+
+
+def inteiro_br(v: float) -> str:
+    return num(int(round(v)))
+
+
+def contexto_cidade(env: dict) -> dict:
+    por = {}
+    for r in env["dados"]:
+        por.setdefault(r["recorte"], []).append(r)
+    ind = {r["chave"]: r for r in por["indicador"]}
+    pib = por["pib_serie"]
+    rotulos = {i: str(r["ano"]) for i, r in enumerate(pib)}
+    vab = [r for r in por["vab_setor"] if r["chave"] != "total"]
+    return {
+        "territorio": por["territorio"],
+        "ind": ind,
+        "pib": pib,
+        "pib_ultimo": pib[-1],
+        "pib_grafico": barras_mensais([(str(r["ano"]), round(r["valor"] / 1_000_000, 1)) for r in pib], rotulos),
+        "participacoes": por["pib_participacao"],
+        "vab": vab,
+        "vab_total": next(r for r in por["vab_setor"] if r["chave"] == "total"),
+        "ref_cidade": f"Censo {ind['populacao_censo']['ano']} · PIB {pib[-1]['ano']}",
+    }
+
+
 def contexto_combustivel(env: dict) -> dict:
     produtos = []
     for nome in dict.fromkeys(r["produto"] for r in env["dados"]):
@@ -160,12 +189,14 @@ def contexto_combustivel(env: dict) -> dict:
 
 def renderizar(public: Path, saida: Path) -> None:
     jinja = Environment(loader=FileSystemLoader(RAIZ / "templates"), autoescape=select_autoescape(["html"]))
-    jinja.filters.update(num=num, sinal=sinal, data_br=data_br, mes_curto=mes_curto, brl=brl, pct=pct, brl1=brl1, brl2=brl2, pct_abs=pct_abs)
+    jinja.filters.update(num=num, sinal=sinal, data_br=data_br, mes_curto=mes_curto, brl=brl, pct=pct, brl1=brl1, brl2=brl2, pct_abs=pct_abs, bi=bi, inteiro_br=inteiro_br)
 
     emprego = json.loads((public / "emprego.json").read_text(encoding="utf-8"))
     ctx_emprego = contexto_emprego(emprego)
     combustivel = json.loads((public / "combustivel.json").read_text(encoding="utf-8"))
     ctx_comb = contexto_combustivel(combustivel)
+    perfil = json.loads((public / "perfil.json").read_text(encoding="utf-8"))
+    ctx_cid = contexto_cidade(perfil)
     escolas = json.loads((public / "escolas.json").read_text(encoding="utf-8"))
     ctx_esc = contexto_escolas(escolas)
     mapa = gerar_mapa(RAIZ / "data" / "raw" / "ibge" / "malha_3552205.geojson")
@@ -185,6 +216,8 @@ def renderizar(public: Path, saida: Path) -> None:
         status=flag_e, rotulo_status=ROTULO_STATUS[flag_e],
         referencia=f"Censo {ctx_esc['ano_censo']} · IDEB {ctx_esc['ano_ideb']}",
     )
+    flag_p = perfil["qualidade"]["flag"]
+    paineis["cidade"].update(status=flag_p, rotulo_status=ROTULO_STATUS[flag_p], referencia=ctx_cid["ref_cidade"])
     ordem = list(paineis.values())
 
     if saida.exists():
@@ -195,7 +228,7 @@ def renderizar(public: Path, saida: Path) -> None:
     (saida / MARCADOR).write_text("saída gerada por scripts/render.py\n", encoding="utf-8")
     for nome in ("style.css", "app.js"):
         shutil.copy(RAIZ / "static" / nome, saida / nome)
-    for nome in ("emprego.json", "combustivel.json", "escolas.json"):
+    for nome in ("emprego.json", "combustivel.json", "escolas.json", "perfil.json"):
         shutil.copy(public / nome, saida / "data" / nome)
 
     comum = {"paineis": ordem, "repo_url": REPO_URL}
@@ -209,11 +242,12 @@ def renderizar(public: Path, saida: Path) -> None:
             jinja.get_template(template).render(raiz=raiz, **comum, **ctx), encoding="utf-8"
         )
 
-    escrever("index.html", "index.html", "", mapa=mapa, emprego=ctx_emprego, comb=ctx_comb, esc=ctx_esc)
+    escrever("index.html", "index.html", "", mapa=mapa, emprego=ctx_emprego, comb=ctx_comb, esc=ctx_esc, cid=ctx_cid)
     escrever("sobre/index.html", "sobre.html", "../", fontes=[
         ("Emprego", "Novo CAGED — Ministério do Trabalho e Emprego", flag),
         ("Combustível", "Levantamento de Preços de Combustíveis — ANP", flag_c),
         ("Escolas", "Censo Escolar e IDEB — INEP", flag_e),
+        ("A cidade", "Censo 2022, estimativas e PIB dos Municípios — IBGE", flag_p),
     ])
     escrever(
         "emprego/index.html", "paineis/emprego.html", "../",
@@ -226,6 +260,10 @@ def renderizar(public: Path, saida: Path) -> None:
     escrever(
         "escolas/index.html", "paineis/escolas.html", "../",
         p=paineis["escolas"], env=escolas, script="scripts/build_escolas.py", **ctx_esc,
+    )
+    escrever(
+        "cidade/index.html", "paineis/cidade.html", "../",
+        p=paineis["cidade"], env=perfil, script="scripts/build_perfil.py", **ctx_cid,
     )
     for e in ctx_esc["escolas"]:
         escrever(

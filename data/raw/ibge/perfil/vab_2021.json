@@ -1,0 +1,127 @@
+[
+ {
+  "id": "498",
+  "resultados": [
+   {
+    "classificacoes": [],
+    "series": [
+     {
+      "localidade": {
+       "id": "3552205",
+       "nivel": {
+        "id": "N6",
+        "nome": "Município"
+       },
+       "nome": "Sorocaba (SP)"
+      },
+      "serie": {
+       "2021": "35129681"
+      }
+     }
+    ]
+   }
+  ],
+  "unidade": "Mil Reais",
+  "variavel": "Valor adicionado bruto a preços correntes total"
+ },
+ {
+  "id": "513",
+  "resultados": [
+   {
+    "classificacoes": [],
+    "series": [
+     {
+      "localidade": {
+       "id": "3552205",
+       "nivel": {
+        "id": "N6",
+        "nome": "Município"
+       },
+       "nome": "Sorocaba (SP)"
+      },
+      "serie": {
+       "2021": "43587"
+      }
+     }
+    ]
+   }
+  ],
+  "unidade": "Mil Reais",
+  "variavel": "Valor adicionado bruto a preços correntes da agropecuária"
+ },
+ {
+  "id": "517",
+  "resultados": [
+   {
+    "classificacoes": [],
+    "series": [
+     {
+      "localidade": {
+       "id": "3552205",
+       "nivel": {
+        "id": "N6",
+        "nome": "Município"
+       },
+       "nome": "Sorocaba (SP)"
+      },
+      "serie": {
+       "2021": "11416524"
+      }
+     }
+    ]
+   }
+  ],
+  "unidade": "Mil Reais",
+  "variavel": "Valor adicionado bruto a preços correntes da indústria"
+ },
+ {
+  "id": "6575",
+  "resultados": [
+   {
+    "classificacoes": [],
+    "series": [
+     {
+      "localidade": {
+       "id": "3552205",
+       "nivel": {
+        "id": "N6",
+        "nome": "Município"
+       },
+       "nome": "Sorocaba (SP)"
+      },
+      "serie": {
+       "2021": "20709422"
+      }
+     }
+    ]
+   }
+  ],
+  "unidade": "Mil Reais",
+  "variavel": "Valor adicionado bruto a preços correntes dos serviços, exclusive administração, defesa, educação e saúde públicas e seguridade social"
+ },
+ {
+  "id": "525",
+  "resultados": [
+   {
+    "classificacoes": [],
+    "series": [
+     {
+      "localidade": {
+       "id": "3552205",
+       "nivel": {
+        "id": "N6",
+        "nome": "Município"
+       },
+       "nome": "Sorocaba (SP)"
+      },
+      "serie": {
+       "2021": "2960148"
+      }
+     }
+    ]
+   }
+  ],
+  "unidade": "Mil Reais",
+  "variavel": "Valor adicionado bruto a preços correntes da administração, defesa, educação e saúde públicas e seguridade social"
+ }
+]

@@ -1,0 +1,77 @@
+[
+ {
+  "id": "93",
+  "resultados": [
+   {
+    "classificacoes": [],
+    "series": [
+     {
+      "localidade": {
+       "id": "3552205",
+       "nivel": {
+        "id": "N6",
+        "nome": "Município"
+       },
+       "nome": "Sorocaba (SP)"
+      },
+      "serie": {
+       "2022": "723682"
+      }
+     }
+    ]
+   }
+  ],
+  "unidade": "Pessoas",
+  "variavel": "População residente"
+ },
+ {
+  "id": "614",
+  "resultados": [
+   {
+    "classificacoes": [],
+    "series": [
+     {
+      "localidade": {
+       "id": "3552205",
+       "nivel": {
+        "id": "N6",
+        "nome": "Município"
+       },
+       "nome": "Sorocaba (SP)"
+      },
+      "serie": {
+       "2022": "1608.64"
+      }
+     }
+    ]
+   }
+  ],
+  "unidade": "Habitante por quilômetro quadrado",
+  "variavel": "Densidade demográfica"
+ },
+ {
+  "id": "6318",
+  "resultados": [
+   {
+    "classificacoes": [],
+    "series": [
+     {
+      "localidade": {
+       "id": "3552205",
+       "nivel": {
+        "id": "N6",
+        "nome": "Município"
+       },
+       "nome": "Sorocaba (SP)"
+      },
+      "serie": {
+       "2022": "449.872"
+      }
+     }
+    ]
+   }
+  ],
+  "unidade": "Quilômetros quadrados",
+  "variavel": "Área da unidade territorial"
+ }
+]

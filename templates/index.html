@@ -22,7 +22,7 @@
           <li><a href="escolas/" data-q="escolas">Buscar uma escola</a></li>
         </ul>
         <ul id="busca-indice" hidden>
-          {% for p in paineis %}<li><a href="{{ p.id }}/" data-palavras="{{ p.palavras | join(' ') }} {{ p.nav | lower }} {{ p.titulo | lower }}"><strong>Painel de {{ p.nav }}</strong> — {{ p.titulo }}</a></li>{% endfor %}
+          {% for p in paineis %}<li><a href="{{ p.id }}/" data-palavras="{{ p.palavras | join(' ') }} {{ p.nav | lower }} {{ p.titulo | lower }}"><strong>{{ "Painel de " ~ p.nav if p.id != "cidade" else p.nav }}</strong> — {{ p.titulo }}</a></li>{% endfor %}
         </ul>
       </div>
     </div>
@@ -78,6 +78,9 @@
         {% elif p.id == "combustivel" %}
         <span class="cartao-numero">R$ {{ comb.produtos[0].ultimo.mediana | brl }}</span>
         <span class="cartao-ctx">mediana da {{ comb.produtos[0].nome | lower }} entre {{ comb.produtos[0].ultimo.n_postos }} postos pesquisados, semana de {{ comb.semana_ini | data_br }}</span>
+        {% elif p.id == "cidade" %}
+        <span class="cartao-numero">{{ cid.ind.populacao_estimada.valor | inteiro_br }}</span>
+        <span class="cartao-ctx">habitantes, estimativa do IBGE para {{ cid.ind.populacao_estimada.ano }}</span>
         {% elif p.id == "escolas" %}
         <span class="cartao-numero">{{ esc.escolas | length | num }}</span>
         <span class="cartao-ctx">escolas em atividade no Censo Escolar {{ esc.ano_censo }}</span>
