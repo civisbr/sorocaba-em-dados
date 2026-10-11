@@ -22,7 +22,7 @@ jobs:
         with:
           ref: ${{ github.ref_name }}
           persist-credentials: false
-      - uses: astral-sh/setup-uv@v5
+      - uses: astral-sh/setup-uv@v7
       - run: uv sync --frozen
       - name: Fetch
         run: uv run python -m scripts.fetch_caged --auto 24 --acesso-em "$(date -u +%F)"
