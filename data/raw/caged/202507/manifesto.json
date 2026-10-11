@@ -4,16 +4,19 @@
     "EXC": {
       "bytes_origem": 126064,
       "linhas": 31,
+      "sha256_agregado": "f8d681d631678e281cc8123111d86e531db95a8588603834e93f2d677e0d4db4",
       "sha256_origem": "c10e8b84a7b603027aaef1d102560ace2a23088cad323c39361094abe81f134b"
     },
     "FOR": {
       "bytes_origem": 933977,
       "linhas": 258,
+      "sha256_agregado": "794a92e856d4bac1d963d710c589891c2746e876885add6c1e485beb4f0f664a",
       "sha256_origem": "bda16b7a3934a90f43f2e8c99faa17ec4d059209372880aaed3c3ce22f8ab036"
     },
     "MOV": {
       "bytes_origem": 54073599,
       "linhas": 25298,
+      "sha256_agregado": "f3f327429676cd5d3330f78021ddf787133ff907f9b44f4badbbf19edc994962",
       "sha256_origem": "fe73a80b86e958a83f28425d80ec782864d2cc0576b919a3ac1f518b3a45686a"
     }
   },

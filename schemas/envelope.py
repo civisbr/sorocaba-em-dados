@@ -29,6 +29,13 @@ class Fonte(_Estrito):
     licenca: str
     acesso_em: date
 
+    @field_validator("url")
+    @classmethod
+    def _esquema_permitido(cls, url: str) -> str:
+        if not url.startswith(("http://", "https://", "ftp://")):
+            raise ValueError("fonte.url com esquema não permitido")
+        return url
+
 
 class Referencia(_Estrito):
     inicio: date

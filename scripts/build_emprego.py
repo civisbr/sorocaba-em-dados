@@ -72,7 +72,7 @@ def meses_ate(ultima: str, n: int) -> list[str]:
 
 
 def carregar(raw: Path) -> pl.DataFrame:
-    """Une MOV/FOR/EXC. Exclusão inverte o evento, então entra com sinal trocado."""
+    """Une os agregados MOV/FOR/EXC. Exclusão inverte o evento, então pesa -n."""
     partes = []
     for pasta in pastas_declaradas(raw):
         for tipo in ("MOV", "FOR", "EXC"):
@@ -80,12 +80,12 @@ def carregar(raw: Path) -> pl.DataFrame:
                 pasta / f"{tipo}.csv",
                 separator=";",
                 infer_schema=False,
-                columns=[COL_COMP, COL_SECAO, COL_SALDO],
+                columns=[COL_COMP, COL_SECAO, COL_SALDO, "n"],
             )
             partes.append(
                 df.with_columns(
                     pl.col(COL_SALDO).cast(pl.Int8).alias("evento"),
-                    pl.lit(-1 if tipo == "EXC" else 1, dtype=pl.Int8).alias("peso"),
+                    (pl.col("n").cast(pl.Int64) * (-1 if tipo == "EXC" else 1)).alias("peso"),
                 ).select(COL_COMP, COL_SECAO, "evento", "peso")
             )
     return pl.concat(partes)
@@ -95,8 +95,8 @@ def agregar(df: pl.DataFrame, por: list[str]) -> pl.DataFrame:
     return (
         df.group_by(por)
         .agg(
-            ((pl.col("evento") == 1).cast(pl.Int64) * pl.col("peso")).sum().alias("admissoes"),
-            ((pl.col("evento") == -1).cast(pl.Int64) * pl.col("peso")).sum().alias("desligamentos"),
+            ((pl.col("evento") == 1) * pl.col("peso")).sum().alias("admissoes"),
+            ((pl.col("evento") == -1) * pl.col("peso")).sum().alias("desligamentos"),
         )
         .with_columns((pl.col("admissoes") - pl.col("desligamentos")).alias("saldo"))
         .sort(por)
@@ -125,9 +125,23 @@ def hashes_dos_manifestos(raw: Path, exigir: bool) -> str | None:
     return h.hexdigest()
 
 
+def acesso_mais_recente(raw: Path) -> date | None:
+    datas = [
+        json.loads((p / "manifesto.json").read_text(encoding="utf-8"))["acesso_em"]
+        for p in pastas_declaradas(raw)
+        if (p / "manifesto.json").exists()
+    ]
+    return date.fromisoformat(max(datas)) if datas else None
+
+
 def construir(
-    raw: Path, acesso_em: date, exigir_manifesto: bool = True, janela_meses: int = JANELA_MESES
+    raw: Path, acesso_em: date | None = None, exigir_manifesto: bool = True, janela_meses: int = JANELA_MESES
 ) -> Envelope:
+    # Data de coleta vem dos manifestos (quando cada competência foi de fato baixada), não do
+    # relógio da execução: rodar o build de novo sem dado novo não pode mudar o JSON.
+    acesso_em = acesso_em or acesso_mais_recente(raw)
+    if acesso_em is None:
+        raise ValueError("sem manifestos para derivar a data de coleta; informe --acesso-em")
     insumos = hashes_dos_manifestos(raw, exigir_manifesto)
     declaradas = [p.name for p in pastas_declaradas(raw)]
     if not declaradas:
@@ -209,7 +223,7 @@ def main() -> None:
     p = argparse.ArgumentParser()
     p.add_argument("--raw", type=Path, default=RAIZ / "data" / "raw" / "caged")
     p.add_argument("--saida", type=Path, default=RAIZ / "data" / "public" / "emprego.json")
-    p.add_argument("--acesso-em", required=True, type=date.fromisoformat)
+    p.add_argument("--acesso-em", type=date.fromisoformat, help="padrão: data mais recente nos manifestos")
     args = p.parse_args()
 
     envelope = construir(args.raw, args.acesso_em)

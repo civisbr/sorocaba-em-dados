@@ -57,6 +57,20 @@ do Definition of Done (§10).
 Painéis de saúde (SIH/CNES/SIM) ficam para o v2 — o lag de 2-3 meses e a necessidade de
 ajuste por complexidade tornam a modelagem lenta demais para o v1. Não começar por eles.
 
+**Escopo v2 — só depois dos três do v1 no estado do §10.** Fontes e status em `docs/fontes.md`
+("Candidatos a v2"). Ordem sugerida:
+
+| # | Item | Pergunta | Restrição de projeto |
+|---|---|---|---|
+| 4 | Perfil da cidade (IBGE) | Quanto a cidade tem de gente, área e economia? | Campo que o IBGE não publica fica `null`; sem PIB per capita calculado por conta própria |
+| 5 | Representantes (TSE, Câmara, Alesp) | Quem governa e quem representa Sorocaba? | Eleito ≠ em exercício; deputado é do estado, então o recorte é "mais votados na cidade" com critério explícito; sem ranking nem juízo de mérito |
+| 6 | Segurança (SSP-SP) | Que tipos de crime acontecem, quando e com que tendência? | Boletim mede registro, não crime. Bairro só como contagem com a limitação explicada; **sem ranking de bairros** (princípio 5) |
+| 7 | Emendas com destino a Sorocaba | Que dinheiro federal e estadual chega à cidade? | Valores, autor, finalidade e status, sem adjetivo. Não classificar projeto de lei como "beneficia Sorocaba" automaticamente |
+| 8 | Saúde (SIH/CNES/SIM) | — | Ver parágrafo acima |
+
+Perfil e Representantes são conteúdo de referência de baixa cadência (anual e por eleição);
+podem virar uma página "A cidade" em vez de painéis com workflow próprio.
+
 ---
 
 ## 2. Princípios não-negociáveis

@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+{% set ativo = p.id %}
+{% from "_macros.html" import icone, selo, esqueleto %}
+{% block titulo %}{{ p.nav }} em Sorocaba | Sorocaba em Dados{% endblock %}
+{% block descricao %}{{ p.meta_desc }}{% endblock %}
+{% block conteudo %}
+<div class="contido pagina">
+  <nav aria-label="Trilha de navegação" class="trilha">
+    <ol><li><a href="{{ raiz }}">Início</a></li><li aria-hidden="true">→</li><li aria-current="page">{{ p.nav }}</li></ol>
+  </nav>
+
+  <header class="painel-cab">
+    <p class="etiqueta">Painel · {{ p.nav }}</p>
+    <h1 class="h1-grande">{{ p.h1 }}</h1>
+    <p class="lead">{{ p.pergunta }}</p>
+    <div class="selos">
+      {{ selo(p.status, p.rotulo_status) }}
+      <span class="pilula">{{ icone("calendario") }} Data de referência: {{ p.referencia or "ainda não publicada" }}</span>
+    </div>
+  </header>
+
+  {% block filtros %}{% endblock %}
+  {% block resumo %}{% endblock %}
+  {% block explorar %}{% endblock %}
+
+  <section aria-labelledby="entender" class="entender">
+    <div><h2 id="entender" class="h2-medio sem-topo">Como interpretar</h2><p class="suave">Os termos usados neste painel, em linguagem simples.</p></div>
+    <dl class="definicoes quadro-card">
+      {% for termo, texto in p.glossario %}<div><dt>{{ termo }}</dt><dd>{{ texto }}</dd></div>{% endfor %}
+    </dl>
+  </section>
+
+  <section aria-labelledby="metodo" class="metodo">
+    <h2 id="metodo" class="h2-medio sem-topo">Metodologia, fonte e limitações</h2>
+    <div class="metodo-grade">
+      <div><h3>{{ icone("banco") }}Fonte primária</h3><p>{{ p.fonte }}</p></div>
+      <div><h3>{{ icone("arquivo") }}Metodologia</h3>{% block metodologia %}<p>Documentação em preparação. Será publicada junto com os dados.</p>{% endblock %}</div>
+      <div><h3>{{ icone("alerta") }}Limitações</h3><ul class="lista-curta">{% for l in p.limitacoes %}<li>{{ l }}</li>{% endfor %}</ul></div>
+    </div>
+    {% block proveniencia %}<p class="proveniencia-linha">Proveniência: {{ p.fonte }} · Status: pendente · Arquivo de dados e código de geração ainda não publicados.</p>{% endblock %}
+  </section>
+</div>
+{% endblock %}

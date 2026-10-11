@@ -1,0 +1,40 @@
+{% macro icone(nome, cls="") -%}
+<svg class="ico {{ cls }}" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+{%- if nome == "seta" %}<path d="M5 12h14M12 5l7 7-7 7"/>
+{%- elif nome == "busca" %}<circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/>
+{%- elif nome == "calendario" %}<rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/>
+{%- elif nome == "banco" %}<ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M3 5v14a9 3 0 0 0 18 0V5M3 12a9 3 0 0 0 18 0"/>
+{%- elif nome == "arquivo" %}<path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7zM14 2v4a2 2 0 0 0 2 2h4M10 9H8M16 13H8M16 17H8"/>
+{%- elif nome == "medidor" %}<path d="m12 14 4-4M3.34 19a10 10 0 1 1 17.32 0"/>
+{%- elif nome == "codigo" %}<path d="m16 18 6-6-6-6M8 6l-6 6 6 6"/>
+{%- elif nome == "alerta" %}<path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3M12 9v4M12 17h.01"/>
+{%- elif nome == "ok" %}<circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/>
+{%- elif nome == "relogio" %}<circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/>
+{%- elif nome == "escudo" %}<path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/><path d="m9 12 2 2 4-4"/>
+{%- elif nome == "menu" %}<path d="M4 6h16M4 12h16M4 18h16"/>
+{%- endif %}</svg>
+{%- endmacro %}
+
+{% macro logo() -%}
+<svg class="logo" viewBox="0 0 32 32" width="32" height="32" aria-hidden="true">
+<rect width="32" height="32" rx="8" fill="var(--navy)"/><rect x="7" y="17" width="4" height="8" rx="1" fill="var(--sky)"/><rect x="14" y="11" width="4" height="14" rx="1" fill="var(--teal)"/><rect x="21" y="7" width="4" height="18" rx="1" fill="var(--primary-foreground)"/><circle cx="23" cy="7" r="2.5" fill="var(--amber)"/>
+</svg>
+{%- endmacro %}
+
+{% macro arte(id) -%}
+{%- if id == "emprego" -%}
+<svg viewBox="0 0 200 100" class="arte" aria-hidden="true">{% for h in [30,45,25,60,50,70,40,78,66] %}<rect x="{{ 8 + loop.index0 * 21 }}" y="{{ 90 - h }}" width="13" height="{{ h }}" rx="2" fill="{{ 'var(--primary)' if loop.index0 == 7 else 'var(--sky)' }}"/>{% endfor %}<line x1="0" y1="90" x2="200" y2="90" stroke="var(--navy)" stroke-width="1.5"/></svg>
+{%- elif id == "combustivel" -%}
+<svg viewBox="0 0 200 100" class="arte" aria-hidden="true"><line x1="0" y1="55" x2="200" y2="55" stroke="var(--navy)" stroke-width="1.5" stroke-dasharray="4 4"/><path d="M5 70 L40 62 L75 66 L110 45 L145 50 L195 30" fill="none" stroke="var(--teal)" stroke-width="2.5"/><path d="M5 40 L40 48 L75 42 L110 58 L145 52 L195 60" fill="none" stroke="var(--primary)" stroke-width="2.5"/>{% for x in [5,40,75,110,145,195] %}<circle cx="{{ x }}" cy="88" r="3" fill="var(--navy)"/>{% endfor %}</svg>
+{%- else -%}
+<svg viewBox="0 0 200 100" class="arte" aria-hidden="true"><path d="M10 80 Q 60 20 100 50 T 190 30" fill="none" stroke="var(--border)" stroke-width="10" stroke-linecap="round"/>{% for x, y in [(40,45),(100,50),(150,38),(70,75),(170,70)] %}<g transform="translate({{ x }} {{ y }})"><path d="M0 -14 C -8 -14 -10 -6 -10 -4 C -10 4 0 12 0 12 C 0 12 10 4 10 -4 C 10 -6 8 -14 0 -14Z" fill="{{ 'var(--primary)' if loop.index0 == 1 else 'var(--teal)' }}"/><circle cy="-4" r="3.5" fill="var(--background)"/></g>{% endfor %}</svg>
+{%- endif -%}
+{%- endmacro %}
+
+{% macro esqueleto(tipo) -%}
+<svg viewBox="0 0 600 220" class="esq" aria-hidden="true">{% for y in [40,90,140,190] %}<line x1="40" x2="590" y1="{{ y }}" y2="{{ y }}" stroke="var(--border)" stroke-dasharray="3 5"/>{% endfor %}<line x1="40" x2="40" y1="20" y2="190" stroke="var(--input)"/>{% if tipo == "barras" %}{% for i in range(12) %}<rect x="{{ 56 + i * 44 }}" y="110" width="26" height="80" rx="3" fill="var(--muted)" stroke="var(--input)" stroke-dasharray="4 3"/>{% endfor %}{% else %}<path d="M40 150 L590 150" stroke="var(--input)" stroke-width="3" stroke-dasharray="8 8"/>{% endif %}</svg>
+{%- endmacro %}
+
+{% macro selo(status, rotulo, com_prefixo=true) -%}
+<span class="selo selo-{{ status }}">{{ icone({"real": "ok", "pendente": "relogio", "estimativa": "alerta"}[status]) }}<span>{% if com_prefixo %}Qualidade: {% endif %}{{ rotulo }}</span></span>
+{%- endmacro %}

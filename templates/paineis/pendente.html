@@ -1,0 +1,32 @@
+{% extends "paineis/painel.html" %}
+{% from "_macros.html" import icone, esqueleto %}
+{% block filtros %}
+{% if p.filtro %}
+<fieldset disabled class="quadro-card filtro">
+  <legend>{{ p.filtro.legenda }}</legend>
+  <div class="filtro-opcoes">{% for o in p.filtro.opcoes %}<label><input type="radio" name="produto" {% if loop.first %}checked{% endif %}> {{ o }}</label>{% endfor %}</div>
+  <p class="pequeno suave">A seleção será habilitada quando os dados forem publicados.</p>
+</fieldset>
+{% elif p.busca %}
+<div class="quadro-card filtro filtro-busca">
+  <div><label for="busca-escola">Nome da escola</label><input id="busca-escola" disabled placeholder="Disponível quando os dados forem publicados"></div>
+  <div><label for="rede">Rede de ensino</label><select id="rede" disabled><option>Todas</option><option>Municipal</option><option>Estadual</option><option>Federal</option><option>Privada</option></select></div>
+</div>
+{% endif %}
+{% endblock %}
+{% block resumo %}
+<section aria-labelledby="resumo" class="aviso-pendente">
+  <h2 id="resumo">{{ icone("alerta") }} Os dados deste painel ainda não estão disponíveis.</h2>
+  <p>Estamos preparando a publicação. Quando os dados estiverem prontos, este espaço mostrará o resumo principal, sempre com fonte e data de referência. Fonte prevista: <strong>{{ p.fonte }}</strong>.</p>
+</section>
+{% endblock %}
+{% block explorar %}
+<section aria-labelledby="explorar" class="bloco-painel">
+  <h2 id="explorar" class="h2-medio sem-topo">O que você poderá explorar</h2>
+  <div class="grade-2">
+    {% for titulo, desc, tipo in p.blocos %}
+    <article class="quadro-card"><h3>{{ titulo }}</h3><p class="suave">{{ desc }}</p><div class="esq-caixa">{{ esqueleto(tipo) }}</div><p class="pequeno suave negrito">Gráfico pendente — sem dados publicados.</p></article>
+    {% endfor %}
+  </div>
+</section>
+{% endblock %}

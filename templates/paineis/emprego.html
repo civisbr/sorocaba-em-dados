@@ -1,0 +1,74 @@
+{% extends "paineis/painel.html" %}
+{% from "_macros.html" import icone %}
+{% block resumo %}
+<section aria-labelledby="resumo" class="resumo-real">
+  <h2 id="resumo" class="rotulo-resumo">Resumo de {{ ultimo_mes }}</h2>
+  <p class="numero-grande {{ 'pos' if ultimo.saldo > 0 else ('neg' if ultimo.saldo < 0 else '') }}">{{ ultimo.saldo | sinal }}</p>
+  <p class="resumo-texto">{{ 'vagas a mais' if ultimo.saldo >= 0 else 'vagas a menos' }} com carteira assinada em {{ ultimo_mes }}: {{ ultimo.admissoes | num }} contratações e {{ ultimo.desligamentos | num }} desligamentos.</p>
+  <p class="resumo-texto">Nos 12 meses de {{ inicio_12m }} a {{ fim_12m }}, o saldo somou <strong>{{ saldo_12m | sinal }}</strong>.</p>
+  <p class="pequeno suave">Os últimos meses ainda podem mudar quando empresas corrigem declarações antigas.</p>
+</section>
+{% endblock %}
+{% block explorar %}
+<section aria-labelledby="explorar" class="bloco-painel">
+  <h2 id="explorar" class="h2-medio sem-topo">Explore os dados</h2>
+  <div class="grade-2">
+    <article class="quadro-card">
+      <h3>Saldo mensal de empregos</h3><p class="suave">Evolução de {{ primeiro_mes }} a {{ fim_12m }}.</p>
+      <svg class="grafico" viewBox="0 0 {{ grafico.largura }} {{ grafico.altura }}" role="img" aria-labelledby="g1-t g1-d">
+        <title id="g1-t">Saldo mensal de empregos formais em Sorocaba</title>
+        <desc id="g1-d">Barras de {{ primeiro_mes }} a {{ fim_12m }}. Os valores de cada mês estão na tabela abaixo.</desc>
+        {% for b in grafico.barras %}<rect class="{{ 'b-pos' if b.positivo else 'b-neg' }}" x="{{ b.x }}" y="{{ b.y }}" width="{{ b.w }}" height="{{ b.h }}"><title>{{ b.rotulo }}: {{ b.valor | sinal }}</title></rect>{% endfor %}
+        <line class="zero" x1="0" x2="{{ grafico.largura }}" y1="{{ grafico.zero }}" y2="{{ grafico.zero }}"/>
+        {% for t in grafico.eixo_x %}<text class="eixo" x="{{ t.x }}" y="{{ grafico.y_rotulos }}" text-anchor="{{ t.ancora }}">{{ t.texto }}</text>{% endfor %}
+      </svg>
+      <p class="legenda"><span class="amostra amostra-pos"></span> saldo positivo <span class="amostra amostra-neg"></span> saldo negativo</p>
+    </article>
+
+    <article class="quadro-card">
+      <h3>Admissões e desligamentos</h3><p class="suave">Quantas pessoas foram contratadas e desligadas em cada mês.</p>
+      <svg class="grafico" viewBox="0 0 {{ linhas.largura }} {{ linhas.altura }}" role="img" aria-labelledby="g2-t g2-d">
+        <title id="g2-t">Contratações e desligamentos por mês em Sorocaba</title>
+        <desc id="g2-d">Duas linhas mensais, de {{ primeiro_mes }} a {{ fim_12m }}. Os valores estão na tabela abaixo.</desc>
+        {% for g in linhas.grade %}<line class="grade" x1="0" x2="{{ linhas.largura }}" y1="{{ g.y }}" y2="{{ g.y }}"/><text class="eixo" x="2" y="{{ g.y - 3 }}">{{ g.valor | num }}</text>{% endfor %}
+        <polyline class="l-adm" points="{{ linhas.series["Contratações"].pontos }}"/>
+        <polyline class="l-des" points="{{ linhas.series["Desligamentos"].pontos }}"/>
+        {% for t in linhas.eixo_x %}<text class="eixo" x="{{ t.x }}" y="{{ linhas.y_rotulos }}" text-anchor="{{ t.ancora }}">{{ t.texto }}</text>{% endfor %}
+      </svg>
+      <p class="legenda"><span class="amostra amostra-adm"></span> contratações <span class="amostra amostra-des"></span> desligamentos (tracejada)</p>
+    </article>
+
+    <article class="quadro-card">
+      <h3>Setores econômicos</h3><p class="suave">Saldo de {{ inicio_12m }} a {{ fim_12m }}, do setor que mais criou ao que mais cortou vagas.</p>
+      <ul class="setores">
+        {% for s in secoes %}<li><span class="nome">{{ s.secao_nome }}</span><span class="val {{ 'pos' if s.saldo >= 0 else 'neg' }}">{{ s.saldo | sinal }}</span><span class="setor-barra {{ 'pos' if s.saldo >= 0 else 'neg' }}" style="width: {{ s.pct }}%"></span></li>{% endfor %}
+      </ul>
+    </article>
+
+    <article class="quadro-card quadro-pendente">
+      <h3>Salário de admissão</h3><p class="suave">Faixa salarial de quem foi contratado, quando disponível.</p>
+      <p class="pendente-texto">{{ icone("relogio") }} Pendente: a faixa salarial exige uma tabela do salário mínimo com fonte, ainda não incorporada. Não estimamos esse valor.</p>
+    </article>
+  </div>
+
+  <details class="tabela-mes">
+    <summary>Ver os números de cada mês</summary>
+    <table>
+      <thead><tr><th scope="col">Mês</th><th scope="col">Contratações</th><th scope="col">Desligamentos</th><th scope="col">Saldo</th></tr></thead>
+      <tbody>{% for r in mensal_tabela %}<tr><th scope="row">{{ r.competencia | mes_curto }}</th><td>{{ r.admissoes | num }}</td><td>{{ r.desligamentos | num }}</td><td>{{ r.saldo | sinal }}</td></tr>{% endfor %}</tbody>
+    </table>
+  </details>
+</section>
+{% endblock %}
+{% block metodologia %}
+<ul class="lista-curta">{% for n in env.qualidade.notas %}{% if not n.startswith("SHA-256") %}<li>{{ n }}</li>{% endif %}{% endfor %}</ul>
+{% endblock %}
+{% block proveniencia %}
+<dl class="proveniencia">
+  <dt>Fonte</dt><dd><a href="{{ env.fonte.url }}">{{ env.fonte.nome }}</a> — {{ env.fonte.licenca }}</dd>
+  <dt>Período de referência</dt><dd>{{ env.referencia.inicio | data_br }} a {{ env.referencia.fim | data_br }}</dd>
+  <dt>Coletado em</dt><dd>{{ env.fonte.acesso_em | data_br }}</dd>
+  <dt>Dados</dt><dd><a href="{{ raiz }}data/emprego.json">emprego.json</a></dd>
+  <dt>Código</dt><dd>{% if repo_url %}<a href="{{ repo_url }}/blob/main/{{ script }}">{{ script }}</a>{% else %}{{ script }}{% endif %}</dd>
+</dl>
+{% endblock %}

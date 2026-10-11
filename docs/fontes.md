@@ -9,10 +9,30 @@ Convenção de status: `verificada` | `parcial` | `rejeitada` | `pendente`.
 
 ## ANP — Levantamento de Preços de Combustíveis (LPC)
 
-**Status:** `parcial` — fonte confirmada, posicionamento do painel precisa mudar. Ver
-"Conclusão" abaixo.
+**Status:** `verificada` em 2026-10-11 contra o CSV primário (ver "Verificação no dado
+primário"). Posicionamento do painel mudou: ver "Conclusão" abaixo.
 
 **Verificado em:** 2026-10-11
+
+### Verificação no dado primário (2026-10-11)
+
+`www.gov.br` responde a `curl` apenas com `User-Agent` de navegador; sem ele, 403. Arquivo
+`.../dados-abertos/arquivos/shpc/qus/ultimas-4-semanas-gasolina-etanol.csv` (8 MB, UTF-8 com
+BOM, separador `;`, decimal com vírgula):
+
+- Sorocaba **presente**: 208 linhas, **24 CNPJs distintos** em 14/09 a 09/10/2026.
+- Coleta mais recente em Sorocaba: **08/10/2026**. A hipótese 3 (saída da amostra) está
+  refutada para o recorte de gasolina/etanol. Diesel/GNV e GLP têm arquivos próprios, não
+  checados.
+- Colunas: `Regiao - Sigla;Estado - Sigla;Municipio;Revenda;CNPJ da Revenda;Nome da Rua;
+  Numero Rua;Complemento;Bairro;Cep;Produto;Data da Coleta;Valor de Venda;Valor de Compra;
+  Unidade de Medida;Bandeira`. Há `Bairro`, o que viabiliza recorte por bairro.
+- Contagem de 24 postos é inferior ao 26–41 do agregador, como esperado para 4 semanas de um
+  produto; confirma o alerta de não usar o agregador como fonte.
+- Padrão de nome dos semestrais: `dsas/ca/ca-AAAA-0S.csv` confirmado até 2021-02. Os arquivos de
+  2022 em diante não seguem esse padrão na página; **descobrir os nomes antes de importar
+  histórico**. Para o ETL semanal, o arquivo "últimas 4 semanas" basta e o histórico passa a
+  ser acumulado pelo commit de `data/public/`.
 
 ### Sorocaba está na amostra?
 
@@ -215,3 +235,72 @@ curl -O https://www.gov.br/anp/pt-br/centrais-de-conteudo/dados-abertos/arquivos
 
 e confirmar: (a) Sorocaba presente, (b) data da coleta mais recente, (c) contagem de CNPJs
 distintos. Só então o status vira `verificada` e o painel sai do bloqueio.
+
+---
+
+## IBGE — malha municipal (contorno no mapa da home)
+
+**Status:** `verificada` em 2026-10-11. `servicodados.ibge.gov.br/api/v3/malhas/municipios/3552205`
+com `qualidade=maxima`: um polígono, 472 pontos, 10 KB. Arquivo bruto em
+`data/raw/ibge/malha_3552205.geojson` (commitável: sem dado pessoal), hash no manifesto. O
+centroide exibido é calculado do polígono; não é "centro" administrativo nem verificado
+como tal. Substitui o contorno OpenStreetMap do protótipo para manter fonte oficial e evitar
+a obrigação de atribuição ODbL.
+
+---
+
+# Candidatos a v2
+
+Registrados em 2026-10-11. Nenhum entra em desenvolvimento antes dos três painéis do v1
+estarem prontos (`project.md` §1 e §11). Status abaixo reflete só o que foi verificado.
+
+## IBGE — perfil geográfico e econômico
+
+**Status:** `verificada` (API SIDRA e API de localidades respondem sem cadastro).
+
+- Código IBGE 3552205; microrregião, região imediata e intermediária de Sorocaba
+  (`servicodados.ibge.gov.br/api/v1/localidades/municipios/3552205`).
+- Censo 2022 (tabela 4714): população 723.682; área 449,872 km²; densidade 1.608,64 hab/km².
+- PIB municipal 2023 (tabela 5938, variável 37): R$ 58.816.286 mil. Participação: 47,41% da
+  microrregião, 21,45% da mesorregião, 1,71% de SP, 0,54% do Brasil.
+- **Indisponível no IBGE** (retorna `...` em 2023): valor adicionado bruto por setor e
+  impostos. Publicar `null` e estado vazio, nunca estimar.
+- **Não existe** PIB per capita nessa tabela. Não calcular dividindo por população de outro
+  ano; se necessário, usar a tabela oficial de per capita com fonte própria.
+- CEMPRE (tabela 6449) foi **encerrado em 2021**: não usar como "economia atual".
+
+## TSE — prefeito, vice e vereadores (eleitos 2024) e deputados (eleitos 2022)
+
+**Status:** `parcial`. Arquivos baixáveis confirmados; conteúdo não processado.
+
+- `cdn.tse.jus.br/estatistica/sead/odsele/consulta_cand/consulta_cand_2024.zip` (64 MB):
+  candidatos e situação de totalização. Usar só nome, cargo, partido, situação; descartar
+  demais colunas (contêm dados pessoais desnecessários).
+- `.../votacao_candidato_munzona/votacao_candidato_munzona_2022.zip` (406 MB, todas as UFs):
+  votos por candidato e município. Base para "deputados mais votados em Sorocaba".
+- **Limitação:** o TSE registra quem foi eleito, não quem está em exercício. Vereador
+  licenciado ou suplente que assumiu não aparece. Dizer isso na página.
+- **Deputado não é "de Sorocaba".** Eleitos pelo estado. O recorte defensável é "mais votados
+  na cidade", com o critério e a eleição explícitos.
+- As eleições gerais de 04/10/2026 já ocorreram; os eleitos assumem em fev/2027. Até lá, o
+  mandato vigente é o eleito em 2022. A página precisa dizer isso.
+
+## Câmara dos Deputados e Alesp — mandato vigente
+
+**Status:** `parcial`.
+
+- Câmara: `dadosabertos.camara.leg.br/api/v2/deputados?siglaUf=SP` responde (24 KB). Lista
+  deputados em exercício. Não processado.
+- Alesp: portal de dados abertos publica `repositorioDados/deputados/deputados.xml`, segundo
+  busca; **não consegui confirmar o conteúdo**. O portal avisa mudança de endereço para
+  `ckan.al.sp.gov.br`. Verificar antes de depender.
+
+## SSP-SP — segurança pública
+
+**Status:** `pendente`. Nenhum acesso testado. Checar: existência de dado por município com
+natureza, data, hora e bairro; defasagem; concorrência. Restrições de apresentação em
+`project.md` v2 (sem ranking de bairros).
+
+## Emendas parlamentares com destino a Sorocaba
+
+**Status:** `pendente`. Fontes candidatas: Portal da Transparência e SIOP. Nada testado.

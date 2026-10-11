@@ -1,0 +1,60 @@
+{%- from "_macros.html" import icone, logo -%}
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; style-src 'self'; style-src-attr 'unsafe-inline'; img-src 'self' data:; connect-src 'self'; base-uri 'none'; form-action 'none'">
+<title>{% block titulo %}Sorocaba em Dados | Uma iniciativa CivisBR{% endblock %}</title>
+<meta name="description" content="{% block descricao %}Informações públicas sobre Sorocaba organizadas de forma clara: emprego, combustíveis e escolas.{% endblock %}">
+<script>document.documentElement.classList.add("js")</script>
+<link rel="stylesheet" href="{{ raiz }}style.css">
+</head>
+<body>
+<header class="cabecalho">
+  <a href="#conteudo" class="pular">Pular para o conteúdo</a>
+  <div class="contido cab-barra">
+    <a class="marca" href="{{ raiz or './' }}">{{ logo() }}<span>Sorocaba em Dados</span></a>
+    <nav aria-label="Principal" class="nav-desktop">
+      <ul>
+        {% for p in paineis %}<li><a href="{{ raiz }}{{ p.id }}/"{% if ativo == p.id %} aria-current="page"{% endif %}>{{ p.nav }}</a></li>{% endfor %}
+        <li><a href="{{ raiz }}sobre/"{% if ativo == "sobre" %} aria-current="page"{% endif %}>Sobre o projeto</a></li>
+      </ul>
+    </nav>
+    <details class="menu-movel">
+      <summary aria-label="Abrir menu">{{ icone("menu") }}</summary>
+      <nav aria-label="Principal (celular)">
+        <ul>
+          {% for p in paineis %}<li><a href="{{ raiz }}{{ p.id }}/">{{ p.nav }}</a></li>{% endfor %}
+          <li><a href="{{ raiz }}sobre/">Sobre o projeto</a></li>
+        </ul>
+      </nav>
+    </details>
+  </div>
+</header>
+<main id="conteudo">
+{% block conteudo %}{% endblock %}
+</main>
+<footer class="rodape">
+  <div class="contido rodape-grade">
+    <div>
+      <p class="rodape-marca">{{ logo() }} Sorocaba em Dados</p>
+      <p class="suave">Uma iniciativa CivisBR</p>
+      <p class="rodape-aviso">Os dados apresentados podem ter limitações de cobertura e de atualização. Cada painel informa fonte, data de referência e limitações conhecidas.</p>
+    </div>
+    <div>
+      <h2>Painéis</h2>
+      <ul>{% for p in paineis %}<li><a href="{{ raiz }}{{ p.id }}/">{{ p.nav }}</a></li>{% endfor %}</ul>
+    </div>
+    <div>
+      <h2>Projeto</h2>
+      <ul>
+        <li><a href="{{ raiz }}sobre/">Metodologia e fontes</a></li>
+        <li class="suave pequeno">{% if repo_url %}<a href="{{ repo_url }}">Código-fonte</a>{% else %}Código-fonte: repositório ainda não público{% endif %}</li>
+      </ul>
+    </div>
+  </div>
+</footer>
+<script src="{{ raiz }}app.js" defer></script>
+</body>
+</html>

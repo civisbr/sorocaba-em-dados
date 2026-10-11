@@ -3,6 +3,7 @@ __pycache__/
 .pytest_cache/
 dist/
 .serena/
-data/raw/caged/*/*.csv
 *.7z
 CAGED*.txt
+*.zip
+data/raw/tse/

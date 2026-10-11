@@ -1,0 +1,119 @@
+{% extends "base.html" %}
+{% from "_macros.html" import icone, arte %}
+{% block conteudo %}
+<section class="hud heroi">
+  <div class="grade-fundo" aria-hidden="true"></div>
+  <div class="contido heroi-grade">
+    <div>
+      <p class="etiqueta-hud"><span class="ponto"></span> Uma iniciativa CivisBR</p>
+      <h1>Sorocaba, em dados.<br><span class="destaque">A cidade, mais compreensível.</span></h1>
+      <p class="heroi-texto">Informações públicas sobre a nossa cidade, organizadas para ajudar você a entender o que está acontecendo e tomar decisões melhores.</p>
+
+      <div class="busca">
+        <form role="search" id="busca-form" hidden>
+          <label for="busca-q">O que você quer descobrir sobre Sorocaba?</label>
+          <div class="busca-campo">{{ icone("busca") }}<input id="busca-q" type="search" placeholder="Ex.: gasolina, vagas, IDEB" autocomplete="off"></div>
+        </form>
+        <p class="busca-rotulo" id="busca-rotulo-semjs">Comece por um painel:</p>
+        <div aria-live="polite" id="busca-resultados"></div>
+        <ul class="chips" aria-label="Sugestões de busca">
+          <li><a href="emprego/" data-q="emprego">Empregos na cidade</a></li>
+          <li><a href="combustivel/" data-q="combustível">Evolução dos combustíveis</a></li>
+          <li><a href="escolas/" data-q="escolas">Escolas por bairro</a></li>
+        </ul>
+        <ul id="busca-indice" hidden>
+          {% for p in paineis %}<li><a href="{{ p.id }}/" data-palavras="{{ p.palavras | join(' ') }} {{ p.nav | lower }} {{ p.titulo | lower }}"><strong>Painel de {{ p.nav }}</strong> — {{ p.titulo }}</a></li>{% endfor %}
+        </ul>
+      </div>
+    </div>
+
+    <div class="hud-coluna">
+      <figure class="hud-quadro mapa">
+        <div class="hud-topo"><span>MAPA · MUNICÍPIO DE SOROCABA</span><span aria-hidden="true">N ↑</span></div>
+        <div class="mapa-corpo">
+          <svg viewBox="0 0 {{ mapa.largura }} {{ mapa.altura }}" role="img" aria-labelledby="mapa-t mapa-d">
+            <title id="mapa-t">Contorno do município de Sorocaba</title>
+            <desc id="mapa-d">Mapa de orientação com o limite municipal. Nenhum dado está marcado no mapa.</desc>
+            <defs><pattern id="hg" width="25" height="25" patternUnits="userSpaceOnUse"><path d="M25 0H0V25" fill="none" stroke="var(--hud-grid)" stroke-width="1"/></pattern></defs>
+            <rect width="{{ mapa.largura }}" height="{{ mapa.altura }}" fill="url(#hg)"/>
+            <path d="{{ mapa.caminho }}" fill="var(--hud-line)" fill-opacity=".1" stroke="var(--hud-line)" stroke-width="2" stroke-linejoin="round"/>
+            <path d="{{ mapa.caminho }}" fill="none" stroke="var(--hud-line)" stroke-opacity=".3" stroke-width="8" stroke-linejoin="round"/>
+            <g stroke="var(--amber)" stroke-width="1.5">
+              <line x1="{{ mapa.centro_x - 40 }}" x2="{{ mapa.centro_x - 10 }}" y1="{{ mapa.centro_y }}" y2="{{ mapa.centro_y }}"/>
+              <line x1="{{ mapa.centro_x + 10 }}" x2="{{ mapa.centro_x + 40 }}" y1="{{ mapa.centro_y }}" y2="{{ mapa.centro_y }}"/>
+              <line x1="{{ mapa.centro_x }}" x2="{{ mapa.centro_x }}" y1="{{ mapa.centro_y - 40 }}" y2="{{ mapa.centro_y - 10 }}"/>
+              <line x1="{{ mapa.centro_x }}" x2="{{ mapa.centro_x }}" y1="{{ mapa.centro_y + 10 }}" y2="{{ mapa.centro_y + 40 }}"/>
+              <circle cx="{{ mapa.centro_x }}" cy="{{ mapa.centro_y }}" r="18" fill="none" stroke-dasharray="3 4"/>
+            </g>
+            <circle cx="{{ mapa.centro_x }}" cy="{{ mapa.centro_y }}" r="4" fill="var(--amber)"/>
+            <text x="{{ mapa.centro_x + 24 }}" y="{{ mapa.centro_y - 24 }}" fill="var(--hud-foreground)" font-family="var(--mono)" font-size="14">CENTROIDE</text>
+          </svg>
+          <div class="varredura" aria-hidden="true"></div>
+        </div>
+        <figcaption class="hud-pe"><span>LAT {{ mapa.lat }} · LON {{ mapa.lon }}</span><span>Limite: IBGE, malha municipal</span></figcaption>
+      </figure>
+
+      <section aria-labelledby="status-t" class="hud-quadro status">
+        <h2 id="status-t">Status dos painéis</h2>
+        <ul>
+          {% for p in paineis %}
+          <li><a href="{{ p.id }}/"><span class="status-nome">{{ p.nav }}</span>
+            <span class="status-{{ p.status }}"><span class="status-ponto" aria-hidden="true"></span>{% if p.status == "real" %}ATUALIZADO · {{ p.referencia }}{% else %}PENDENTE{% endif %}</span></a></li>
+          {% endfor %}
+        </ul>
+      </section>
+    </div>
+  </div>
+</section>
+
+<section aria-labelledby="paineis" class="contido bloco">
+  <h2 id="paineis" class="h2-grande">Escolha um painel</h2>
+  <ul class="cartoes">
+    {% for p in paineis %}
+    <li>
+      <a href="{{ p.id }}/" class="cartao quadro tom-{{ p.tom }}">
+        <span class="cartao-topo"><span>{{ p.nav }}</span><span class="cartao-status-{{ p.status }}"><span aria-hidden="true">● </span>{{ "Atualizado" if p.status == "real" else "Pendente" }}</span></span>
+        {% if p.id == "emprego" %}
+        <span class="cartao-numero {{ 'pos' if emprego.ultimo.saldo > 0 else ('neg' if emprego.ultimo.saldo < 0 else '') }}">{{ emprego.ultimo.saldo | sinal }}</span>
+        <span class="cartao-ctx">vagas formais em {{ emprego.ultimo_mes }}</span>
+        {% else %}
+        <span class="cartao-arte">{{ arte(p.id) }}<span class="pequeno suave">Ilustração, sem valores. Painel em preparação.</span></span>
+        {% endif %}
+        <span class="cartao-titulo">{{ p.titulo }}</span>
+        {% if p.etiqueta %}<span class="etiqueta-escura">{{ p.etiqueta }}</span>{% endif %}
+        <span class="cartao-desc">{{ p.descricao }}</span>
+        <span class="cartao-cta">{{ p.cta }} {{ icone("seta") }}</span>
+      </a>
+    </li>
+    {% endfor %}
+  </ul>
+</section>
+
+<section aria-labelledby="ajuda" class="contido bloco-largo">
+  <div class="texto-estreito">
+    <h2 id="ajuda" class="h2-grande">Como os dados ajudam você</h2>
+    <p class="lead">Três perguntas do dia a dia que os painéis ajudam a responder.</p>
+  </div>
+  <ol class="perguntas">
+    {% for p, t in [("emprego", "Entender quais setores estão criando ou reduzindo empregos."), ("combustivel", "Comparar a trajetória de preços entre os postos pesquisados."), ("escolas", "Conhecer os indicadores de uma escola antes de buscar mais informações.")] %}
+    <li><span class="num">0{{ loop.index }}</span><p>{{ t }}</p><div class="arte-suave">{{ arte(p) }}</div><p class="pequeno suave">Ilustração, sem valores.</p></li>
+    {% endfor %}
+  </ol>
+</section>
+
+<section aria-labelledby="confianca" class="contido bloco-largo">
+  <div class="confianca">
+    <div>
+      {{ icone("escudo", "ico-grande") }}
+      <h2 id="confianca">Dados públicos. Fontes abertas.</h2>
+      <p>Cada informação publicada tem origem rastreável, data de referência e limitações documentadas. Se um dado ainda não existe, dizemos isso claramente.</p>
+      <a href="sobre/" class="link-claro">Conheça a metodologia {{ icone("seta") }}</a>
+    </div>
+    <ul class="confianca-itens">
+      {% for i, t, d in [("banco","Fonte primária","Órgão oficial que produz o dado."),("arquivo","Metodologia","Como o dado é tratado e calculado."),("calendario","Data de referência","A que período cada número se refere."),("medidor","Qualidade","Real, estimativa ou pendente."),("codigo","Dados e código","Arquivos e código de geração, quando publicados.")] %}
+      <li>{{ icone(i, "ico-sky") }}<p class="negrito">{{ t }}</p><p class="pequeno">{{ d }}</p></li>
+      {% endfor %}
+    </ul>
+  </div>
+</section>
+{% endblock %}

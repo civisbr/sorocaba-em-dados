@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% set ativo = "sobre" %}
+{% from "_macros.html" import selo %}
+{% block titulo %}Sobre o projeto | Sorocaba em Dados{% endblock %}
+{% block descricao %}Como o Sorocaba em Dados organiza dados públicos: fontes, metodologia, datas de referência e limitações.{% endblock %}
+{% block conteudo %}
+<div class="contido estreito pagina">
+  <p class="etiqueta">Sobre o projeto</p>
+  <h1 class="h1-grande">Dados públicos, explicados para quem vive a cidade.</h1>
+  <p class="lead-escuro">O Sorocaba em Dados é uma iniciativa CivisBR que organiza informações públicas sobre Sorocaba (SP) em painéis simples, com origem rastreável, data de referência e limitações documentadas.</p>
+  <h2 class="h2-medio">Nossos princípios</h2>
+  <ul class="lista">
+    <li>Nunca inventamos dados para preencher a página.</li>
+    <li>Todo número tem fonte primária e data de referência.</li>
+    <li>Cada dado é marcado como real, estimativa ou pendente.</li>
+    <li>Não fazemos rankings gerais nem conclusões que os dados não sustentam.</li>
+  </ul>
+  <h2 class="h2-medio">Fontes</h2>
+  <dl class="definicoes quadro-suave">
+    {% for nome, fonte, status in fontes %}
+    <div><dt>{{ nome }}</dt><dd>{{ fonte }} {{ selo(status, "Dado real" if status == "real" else "Pendente", false) }}</dd></div>
+    {% endfor %}
+  </dl>
+  <h2 class="h2-medio">Como atualizamos</h2>
+  <p class="corpo">Cada painel tem um processo automático que baixa o dado da fonte oficial, valida e republica os arquivos. Se a fonte falhar, o site continua mostrando a última versão válida, sempre com a data de referência original.</p>
+  <p class="corpo suave">Os arquivos de dados ficam disponíveis em cada painel. O código de geração será publicado quando o repositório for aberto.</p>
+</div>
+{% endblock %}

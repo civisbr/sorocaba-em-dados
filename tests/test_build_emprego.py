@@ -26,8 +26,8 @@ def test_saldo_confere_com_calculo_independente():
     for pasta in FIXTURES.iterdir():
         for tipo, peso in (("MOV", 1), ("FOR", 1), ("EXC", -1)):
             df = pl.read_csv(pasta / f"{tipo}.csv", separator=";", infer_schema=False)
-            for comp, saldo in df.select("competênciamov", "saldomovimentação").iter_rows():
-                esperado[comp] = esperado.get(comp, 0) + peso * int(saldo)
+            for comp, saldo, n in df.select("competênciamov", "saldomovimentação", "n").iter_rows():
+                esperado[comp] = esperado.get(comp, 0) + peso * int(saldo) * int(n)
     mensal = {r["competencia"]: r["saldo"] for r in env.dados if r["recorte"] == "mensal"}
     assert mensal == {c: esperado[c] for c in ("202607", "202608")}
 
@@ -61,3 +61,17 @@ def test_pasta_estranha_nao_vira_ultima_competencia(tmp_path):
     (tmp_path / "caged" / "tmp").mkdir()
     env = construir(tmp_path / "caged", ACESSO, exigir_manifesto=False, janela_meses=2)
     assert env.referencia.fim == date(2026, 8, 31)
+
+
+def test_acesso_em_derivado_dos_manifestos(tmp_path):
+    import json
+    import shutil
+    shutil.copytree(FIXTURES, tmp_path / "caged")
+    for comp, data in (("202607", "2026-09-03"), ("202608", "2026-10-11")):
+        arquivos = {t: {"sha256_origem": "x", "bytes_origem": 1, "linhas": 1, "sha256_agregado": "x"} for t in ("MOV", "FOR", "EXC")}
+        (tmp_path / "caged" / comp / "manifesto.json").write_text(
+            json.dumps({"competencia": comp, "acesso_em": data, "arquivos": arquivos}), encoding="utf-8"
+        )
+    env = construir(tmp_path / "caged", janela_meses=2)
+    assert env.fonte.acesso_em == date(2026, 10, 11)
+    assert any(n.startswith("SHA-256 dos manifestos") for n in env.qualidade.notas)
