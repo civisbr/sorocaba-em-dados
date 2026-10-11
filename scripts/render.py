@@ -125,6 +125,12 @@ def contexto_escola(e: dict, base: dict) -> dict:
     return {"e": e, "etapas": etapas, "grafico": grafico, "tem_ideb": tem_ideb, "infra": INFRA_ROTULOS}
 
 
+def nome_br(nome: str) -> str:
+    miudas = {"da", "de", "do", "das", "dos", "e"}
+    palavras = nome.lower().split()
+    return " ".join(w if (i and w in miudas) else w.capitalize() for i, w in enumerate(palavras))
+
+
 def bi(v: float) -> str:
     return f"{v / 1_000_000:.1f}".replace(".", ",")
 
@@ -151,6 +157,27 @@ def contexto_cidade(env: dict) -> dict:
         "vab": vab,
         "vab_total": next(r for r in por["vab_setor"] if r["chave"] == "total"),
         "ref_cidade": f"Censo {ind['populacao_censo']['ano']} · PIB {pib[-1]['ano']}",
+    }
+
+
+def contexto_representantes(env: dict) -> dict:
+    d = env["dados"]
+    def grupo(g, ano=None):
+        return [r for r in d if r["grupo"] == g and (ano is None or r["eleicao"] == ano)]
+    vereadores = sorted(grupo("vereador"), key=lambda r: r["nome"])
+    partidos: dict[str, int] = {}
+    for r in vereadores:
+        partidos[r["partido"]] = partidos.get(r["partido"], 0) + 1
+    return {
+        "prefeito": grupo("prefeito")[0],
+        "vice": grupo("vice_prefeito")[0],
+        "vereadores": vereadores,
+        "partidos": sorted(partidos.items(), key=lambda kv: (-kv[1], kv[0])),
+        "deputados": [
+            ("Deputados federais", [("Mandato atual: eleitos em 2022", grupo("deputado_federal", 2022)), ("Eleitos em 2026, assumem em 01/02/2027", grupo("deputado_federal", 2026))]),
+            ("Deputados estaduais", [("Mandato atual: eleitos em 2022", grupo("deputado_estadual", 2022)), ("Eleitos em 2026, assumem em 01/02/2027", grupo("deputado_estadual", 2026))]),
+        ],
+        "ref_rep": "Eleições de 2022, 2024 e 2026",
     }
 
 
@@ -189,7 +216,7 @@ def contexto_combustivel(env: dict) -> dict:
 
 def renderizar(public: Path, saida: Path) -> None:
     jinja = Environment(loader=FileSystemLoader(RAIZ / "templates"), autoescape=select_autoescape(["html"]))
-    jinja.filters.update(num=num, sinal=sinal, data_br=data_br, mes_curto=mes_curto, brl=brl, pct=pct, brl1=brl1, brl2=brl2, pct_abs=pct_abs, bi=bi, inteiro_br=inteiro_br)
+    jinja.filters.update(num=num, sinal=sinal, data_br=data_br, mes_curto=mes_curto, brl=brl, pct=pct, brl1=brl1, brl2=brl2, pct_abs=pct_abs, bi=bi, inteiro_br=inteiro_br, nome_br=nome_br)
 
     emprego = json.loads((public / "emprego.json").read_text(encoding="utf-8"))
     ctx_emprego = contexto_emprego(emprego)
@@ -197,6 +224,8 @@ def renderizar(public: Path, saida: Path) -> None:
     ctx_comb = contexto_combustivel(combustivel)
     perfil = json.loads((public / "perfil.json").read_text(encoding="utf-8"))
     ctx_cid = contexto_cidade(perfil)
+    rep = json.loads((public / "representantes.json").read_text(encoding="utf-8"))
+    ctx_rep = contexto_representantes(rep)
     escolas = json.loads((public / "escolas.json").read_text(encoding="utf-8"))
     ctx_esc = contexto_escolas(escolas)
     mapa = gerar_mapa(RAIZ / "data" / "raw" / "ibge" / "malha_3552205.geojson")
@@ -218,6 +247,8 @@ def renderizar(public: Path, saida: Path) -> None:
     )
     flag_p = perfil["qualidade"]["flag"]
     paineis["cidade"].update(status=flag_p, rotulo_status=ROTULO_STATUS[flag_p], referencia=ctx_cid["ref_cidade"])
+    flag_r = rep["qualidade"]["flag"]
+    paineis["representantes"].update(status=flag_r, rotulo_status=ROTULO_STATUS[flag_r], referencia=ctx_rep["ref_rep"])
     ordem = list(paineis.values())
 
     if saida.exists():
@@ -228,7 +259,7 @@ def renderizar(public: Path, saida: Path) -> None:
     (saida / MARCADOR).write_text("saída gerada por scripts/render.py\n", encoding="utf-8")
     for nome in ("style.css", "app.js"):
         shutil.copy(RAIZ / "static" / nome, saida / nome)
-    for nome in ("emprego.json", "combustivel.json", "escolas.json", "perfil.json"):
+    for nome in ("emprego.json", "combustivel.json", "escolas.json", "perfil.json", "representantes.json"):
         shutil.copy(public / nome, saida / "data" / nome)
 
     comum = {"paineis": ordem, "repo_url": REPO_URL}
@@ -242,12 +273,13 @@ def renderizar(public: Path, saida: Path) -> None:
             jinja.get_template(template).render(raiz=raiz, **comum, **ctx), encoding="utf-8"
         )
 
-    escrever("index.html", "index.html", "", mapa=mapa, emprego=ctx_emprego, comb=ctx_comb, esc=ctx_esc, cid=ctx_cid)
+    escrever("index.html", "index.html", "", mapa=mapa, emprego=ctx_emprego, comb=ctx_comb, esc=ctx_esc, cid=ctx_cid, rep=ctx_rep)
     escrever("sobre/index.html", "sobre.html", "../", fontes=[
         ("Emprego", "Novo CAGED — Ministério do Trabalho e Emprego", flag),
         ("Combustível", "Levantamento de Preços de Combustíveis — ANP", flag_c),
         ("Escolas", "Censo Escolar e IDEB — INEP", flag_e),
         ("A cidade", "Censo 2022, estimativas e PIB dos Municípios — IBGE", flag_p),
+        ("Representantes", "TSE, Câmara dos Deputados e Alesp", flag_r),
     ])
     escrever(
         "emprego/index.html", "paineis/emprego.html", "../",
@@ -264,6 +296,10 @@ def renderizar(public: Path, saida: Path) -> None:
     escrever(
         "cidade/index.html", "paineis/cidade.html", "../",
         p=paineis["cidade"], env=perfil, script="scripts/build_perfil.py", **ctx_cid,
+    )
+    escrever(
+        "representantes/index.html", "paineis/representantes.html", "../",
+        p=paineis["representantes"], env=rep, script="scripts/build_representantes.py", **ctx_rep,
     )
     for e in ctx_esc["escolas"]:
         escrever(

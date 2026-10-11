@@ -1,0 +1,566 @@
+[
+ {
+  "id": "75",
+  "nome": "Mauro Bragato",
+  "partido": "PSD",
+  "situacao": "EXE"
+ },
+ {
+  "id": "124",
+  "nome": "Barros Munhoz",
+  "partido": "PSD",
+  "situacao": "EXE"
+ },
+ {
+  "id": "141",
+  "nome": "Conte Lopes",
+  "partido": "PL",
+  "situacao": "EXE"
+ },
+ {
+  "id": "200",
+  "nome": "Léo Oliveira",
+  "partido": "MDB",
+  "situacao": "EXE"
+ },
+ {
+  "id": "254",
+  "nome": "Edna Macedo",
+  "partido": "REPUBLICANOS",
+  "situacao": "EXE"
+ },
+ {
+  "id": "280",
+  "nome": "Rafael Silva",
+  "partido": "PSD",
+  "situacao": "EXE"
+ },
+ {
+  "id": "299",
+  "nome": "Jorge Caruso",
+  "partido": "MDB",
+  "situacao": "EXE"
+ },
+ {
+  "id": "327",
+  "nome": "Emídio de Souza",
+  "partido": "PT",
+  "situacao": "EXE"
+ },
+ {
+  "id": "328",
+  "nome": "Valdomiro Lopes",
+  "partido": "PSB",
+  "situacao": "EXE"
+ },
+ {
+  "id": "339",
+  "nome": "Rogério Nogueira",
+  "partido": "PSD",
+  "situacao": "EXE"
+ },
+ {
+  "id": "347",
+  "nome": "Maria Lúcia Amary",
+  "partido": "PSD",
+  "situacao": "EXE"
+ },
+ {
+  "id": "363",
+  "nome": "Analice Fernandes",
+  "partido": "PSD",
+  "situacao": "EXE"
+ },
+ {
+  "id": "367",
+  "nome": "Beth Sahão",
+  "partido": "PT",
+  "situacao": "EXE"
+ },
+ {
+  "id": "372",
+  "nome": "Enio Tatto",
+  "partido": "PT",
+  "situacao": "EXE"
+ },
+ {
+  "id": "381",
+  "nome": "Edson Giriboni",
+  "partido": "UNIÃO",
+  "situacao": "EXE"
+ },
+ {
+  "id": "382",
+  "nome": "Gilmaci Santos",
+  "partido": "REPUBLICANOS",
+  "situacao": "EXE"
+ },
+ {
+  "id": "398",
+  "nome": "Ana Perugini",
+  "partido": "PT",
+  "situacao": "EXE"
+ },
+ {
+  "id": "415",
+  "nome": "Milton Leite Filho",
+  "partido": "UNIÃO",
+  "situacao": "EXE"
+ },
+ {
+  "id": "417",
+  "nome": "Carlos Giannazi",
+  "partido": "PSOL",
+  "situacao": "EXE"
+ },
+ {
+  "id": "429",
+  "nome": "André do Prado",
+  "partido": "PL",
+  "situacao": "EXE"
+ },
+ {
+  "id": "431",
+  "nome": "Carlão Pignatari",
+  "partido": "PSD",
+  "situacao": "EXE"
+ },
+ {
+  "id": "442",
+  "nome": "Itamar Borges",
+  "partido": "MDB",
+  "situacao": "EXE"
+ },
+ {
+  "id": "445",
+  "nome": "Leci Brandão",
+  "partido": "PCdoB",
+  "situacao": "EXE"
+ },
+ {
+  "id": "446",
+  "nome": "Luiz Claudio Marcolino",
+  "partido": "PT",
+  "situacao": "EXE"
+ },
+ {
+  "id": "451",
+  "nome": "Rodrigo Moraes",
+  "partido": "PL",
+  "situacao": "EXE"
+ },
+ {
+  "id": "452",
+  "nome": "Sebastião Santos",
+  "partido": "REPUBLICANOS",
+  "situacao": "EXE"
+ },
+ {
+  "id": "472",
+  "nome": "Teonilio Barba",
+  "partido": "PT",
+  "situacao": "EXE"
+ },
+ {
+  "id": "474",
+  "nome": "Ricardo Madalena",
+  "partido": "PL",
+  "situacao": "EXE"
+ },
+ {
+  "id": "475",
+  "nome": "Paulo Correa Jr",
+  "partido": "REPUBLICANOS",
+  "situacao": "EXE"
+ },
+ {
+  "id": "477",
+  "nome": "Márcia Lia",
+  "partido": "PT",
+  "situacao": "EXE"
+ },
+ {
+  "id": "479",
+  "nome": "Marcos Damasio",
+  "partido": "PL",
+  "situacao": "EXE"
+ },
+ {
+  "id": "480",
+  "nome": "Marta Costa",
+  "partido": "PSD",
+  "situacao": "EXE"
+ },
+ {
+  "id": "481",
+  "nome": "Luiz Fernando T. Ferreira",
+  "partido": "PT",
+  "situacao": "EXE"
+ },
+ {
+  "id": "484",
+  "nome": "Jorge Wilson Xerife do Consumidor",
+  "partido": "REPUBLICANOS",
+  "situacao": "EXE"
+ },
+ {
+  "id": "492",
+  "nome": "Caio França",
+  "partido": "PSB",
+  "situacao": "EXE"
+ },
+ {
+  "id": "493",
+  "nome": "Delegado Olim",
+  "partido": "PP",
+  "situacao": "EXE"
+ },
+ {
+  "id": "494",
+  "nome": "Atila Jacomussi",
+  "partido": "PRD",
+  "situacao": "EXE"
+ },
+ {
+  "id": "1050",
+  "nome": "Eduardo Suplicy",
+  "partido": "PT",
+  "situacao": "EXE"
+ },
+ {
+  "id": "1139",
+  "nome": "Agente Federal Danilo Balas",
+  "partido": "PL",
+  "situacao": "EXE"
+ },
+ {
+  "id": "1140",
+  "nome": "Alex Madureira",
+  "partido": "PL",
+  "situacao": "EXE"
+ },
+ {
+  "id": "1141",
+  "nome": "Valeria Bolsonaro",
+  "partido": "PL",
+  "situacao": "EXE"
+ },
+ {
+  "id": "1142",
+  "nome": "Thiago Auricchio",
+  "partido": "PL",
+  "situacao": "EXE"
+ },
+ {
+  "id": "1144",
+  "nome": "Tenente Coimbra",
+  "partido": "PL",
+  "situacao": "EXE"
+ },
+ {
+  "id": "1149",
+  "nome": "Rafa Zimbaldi",
+  "partido": "UNIÃO",
+  "situacao": "EXE"
+ },
+ {
+  "id": "1150",
+  "nome": "Professora Bebel",
+  "partido": "PT",
+  "situacao": "EXE"
+ },
+ {
+  "id": "1152",
+  "nome": "Paulo Fiorilo",
+  "partido": "PT",
+  "situacao": "EXE"
+ },
+ {
+  "id": "1153",
+  "nome": "Monica Seixas do Movimento Pretas",
+  "partido": "PSOL",
+  "situacao": "EXE"
+ },
+ {
+  "id": "1154",
+  "nome": "Marina Helou",
+  "partido": "PSB",
+  "situacao": "EXE"
+ },
+ {
+  "id": "1155",
+  "nome": "Marcio Nakashima",
+  "partido": "PSD",
+  "situacao": "EXE"
+ },
+ {
+  "id": "1157",
+  "nome": "Major Mecca",
+  "partido": "PL",
+  "situacao": "EXE"
+ },
+ {
+  "id": "1158",
+  "nome": "Letícia Aguiar",
+  "partido": "PL",
+  "situacao": "EXE"
+ },
+ {
+  "id": "1161",
+  "nome": "Gil Diniz Bolsonaro",
+  "partido": "PL",
+  "situacao": "EXE"
+ },
+ {
+  "id": "1164",
+  "nome": "Dr. Jorge do Carmo",
+  "partido": "PT",
+  "situacao": "EXE"
+ },
+ {
+  "id": "1167",
+  "nome": "Delegada Graciela",
+  "partido": "PL",
+  "situacao": "EXE"
+ },
+ {
+  "id": "1168",
+  "nome": "Daniel Soares",
+  "partido": "UNIÃO",
+  "situacao": "EXE"
+ },
+ {
+  "id": "1173",
+  "nome": "Carla Morando",
+  "partido": "PSD",
+  "situacao": "EXE"
+ },
+ {
+  "id": "1178",
+  "nome": "Altair Moraes",
+  "partido": "REPUBLICANOS",
+  "situacao": "EXE"
+ },
+ {
+  "id": "1179",
+  "nome": "Dra. Damaris Moura",
+  "partido": "PSDB",
+  "situacao": "EXE"
+ },
+ {
+  "id": "1183",
+  "nome": "Dirceu Dalben",
+  "partido": "PSD",
+  "situacao": "EXE"
+ },
+ {
+  "id": "1187",
+  "nome": "Maurici",
+  "partido": "PT",
+  "situacao": "EXE"
+ },
+ {
+  "id": "1201",
+  "nome": "Ana Carolina Serra",
+  "partido": "PSDB",
+  "situacao": "EXE"
+ },
+ {
+  "id": "1202",
+  "nome": "Andréa Werner",
+  "partido": "PSB",
+  "situacao": "EXE"
+ },
+ {
+  "id": "1203",
+  "nome": "Bruna Furlan",
+  "partido": "REPUBLICANOS",
+  "situacao": "EXE"
+ },
+ {
+  "id": "1204",
+  "nome": "Bruno Zambelli",
+  "partido": "PL",
+  "situacao": "EXE"
+ },
+ {
+  "id": "1205",
+  "nome": "Capitão Telhada",
+  "partido": "PP",
+  "situacao": "EXE"
+ },
+ {
+  "id": "1206",
+  "nome": "Clarice Ganem",
+  "partido": "PODE",
+  "situacao": "EXE"
+ },
+ {
+  "id": "1207",
+  "nome": "Dani Alonso",
+  "partido": "PL",
+  "situacao": "EXE"
+ },
+ {
+  "id": "1208",
+  "nome": "Donato",
+  "partido": "PT",
+  "situacao": "EXE"
+ },
+ {
+  "id": "1209",
+  "nome": "Dr. Eduardo Nóbrega",
+  "partido": "MDB",
+  "situacao": "EXE"
+ },
+ {
+  "id": "1210",
+  "nome": "Dr. Elton",
+  "partido": "UNIÃO",
+  "situacao": "EXE"
+ },
+ {
+  "id": "1211",
+  "nome": "Ediane Maria",
+  "partido": "PSOL",
+  "situacao": "EXE"
+ },
+ {
+  "id": "1213",
+  "nome": "Fabiana Bolsonaro",
+  "partido": "PL",
+  "situacao": "EXE"
+ },
+ {
+  "id": "1214",
+  "nome": "Felipe Franco",
+  "partido": "UNIÃO",
+  "situacao": "EXE"
+ },
+ {
+  "id": "1216",
+  "nome": "Guilherme Cortez",
+  "partido": "PSOL",
+  "situacao": "EXE"
+ },
+ {
+  "id": "1217",
+  "nome": "Guto Zacarias",
+  "partido": "MISSÃO",
+  "situacao": "EXE"
+ },
+ {
+  "id": "1219",
+  "nome": "Leonardo Siqueira",
+  "partido": "NOVO",
+  "situacao": "EXE"
+ },
+ {
+  "id": "1220",
+  "nome": "Lucas Bove",
+  "partido": "PL",
+  "situacao": "EXE"
+ },
+ {
+  "id": "1221",
+  "nome": "Oseias de Madureira",
+  "partido": "PL",
+  "situacao": "EXE"
+ },
+ {
+  "id": "1222",
+  "nome": "Paula da Bancada Feminista",
+  "partido": "PSOL",
+  "situacao": "EXE"
+ },
+ {
+  "id": "1223",
+  "nome": "Paulo Mansur",
+  "partido": "PL",
+  "situacao": "EXE"
+ },
+ {
+  "id": "1224",
+  "nome": "Rafael Saraiva",
+  "partido": "UNIÃO",
+  "situacao": "EXE"
+ },
+ {
+  "id": "1225",
+  "nome": "Reis",
+  "partido": "PT",
+  "situacao": "EXE"
+ },
+ {
+  "id": "1226",
+  "nome": "Ricardo França",
+  "partido": "PODE",
+  "situacao": "EXE"
+ },
+ {
+  "id": "1227",
+  "nome": "Rogério Santos",
+  "partido": "MDB",
+  "situacao": "EXE"
+ },
+ {
+  "id": "1228",
+  "nome": "Rui Alves",
+  "partido": "REPUBLICANOS",
+  "situacao": "EXE"
+ },
+ {
+  "id": "1229",
+  "nome": "Rômulo Fernandes",
+  "partido": "PT",
+  "situacao": "EXE"
+ },
+ {
+  "id": "1230",
+  "nome": "Solange Freitas",
+  "partido": "UNIÃO",
+  "situacao": "EXE"
+ },
+ {
+  "id": "1231",
+  "nome": "Thainara Faria",
+  "partido": "PT",
+  "situacao": "EXE"
+ },
+ {
+  "id": "1232",
+  "nome": "Tomé Abduch",
+  "partido": "REPUBLICANOS",
+  "situacao": "EXE"
+ },
+ {
+  "id": "1233",
+  "nome": "Vitão do Cachorrão",
+  "partido": "PODE",
+  "situacao": "EXE"
+ },
+ {
+  "id": "1237",
+  "nome": "André Bueno",
+  "partido": "MDB",
+  "situacao": "EXE"
+ },
+ {
+  "id": "2041",
+  "nome": "Fábio Faria de Sá",
+  "partido": "PODE",
+  "situacao": "EXE"
+ },
+ {
+  "id": "2042",
+  "nome": "Marcelo Aguiar",
+  "partido": "PL",
+  "situacao": "EXE"
+ },
+ {
+  "id": "2081",
+  "nome": "Profª Camila Godoi",
+  "partido": "UNIÃO",
+  "situacao": "EXE"
+ }
+]

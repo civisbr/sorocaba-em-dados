@@ -11,6 +11,7 @@ Dados públicos de Sorocaba/SP em um site estático, leve e com fonte à vista. 
 | [Emprego](https://civisbr.github.io/sorocaba-em-dados/emprego/) | Sorocaba está gerando mais ou menos empregos? | Novo CAGED (MTE) | mensal |
 | [Combustível](https://civisbr.github.io/sorocaba-em-dados/combustivel/) | Como os preços mudam ao longo do tempo? | Levantamento de Preços de Combustíveis (ANP) | semanal |
 | [Escolas](https://civisbr.github.io/sorocaba-em-dados/escolas/) | O que os dados mostram sobre cada escola? | Censo Escolar e IDEB (INEP) | anual |
+| [Representantes](https://civisbr.github.io/sorocaba-em-dados/representantes/) | Quem governa e quem representa Sorocaba? | TSE, Câmara dos Deputados e Alesp | por eleição |
 | [A cidade](https://civisbr.github.io/sorocaba-em-dados/cidade/) | Qual o tamanho da cidade, em gente e economia? | Censo 2022, estimativas e PIB (IBGE) | anual |
 
 Cada painel mostra a fonte primária, a data de referência, a data da coleta e as limitações conhecidas. Os dados publicados ficam em `data/public/*.json` e também são servidos pelo site em `/data/`.
@@ -55,12 +56,14 @@ uv run python -m scripts.fetch_caged --auto 24 --acesso-em "$(date -u +%F)"
 uv run python -m scripts.fetch_anp   --acesso-em "$(date -u +%F)"
 uv run python -m scripts.fetch_inep  --acesso-em "$(date -u +%F)"
 uv run python -m scripts.fetch_perfil --acesso-em "$(date -u +%F)"
+uv run python -m scripts.fetch_representantes --acesso-em "$(date -u +%F)"  # baixa ~1 GB do TSE
 
 # transformar e gerar o site (offline)
 uv run python -m scripts.build_emprego
 uv run python -m scripts.build_combustivel
 uv run python -m scripts.build_escolas
 uv run python -m scripts.build_perfil
+uv run python -m scripts.build_representantes
 uv run python -m scripts.render
 
 python3 -m http.server --directory dist 8080
@@ -81,7 +84,7 @@ docs/fontes.md   catálogo e verificação das fontes
 
 ## Próximos passos
 
-Representantes, segurança, emendas e saúde estão registrados como v2 em `project.md`. O painel de Emprego ainda não mostra faixa salarial: falta uma tabela de salário mínimo com fonte, e o site não estima esse valor.
+Segurança, emendas e saúde estão registrados como v2 em `project.md`. O painel de Emprego ainda não mostra faixa salarial: falta uma tabela de salário mínimo com fonte, e o site não estima esse valor.
 
 ## Contribuindo
 

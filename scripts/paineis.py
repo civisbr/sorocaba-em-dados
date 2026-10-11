@@ -107,4 +107,27 @@ PAINEIS = {
             "Não calculamos PIB per capita: o IBGE não publica esse valor nessa tabela.",
         ],
     },
+    "representantes": {
+        "nav": "Representantes",
+        "titulo": "Quem governa e quem representa",
+        "h1": "Quem governa Sorocaba e quem representa a cidade na política?",
+        "pergunta": "Quem são o prefeito, o vice, os vereadores e os deputados mais votados em Sorocaba?",
+        "fonte": "TSE, Câmara dos Deputados e Alesp",
+        "cta": "Ver os representantes",
+        "tom": "card",
+        "descricao": "Prefeito, vice, vereadores eleitos em 2024 e os deputados federais e estaduais mais votados na cidade, com a eleição de cada um.",
+        "meta_desc": "Prefeito, vice e vereadores de Sorocaba, e deputados federais e estaduais mais votados na cidade, com fonte e eleição de cada um.",
+        "palavras": ["prefeito", "vice", "vereadores", "deputados", "deputado", "federal", "estadual", "câmara", "alesp", "política", "eleitos", "tse"],
+        "blocos": [],
+        "glossario": [
+            ("Eleito não é o mesmo que em exercício", "O TSE informa quem ganhou a eleição. Licenças, renúncias e suplentes que assumem podem alterar quem exerce o mandato hoje."),
+            ("Deputado da cidade?", "Deputados federais e estaduais são eleitos pelo estado inteiro. Aqui listamos os eleitos que mais receberam votos em Sorocaba; isso não os torna representantes exclusivos da cidade."),
+            ("Mandato", "Prefeito, vice e vereadores: 4 anos a partir de 1º de janeiro após a eleição. Deputados: 4 anos a partir de 1º de fevereiro."),
+        ],
+        "limitacoes": [
+            "A lista de vereadores é a dos eleitos em 2024, sem conferência de exercício: não há fonte confirmada para isso.",
+            "A conferência de exercício dos deputados é por nome nas listas oficiais; sem correspondência única, mostramos “sem confirmação”.",
+            "Não avaliamos desempenho nem fazemos ranking de mérito; a ordem dos deputados é só a de votos na cidade.",
+        ],
+    },
 }

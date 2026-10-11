@@ -1,0 +1,58 @@
+{% extends "paineis/painel.html" %}
+{% from "_macros.html" import icone %}
+{% block resumo %}
+<section aria-labelledby="resumo" class="resumo-real">
+  <h2 id="resumo" class="rotulo-resumo">Prefeitura de Sorocaba, 2025–2028</h2>
+  <p class="numero-grande nome-grande">{{ prefeito.nome | nome_br }}</p>
+  <p class="resumo-texto">{{ prefeito.partido }}, prefeito eleito em {{ prefeito.eleicao }}. Vice: <strong>{{ vice.nome | nome_br }}</strong> ({{ vice.partido }}). Mandato de {{ prefeito.mandato_inicio | data_br }} a {{ prefeito.mandato_fim | data_br }}.</p>
+  <p class="pequeno suave">O TSE informa quem foi eleito. Afastamentos ou substituições durante o mandato não aparecem nesta lista.</p>
+</section>
+{% endblock %}
+{% block explorar %}
+<section aria-labelledby="ver-t" class="bloco-painel">
+  <h2 id="ver-t" class="h2-medio sem-topo">Câmara Municipal ({{ vereadores | length }} vereadores eleitos em 2024)</h2>
+  <div class="grade-2">
+    <article class="quadro-card">
+      <h3>Vereadores</h3>
+      <ul class="lista-simples">{% for v in vereadores %}<li><span>{{ v.nome | nome_br }}</span> <span class="suave">{{ v.partido }}</span></li>{% endfor %}</ul>
+    </article>
+    <article class="quadro-card">
+      <h3>Vagas por partido</h3><p class="suave">Quantos vereadores cada partido elegeu em 2024.</p>
+      <ul class="setores">{% for p, n in partidos %}<li><span class="nome">{{ p }}</span><span class="val">{{ n }}</span><span class="setor-barra pos" style="width: {{ n / partidos[0][1] * 100 }}%"></span></li>{% endfor %}</ul>
+    </article>
+  </div>
+</section>
+
+<section aria-labelledby="dep-t" class="bloco-painel">
+  <h2 id="dep-t" class="h2-medio sem-topo">Deputados mais votados em Sorocaba</h2>
+  <p class="suave">Deputados são eleitos pelo estado inteiro. Abaixo, os 5 eleitos que mais receberam votos nominais em Sorocaba em cada eleição.</p>
+  {% for titulo, blocos in deputados %}
+  <h3 class="h3-sec">{{ titulo }}</h3>
+  <div class="grade-2">
+    {% for sub, lista in blocos %}
+    <article class="quadro-card">
+      <h4>{{ sub }}</h4>
+      <div class="rolagem"><table>
+        <caption class="so-leitor">{{ titulo }}: {{ sub }}</caption>
+        <thead><tr><th scope="col">Nome</th><th scope="col">Partido</th><th scope="col">Votos na cidade</th><th scope="col">% na cidade</th>{% if lista and lista[0].eleicao == 2022 %}<th scope="col">Em exercício</th>{% endif %}</tr></thead>
+        <tbody>{% for r in lista %}<tr><th scope="row">{{ r.nome | nome_br }}</th><td>{{ r.partido }}</td><td>{{ r.votos_na_cidade | num }}</td><td>{{ r.pct_votos_na_cidade | brl1 }}%</td>{% if r.eleicao == 2022 %}<td>{{ "Confirmado" if r.em_exercicio else "Sem confirmação" }}</td>{% endif %}</tr>{% endfor %}</tbody>
+      </table></div>
+    </article>
+    {% endfor %}
+  </div>
+  {% endfor %}
+  <p class="pequeno suave">“Sem confirmação” significa que não achamos um nome correspondente na lista oficial de deputados em exercício (Câmara ou Alesp), por exemplo por licença ou por grafia diferente. Não indica irregularidade.</p>
+</section>
+{% endblock %}
+{% block metodologia %}
+<ul class="lista-curta">{% for n in env.qualidade.notas %}{% if not n.startswith("SHA-256") %}<li>{{ n }}</li>{% endif %}{% endfor %}</ul>
+{% endblock %}
+{% block proveniencia %}
+<dl class="proveniencia">
+  <dt>Fontes</dt><dd><a href="https://dadosabertos.tse.jus.br/">TSE</a>, <a href="https://dadosabertos.camara.leg.br/">Câmara dos Deputados</a>, <a href="https://www.al.sp.gov.br/dados-abertos/">Alesp</a></dd>
+  <dt>Eleições</dt><dd>{{ ref_rep }}</dd>
+  <dt>Coletado em</dt><dd>{{ env.fonte.acesso_em | data_br }}</dd>
+  <dt>Dados</dt><dd><a href="{{ raiz }}data/representantes.json">representantes.json</a></dd>
+  <dt>Código</dt><dd><a href="{{ repo_url }}/blob/main/{{ script }}">{{ script }}</a></dd>
+</dl>
+{% endblock %}

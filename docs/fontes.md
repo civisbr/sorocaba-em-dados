@@ -278,31 +278,18 @@ estarem prontos (`project.md` §1 e §11). Status abaixo reflete só o que foi v
   ano; se necessário, usar a tabela oficial de per capita com fonte própria.
 - CEMPRE (tabela 6449) foi **encerrado em 2021**: não usar como "economia atual".
 
-## TSE — prefeito, vice e vereadores (eleitos 2024) e deputados (eleitos 2022)
+## TSE, Câmara e Alesp — representantes
 
-**Status:** `parcial`. Arquivos baixáveis confirmados; conteúdo não processado.
+**Status:** `verificada` e **implementada** (painel "Representantes", `fetch_representantes.py` e `build_representantes.py`).
 
-- `cdn.tse.jus.br/estatistica/sead/odsele/consulta_cand/consulta_cand_2024.zip` (64 MB):
-  candidatos e situação de totalização. Usar só nome, cargo, partido, situação; descartar
-  demais colunas (contêm dados pessoais desnecessários).
-- `.../votacao_candidato_munzona/votacao_candidato_munzona_2022.zip` (406 MB, todas as UFs):
-  votos por candidato e município. Base para "deputados mais votados em Sorocaba".
-- **Limitação:** o TSE registra quem foi eleito, não quem está em exercício. Vereador
-  licenciado ou suplente que assumiu não aparece. Dizer isso na página.
-- **Deputado não é "de Sorocaba".** Eleitos pelo estado. O recorte defensável é "mais votados
-  na cidade", com o critério e a eleição explícitos.
-- As eleições gerais de 04/10/2026 já ocorreram; os eleitos assumem em fev/2027. Até lá, o
-  mandato vigente é o eleito em 2022. A página precisa dizer isso.
-
-## Câmara dos Deputados e Alesp — mandato vigente
-
-**Status:** `parcial`.
-
-- Câmara: `dadosabertos.camara.leg.br/api/v2/deputados?siglaUf=SP` responde (24 KB). Lista
-  deputados em exercício. Não processado.
-- Alesp: portal de dados abertos publica `repositorioDados/deputados/deputados.xml`, segundo
-  busca; **não consegui confirmar o conteúdo**. O portal avisa mudança de endereço para
-  `ckan.al.sp.gov.br`. Verificar antes de depender.
+- **Municipais 2024:** `consulta_cand_2024.zip` (64 MB), arquivo `consulta_cand_2024_SP.csv`. Sorocaba no TSE é o código **71455** (`SG_UE`), diferente do IBGE. Eleitos: 1 prefeito, 1 vice, 25 vereadores (17 por quociente partidário, 8 por média). O arquivo mistura eleições suplementares de outros municípios; o filtro usa `SG_UE`, ano e data da eleição.
+- **Deputados 2022 e 2026:** `votacao_candidato_munzona_AAAA.zip` (580 MB e 450 MB), arquivos `..._SP.csv` de 0,9 a 1,2 GB descompactados, lidos em fluxo. Votos nominais válidos somados por candidato nas zonas de Sorocaba (turno 1); só eleitos entram no repositório, e o total de votos por cargo vai à parte para o percentual. Resultado de 2026 disponível desde a apuração de 04/10/2026; os eleitos assumem em 01/02/2027.
+- **Dado pessoal:** os arquivos do TSE trazem CPF, e-mail, título de eleitor e data de nascimento. Nada disso é gravado: o fetch seleciona 6 colunas (ano, cargo, nome de urna, partido, situação, turno ou votos) e um teste confere que não há sequência de 11 dígitos nem `@` no bruto.
+- **Câmara:** `dadosabertos.camara.leg.br/api/v2/deputados?siglaUf=SP` lista 70 deputados em exercício na coleta.
+- **Alesp:** o endereço que funciona é `https://www.al.sp.gov.br/repositorioDados/deputados/deputados.xml` (confirmado em 2026-10-11, 94 deputados, todos `EXE`). O `ckan.al.sp.gov.br` não respondeu. Só nome parlamentar, partido, situação e id são guardados.
+- **Exercício:** conferido por nome contra as listas oficiais (igualdade de palavras, ou o nome menor, de 2+ palavras, contido no maior), exigindo correspondência única. Sem correspondência o campo fica `null` ("sem confirmação"): licenciados (ex.: secretários de Estado) e renunciantes aparecem assim. Nunca se afirma que alguém *não* está em exercício.
+- **Vereadores:** só os eleitos; sem fonte confirmada para exercício ou suplentes. A Câmara Municipal não foi verificada.
+- **Cadência:** o zip do TSE é regerado todo dia, então `Last-Modified` não serve para pular o download. O workflow roda trimestralmente e só grava se o conteúdo filtrado mudar.
 
 ## SSP-SP — segurança pública
 

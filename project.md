@@ -62,8 +62,8 @@ ajuste por complexidade tornam a modelagem lenta demais para o v1. Não começar
 
 | # | Item | Pergunta | Restrição de projeto |
 |---|---|---|---|
-| 4 | Perfil da cidade (IBGE) | Quanto a cidade tem de gente, área e economia? | Campo que o IBGE não publica fica `null`; sem PIB per capita calculado por conta própria |
-| 5 | Representantes (TSE, Câmara, Alesp) | Quem governa e quem representa Sorocaba? | Eleito ≠ em exercício; deputado é do estado, então o recorte é "mais votados na cidade" com critério explícito; sem ranking nem juízo de mérito |
+| 4 ✔ | Perfil da cidade (IBGE) | Quanto a cidade tem de gente, área e economia? | Campo que o IBGE não publica fica `null`; sem PIB per capita calculado por conta própria |
+| 5 ✔ | Representantes (TSE, Câmara, Alesp) | Quem governa e quem representa Sorocaba? | Eleito ≠ em exercício; deputado é do estado, então o recorte é "mais votados na cidade" com critério explícito; sem ranking nem juízo de mérito |
 | 6 | Segurança (SSP-SP) | Que tipos de crime acontecem, quando e com que tendência? | Boletim mede registro, não crime. Bairro só como contagem com a limitação explicada; **sem ranking de bairros** (princípio 5) |
 | 7 | Emendas com destino a Sorocaba | Que dinheiro federal e estadual chega à cidade? | Valores, autor, finalidade e status, sem adjetivo. Não classificar projeto de lei como "beneficia Sorocaba" automaticamente |
 | 8 | Saúde (SIH/CNES/SIM) | — | Ver parágrafo acima |

@@ -1,0 +1,422 @@
+[
+ {
+  "id": 66828,
+  "nome": "Fausto Pinato",
+  "partido": "UNIÃO",
+  "uf": "SP"
+ },
+ {
+  "id": 73433,
+  "nome": "Arlindo Chinaglia",
+  "partido": "PT",
+  "uf": "SP"
+ },
+ {
+  "id": 73441,
+  "nome": "Celso Russomanno",
+  "partido": "REPUBLICANOS",
+  "uf": "SP"
+ },
+ {
+  "id": 73604,
+  "nome": "Rui Falcão",
+  "partido": "PT",
+  "uf": "SP"
+ },
+ {
+  "id": 74262,
+  "nome": "Carlos Sampaio",
+  "partido": "PSD",
+  "uf": "SP"
+ },
+ {
+  "id": 74270,
+  "nome": "Gilberto Nascimento",
+  "partido": "PODE",
+  "uf": "SP"
+ },
+ {
+  "id": 74273,
+  "nome": "Jefferson Campos",
+  "partido": "PL",
+  "uf": "SP"
+ },
+ {
+  "id": 74784,
+  "nome": "Luiza Erundina",
+  "partido": "PSOL",
+  "uf": "SP"
+ },
+ {
+  "id": 141391,
+  "nome": "Arnaldo Jardim",
+  "partido": "CIDADANIA",
+  "uf": "SP"
+ },
+ {
+  "id": 141398,
+  "nome": "Carlos Zarattini",
+  "partido": "PT",
+  "uf": "SP"
+ },
+ {
+  "id": 141456,
+  "nome": "Jilmar Tatto",
+  "partido": "PT",
+  "uf": "SP"
+ },
+ {
+  "id": 141488,
+  "nome": "Paulo Teixeira",
+  "partido": "PT",
+  "uf": "SP"
+ },
+ {
+  "id": 141518,
+  "nome": "Paulinho da Força",
+  "partido": "SOLIDARIEDADE",
+  "uf": "SP"
+ },
+ {
+  "id": 141555,
+  "nome": "Vinicius Carvalho",
+  "partido": "PL",
+  "uf": "SP"
+ },
+ {
+  "id": 154178,
+  "nome": "Milton Vieira",
+  "partido": "REPUBLICANOS",
+  "uf": "SP"
+ },
+ {
+  "id": 154700,
+  "nome": "Paulo Soares",
+  "partido": "PODE",
+  "uf": "SP"
+ },
+ {
+  "id": 160545,
+  "nome": "Alexandre Leite",
+  "partido": "UNIÃO",
+  "uf": "SP"
+ },
+ {
+  "id": 160548,
+  "nome": "Jonas Donizette",
+  "partido": "PSB",
+  "uf": "SP"
+ },
+ {
+  "id": 160558,
+  "nome": "Paulo Freire Costa",
+  "partido": "PL",
+  "uf": "SP"
+ },
+ {
+  "id": 160561,
+  "nome": "Missionário José Olimpio",
+  "partido": "PL",
+  "uf": "SP"
+ },
+ {
+  "id": 160601,
+  "nome": "Pr. Marco Feliciano",
+  "partido": "PL",
+  "uf": "SP"
+ },
+ {
+  "id": 160976,
+  "nome": "Tiririca",
+  "partido": "PSD",
+  "uf": "SP"
+ },
+ {
+  "id": 162067,
+  "nome": "Kiko Celeguim",
+  "partido": "PT",
+  "uf": "SP"
+ },
+ {
+  "id": 175765,
+  "nome": "Ribamar Silva",
+  "partido": "PODE",
+  "uf": "SP"
+ },
+ {
+  "id": 178829,
+  "nome": "Capitão Augusto",
+  "partido": "PL",
+  "uf": "SP"
+ },
+ {
+  "id": 178972,
+  "nome": "Alex Manente",
+  "partido": "CIDADANIA",
+  "uf": "SP"
+ },
+ {
+  "id": 178975,
+  "nome": "Baleia Rossi",
+  "partido": "MDB",
+  "uf": "SP"
+ },
+ {
+  "id": 178983,
+  "nome": "Marcio Alvino",
+  "partido": "PL",
+  "uf": "SP"
+ },
+ {
+  "id": 178985,
+  "nome": "Miguel Lombardi",
+  "partido": "PL",
+  "uf": "SP"
+ },
+ {
+  "id": 178986,
+  "nome": "Nilto Tatto",
+  "partido": "PT",
+  "uf": "SP"
+ },
+ {
+  "id": 178987,
+  "nome": "Orlando Silva",
+  "partido": "PCdoB",
+  "uf": "SP"
+ },
+ {
+  "id": 178992,
+  "nome": "Vitor Lippi",
+  "partido": "PSD",
+  "uf": "SP"
+ },
+ {
+  "id": 204485,
+  "nome": "Luiz Carlos Motta",
+  "partido": "PL",
+  "uf": "SP"
+ },
+ {
+  "id": 204501,
+  "nome": "Alencar Santana",
+  "partido": "PT",
+  "uf": "SP"
+ },
+ {
+  "id": 204504,
+  "nome": "Cezinha de Madureira",
+  "partido": "PL",
+  "uf": "SP"
+ },
+ {
+  "id": 204506,
+  "nome": "Marcos Pereira",
+  "partido": "REPUBLICANOS",
+  "uf": "SP"
+ },
+ {
+  "id": 204511,
+  "nome": "David Soares",
+  "partido": "PODE",
+  "uf": "SP"
+ },
+ {
+  "id": 204525,
+  "nome": "Rosana Valle",
+  "partido": "PL",
+  "uf": "SP"
+ },
+ {
+  "id": 204526,
+  "nome": "Luiz Philippe de Orleans e Bragança",
+  "partido": "PL",
+  "uf": "SP"
+ },
+ {
+  "id": 204528,
+  "nome": "Adriana Ventura",
+  "partido": "NOVO",
+  "uf": "SP"
+ },
+ {
+  "id": 204531,
+  "nome": "Guilherme Derrite",
+  "partido": "PP",
+  "uf": "SP"
+ },
+ {
+  "id": 204534,
+  "nome": "Tabata Amaral",
+  "partido": "PSB",
+  "uf": "SP"
+ },
+ {
+  "id": 204535,
+  "nome": "Sâmia Bomfim",
+  "partido": "PSOL",
+  "uf": "SP"
+ },
+ {
+  "id": 204536,
+  "nome": "Kim Kataguiri",
+  "partido": "MISSÃO",
+  "uf": "SP"
+ },
+ {
+  "id": 204540,
+  "nome": "Maria Rosas",
+  "partido": "REPUBLICANOS",
+  "uf": "SP"
+ },
+ {
+  "id": 220633,
+  "nome": "Ricardo Salles",
+  "partido": "NOVO",
+  "uf": "SP"
+ },
+ {
+  "id": 220635,
+  "nome": "Bruno Ganem",
+  "partido": "PODE",
+  "uf": "SP"
+ },
+ {
+  "id": 220637,
+  "nome": "Marina Silva",
+  "partido": "REDE",
+  "uf": "SP"
+ },
+ {
+  "id": 220638,
+  "nome": "Antonio Carlos Rodrigues",
+  "partido": "PODE",
+  "uf": "SP"
+ },
+ {
+  "id": 220640,
+  "nome": "Juliana Cardoso",
+  "partido": "PT",
+  "uf": "SP"
+ },
+ {
+  "id": 220641,
+  "nome": "Rodrigo Gambale",
+  "partido": "PODE",
+  "uf": "SP"
+ },
+ {
+  "id": 220642,
+  "nome": "Delegado Bruno Lima",
+  "partido": "PODE",
+  "uf": "SP"
+ },
+ {
+  "id": 220643,
+  "nome": "Sônia Guajajara",
+  "partido": "PSOL",
+  "uf": "SP"
+ },
+ {
+  "id": 220644,
+  "nome": "Rosangela Moro",
+  "partido": "PL",
+  "uf": "SP"
+ },
+ {
+  "id": 220645,
+  "nome": "Erika Hilton",
+  "partido": "PSOL",
+  "uf": "SP"
+ },
+ {
+  "id": 220646,
+  "nome": "Felipe Becari",
+  "partido": "PODE",
+  "uf": "SP"
+ },
+ {
+  "id": 220647,
+  "nome": "Mauricio Neves",
+  "partido": "PP",
+  "uf": "SP"
+ },
+ {
+  "id": 220648,
+  "nome": "Marangoni",
+  "partido": "PODE",
+  "uf": "SP"
+ },
+ {
+  "id": 220649,
+  "nome": "Delegado da Cunha",
+  "partido": "UNIÃO",
+  "uf": "SP"
+ },
+ {
+  "id": 220650,
+  "nome": "Paulo Alexandre Barbosa",
+  "partido": "PSD",
+  "uf": "SP"
+ },
+ {
+  "id": 220651,
+  "nome": "Simone Marquetto",
+  "partido": "PP",
+  "uf": "SP"
+ },
+ {
+  "id": 220652,
+  "nome": "Delegado Palumbo",
+  "partido": "PODE",
+  "uf": "SP"
+ },
+ {
+  "id": 220653,
+  "nome": "Fábio Teruel",
+  "partido": "MDB",
+  "uf": "SP"
+ },
+ {
+  "id": 220654,
+  "nome": "Delegado Paulo Bilynskyj",
+  "partido": "PL",
+  "uf": "SP"
+ },
+ {
+  "id": 220655,
+  "nome": "Mario Frias",
+  "partido": "PL",
+  "uf": "SP"
+ },
+ {
+  "id": 221148,
+  "nome": "Alfredinho",
+  "partido": "PT",
+  "uf": "SP"
+ },
+ {
+  "id": 221328,
+  "nome": "Adilson Barroso",
+  "partido": "PL",
+  "uf": "SP"
+ },
+ {
+  "id": 221338,
+  "nome": "Professora Luciene Cavalcante",
+  "partido": "PSOL",
+  "uf": "SP"
+ },
+ {
+  "id": 226837,
+  "nome": "Saulo Pedroso",
+  "partido": "PSD",
+  "uf": "SP"
+ },
+ {
+  "id": 230957,
+  "nome": "João Cury",
+  "partido": "MDB",
+  "uf": "SP"
+ }
+]
