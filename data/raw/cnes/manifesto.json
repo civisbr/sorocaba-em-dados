@@ -1,6 +1,7 @@
 {
   "competencia": "202608",
   "fonte": "CNES/DATASUS: arquivos ST e LT de SP (FTP) + cadastro aberto de estabelecimentos (nomes e endereços)",
+  "leitos_total": 2092,
   "n_estabelecimentos": 57,
   "n_hospitais": 12,
   "n_sem_nome": 0,

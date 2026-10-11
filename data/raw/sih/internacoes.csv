@@ -1849,6 +1849,7 @@ competencia;cnes;espec;capitulo;residente;internacoes;dias;dias_uti
 202605;2708779;09;Tumores (neoplasias);1;11;0;0
 202605;2708779;99;Outros capítulos;0;3;0;0
 202605;2708779;99;Outros capítulos;1;5;11;0
+202605;2708779;99;Transtornos mentais e comportamentais;1;15;329;0
 202605;2765942;01;Doenças do aparelho digestivo;1;28;38;0
 202605;2765942;01;Doenças do aparelho urinário e genital;1;59;72;10
 202605;2765942;01;Doenças do coração e da circulação;0;34;124;42
@@ -2038,6 +2039,7 @@ competencia;cnes;espec;capitulo;residente;internacoes;dias;dias_uti
 202606;2708779;09;Tumores (neoplasias);1;5;0;0
 202606;2708779;99;Outros capítulos;0;4;0;0
 202606;2708779;99;Outros capítulos;1;8;21;0
+202606;2708779;99;Transtornos mentais e comportamentais;1;21;388;0
 202606;2765942;01;Doenças do aparelho digestivo;1;19;19;0
 202606;2765942;01;Doenças do aparelho urinário e genital;1;49;52;4
 202606;2765942;01;Doenças do coração e da circulação;0;74;236;54
@@ -2229,6 +2231,7 @@ competencia;cnes;espec;capitulo;residente;internacoes;dias;dias_uti
 202607;2708779;09;Tumores (neoplasias);0;8;0;0
 202607;2708779;09;Tumores (neoplasias);1;5;0;0
 202607;2708779;99;Outros capítulos;1;1;0;0
+202607;2708779;99;Transtornos mentais e comportamentais;1;17;294;0
 202607;2765942;01;Doenças do aparelho digestivo;1;29;32;2
 202607;2765942;01;Doenças do aparelho urinário e genital;1;69;68;22
 202607;2765942;01;Doenças do coração e da circulação;0;53;242;90

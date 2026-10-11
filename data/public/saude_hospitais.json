@@ -3187,19 +3187,19 @@
     {
       "cnes": "2708779",
       "competencia_processamento": "202605",
-      "internacoes": 1405,
+      "internacoes": 1420,
       "recorte": "internacao_mes"
     },
     {
       "cnes": "2708779",
       "competencia_processamento": "202606",
-      "internacoes": 1364,
+      "internacoes": 1385,
       "recorte": "internacao_mes"
     },
     {
       "cnes": "2708779",
       "competencia_processamento": "202607",
-      "internacoes": 1416,
+      "internacoes": 1433,
       "recorte": "internacao_mes"
     },
     {
@@ -3493,7 +3493,7 @@
     {
       "cnes": "2708779",
       "especialidade": "Outras especialidades",
-      "internacoes": 104,
+      "internacoes": 157,
       "recorte": "internacao_especialidade"
     },
     {
@@ -3877,14 +3877,14 @@
     },
     {
       "cnes": "2708779",
-      "dias": 82205,
+      "dias": 83216,
       "dias_uti": 19645,
-      "internacoes": 16599,
+      "internacoes": 16652,
       "leitos_sus": 265,
       "meses": 12,
       "pct_de_fora": 7.7,
       "recorte": "internacao_total",
-      "uso_estimado_pct": 85.0
+      "uso_estimado_pct": 86.0
     },
     {
       "cnes": "2765942",
@@ -3925,7 +3925,7 @@
       "Não existe dado aberto de ocupação ou fila de hospital. O 'uso estimado dos leitos SUS' divide os dias de internação SUS dos últimos 12 meses pelos leitos SUS existentes vezes 365. É uma ordem de grandeza, não a lotação do dia. Os dias de células com menos de 5 internações foram zerados por privacidade, o que subestima um pouco o valor.",
       "O uso estimado só aparece para hospitais com 20 leitos SUS ou mais.",
       "Contagem de internações e de dias não mede qualidade do hospital: depende do porte, da especialidade e da gravidade dos casos.",
-      "SHA-256 dos recortes de coleta: 13cebc54eabba9d0134830649d8df2dda336e2e48128172b479d3a00e15e8fb9"
+      "SHA-256 dos recortes de coleta: 70baa459619f1bc7d4215d7b10616ed6e9ba587733059e8f8e8dd5d77aba5778"
     ]
   },
   "referencia": {
