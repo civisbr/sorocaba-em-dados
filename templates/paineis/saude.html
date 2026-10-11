@@ -1,0 +1,58 @@
+{% extends "paineis/painel.html" %}
+{% from "_macros.html" import icone %}
+{% block resumo %}
+<section aria-labelledby="resumo" class="resumo-real">
+  <h2 id="resumo" class="rotulo-resumo">Situação nesta semana ({{ ref_saude }})</h2>
+  <ul class="doencas-faixas">
+    {% for d in doencas %}
+    <li class="doenca-faixa nivel-{{ d.nivel }}">
+      <p class="doenca-nome">{{ d.rotulo }}</p>
+      <p class="doenca-nivel"><span class="nivel-ponto" aria-hidden="true"></span>{{ d.nivel_rotulo }}</p>
+      <p class="pequeno">{{ d.casos_8s | num }} casos notificados nas últimas 8 semanas · incidência estimada {{ d.inc100k | brl1 }} por 100 mil na última semana</p>
+    </li>
+    {% endfor %}
+  </ul>
+  {% for a in sem_dado_recente %}<p class="pequeno suave">{{ a.rotulo }}: sem dado recente (última semana publicada: {{ a.ultima_semana }}).</p>{% endfor %}
+  <p class="pequeno suave">Casos notificados são suspeitas registradas, não casos confirmados. A última semana costuma subir depois.</p>
+</section>
+{% endblock %}
+{% macro barras(g, id, titulo) %}
+<svg class="grafico" viewBox="0 0 {{ g.largura }} {{ g.altura }}" role="img" aria-labelledby="{{ id }}-t"><title id="{{ id }}-t">{{ titulo }}</title>
+  {% for b in g.barras %}<rect class="b-pos" x="{{ b.x }}" y="{{ b.y }}" width="{{ b.w }}" height="{{ b.h }}"><title>{{ b.rotulo }}: {{ b.valor | num }} casos notificados</title></rect>{% endfor %}
+  <line class="zero" x1="0" x2="{{ g.largura }}" y1="{{ g.zero }}" y2="{{ g.zero }}"/>
+  {% for t in g.eixo_x %}<text class="eixo" x="{{ t.x }}" y="{{ g.y_rotulos }}" text-anchor="{{ t.ancora }}">{{ t.texto }}</text>{% endfor %}
+</svg>
+{% endmacro %}
+{% block explorar %}
+{% for d in doencas %}
+<section aria-labelledby="d-{{ d.nome }}" class="bloco-painel">
+  <h2 id="d-{{ d.nome }}" class="h2-medio sem-topo">{{ d.rotulo }}: últimas 52 semanas</h2>
+  <div class="grade-2">
+    <article class="quadro-card"><h3>Casos notificados por semana</h3>{{ barras(d.grafico, "g-" ~ d.nome, "Casos notificados de " ~ d.rotulo | lower ~ " por semana em Sorocaba") }}
+      <details class="tabela-mes"><summary>Ver os valores por semana</summary>
+        <div class="rolagem"><table>
+          <caption class="so-leitor">{{ d.rotulo }} por semana: notificados, estimados e nível de alerta</caption>
+          <thead><tr><th scope="col">Semana</th><th scope="col">Notificados</th><th scope="col">Estimados</th><th scope="col">Nível</th></tr></thead>
+          <tbody>{% for t in d.tabela %}<tr><th scope="row">{{ t.rotulo }}</th><td>{{ t.casos | num }}</td><td>{{ t.casos_est | brl1 }}</td><td>{{ t.nivel_rotulo }}</td></tr>{% endfor %}</tbody>
+        </table></div>
+      </details>
+    </article>
+    <article class="quadro-card"><h3>Mesmas 8 semanas, ano a ano</h3>
+      {% if d.comparacao %}<ul class="setores">{% for c in d.comparacao %}<li><span class="nome">{{ c.ano }}</span><span class="val">{{ c.casos | num }}</span></li>{% endfor %}</ul>
+      <p class="pequeno suave">Casos notificados da semana {{ d.semana - 7 }} à {{ d.semana }} de cada ano.</p>
+      {% else %}<p class="suave">Comparação indisponível no começo do ano (a janela de 8 semanas cruza a virada).</p>{% endif %}
+    </article>
+  </div>
+</section>
+{% endfor %}
+<p class="pequeno suave">Fonte: <a href="{{ env.fonte.url }}">InfoDengue (Fiocruz/FGV)</a>, coletado em {{ env.fonte.acesso_em | data_br }}. <a href="{{ raiz }}data/saude_doencas.json">saude_doencas.json</a>.</p>
+{% endblock %}
+{% block metodologia %}<ul class="lista-curta">{% for n in env.qualidade.notas %}{% if not n.startswith("SHA-256") %}<li>{{ n }}</li>{% endif %}{% endfor %}</ul>{% endblock %}
+{% block proveniencia %}
+<dl class="proveniencia">
+  <dt>Fonte</dt><dd><a href="{{ env.fonte.url }}">{{ env.fonte.nome }}</a></dd>
+  <dt>Verificado em</dt><dd>{{ env.fonte.acesso_em | data_br }}</dd>
+  <dt>Dados</dt><dd><a href="{{ raiz }}data/saude_doencas.json">saude_doencas.json</a></dd>
+  <dt>Código</dt><dd><a href="{{ repo_url }}/blob/main/{{ script }}">{{ script }}</a></dd>
+</dl>
+{% endblock %}

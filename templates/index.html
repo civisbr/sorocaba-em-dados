@@ -81,6 +81,10 @@
         {% elif p.id == "comparativo" %}
         <span class="cartao-numero">{{ comp.blocos[0].ultimo.pos_sp }}º</span>
         <span class="cartao-ctx">maior município paulista em população, entre {{ comp.blocos[0].ultimo.n_sp }} ({{ comp.blocos[0].ultimo.ano }})</span>
+        {% elif p.id == "saude" %}
+        {% if saude.doencas %}<span class="cartao-numero">{{ saude.doencas[0].casos_8s | num }}</span>
+        <span class="cartao-ctx">casos notificados de {{ saude.doencas[0].rotulo | lower }} nas últimas 8 semanas; alerta {{ saude.doencas[0].nivel_rotulo.split(":")[0] | lower }} ({{ saude.ref_saude }})</span>
+        {% else %}<span class="cartao-numero">—</span><span class="cartao-ctx">sem dado recente de arboviroses</span>{% endif %}
         {% elif p.id == "seguranca" %}
         <span class="cartao-numero">{{ seg.roubos_atual | num }}</span>
         <span class="cartao-ctx">roubos registrados nos 12 meses até {{ seg.mes_fim_curto }}</span>

@@ -130,3 +130,15 @@ def test_desatualizada_vai_para_sem_dado_recente():
     from scripts.render import contexto_saude_doencas
     ctx = contexto_saude_doencas(_env([(202407, "2024-02-11", 0, 1)], doenca="zika", categoria="desatualizado"))
     assert ctx["doencas"] == [] and ctx["sem_dado_recente"][0]["nome"] == "zika"
+
+
+def test_render_gera_pagina_de_saude_com_nivel_em_texto(tmp_path):
+    import subprocess
+    import sys
+    r = subprocess.run([sys.executable, "-m", "scripts.render", "--saida", str(tmp_path)], capture_output=True, text=True)
+    assert r.returncode == 0, r.stderr
+    html = (tmp_path / "saude" / "index.html").read_text(encoding="utf-8")
+    assert "Quais doenças estão circulando" in html and "Ver os valores por semana" in html
+    assert any(n in html for n in ("Verde", "Amarelo", "Laranja", "Vermelho"))
+    assert (tmp_path / "data" / "saude_doencas.json").exists()
+    assert "Saúde" in (tmp_path / "index.html").read_text(encoding="utf-8")

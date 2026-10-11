@@ -561,6 +561,8 @@ def renderizar(public: Path, saida: Path) -> None:
     arq_prev = public / "previsao.json"
     previsao = json.loads(arq_prev.read_text(encoding="utf-8")) if arq_prev.exists() else None
     ctx_clima = contexto_clima(clima, previsao)
+    saude = json.loads((public / "saude_doencas.json").read_text(encoding="utf-8"))
+    ctx_saude = contexto_saude_doencas(saude)
     radares = json.loads((public / "radares.json").read_text(encoding="utf-8"))
     ctx_trans = contexto_transito(radares)
     acidentes = json.loads((public / "infosiga.json").read_text(encoding="utf-8"))
@@ -601,6 +603,8 @@ def renderizar(public: Path, saida: Path) -> None:
     if sorted(p for _, ids in GRUPOS for p in ids) != sorted(paineis):
         raise ValueError("todo painel precisa estar em exatamente um grupo de scripts.paineis.GRUPOS")
     grupos = [{"nome": nome, "paineis": [paineis[i] for i in ids]} for nome, ids in GRUPOS]
+    flag_sa = saude["qualidade"]["flag"]
+    paineis["saude"].update(status=flag_sa, rotulo_status=ROTULO_STATUS[flag_sa], referencia=ctx_saude["ref_saude"])
     ordem = [p for g in grupos for p in g["paineis"]]
 
     if saida.exists():
@@ -611,7 +615,7 @@ def renderizar(public: Path, saida: Path) -> None:
     (saida / MARCADOR).write_text("saída gerada por scripts/render.py\n", encoding="utf-8")
     for nome in ("style.css", "app.js"):
         shutil.copy(RAIZ / "static" / nome, saida / nome)
-    for nome in ("emprego.json", "combustivel.json", "escolas.json", "perfil.json", "representantes.json", "seguranca.json", "comparativo.json", "clima.json", "radares.json", "infosiga.json"):
+    for nome in ("emprego.json", "combustivel.json", "escolas.json", "perfil.json", "representantes.json", "seguranca.json", "comparativo.json", "clima.json", "radares.json", "infosiga.json", "saude_doencas.json"):
         shutil.copy(public / nome, saida / "data" / nome)
 
     comum = {"paineis": ordem, "grupos": grupos, "repo_url": REPO_URL}
@@ -625,7 +629,7 @@ def renderizar(public: Path, saida: Path) -> None:
             jinja.get_template(template).render(raiz=raiz, **comum, **ctx), encoding="utf-8"
         )
 
-    escrever("index.html", "index.html", "", mapa=mapa, emprego=ctx_emprego, comb=ctx_comb, esc=ctx_esc, cid=ctx_cid, rep=ctx_rep, seg=ctx_seg, comp=ctx_comp, clima=ctx_clima, trans=ctx_trans)
+    escrever("index.html", "index.html", "", mapa=mapa, emprego=ctx_emprego, comb=ctx_comb, esc=ctx_esc, cid=ctx_cid, rep=ctx_rep, seg=ctx_seg, comp=ctx_comp, clima=ctx_clima, trans=ctx_trans, saude=ctx_saude)
     escrever("sobre/index.html", "sobre.html", "../", fontes=[
         ("Emprego", "Novo CAGED — Ministério do Trabalho e Emprego", flag),
         ("Combustível", "Levantamento de Preços de Combustíveis — ANP", flag_c),
@@ -635,6 +639,7 @@ def renderizar(public: Path, saida: Path) -> None:
         ("Segurança", "SSP-SP — ocorrências registradas", flag_s),
         ("Comparativo", "IBGE e INEP — posição entre municípios", flag_c2),
         ("Clima", "INMET e Open-Meteo (ERA5)", "real"),
+        ("Saúde", "InfoDengue (Fiocruz/FGV) — doenças do momento", flag_sa),
         ("Trânsito", "Semob Sorocaba (radares) e Infosiga SP (Detran-SP)", "real"),
     ])
     escrever(
@@ -665,6 +670,7 @@ def renderizar(public: Path, saida: Path) -> None:
         "comparativo/index.html", "paineis/comparativo.html", "../",
         p=paineis["comparativo"], env=comp, script="scripts/build_comparativo.py", **ctx_comp,
     )
+    escrever("saude/index.html", "paineis/saude.html", "../", p=paineis["saude"], env=saude, script="scripts/build_infodengue.py", **ctx_saude)
     escrever(
         "clima/index.html", "paineis/clima.html", "../",
         p=paineis["clima"], env=clima, script="scripts/build_clima.py", **ctx_clima,

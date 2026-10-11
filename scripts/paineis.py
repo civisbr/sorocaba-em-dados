@@ -5,7 +5,7 @@ from __future__ import annotations
 GRUPOS = [
     ("A cidade", ["cidade", "comparativo", "clima"]),
     ("Economia", ["emprego", "combustivel"]),
-    ("Serviços e segurança", ["escolas", "seguranca", "transito"]),
+    ("Serviços e segurança", ["escolas", "saude", "seguranca", "transito"]),
     ("Política", ["representantes"]),
 ]
 
@@ -135,6 +135,30 @@ PAINEIS = {
             "A lista de vereadores é a dos eleitos em 2024, sem conferência de exercício: não há fonte confirmada para isso.",
             "A conferência de exercício dos deputados é por nome nas listas oficiais; sem correspondência única, mostramos “sem confirmação”.",
             "Não avaliamos desempenho nem fazemos ranking de mérito; a ordem dos deputados é só a de votos na cidade.",
+        ],
+    },
+    "saude": {
+        "nav": "Saúde",
+        "titulo": "Doenças do momento",
+        "h1": "Quais doenças estão circulando em Sorocaba agora?",
+        "pergunta": "Como está a dengue e a chikungunya na cidade nesta semana, e como isso se compara aos anos anteriores?",
+        "fonte": "InfoDengue (Fiocruz/FGV), a partir das notificações de vigilância",
+        "cta": "Ver a situação das doenças",
+        "tom": "card",
+        "descricao": "Nível de alerta, casos notificados nas últimas semanas e comparação com os anos anteriores, para dengue e chikungunya.",
+        "meta_desc": "Situação semanal de dengue e chikungunya em Sorocaba segundo o InfoDengue (Fiocruz): nível de alerta, casos notificados e comparação com anos anteriores.",
+        "palavras": ["saúde", "dengue", "chikungunya", "zika", "doenças", "arboviroses", "mosquito", "alerta", "infodengue"],
+        "blocos": [],
+        "glossario": [
+            ("Caso notificado", "Suspeita registrada por um serviço de saúde no sistema de vigilância. Nem todo caso notificado é confirmado."),
+            ("Caso estimado", "Número que o modelo do InfoDengue espera para a semana depois que todas as notificações chegarem, com um intervalo de incerteza."),
+            ("Nível de alerta", "Classificação do modelo do InfoDengue: verde, amarelo, laranja ou vermelho. Não é um aviso oficial da Prefeitura."),
+            ("Incidência por 100 mil", "Casos estimados na semana para cada 100 mil habitantes; permite comparar com outras cidades e épocas."),
+        ],
+        "limitacoes": [
+            "Notificação não é diagnóstico confirmado, e as últimas semanas ainda sobem quando as notificações atrasadas chegam.",
+            "O nível de alerta vem de um modelo; use as orientações da Vigilância em Saúde de Sorocaba para decisões de saúde.",
+            "Por enquanto o painel cobre arboviroses; rede de saúde, internações, mortes e vacinas ainda não estão aqui.",
         ],
     },
     "seguranca": {
