@@ -337,7 +337,7 @@ estarem prontos (`project.md` §1 e §11). Status abaixo reflete só o que foi v
 
 ## Trânsito e mobilidade (candidato v2, pedido em 2026-10-11)
 
-**Status:** `parcial`. Há fontes oficiais, mas nenhuma verificada como dado aberto estruturado. Pesquisa de 2026-10-11:
+**Status:** `parcial`. **Radares implementados** (`fetch_radares.py`, `build_radares.py`, painel "Trânsito"); o restante segue pendente. A lista da Semob é carregada por `POST` em `views/radares/tools/lista-radares.php` (`pag`, `tipo=tabela`), o mesmo endereço que a própria página chama; a página declara 172 radares, mas a paginação (16 páginas de 10) só lista 160, e o manifesto guarda os dois números. O número de série dos equipamentos não é gravado. Pesquisa de 2026-10-11:
 
 - **Semob (Secretaria de Mobilidade), `semobsorocaba.com.br`:** tem páginas públicas de **Radares** (`/radares`, `/radares/locais-operacao`, lista pesquisável de logradouros com velocidade de 40 a 70 km/h, publicada por decreto), Semáforos, Zona Azul, Multas (serviço ao cidadão), Fiscalização e Centro de Controle Operacional Integrado. A lista de radares é carregada por consulta na página; falta confirmar se há endpoint estável ou se exige coleta do HTML. Não há, nessas páginas, quantidade de multas por radar.
 - **URBES, `urbes.com.br`:** `/dados-operacionais` (transporte coletivo, táxi, fretamento, rodoviária, transporte especial), `/transparencia/pesquisa-origem-destino` e relatórios anuais em PDF (2021 a 2025). Serve para transporte coletivo, não para fluxo viário. Portal da Lei de Acesso à Informação em `leideacesso.etransparencia.com.br/sorocaba.urbes.sp`: é por aí que se pede o número de autuações por equipamento.

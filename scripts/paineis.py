@@ -202,4 +202,26 @@ PAINEIS = {
             "Recordes são extremos do modelo em 30 anos, não registros oficiais.",
         ],
     },
+    "transito": {
+        "nav": "Trânsito",
+        "titulo": "Radares e mobilidade",
+        "h1": "Onde ficam os radares de Sorocaba e o que se sabe do trânsito?",
+        "pergunta": "Quais radares fixos operam na cidade, em que velocidade, e que dados de trânsito são públicos?",
+        "fonte": "Semob Sorocaba (radares), URBES e Infosiga SP",
+        "cta": "Ver radares e trânsito",
+        "tom": "card",
+        "descricao": "Lista oficial dos radares fixos da cidade, com a velocidade fiscalizada, e o que ainda não é público sobre o trânsito.",
+        "meta_desc": "Radares fixos de Sorocaba por local e velocidade, conforme a Semob, e o estado dos dados públicos de trânsito.",
+        "palavras": ["trânsito", "radar", "radares", "velocidade", "multas", "semob", "urbes", "mobilidade", "acidentes"],
+        "blocos": [],
+        "glossario": [
+            ("Radar fixo", "Equipamento instalado em um ponto para medir a velocidade e registrar quem passa acima do limite. A velocidade indicada é a fiscalizada naquele ponto."),
+            ("Lista oficial", "A Semob publica por decreto os locais onde os radares fixos operam. Este painel reproduz essa lista; não mede multas nem acidentes."),
+        ],
+        "limitacoes": [
+            "A lista não diz quantas multas cada radar aplicou; esse dado só sai por pedido de acesso à informação.",
+            "A página da Semob declara 172 radares, mas a paginação lista 160; só os 160 acessíveis entram.",
+            "Horários de pico, alagamentos e câmeras ao vivo ainda não têm fonte pública verificada (ver abaixo).",
+        ],
+    },
 }

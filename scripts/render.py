@@ -361,6 +361,19 @@ def dia_semana(iso_data: str) -> str:
     return ["segunda", "terça", "quarta", "quinta", "sexta", "sábado", "domingo"][date.fromisoformat(iso_data).weekday()]
 
 
+def contexto_transito(env: dict) -> dict:
+    radares = env["dados"]
+    por_vel: dict[int, int] = {}
+    for r in radares:
+        por_vel[r["velocidade_kmh"]] = por_vel.get(r["velocidade_kmh"], 0) + 1
+    topo = max(por_vel.values())
+    return {
+        "radares": sorted(radares, key=lambda r: (chave_alfabetica(r["local"]), r["ponto"])),
+        "por_vel": [{"v": v, "n": n, "pct": round(n / topo * 100, 1)} for v, n in sorted(por_vel.items())],
+        "n_radares": len(radares),
+    }
+
+
 def contexto_combustivel(env: dict) -> dict:
     produtos = []
     for nome in dict.fromkeys(r["produto"] for r in env["dados"]):
@@ -417,6 +430,8 @@ def renderizar(public: Path, saida: Path) -> None:
     arq_prev = public / "previsao.json"
     previsao = json.loads(arq_prev.read_text(encoding="utf-8")) if arq_prev.exists() else None
     ctx_clima = contexto_clima(clima, previsao)
+    radares = json.loads((public / "radares.json").read_text(encoding="utf-8"))
+    ctx_trans = contexto_transito(radares)
     escolas = json.loads((public / "escolas.json").read_text(encoding="utf-8"))
     ctx_esc = contexto_escolas(escolas)
     mapa = gerar_mapa(RAIZ / "data" / "raw" / "ibge" / "malha_3552205.geojson")
@@ -448,6 +463,7 @@ def renderizar(public: Path, saida: Path) -> None:
         status="real", rotulo_status="Dado real",
         referencia=("previsão de " + data_br(previsao["referencia"]["inicio"])[:5] + " a " + data_br(previsao["referencia"]["fim"])[:5]) if previsao else "normais 1991–2020",
     )
+    paineis["transito"].update(status="real", rotulo_status="Dado real", referencia=f"{ctx_trans['n_radares']} radares fixos listados")
     ordem = list(paineis.values())
 
     if saida.exists():
@@ -458,7 +474,7 @@ def renderizar(public: Path, saida: Path) -> None:
     (saida / MARCADOR).write_text("saída gerada por scripts/render.py\n", encoding="utf-8")
     for nome in ("style.css", "app.js"):
         shutil.copy(RAIZ / "static" / nome, saida / nome)
-    for nome in ("emprego.json", "combustivel.json", "escolas.json", "perfil.json", "representantes.json", "seguranca.json", "comparativo.json", "clima.json"):
+    for nome in ("emprego.json", "combustivel.json", "escolas.json", "perfil.json", "representantes.json", "seguranca.json", "comparativo.json", "clima.json", "radares.json"):
         shutil.copy(public / nome, saida / "data" / nome)
 
     comum = {"paineis": ordem, "repo_url": REPO_URL}
@@ -472,7 +488,7 @@ def renderizar(public: Path, saida: Path) -> None:
             jinja.get_template(template).render(raiz=raiz, **comum, **ctx), encoding="utf-8"
         )
 
-    escrever("index.html", "index.html", "", mapa=mapa, emprego=ctx_emprego, comb=ctx_comb, esc=ctx_esc, cid=ctx_cid, rep=ctx_rep, seg=ctx_seg, comp=ctx_comp, clima=ctx_clima)
+    escrever("index.html", "index.html", "", mapa=mapa, emprego=ctx_emprego, comb=ctx_comb, esc=ctx_esc, cid=ctx_cid, rep=ctx_rep, seg=ctx_seg, comp=ctx_comp, clima=ctx_clima, trans=ctx_trans)
     escrever("sobre/index.html", "sobre.html", "../", fontes=[
         ("Emprego", "Novo CAGED — Ministério do Trabalho e Emprego", flag),
         ("Combustível", "Levantamento de Preços de Combustíveis — ANP", flag_c),
@@ -482,6 +498,7 @@ def renderizar(public: Path, saida: Path) -> None:
         ("Segurança", "SSP-SP — ocorrências registradas", flag_s),
         ("Comparativo", "IBGE e INEP — posição entre municípios", flag_c2),
         ("Clima", "INMET e Open-Meteo (ERA5)", "real"),
+        ("Trânsito", "Semob Sorocaba (radares)", "real"),
     ])
     escrever(
         "emprego/index.html", "paineis/emprego.html", "../",
@@ -514,6 +531,10 @@ def renderizar(public: Path, saida: Path) -> None:
     escrever(
         "clima/index.html", "paineis/clima.html", "../",
         p=paineis["clima"], env=clima, script="scripts/build_clima.py", **ctx_clima,
+    )
+    escrever(
+        "transito/index.html", "paineis/transito.html", "../",
+        p=paineis["transito"], env=radares, script="scripts/build_radares.py", **ctx_trans,
     )
     for e in ctx_esc["escolas"]:
         escrever(

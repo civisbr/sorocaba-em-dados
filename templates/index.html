@@ -81,6 +81,9 @@
         {% elif p.id == "cidade" %}
         <span class="cartao-numero">{{ cid.ind.populacao_estimada.valor | inteiro_br }}</span>
         <span class="cartao-ctx">habitantes, estimativa do IBGE para {{ cid.ind.populacao_estimada.ano }}</span>
+        {% elif p.id == "transito" %}
+        <span class="cartao-numero">{{ trans.n_radares }}</span>
+        <span class="cartao-ctx">radares fixos na lista oficial da Semob</span>
         {% elif p.id == "clima" %}
         {% if clima.prev and clima.prev.inmet %}<span class="cartao-numero">{{ clima.prev.inmet[0].tmax }}° / {{ clima.prev.inmet[0].tmin }}°</span>
         <span class="cartao-ctx">previsão do INMET para {{ clima.prev.inmet[0].dia | data_br }}: {{ clima.prev.inmet[0].resumo | lower }}</span>

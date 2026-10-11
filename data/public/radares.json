@@ -1,0 +1,992 @@
+{
+  "cobertura": {
+    "ibge": "3552205",
+    "municipio": "Sorocaba",
+    "uf": "SP"
+  },
+  "dados": [
+    {
+      "local": "AV. DR. AFONSO VERGUEIRO Nº 2635 (B/C)",
+      "ponto": "F013",
+      "tipo": "FIXO - CONTROLADOR",
+      "velocidade_kmh": 60
+    },
+    {
+      "local": "RUA DR. CAMPOS SALLES , Nº 333 (C/B)",
+      "ponto": "F014",
+      "tipo": "FIXO - CONTROLADOR",
+      "velocidade_kmh": 50
+    },
+    {
+      "local": "AV. SANTA CRUZ (C/B) , Nº 290",
+      "ponto": "F015",
+      "tipo": "FIXO - CONTROLADOR",
+      "velocidade_kmh": 50
+    },
+    {
+      "local": "AV. DR. ARMANDO PANNUNZIO X R. VICÊNCIA LEONETTI (C/B)",
+      "ponto": "F016",
+      "tipo": "FIXO - CONTROLADOR",
+      "velocidade_kmh": 60
+    },
+    {
+      "local": "RUA PAES DE LINHARES , Nº 700 (C/B)",
+      "ponto": "F017",
+      "tipo": "FIXO - CONTROLADOR",
+      "velocidade_kmh": 40
+    },
+    {
+      "local": "RUA MICHEL CHICRI MALUF , 660 (C/B)",
+      "ponto": "F018",
+      "tipo": "FIXO - CONTROLADOR",
+      "velocidade_kmh": 50
+    },
+    {
+      "local": "RUA MAESTRO ZEFERINO SANTANA , OPOSTO Nº 95 (C/B)",
+      "ponto": "F019",
+      "tipo": "FIXO - CONTROLADOR",
+      "velocidade_kmh": 50
+    },
+    {
+      "local": "AV. PROF. ARTHUR FONSECA , Nº 425 (B/C)",
+      "ponto": "F020",
+      "tipo": "FIXO - CONTROLADOR",
+      "velocidade_kmh": 50
+    },
+    {
+      "local": "AV DOM AGUIRRE (B/C) , Nº 3303",
+      "ponto": "F021",
+      "tipo": "FIXO - CONTROLADOR",
+      "velocidade_kmh": 70
+    },
+    {
+      "local": "AV. SANTA CRUZ , Nº 600 (C/B)",
+      "ponto": "F022",
+      "tipo": "FIXO - CONTROLADOR",
+      "velocidade_kmh": 50
+    },
+    {
+      "local": "AV. ANTONIO CARLOS COMITRE , PRÓX AO Nº 1315 (B/C)",
+      "ponto": "F023",
+      "tipo": "FIXO - CONTROLADOR",
+      "velocidade_kmh": 60
+    },
+    {
+      "local": "AV. WASHINGTON LUIZ , Nº 1313 (B/C)",
+      "ponto": "F024",
+      "tipo": "FIXO - CONTROLADOR",
+      "velocidade_kmh": 60
+    },
+    {
+      "local": "AV. JOSÉ JOAQUIM DE LACERDA (C/B ) , Nº 552",
+      "ponto": "F025",
+      "tipo": "FIXO - CONTROLADOR",
+      "velocidade_kmh": 50
+    },
+    {
+      "local": "RUA COMENDADOR OETTERER, PROX AO Nº1432 (C/B)",
+      "ponto": "F026",
+      "tipo": "FIXO - CONTROLADOR",
+      "velocidade_kmh": 50
+    },
+    {
+      "local": "RUA DR. AMÉRICO FIGUEIREDO , Nº 717 (C/B)",
+      "ponto": "F027",
+      "tipo": "FIXO - CONTROLADOR",
+      "velocidade_kmh": 50
+    },
+    {
+      "local": "RUA ANTÔNIO ROQUE RODRIGUES, OPOSTO AO Nº 211",
+      "ponto": "F028",
+      "tipo": "FIXO - CONTROLADOR",
+      "velocidade_kmh": 50
+    },
+    {
+      "local": "RUA ADELAIDE LAMBERTI DIENER,PRÓX. AO N°187 (C/B)",
+      "ponto": "F029",
+      "tipo": "FIXO - CONTROLADOR",
+      "velocidade_kmh": 40
+    },
+    {
+      "local": "AV. GENERAL CARNEIRO, 633 (B/C)",
+      "ponto": "F030",
+      "tipo": "FIXO - CONTROLADOR",
+      "velocidade_kmh": 50
+    },
+    {
+      "local": "RUA APARECIDA , Nº 1027 (C/B)",
+      "ponto": "F031",
+      "tipo": "FIXO - CONTROLADOR",
+      "velocidade_kmh": 50
+    },
+    {
+      "local": "AV. ENG. CARLOS REINALDO MENDES , Nº 2235",
+      "ponto": "F032",
+      "tipo": "FIXO - CONTROLADOR",
+      "velocidade_kmh": 60
+    },
+    {
+      "local": "AV. ENG. CARLOS REINALDO MENDES, Nº 3041 (C/B)",
+      "ponto": "F033",
+      "tipo": "FIXO - CONTROLADOR",
+      "velocidade_kmh": 60
+    },
+    {
+      "local": "RUA VICENTE DECARIA , OPOSTO AO Nº 312",
+      "ponto": "F034",
+      "tipo": "FIXO - CONTROLADOR",
+      "velocidade_kmh": 50
+    },
+    {
+      "local": "AV. DR. GUALBERTO MOREIRA, PRÓX RUA UMBERTO MERIGHI",
+      "ponto": "F035",
+      "tipo": "FIXO - CONTROLADOR",
+      "velocidade_kmh": 50
+    },
+    {
+      "local": "AV. DR. AFONSO VERGUEIRO Nº 2750 (C/B)",
+      "ponto": "F036",
+      "tipo": "FIXO - CONTROLADOR",
+      "velocidade_kmh": 60
+    },
+    {
+      "local": "AV. DR. GUALBERTO MOREIRA, PRÓX RUA DIRCEU DELLOSSO",
+      "ponto": "F037",
+      "tipo": "FIXO - CONTROLADOR",
+      "velocidade_kmh": 50
+    },
+    {
+      "local": "AV. DOM AGUIRRE (C/B ) PRÓX RUA CDOR. HELIO MONZONI",
+      "ponto": "F038",
+      "tipo": "FIXO - CONTROLADOR",
+      "velocidade_kmh": 70
+    },
+    {
+      "local": "AV. DOM AGUIRRE (B/C ) PRÓX RUA CDOR. HELIO MONZONI",
+      "ponto": "F039",
+      "tipo": "FIXO - CONTROLADOR",
+      "velocidade_kmh": 70
+    },
+    {
+      "local": "RUA CDOR. HERMELINO MATARAZZO , Nº 1123 (C/B)",
+      "ponto": "F040",
+      "tipo": "FIXO - CONTROLADOR",
+      "velocidade_kmh": 50
+    },
+    {
+      "local": "AV. IPANEMA , Nº 5885 (B/C)",
+      "ponto": "F041",
+      "tipo": "FIXO - CONTROLADOR",
+      "velocidade_kmh": 50
+    },
+    {
+      "local": "AV. IPANEMA OPOSTO , Nº 2575 (C/B)",
+      "ponto": "F042",
+      "tipo": "FIXO - CONTROLADOR",
+      "velocidade_kmh": 50
+    },
+    {
+      "local": "AV. IPANEMA , OPOSTO Nº 5661",
+      "ponto": "F043",
+      "tipo": "FIXO - CONTROLADOR",
+      "velocidade_kmh": 50
+    },
+    {
+      "local": "RUA DR. AMÉRICO FIGUEIREDO , Nº 1865",
+      "ponto": "F044",
+      "tipo": "FIXO - CONTROLADOR",
+      "velocidade_kmh": 50
+    },
+    {
+      "local": "RUA ANTONIO SILVA SALADINO , Nº 565",
+      "ponto": "F045",
+      "tipo": "FIXO - CONTROLADOR",
+      "velocidade_kmh": 50
+    },
+    {
+      "local": "RUA PEREIRA DA FONSECA, 782",
+      "ponto": "F046",
+      "tipo": "FIXO - CONTROLADOR",
+      "velocidade_kmh": 60
+    },
+    {
+      "local": "RUA ANTONIO SILVA SALADINO , Nº 1826 (C/B)",
+      "ponto": "F047",
+      "tipo": "FIXO - CONTROLADOR",
+      "velocidade_kmh": 50
+    },
+    {
+      "local": "AV. ITAVUVU , OPOSTO Nº 4455",
+      "ponto": "F048",
+      "tipo": "FIXO - CONTROLADOR",
+      "velocidade_kmh": 50
+    },
+    {
+      "local": "AV. WASHINGTON LUIZ , Nº 1900 (C/B)",
+      "ponto": "F049",
+      "tipo": "FIXO - CONTROLADOR",
+      "velocidade_kmh": 60
+    },
+    {
+      "local": "AV. SÃO PAULO , Nº 3445 (B/C)",
+      "ponto": "F050",
+      "tipo": "FIXO - CONTROLADOR",
+      "velocidade_kmh": 70
+    },
+    {
+      "local": "RUA HUMBERTO DE CAMPOS, PROX Nº 416",
+      "ponto": "F051",
+      "tipo": "FIXO - CONTROLADOR",
+      "velocidade_kmh": 50
+    },
+    {
+      "local": "AV. SÃO PAULO , Nº 2055 (B/C)",
+      "ponto": "F052",
+      "tipo": "FIXO - CONTROLADOR",
+      "velocidade_kmh": 60
+    },
+    {
+      "local": "AV. SÃO PAULO , OPOSTO Nº 3445 (C/B)",
+      "ponto": "F053",
+      "tipo": "FIXO - CONTROLADOR",
+      "velocidade_kmh": 70
+    },
+    {
+      "local": "RUA CEL. CAVALHEIROS , PROX A RUA BRIGADEIRO TOBIAS (C/B)",
+      "ponto": "F054",
+      "tipo": "FIXO - CONTROLADOR",
+      "velocidade_kmh": 40
+    },
+    {
+      "local": "RUA OSWALDO CRUZ , Nº 684 (C/B)",
+      "ponto": "F055",
+      "tipo": "FIXO - CONTROLADOR",
+      "velocidade_kmh": 50
+    },
+    {
+      "local": "AV. QUINZE DE AGOSTO (C/B) , Nº 6440",
+      "ponto": "F056",
+      "tipo": "FIXO - CONTROLADOR",
+      "velocidade_kmh": 50
+    },
+    {
+      "local": "AV. BARÃO DE TATUI , OPOSTO Nº 1108 (B/C)",
+      "ponto": "F057",
+      "tipo": "FIXO - CONTROLADOR",
+      "velocidade_kmh": 50
+    },
+    {
+      "local": "RUA WALDOMIRO DE ALMEIDA BARROS Nº 50 (B/C)",
+      "ponto": "F058",
+      "tipo": "FIXO - CONTROLADOR",
+      "velocidade_kmh": 50
+    },
+    {
+      "local": "RUA PROFESSOR TOLEDO , Nº 1156 (B/C)",
+      "ponto": "F059",
+      "tipo": "FIXO - CONTROLADOR",
+      "velocidade_kmh": 50
+    },
+    {
+      "local": "AV. DOM AGUIRRE OPOSTO , Nº 6003 (C/B)",
+      "ponto": "F060",
+      "tipo": "FIXO - CONTROLADOR",
+      "velocidade_kmh": 60
+    },
+    {
+      "local": "AV. ADÃO PEREIRA DE CAMARGO, 714 (C/B)",
+      "ponto": "F061",
+      "tipo": "FIXO - CONTROLADOR",
+      "velocidade_kmh": 60
+    },
+    {
+      "local": "AV. DOM AGUIRRE , Nº 6003 (B/C)",
+      "ponto": "F062",
+      "tipo": "FIXO - CONTROLADOR",
+      "velocidade_kmh": 60
+    },
+    {
+      "local": "AV. DR. ARMANDO SALES DE OLIVEIRA ,Nº 605 (B/C)",
+      "ponto": "F063",
+      "tipo": "FIXO - CONTROLADOR",
+      "velocidade_kmh": 50
+    },
+    {
+      "local": "ALAMEDA DO HORTO , OPOSTO Nº 1075 (C/B)",
+      "ponto": "F064",
+      "tipo": "FIXO - CONTROLADOR",
+      "velocidade_kmh": 50
+    },
+    {
+      "local": "AV. WASHINGTON LUIZ , Nº 319 (B/C)",
+      "ponto": "F065",
+      "tipo": "FIXO - CONTROLADOR",
+      "velocidade_kmh": 60
+    },
+    {
+      "local": "RUA FERNANDO LUIZ GROHMAN OPOSTO , Nº 532 (B/C)",
+      "ponto": "F066",
+      "tipo": "FIXO - CONTROLADOR",
+      "velocidade_kmh": 50
+    },
+    {
+      "local": "RUA APARECIDA , Nº 44",
+      "ponto": "F067",
+      "tipo": "FIXO - CONTROLADOR",
+      "velocidade_kmh": 50
+    },
+    {
+      "local": "RUA PROFESSORA GUIDA MARES , Nº 246 (C/B)",
+      "ponto": "F068",
+      "tipo": "FIXO - CONTROLADOR",
+      "velocidade_kmh": 50
+    },
+    {
+      "local": "RUA CDOR. HERMELINO MATARAZZO , Nº 734 (C/B)",
+      "ponto": "F069",
+      "tipo": "FIXO - CONTROLADOR",
+      "velocidade_kmh": 50
+    },
+    {
+      "local": "RUA CDOR. OETTERER OPOSTO , Nº 166 (B/C)",
+      "ponto": "F070",
+      "tipo": "FIXO - CONTROLADOR",
+      "velocidade_kmh": 50
+    },
+    {
+      "local": "AV. CDOR. CAMILLO JULIO , OPOSTO AO Nº 2511 (C/B)",
+      "ponto": "F071",
+      "tipo": "FIXO - CONTROLADOR",
+      "velocidade_kmh": 60
+    },
+    {
+      "local": "RUA CDOR VICENTE AMARAL , OPOSTO RUA WALDEMAR BELLIA (B/C)",
+      "ponto": "F072",
+      "tipo": "FIXO - CONTROLADOR",
+      "velocidade_kmh": 50
+    },
+    {
+      "local": "AV. BARÃO DE TATUI , Nº 1108 (C/B)",
+      "ponto": "F073",
+      "tipo": "FIXO - CONTROLADOR",
+      "velocidade_kmh": 50
+    },
+    {
+      "local": "RUA KARIM JAMMAL , Nº 333 (B/C)",
+      "ponto": "F074",
+      "tipo": "FIXO - CONTROLADOR",
+      "velocidade_kmh": 50
+    },
+    {
+      "local": "RUA LITUÂNIA OPOSTO , Nº 20",
+      "ponto": "F075",
+      "tipo": "FIXO - CONTROLADOR",
+      "velocidade_kmh": 50
+    },
+    {
+      "local": "RUA LITUÂNIA OPOSTO (C/B) , Nº 870",
+      "ponto": "F076",
+      "tipo": "FIXO - CONTROLADOR",
+      "velocidade_kmh": 50
+    },
+    {
+      "local": "AV. WASHINGTON LUIZ (C/B), Nº 270",
+      "ponto": "F077",
+      "tipo": "FIXO - CONTROLADOR",
+      "velocidade_kmh": 60
+    },
+    {
+      "local": "AV. CDOR CAMILLO JULIO, APROX. 150M APÓS A AV. TADAO YOSHIDA",
+      "ponto": "F078",
+      "tipo": "FIXO - CONTROLADOR",
+      "velocidade_kmh": 60
+    },
+    {
+      "local": "AV. ITAVUVU , Nº 5555 (B/C)",
+      "ponto": "F079",
+      "tipo": "FIXO - CONTROLADOR",
+      "velocidade_kmh": 50
+    },
+    {
+      "local": "RUA LEONDINA GONÇALVES MOBAIER , PROXIMO AO Nº 82 (C/B)",
+      "ponto": "F080",
+      "tipo": "FIXO - CONTROLADOR",
+      "velocidade_kmh": 40
+    },
+    {
+      "local": "AV DOM AGUIRRE , PROX. A RUA ANA M. DE CARVALHO (C/B)",
+      "ponto": "F081",
+      "tipo": "FIXO - CONTROLADOR",
+      "velocidade_kmh": 70
+    },
+    {
+      "local": "RUA MASCARENHAS CAMELO , Nº 800 (B/C)",
+      "ponto": "F082",
+      "tipo": "FIXO - CONTROLADOR",
+      "velocidade_kmh": 50
+    },
+    {
+      "local": "RUA PROFª. MARIA BENEDITA AUGUSTO KELLER , Nº 268 (B/C)",
+      "ponto": "F083",
+      "tipo": "FIXO - CONTROLADOR",
+      "velocidade_kmh": 50
+    },
+    {
+      "local": "AV. JUVENAL DE CAMPOS , PRÓXIMO A RUA JORGE MENDES (C/B)",
+      "ponto": "F084",
+      "tipo": "FIXO - CONTROLADOR",
+      "velocidade_kmh": 70
+    },
+    {
+      "local": "RUA CDOR OETTERER , Nº 931",
+      "ponto": "F085",
+      "tipo": "FIXO - CONTROLADOR",
+      "velocidade_kmh": 50
+    },
+    {
+      "local": "RUA GALILEU PASQUINELLI , Nº 780 (B/C)",
+      "ponto": "F086",
+      "tipo": "FIXO - CONTROLADOR",
+      "velocidade_kmh": 50
+    },
+    {
+      "local": "RUA PAES DE LINHARES (C/B) , Nº 918",
+      "ponto": "F087",
+      "tipo": "FIXO - CONTROLADOR",
+      "velocidade_kmh": 40
+    },
+    {
+      "local": "AV. TADAO YOSHIDA (C/B) PRÓX. PONTE ENG. JOSÉ NELSON CARNEIRO DO VAL",
+      "ponto": "F088",
+      "tipo": "FIXO - CONTROLADOR",
+      "velocidade_kmh": 60
+    },
+    {
+      "local": "RUA PAES DE LINHARES , Nº 1470 (C/B)",
+      "ponto": "F089",
+      "tipo": "FIXO - CONTROLADOR",
+      "velocidade_kmh": 40
+    },
+    {
+      "local": "RUA ABBUD BACHIR ABDALLA COM PRAÇA AVELINO LEITE DE CAMARGO (B/C)",
+      "ponto": "F090",
+      "tipo": "FIXO - CONTROLADOR",
+      "velocidade_kmh": 50
+    },
+    {
+      "local": "AV. SANTA CRUZ OPOSTO , 995 (C/B)",
+      "ponto": "F091",
+      "tipo": "FIXO - CONTROLADOR",
+      "velocidade_kmh": 50
+    },
+    {
+      "local": "AV. PERCITO DE SOUZA QUEIROZ , Nº 272 (C/B)",
+      "ponto": "F092",
+      "tipo": "FIXO - CONTROLADOR",
+      "velocidade_kmh": 50
+    },
+    {
+      "local": "RUA TEREZA CONCEIÇÃO GROSSO DE LUCA,677 (B/C)",
+      "ponto": "F093",
+      "tipo": "FIXO - CONTROLADOR",
+      "velocidade_kmh": 50
+    },
+    {
+      "local": "AV. SALVADOR MILEGO COM PRAÇA MARCIA MENDES (B/C)",
+      "ponto": "F094",
+      "tipo": "FIXO - CONTROLADOR",
+      "velocidade_kmh": 50
+    },
+    {
+      "local": "AV. SALVADOR MILEGO Nº 514 (C/B)",
+      "ponto": "F095",
+      "tipo": "FIXO - CONTROLADOR",
+      "velocidade_kmh": 50
+    },
+    {
+      "local": "AV. ENG. CARLOS REINALDO MENDES, OPOSTO AO Nº 3041 (C/B)",
+      "ponto": "F096",
+      "tipo": "FIXO - CONTROLADOR",
+      "velocidade_kmh": 60
+    },
+    {
+      "local": "AV. EDWARD FRUFRU MARCIANO DA SILVA (C/B) , Nº 1278",
+      "ponto": "F097",
+      "tipo": "FIXO - CONTROLADOR",
+      "velocidade_kmh": 50
+    },
+    {
+      "local": "RUA DR. AMÉRICO FIGUEIREDO, OPOSTO Nº 4664 (B/C)",
+      "ponto": "F098",
+      "tipo": "FIXO - CONTROLADOR",
+      "velocidade_kmh": 60
+    },
+    {
+      "local": "AV. PAULO EMANUEL DE ALMEIDA Nº 1043 (C/B)",
+      "ponto": "F099",
+      "tipo": "FIXO - CONTROLADOR",
+      "velocidade_kmh": 60
+    },
+    {
+      "local": "RUA ANTÔNIO PIANTORI,2110 (C/B)",
+      "ponto": "F100",
+      "tipo": "FIXO - CONTROLADOR",
+      "velocidade_kmh": 40
+    },
+    {
+      "local": "RUA JULIO RIBEIRO , Nº 419 (B/C)",
+      "ponto": "F101",
+      "tipo": "FIXO - CONTROLADOR",
+      "velocidade_kmh": 50
+    },
+    {
+      "local": "RUA MARIA ARRUDA DE MOURA BARROS, N ° 262 (B/C)",
+      "ponto": "F102",
+      "tipo": "FIXO - CONTROLADOR",
+      "velocidade_kmh": 60
+    },
+    {
+      "local": "AV PROFº. FLAVIO FAZANO , Nº 315 (B/C)",
+      "ponto": "F103",
+      "tipo": "FIXO - CONTROLADOR",
+      "velocidade_kmh": 50
+    },
+    {
+      "local": "RUA PAES DE LINHARES, PRÓX. AO Nº 272",
+      "ponto": "F104",
+      "tipo": "FIXO - CONTROLADOR",
+      "velocidade_kmh": 50
+    },
+    {
+      "local": "AV. JOSÉ JOAQUIM DE LACERDA Nº 288 (C/B)",
+      "ponto": "F105",
+      "tipo": "FIXO - CONTROLADOR",
+      "velocidade_kmh": 50
+    },
+    {
+      "local": "AV ELIAS MALUF N º 1560 (C/B)",
+      "ponto": "F106",
+      "tipo": "FIXO - CONTROLADOR",
+      "velocidade_kmh": 50
+    },
+    {
+      "local": "RUA ADOLFO FREDERICO SCHLEIFER Nº 804 (B/C)",
+      "ponto": "F107",
+      "tipo": "FIXO - CONTROLADOR",
+      "velocidade_kmh": 50
+    },
+    {
+      "local": "AV. SÃO PAULO , Nº 5347 (B/C)",
+      "ponto": "F108",
+      "tipo": "FIXO - CONTROLADOR",
+      "velocidade_kmh": 70
+    },
+    {
+      "local": "AV. PROF. FLAVIO FAZANO, 110 (C/B)",
+      "ponto": "F109",
+      "tipo": "FIXO - CONTROLADOR",
+      "velocidade_kmh": 50
+    },
+    {
+      "local": "AV. SANTA CRUZ , Nº 955 (B/C)",
+      "ponto": "F110",
+      "tipo": "FIXO - CONTROLADOR",
+      "velocidade_kmh": 50
+    },
+    {
+      "local": "RUA DIVA MUGNAINI RAVACCI (C/B) , Nº 15",
+      "ponto": "F111",
+      "tipo": "FIXO - CONTROLADOR",
+      "velocidade_kmh": 50
+    },
+    {
+      "local": "RUA JOSÉ LUIZ FLAQUER , Nº 810 (C/B)",
+      "ponto": "F112",
+      "tipo": "FIXO - CONTROLADOR",
+      "velocidade_kmh": 50
+    },
+    {
+      "local": "AV. DR. ARMANDO PANNUNZIO , Nº 1893",
+      "ponto": "F113",
+      "tipo": "FIXO - CONTROLADOR",
+      "velocidade_kmh": 60
+    },
+    {
+      "local": "AV. CDOR.CAMILLO JULIO , Nº 255",
+      "ponto": "F114",
+      "tipo": "FIXO - CONTROLADOR",
+      "velocidade_kmh": 60
+    },
+    {
+      "local": "AV. PROF. ARTHUR FONSECA OPOSTO Nº 305",
+      "ponto": "F115",
+      "tipo": "FIXO - CONTROLADOR",
+      "velocidade_kmh": 50
+    },
+    {
+      "local": "AV. FERNANDO STECCA , Nº 831",
+      "ponto": "F116",
+      "tipo": "FIXO - CONTROLADOR",
+      "velocidade_kmh": 60
+    },
+    {
+      "local": "AV. FERNANDO STECCA , PROX AO Nº 780",
+      "ponto": "F117",
+      "tipo": "FIXO - CONTROLADOR",
+      "velocidade_kmh": 60
+    },
+    {
+      "local": "AV. FERNANDO STECCA (B/C) PROX AO N º 1555",
+      "ponto": "F118",
+      "tipo": "FIXO - CONTROLADOR",
+      "velocidade_kmh": 60
+    },
+    {
+      "local": "AV. FERNANDO STECCA (C/B) PROX AO N º 1555",
+      "ponto": "F119",
+      "tipo": "FIXO - CONTROLADOR",
+      "velocidade_kmh": 60
+    },
+    {
+      "local": "AV. GENERAL OSÓRIO Nº 1347",
+      "ponto": "F120",
+      "tipo": "FIXO - CONTROLADOR",
+      "velocidade_kmh": 60
+    },
+    {
+      "local": "AV. QUINZE DE AGOSTO ( B/C ), OPOSTO AO Nº 6440",
+      "ponto": "F121",
+      "tipo": "FIXO - CONTROLADOR",
+      "velocidade_kmh": 50
+    },
+    {
+      "local": "RUA WALDOMIRO DE ALMEIDA BARROS Nº 585",
+      "ponto": "F122",
+      "tipo": "FIXO - CONTROLADOR",
+      "velocidade_kmh": 50
+    },
+    {
+      "local": "RUA ANTONIO SILVA SALADINO , Nº 1123",
+      "ponto": "F123",
+      "tipo": "FIXO - CONTROLADOR",
+      "velocidade_kmh": 50
+    },
+    {
+      "local": "RUA ANTONIO SILVA SALADINO , N º 1120",
+      "ponto": "F124",
+      "tipo": "FIXO - CONTROLADOR",
+      "velocidade_kmh": 50
+    },
+    {
+      "local": "AV. CDOR CAMILLO JULIO PRÓX. AO Nº 1256",
+      "ponto": "F125",
+      "tipo": "FIXO - CONTROLADOR",
+      "velocidade_kmh": 60
+    },
+    {
+      "local": "AV. IPANEMA, 4495",
+      "ponto": "F126",
+      "tipo": "FIXO - CONTROLADOR",
+      "velocidade_kmh": 50
+    },
+    {
+      "local": "RUA CAP. BENTO MASCARENHAS JEQUITINHONHA Nº 2231",
+      "ponto": "F127",
+      "tipo": "FIXO - CONTROLADOR",
+      "velocidade_kmh": 50
+    },
+    {
+      "local": "RUA ARTHUR GOMES , Nº 464",
+      "ponto": "F128",
+      "tipo": "FIXO - CONTROLADOR",
+      "velocidade_kmh": 50
+    },
+    {
+      "local": "AV. PÉRCITO DE SOUZA QUEIROZ (C/B), Nº 1017",
+      "ponto": "F129",
+      "tipo": "FIXO - CONTROLADOR",
+      "velocidade_kmh": 50
+    },
+    {
+      "local": "AV. PÉRCITO DE SOUZA QUEIROZ PRÓX RUA MONSENHOR BENEDITO MARIO CALAZANS",
+      "ponto": "F130",
+      "tipo": "FIXO - CONTROLADOR",
+      "velocidade_kmh": 50
+    },
+    {
+      "local": "AV BETÂNIA , Nº 852",
+      "ponto": "F131",
+      "tipo": "FIXO - CONTROLADOR",
+      "velocidade_kmh": 50
+    },
+    {
+      "local": "AV SÃO PAULO, 643",
+      "ponto": "F132",
+      "tipo": "FIXO - CONTROLADOR",
+      "velocidade_kmh": 50
+    },
+    {
+      "local": "AV. DR. ULYSSES GUIMARÃES , Nº 574",
+      "ponto": "F133",
+      "tipo": "FIXO - CONTROLADOR",
+      "velocidade_kmh": 50
+    },
+    {
+      "local": "AV. QUINZE DE AGOSTO COM A PONTE LUIZ F. DAMIAN LUIZITO",
+      "ponto": "F134",
+      "tipo": "FIXO - CONTROLADOR",
+      "velocidade_kmh": 50
+    },
+    {
+      "local": "AV. QUINZE DE AGOSTO PRÓX. Nº 5210",
+      "ponto": "F135",
+      "tipo": "FIXO - CONTROLADOR",
+      "velocidade_kmh": 50
+    },
+    {
+      "local": "RUA ATÁNAZIO SOARES , PRÓX AO Nº 2332",
+      "ponto": "F136",
+      "tipo": "FIXO - CONTROLADOR",
+      "velocidade_kmh": 50
+    },
+    {
+      "local": "RUA BELMIRA LOUREIRO DE ALMEIDA Nº 466",
+      "ponto": "F137",
+      "tipo": "FIXO - CONTROLADOR",
+      "velocidade_kmh": 50
+    },
+    {
+      "local": "RUA NILVA ZILAH SILVATTI VIANA PRÓX. R. ARNALDO BARBOZA SANTOS",
+      "ponto": "F138",
+      "tipo": "FIXO - CONTROLADOR",
+      "velocidade_kmh": 50
+    },
+    {
+      "local": "RUA DELCIO FERREIRA DE AZEVEDO OPOSTO N.567",
+      "ponto": "F139",
+      "tipo": "FIXO - CONTROLADOR",
+      "velocidade_kmh": 50
+    },
+    {
+      "local": "AV. PERCITO DE SOUZA QUEIROZ Nº 323",
+      "ponto": "F140",
+      "tipo": "FIXO - CONTROLADOR",
+      "velocidade_kmh": 50
+    },
+    {
+      "local": "AV. CONDE ZEPPELIN, OPOSTO AO Nº 109",
+      "ponto": "F141",
+      "tipo": "FIXO - CONTROLADOR",
+      "velocidade_kmh": 60
+    },
+    {
+      "local": "AV. CONDE ZEPPELIN OPOSTO Nº 1930",
+      "ponto": "F142",
+      "tipo": "FIXO - CONTROLADOR",
+      "velocidade_kmh": 60
+    },
+    {
+      "local": "AV. DR. ARMANDO PANNUNZIO , Nº 1800",
+      "ponto": "F143",
+      "tipo": "FIXO - CONTROLADOR",
+      "velocidade_kmh": 60
+    },
+    {
+      "local": "AV. DR. GUALBERTO MOREIRA , Nº 880",
+      "ponto": "F144",
+      "tipo": "FIXO - CONTROLADOR",
+      "velocidade_kmh": 50
+    },
+    {
+      "local": "AV. DR. GUALBERTO MOREIRA , Nº 881",
+      "ponto": "F145",
+      "tipo": "FIXO - CONTROLADOR",
+      "velocidade_kmh": 50
+    },
+    {
+      "local": "AV. DR ULYSSES GUIMARÃES , Nº 850",
+      "ponto": "F146",
+      "tipo": "FIXO - CONTROLADOR",
+      "velocidade_kmh": 50
+    },
+    {
+      "local": "AV. DR. ULYSSES GUIMARÃES , OPOSTO Nº 842",
+      "ponto": "F147",
+      "tipo": "FIXO - CONTROLADOR",
+      "velocidade_kmh": 50
+    },
+    {
+      "local": "RUA JOSEMAR TOUZON DAMIÃO, PRÓX. RUA IZIDRO ROQUE DA SILVA",
+      "ponto": "F148",
+      "tipo": "FIXO - CONTROLADOR",
+      "velocidade_kmh": 50
+    },
+    {
+      "local": "AV. ENG. CARLOS REINALDO MENDES OPOSTO , Nº 576",
+      "ponto": "F149",
+      "tipo": "FIXO - CONTROLADOR",
+      "velocidade_kmh": 60
+    },
+    {
+      "local": "AV. ENG. CARLOS REINALDO MENDES Nº 576",
+      "ponto": "F150",
+      "tipo": "FIXO - CONTROLADOR",
+      "velocidade_kmh": 60
+    },
+    {
+      "local": "RUA DR. ALTINO ARANTES, OPOSTO AO Nº 917",
+      "ponto": "F151",
+      "tipo": "FIXO - CONTROLADOR",
+      "velocidade_kmh": 50
+    },
+    {
+      "local": "AV. ITAVUVU , Nº 5830 (C/B)",
+      "ponto": "F152",
+      "tipo": "FIXO - CONTROLADOR",
+      "velocidade_kmh": 60
+    },
+    {
+      "local": "AV. PAULO EMANUEL DE ALMEIDA (B/C) , PRÓXIMO A RUA MITRE FIUZA AYRES",
+      "ponto": "F153",
+      "tipo": "FIXO - CONTROLADOR",
+      "velocidade_kmh": 50
+    },
+    {
+      "local": "AV. JUVENAL DE CAMPOS PRÓX. E OPOSTO AV. CDOR PEREIRA INÁCIO",
+      "ponto": "F154",
+      "tipo": "FIXO - CONTROLADOR",
+      "velocidade_kmh": 70
+    },
+    {
+      "local": "AV. JUVENAL DE CAMPOS PRÓX. AV. CDOR PEREIRA INÁCIO",
+      "ponto": "F155",
+      "tipo": "FIXO - CONTROLADOR",
+      "velocidade_kmh": 70
+    },
+    {
+      "local": "AV. CDOR CAMILLO JULIO (B/C) , Nº 2511",
+      "ponto": "F156",
+      "tipo": "FIXO - CONTROLADOR",
+      "velocidade_kmh": 60
+    },
+    {
+      "local": "AV. TADAO YOSHIDA PRÓX. PONTE ENG. JOSÉ NELSON CARNEIRO DO VAL",
+      "ponto": "F157",
+      "tipo": "FIXO - CONTROLADOR",
+      "velocidade_kmh": 60
+    },
+    {
+      "local": "RUA ANTONIO SILVA SALADINO, Nº 1666 (C/B)",
+      "ponto": "F158",
+      "tipo": "FIXO - CONTROLADOR",
+      "velocidade_kmh": 60
+    },
+    {
+      "local": "AV. VICTOR ANDREW , Nº 540",
+      "ponto": "F159",
+      "tipo": "FIXO - CONTROLADOR",
+      "velocidade_kmh": 60
+    },
+    {
+      "local": "AV. VICTOR ANDREW , OPOSTO Nº 615",
+      "ponto": "F160",
+      "tipo": "FIXO - CONTROLADOR",
+      "velocidade_kmh": 60
+    },
+    {
+      "local": "AV. VICTOR ANDREW , OPOSTO Nº 3861",
+      "ponto": "F161",
+      "tipo": "FIXO - CONTROLADOR",
+      "velocidade_kmh": 60
+    },
+    {
+      "local": "AV. VICTOR ANDREW (C/B) , OPOSTO AO Nº 2550",
+      "ponto": "F162",
+      "tipo": "FIXO - CONTROLADOR",
+      "velocidade_kmh": 60
+    },
+    {
+      "local": "AV. VINICIUS DE MORAES , Nº 1493",
+      "ponto": "F163",
+      "tipo": "FIXO - CONTROLADOR",
+      "velocidade_kmh": 50
+    },
+    {
+      "local": "AV. VINICIUS DE MORAES , Nº 718",
+      "ponto": "F164",
+      "tipo": "FIXO - CONTROLADOR",
+      "velocidade_kmh": 50
+    },
+    {
+      "local": "ESTRADA DO DINORAH , Nº 125",
+      "ponto": "F165",
+      "tipo": "FIXO - CONTROLADOR",
+      "velocidade_kmh": 60
+    },
+    {
+      "local": "ESTRADA DO DINORAH, Nº 576",
+      "ponto": "F166",
+      "tipo": "FIXO - CONTROLADOR",
+      "velocidade_kmh": 60
+    },
+    {
+      "local": "RUA DR. LUIZ MENDES ALMEIDA (B/C), Nº 2635",
+      "ponto": "F167",
+      "tipo": "FIXO - CONTROLADOR",
+      "velocidade_kmh": 60
+    },
+    {
+      "local": "RUA DR. LUIZ MENDES ALMEIDA , Nº 2622",
+      "ponto": "F168",
+      "tipo": "FIXO - CONTROLADOR",
+      "velocidade_kmh": 60
+    },
+    {
+      "local": "AV. MANOEL DE CAMARGO SAMPAIO, ALTURA DO Nº 1709",
+      "ponto": "F169",
+      "tipo": "FIXO - CONTROLADOR",
+      "velocidade_kmh": 60
+    },
+    {
+      "local": "RUA DR. AMÉRICO FIGUEIREDO , PRÓXMO AO Nº 1421",
+      "ponto": "F170",
+      "tipo": "FIXO - CONTROLADOR",
+      "velocidade_kmh": 50
+    },
+    {
+      "local": "AV. JOSÉ JOAQUIM DE LACERDA (B/C) , OPOSTO AO Nº 422",
+      "ponto": "F171",
+      "tipo": "FIXO - CONTROLADOR",
+      "velocidade_kmh": 50
+    },
+    {
+      "local": "RUA PEDRO ALVARES CABRAL , Nº 571",
+      "ponto": "F172",
+      "tipo": "FIXO - CONTROLADOR",
+      "velocidade_kmh": 50
+    }
+  ],
+  "fonte": {
+    "acesso_em": "2026-10-11",
+    "licenca": "Informação pública publicada pela Prefeitura (sem licença explícita)",
+    "nome": "Semob Sorocaba — locais de operação dos radares",
+    "url": "https://www.semobsorocaba.com.br/radares/locais-operacao"
+  },
+  "painel": "transito",
+  "qualidade": {
+    "flag": "real",
+    "n_registros": 160,
+    "notas": [
+      "Lista oficial de radares fixos em operação, publicada pela Semob. Não informa quantas multas cada radar aplicou.",
+      "A página declara 172 radares, mas a paginação oficial lista 160; os 12 restantes não são acessíveis pela página e ficam fora.",
+      "O número de série dos equipamentos não é reproduzido aqui.",
+      "SHA-256 do manifesto de coleta: b1ccbb04877fc9990755a90275e9539544fa47d752ff4fd3ec92acee09102f5d"
+    ]
+  },
+  "referencia": {
+    "fim": "2026-10-11",
+    "granularidade": "semanal",
+    "inicio": "2026-10-11"
+  },
+  "schema_version": "1.0"
+}

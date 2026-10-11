@@ -1,0 +1,52 @@
+{% extends "paineis/painel.html" %}
+{% from "_macros.html" import icone %}
+{% block resumo %}
+<section aria-labelledby="resumo" class="resumo-real">
+  <h2 id="resumo" class="rotulo-resumo">Radares fixos na lista oficial</h2>
+  <p class="numero-grande">{{ n_radares }}</p>
+  <p class="resumo-texto">radares fixos com local e velocidade fiscalizada, segundo a Secretaria de Mobilidade (Semob). A maioria fiscaliza 50 km/h.</p>
+  <p class="pequeno suave">É a lista de onde os radares ficam, não de quantas multas aplicam.</p>
+</section>
+{% endblock %}
+{% block explorar %}
+<section aria-labelledby="vel-t" class="bloco-painel">
+  <h2 id="vel-t" class="h2-medio sem-topo">Radares por velocidade fiscalizada</h2>
+  <article class="quadro-card">
+    <ul class="setores">{% for v in por_vel %}<li><span class="nome">{{ v.v }} km/h</span><span class="val">{{ v.n }}</span><span class="setor-barra pos" style="width: {{ v.pct }}%"></span></li>{% endfor %}</ul>
+  </article>
+</section>
+<section aria-labelledby="lista-t" class="bloco-painel">
+  <h2 id="lista-t" class="h2-medio sem-topo">Onde ficam</h2>
+  <details class="tabela-mes"><summary>Ver os {{ n_radares }} locais, em ordem alfabética</summary>
+    <div class="rolagem"><table>
+      <caption class="so-leitor">Radares fixos de Sorocaba por local e velocidade</caption>
+      <thead><tr><th scope="col">Local</th><th scope="col">Ponto</th><th scope="col">Km/h</th></tr></thead>
+      <tbody>{% for r in radares %}<tr><th scope="row">{{ r.local }}</th><td>{{ r.ponto }}</td><td>{{ r.velocidade_kmh }}</td></tr>{% endfor %}</tbody>
+    </table></div>
+  </details>
+  <p class="pequeno suave">“(C/B)” e “(B/C)” indicam o sentido da via (centro/bairro ou bairro/centro), como na lista da Semob.</p>
+</section>
+<section aria-labelledby="falta-t" class="bloco-painel">
+  <h2 id="falta-t" class="h2-medio sem-topo">O que ainda não é público</h2>
+  <article class="quadro-card">
+    <ul class="lista-curta">
+      <li><strong>Multas por radar:</strong> a Semob não publica; só por pedido via Lei de Acesso à Informação.</li>
+      <li><strong>Horários e locais de pico do trânsito:</strong> sem contagem nem velocidade aberta.</li>
+      <li><strong>Alagamentos:</strong> a Defesa Civil monitora pontos críticos, mas sem mapa ou dado aberto encontrado.</li>
+      <li><strong>Acidentes:</strong> o Infosiga SP (Detran-SP) reúne sinistros por município; o download aberto ainda não foi confirmado.</li>
+    </ul>
+    <p class="pequeno suave">Detalhes de cada fonte em <a href="{{ repo_url }}/blob/main/docs/fontes.md">docs/fontes.md</a>.</p>
+  </article>
+</section>
+{% endblock %}
+{% block metodologia %}
+<ul class="lista-curta">{% for n in env.qualidade.notas %}{% if not n.startswith("SHA-256") %}<li>{{ n }}</li>{% endif %}{% endfor %}</ul>
+{% endblock %}
+{% block proveniencia %}
+<dl class="proveniencia">
+  <dt>Fonte</dt><dd><a href="{{ env.fonte.url }}">{{ env.fonte.nome }}</a></dd>
+  <dt>Verificado em</dt><dd>{{ env.fonte.acesso_em | data_br }}</dd>
+  <dt>Dados</dt><dd><a href="{{ raiz }}data/radares.json">radares.json</a></dd>
+  <dt>Código</dt><dd><a href="{{ repo_url }}/blob/main/{{ script }}">{{ script }}</a></dd>
+</dl>
+{% endblock %}
