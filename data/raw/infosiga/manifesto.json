@@ -1,7 +1,9 @@
 {
   "anos": {
     "2022": {
+      "celulas_descartadas": 257,
       "coletado_em": "2026-10-11",
+      "com_coordenada": 2514,
       "meses": [
         1,
         2,
@@ -16,17 +18,94 @@
         11,
         12
       ],
+      "origem": {
+        "01": {
+          "bytes": 3342220,
+          "last_modified": "2026-05-27T21:39:08.978314",
+          "sha256": "cf001f607dee5485e9d8054fb6b6eaad6d0ec8192639d21f9c57587c86925ac4",
+          "url": "https://infosiga.detran.sp.gov.br/dados-abertos/sinistros_01-2022.csv"
+        },
+        "02": {
+          "bytes": 3809183,
+          "last_modified": "2026-05-27T21:39:11.998844",
+          "sha256": "90bf948488b4574f919eaf4ed8bc8fa3d4c34e64f356b8fe555027bb40aeb5c2",
+          "url": "https://infosiga.detran.sp.gov.br/dados-abertos/sinistros_02-2022.csv"
+        },
+        "03": {
+          "bytes": 4263826,
+          "last_modified": "2026-05-27T21:39:15.557241",
+          "sha256": "7bf034e1342d57941fd48e376254d13fa5bf6f5e44f49939c45e3c8a9538093a",
+          "url": "https://infosiga.detran.sp.gov.br/dados-abertos/sinistros_03-2022.csv"
+        },
+        "04": {
+          "bytes": 4230286,
+          "last_modified": "2026-05-27T21:39:18.625640",
+          "sha256": "030adcc309c38b2d5108dcd4ed1295fdcb8450526bd9313ec6dbb80a9e2af142",
+          "url": "https://infosiga.detran.sp.gov.br/dados-abertos/sinistros_04-2022.csv"
+        },
+        "05": {
+          "bytes": 4519390,
+          "last_modified": "2026-05-27T21:39:23.081006",
+          "sha256": "cc5303b15f7f99591a868bdf971e2351f21e17fabed9ff8eca636bf7824f84a4",
+          "url": "https://infosiga.detran.sp.gov.br/dados-abertos/sinistros_05-2022.csv"
+        },
+        "06": {
+          "bytes": 4306391,
+          "last_modified": "2026-05-27T21:39:26.419006",
+          "sha256": "e42d76cf486f2215c639f32a37ab51a28ad11bfea4ddde9dcd7d3779df824ced",
+          "url": "https://infosiga.detran.sp.gov.br/dados-abertos/sinistros_06-2022.csv"
+        },
+        "07": {
+          "bytes": 4370810,
+          "last_modified": "2026-05-27T21:39:29.496735",
+          "sha256": "65d903912a5a5b0c1e7d076c86568c707683de9aef6a479839ec79e1c92310ee",
+          "url": "https://infosiga.detran.sp.gov.br/dados-abertos/sinistros_07-2022.csv"
+        },
+        "08": {
+          "bytes": 4468657,
+          "last_modified": "2026-05-27T21:39:32.948557",
+          "sha256": "5caf8245dd5e8758ee73d2ea35b97278cb022d325eaf9186dee9a32f036f9078",
+          "url": "https://infosiga.detran.sp.gov.br/dados-abertos/sinistros_08-2022.csv"
+        },
+        "09": {
+          "bytes": 4300495,
+          "last_modified": "2026-05-27T21:39:35.442446",
+          "sha256": "08fd2489454b4192f9e802f539953bebcc15919a0b5cb2835b9fa7238031de8d",
+          "url": "https://infosiga.detran.sp.gov.br/dados-abertos/sinistros_09-2022.csv"
+        },
+        "10": {
+          "bytes": 4532523,
+          "last_modified": "2026-05-27T21:39:39.283787",
+          "sha256": "c2fa59c5d8a4135a17dbbc556d02a07667d0defa4411c9f56d65e3902ca6b49d",
+          "url": "https://infosiga.detran.sp.gov.br/dados-abertos/sinistros_10-2022.csv"
+        },
+        "11": {
+          "bytes": 4158243,
+          "last_modified": "2026-05-27T21:39:41.609612",
+          "sha256": "b6b40a65c38c38fe1603bbf0b76d3e547b4ab8821b41d6a77ee1c69ce67b201e",
+          "url": "https://infosiga.detran.sp.gov.br/dados-abertos/sinistros_11-2022.csv"
+        },
+        "12": {
+          "bytes": 4403802,
+          "last_modified": "2026-05-27T21:39:04.580181",
+          "sha256": "8fe23966c9be6803f13b04987591dca068fa165ce0fd55441862293f04f8bbe1",
+          "url": "https://infosiga.detran.sp.gov.br/dados-abertos/sinistros_12-2022.csv"
+        }
+      },
       "registros": 3563,
       "sha256_csv": {
-        "grade": "c65807b89a46cfa30f23eb0235cb8db969db7e95c4fa77d89f4e5638ba3df42a",
-        "hora": "a701d7dd0aaa629f4ddbd82db5ed475db114e1e1d51fa5d23c875d8230972fff",
+        "grade": "d2b10aa4edf6565b833f70b35cd9f703e195e51ec5356cae06b5526bb80b6d40",
+        "hora": "dd6badb088771865469617d7e13accdbe0ecb8f4fe33d9d2227f9854fd339542",
         "mensal": "9934f28230ad686fe4c7a849c4a077b8c43c87e3bf2dffb823b21182e9a75820",
         "tipo": "ded3bfe5f683b9a4e408dd68e192a863d42f54bd57f91f201769ce3cb0051da7",
-        "via": "4de38b336f6886b91f512c7ce4a59ef8ecadd7df6d695655b81b991292160644"
-      }
+        "via": "be1bb39f992736259c218c232ea378321716b7c0015271ce0568315ed44aca14"
+      },
+      "valores_invalidos": {}
     },
     "2023": {
+      "celulas_descartadas": 270,
       "coletado_em": "2026-10-11",
+      "com_coordenada": 2460,
       "meses": [
         1,
         2,
@@ -41,17 +120,94 @@
         11,
         12
       ],
+      "origem": {
+        "01": {
+          "bytes": 3772279,
+          "last_modified": "2026-05-27T21:42:11.621545",
+          "sha256": "2d581b224a19974f5b8554f725ffb8290cc9b10e2cf117d569bc3aaa80c0fe45",
+          "url": "https://infosiga.detran.sp.gov.br/dados-abertos/sinistros_01-2023.csv"
+        },
+        "02": {
+          "bytes": 3705786,
+          "last_modified": "2026-05-27T21:42:15.145057",
+          "sha256": "52129e7f148ecbfd606769e9fe11b894e427a34ae235c1825397d8f546ed8fd9",
+          "url": "https://infosiga.detran.sp.gov.br/dados-abertos/sinistros_02-2023.csv"
+        },
+        "03": {
+          "bytes": 4417746,
+          "last_modified": "2026-05-27T21:42:19.343946",
+          "sha256": "46a363755f171f8d806ffd490f33c04c2899b81502bdbf52c77cebf05840574e",
+          "url": "https://infosiga.detran.sp.gov.br/dados-abertos/sinistros_03-2023.csv"
+        },
+        "04": {
+          "bytes": 4314411,
+          "last_modified": "2026-05-27T21:42:22.237413",
+          "sha256": "bd6c3207450579e3341946b37323c7c29d79a6917ca340416a7cc94b3bfdc14d",
+          "url": "https://infosiga.detran.sp.gov.br/dados-abertos/sinistros_04-2023.csv"
+        },
+        "05": {
+          "bytes": 4924212,
+          "last_modified": "2026-05-27T21:42:25.377660",
+          "sha256": "f497c14752165b757575d963b2786de2352b1db19114400fa23c92bc44c7c490",
+          "url": "https://infosiga.detran.sp.gov.br/dados-abertos/sinistros_05-2023.csv"
+        },
+        "06": {
+          "bytes": 5009498,
+          "last_modified": "2026-05-27T21:42:28.183607",
+          "sha256": "f2a2e768d85629e10ada334a077b84c3a4b1677c0df5273af05dc382461e8a1e",
+          "url": "https://infosiga.detran.sp.gov.br/dados-abertos/sinistros_06-2023.csv"
+        },
+        "07": {
+          "bytes": 4972530,
+          "last_modified": "2026-05-27T21:42:30.912712",
+          "sha256": "972487d74eedc33dc3397fb5cb5754da50649a5055e91e663e5eacd0dfe1d617",
+          "url": "https://infosiga.detran.sp.gov.br/dados-abertos/sinistros_07-2023.csv"
+        },
+        "08": {
+          "bytes": 4758553,
+          "last_modified": "2026-05-27T21:42:33.620491",
+          "sha256": "acff4de74b3c42f366fe9d78a62232220cfb182209ea40870145755ccf731074",
+          "url": "https://infosiga.detran.sp.gov.br/dados-abertos/sinistros_08-2023.csv"
+        },
+        "09": {
+          "bytes": 4727789,
+          "last_modified": "2026-05-27T21:42:36.680208",
+          "sha256": "ffbd3083a7343fa3f2a02ddc4df8d3159fcf64d08e1883bb8460ff728dbfc5de",
+          "url": "https://infosiga.detran.sp.gov.br/dados-abertos/sinistros_09-2023.csv"
+        },
+        "10": {
+          "bytes": 4816966,
+          "last_modified": "2026-05-27T21:42:39.589875",
+          "sha256": "6bdd38aa6fcdb4449c1afd9095c13c0558303fcb79799e610a7b0f7c200b0492",
+          "url": "https://infosiga.detran.sp.gov.br/dados-abertos/sinistros_10-2023.csv"
+        },
+        "11": {
+          "bytes": 4569252,
+          "last_modified": "2026-05-27T21:42:42.532571",
+          "sha256": "b1c5a85cd85d2b8b446de13dcd79b643c63229327cfc241ac4c4c3a37a989779",
+          "url": "https://infosiga.detran.sp.gov.br/dados-abertos/sinistros_11-2023.csv"
+        },
+        "12": {
+          "bytes": 4927287,
+          "last_modified": "2026-05-27T21:42:45.656198",
+          "sha256": "f9a361d8f98a78d8552a6e91316d1d83540410e01ae33fb7915704d36016ee08",
+          "url": "https://infosiga.detran.sp.gov.br/dados-abertos/sinistros_12-2023.csv"
+        }
+      },
       "registros": 3830,
       "sha256_csv": {
-        "grade": "a8303eea2b08a98f3f99152d71e2e498402ea0f9804c5a3cdcebf171e7ea55b3",
-        "hora": "d57e0923ebaec0e3746cbf5096641e4dd4448ec09e16fc19fe7cb40b18f937a8",
+        "grade": "57db1559a82bb274c8af6a985b636ed6d62ef46678012da60808865d2075a4a6",
+        "hora": "0f615e55d149c135b34a281a67af06b40c55c3d8b647c97ab168bacc2d89d6e1",
         "mensal": "0561dd00c05ccf0b4b4a67c698dacd68bf714c2a5ad6fb589d6cbd223d7091b4",
         "tipo": "b3ea1e02e630117c428d8a2bd252446d5f4b0ff78689ab076493fe4aba916237",
-        "via": "2d04a17c5f2de0fa627e8748b93843491e6803369811143edd649b74062c76ef"
-      }
+        "via": "2c249190d02ae2700720d74185d10bf8a17c3bf20939cea817948d364d19e642"
+      },
+      "valores_invalidos": {}
     },
     "2024": {
+      "celulas_descartadas": 324,
       "coletado_em": "2026-10-11",
+      "com_coordenada": 2437,
       "meses": [
         1,
         2,
@@ -66,17 +222,94 @@
         11,
         12
       ],
+      "origem": {
+        "01": {
+          "bytes": 4145617,
+          "last_modified": "2026-05-27T21:44:25.445064",
+          "sha256": "438b77a8f430d190f5c643cb0c4a99490ccbc56151b31d4475e00d6cac12011d",
+          "url": "https://infosiga.detran.sp.gov.br/dados-abertos/sinistros_01-2024.csv"
+        },
+        "02": {
+          "bytes": 4189021,
+          "last_modified": "2026-05-27T21:44:29.352591",
+          "sha256": "3e7b89dd03046535e1bb0575b641972451b4568bbdf4919ff2e3cb1e220008df",
+          "url": "https://infosiga.detran.sp.gov.br/dados-abertos/sinistros_02-2024.csv"
+        },
+        "03": {
+          "bytes": 4543614,
+          "last_modified": "2026-05-27T21:44:32.120651",
+          "sha256": "64b0c667dda7d22492a5ef7ba34013e50b0c034ff9e99f76ce7118a43147e2a7",
+          "url": "https://infosiga.detran.sp.gov.br/dados-abertos/sinistros_03-2024.csv"
+        },
+        "04": {
+          "bytes": 4385819,
+          "last_modified": "2026-05-27T21:44:34.912203",
+          "sha256": "095d4ea67ac7378e10e7b9ae5e928abb66a48e73daacf262580b2d44d0c50b83",
+          "url": "https://infosiga.detran.sp.gov.br/dados-abertos/sinistros_04-2024.csv"
+        },
+        "05": {
+          "bytes": 4650583,
+          "last_modified": "2026-05-27T21:44:37.281893",
+          "sha256": "fdb776c2e6666370a78d1102441eac91c73b8808d09484da60ea87364e2e57b4",
+          "url": "https://infosiga.detran.sp.gov.br/dados-abertos/sinistros_05-2024.csv"
+        },
+        "06": {
+          "bytes": 4610295,
+          "last_modified": "2026-05-27T21:44:39.920179",
+          "sha256": "4daf1afa2de9e3a6ce2e508756b4c182352120f9cdd81da537678e644aa98127",
+          "url": "https://infosiga.detran.sp.gov.br/dados-abertos/sinistros_06-2024.csv"
+        },
+        "07": {
+          "bytes": 4285732,
+          "last_modified": "2026-05-27T21:44:43.349300",
+          "sha256": "f54d848c182c794d6d95b03cca407f88664df5b111b347e0182d6cc98da8adbb",
+          "url": "https://infosiga.detran.sp.gov.br/dados-abertos/sinistros_07-2024.csv"
+        },
+        "08": {
+          "bytes": 4437640,
+          "last_modified": "2026-05-27T21:44:48.751136",
+          "sha256": "62a3d698e81f29b56922f9f5cf9c17469c33f97f8042a01997fff87db51de6e8",
+          "url": "https://infosiga.detran.sp.gov.br/dados-abertos/sinistros_08-2024.csv"
+        },
+        "09": {
+          "bytes": 4424667,
+          "last_modified": "2026-05-27T21:44:51.491219",
+          "sha256": "58bcdf4268e5ce6f67462108c658f867b1909971849c68569ab4fd413a285a2c",
+          "url": "https://infosiga.detran.sp.gov.br/dados-abertos/sinistros_09-2024.csv"
+        },
+        "10": {
+          "bytes": 4492588,
+          "last_modified": "2026-05-27T21:44:54.315231",
+          "sha256": "c17b53345b6f112c2c38497615cf12099d4a0a0cf440251fe1f9945d640e757a",
+          "url": "https://infosiga.detran.sp.gov.br/dados-abertos/sinistros_10-2024.csv"
+        },
+        "11": {
+          "bytes": 4202773,
+          "last_modified": "2026-05-27T21:44:57.448998",
+          "sha256": "715a4333d0a88f32d834938aa37ea5f205d2b933db16450f02f06f890f1da870",
+          "url": "https://infosiga.detran.sp.gov.br/dados-abertos/sinistros_11-2024.csv"
+        },
+        "12": {
+          "bytes": 3977944,
+          "last_modified": "2026-05-27T21:45:00.337093",
+          "sha256": "85dfccf9d17dcc79d2b7b60f795ba081401e35ef0f0fa26c2fad77b723106171",
+          "url": "https://infosiga.detran.sp.gov.br/dados-abertos/sinistros_12-2024.csv"
+        }
+      },
       "registros": 3619,
       "sha256_csv": {
-        "grade": "3ce682ca9db6b24bb12323f98bbf69b790bb9ed535970e5038d3c511811cdb35",
-        "hora": "5fdd0c67bc53b81ff292adfe1fafd19b303f5df16f762fc24e4201b763c53bb5",
+        "grade": "f9553eeb1a246b4a660e55747ec87d3621d82b504a745cebea5b014b28f6fb62",
+        "hora": "e3b2b346179dd34f78b09a308f4295e66a9954634f429d3d74ef40d8bcbfeac5",
         "mensal": "701de77f4f399a2ca71332ba92c25abee39eb5462da90f5ce83bfb50bb17776d",
         "tipo": "6ad2a9e0158ce6767dc0f72f1a22845a20ec82312ccfc491b86f5e9930fe6011",
-        "via": "df4cf46ca588d1709457b8ef052a86a5755e8da3394c7f24ebd3f293a7a4f15b"
-      }
+        "via": "69966fcd8e037e091f71f6d435a9dcf051f6e1a3f65df5ee1c8e28fb1926d95d"
+      },
+      "valores_invalidos": {}
     },
     "2025": {
+      "celulas_descartadas": 323,
       "coletado_em": "2026-10-11",
+      "com_coordenada": 1668,
       "meses": [
         1,
         2,
@@ -91,17 +324,94 @@
         11,
         12
       ],
+      "origem": {
+        "01": {
+          "bytes": 3425389,
+          "last_modified": "2026-05-27T21:46:53.347869",
+          "sha256": "ed99a2db41ec7c9d893e6f3e144606814f6d57eaac9a956aed9b206227f543b2",
+          "url": "https://infosiga.detran.sp.gov.br/dados-abertos/sinistros_01-2025.csv"
+        },
+        "02": {
+          "bytes": 3515431,
+          "last_modified": "2026-05-27T21:46:56.875371",
+          "sha256": "25c2a66147c501095922eec701820e6361641f55986ec45e2d363e20703e2611",
+          "url": "https://infosiga.detran.sp.gov.br/dados-abertos/sinistros_02-2025.csv"
+        },
+        "03": {
+          "bytes": 3811570,
+          "last_modified": "2026-05-27T21:46:59.837257",
+          "sha256": "fab3af1f87b32cce30ff20bc95e12a4ca86ea93e6be0ace741520bde5c3b5eea",
+          "url": "https://infosiga.detran.sp.gov.br/dados-abertos/sinistros_03-2025.csv"
+        },
+        "04": {
+          "bytes": 3927848,
+          "last_modified": "2026-05-27T21:47:02.601108",
+          "sha256": "5c5ae4c98c132921060649373ed6bc79f860bf60a3ced8bf757cc8cd2218a7c7",
+          "url": "https://infosiga.detran.sp.gov.br/dados-abertos/sinistros_04-2025.csv"
+        },
+        "05": {
+          "bytes": 4278439,
+          "last_modified": "2026-05-27T21:47:06.638298",
+          "sha256": "9057885fab137663fd0ca48d80afd6ef5f70f549625a8b02a1dd221232f05ec8",
+          "url": "https://infosiga.detran.sp.gov.br/dados-abertos/sinistros_05-2025.csv"
+        },
+        "06": {
+          "bytes": 4084833,
+          "last_modified": "2026-05-27T21:47:09.554535",
+          "sha256": "98836003c3696316f4eda8fe38389bf5bf7afbb7e6dbfba9156319c10df33085",
+          "url": "https://infosiga.detran.sp.gov.br/dados-abertos/sinistros_06-2025.csv"
+        },
+        "07": {
+          "bytes": 4060180,
+          "last_modified": "2026-05-27T21:47:12.704936",
+          "sha256": "7bf5927199e436c06f5e60ddeb43445ea5afb22a06fa9a8d8214f27a0bd8e45c",
+          "url": "https://infosiga.detran.sp.gov.br/dados-abertos/sinistros_07-2025.csv"
+        },
+        "08": {
+          "bytes": 4314757,
+          "last_modified": "2026-05-27T21:47:16.115672",
+          "sha256": "56013170c93e457510664797a916ad8949c5578c5c797c40e2c0be7c5e1545f5",
+          "url": "https://infosiga.detran.sp.gov.br/dados-abertos/sinistros_08-2025.csv"
+        },
+        "09": {
+          "bytes": 4287686,
+          "last_modified": "2026-05-27T21:47:19.671229",
+          "sha256": "5ebf58b893ccd9888fc43a8f63742979a01b675be8805bb861377cd552c3ab90",
+          "url": "https://infosiga.detran.sp.gov.br/dados-abertos/sinistros_09-2025.csv"
+        },
+        "10": {
+          "bytes": 4186085,
+          "last_modified": "2026-05-27T21:47:22.945988",
+          "sha256": "465dc5e0c80f0b5c993703c442244b6b13062c5bb2d9601644f4106ad6bd5c7e",
+          "url": "https://infosiga.detran.sp.gov.br/dados-abertos/sinistros_10-2025.csv"
+        },
+        "11": {
+          "bytes": 4039796,
+          "last_modified": "2026-05-27T21:47:26.060970",
+          "sha256": "a083a36bad5c1265b2d3dcdb8b28f78af719ca40e5f257a9925f7642a44ea651",
+          "url": "https://infosiga.detran.sp.gov.br/dados-abertos/sinistros_11-2025.csv"
+        },
+        "12": {
+          "bytes": 4267239,
+          "last_modified": "2026-05-27T21:47:28.921090",
+          "sha256": "dc87e5fc65b8f0f427370cfec4bf95dbde98686032ddccebe5892711d829321c",
+          "url": "https://infosiga.detran.sp.gov.br/dados-abertos/sinistros_12-2025.csv"
+        }
+      },
       "registros": 3497,
       "sha256_csv": {
-        "grade": "63104ae84cc51315ed01ff2372f979ada93d02c85fb1cf9513867df5c55149b8",
-        "hora": "1a797b15650f2e7de9b5dd26f4c8e80dadfbc666dcaff848530a56470a236da6",
+        "grade": "fa26bebb1103597c0de56d670114286b311c8879bdd1deed5fe0e7a7b6a272ea",
+        "hora": "3e7425ad3dda2c1178d2cb6d1c0db2afcb3ee502cc55bc76fa01b76ac4464a90",
         "mensal": "f7d8e8f016d8ae658dc9ad6f5c1cd25656de7fb685faeae98c2c149204cd0957",
         "tipo": "d22aa5c4147a84369f1ec36e2319db63b5e8aa5ee0fe82ff4d2de3f81fffa6ca",
-        "via": "5ddc4df87ea34736dd658697560e4c9d6c03d7f1f587baf557f2c7d249c85560"
-      }
+        "via": "2f5b07b3d0fb69636975985af1899826f95e73185b425dd083506c891c935cff"
+      },
+      "valores_invalidos": {}
     },
     "2026": {
+      "celulas_descartadas": 316,
       "coletado_em": "2026-10-11",
+      "com_coordenada": 1215,
       "meses": [
         1,
         2,
@@ -112,14 +422,65 @@
         7,
         8
       ],
+      "origem": {
+        "01": {
+          "bytes": 3324193,
+          "last_modified": "2026-05-27T21:47:59.444518",
+          "sha256": "e41a7b6338ec66067bd9b461e5ccb00326a83d891683ca0e5900ea48d1069e78",
+          "url": "https://infosiga.detran.sp.gov.br/dados-abertos/sinistros_01-2026.csv"
+        },
+        "02": {
+          "bytes": 3128124,
+          "last_modified": "2026-05-27T21:48:02.563826",
+          "sha256": "10e2deb36785a001c4a0e7dfedd3883f39361f3a42326c939b01a03432bdb193",
+          "url": "https://infosiga.detran.sp.gov.br/dados-abertos/sinistros_02-2026.csv"
+        },
+        "03": {
+          "bytes": 3775803,
+          "last_modified": "2026-05-27T21:48:06.044416",
+          "sha256": "fdb073730aa36d45c7f357378ddd5b0108b61e84185f6afe6b2a108a8327f577",
+          "url": "https://infosiga.detran.sp.gov.br/dados-abertos/sinistros_03-2026.csv"
+        },
+        "04": {
+          "bytes": 3439044,
+          "last_modified": "2026-05-27T21:48:09.810127",
+          "sha256": "f72990fe07c363c86e143a1e424115c43f3d3b9d657e020163460bce43c959ce",
+          "url": "https://infosiga.detran.sp.gov.br/dados-abertos/sinistros_04-2026.csv"
+        },
+        "05": {
+          "bytes": 3860155,
+          "last_modified": "2026-07-23T13:48:41.923424",
+          "sha256": "1427a39a721278ba4ede94ddda68ec9499fdc631648a9b3b721de8e2d3b490a2",
+          "url": "https://infosiga.detran.sp.gov.br/dados-abertos/sinistros_05-2026.csv"
+        },
+        "06": {
+          "bytes": 3840098,
+          "last_modified": "2026-08-21T18:35:59.332811",
+          "sha256": "a7a5949a55c89c0ac5b1067829e2c8dc2d9e830c040521e0dc34ea450d2a1f3d",
+          "url": "https://infosiga.detran.sp.gov.br/dados-abertos/sinistros_06-2026.csv"
+        },
+        "07": {
+          "bytes": 3882322,
+          "last_modified": "2026-09-25T19:55:09.304205",
+          "sha256": "13e7b6584b18b299f2c6336b1a096b80ffb69ad8c261c6a9b255f151d04221af",
+          "url": "https://infosiga.detran.sp.gov.br/dados-abertos/sinistros_07-2026.csv"
+        },
+        "08": {
+          "bytes": 3960928,
+          "last_modified": "2026-09-25T19:55:50.531837",
+          "sha256": "f50808b745263d59c326addd470bf47cef53d073c956dab7ec9ad30a77c75edd",
+          "url": "https://infosiga.detran.sp.gov.br/dados-abertos/sinistros_08-2026.csv"
+        }
+      },
       "registros": 1599,
       "sha256_csv": {
-        "grade": "3c03a8987587ba462834fcd8c579f4555f9e0c15b927aaa5857d57f523c47848",
-        "hora": "ad3677b98d765c8260a0596ba9d2b437e7a411b203ba3ab5e33a9ec34028df03",
+        "grade": "fab99a910651c62e00fffcf2cf249a52c243bec43c8886dd8f36d2e2d23fca8e",
+        "hora": "1909a56d9551b2a9c6c8cc427b25d1ebf49e52a1429de6e31b00e8c305dd972f",
         "mensal": "2baeb063981ef704b379330b7be6608cca374c70e8c2c55cea57fd3ab3aa7e62",
         "tipo": "ce3730a199e886f8c9b831a79c0859506a08f4bfa1ba5a8aea3e358b94bcc7a6",
-        "via": "542b6ad73c17cbc6240e131891d1c64a6fbba14d09abe239e419922bee0c9178"
-      }
+        "via": "7e06f19d6c36b10415e0b3ebd2cb1e19d789b15dfc7e10634d17ecbaf01ed95d"
+      },
+      "valores_invalidos": {}
     }
   },
   "fonte": "Infosiga SP (Detran-SP), eventos de sinistro, CC BY 4.0, via dadosabertos.sp.gov.br",
