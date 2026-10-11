@@ -103,3 +103,30 @@ def test_build_sem_dengue_da_erro(tmp_path):
     raw = _raw(tmp_path, {"zika": [_l(202407, "2024-02-11")]})
     with pytest.raises(ValueError, match="dengue"):
         construir(raw)
+
+
+def _env(semanas, doenca="dengue", categoria="atual"):
+    dados = [{"recorte": "semanal", "grupo": doenca, "se": se, "ano": se // 100, "semana": se % 100, "data_inicio": ini, "casos": c, "casos_est": c * 2.0,
+              "est_min": c, "est_max": c * 3, "nivel": n, "inc100k": 1.0, "rt": 1.0} for se, ini, c, n in semanas]
+    dados.append({"recorte": "situacao", "grupo": doenca, "se": semanas[-1][0], "categoria": categoria, "n": 10})
+    return {"dados": dados}
+
+
+def test_contexto_soma_8_semanas_e_compara_com_ano_anterior():
+    from scripts.render import contexto_saude_doencas
+    sem = [(202500 + w, f"2025-{(w - 1) // 5 + 1:02d}-01", 10, 1) for w in range(20, 41)] + [(202600 + w, f"2026-{(w - 1) // 5 + 1:02d}-01", 20, 2) for w in range(20, 41)]
+    d = contexto_saude_doencas(_env(sem))["doencas"][0]
+    assert d["casos_8s"] == 160 and d["nivel"] == 2 and d["nivel_rotulo"].startswith("Amarelo")
+    assert d["comparacao"][0] == {"ano": 2026, "casos": 160} and {"ano": 2025, "casos": 80} in d["comparacao"]
+
+
+def test_comparacao_omitida_quando_janela_cruza_a_virada_do_ano():
+    from scripts.render import contexto_saude_doencas
+    sem = [(202600 + w, "2026-01-05", 4, 1) for w in range(1, 6)]
+    assert contexto_saude_doencas(_env(sem))["doencas"][0]["comparacao"] is None
+
+
+def test_desatualizada_vai_para_sem_dado_recente():
+    from scripts.render import contexto_saude_doencas
+    ctx = contexto_saude_doencas(_env([(202407, "2024-02-11", 0, 1)], doenca="zika", categoria="desatualizado"))
+    assert ctx["doencas"] == [] and ctx["sem_dado_recente"][0]["nome"] == "zika"

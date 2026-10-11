@@ -340,6 +340,46 @@ def contexto_comparativo(env: dict) -> dict:
     return {"blocos": blocos, "ref_comp": "posição " + str(max(b["ultimo"]["ano"] for b in blocos))}
 
 
+NIVEIS = {1: "Verde: baixa incidência", 2: "Amarelo: condições favoráveis ao mosquito", 3: "Laranja: transmissão em curso", 4: "Vermelho: incidência alta"}
+NOMES_DOENCA = {"dengue": "Dengue", "chikungunya": "Chikungunya", "zika": "Zika"}
+
+
+def contexto_saude_doencas(env: dict) -> dict:
+    d = env["dados"]
+    sit = {r["grupo"]: r for r in d if r["recorte"] == "situacao"}
+    doencas, antigas = [], []
+    for nome in ("dengue", "chikungunya", "zika"):
+        if nome not in sit:
+            continue
+        sem = sorted((r for r in d if r["recorte"] == "semanal" and r["grupo"] == nome), key=lambda r: r["se"])
+        ultima = sem[-1]
+        rotulo = NOMES_DOENCA[nome]
+        if sit[nome]["categoria"] != "atual":
+            antigas.append({"nome": nome, "rotulo": rotulo, "ultima_semana": f"semana {ultima['semana']} de {ultima['ano']}"})
+            continue
+        janela = [r for r in sem if ultima["se"] - 7 <= r["se"] <= ultima["se"] and r["ano"] == ultima["ano"]]
+        cruza_ano = ultima["semana"] < 8
+        comparacao = None
+        if not cruza_ano:
+            comparacao = []
+            for ano in sorted({r["ano"] for r in sem}, reverse=True):
+                alvo = [r for r in sem if r["ano"] == ano and ultima["semana"] - 7 <= r["semana"] <= ultima["semana"]]
+                if len(alvo) == 8:
+                    comparacao.append({"ano": ano, "casos": sum(r["casos"] for r in alvo)})
+        ult52 = sem[-52:]
+        passo = 13
+        rot = {i: f"S{r['semana']}/{str(r['ano'])[2:]}" for i, r in enumerate(ult52) if i % passo == 0 or i == len(ult52) - 1}
+        doencas.append({
+            "nome": nome, "rotulo": rotulo, "se": ultima["se"], "semana": ultima["semana"], "ano": ultima["ano"], "nivel": ultima["nivel"], "nivel_rotulo": NIVEIS[ultima["nivel"]],
+            "inc100k": ultima["inc100k"], "casos_8s": sum(r["casos"] for r in janela), "casos_est_ultima": ultima["casos_est"], "est_min": ultima["est_min"], "est_max": ultima["est_max"],
+            "comparacao": comparacao,
+            "grafico": barras_mensais([(f"S{r['semana']}/{str(r['ano'])[2:]}", r["casos"]) for r in ult52], rot),
+            "tabela": [{"rotulo": f"S{r['semana']}/{r['ano']}", "casos": r["casos"], "casos_est": r["casos_est"], "nivel_rotulo": NIVEIS[r["nivel"]]} for r in reversed(ult52)],
+        })
+    ref = f"semana {doencas[0]['semana']} de {doencas[0]['ano']}" if doencas else "sem dado recente"
+    return {"doencas": doencas, "sem_dado_recente": antigas, "ref_saude": ref, "niveis": NIVEIS}
+
+
 def contexto_clima(clima: dict, previsao: dict | None) -> dict:
     mensal = [r for r in clima["dados"] if r["recorte"] == "mensal"]
     anual = next(r for r in clima["dados"] if r["recorte"] == "anual")
