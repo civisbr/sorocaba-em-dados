@@ -70,8 +70,7 @@ def coletar(acesso_em: date, destino: Path = DESTINO, forcar: bool = False) -> b
     arq.write_text(texto, encoding="utf-8")
     meta = {
         "fonte": "Open-Meteo Historical Weather API (reanálise ERA5, Copernicus/ECMWF)", "url": URL,
-        "licenca": "CC BY 4.0 (Open-Meteo; dados Copernicus)", "latitude_pedida": LAT, "longitude_pedida": LON,
-        "latitude_grade": d["latitude"], "longitude_grade": d["longitude"], "altitude_grade_m": d["elevation"],
+        "licenca": "CC BY 4.0 (Open-Meteo; dados Copernicus)", "grade_y": d["latitude"], "grade_x": d["longitude"], "altitude_grade_m": d["elevation"],
         "periodo": [INICIO, FIM], "coletado_em": acesso_em.isoformat(), "sha256_csv": hashlib.sha256(texto.encode("utf-8")).hexdigest(),
     }
     (destino / "manifesto.json").write_text(json.dumps(meta, indent=2, sort_keys=True, ensure_ascii=False) + "\n", encoding="utf-8")

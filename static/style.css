@@ -254,3 +254,4 @@ table{width:100%;border-collapse:collapse;font-size:.95rem}th,td{padding:.4rem .
 .rodape-marca .marca-texto{font-size:.9rem;color:var(--navy-foreground)}.rodape-marca .marca-verde{color:var(--verde)}
 .cabecalho{border-bottom:0;box-shadow:0 1px 0 var(--border)}
 .cabecalho::after{content:"";position:absolute;left:0;right:0;bottom:-1px;height:2px;z-index:-1;background:linear-gradient(90deg,var(--ciano),var(--verde) 55%,var(--ambar));opacity:.85}
+.cartao-duplo{display:flex;flex-wrap:wrap;gap:.25rem 1.75rem;margin-top:1.25rem}.cartao-duplo .cartao-numero{margin-top:0;font-size:2.35rem}.cartao-par{display:flex;flex-direction:column}.cartao-rotulo{font-size:.8rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--muted-foreground)}

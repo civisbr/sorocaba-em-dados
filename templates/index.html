@@ -63,8 +63,10 @@
         <span class="cartao-numero {{ 'pos' if emprego.ultimo.saldo > 0 else ('neg' if emprego.ultimo.saldo < 0 else '') }}">{{ emprego.ultimo.saldo | sinal }}</span>
         <span class="cartao-ctx">vagas formais em {{ emprego.ultimo_mes }}</span>
         {% elif p.id == "combustivel" %}
-        <span class="cartao-numero">R$ {{ comb.produtos[0].ultimo.mediana | brl }}</span>
-        <span class="cartao-ctx">mediana da {{ comb.produtos[0].nome | lower }} entre {{ comb.produtos[0].ultimo.n_postos }} postos pesquisados, semana de {{ comb.semana_ini | data_br }}</span>
+        {% set gas = comb.produtos | selectattr("nome", "equalto", "Gasolina comum") | first | default(comb.produtos[0]) %}
+        {% set eta = comb.produtos | selectattr("nome", "equalto", "Etanol") | first | default(none) %}
+        <span class="cartao-duplo"><span class="cartao-par"><span class="cartao-rotulo">Gasolina</span><span class="cartao-numero">R$ {{ gas.ultimo.mediana | brl }}</span></span>{% if eta %}<span class="cartao-par"><span class="cartao-rotulo">Etanol</span><span class="cartao-numero">R$ {{ eta.ultimo.mediana | brl }}</span></span>{% endif %}</span>
+        <span class="cartao-ctx">mediana entre os postos pesquisados na semana de {{ comb.semana_ini | data_br }} ({{ gas.ultimo.n_postos }} para a gasolina{% if eta %}, {{ eta.ultimo.n_postos }} para o etanol{% endif %})</span>
         {% elif p.id == "cidade" %}
         <span class="cartao-numero">{{ cid.ind.populacao_estimada.valor | inteiro_br }}</span>
         <span class="cartao-ctx">habitantes, estimativa do IBGE para {{ cid.ind.populacao_estimada.ano }}</span>

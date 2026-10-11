@@ -164,7 +164,7 @@
       "ERA5 é um modelo que combina observações do mundo todo, não uma estação meteorológica em Sorocaba. Os valores são da célula de grade em -23.51°, -47.46° (altitude do modelo 564 m), de cerca de 25 km; podem diferir do que um termômetro na cidade mede, sobretudo na chuva.",
       "Temperaturas médias são médias das máximas e das mínimas diárias de cada mês. Chuva do mês é a média, entre os 30 anos, do total de cada mês. Dia de chuva = 1 mm ou mais.",
       "Recordes são os extremos diários do modelo nos 30 anos, não registros oficiais de estação.",
-      "SHA-256 do manifesto de coleta: 7f48f1048b1b984478ccd282db49f98a337d9ea682f8f41f561a9ad16f52e208"
+      "SHA-256 do manifesto de coleta: e8841b62a88b0d58b732314f104ef1d9b2fbfec05bf6a6e2bdbbed191ed83aeb"
     ]
   },
   "referencia": {

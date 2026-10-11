@@ -72,7 +72,7 @@ def construir(raw: Path) -> Envelope:
             n_registros=len(dados),
             notas=[
                 f"Normais de 30 anos (1991 a 2020), a janela padrão da Organização Meteorológica Mundial, calculadas aqui sobre a série diária da reanálise ERA5.",
-                f"ERA5 é um modelo que combina observações do mundo todo, não uma estação meteorológica em Sorocaba. Os valores são da célula de grade em {meta['latitude_grade']:.2f}°, {meta['longitude_grade']:.2f}° (altitude do modelo {meta['altitude_grade_m']:.0f} m), de cerca de 25 km; podem diferir do que um termômetro na cidade mede, sobretudo na chuva.",
+                f"ERA5 é um modelo que combina observações do mundo todo, não uma estação meteorológica em Sorocaba. Os valores são da célula de grade em {meta['grade_y']:.2f}°, {meta['grade_x']:.2f}° (altitude do modelo {meta['altitude_grade_m']:.0f} m), de cerca de 25 km; podem diferir do que um termômetro na cidade mede, sobretudo na chuva.",
                 "Temperaturas médias são médias das máximas e das mínimas diárias de cada mês. Chuva do mês é a média, entre os 30 anos, do total de cada mês. Dia de chuva = 1 mm ou mais.",
                 "Recordes são os extremos diários do modelo nos 30 anos, não registros oficiais de estação.",
                 f"SHA-256 do manifesto de coleta: {h}",

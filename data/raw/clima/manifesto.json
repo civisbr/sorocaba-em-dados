@@ -2,11 +2,9 @@
   "altitude_grade_m": 564.0,
   "coletado_em": "2026-10-11",
   "fonte": "Open-Meteo Historical Weather API (reanálise ERA5, Copernicus/ECMWF)",
-  "latitude_grade": -23.514938,
-  "latitude_pedida": -23.5015,
+  "grade_x": -47.463165,
+  "grade_y": -23.514938,
   "licenca": "CC BY 4.0 (Open-Meteo; dados Copernicus)",
-  "longitude_grade": -47.463165,
-  "longitude_pedida": -47.4526,
   "periodo": [
     "1991-01-01",
     "2020-12-31"
