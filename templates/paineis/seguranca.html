@@ -64,6 +64,39 @@
   </article>
 </section>
 
+<section aria-labelledby="calor-t" class="bloco-painel">
+  <h2 id="calor-t" class="h2-medio sem-topo">Onde as ocorrências são registradas ({{ ano_ref }})</h2>
+  <p class="suave">Mapa de calor sobre o contorno oficial do município. Cada quadrado é uma área de cerca de {{ calor.roubos.lado_m | num }} m (roubos) ou {{ calor.furtos.lado_m | num }} m (furtos); quanto mais escuro, mais registros. Áreas com menos de 5 registros não aparecem.</p>
+  <div class="grade-2">
+    {% for g, titulo in [("roubos", "Roubos"), ("furtos", "Furtos")] %}{% set c = calor[g] %}
+    <article class="quadro-card">
+      <h3>{{ titulo }}</h3>
+      <svg class="mapa-calor" viewBox="0 0 {{ c.mapa.largura }} {{ c.mapa.altura }}" role="img" aria-labelledby="mc-{{ g }}-t mc-{{ g }}-d">
+        <title id="mc-{{ g }}-t">Mapa de calor de {{ titulo | lower }} registrados em Sorocaba em {{ c.ano }}</title>
+        <desc id="mc-{{ g }}-d">{{ c.n_celulas }} áreas com 5 registros ou mais. As concentrações aparecem em tons mais escuros.</desc>
+        <path class="contorno" d="{{ c.mapa.caminho }}"/>
+        {% for q in c.celulas %}<rect class="calor-{{ q.nivel }}" x="{{ q.x }}" y="{{ q.y }}" width="{{ q.w }}" height="{{ q.h }}"><title>{{ q.n | num }} registros nesta área</title></rect>{% endfor %}
+      </svg>
+      <ul class="legenda-calor" aria-label="Legenda do mapa de {{ titulo | lower }}">{% for l in c.legenda %}<li><span class="amostra-calor calor-{{ l.nivel }}"></span>{{ l.ini | num }}{% if l.fim != l.ini %}–{{ l.fim | num }}{% endif %}</li>{% endfor %}</ul>
+      <p class="pequeno suave">Só {{ c.cobertura | brl1 }}% dos {{ titulo | lower }} de {{ c.ano }} têm coordenada válida no município; os demais ficam fora do mapa. Coordenadas vêm do registro da polícia e podem ser aproximadas.</p>
+    </article>
+    {% endfor %}
+  </div>
+</section>
+
+<section aria-labelledby="rank-t" class="bloco-painel">
+  <h2 id="rank-t" class="h2-medio sem-topo">Bairros com mais registros ({{ ano_ref }})</h2>
+  <p class="suave">Os 15 bairros com mais registros de cada tipo. <strong>Mais registros não significa bairro mais perigoso:</strong> o número cresce com a população, o comércio e o movimento de pessoas, e depende de moradores registrarem a ocorrência. O nome do bairro é digitado no boletim, e grafias diferentes do mesmo bairro aparecem separadas.</p>
+  <div class="grade-2">
+    {% for g, titulo in [("roubos", "Roubos"), ("furtos", "Furtos")] %}
+    <article class="quadro-card">
+      <h3>{{ titulo }} por bairro</h3>
+      <ol class="setores ranking">{% for b in ranking[g] %}<li><span class="nome">{{ loop.index }}. {{ b.bairro }}</span><span class="val">{{ b.n | num }}</span><span class="setor-barra pos" style="width: {{ b.pct }}%"></span></li>{% endfor %}</ol>
+    </article>
+    {% endfor %}
+  </div>
+</section>
+
 <section aria-labelledby="bairro-t" class="bloco-painel">
   <h2 id="bairro-t" class="h2-medio sem-topo">Por bairro ({{ ano_ref }})</h2>
   <p class="suave">Contagem de roubos e furtos registrados, em ordem alfabética. Não é ranking nem medida de risco: o número depende do tamanho do bairro, do comércio e do movimento de pessoas, e o nome do bairro é digitado no boletim, com grafias variadas.</p>

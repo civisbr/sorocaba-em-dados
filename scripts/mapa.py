@@ -30,6 +30,16 @@ def _centroide(pontos: list[tuple[float, float]]) -> tuple[float, float]:
 
 
 def gerar(caminho: Path) -> dict:
+    return _projetar(caminho)[0]
+
+
+def projetar(caminho: Path):
+    """(mapa, f) onde f(lat, lon) devolve (x, y) no mesmo quadro do contorno."""
+    mapa, f = _projetar(caminho)
+    return mapa, f
+
+
+def _projetar(caminho: Path):
     anel = _anel_externo(json.loads(caminho.read_text(encoding="utf-8")))
     lat0 = sum(lat for _, lat in anel) / len(anel)
     k = math.cos(math.radians(lat0))
@@ -46,6 +56,9 @@ def gerar(caminho: Path) -> dict:
     caminho_svg = "M" + "L".join(f"{x:.1f} {y:.1f}" for x, y in pts) + "Z"
     clon, clat = _centroide(anel)
     cx, cy = px((clon * k, -clat))
+    def ponto(lat: float, lon: float) -> tuple[float, float]:
+        return px((lon * k, -lat))
+
     return {
         "largura": LARGURA,
         "altura": ALTURA,
@@ -54,4 +67,4 @@ def gerar(caminho: Path) -> dict:
         "centro_y": round(cy, 1),
         "lat": f"{clat:.4f}".replace("-", "−"),
         "lon": f"{clon:.4f}".replace("-", "−"),
-    }
+    }, ponto

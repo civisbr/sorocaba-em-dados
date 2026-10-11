@@ -56,6 +56,8 @@ def baixar(client: httpx.Client, caminho: str, tentativas: int = 4) -> bytes:
 
 
 def coletar(acesso_em: date, destino: Path = DESTINO) -> list[str]:
+    if acesso_em > date.today():
+        raise ValueError(f"acesso_em {acesso_em} está no futuro")
     destino.mkdir(parents=True, exist_ok=True)
     antigo = json.loads((destino / "manifesto.json").read_text(encoding="utf-8")) if (destino / "manifesto.json").exists() else {}
     novo = {"acesso_em": acesso_em.isoformat(), "arquivos": {}}

@@ -1,6 +1,7 @@
 import json
 
-from scripts.build_seguranca import RAIZ, chave, construir
+from scripts.build_seguranca import RAIZ, construir
+from scripts.seguranca_grupos import chave
 
 RAW = RAIZ / "data/raw/ssp"
 
@@ -54,12 +55,13 @@ def test_raw_sem_identificador_de_boletim_ou_endereco():
     assert "sha256_xlsx" in json.loads((RAW / "manifesto.json").read_text(encoding="utf-8"))["anos"]["2025"]
 
 
-def test_pagina_sem_ranking_de_bairro(tmp_path):
+def test_pagina_traz_ranking_de_bairro_com_ressalva(tmp_path):
     from scripts.render import renderizar
 
     renderizar(RAIZ / "data/public", tmp_path / "dist")
     html = (tmp_path / "dist/seguranca/index.html").read_text(encoding="utf-8")
-    assert "Não é ranking" in html and "ordem alfabética" in html
+    assert "não significa bairro mais perigoso" in html and "ordem alfabética" in html
+    assert "Mapa de calor" in html and "têm coordenada válida" in html
 
 
 def test_serie_mensal_sem_buracos_nem_para_tipo_raro():
@@ -71,3 +73,35 @@ def test_serie_mensal_sem_buracos_nem_para_tipo_raro():
     ref = por["roubos"]
     assert all(v == ref for v in por.values())
     assert len(ref) == len(set(ref))
+
+
+def test_raw_so_tem_grupos_conhecidos_e_detalhe_so_para_patrimonio():
+    import csv
+
+    from scripts.seguranca_grupos import GRUPOS, GRUPOS_DETALHADOS
+
+    for pasta in RAW.iterdir():
+        if not pasta.is_dir():
+            continue
+        for tabela in ("mensal", "hora", "bairro", "conduta"):
+            with (pasta / f"{tabela}.csv").open(encoding="utf-8") as f:
+                grupos = {r["grupo"] for r in csv.DictReader(f, delimiter=";")}
+            assert grupos <= set(GRUPOS), (pasta, tabela, grupos)
+            if tabela != "mensal":
+                assert grupos <= set(GRUPOS_DETALHADOS), (pasta, tabela, grupos)
+
+
+def test_raw_sem_coluna_de_natureza_fina():
+    for arq in RAW.rglob("*.csv"):
+        assert "natureza" not in arq.read_text(encoding="utf-8").splitlines()[0], arq
+
+
+def test_data_de_acesso_no_futuro_e_rejeitada(tmp_path):
+    import datetime as dt
+
+    import pytest
+
+    from scripts import fetch_ssp
+
+    with pytest.raises(ValueError, match="futuro"):
+        fetch_ssp.coletar(dt.date.today() + dt.timedelta(days=1), tmp_path)

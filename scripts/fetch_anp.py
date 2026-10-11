@@ -88,6 +88,8 @@ def ultima_coleta(csv_texto: str) -> date | None:
 
 
 def coletar(acesso_em: date, destino: Path = DESTINO) -> Path:
+    if acesso_em > date.today():
+        raise ValueError(f"acesso_em {acesso_em} está no futuro")
     pedacos: dict[str, tuple[str, str]] = {}
     for nome in ARQUIVOS:
         corpo = baixar(nome)

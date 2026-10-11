@@ -1,7 +1,8 @@
 """Baixa as planilhas anuais de ocorrências da SSP-SP e guarda só contagens agregadas de Sorocaba.
 
 Cada linha da fonte é um boletim de ocorrência, com endereço, coordenadas e horário. Nada
-disso é gravado: só contagens por mês, período do dia, bairro e tipo de furto, sem número de BO.
+disso é gravado. Entram só contagens por mês e grupo de natureza (cidade inteira); hora, bairro
+e tipo de furto existem apenas para roubos e furtos (ver seguranca_grupos.py).
 """
 
 from __future__ import annotations
@@ -11,7 +12,9 @@ import csv
 import hashlib
 import io
 import json
+import math
 import tempfile
+import zipfile
 import time
 from collections import Counter
 from datetime import date, time as hora_t
@@ -19,6 +22,8 @@ from pathlib import Path
 
 import httpx
 from python_calamine import CalamineWorkbook
+
+from scripts.seguranca_grupos import GRUPOS_DETALHADOS, grupo_de
 
 RAIZ = Path(__file__).resolve().parent.parent
 DESTINO = RAIZ / "data" / "raw" / "ssp"
@@ -37,15 +42,20 @@ ALIASES = {
     "ano": ("ANO_ESTATISTICA",),
     "periodo": ("DESC_PERIODO", "DESCR_PERIODO"),
     "hora": ("HORA_OCORRENCIA_BO",),
+    "lat": ("LATITUDE",),
+    "lon": ("LONGITUDE",),
     "bairro": ("BAIRRO",),
     "conduta": ("DESCR_CONDUTA",),
 }
 TABELAS = {
-    "mensal": ["ano", "mes", "natureza", "n"],
-    "hora": ["ano", "natureza", "hora", "n"],
-    "bairro": ["ano", "natureza", "bairro", "n"],
-    "conduta": ["ano", "natureza", "conduta", "n"],
+    "mensal": ["ano", "mes", "grupo", "n"],
+    "hora": ["ano", "grupo", "hora", "n"],
+    "bairro": ["ano", "grupo", "bairro", "n"],
+    "conduta": ["ano", "grupo", "conduta", "n"],
+    "grade": ["ano", "grupo", "lat", "lon", "n"],
 }
+CELULA = 0.005  # graus; ~550 m de lado. Só o centro da célula é gravado, nunca a coordenada do boletim.
+LIMITE_DESCOMPRIMIDO = 4 * 1024**3
 
 
 def so_host_confiavel(r: httpx.Request) -> None:
@@ -76,7 +86,10 @@ def cabecalho(c: httpx.Client, ano: int) -> dict | None:
     if r.status_code == 404:
         return None
     r.raise_for_status()
-    return {"last_modified": r.headers.get("last-modified", ""), "bytes": int(r.headers.get("content-length", "0"))}
+    info = {"last_modified": r.headers.get("last-modified", ""), "bytes": int(r.headers.get("content-length", "0"))}
+    if not info["last_modified"] or not info["bytes"]:
+        raise ValueError(f"a SSP-SP não informou Last-Modified/Content-Length de {ano}; sem eles não dá para detectar mudança")
+    return info
 
 
 def baixar(c: httpx.Client, ano: int, destino: Path) -> str:
@@ -90,11 +103,16 @@ def baixar(c: httpx.Client, ano: int, destino: Path) -> str:
                     raise ValueError(f"planilha de {ano} acima do limite esperado")
                 h.update(pedaco)
                 f.write(pedaco)
+    esperado = int(r.headers.get("content-length", "0"))
+    if esperado and total != esperado:
+        raise ValueError(f"download de {ano} incompleto: {total} de {esperado} bytes")
     return h.hexdigest()
 
 
 def limpar(v) -> str:
-    return " ".join(str(v).split()) if v is not None else ""
+    texto = " ".join(str(v).split()) if v is not None else ""
+    # Valor da fonte começando por = + - @ viraria fórmula se o CSV fosse aberto em planilha.
+    return texto.lstrip("=+-@") if texto[:1] in "=+-@" else texto
 
 
 def indices(cab: list) -> dict[str, int] | None:
@@ -108,6 +126,26 @@ def indices(cab: list) -> dict[str, int] | None:
     return achados
 
 
+def limites_do_municipio(margem: float = 0.01) -> tuple[float, float, float, float]:
+    """(lat_min, lat_max, lon_min, lon_max) da malha do IBGE; descarta coordenadas fora da cidade."""
+    geo = json.loads((RAIZ / "data" / "raw" / "ibge" / "malha_3552205.geojson").read_text(encoding="utf-8"))
+    g = geo["features"][0]["geometry"]
+    pols = g["coordinates"] if g["type"] == "MultiPolygon" else [g["coordinates"]]
+    pts = [p for pol in pols for p in pol[0]]
+    lons, lats = [p[0] for p in pts], [p[1] for p in pts]
+    return min(lats) - margem, max(lats) + margem, min(lons) - margem, max(lons) + margem
+
+
+def celula(lat, lon, limites) -> tuple[float, float] | None:
+    try:
+        la, lo = float(lat), float(lon)
+    except (TypeError, ValueError):
+        return None
+    if not (limites[0] <= la <= limites[1] and limites[2] <= lo <= limites[3]):
+        return None
+    return round((math.floor(la / CELULA) + 0.5) * CELULA, 4), round((math.floor(lo / CELULA) + 0.5) * CELULA, 4)
+
+
 def codigo(v) -> int | None:
     try:
         return int(float(v))
@@ -117,9 +155,13 @@ def codigo(v) -> int | None:
 
 def agregar(caminho: Path, ano_arquivo: int) -> tuple[dict[str, Counter], dict]:
     """Percorre as abas de dados e conta ocorrências de Sorocaba por (ano, mês, natureza, ...)."""
+    with zipfile.ZipFile(caminho) as z:  # o xlsx é um zip: recusa explosão de descompressão antes de carregar
+        if sum(i.file_size for i in z.infolist()) > LIMITE_DESCOMPRIMIDO:
+            raise ValueError(f"{caminho.name} descomprime acima do limite esperado")
     wb = CalamineWorkbook.from_path(str(caminho))
     cont = {t: Counter() for t in TABELAS}
-    meta = {"abas": [], "registros_sorocaba": 0, "sem_natureza": 0, "fora_do_ano": 0}
+    limites = limites_do_municipio()
+    meta = {"abas": [], "registros_sorocaba": 0, "sem_natureza": 0, "fora_dos_grupos": 0, "fora_do_ano": 0, "sem_coordenada_valida": 0}
     for nome in wb.sheet_names:
         linhas = wb.get_sheet_by_name(nome).to_python(skip_empty_area=False)
         idx = indices(linhas[0]) if linhas else None
@@ -133,6 +175,10 @@ def agregar(caminho: Path, ano_arquivo: int) -> tuple[dict[str, Counter], dict]:
             natureza = limpar(r[idx["natureza"]]).upper()
             if natureza in ("", "NULL"):
                 meta["sem_natureza"] += 1
+                continue
+            grupo = grupo_de(natureza)
+            if grupo is None:
+                meta["fora_dos_grupos"] += 1
                 continue
             ano, mes = codigo(r[idx["ano"]]), codigo(r[idx["mes"]])
             if ano != ano_arquivo or mes is None:
@@ -149,11 +195,17 @@ def agregar(caminho: Path, ano_arquivo: int) -> tuple[dict[str, Counter], dict]:
             bairro = "SEM INFORMAÇÃO" if bairro in ("", "NULL") else bairro
             conduta = limpar(r[idx["conduta"]])
             conduta = "Sem informação" if conduta.upper() in ("", "NULL") else conduta
-            cont["mensal"][(ano, mes, natureza)] += 1
-            cont["hora"][(ano, natureza, rotulo_hora)] += 1
-            cont["bairro"][(ano, natureza, bairro)] += 1
-            if natureza.startswith("FURTO"):
-                cont["conduta"][(ano, natureza, conduta)] += 1
+            cont["mensal"][(ano, mes, grupo)] += 1
+            if grupo in GRUPOS_DETALHADOS:
+                cont["hora"][(ano, grupo, rotulo_hora)] += 1
+                cont["bairro"][(ano, grupo, bairro)] += 1
+                c = celula(r[idx["lat"]], r[idx["lon"]], limites)
+                if c:
+                    cont["grade"][(ano, grupo, *c)] += 1
+                else:
+                    meta["sem_coordenada_valida"] += 1
+                if grupo == "furtos":
+                    cont["conduta"][(ano, grupo, conduta)] += 1
         del linhas
     return cont, meta
 
@@ -168,6 +220,8 @@ def csv_texto(campos: list[str], contagem: Counter) -> str:
 
 
 def coletar(acesso_em: date, destino: Path = DESTINO) -> list[int]:
+    if acesso_em > date.today():
+        raise ValueError(f"acesso_em {acesso_em} está no futuro")
     destino.mkdir(parents=True, exist_ok=True)
     arq_man = destino / "manifesto.json"
     antigo = json.loads(arq_man.read_text(encoding="utf-8")) if arq_man.exists() else {"anos": {}}
@@ -199,8 +253,8 @@ def coletar(acesso_em: date, destino: Path = DESTINO) -> list[int]:
                 "sha256_xlsx": sha, "coletado_em": acesso_em.isoformat(), "sha256_csv": hashes, **meta,
             }
             atualizados.append(ano)
-    if atualizados:
-        arq_man.write_text(json.dumps(novo, indent=2, sort_keys=True) + "\n", encoding="utf-8")
+    novo["verificado_em"] = acesso_em.isoformat()
+    arq_man.write_text(json.dumps(novo, indent=2, sort_keys=True) + "\n", encoding="utf-8")
     return atualizados
 
 

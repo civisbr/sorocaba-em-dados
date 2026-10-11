@@ -13,6 +13,7 @@ from jinja2 import Environment, FileSystemLoader, select_autoescape
 
 from scripts.charts import barras_mensais, linhas, linhas_posicao, linhas_preco
 from scripts.mapa import gerar as gerar_mapa
+from scripts.mapa import projetar as projetar_mapa
 from scripts.paineis import PAINEIS
 
 RAIZ = Path(__file__).resolve().parent.parent
@@ -203,6 +204,33 @@ GRUPOS_SEG = {
 }
 
 
+def mapa_de_calor(d: list[dict], grupo: str, malha: Path) -> dict:
+    mapa, ponto = projetar_mapa(malha)
+    celulas = [r for r in d if r["recorte"] == "grade" and r["grupo"] == grupo]
+    cob = next(r for r in d if r["recorte"] == "grade_cobertura" and r["grupo"] == grupo)
+    valores = sorted(r["n"] for r in celulas)
+    # Cinco faixas por quintil dos valores das células; a legenda mostra os limites reais.
+    cortes = [valores[min(len(valores) - 1, (len(valores) * k) // 5)] for k in range(1, 5)]
+    def nivel(n: int) -> int:
+        return 1 + sum(1 for c in cortes if n >= c)
+    lado = float(cob["categoria"])
+    retangulos = []
+    for r in celulas:
+        x0, y0 = ponto(r["lat"] + lado / 2, r["lon"] - lado / 2)
+        x1, y1 = ponto(r["lat"] - lado / 2, r["lon"] + lado / 2)
+        retangulos.append({"x": round(x0, 1), "y": round(y0, 1), "w": round(x1 - x0, 1), "h": round(y1 - y0, 1), "n": r["n"], "nivel": nivel(r["n"])})
+    limites = [valores[0], *cortes, valores[-1]]
+    legenda = []
+    for k in range(1, 6):
+        ini = limites[k - 1] if k == 1 else limites[k - 1]
+        fim = limites[k] - 1 if k < 5 else limites[5]
+        legenda.append({"nivel": k, "ini": ini, "fim": max(ini, fim)})
+    return {
+        "mapa": mapa, "celulas": retangulos, "legenda": legenda, "cobertura": cob["pct"], "com_coordenada": cob["n"],
+        "ano": cob["ano"], "lado_m": round(lado * 111_000), "n_celulas": len(retangulos),
+    }
+
+
 def contexto_seguranca(env: dict) -> dict:
     d = env["dados"]
     mensal = {g: [r for r in d if r["recorte"] == "mensal" and r["grupo"] == g] for g in GRUPOS_SEG}
@@ -229,6 +257,14 @@ def contexto_seguranca(env: dict) -> dict:
     demais = [k for k in bairros if k.startswith("Demais")]
     lista_bairros = [(k, v.get("roubos", 0), v.get("furtos", 0)) for k, v in bairros.items() if k not in demais]
     ano_ref = next(r["ano"] for r in d if r["recorte"] == "periodo")
+    ranking = {}
+    for g in ("roubos", "furtos"):
+        itens = sorted(
+            ((r["categoria"], r["n"]) for r in d if r["recorte"] == "bairro" and r["grupo"] == g and not r["categoria"].startswith("Demais")),
+            key=lambda kv: (-kv[1], chave_alfabetica(kv[0])),
+        )[:15]
+        topo = itens[0][1] if itens else 1
+        ranking[g] = [{"bairro": b, "n": n, "pct": round(n / topo * 100, 1)} for b, n in itens]
     ult = atual["roubos"]
     return {
         "grupos_nome": GRUPOS_SEG,
@@ -240,6 +276,8 @@ def contexto_seguranca(env: dict) -> dict:
         "bairros": lista_bairros,
         "bairros_demais": [(k, bairros[k].get("roubos", 0), bairros[k].get("furtos", 0)) for k in demais],
         "ano_ref": ano_ref,
+        "ranking": ranking,
+        "calor": {g: mapa_de_calor(d, g, RAIZ / "data" / "raw" / "ibge" / "malha_3552205.geojson") for g in ("roubos", "furtos")},
         "mes_fim": f"{MESES[ult['mes'] - 1]} de {ult['ano']}",
         "mes_fim_curto": f"{ABREV[ult['mes'] - 1]}/{str(ult['ano'])[2:]}",
         "mes_ini_curto": f"{ABREV[(ult['mes']) % 12]}/{str(ult['ano'] - (0 if ult['mes'] == 12 else 1))[2:]}",

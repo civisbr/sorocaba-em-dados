@@ -190,6 +190,8 @@ def filtrar_censo(csv_path: Path) -> str:
 
 
 def coletar(acesso_em: date, destino: Path = DESTINO) -> list[str]:
+    if acesso_em > date.today():
+        raise ValueError(f"acesso_em {acesso_em} está no futuro")
     destino.mkdir(parents=True, exist_ok=True)
     manifesto_atual = (
         json.loads((destino / "manifesto.json").read_text(encoding="utf-8")) if (destino / "manifesto.json").exists() else {}

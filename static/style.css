@@ -177,3 +177,8 @@ table{width:100%;border-collapse:collapse;font-size:.95rem}th,td{padding:.4rem .
 .posicoes{margin-top:1rem}.posicoes li{display:grid;grid-template-columns:1fr;gap:.15rem .75rem;padding:.75rem 0;border-bottom:1px solid var(--border)}
 .posicao-nome{font-weight:700;color:var(--navy)}.posicao-valor{font-size:.95rem}.posicao-sp,.posicao-br{font-size:.95rem}
 @media(min-width:768px){.posicoes li{grid-template-columns:2fr 1.2fr 1fr 1fr;align-items:baseline}}
+.mapa-calor{display:block;width:100%;height:auto;max-height:28rem;margin-top:1rem}.mapa-calor .contorno{fill:var(--muted);stroke:var(--navy);stroke-width:1.5}
+.calor-1{fill:var(--primary);fill-opacity:.2}.calor-2{fill:var(--primary);fill-opacity:.4}.calor-3{fill:var(--primary);fill-opacity:.6}.calor-4{fill:var(--primary);fill-opacity:.8}.calor-5{fill:var(--navy);fill-opacity:.95}
+.legenda-calor{display:flex;flex-wrap:wrap;gap:.25rem .75rem;margin-top:.75rem;font-size:.875rem}.legenda-calor li{display:inline-flex;align-items:center;gap:.35rem}
+.amostra-calor{display:inline-block;width:1rem;height:1rem;border-radius:2px;border:1px solid var(--border)}.amostra-calor.calor-1{background:color-mix(in oklch,var(--primary) 20%,white)}.amostra-calor.calor-2{background:color-mix(in oklch,var(--primary) 40%,white)}.amostra-calor.calor-3{background:color-mix(in oklch,var(--primary) 60%,white)}.amostra-calor.calor-4{background:color-mix(in oklch,var(--primary) 80%,white)}.amostra-calor.calor-5{background:var(--navy)}
+.ranking .nome{overflow-wrap:anywhere}

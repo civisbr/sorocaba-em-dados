@@ -41,3 +41,24 @@ jobs:
     steps:
       - id: deployment
         uses: actions/deploy-pages@368f82528645a54fb793d4d04e342629a3f51346 # v5
+
+  alerta:
+    needs: [build, deploy]
+    if: failure() || cancelled()
+    runs-on: ubuntu-latest
+    permissions:
+      issues: write
+    steps:
+      - name: Abrir issue em falha
+        env:
+          GH_TOKEN: ${{ github.token }}
+          GH_REPO: ${{ github.repository }}
+        run: |
+          url="${GITHUB_SERVER_URL}/${GITHUB_REPOSITORY}/actions/runs/${GITHUB_RUN_ID}"
+          titulo="Falha na publicação do site"
+          aberta=$(gh issue list --state open --search "\"$titulo\" in:title" --json number,title --jq "[.[] | select(.title == \"$titulo\")][0].number")
+          if [ -n "$aberta" ] && [ "$aberta" != "null" ]; then
+            gh issue comment "$aberta" --body "Nova falha: $url"
+          else
+            gh issue create --title "$titulo" --body "Execução: $url. O site continua com a versão anterior."
+          fi

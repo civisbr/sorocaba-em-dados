@@ -125,6 +125,8 @@ def csv_texto(linhas: list[tuple], com_origem: bool) -> str:
 
 
 def coletar(acesso_em: date, destino: Path = DESTINO) -> list[str]:
+    if acesso_em > date.today():
+        raise ValueError(f"acesso_em {acesso_em} está no futuro")
     destino.mkdir(parents=True, exist_ok=True)
     arq = destino / "manifesto.json"
     antigo = json.loads(arq.read_text(encoding="utf-8")) if arq.exists() else {"arquivos": {}}

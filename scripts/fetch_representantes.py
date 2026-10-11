@@ -161,6 +161,8 @@ def csv_texto(campos: list[str], linhas: list[dict]) -> str:
 
 
 def coletar(acesso_em: date, destino: Path = DESTINO, forcar: bool = False) -> list[str]:
+    if acesso_em > date.today():
+        raise ValueError(f"acesso_em {acesso_em} está no futuro")
     produtos: dict[str, tuple[str, str]] = {}  # arquivo -> (texto, url de origem)
     origens: dict[str, str] = {}
     with cliente() as c, tempfile.TemporaryDirectory() as tmp_s:

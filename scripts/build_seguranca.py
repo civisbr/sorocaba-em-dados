@@ -6,34 +6,22 @@ import argparse
 import csv
 import hashlib
 import json
-import re
+import math
 import unicodedata
 from collections import Counter, defaultdict
 from datetime import date
 from pathlib import Path
 
+from scripts.seguranca_grupos import GRUPOS, sem_acento
 from schemas.envelope import Cobertura, Envelope, Flag, Fonte, Granularidade, Qualidade, Referencia
 
 RAIZ = Path(__file__).resolve().parent.parent
 BAIRRO_MINIMO = 50  # roubos + furtos no ano; abaixo disso o bairro entra em "demais"
 JANELA = 12
+CELULA_GRAU = 0.005  # mesmo valor de fetch_ssp.CELULA
+CELULA_MINIMA = 5  # células do mapa com menos registros não são publicadas
 
-# Só categorias presentes com o mesmo nome em todos os anos da série.
-GRUPOS = {
-    "roubos": ("Roubos", {"ROUBO - OUTROS", "ROUBO DE VEICULO", "ROUBO DE CARGA"}),
-    "furtos": ("Furtos", {"FURTO - OUTROS", "FURTO DE VEICULO", "FURTO DE CARGA"}),
-    "mortes_dolosas": ("Mortes por crime doloso", {"HOMICIDIO DOLOSO", "LATROCINIO", "LESAO CORPORAL SEGUIDA DE MORTE"}),
-    "lesao_dolosa": ("Lesão corporal dolosa", {"LESAO CORPORAL DOLOSA"}),
-    "estupros": ("Estupros", {"ESTUPRO", "ESTUPRO DE VULNERAVEL"}),
-    "trafico": ("Tráfico de entorpecentes", {"TRAFICO DE ENTORPECENTES"}),
-}
-DE_PARA = {n: g for g, (_, ns) in GRUPOS.items() for n in ns}
 FAIXAS = {"De madrugada": range(0, 6), "Pela manhã": range(6, 12), "A tarde": range(12, 18), "A noite": range(18, 24)}
-
-
-def chave(natureza: str) -> str:
-    sem = unicodedata.normalize("NFKD", natureza.replace("–", "-").replace("—", "-")).encode("ascii", "ignore").decode().upper()
-    return re.sub(r"\s*[-–]\s*", " - ", " ".join(sem.split()))
 
 
 def ler(caminho: Path) -> list[dict[str, str]]:
@@ -41,8 +29,8 @@ def ler(caminho: Path) -> list[dict[str, str]]:
         return list(csv.DictReader(f, delimiter=";"))
 
 
-def registro(recorte, ano, grupo, n, mes=None, categoria=None, pct=None) -> dict:
-    return {"recorte": recorte, "ano": ano, "mes": mes, "grupo": grupo, "categoria": categoria, "n": n, "pct": pct}
+def registro(recorte, ano, grupo, n, mes=None, categoria=None, pct=None, lat=None, lon=None) -> dict:
+    return {"recorte": recorte, "ano": ano, "mes": mes, "grupo": grupo, "categoria": categoria, "n": n, "pct": pct, "lat": lat, "lon": lon}
 
 
 def construir(raw: Path) -> Envelope:
@@ -52,11 +40,9 @@ def construir(raw: Path) -> Envelope:
     por_ano: dict[int, dict[str, list[dict]]] = {}
     for ano in anos:
         pasta = raw / str(ano)
-        por_ano[ano] = {t: ler(pasta / f"{t}.csv") for t in ("hora", "bairro", "conduta")}
+        por_ano[ano] = {t: ler(pasta / f"{t}.csv") for t in ("hora", "bairro", "conduta", "grade")}
         for r in ler(pasta / "mensal.csv"):
-            g = DE_PARA.get(chave(r["natureza"]))
-            if g:
-                mensal[(int(r["ano"]), int(r["mes"]), g)] += int(r["n"])
+            mensal[(int(r["ano"]), int(r["mes"]), r["grupo"])] += int(r["n"])
 
     meses = sorted({(a, m) for a, m, _ in mensal})
     ultimo = meses[-1]
@@ -83,7 +69,7 @@ def construir(raw: Path) -> Envelope:
     # Horário: contagem por hora exata quando o boletim a traz; sem hora, vale a faixa do dia informada.
     horas: dict[tuple[str, str], int] = defaultdict(int)
     for r in por_ano[ano_ref]["hora"]:
-        g = DE_PARA.get(chave(r["natureza"]))
+        g = r["grupo"]
         if g in ("roubos", "furtos"):
             horas[(g, r["hora"])] += int(r["n"])
     for g in ("roubos", "furtos"):
@@ -100,7 +86,7 @@ def construir(raw: Path) -> Envelope:
     # Tipos de furto, pelo campo de conduta do boletim.
     con: dict[str, int] = defaultdict(int)
     for r in por_ano[ano_ref]["conduta"]:
-        if DE_PARA.get(chave(r["natureza"])) == "furtos":
+        if r["grupo"] == "furtos":
             con["Sem informação" if r["conduta"].upper() in ("NULL", "") else r["conduta"]] += int(r["n"])
     total_c = sum(con.values())
     for nome, n in sorted(con.items(), key=lambda kv: (-kv[1], kv[0])):
@@ -108,10 +94,15 @@ def construir(raw: Path) -> Envelope:
 
     # Bairros: contagem, em ordem alfabética (ver notas). Bairros pequenos e grafias isoladas vão para "demais".
     bai: dict[tuple[str, str], int] = defaultdict(int)
+    nomes: dict[str, Counter] = defaultdict(Counter)
     for r in por_ano[ano_ref]["bairro"]:
-        g = DE_PARA.get(chave(r["natureza"]))
+        g = r["grupo"]
         if g in ("roubos", "furtos"):
-            bai[(r["bairro"], g)] += int(r["n"])
+            # "SAO BENTO" e "SÃO BENTO" são o mesmo bairro digitado de dois jeitos: soma sob a grafia mais frequente.
+            k = sem_acento(r["bairro"])
+            nomes[k][r["bairro"]] += int(r["n"])
+            bai[(k, g)] += int(r["n"])
+    bai = defaultdict(int, {(nomes[k].most_common(1)[0][0], g): n for (k, g), n in bai.items()})
     bairros = {b for b, _ in bai}
     soma = {b: bai[(b, "roubos")] + bai[(b, "furtos")] for b in bairros}
     grandes = sorted((b for b in bairros if soma[b] >= BAIRRO_MINIMO and b != "SEM INFORMAÇÃO"), key=lambda b: unicodedata.normalize("NFKD", b))
@@ -121,6 +112,21 @@ def construir(raw: Path) -> Envelope:
     resto = [b for b in bairros if b not in grandes]
     for g in ("roubos", "furtos"):
         dados.append(registro("bairro", ano_ref, g, sum(bai[(b, g)] for b in resto), categoria="Demais bairros, grafias variantes e sem informação"))
+
+    # Mapa de calor: células de ~550 m, só com 5+ registros. Cobertura = parcela dos registros com coordenada válida.
+    # Roubos são poucos (centenas por ano): células de ~1,1 km. Furtos, mais numerosos: ~550 m.
+    for g, fator in (("roubos", 2), ("furtos", 1)):
+        base = [(float(r["lat"]), float(r["lon"]), int(r["n"])) for r in por_ano[ano_ref]["grade"] if r["grupo"] == g]
+        lado = round(CELULA_GRAU * fator, 4)
+        blocos: dict[tuple[int, int], int] = defaultdict(int)
+        for la, lo, n in base:
+            blocos[(math.floor(la / lado), math.floor(lo / lado))] += n
+        total_g = sum(mensal[(ano_ref, m, g)] for m in range(1, 13))
+        com_coord = sum(blocos.values())
+        for (i, j), n in sorted(blocos.items()):
+            if n >= CELULA_MINIMA:
+                dados.append(registro("grade", ano_ref, g, n, categoria=str(lado), lat=round((i + 0.5) * lado, 4), lon=round((j + 0.5) * lado, 4)))
+        dados.append(registro("grade_cobertura", ano_ref, g, com_coord, categoria=str(lado), pct=round(com_coord / total_g * 100, 1) if total_g else None))
 
     h = hashlib.sha256((raw / "manifesto.json").read_bytes()).hexdigest()
     acesso = max(v["coletado_em"] for v in man["anos"].values())
@@ -144,6 +150,7 @@ def construir(raw: Path) -> Envelope:
                 "Mortes por crime doloso = homicídio doloso + latrocínio + lesão corporal seguida de morte. Não inclui mortes por intervenção policial nem homicídio no trânsito.",
                 f"Período do dia, tipos de furto e bairros usam o ano completo mais recente ({ano_ref}). Horário: usa a hora exata do boletim e, sem ela, a faixa do dia informada; a parcela sem nenhuma das duas é mostrada. A hora 00h pode estar inflada por preenchimento padrão (00:00 exato).",
                 f"Bairros em ordem alfabética, sem ranking. O campo é digitado no boletim (grafias variam) e bairros com menos de {BAIRRO_MINIMO} roubos e furtos no ano ficam em 'demais'. Contagem não mede risco: depende de população, comércio e fluxo de pessoas.",
+                f"Mapa de calor: registros de roubos e furtos de {ano_ref} em células de cerca de 550 m, só com {CELULA_MINIMA} ou mais registros. Só entram boletins com coordenada válida dentro do município; a parcela coberta é indicada no mapa, e pontos sem geocodificação ficam de fora.",
                 "Séries antigas usam as mesmas categorias com grafia normalizada (ex.: TRAFICO e TRÁFICO). Categorias que só aparecem a partir de 2023 ficaram de fora para não distorcer a comparação.",
                 f"SHA-256 do manifesto de coleta: {h}",
             ],

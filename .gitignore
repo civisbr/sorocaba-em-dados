@@ -9,3 +9,4 @@ CAGED*.txt
 data/raw/tse/
 consulta_cand_*.csv
 votacao_candidato_munzona_*.csv
+*.xlsx

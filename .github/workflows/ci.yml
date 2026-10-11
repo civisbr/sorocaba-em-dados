@@ -2,6 +2,9 @@ name: ci
 
 on:
   pull_request:
+  push:
+    branches: [main]
+    paths-ignore: [data/**, README.md, docs/**]
 
 permissions: {}
 
