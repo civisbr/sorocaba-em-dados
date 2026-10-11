@@ -1,0 +1,12 @@
+{
+  "acesso_em": "2026-10-11",
+  "consulta": "[out:json][timeout:90];(way[\"highway\"~\"^(motorway|motorway_link|trunk|trunk_link|primary|primary_link|secondary|secondary_link|tertiary)$\"](-23.5893,-47.5703,-23.351,-47.3028);way[\"waterway\"=\"river\"](-23.5893,-47.5703,-23.351,-47.3028);node[\"place\"~\"^(suburb|neighbourhood|quarter)$\"][\"name\"](-23.5893,-47.5703,-23.351,-47.3028););out geom;",
+  "espelho": "https://overpass-api.de/api/interpreter",
+  "fonte": "OpenStreetMap contributors (ODbL 1.0)",
+  "licenca": "ODbL 1.0 (https://opendatacommons.org/licenses/odbl/1-0/)",
+  "n_bairros": 692,
+  "n_rios": 107,
+  "n_vias": 3954,
+  "sha256": "4f979a88d5139946c7dc3a2f4a5e096c0702a83aa2826d5af7a82e9e8241942a",
+  "timestamp_osm_base": "2026-10-11T21:46:33Z"
+}

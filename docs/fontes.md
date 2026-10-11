@@ -253,8 +253,7 @@ histórico agora nasce da acumulação dos instantâneos em `data/raw/anp/`.
 com `qualidade=maxima`: um polígono, 472 pontos, 10 KB. Arquivo bruto em
 `data/raw/ibge/malha_3552205.geojson` (commitável: sem dado pessoal), hash no manifesto. O
 ponto marcado no mapa é calculado do polígono (sem rótulo); não é "centro" administrativo nem verificado
-como tal. Substitui o contorno OpenStreetMap do protótipo para manter fonte oficial e evitar
-a obrigação de atribuição ODbL.
+como tal. Substitui o contorno OpenStreetMap do protótipo e continua sendo o contorno oficial. A atribuição ODbL passou a ser necessária por outro motivo: ver a seção OpenStreetMap abaixo.
 
 ---
 
@@ -372,3 +371,11 @@ estarem prontos (`project.md` §1 e §11). Status abaixo reflete só o que foi v
 - **Serviços especializados (`SR`), não usado:** falta a tabela de nomes dos serviços; as especialidades vêm dos leitos e do diagnóstico principal das internações.
 - **SIM e SINASC (mortes e nascimentos), implementado:** `DOSP{ano}.dbc` (`SIM/CID10/DORES`) e `DNSP{ano}.dbc` (`SINASC/1996_/Dados/DNRES`), filtrados por `CODMUNRES=355220` (residentes). Três últimos anos publicados em comum (2022 a 2024 em 2026-10-11); só o último é refeito a cada coleta, porque o Ministério o revisa. Guarda contagens por ano: óbitos por capítulo do CID-10, faixa etária, acidentes de transporte (V01-V99), homicídios (X85-Y09) e suicídios (X60-X84), óbitos de menores de 1 ano, e indicadores de nascimento com denominador de casos válidos (parto, gestação, peso, idade da mãe, consultas de pré-natal). Óbito fetal (`TIPOBITO=1`) fica fora. Células abaixo de 5 são omitidas, menos os totais. Coleta mensal (dia 20), `vitais.yml`, ~5 min na primeira rodada.
 - **Vacinas, implementado (curadoria manual):** `data/raw/vacinas/calendario.csv` transcreve o Calendário Nacional de Vacinação (`https://www.gov.br/saude/pt-br/vacinacao/calendario`, conferido em 2026-10-11; a página não traz data de atualização e mistura pneumocócica 10 e 20-valente, por isso o painel diz só "pneumocócica conjugada"). `campanhas.csv` lista campanhas com fonte (Multivacinação 2026, 3/8 a 1/9, Dia D 22/8, 33 UBS, segundo a Prefeitura). `fonte.json` guarda a data de conferência; o painel avisa quando passa de 120 dias. Rodar `uv run python -m scripts.build_vacinas` depois de editar os CSV. A API `vacinacao/doses-aplicadas-pni-*` devolve registros individuais e não filtrou por município nos testes; não usar (LGPD e volume), então não há cobertura vacinal no painel.
+
+---
+
+## OpenStreetMap — base cartográfica do mapa de saúde
+
+**Status:** `implementada` em 2026-10-11. `scripts/fetch_osm_base.py` (manual, não roda no cron) consulta o Overpass (`overpass-api.de`, com dois espelhos como reserva registrados no manifesto) e grava `data/raw/osm/base_sorocaba.json`: vias principais (`motorway`, `trunk`, `primary`, `secondary`, `tertiary` e ligações), rios e 692 bairros (`place=suburb|neighbourhood|quarter`), recortados no contorno do IBGE e simplificados (~7 m). `data/raw/osm/manifesto.json` guarda espelho, `timestamp_osm_base`, consulta, contagens e sha256. A recoleta aborta se as vias ou os bairros variarem mais de 20-25% e rejeita resposta parcial (`remark`). O build gera `mapa-base.svg` e `data/mapa-bairros.json` no site, sem pedir nada a terceiros no navegador. **Licença:** ODbL 1.0, com atribuição visível no mapa e arquivo `data/raw/osm/LICENCA.txt`; a base é extrato substancial e seus derivados são publicados sob a ODbL.
+
+**Privacidade do mapa:** a posição do usuário (GPS ou bairro escolhido) é calculada só no navegador, não é guardada e não é enviada. Única exceção: o link "Como chegar" abre `openstreetmap.org/directions` com a origem arredondada a 3 casas (~100 m); o rótulo avisa isso.

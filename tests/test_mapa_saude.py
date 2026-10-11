@@ -86,6 +86,25 @@ def test_pagina_tem_mapa_sem_terceiros_e_funciona_sem_js(tmp_path):
     assert re.search(r'<g id="ms-voce" hidden>', html) and "data-so-js hidden" in html  # recursos que dependem de JS só aparecem com JS
     assert 'src="../mapa-saude.js"' in html and "mapa-base.svg" in html
     externos = {h for h in re.findall(r'(?:src|href)="(https?://[^"/]+)', html)}
-    assert externos <= {"https://www.openstreetmap.org", "https://datasus.saude.gov.br"} or all("openstreetmap" in h or "datasus" in h or "github" in h or "gov.br" in h for h in externos)
+    assert externos <= {"https://www.openstreetmap.org", "https://datasus.saude.gov.br", "https://github.com"}
     assert (tmp_path / "mapa-base.svg").exists() and (tmp_path / "mapa-saude.js").exists() and (tmp_path / "data" / "mapa-bairros.json").exists()
     assert "<script" not in (tmp_path / "mapa-base.svg").read_text(encoding="utf-8")
+
+
+def test_svg_base_so_tem_elementos_de_desenho(base):
+    svg, _ = mapa_base.gerar_svg(base)
+    tags = {e.tag.split("}")[1] for e in ET.fromstring(svg).iter()}
+    assert tags <= {"svg", "style", "path", "title"}
+
+
+def test_js_do_mapa_nao_envia_nem_guarda_a_posicao():
+    js = (RAIZ / "static" / "mapa-saude.js").read_text(encoding="utf-8")
+    assert js.count("fetch(") == 1 and "fetch(svg.dataset.bairros)" in js
+    for proibido in ("localStorage", "sessionStorage", "XMLHttpRequest", "sendBeacon", "innerHTML", "document.cookie", "console.log"):
+        assert proibido not in js
+    assert set(re.findall(r"toFixed\((\d)\)", js)) <= {"1", "3", "4"}  # a origem enviada ao OpenStreetMap tem no máximo 3 casas
+    assert "posicao.lat.toFixed(3)" in js
+
+
+def test_nome_de_bairro_sem_caracteres_de_controle_ou_direcao():
+    assert fetch_osm_base._nome("Vila\u202e Hortência\n") == "Vila Hortência" and fetch_osm_base._nome(5) == ""

@@ -16,7 +16,7 @@
   var msg = document.getElementById("ms-msg");
   var gVoce = document.getElementById("ms-voce");
   var gAneis = document.getElementById("ms-aneis");
-  var posicao = null;
+  var posicao = null, distancias = new Map(), bairrosFalhou = false;
   var NOMES = { hospital: "Hospital", upa: "UPA ou pronto atendimento", ubs: "Unidade básica de saúde", caps: "CAPS (saúde mental)" };
 
   document.querySelectorAll("[data-so-js]").forEach(function (e) { e.hidden = false; });
@@ -102,7 +102,7 @@
   window.addEventListener("resize", aplicar);
 
   // dica e seleção
-  function dist(u) { return u.dataset.dist ? " · a " + fmtKm(+u.dataset.dist) + " de você" : ""; }
+  function dist(u) { return distancias.has(u) ? " · a " + fmtKm(distancias.get(u)) + " de você" : ""; }
   function fmtKm(m) { return m < 1000 ? Math.round(m / 10) * 10 + " m" : (m / 1000).toFixed(1).replace(".", ",") + " km"; }
   function mostrarDica(u) {
     dica.textContent = "";
@@ -127,14 +127,22 @@
     if (u.dataset.sus) dl.appendChild(linha("SUS", u.dataset.sus));
     if (u.dataset.endereco) dl.appendChild(linha("Endereço", u.dataset.endereco));
     if (u.dataset.telefone) dl.appendChild(linha("Telefone", u.dataset.telefone));
-    if (u.dataset.dist) dl.appendChild(linha("Distância em linha reta", fmtKm(+u.dataset.dist)));
+    if (distancias.has(u)) dl.appendChild(linha("Distância em linha reta", fmtKm(distancias.get(u))));
     painelSel.appendChild(dl);
     var a = document.createElement("a");
     a.rel = "noopener noreferrer"; a.className = "ms-link";
     var la = u.dataset.lat, lo = u.dataset.lon;
-    a.href = "https://www.openstreetmap.org/" + (posicao ? "directions?from=" + posicao.lat.toFixed(5) + "," + posicao.lon.toFixed(5) + "&to=" + la + "," + lo : "?mlat=" + la + "&mlon=" + lo + "#map=17/" + la + "/" + lo);
-    a.textContent = posicao ? "Como chegar (abre o OpenStreetMap)" : "Ver no OpenStreetMap";
+    a.href = "https://www.openstreetmap.org/?mlat=" + la + "&mlon=" + lo + "#map=17/" + la + "/" + lo;
+    a.textContent = "Ver no OpenStreetMap";
     painelSel.appendChild(a);
+    if (posicao) {
+      var b = document.createElement("a");
+      b.rel = "noopener noreferrer"; b.className = "ms-link";
+      b.href = "https://www.openstreetmap.org/directions?from=" + posicao.lat.toFixed(3) + "," + posicao.lon.toFixed(3) + "&to=" + la + "," + lo;
+      b.textContent = "Como chegar (envia ao OpenStreetMap a sua posição aproximada, a cerca de 100 m)";
+      painelSel.appendChild(document.createElement("br"));
+      painelSel.appendChild(b);
+    }
   }
   unidades.forEach(function (u) {
     u.addEventListener("mouseenter", function () { if (!arrastou) mostrarDica(u); });
@@ -166,6 +174,7 @@
   function aviso(t) { msg.textContent = t; }
   function marcar(lat, lon, rotulo) {
     if (lat < caixa[0] - 0.04 || lat > caixa[2] + 0.04 || lon < caixa[1] - 0.04 || lon > caixa[3] + 0.04) {
+      posicao = null; distancias.clear(); gAneis.textContent = ""; gVoce.setAttribute("hidden", ""); painelProx.hidden = true;
       aviso("Esse ponto fica fora de Sorocaba, então não mostro distâncias.");
       return;
     }
@@ -181,8 +190,9 @@
     g.appendChild(elem("circle", { r: 7, class: "ms-voce-ponto" }));
     gVoce.appendChild(g);
     gVoce.removeAttribute("hidden");
-    unidades.forEach(function (u) { u.dataset.dist = Math.round(metros(lat, lon, +u.dataset.lat, +u.dataset.lon)); });
-    aviso("Posição marcada: " + rotulo + ". Fica só no seu navegador; nada é enviado.");
+    distancias.clear();
+    unidades.forEach(function (u) { distancias.set(u, Math.round(metros(lat, lon, +u.dataset.lat, +u.dataset.lon))); });
+    aviso("Posição marcada: " + rotulo + ". Ela fica só no seu navegador; só vai ao OpenStreetMap se você abrir “Como chegar”.");
     listarProximas();
   }
   function listarProximas() {
@@ -191,7 +201,7 @@
     var ul = document.createElement("ul"); ul.className = "ms-prox";
     var achou = [];
     ["hospital", "upa", "ubs", "caps"].forEach(function (g) {
-      var lista = unidades.filter(function (u) { return u.dataset.grupo === g && visivel(u); }).sort(function (a, b) { return a.dataset.dist - b.dataset.dist; });
+      var lista = unidades.filter(function (u) { return u.dataset.grupo === g && visivel(u); }).sort(function (a, b) { return distancias.get(a) - distancias.get(b); });
       if (!lista.length) return;
       var u = lista[0];
       achou.push(ponto(u));
@@ -199,7 +209,7 @@
       b.type = "button"; b.className = "ms-prox-b";
       var tipo = document.createElement("span"); tipo.className = "ms-prox-t"; tipo.textContent = NOMES[g];
       var nome = document.createElement("strong"); nome.textContent = u.dataset.nome;
-      var d = document.createElement("span"); d.className = "ms-prox-d"; d.textContent = fmtKm(+u.dataset.dist) + " em linha reta";
+      var d = document.createElement("span"); d.className = "ms-prox-d"; d.textContent = fmtKm(distancias.get(u)) + " em linha reta";
       b.appendChild(tipo); b.appendChild(nome); b.appendChild(d);
       b.addEventListener("click", function () { selecionar(u); var p = ponto(u), q = xy(posicao.lat, posicao.lon); enquadrar([p, q], 0.6); });
       li.appendChild(b); ul.appendChild(li);
@@ -228,18 +238,19 @@
   var campo = document.getElementById("ms-bairro"), lista = document.getElementById("ms-bairros"), bairros = null;
   function norm(s) { return s.toLowerCase().normalize("NFD").replace(/[̀-ͯ]/g, "").trim(); }
   function carregar() {
-    if (bairros) return;
+    if (bairros || bairrosFalhou) return;
     bairros = [];
-    fetch(svg.dataset.bairros).then(function (r) { return r.json(); }).then(function (d) {
-      bairros = d;
+    fetch(svg.dataset.bairros).then(function (r) { if (!r.ok) throw new Error("http"); return r.json(); }).then(function (d) {
+      bairros = d.bairros;
       var visto = {};
-      d.forEach(function (b) { if (visto[b.n]) return; visto[b.n] = 1; var o = document.createElement("option"); o.value = b.n; lista.appendChild(o); });
-    }).catch(function () { bairros = null; aviso("Não consegui carregar a lista de bairros."); });
+      bairros.forEach(function (b) { if (visto[b.n]) return; visto[b.n] = 1; var o = document.createElement("option"); o.value = b.n; lista.appendChild(o); });
+    }).catch(function () { bairros = null; bairrosFalhou = true; aviso("Não consegui carregar a lista de bairros."); });
   }
   campo.addEventListener("focus", carregar);
   campo.addEventListener("input", carregar);
   document.getElementById("ms-bairro-form").addEventListener("submit", function (e) {
     e.preventDefault();
+    bairrosFalhou = false; carregar();
     var q = norm(campo.value);
     var b = (bairros || []).filter(function (x) { return norm(x.n) === q; })[0] || (q.length > 2 ? (bairros || []).filter(function (x) { return norm(x.n).indexOf(q) !== -1; })[0] : null);
     if (!b) { aviso("Não achei esse bairro. Escolha um da lista."); return; }

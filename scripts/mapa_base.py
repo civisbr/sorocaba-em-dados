@@ -40,11 +40,11 @@ def gerar_svg(base: dict, malha: Path = MALHA) -> tuple[str, dict]:
         d = _caminho(base["vias"][chave], f)
         camadas.append(f'<path class="v v{classe}" d="{d}"/>')
     rios = f'<path class="r" d="{_caminho(base["rios"], f)}"/>'
-    svg = (f'<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 {LARGURA} {ALTURA}" width="{LARGURA}" height="{ALTURA}"><style>{ESTILO}</style>'
+    svg = (f'<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 {LARGURA} {ALTURA}" width="{LARGURA}" height="{ALTURA}"><title>Sorocaba: contorno (IBGE), vias e rios (© OpenStreetMap contributors, ODbL 1.0)</title><style>{ESTILO}</style>'
            f'<path class="c" d="{mapa["caminho"]}"/>{rios}{"".join(camadas)}<path d="{mapa["caminho"]}" fill="none" stroke="#7a8f99" stroke-width="3"/></svg>')
     return svg, {"mapa": mapa, "f": f}
 
 
 def bairros_json(base: dict, f) -> str:
     itens = [{"n": b["nome"], "x": round(f(b["lat"], b["lon"])[0], 1), "y": round(f(b["lat"], b["lon"])[1], 1), "la": b["lat"], "lo": b["lon"]} for b in base["bairros"]]
-    return json.dumps(itens, ensure_ascii=False, separators=(",", ":"))
+    return json.dumps({"fonte": base.get("fonte"), "licenca": "ODbL 1.0, https://www.openstreetmap.org/copyright", "acesso_em": base.get("acesso_em"), "bairros": itens}, ensure_ascii=False, separators=(",", ":"))

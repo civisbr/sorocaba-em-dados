@@ -1,0 +1,8 @@
+Base cartográfica de Sorocaba (vias principais, rios e bairros) derivada do OpenStreetMap.
+
+Fonte: © colaboradores do OpenStreetMap, https://www.openstreetmap.org/copyright
+Licença: Open Database License (ODbL) 1.0, https://opendatacommons.org/licenses/odbl/1-0/
+
+Este diretório contém um banco de dados derivado do OpenStreetMap (extrato do município, simplificado). Ele e os arquivos gerados a partir dele
+(mapa-base.svg e data/mapa-bairros.json no site) são disponibilizados sob a ODbL 1.0, com atribuição ao OpenStreetMap.
+Origem, data e hash da coleta: manifesto.json. O código do projeto segue a licença do repositório; a ODbL vale só para esta base e seus derivados.
