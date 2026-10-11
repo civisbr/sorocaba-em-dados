@@ -1,0 +1,127 @@
+{
+  "anos": {
+    "2022": {
+      "coletado_em": "2026-10-11",
+      "meses": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12
+      ],
+      "registros": 3563,
+      "sha256_csv": {
+        "grade": "c65807b89a46cfa30f23eb0235cb8db969db7e95c4fa77d89f4e5638ba3df42a",
+        "hora": "a701d7dd0aaa629f4ddbd82db5ed475db114e1e1d51fa5d23c875d8230972fff",
+        "mensal": "9934f28230ad686fe4c7a849c4a077b8c43c87e3bf2dffb823b21182e9a75820",
+        "tipo": "ded3bfe5f683b9a4e408dd68e192a863d42f54bd57f91f201769ce3cb0051da7",
+        "via": "4de38b336f6886b91f512c7ce4a59ef8ecadd7df6d695655b81b991292160644"
+      }
+    },
+    "2023": {
+      "coletado_em": "2026-10-11",
+      "meses": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12
+      ],
+      "registros": 3830,
+      "sha256_csv": {
+        "grade": "a8303eea2b08a98f3f99152d71e2e498402ea0f9804c5a3cdcebf171e7ea55b3",
+        "hora": "d57e0923ebaec0e3746cbf5096641e4dd4448ec09e16fc19fe7cb40b18f937a8",
+        "mensal": "0561dd00c05ccf0b4b4a67c698dacd68bf714c2a5ad6fb589d6cbd223d7091b4",
+        "tipo": "b3ea1e02e630117c428d8a2bd252446d5f4b0ff78689ab076493fe4aba916237",
+        "via": "2d04a17c5f2de0fa627e8748b93843491e6803369811143edd649b74062c76ef"
+      }
+    },
+    "2024": {
+      "coletado_em": "2026-10-11",
+      "meses": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12
+      ],
+      "registros": 3619,
+      "sha256_csv": {
+        "grade": "3ce682ca9db6b24bb12323f98bbf69b790bb9ed535970e5038d3c511811cdb35",
+        "hora": "5fdd0c67bc53b81ff292adfe1fafd19b303f5df16f762fc24e4201b763c53bb5",
+        "mensal": "701de77f4f399a2ca71332ba92c25abee39eb5462da90f5ce83bfb50bb17776d",
+        "tipo": "6ad2a9e0158ce6767dc0f72f1a22845a20ec82312ccfc491b86f5e9930fe6011",
+        "via": "df4cf46ca588d1709457b8ef052a86a5755e8da3394c7f24ebd3f293a7a4f15b"
+      }
+    },
+    "2025": {
+      "coletado_em": "2026-10-11",
+      "meses": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12
+      ],
+      "registros": 3497,
+      "sha256_csv": {
+        "grade": "63104ae84cc51315ed01ff2372f979ada93d02c85fb1cf9513867df5c55149b8",
+        "hora": "1a797b15650f2e7de9b5dd26f4c8e80dadfbc666dcaff848530a56470a236da6",
+        "mensal": "f7d8e8f016d8ae658dc9ad6f5c1cd25656de7fb685faeae98c2c149204cd0957",
+        "tipo": "d22aa5c4147a84369f1ec36e2319db63b5e8aa5ee0fe82ff4d2de3f81fffa6ca",
+        "via": "5ddc4df87ea34736dd658697560e4c9d6c03d7f1f587baf557f2c7d249c85560"
+      }
+    },
+    "2026": {
+      "coletado_em": "2026-10-11",
+      "meses": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8
+      ],
+      "registros": 1599,
+      "sha256_csv": {
+        "grade": "3c03a8987587ba462834fcd8c579f4555f9e0c15b927aaa5857d57f523c47848",
+        "hora": "ad3677b98d765c8260a0596ba9d2b437e7a411b203ba3ab5e33a9ec34028df03",
+        "mensal": "2baeb063981ef704b379330b7be6608cca374c70e8c2c55cea57fd3ab3aa7e62",
+        "tipo": "ce3730a199e886f8c9b831a79c0859506a08f4bfa1ba5a8aea3e358b94bcc7a6",
+        "via": "542b6ad73c17cbc6240e131891d1c64a6fbba14d09abe239e419922bee0c9178"
+      }
+    }
+  },
+  "fonte": "Infosiga SP (Detran-SP), eventos de sinistro, CC BY 4.0, via dadosabertos.sp.gov.br",
+  "verificado_em": "2026-10-11"
+}

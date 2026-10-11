@@ -244,7 +244,7 @@ def mapa_de_calor(d: list[dict], grupo: str, malha: Path) -> dict:
         legenda.append({"nivel": k, "ini": ini, "fim": max(ini, fim)})
     return {
         "mapa": mapa, "celulas": retangulos, "legenda": legenda, "cobertura": cob["pct"], "com_coordenada": cob["n"],
-        "ano": cob["ano"], "lado_m": round(lado * 111_000), "n_celulas": len(retangulos),
+        "ano": cob["ano"], "ano_ini": cob["mes"] if grupo == "sinistros" else cob["ano"], "lado_m": round(lado * 111_000), "n_celulas": len(retangulos),
     }
 
 
@@ -361,6 +361,34 @@ def dia_semana(iso_data: str) -> str:
     return ["segunda", "terça", "quarta", "quinta", "sexta", "sábado", "domingo"][date.fromisoformat(iso_data).weekday()]
 
 
+def contexto_acidentes(env: dict) -> dict:
+    d = env["dados"]
+    mensal = [r for r in d if r["recorte"] == "mensal"]
+    rot = {i: f"{ABREV[r['mes'] - 1]}/{str(r['ano'])[2:]}" for i, r in enumerate(mensal) if (i % 12 == 0 and len(mensal) - 1 - i >= 9) or i == len(mensal) - 1}
+    ult12 = mensal[-12:]
+    ant12 = mensal[-24:-12]
+    horas = [r for r in d if r["recorte"] == "hora"]
+    dias_ord = ["Segunda-feira", "Terça-feira", "Quarta-feira", "Quinta-feira", "Sexta-feira", "Sábado", "Domingo"]
+    dias = sorted((r for r in d if r["recorte"] == "dia_semana"), key=lambda r: dias_ord.index(r["categoria"]) if r["categoria"] in dias_ord else 99)
+    topo_d = max((r["n"] for r in dias), default=1)
+    tipos = sorted((r for r in d if r["recorte"] == "tipo"), key=lambda r: -r["n"])
+    total_t = sum(r["n"] for r in tipos) or 1
+    vias = [r for r in d if r["recorte"] == "via"]
+    tem_mapa = any(r["recorte"] == "grade" for r in d)
+    return {
+        "ac_ano": horas[0]["ano"] if horas else None,
+        "ac_mensal": barras_mensais([(f"{ABREV[r['mes'] - 1]}/{r['ano']}", r["n"]) for r in mensal], rot),
+        "ac_ult12": sum(r["n"] for r in ult12), "ac_ant12": sum(r["n"] for r in ant12),
+        "ac_mortes12": sum(r["n2"] for r in ult12),
+        "ac_fim": f"{ABREV[mensal[-1]['mes'] - 1]}/{mensal[-1]['ano']}",
+        "ac_horas": barras_mensais([(f"{r['categoria']}h", r["n"]) for r in horas], {i: f"{i:02d}h" for i in range(0, 24, 3)}) if horas else None,
+        "ac_dias": [{"nome": r["categoria"], "n": r["n"], "pct": round(r["n"] / topo_d * 100, 1)} for r in dias],
+        "ac_tipos": [{"nome": {"COLISAO": "Colisão", "NAO DISPONIVEL": "Não informado"}.get(r["categoria"], r["categoria"].capitalize()), "n": r["n"], "pct": round(r["n"] / total_t * 100, 1)} for r in tipos],
+        "ac_vias": [{"nome": r["categoria"], "n": r["n"], "pct": round(r["n"] / vias[0]["n"] * 100, 1)} for r in vias],
+        "ac_calor": mapa_de_calor(d, "sinistros", RAIZ / "data" / "raw" / "ibge" / "malha_3552205.geojson") if tem_mapa else None,
+    }
+
+
 def contexto_transito(env: dict) -> dict:
     radares = env["dados"]
     por_vel: dict[int, int] = {}
@@ -432,6 +460,9 @@ def renderizar(public: Path, saida: Path) -> None:
     ctx_clima = contexto_clima(clima, previsao)
     radares = json.loads((public / "radares.json").read_text(encoding="utf-8"))
     ctx_trans = contexto_transito(radares)
+    acidentes = json.loads((public / "infosiga.json").read_text(encoding="utf-8"))
+    ctx_trans.update(contexto_acidentes(acidentes))
+    ctx_trans["env_ac"] = acidentes
     escolas = json.loads((public / "escolas.json").read_text(encoding="utf-8"))
     ctx_esc = contexto_escolas(escolas)
     mapa = gerar_mapa(RAIZ / "data" / "raw" / "ibge" / "malha_3552205.geojson")
@@ -474,7 +505,7 @@ def renderizar(public: Path, saida: Path) -> None:
     (saida / MARCADOR).write_text("saída gerada por scripts/render.py\n", encoding="utf-8")
     for nome in ("style.css", "app.js"):
         shutil.copy(RAIZ / "static" / nome, saida / nome)
-    for nome in ("emprego.json", "combustivel.json", "escolas.json", "perfil.json", "representantes.json", "seguranca.json", "comparativo.json", "clima.json", "radares.json"):
+    for nome in ("emprego.json", "combustivel.json", "escolas.json", "perfil.json", "representantes.json", "seguranca.json", "comparativo.json", "clima.json", "radares.json", "infosiga.json"):
         shutil.copy(public / nome, saida / "data" / nome)
 
     comum = {"paineis": ordem, "repo_url": REPO_URL}

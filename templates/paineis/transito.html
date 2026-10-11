@@ -8,7 +8,42 @@
   <p class="pequeno suave">É a lista de onde os radares ficam, não de quantas multas aplicam.</p>
 </section>
 {% endblock %}
+{% macro barras(g, id, titulo) %}
+<svg class="grafico" viewBox="0 0 {{ g.largura }} {{ g.altura }}" role="img" aria-labelledby="{{ id }}-t"><title id="{{ id }}-t">{{ titulo }}</title>
+  {% for b in g.barras %}<rect class="b-pos" x="{{ b.x }}" y="{{ b.y }}" width="{{ b.w }}" height="{{ b.h }}"><title>{{ b.rotulo }}: {{ b.valor | num }}</title></rect>{% endfor %}
+  <line class="zero" x1="0" x2="{{ g.largura }}" y1="{{ g.zero }}" y2="{{ g.zero }}"/>
+  {% for t in g.eixo_x %}<text class="eixo" x="{{ t.x }}" y="{{ g.y_rotulos }}" text-anchor="{{ t.ancora }}">{{ t.texto }}</text>{% endfor %}
+</svg>
+{% endmacro %}
 {% block explorar %}
+<section aria-labelledby="ac-t" class="bloco-painel">
+  <h2 id="ac-t" class="h2-medio sem-topo">Acidentes de trânsito (Infosiga SP)</h2>
+  <p class="suave">Nos 12 meses até {{ ac_fim }}: <strong>{{ ac_ult12 | num }} sinistros</strong> com vítima ou dano registrados em Sorocaba (contra {{ ac_ant12 | num }} nos 12 meses anteriores), com <strong>{{ ac_mortes12 | num }} mortes</strong>. O mês mais recente costuma subir quando o Detran-SP completa os registros.</p>
+  <div class="grade-2">
+    <article class="quadro-card"><h3>Sinistros por mês</h3><p class="suave">Sem as notificações, que têm informação incompleta.</p>{{ barras(ac_mensal, "ac-m", "Sinistros de trânsito por mês em Sorocaba") }}</article>
+    <article class="quadro-card"><h3>Por hora do dia ({{ ac_ano }})</h3>{{ barras(ac_horas, "ac-h", "Sinistros por hora do dia em Sorocaba") }}</article>
+    <article class="quadro-card"><h3>Por dia da semana ({{ ac_ano }})</h3><ul class="setores">{% for d in ac_dias %}<li><span class="nome">{{ d.nome }}</span><span class="val">{{ d.n | num }}</span><span class="setor-barra pos" style="width: {{ d.pct }}%"></span></li>{% endfor %}</ul></article>
+    <article class="quadro-card"><h3>Tipo de sinistro ({{ ac_ano }})</h3><ul class="setores">{% for t in ac_tipos %}<li><span class="nome">{{ t.nome }}</span><span class="val">{{ t.n | num }} ({{ t.pct | brl1 }}%)</span><span class="setor-barra pos" style="width: {{ t.pct }}%"></span></li>{% endfor %}</ul></article>
+  </div>
+  {% if ac_calor %}{% set c = ac_calor %}
+  <article class="quadro-card" style="margin-top:1.5rem">
+    <h3>Onde acontecem ({{ c.ano_ini }} a {{ c.ano }})</h3>
+    <p class="suave">Mapa de calor: áreas de cerca de {{ c.lado_m | num }} m; quanto mais escuro, mais sinistros. Áreas com menos de 5 registros não aparecem.</p>
+    <svg class="mapa-calor" viewBox="0 0 {{ c.mapa.largura }} {{ c.mapa.altura }}" role="img" aria-labelledby="mc-ac-t"><title id="mc-ac-t">Mapa de calor de sinistros de trânsito em Sorocaba</title>
+      <path class="contorno" d="{{ c.mapa.caminho }}"/>
+      {% for q in c.celulas %}<rect class="calor-{{ q.nivel }}" x="{{ q.x }}" y="{{ q.y }}" width="{{ q.w }}" height="{{ q.h }}"><title>{{ q.n | num }} sinistros nesta área</title></rect>{% endfor %}
+    </svg>
+    <ul class="legenda-calor">{% for l in c.legenda %}<li><span class="amostra-calor calor-{{ l.nivel }}"></span>{{ l.ini | num }}{% if l.fim != l.ini %}–{{ l.fim | num }}{% endif %}</li>{% endfor %}</ul>
+    <p class="pequeno suave">{{ c.cobertura | brl1 }}% dos sinistros desses anos têm coordenada válida. Sinistros fatais não aparecem como pontos nem com data e hora exatas.</p>
+  </article>{% endif %}
+  <article class="quadro-card" style="margin-top:1.5rem">
+    <h3>Vias com mais sinistros ({{ ac_ano }})</h3>
+    <p class="suave">Vias com 10 ou mais sinistros no ano. <strong>Mais sinistros não significa via mais perigosa:</strong> vias grandes e movimentadas acumulam mais registros.</p>
+    <ol class="setores ranking">{% for v in ac_vias %}<li><span class="nome">{{ loop.index }}. {{ v.nome }}</span><span class="val">{{ v.n | num }}</span><span class="setor-barra pos" style="width: {{ v.pct }}%"></span></li>{% endfor %}</ol>
+  </article>
+  <p class="pequeno suave">Fonte: <a href="{{ env_ac.fonte.url }}">Infosiga SP (Detran-SP)</a>, {{ env_ac.fonte.licenca }}, coletado em {{ env_ac.fonte.acesso_em | data_br }}. <a href="{{ raiz }}data/infosiga.json">infosiga.json</a>.</p>
+</section>
+
 <section aria-labelledby="vel-t" class="bloco-painel">
   <h2 id="vel-t" class="h2-medio sem-topo">Radares por velocidade fiscalizada</h2>
   <article class="quadro-card">
@@ -33,14 +68,13 @@
       <li><strong>Multas por radar:</strong> a Semob não publica; só por pedido via Lei de Acesso à Informação.</li>
       <li><strong>Horários e locais de pico do trânsito:</strong> sem contagem nem velocidade aberta.</li>
       <li><strong>Alagamentos:</strong> a Defesa Civil monitora pontos críticos, mas sem mapa ou dado aberto encontrado.</li>
-      <li><strong>Acidentes:</strong> o Infosiga SP (Detran-SP) reúne sinistros por município; o download aberto ainda não foi confirmado.</li>
-    </ul>
+          </ul>
     <p class="pequeno suave">Detalhes de cada fonte em <a href="{{ repo_url }}/blob/main/docs/fontes.md">docs/fontes.md</a>.</p>
   </article>
 </section>
 {% endblock %}
 {% block metodologia %}
-<ul class="lista-curta">{% for n in env.qualidade.notas %}{% if not n.startswith("SHA-256") %}<li>{{ n }}</li>{% endif %}{% endfor %}</ul>
+<ul class="lista-curta">{% for n in env_ac.qualidade.notas %}{% if not n.startswith("SHA-256") %}<li>{{ n }}</li>{% endif %}{% endfor %}{% for n in env.qualidade.notas %}{% if not n.startswith("SHA-256") %}<li>{{ n }}</li>{% endif %}{% endfor %}</ul>
 {% endblock %}
 {% block proveniencia %}
 <dl class="proveniencia">
