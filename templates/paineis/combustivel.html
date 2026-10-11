@@ -66,6 +66,6 @@
   <dt>Período de referência</dt><dd>{{ env.referencia.inicio | data_br }} a {{ env.referencia.fim | data_br }}</dd>
   <dt>Coletado em</dt><dd>{{ env.fonte.acesso_em | data_br }}</dd>
   <dt>Dados</dt><dd><a href="{{ raiz }}data/combustivel.json">combustivel.json</a></dd>
-  <dt>Código</dt><dd>{% if repo_url %}<a href="{{ repo_url }}/blob/main/{{ script }}">{{ script }}</a>{% else %}{{ script }}{% endif %}</dd>
+  <dt>Código</dt><dd><a href="{{ repo_url }}/blob/main/{{ script }}">{{ script }}</a></dd>
 </dl>
 {% endblock %}

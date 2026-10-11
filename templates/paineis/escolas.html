@@ -32,6 +32,6 @@
   <dt>Referência</dt><dd>Censo Escolar {{ ano_censo }} · IDEB {{ ano_ideb }}</dd>
   <dt>Coletado em</dt><dd>{{ env.fonte.acesso_em | data_br }}</dd>
   <dt>Dados</dt><dd><a href="{{ raiz }}data/escolas.json">escolas.json</a></dd>
-  <dt>Código</dt><dd>{% if repo_url %}<a href="{{ repo_url }}/blob/main/{{ script }}">{{ script }}</a>{% else %}{{ script }}{% endif %}</dd>
+  <dt>Código</dt><dd><a href="{{ repo_url }}/blob/main/{{ script }}">{{ script }}</a></dd>
 </dl>
 {% endblock %}

@@ -14,8 +14,7 @@ from scripts.mapa import gerar as gerar_mapa
 from scripts.paineis import PAINEIS
 
 RAIZ = Path(__file__).resolve().parent.parent
-# Repositório privado: sem URL pública, o rodapé mostra o caminho sem link.
-REPO_URL: str | None = None
+REPO_URL = "https://github.com/civisbr/sorocaba-em-dados"
 MESES = ["janeiro", "fevereiro", "março", "abril", "maio", "junho", "julho", "agosto", "setembro", "outubro", "novembro", "dezembro"]
 ABREV = [m[:3] for m in MESES]
 MARCADOR = ".sorocaba-dist"
