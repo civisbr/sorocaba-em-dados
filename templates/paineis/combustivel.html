@@ -39,9 +39,9 @@
     </article>
     <article class="quadro-card">
       <h3>Semana a semana</h3>
-      <table class="tabela-simples">
-        <thead><tr><th scope="col">Semana de</th><th scope="col">Postos</th><th scope="col">Menor</th><th scope="col">Mediana</th><th scope="col">Maior</th></tr></thead>
-        <tbody>{% for r in pr.semanas | reverse %}<tr><th scope="row">{{ r.semana_inicio | data_br }}</th><td>{{ r.n_postos }}</td><td>{{ r.minimo | brl }}</td><td>{{ r.mediana | brl }}</td><td>{{ r.maximo | brl }}</td></tr>{% endfor %}</tbody>
+      <table class="tabela-simples tabela-quebra">
+        <thead><tr><th scope="col">Semana</th><th scope="col">Postos</th><th scope="col">Menor</th><th scope="col">Mediana</th><th scope="col">Maior</th></tr></thead>
+        <tbody>{% for r in pr.semanas | reverse %}<tr><th scope="row">{{ (r.semana_inicio | data_br)[:6] ~ r.semana_inicio[2:4] }}</th><td>{{ r.n_postos }}</td><td>{{ r.minimo | brl }}</td><td>{{ r.mediana | brl }}</td><td>{{ r.maximo | brl }}</td></tr>{% endfor %}</tbody>
       </table>
     </article>
   </div>

@@ -60,3 +60,14 @@ def test_pagina_sem_ranking_de_bairro(tmp_path):
     renderizar(RAIZ / "data/public", tmp_path / "dist")
     html = (tmp_path / "dist/seguranca/index.html").read_text(encoding="utf-8")
     assert "Não é ranking" in html and "ordem alfabética" in html
+
+
+def test_serie_mensal_sem_buracos_nem_para_tipo_raro():
+    env = construir(RAW)
+    por = {}
+    for r in env.dados:
+        if r["recorte"] == "mensal":
+            por.setdefault(r["grupo"], []).append((r["ano"], r["mes"]))
+    ref = por["roubos"]
+    assert all(v == ref for v in por.values())
+    assert len(ref) == len(set(ref))

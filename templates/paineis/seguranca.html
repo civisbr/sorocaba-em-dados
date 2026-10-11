@@ -20,9 +20,9 @@
 <section aria-labelledby="comp-t" class="bloco-painel">
   <h2 id="comp-t" class="h2-medio sem-topo">Últimos 12 meses contra os 12 anteriores</h2>
   <article class="quadro-card">
-    <div class="rolagem"><table>
+    <div><table class="tabela-quebra">
       <caption class="so-leitor">Ocorrências registradas, últimos 12 meses e 12 meses anteriores</caption>
-      <thead><tr><th scope="col">Tipo</th><th scope="col">12 meses até {{ mes_fim_curto }}</th><th scope="col">12 meses anteriores</th><th scope="col">Variação</th></tr></thead>
+      <thead><tr><th scope="col">Tipo</th><th scope="col">Até {{ mes_fim_curto }}</th><th scope="col">12 meses antes</th><th scope="col">Variação</th></tr></thead>
       <tbody>{% for c in comparacao %}<tr><th scope="row">{{ c.grupo }}</th><td>{{ c.atual | num }}</td><td>{{ c.anterior | num }}</td><td>{{ c.var | pct if c.var is not none else "números pequenos" }}</td></tr>{% endfor %}</tbody>
     </table></div>
     <p class="pequeno suave">Variação só aparece quando o período anterior tem 30 ocorrências ou mais; abaixo disso, poucos casos mudam muito o percentual. Tráfico de entorpecentes depende da ação policial (mais operações geram mais registros), então a variação não indica por si só mais ou menos tráfico.</p>

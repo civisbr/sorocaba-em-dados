@@ -66,8 +66,10 @@ def construir(raw: Path) -> Envelope:
     ano_ref = completos[-1]
 
     dados: list[dict] = []
-    for (a, m, g), n in sorted(mensal.items()):
-        dados.append(registro("mensal", a, g, n, mes=m))
+    # Mês sem ocorrência de um tipo não aparece na fonte; vira zero explícito para a série não pular meses.
+    for a, m in meses:
+        for g in GRUPOS:
+            dados.append(registro("mensal", a, g, mensal[(a, m, g)], mes=m))
 
     # Janela dos últimos 12 meses contra os 12 anteriores, terminando no último mês publicado.
     idx = meses.index(ultimo)

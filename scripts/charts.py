@@ -34,11 +34,12 @@ def barras_mensais(pontos: list[tuple[str, int]], rotulos: dict[int, str]) -> di
                 "valor": valor,
             }
         )
+    ultimo = len(pontos) - 1
     eixo = [
         {
-            "x": round(i * largura + (largura * 0.88 if i == len(pontos) - 1 else largura / 2), 2),
+            "x": round(i * largura + (largura * 0.88 if i == ultimo else largura * 0.12 if i == 0 else largura / 2), 2),
             "texto": t,
-            "ancora": "end" if i == len(pontos) - 1 else "middle",
+            "ancora": "end" if i == ultimo else "start" if i == 0 else "middle",
         }
         for i, t in sorted(rotulos.items())
     ]

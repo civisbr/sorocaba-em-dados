@@ -212,7 +212,7 @@ def contexto_seguranca(env: dict) -> dict:
     for g in ("roubos", "furtos", "mortes_dolosas"):
         pts = mensal[g]
         passo = 12
-        rot = {i: f"{ABREV[r['mes'] - 1]}/{str(r['ano'])[2:]}" for i, r in enumerate(pts) if i % passo == 0 or i == len(pts) - 1}
+        rot = {i: f"{ABREV[r['mes'] - 1]}/{str(r['ano'])[2:]}" for i, r in enumerate(pts) if (i % passo == 0 and len(pts) - 1 - i >= 9) or i == len(pts) - 1}
         series[g] = barras_mensais([(f"{ABREV[r['mes'] - 1]}/{r['ano']}", r["n"]) for r in pts], rot)
     horas = {}
     for g in ("roubos", "furtos"):

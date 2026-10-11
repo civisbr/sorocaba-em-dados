@@ -57,7 +57,7 @@
         <ul>
           {% for p in paineis %}
           <li><a href="{{ p.id }}/"><span class="status-nome">{{ p.nav }}</span>
-            <span class="status-{{ p.status }}"><span class="status-ponto" aria-hidden="true"></span>{% if p.status == "real" %}ATUALIZADO · {{ p.referencia }}{% else %}PENDENTE{% endif %}</span></a></li>
+            <span class="status-{{ p.status }}"><span class="status-txt"><span class="status-ponto" aria-hidden="true"></span>{% if p.status == "real" %}ATUALIZADO<small>{{ p.referencia }}</small>{% else %}PENDENTE{% endif %}</span></span></a></li>
           {% endfor %}
         </ul>
       </section>
