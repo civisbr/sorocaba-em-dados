@@ -41,8 +41,12 @@ jobs:
             git config user.name "github-actions[bot]"
             git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
             git commit -m "Atualiza seguranca.json" -m "Execução: ${GITHUB_SERVER_URL}/${GITHUB_REPOSITORY}/actions/runs/${GITHUB_RUN_ID}"
-            git pull -q --rebase "https://x-access-token:${GH_TOKEN}@github.com/${GITHUB_REPOSITORY}.git" "${GITHUB_REF_NAME}"
-            git push "https://x-access-token:${GH_TOKEN}@github.com/${GITHUB_REPOSITORY}.git" HEAD:"${GITHUB_REF_NAME}"
+            auth="$(printf 'x-access-token:%s' "$GH_TOKEN" | base64 -w0)"
+            echo "::add-mask::${auth}"
+            git_auth() { GIT_CONFIG_COUNT=1 GIT_CONFIG_KEY_0="http.https://github.com/.extraheader" GIT_CONFIG_VALUE_0="Authorization: Basic ${auth}" git "$@"; }
+            git_auth pull -q --rebase "https://github.com/${GITHUB_REPOSITORY}.git" "${GITHUB_REF_NAME}"
+            env -u GH_TOKEN uv run pytest -q
+            git_auth push "https://github.com/${GITHUB_REPOSITORY}.git" HEAD:"${GITHUB_REF_NAME}"
             echo "mudou=true" >> "$GITHUB_OUTPUT"
           fi
       - name: Disparar deploy
