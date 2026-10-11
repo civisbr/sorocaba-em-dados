@@ -116,3 +116,39 @@ def linhas_preco(series: dict[str, list[float]], rotulos: dict[int, str]) -> dic
         ],
         "y_rotulos": ALTURA - 8,
     }
+
+
+def linhas_posicao(pontos: list[tuple[int, int]], max_rotulos: int = 5) -> dict:
+    """Posição em ranking ao longo dos anos: eixo vertical invertido (posição 1 no topo), anos proporcionais."""
+    anos = [a for a, _ in pontos]
+    pos = [p for _, p in pontos]
+    a0, a1 = min(anos), max(anos)
+    topo = max(1, min(pos) - max(1, (max(pos) - min(pos)) // 5))
+    base = max(pos) + max(1, (max(pos) - min(pos)) // 5)
+    area = ALTURA - TOPO - BASE_ROTULOS
+    margem = 36
+
+    def x(a: int) -> float:
+        return round(margem + (LARGURA - 2 * margem) * ((a - a0) / ((a1 - a0) or 1)), 1)
+
+    def y(p: int) -> float:
+        return round(TOPO + area * ((p - topo) / ((base - topo) or 1)), 1)
+
+    marcas = [{"x": x(a), "y": y(p), "ano": a, "pos": p} for a, p in pontos]
+    passo = max(1, -(-len(pontos) // max_rotulos))
+    rotulos = [
+        {"x": m["x"], "texto": str(m["ano"]), "ancora": "start" if i == 0 else "end" if i == len(marcas) - 1 else "middle"}
+        for i, m in enumerate(marcas) if i % passo == 0 or i == len(marcas) - 1
+    ]
+    if len(rotulos) >= 2 and rotulos[-2]["x"] > rotulos[-1]["x"] - 40:  # evita rótulos colados no fim
+        rotulos.pop(-2)
+    grade = sorted({topo, round((topo + base) / 2), base})
+    return {
+        "largura": LARGURA,
+        "altura": ALTURA,
+        "pontos": " ".join(f"{m['x']},{m['y']}" for m in marcas),
+        "marcas": marcas,
+        "grade": [{"y": y(g), "valor": g} for g in grade],
+        "rotulos": rotulos,
+        "y_rotulos": ALTURA - 8,
+    }

@@ -154,4 +154,28 @@ PAINEIS = {
             "Muitos boletins de furto não trazem horário: o furto costuma ser descoberto depois de ocorrer.",
         ],
     },
+    "comparativo": {
+        "nav": "Comparativo",
+        "titulo": "Como Sorocaba se compara",
+        "h1": "Em que posição Sorocaba está entre os municípios, e como isso mudou?",
+        "pergunta": "Entre os municípios paulistas e brasileiros, onde Sorocaba fica em população, economia e IDEB, ano a ano?",
+        "fonte": "IBGE (população e PIB dos municípios) e INEP (IDEB municipal)",
+        "cta": "Ver a posição da cidade",
+        "tom": "secundario",
+        "descricao": "A posição de Sorocaba entre os municípios paulistas e brasileiros em população, PIB, PIB per capita e IDEB, e como ela mudou ao longo dos anos.",
+        "meta_desc": "Posição de Sorocaba entre os municípios de São Paulo e do Brasil em população, PIB, PIB per capita e IDEB, ano a ano.",
+        "palavras": ["ranking", "posição", "comparar", "comparativo", "municípios", "pib", "população", "ideb", "per capita", "melhor", "pior"],
+        "blocos": [],
+        "glossario": [
+            ("Posição", "Lugar da cidade quando todos os municípios são ordenados do maior para o menor valor do indicador. Posição 1 é o maior valor."),
+            ("Posição não é qualidade", "População e PIB medem tamanho. Ficar mais acima ou mais abaixo não diz, por si só, se a cidade está melhor ou pior para quem vive nela."),
+            ("PIB per capita", "PIB dividido pelo número de habitantes, calculado aqui com dados do IBGE do mesmo ano. Em municípios pequenos com uma grande fábrica ou refinaria, o valor pode ficar muito alto sem refletir a renda das pessoas."),
+            ("Empate", "Quando vários municípios têm o mesmo valor (comum no IDEB, que tem uma casa decimal), todos ficam na mesma posição."),
+        ],
+        "limitacoes": [
+            "A posição depende de quais municípios têm dado no ano; o total muda ao longo do tempo.",
+            "Estimativas de população são revisadas a cada Censo, o que pode mudar a posição sem mudança real.",
+            "Não há ranking de qualidade de vida: só indicadores com fonte oficial e comparáveis entre municípios.",
+        ],
+    },
 }

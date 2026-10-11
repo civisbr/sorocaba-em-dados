@@ -173,3 +173,7 @@ table{width:100%;border-collapse:collapse;font-size:.95rem}th,td{padding:.4rem .
 @media(min-width:768px) and (max-width:959px){.heroi-grade{grid-template-columns:1fr}}
 .status-nome{white-space:nowrap}
 .nav-desktop a,.marca span{white-space:nowrap}
+.lista-1col{columns:1!important}.destaque-lista{font-weight:700;color:var(--navy);background:var(--accent);margin:0 -.5rem;padding-left:.5rem!important;padding-right:.5rem!important;border-radius:.375rem}
+.posicoes{margin-top:1rem}.posicoes li{display:grid;grid-template-columns:1fr;gap:.15rem .75rem;padding:.75rem 0;border-bottom:1px solid var(--border)}
+.posicao-nome{font-weight:700;color:var(--navy)}.posicao-valor{font-size:.95rem}.posicao-sp,.posicao-br{font-size:.95rem}
+@media(min-width:768px){.posicoes li{grid-template-columns:2fr 1.2fr 1fr 1fr;align-items:baseline}}

@@ -1,0 +1,40 @@
+{
+  "arquivos": {
+    "ideb_anos_finais.csv": {
+      "ano": 2025,
+      "coletado_em": "2026-10-11",
+      "last_modified": "Wed, 05 Aug 2026 20:14:34 GMT",
+      "md5_declarado_inep": "b31539e40e6e5bae92c842c895ee5ea7",
+      "sha256": "cdb7ff2360935d8f92b7dd08759b48cec5cf561082e17368e56bf5bd51bab587",
+      "sha256_zip": "5f81ae18d33567608f10551d4f563a6879afc0182ff28cfd81e913958a30a6b3",
+      "url": "https://download.inep.gov.br/ideb/resultados/divulgacao_anos_finais_municipios_2025.zip"
+    },
+    "ideb_anos_iniciais.csv": {
+      "ano": 2025,
+      "coletado_em": "2026-10-11",
+      "last_modified": "Wed, 05 Aug 2026 20:14:35 GMT",
+      "md5_declarado_inep": "91a145d0ce4b0c500115e5add13dd386",
+      "sha256": "1813c9dfe808890c9fefdd514d8559e9a76c066b861eeb4fdc2f25093e448951",
+      "sha256_zip": "89100286327ab07a4b1318ba51974d62da90af334f663bedf6374cb67298a3e7",
+      "url": "https://download.inep.gov.br/ideb/resultados/divulgacao_anos_iniciais_municipios_2025.zip"
+    },
+    "municipios_sp.csv": {
+      "coletado_em": "2026-10-11",
+      "sha256": "53e80d1c1b260230d387bf6a8c63bd615c387eaaf26a4faf5bc8cc44171defc7",
+      "url": "https://servicodados.ibge.gov.br/api/v1/localidades/estados/35/municipios"
+    },
+    "pib.csv": {
+      "coletado_em": "2026-10-11",
+      "sha256": "e5fc9a9c7c56bd436698852fb06e61bc2f6ea44a1b86a39c54e9464c7ab517dc",
+      "tabelas": "5938",
+      "url": "https://servicodados.ibge.gov.br/api/v3/agregados"
+    },
+    "populacao.csv": {
+      "coletado_em": "2026-10-11",
+      "sha256": "02343636635d218f6f588ce1d2bb239cc004426b89d89deb388f417af8fd7463",
+      "tabelas": "202, 793, 4714, 6579",
+      "url": "https://servicodados.ibge.gov.br/api/v3/agregados"
+    }
+  },
+  "verificado_em": "2026-10-11"
+}

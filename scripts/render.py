@@ -11,7 +11,7 @@ from pathlib import Path
 
 from jinja2 import Environment, FileSystemLoader, select_autoescape
 
-from scripts.charts import barras_mensais, linhas, linhas_preco
+from scripts.charts import barras_mensais, linhas, linhas_posicao, linhas_preco
 from scripts.mapa import gerar as gerar_mapa
 from scripts.paineis import PAINEIS
 
@@ -248,6 +248,42 @@ def contexto_seguranca(env: dict) -> dict:
     }
 
 
+ROTULO_IND = {
+    "populacao": ("População", "habitantes", "hab"),
+    "pib": ("PIB a preços correntes", "R$ bilhões", "bi"),
+    "pib_per_capita": ("PIB per capita (calculado)", "R$ por habitante", "rs"),
+    "ideb_anos_iniciais": ("IDEB, anos iniciais (rede pública)", "nota de 0 a 10", "nota"),
+    "ideb_anos_finais": ("IDEB, anos finais (rede pública)", "nota de 0 a 10", "nota"),
+}
+
+
+def formata_ind(tipo: str, v: float) -> str:
+    if tipo == "bi":
+        return f"R$ {v / 1_000_000:.1f}".replace(".", ",") + " bi"
+    if tipo == "rs":
+        return "R$ " + num(int(round(v)))
+    if tipo == "nota":
+        return f"{v:.1f}".replace(".", ",")
+    return num(int(round(v)))
+
+
+def contexto_comparativo(env: dict) -> dict:
+    blocos = []
+    for ind, (nome, unidade, tipo) in ROTULO_IND.items():
+        pos = [r for r in env["dados"] if r["recorte"] == "posicao" and r["indicador"] == ind]
+        viz = [r for r in env["dados"] if r["recorte"] == "vizinho" and r["indicador"] == ind]
+        ult, prim = pos[-1], pos[0]
+        blocos.append({
+            "id": ind, "nome": nome, "unidade": unidade, "tipo": tipo, "ultimo": ult, "primeiro": prim,
+            "grafico_sp": linhas_posicao([(r["ano"], r["pos_sp"]) for r in pos]),
+            "grafico_br": linhas_posicao([(r["ano"], r["pos_br"]) for r in pos]),
+            "anos": list(reversed(pos)),
+            "vizinhos": viz,
+            "ano_viz": viz[0]["ano"] if viz else None,
+        })
+    return {"blocos": blocos, "ref_comp": "posição " + str(max(b["ultimo"]["ano"] for b in blocos))}
+
+
 def contexto_combustivel(env: dict) -> dict:
     produtos = []
     for nome in dict.fromkeys(r["produto"] for r in env["dados"]):
@@ -283,6 +319,7 @@ def contexto_combustivel(env: dict) -> dict:
 
 def renderizar(public: Path, saida: Path) -> None:
     jinja = Environment(loader=FileSystemLoader(RAIZ / "templates"), autoescape=select_autoescape(["html"]))
+    jinja.globals["fmt_ind"] = formata_ind
     jinja.filters.update(num=num, sinal=sinal, data_br=data_br, mes_curto=mes_curto, brl=brl, pct=pct, brl1=brl1, brl2=brl2, pct_abs=pct_abs, bi=bi, inteiro_br=inteiro_br, nome_br=nome_br)
 
     emprego = json.loads((public / "emprego.json").read_text(encoding="utf-8"))
@@ -295,6 +332,8 @@ def renderizar(public: Path, saida: Path) -> None:
     ctx_rep = contexto_representantes(rep)
     seg = json.loads((public / "seguranca.json").read_text(encoding="utf-8"))
     ctx_seg = contexto_seguranca(seg)
+    comp = json.loads((public / "comparativo.json").read_text(encoding="utf-8"))
+    ctx_comp = contexto_comparativo(comp)
     escolas = json.loads((public / "escolas.json").read_text(encoding="utf-8"))
     ctx_esc = contexto_escolas(escolas)
     mapa = gerar_mapa(RAIZ / "data" / "raw" / "ibge" / "malha_3552205.geojson")
@@ -320,6 +359,8 @@ def renderizar(public: Path, saida: Path) -> None:
     paineis["representantes"].update(status=flag_r, rotulo_status=ROTULO_STATUS[flag_r], referencia=ctx_rep["ref_rep"])
     flag_s = seg["qualidade"]["flag"]
     paineis["seguranca"].update(status=flag_s, rotulo_status=ROTULO_STATUS[flag_s], referencia=ctx_seg["ref_seg"])
+    flag_c2 = comp["qualidade"]["flag"]
+    paineis["comparativo"].update(status=flag_c2, rotulo_status=ROTULO_STATUS[flag_c2], referencia="anos de " + str(comp["referencia"]["inicio"][:4]) + " a " + str(comp["referencia"]["fim"][:4]))
     ordem = list(paineis.values())
 
     if saida.exists():
@@ -330,7 +371,7 @@ def renderizar(public: Path, saida: Path) -> None:
     (saida / MARCADOR).write_text("saída gerada por scripts/render.py\n", encoding="utf-8")
     for nome in ("style.css", "app.js"):
         shutil.copy(RAIZ / "static" / nome, saida / nome)
-    for nome in ("emprego.json", "combustivel.json", "escolas.json", "perfil.json", "representantes.json", "seguranca.json"):
+    for nome in ("emprego.json", "combustivel.json", "escolas.json", "perfil.json", "representantes.json", "seguranca.json", "comparativo.json"):
         shutil.copy(public / nome, saida / "data" / nome)
 
     comum = {"paineis": ordem, "repo_url": REPO_URL}
@@ -344,7 +385,7 @@ def renderizar(public: Path, saida: Path) -> None:
             jinja.get_template(template).render(raiz=raiz, **comum, **ctx), encoding="utf-8"
         )
 
-    escrever("index.html", "index.html", "", mapa=mapa, emprego=ctx_emprego, comb=ctx_comb, esc=ctx_esc, cid=ctx_cid, rep=ctx_rep, seg=ctx_seg)
+    escrever("index.html", "index.html", "", mapa=mapa, emprego=ctx_emprego, comb=ctx_comb, esc=ctx_esc, cid=ctx_cid, rep=ctx_rep, seg=ctx_seg, comp=ctx_comp)
     escrever("sobre/index.html", "sobre.html", "../", fontes=[
         ("Emprego", "Novo CAGED — Ministério do Trabalho e Emprego", flag),
         ("Combustível", "Levantamento de Preços de Combustíveis — ANP", flag_c),
@@ -352,6 +393,7 @@ def renderizar(public: Path, saida: Path) -> None:
         ("A cidade", "Censo 2022, estimativas e PIB dos Municípios — IBGE", flag_p),
         ("Representantes", "TSE, Câmara dos Deputados e Alesp", flag_r),
         ("Segurança", "SSP-SP — ocorrências registradas", flag_s),
+        ("Comparativo", "IBGE e INEP — posição entre municípios", flag_c2),
     ])
     escrever(
         "emprego/index.html", "paineis/emprego.html", "../",
@@ -376,6 +418,10 @@ def renderizar(public: Path, saida: Path) -> None:
     escrever(
         "seguranca/index.html", "paineis/seguranca.html", "../",
         p=paineis["seguranca"], env=seg, script="scripts/build_seguranca.py", **ctx_seg,
+    )
+    escrever(
+        "comparativo/index.html", "paineis/comparativo.html", "../",
+        p=paineis["comparativo"], env=comp, script="scripts/build_comparativo.py", **ctx_comp,
     )
     for e in ctx_esc["escolas"]:
         escrever(

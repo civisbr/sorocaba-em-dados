@@ -81,6 +81,9 @@
         {% elif p.id == "cidade" %}
         <span class="cartao-numero">{{ cid.ind.populacao_estimada.valor | inteiro_br }}</span>
         <span class="cartao-ctx">habitantes, estimativa do IBGE para {{ cid.ind.populacao_estimada.ano }}</span>
+        {% elif p.id == "comparativo" %}
+        <span class="cartao-numero">{{ comp.blocos[0].ultimo.pos_sp }}º</span>
+        <span class="cartao-ctx">maior município paulista em população, entre {{ comp.blocos[0].ultimo.n_sp }} ({{ comp.blocos[0].ultimo.ano }})</span>
         {% elif p.id == "seguranca" %}
         <span class="cartao-numero">{{ seg.roubos_atual | num }}</span>
         <span class="cartao-ctx">roubos registrados nos 12 meses até {{ seg.mes_fim_curto }}</span>

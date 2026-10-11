@@ -308,6 +308,18 @@ estarem prontos (`project.md` §1 e §11). Status abaixo reflete só o que foi v
 - **Concorrência:** a própria SSP-SP publica estatísticas por município e há mapas de terceiros; o ângulo deste painel é a série longa, a limitação explícita de cada número e a recusa de ranking de bairros. Não foi feita comparação sistemática.
 - **Limite:** contagem de registros não mede risco nem crime efetivo. Tráfico depende de ação policial.
 
+## Comparativo entre municípios (IBGE e INEP)
+
+**Status:** `verificada` e **implementada** (painel "Comparativo", `fetch_comparativo.py` e `build_comparativo.py`).
+
+- **População:** Censos 1970–2010 (tabela 202, variável 93, `N6[all]`), contagem 2007 (tabela 793), Censo 2022 (tabela 4714) e estimativas anuais (tabela 6579, variável 9324). Anos sem população oficial por município (2023) ficam fora. Mudança de método entre estimativa e Censo pode mudar a posição sem mudança real.
+- **PIB:** tabela 5938, variável 37, 2002–2023, todos os municípios (valores nominais).
+- **PIB per capita:** calculado aqui, PIB do ano ÷ população do mesmo ano (ambos do IBGE), porque a tabela não publica per capita. Só nos anos com população do mesmo ano. O projeto não divide por população de outro ano.
+- **IDEB municipal:** `divulgacao_anos_{iniciais,finais}_municipios_AAAA.zip` do INEP, rede **Pública**, edições 2005–2025, MD5 conferido. O INEP não publica ranking; a posição é calculada aqui. O IDEB tem uma casa decimal, então há muitos empates (63 municípios paulistas empatados com Sorocaba em 2025 nos anos iniciais), e o painel usa posição de competição (1, 2, 2, 4) e avisa dos empates.
+- **Armazenamento:** `ano;codigo;valor` de todos os municípios, 8,8 MB em CSV. Sem nomes além dos 645 paulistas (para os vizinhos de ranking).
+- **Ressalva de princípio:** ranking de tamanho (população, PIB) é fato, mas não é qualidade. IDEB reflete perfil socioeconômico. A página diz isso nos textos de cada indicador, sem adjetivar a posição.
+- **Concorrência:** rankings municipais de população e PIB existem em publicações do IBGE e agregadores; o ângulo deste painel é a série longa da posição de uma cidade, no estado e no país, com as limitações à vista. Não foi feita comparação sistemática.
+
 ## Emendas parlamentares com destino a Sorocaba
 
 **Status:** `pendente`. Fontes candidatas: Portal da Transparência e SIOP. Nada testado.
