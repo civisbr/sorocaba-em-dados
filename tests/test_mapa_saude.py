@@ -99,7 +99,7 @@ def test_svg_base_so_tem_elementos_de_desenho(base):
 
 def test_js_do_mapa_nao_envia_nem_guarda_a_posicao():
     js = (RAIZ / "static" / "mapa-interativo.js").read_text(encoding="utf-8")
-    assert js.count("fetch(") == 1 and "fetch(svg.dataset.bairros)" in js
+    assert js.count("fetch(") == 2 and "fetch(svg.dataset.bairros)" in js and "fetch(svg.dataset.pontos)" in js  # só arquivos do próprio site
     for proibido in ("localStorage", "sessionStorage", "XMLHttpRequest", "sendBeacon", "innerHTML", "document.cookie", "console.log"):
         assert proibido not in js
     assert set(re.findall(r"toFixed\((\d)\)", js)) <= {"1", "3", "4"}  # a origem enviada ao OpenStreetMap tem no máximo 3 casas

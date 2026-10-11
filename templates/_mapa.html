@@ -9,11 +9,11 @@
 <symbol id="s-radar-grupo" overflow="visible"><circle r="8" class="mk-radar-grupo"/></symbol>
 {%- endmacro %}
 
-{% macro quadro(mb, rotulo, nomes={}, ordem="", nota="", vista=none, rotulo_celula="") -%}
+{% macro quadro(mb, rotulo, nomes={}, ordem="", nota="", vista=none, rotulo_celula="", pontos_url="", campos=[], valores={}, rotulo_url="Ver detalhes") -%}
 <div class="mapa-quadro ms-longe" tabindex="-1">
   <svg class="ms-svg" viewBox="{{ vista or ('0 0 ' ~ mb.largura ~ ' ' ~ mb.altura) }}" role="group" aria-label="{{ rotulo }}" tabindex="0"
        data-largura="{{ mb.largura }}" data-altura="{{ mb.altura }}" data-k="{{ mb.k }}" data-escala="{{ mb.escala }}" data-dx="{{ mb.dx }}" data-dy="{{ mb.dy }}"
-       data-contorno="{{ mb.contorno }}" data-bairros="{{ mb.bairros_url }}" data-nomes="{{ nomes | tojson | forceescape }}" data-ordem="{{ ordem }}" data-nota="{{ nota }}" data-rotulo-celula="{{ rotulo_celula }}">
+       data-contorno="{{ mb.contorno }}" data-bairros="{{ mb.bairros_url }}" data-nomes="{{ nomes | tojson | forceescape }}" data-ordem="{{ ordem }}" data-nota="{{ nota }}" data-rotulo-celula="{{ rotulo_celula }}" data-pontos="{{ pontos_url }}" data-campos="{{ campos | tojson | forceescape }}" data-valores="{{ valores | tojson | forceescape }}" data-rotulo-url="{{ rotulo_url }}">
     <defs>{{ simbolos() }}</defs>
     <image href="{{ mb.base_url }}" x="0" y="0" width="{{ mb.largura }}" height="{{ mb.altura }}"/>
     <g class="ms-aneis"></g>

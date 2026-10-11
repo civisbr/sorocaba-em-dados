@@ -14,6 +14,7 @@ from datetime import date
 from pathlib import Path
 
 from schemas.envelope import Cobertura, Envelope, Flag, Fonte, Granularidade, Qualidade, Referencia
+from scripts.geo import carregar_contorno, dentro
 
 RAIZ = Path(__file__).resolve().parent.parent
 REDES = {"1": "Federal", "2": "Estadual", "3": "Municipal", "4": "Privada"}
@@ -61,6 +62,30 @@ def bool_ou_nulo(v: str) -> bool | None:
     return None if v == "" else v == "1"
 
 
+def _endereco(r: dict) -> str | None:
+    rua = " ".join(r["DS_ENDERECO"].split())
+    numero = " ".join(r["NU_ENDERECO"].split())
+    return f"{rua}, {numero}" if rua and numero else rua or None
+
+
+def _coordenadas(arq: Path, codigos: set[str]) -> dict[str, dict]:
+    """Posição aproximada de data/raw/inep/coordenadas.csv (geocode_escolas.py). Valida formato, nível e contorno do município."""
+    if not arq.exists():
+        return {}
+    contorno = carregar_contorno()
+    saida: dict[str, dict] = {}
+    for r in csv.DictReader(arq.open(encoding="utf-8", newline=""), delimiter=";"):
+        if r["co_inep"] not in codigos:
+            raise ValueError(f"coordenadas de escola inexistente no Censo: {r['co_inep']}")
+        if not r["precisao"]:
+            continue
+        lat, lon = float(r["lat"]), float(r["lon"])
+        if r["precisao"] not in ("porta", "rua") or not dentro(contorno, lat, lon):
+            raise ValueError(f"coordenada inválida para {r['co_inep']}")
+        saida[r["co_inep"]] = {"lat": round(lat, 5), "lon": round(lon, 5), "posicao": r["precisao"]}
+    return saida
+
+
 def construir(raw: Path) -> Envelope:
     man = json.loads((raw / "manifesto.json").read_text(encoding="utf-8"))
     arqs = man["arquivos"]
@@ -81,6 +106,7 @@ def construir(raw: Path) -> Envelope:
     invalidos = [r["CO_ENTIDADE"] for r in escolas if not re.fullmatch(r"\d{8}", r["CO_ENTIDADE"])]
     if invalidos:
         raise ValueError(f"código INEP fora do formato de 8 dígitos: {invalidos[:3]}")
+    coords = _coordenadas(raw / "coordenadas.csv", {r["CO_ENTIDADE"] for r in escolas})
     dados = []
     for r in sorted(escolas, key=lambda r: (r["NO_ENTIDADE"], r["CO_ENTIDADE"])):
         reg: dict = {
@@ -88,6 +114,8 @@ def construir(raw: Path) -> Envelope:
             "escola": " ".join(r["NO_ENTIDADE"].split()),
             "bairro": " ".join(r["NO_BAIRRO"].split()) or None,
             "ano_censo": int(r["NU_ANO_CENSO"]),
+            "endereco": _endereco(r),
+            **coords.get(r["CO_ENTIDADE"], {"lat": None, "lon": None, "posicao": None}),
             "rede": REDES[r["TP_DEPENDENCIA"]],
             "localizacao": LOCALIZACAO[r["TP_LOCALIZACAO"]],
             **{k: inteiro(r[c]) for k, c in MATRICULAS.items()},

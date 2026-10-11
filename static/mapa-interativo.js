@@ -1,7 +1,30 @@
 (function () {
   "use strict";
   var NS = "http://www.w3.org/2000/svg";
-  Array.prototype.slice.call(document.querySelectorAll(".mapa-interativo")).forEach(iniciar);
+  Array.prototype.slice.call(document.querySelectorAll(".mapa-interativo")).forEach(preparar);
+
+  // Conjuntos grandes de pontos (escolas) vêm de um JSON próprio do site e são desenhados aqui, para não pesar no HTML.
+  function preparar(raiz) {
+    var svg = raiz.querySelector(".ms-svg");
+    if (!svg || !svg.dataset.pontos) { iniciar(raiz); return; }
+    fetch(svg.dataset.pontos).then(function (r) { if (!r.ok) throw new Error("http"); return r.json(); }).then(function (d) {
+      var g = svg.querySelector(".ms-unidades");
+      d.pontos.forEach(function (p) {
+        var el = document.createElementNS(NS, "g");
+        el.setAttribute("class", "ms-u g-" + p.g);
+        el.setAttribute("transform", "translate(" + p.x + " " + p.y + ")");
+        el.setAttribute("aria-label", p.n);
+        var ds = { grupo: p.g, nome: p.n, etapas: p.e, lat: p.la, lon: p.lo, url: p.u, end: p.en, bairro: p.b, pos: p.p };
+        Object.keys(ds).forEach(function (k) { if (ds[k]) el.dataset[k] = ds[k]; });
+        var u = document.createElementNS(NS, "use"); u.setAttribute("class", "mk"); u.setAttribute("href", "#" + (svg.dataset.simbolo || "s-escola"));
+        el.appendChild(u); g.appendChild(el);
+      });
+      iniciar(raiz);
+    }).catch(function () {
+      var m = raiz.querySelector(".ms-msg"); if (m) m.textContent = "Não consegui carregar os pontos do mapa.";
+      iniciar(raiz);
+    });
+  }
 
   function iniciar(raiz) {
     var svg = raiz.querySelector(".ms-svg");
@@ -14,6 +37,7 @@
     var QUADRO_W = +svg.dataset.largura || W, QUADRO_H = +svg.dataset.altura || H;
     var afim = { k: +svg.dataset.k, escala: +svg.dataset.escala, dx: +svg.dataset.dx, dy: +svg.dataset.dy };
     var NOMES = JSON.parse(svg.dataset.nomes || "{}");
+    var CAMPOS = JSON.parse(svg.dataset.campos || "[]"), VALORES = JSON.parse(svg.dataset.valores || "{}");
     var ORDEM = (svg.dataset.ordem || "").split(",").filter(Boolean);
     var NOTA = svg.dataset.nota || "";
     var view = { x: vb[0], y: vb[1], w: vb[2], h: vb[3] };
@@ -23,8 +47,9 @@
     var gVoce = q(".ms-voce"), gAneis = q(".ms-aneis");
     var atual = null, posicao = null, distancias = new Map();
 
-    raiz.querySelectorAll("[data-so-js]").forEach(function (e) { e.hidden = false; });
-    raiz.querySelectorAll("[data-sem-js]").forEach(function (e) { e.hidden = true; });
+    var secao = raiz.closest("section") || raiz;
+    secao.querySelectorAll("[data-so-js]").forEach(function (e) { e.hidden = false; });
+    secao.querySelectorAll("[data-sem-js]").forEach(function (e) { e.hidden = true; });
     unidades.forEach(function (u) { u.setAttribute("tabindex", "0"); u.setAttribute("role", "button"); });
     svg.querySelectorAll(".ms-u > title, .ms-c > title").forEach(function (t) { t.parentNode.removeChild(t); }); // a dica própria substitui a nativa
 
@@ -138,10 +163,15 @@
       var tipo = nomeGrupo(u); if (tipo) dl.appendChild(linha("Tipo", tipo));
       var detalhes = []; try { detalhes = JSON.parse(u.dataset.detalhes || "[]"); } catch (e) { detalhes = []; }
       detalhes.forEach(function (p) { if (p[1]) dl.appendChild(linha(String(p[0]), String(p[1]))); });
+      CAMPOS.forEach(function (c) {
+        var v = u.dataset[c[0]];
+        if (!v) return;
+        dl.appendChild(linha(c[1], v.split(" ").map(function (t) { return VALORES[t] || t; }).join(c[0] === "etapas" ? ", " : " ")));
+      });
       if (distancias.has(u)) dl.appendChild(linha("Distância em linha reta", fmtKm(distancias.get(u))));
       painelSel.appendChild(dl);
       if (u.dataset.url && /^[\w./-]+$/.test(u.dataset.url)) {
-        var a0 = document.createElement("a"); a0.className = "ms-link"; a0.href = u.dataset.url; a0.textContent = u.dataset.urlRotulo || "Ver detalhes";
+        var a0 = document.createElement("a"); a0.className = "ms-link"; a0.href = u.dataset.url; a0.textContent = u.dataset.urlRotulo || svg.dataset.rotuloUrl || "Ver detalhes";
         painelSel.appendChild(a0); painelSel.appendChild(document.createElement("br"));
       }
       if (u.dataset.lat && u.dataset.lon) {
@@ -263,7 +293,7 @@
         b.type = "button"; b.className = "ms-prox-b";
         var tipo = document.createElement("span"); tipo.className = "ms-prox-t"; tipo.textContent = NOMES[g] || g;
         var nome = document.createElement("strong"); nome.textContent = u.dataset.nome;
-        var d = document.createElement("span"); d.className = "ms-prox-d"; d.textContent = fmtKm(distancias.get(u)) + " em linha reta" + (u.dataset.resumo ? " · " + u.dataset.resumo : "");
+        var d = document.createElement("span"); d.className = "ms-prox-d"; d.textContent = fmtKm(distancias.get(u)) + " em linha reta" + (u.dataset.resumo ? " · " + u.dataset.resumo : "") + (u.dataset.bairro ? " · " + u.dataset.bairro : "");
         b.appendChild(tipo); b.appendChild(nome); b.appendChild(d);
         b.addEventListener("click", function () { selecionar(u); enquadrar([ponto(u), xy(posicao.lat, posicao.lon)], 0.6); });
         li.appendChild(b); ul.appendChild(li);

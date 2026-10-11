@@ -1,5 +1,7 @@
 {% extends "paineis/painel.html" %}
 {% from "_macros.html" import icone %}
+{% from "_mapa.html" import quadro, local, selecionada %}
+{% block scripts %}{% if mapa_escolas %}<script src="{{ raiz }}mapa-interativo.js" defer></script>{% endif %}{% endblock %}
 {% block filtros %}
 <form id="escolas-filtro" class="quadro-card filtro filtro-busca" hidden role="search" aria-label="Buscar escola">
   <div><label for="busca-escola">Nome da escola ou bairro</label><input id="busca-escola" type="search" autocomplete="off" placeholder="Ex.: Jardim Europa"></div>
@@ -16,6 +18,31 @@
 </section>
 {% endblock %}
 {% block explorar %}
+{% if mapa_escolas %}{% set me = mapa_escolas %}
+<section aria-labelledby="mapa-t" class="bloco-painel">
+  <h2 id="mapa-t" class="h2-medio sem-topo">Mapa das escolas</h2>
+  <p class="suave" data-sem-js>O mapa precisa de JavaScript; a lista abaixo traz todas as escolas.</p>
+  <p class="suave">{{ me.pontos | length }} das {{ me.total }} escolas têm posição no mapa. Passe o mouse ou toque num ponto para ver o nome; abra para ver endereço, etapas de ensino e a página da escola. <span data-so-js hidden>Escolha as etapas e informe onde você está para ver as escolas mais perto. Não há ranking: o mapa mostra onde ficam, não qual é melhor.</span></p>
+  <div class="mapa-saude mapa-interativo">
+    {% call quadro(mb, "Mapa de Sorocaba com as escolas em atividade, coloridas por rede de ensino", me.nomes, me.ordem, "Distância em linha reta, não pelo caminho. Posições aproximadas, a partir do endereço do Censo Escolar.", pontos_url=raiz ~ "data/mapa-escolas.json", campos=me.campos, valores=me.valores, rotulo_url="Ver a página da escola") %}
+    <g class="ms-unidades"></g>
+    {% endcall %}
+    <div class="mapa-lateral">
+      <fieldset class="ms-filtro" data-so-js hidden><legend>Rede de ensino</legend>
+        {% for g in me.redes %}<label><input type="checkbox" value="{{ g.id }}" data-filtro="grupo" checked><svg class="ms-chave g-{{ g.id }}" viewBox="-16 -16 32 32" aria-hidden="true"><use href="#s-escola"/></svg><span>{{ g.nome }} <span class="suave">({{ g.n }})</span></span></label>{% endfor %}
+      </fieldset>
+      <fieldset class="ms-filtro" data-so-js hidden><legend>Etapa de ensino</legend>
+        {% for g in me.etapas %}<label><input type="checkbox" value="{{ g.id }}" data-filtro="etapas" checked><span>{{ g.nome }} <span class="suave">({{ g.n }})</span></span></label>{% endfor %}
+        <p class="pequeno suave">Marque só as etapas que você procura; a escola aparece se oferece alguma delas.</p>
+      </fieldset>
+      <ul class="ms-legenda-estatica" data-sem-js>{% for g in me.redes %}<li><svg class="ms-chave g-{{ g.id }}" viewBox="-16 -16 32 32" aria-hidden="true"><use href="#s-escola"/></svg>{{ g.nome }} ({{ g.n }})</li>{% endfor %}</ul>
+      {{ local("escolas", "Escola mais perto de você") }}
+      {{ selecionada() }}
+    </div>
+  </div>
+  <p class="pequeno suave"><span data-so-js hidden>Aproxime com + e −, ou com Ctrl e a roda do mouse; arraste para mover. </span>Posições aproximadas: {{ me.n_porta }} pelo endereço do Censo Escolar e {{ me.n_rua }} pela rua (trecho curto). Escolas sem posição segura aparecem só na lista abaixo. Mapa e posições: © <a href="https://www.openstreetmap.org/copyright" rel="noreferrer">colaboradores do OpenStreetMap</a> (ODbL).</p>
+</section>
+{% endif %}
 <section aria-labelledby="lista-t" class="bloco-painel">
   <h2 id="lista-t" class="h2-medio sem-topo">Todas as escolas</h2>
   <ul class="lista-escolas" id="lista-escolas">

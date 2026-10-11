@@ -261,3 +261,6 @@ div.ms-dica[hidden]{display:none}div.ms-dica.abaixo{transform:translate(-50%,0)}
 rect.ms-c{width:var(--cw);height:var(--ch)}
 .ms-u.vel-40{--cor:var(--sky)}.ms-u.vel-50{--cor:var(--teal)}.ms-u.vel-60{--cor:var(--primary)}.ms-u.vel-70{--cor:var(--navy)}.ms-u.vel-80{--cor:oklch(.2 .08 262)}
 .ms-u .mk-radar{fill:var(--cor,var(--navy))}.ms-u .mk-radar-grupo{stroke:var(--cor,var(--navy));stroke-width:4;fill:rgb(255 255 255/.7)}
+.g-municipal{--cor:#0f8a8f}.g-estadual{--cor:#1b3a5c}.g-federal{--cor:#7b4bb3}.g-privada{--cor:#d9780b}.mk-escola{fill:var(--cor,#1b3a5c)}
+.ms-filtro+.ms-filtro{margin-top:0}
+.ms-longe .g-municipal .mk,.ms-longe .g-estadual .mk,.ms-longe .g-federal .mk,.ms-longe .g-privada .mk{transform:scale(calc(var(--k)*.62))}.ms-longe .ms-u.ms-sel .mk{transform:scale(calc(var(--k)*1.2))}

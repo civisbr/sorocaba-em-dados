@@ -17,6 +17,7 @@ from scripts.charts import barras_mensais, linhas, linhas_posicao, linhas_preco
 from scripts.mapa import gerar as gerar_mapa
 from scripts.mapa import projetar as projetar_mapa
 from scripts.contexto_hospitais import contexto_hospitais
+from scripts.contexto_mapa_escolas import contexto_mapa_escolas
 from scripts.contexto_mapa_saude import contexto_mapa_saude
 from scripts.contexto_panorama import contexto_panorama
 from scripts.mapa_base import BASE as BASE_OSM, bairros_json, contexto_base, gerar_svg, proj_grande
@@ -587,6 +588,7 @@ def renderizar(public: Path, saida: Path) -> None:
     ctx_trans["env_ac"] = acidentes
     escolas = json.loads((public / "escolas.json").read_text(encoding="utf-8"))
     ctx_esc = contexto_escolas(escolas)
+    ctx_esc["mapa_escolas"] = contexto_mapa_escolas(escolas, nome_br, proj_grande()[1])
     mapa = gerar_mapa(RAIZ / "data" / "raw" / "ibge" / "malha_3552205.geojson")
 
     paineis = {}
@@ -642,6 +644,9 @@ def renderizar(public: Path, saida: Path) -> None:
         shutil.copy(RAIZ / "static" / nome, saida / nome)
     shutil.copytree(RAIZ / "static" / "fonts", saida / "fonts")
     (saida / "mapa-base.svg").write_text(mapa_svg, encoding="utf-8")
+    if ctx_esc.get("mapa_escolas"):
+        me = ctx_esc["mapa_escolas"]
+        (saida / "data" / "mapa-escolas.json").write_text(json.dumps({"fonte": "INEP (endereço) e OpenStreetMap/Nominatim (posição, ODbL)", "pontos": me["pontos"]}, ensure_ascii=False, separators=(",", ":")), encoding="utf-8")
     (saida / "data" / "mapa-bairros.json").write_text(bairros_json(base_osm, proj["f"]), encoding="utf-8")
     for nome in ("emprego.json", "combustivel.json", "escolas.json", "perfil.json", "representantes.json", "seguranca.json", "comparativo.json", "clima.json", "radares.json", "infosiga.json", "saude_doencas.json", "saude_hospitais.json", "saude_panorama.json", "saude_vacinas.json"):
         shutil.copy(public / nome, saida / "data" / nome)

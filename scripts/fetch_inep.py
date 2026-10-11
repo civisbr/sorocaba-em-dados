@@ -39,7 +39,7 @@ CENSO_COLUNAS = [
     "TP_SITUACAO_FUNCIONAMENTO", "QT_MAT_INF", "QT_MAT_FUND_AI", "QT_MAT_FUND_AF", "QT_MAT_MED",
     "QT_MAT_EJA", "QT_MAT_ESP", "QT_MAT_BAS", "IN_BIBLIOTECA", "IN_LABORATORIO_INFORMATICA",
     "IN_LABORATORIO_CIENCIAS", "IN_QUADRA_ESPORTES", "IN_INTERNET", "IN_REFEITORIO",
-    "IN_ACESSIBILIDADE_RAMPAS",
+    "IN_ACESSIBILIDADE_RAMPAS", "DS_ENDERECO", "NU_ENDERECO", "CO_CEP",
 ]
 IDEB_FIXAS = ["SG_UF", "CO_MUNICIPIO", "NO_MUNICIPIO", "ID_ESCOLA", "NO_ESCOLA", "REDE"]
 IDEB_PREFIXOS = ("VL_OBSERVADO_", "VL_INDICADOR_REND_", "VL_NOTA_MEDIA_")
@@ -209,7 +209,8 @@ def coletar(acesso_em: date, destino: Path = DESTINO) -> list[str]:
         for nome, (modelo, padrao) in fontes.items():
             ano, caminho, info = descobrir(c, modelo, acesso_em)
             anterior = manifesto_atual.get("arquivos", {}).get(nome)
-            if anterior and anterior["ano"] == ano and anterior["last_modified"] == info["last_modified"] and anterior["bytes_zip"] == info["bytes"]:
+            colunas_ok = nome != "censo_escolar" or (destino / "censo_escolar.csv").read_text(encoding="utf-8").split("\n", 1)[0] == ";".join(CENSO_COLUNAS)  # coluna nova no código pede nova extração
+            if colunas_ok and anterior and anterior["ano"] == ano and anterior["last_modified"] == info["last_modified"] and anterior["bytes_zip"] == info["bytes"]:
                 novo["arquivos"][nome] = anterior
                 continue
             zip_path = tmp / f"{nome}.zip"

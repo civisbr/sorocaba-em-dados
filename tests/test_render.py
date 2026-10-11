@@ -137,7 +137,7 @@ def test_linhas_preco_eixo_cobre_os_dados():
 
 def test_orcamento_dos_recursos_do_mapa_de_saude(site):
     assert (site / "mapa-base.svg").stat().st_size < 260_000
-    assert (site / "mapa-interativo.js").stat().st_size < 20_000
+    assert (site / "mapa-interativo.js").stat().st_size < 30_000
     assert (site / "data" / "mapa-bairros.json").stat().st_size < 80_000
 
 
@@ -164,3 +164,7 @@ def test_identidade_em_pagina_aninhada_e_csp_sem_terceiros(site):
         assert alvo in escola, alvo
     csp = re.search(r'Content-Security-Policy" content="([^"]+)"', escola).group(1)
     assert not re.search(r"https?:|\*", csp)
+
+
+def test_orcamento_do_json_de_pontos_das_escolas(site):
+    assert (site / "data" / "mapa-escolas.json").stat().st_size < 110_000

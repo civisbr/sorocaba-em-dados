@@ -1,0 +1,7 @@
+As posições em coordenadas.csv (mapa de escolas) foram obtidas a partir do endereço do Censo Escolar (INEP) com o Nominatim, serviço do OpenStreetMap.
+
+Fonte das posições: © colaboradores do OpenStreetMap, https://www.openstreetmap.org/copyright
+Licença: Open Database License (ODbL) 1.0, https://opendatacommons.org/licenses/odbl/1-0/
+
+O arquivo coordenadas.csv e os dados públicos que o incorporam (escolas.json: campos lat, lon e posicao) são disponibilizados sob a ODbL 1.0, com atribuição ao OpenStreetMap.
+O endereço (rua, número, CEP) vem do Censo Escolar do INEP, dado aberto do governo federal.
