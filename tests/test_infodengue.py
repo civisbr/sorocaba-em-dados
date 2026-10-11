@@ -62,3 +62,44 @@ def test_host_fora_da_lista_e_barrado(tmp_path):
         return httpx.Response(302, headers={"location": "https://exemplo.invalido/x"})
     with pytest.raises(ValueError, match="fora"):
         f.coletar(HOJE, tmp_path, transporte=httpx.MockTransport(tratar))
+
+
+import csv as _csv
+
+from scripts.build_infodengue import DIAS_DESATUALIZADO, construir
+from scripts.fetch_infodengue import CAMPOS, csv_texto
+
+
+def _raw(tmp_path, series, verificado="2026-10-11"):
+    man = {"doencas": {}, "fonte": "x", "verificado_em": verificado}
+    for d, linhas in series.items():
+        (tmp_path / f"{d}.csv").write_text(csv_texto(linhas), encoding="utf-8")
+        man["doencas"][d] = {"n_semanas": len(linhas), "ultima_se": linhas[-1]["se"], "versao_modelo": "2026-10-07"}
+    (tmp_path / "manifesto.json").write_text(json.dumps(man), encoding="utf-8")
+    return tmp_path
+
+
+def _l(se, ini, casos=3, nivel=1):
+    return {"se": se, "data_inicio": ini, "casos": casos, "casos_est": 5.0, "casos_est_min": 1, "casos_est_max": 9, "nivel": nivel, "p_inc100k": 0.4, "rt": 1.0}
+
+
+def test_build_deterministico_e_marca_estimativa(tmp_path):
+    raw = _raw(tmp_path, {"dengue": [_l(202638, "2026-09-20"), _l(202639, "2026-09-27")]})
+    a, b = construir(raw), construir(raw)
+    assert a.model_dump_json() == b.model_dump_json()
+    assert a.qualidade.flag.value == "estimativa"
+    semanal = [r for r in a.dados if r["recorte"] == "semanal"]
+    assert [(r["ano"], r["semana"]) for r in semanal] == [(2026, 38), (2026, 39)]
+
+
+def test_zika_parado_vira_desatualizado_e_dengue_recente_e_atual(tmp_path):
+    raw = _raw(tmp_path, {"dengue": [_l(202639, "2026-09-27")], "zika": [_l(202407, "2024-02-11")]})
+    sit = {r["grupo"]: r for r in construir(raw).dados if r["recorte"] == "situacao"}
+    assert sit["dengue"]["categoria"] == "atual" and sit["zika"]["categoria"] == "desatualizado"
+    assert sit["zika"]["n"] > DIAS_DESATUALIZADO
+
+
+def test_build_sem_dengue_da_erro(tmp_path):
+    raw = _raw(tmp_path, {"zika": [_l(202407, "2024-02-11")]})
+    with pytest.raises(ValueError, match="dengue"):
+        construir(raw)
