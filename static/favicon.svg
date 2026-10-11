@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"><title>Sorocaba em Dados</title>
+<defs><linearGradient id="b" x1="0" y1="1" x2="0" y2="0"><stop offset="0" stop-color="#00BFFF"/><stop offset="1" stop-color="#00C896"/></linearGradient></defs>
+<rect width="64" height="64" rx="15" fill="#0B1220"/>
+<circle cx="32" cy="33" r="25" fill="none" stroke="#00BFFF" stroke-width="4" stroke-dasharray="52 105" transform="rotate(-100 32 33)"/><circle cx="32" cy="33" r="25" fill="none" stroke="#00C896" stroke-width="4" stroke-dasharray="34 123" stroke-dashoffset="-60" transform="rotate(-100 32 33)"/>
+<g fill="url(#b)"><rect x="15" y="36" width="10" height="13" rx="2"/><rect x="27" y="28" width="10" height="21" rx="2"/><rect x="39" y="19" width="10" height="30" rx="2"/></g>
+<path d="M44 18c0 0-7-6-7-11a7 7 0 0 1 14 0c0 5-7 11-7 11z" transform="translate(-0 3)" fill="#FFB020"/></svg>

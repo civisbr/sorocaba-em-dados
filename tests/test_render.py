@@ -139,3 +139,13 @@ def test_orcamento_dos_recursos_do_mapa_de_saude(site):
     assert (site / "mapa-base.svg").stat().st_size < 260_000
     assert (site / "mapa-saude.js").stat().st_size < 20_000
     assert (site / "data" / "mapa-bairros.json").stat().st_size < 80_000
+
+
+def test_identidade_visual_favicon_logo_e_fonte_propria(site):
+    html = (site / "index.html").read_text(encoding="utf-8")
+    for alvo in ("favicon.svg", "favicon-32.png", "apple-touch-icon.png", "logo-icone.svg", "fonts/orbitron-subset.woff2"):
+        assert alvo in html and (site / alvo).exists(), alvo
+    assert "font-src 'self'" in html and "fonts.googleapis" not in html and "fonts.gstatic" not in html
+    assert (site / "fonts" / "OFL-Orbitron.txt").exists()
+    for svg in ("favicon.svg", "logo-icone.svg"):
+        assert "<script" not in (site / svg).read_text(encoding="utf-8")

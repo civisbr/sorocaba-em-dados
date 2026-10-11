@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64"><title>Sorocaba em Dados</title>
+<defs><linearGradient id="b" x1="0" y1="1" x2="0" y2="0"><stop offset="0" stop-color="#00BFFF"/><stop offset="1" stop-color="#00C896"/></linearGradient></defs>
+<rect width="64" height="64" rx="15" fill="#0B1220"/><rect x=".75" y=".75" width="62.5" height="62.5" rx="14.3" fill="none" stroke="#1B2A44" stroke-width="1.5"/>
+<g fill="none" stroke-linecap="round" transform="rotate(-100 32 33)">
+<circle cx="32" cy="33" r="26.5" stroke="#8A94A6" stroke-opacity=".45" stroke-width="1" stroke-dasharray="2 4"/>
+<circle cx="32" cy="33" r="24" stroke="#00BFFF" stroke-width="2.6" stroke-dasharray="46 104.8"/>
+<circle cx="32" cy="33" r="24" stroke="#00C896" stroke-width="2.6" stroke-dasharray="30 120.8" stroke-dashoffset="-52"/>
+<circle cx="32" cy="33" r="24" stroke="#FFB020" stroke-width="2.6" stroke-dasharray="20 130.8" stroke-dashoffset="-88"/>
+<circle cx="32" cy="33" r="24" stroke="#8A94A6" stroke-width="2.6" stroke-dasharray="14 136.8" stroke-dashoffset="-114"/></g>
+<g fill="url(#b)"><rect x="17.5" y="35" width="7.5" height="11" rx="1.6"/><rect x="28" y="29" width="7.5" height="17" rx="1.6"/><rect x="38.5" y="22" width="7.5" height="24" rx="1.6"/></g>
+<path d="M13 47.5Q32 39.5 51 47.5" fill="none" stroke="#00BFFF" stroke-width="2" stroke-linecap="round"/>
+<path d="M42.25 22c0 0-5-4.5-5-8.1a5 5 0 0 1 10 0c0 3.6-5 8.1-5 8.1z" fill="#FFB020"/><circle cx="42.25" cy="13.9" r="1.9" fill="#0B1220"/></svg>

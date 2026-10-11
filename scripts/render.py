@@ -637,6 +637,9 @@ def renderizar(public: Path, saida: Path) -> None:
     (saida / MARCADOR).write_text("saída gerada por scripts/render.py\n", encoding="utf-8")
     for nome in ("style.css", "app.js", "mapa-saude.js"):
         shutil.copy(RAIZ / "static" / nome, saida / nome)
+    for nome in ("favicon.svg", "favicon-32.png", "apple-touch-icon.png", "logo-icone.svg"):
+        shutil.copy(RAIZ / "static" / nome, saida / nome)
+    shutil.copytree(RAIZ / "static" / "fonts", saida / "fonts")
     (saida / "mapa-base.svg").write_text(mapa_svg, encoding="utf-8")
     (saida / "data" / "mapa-bairros.json").write_text(bairros_json(base_osm, proj["f"]), encoding="utf-8")
     for nome in ("emprego.json", "combustivel.json", "escolas.json", "perfil.json", "representantes.json", "seguranca.json", "comparativo.json", "clima.json", "radares.json", "infosiga.json", "saude_doencas.json", "saude_hospitais.json", "saude_panorama.json", "saude_vacinas.json"):
