@@ -41,7 +41,7 @@ def construir(raw: Path) -> Envelope:
                 f"O ano mais recente ({anos[-1]}) pode ser revisado pelo Ministério da Saúde; os anteriores são mais estáveis.",
                 "Óbitos fetais (natimortos) ficam fora. A causa é a causa básica da declaração de óbito, agrupada em capítulos do CID-10.",
                 "Contagens com menos de 5 ocorrências são omitidas, exceto os totais.",
-                "A taxa de mortalidade infantil usa poucos casos por ano (cerca de 90): varia de um ano para outro sem que isso signifique melhora ou piora real.",
+                "A taxa de mortalidade infantil usa poucos casos por ano: varia de um ano para outro sem que isso signifique melhora ou piora real.",
                 f"SHA-256 do recorte de coleta: {man['sha256_csv']}",
             ],
         ),

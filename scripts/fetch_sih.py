@@ -62,10 +62,12 @@ def agregar(rd: list[dict], competencia: str) -> list[dict]:
         except ValueError:
             invalidos += 1
             continue
-        if not (0 <= dias <= 3650 and 0 <= uti <= 3650) or r["ESPEC"] not in ESPEC_SIH:
+        if not (0 <= dias <= 3650 and 0 <= uti <= 3650):
             invalidos += 1
             continue
-        chave = (r["CNES"], r["ESPEC"], capitulo_cid(r["DIAG_PRINC"]) or OUTROS, int(r["MUNIC_RES"] == MUNICIPIO))
+        if r.get("IDENT", "1") != "1":  # AIH de continuação (longa permanência) não é uma nova internação
+            continue
+        chave = (r["CNES"], r["ESPEC"] if r["ESPEC"] in ESPEC_SIH else ESPEC_OUTRAS, capitulo_cid(r["DIAG_PRINC"]) or OUTROS, int(r["MUNIC_RES"] == MUNICIPIO))
         a = acc[chave]
         a[0] += 1
         a[1] += dias
@@ -112,7 +114,10 @@ def _ler_existente(destino: Path) -> tuple[dict[str, list[dict]], dict]:
     if not (arq.exists() and man.exists()):
         return {}, {"competencias": {}}
     por_mes: dict[str, list[dict]] = defaultdict(list)
-    for r in csv.DictReader(io.StringIO(arq.read_text(encoding="utf-8")), delimiter=";"):
+    texto = arq.read_text(encoding="utf-8")
+    if hashlib.sha256(texto.encode("utf-8")).hexdigest() != json.loads(man.read_text(encoding="utf-8")).get("sha256_csv"):
+        raise ValueError("internacoes.csv existente não confere com o hash do manifesto")
+    for r in csv.DictReader(io.StringIO(texto), delimiter=";"):
         por_mes[r["competencia"]].append(r)
     return dict(por_mes), json.loads(man.read_text(encoding="utf-8"))
 

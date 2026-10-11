@@ -26,13 +26,16 @@ def contexto_panorama(env: dict) -> dict:
     def total(ano: int, bloco: str) -> int:
         return v.get((ano, bloco, ""), 0)
 
+    def infantis(ano: int) -> int | None:
+        return v.get((ano, "obito_infantil", ""))  # ausente quando suprimido (menos de 5)
+
     obitos, nasc = total(atual, "obito_total"), total(atual, "nasc_total")
-    por_ano = [{"ano": a, "obitos": total(a, "obito_total"), "nascidos": total(a, "nasc_total"), "infantis": total(a, "obito_infantil"),
-                "tmi": round(1000 * total(a, "obito_infantil") / total(a, "nasc_total"), 1) if total(a, "nasc_total") else None} for a in anos]
+    por_ano = [{"ano": a, "obitos": total(a, "obito_total"), "nascidos": total(a, "nasc_total"), "infantis": infantis(a),
+                "tmi": round(1000 * infantis(a) / total(a, "nasc_total"), 1) if infantis(a) is not None and total(a, "nasc_total") else None} for a in anos]
     caps = sorted(((c, n) for (a, b, c), n in v.items() if a == atual and b == "obito_capitulo"), key=lambda x: -x[1])
     causas = [{"nome": c, "n": n, "pct": _pct(n, obitos), "anterior": v.get((anterior, "obito_capitulo", c)) if anterior else None} for c, n in caps[:8]]
     faixas = [{"nome": f, "n": v[(atual, "obito_faixa", f)], "pct": _pct(v[(atual, "obito_faixa", f)], obitos)} for f in ORDEM_FAIXAS if (atual, "obito_faixa", f) in v]
     externas = [{"nome": g, "por_ano": [{"ano": a, "n": v.get((a, "obito_externa", g))} for a in anos]} for g in ORDEM_EXTERNAS]
     nascimentos = [{"nome": nome, "por_ano": [{"ano": a, "pct": (_pct(v[(a, num, "")], total(a, den)) if (a, num, "") in v else None)} for a in anos]} for nome, num, den in INDICADORES_NASC]
     return {"anos": anos, "ano_atual": atual, "obitos": obitos, "nascidos": nasc, "por_ano": por_ano, "causas": causas, "faixas": faixas, "externas": externas,
-            "nascimentos": nascimentos, "ref_pan": str(atual), "tmi": por_ano[-1]["tmi"], "saldo": nasc - obitos}
+            "nascimentos": nascimentos, "ano_anterior": anterior, "ref_pan": str(atual), "tmi": por_ano[-1]["tmi"], "saldo": nasc - obitos}

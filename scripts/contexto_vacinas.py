@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+import re
 from datetime import date
 
 from scripts.build_vacinas import PUBLICOS
@@ -14,7 +15,10 @@ def _ordem_idade(idade: str) -> tuple:
     if len(partes) == 2 and partes[0].isdigit() and partes[1] in ("meses", "anos"):
         n = int(partes[0])
         return (0, n * 12 if partes[1] == "anos" else n)
-    return (-1, 0) if idade == "Ao nascer" else (1, 0)
+    if idade == "Ao nascer" or idade == "Ao saber da gravidez":
+        return (-1, 0)
+    m = re.search(r"(\d+)ª semana", idade)
+    return (0, int(m.group(1))) if m else (1, 0)
 
 
 def contexto_vacinas(env: dict, hoje: date | None = None) -> dict:

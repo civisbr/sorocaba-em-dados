@@ -32,14 +32,13 @@ LEITOS = {
     "80": "UTI neonatal tipo I", "81": "UTI neonatal tipo II", "82": "UTI neonatal tipo III", "83": "UTI de queimados",
     "84": "Acolhimento noturno", "85": "UTI coronariana tipo II", "86": "UTI coronariana tipo III", "87": "Saúde mental",
     "88": "Queimado adulto", "89": "Queimado pediátrico", "90": "Queimado adulto", "91": "Queimado pediátrico",
-    "92": "Cuidados intermediários neonatal convencional", "93": "Cuidados intermediários neonatal canguru", "94": "Cuidados intermediários pediátrico",
+    "92": "Cuidados intermediários neonatal convencional", "93": "Cuidados intermediários neonatal canguru", "94": "Cuidados intermediários pediátrico", "95": "Cuidados intermediários adulto",
 }
 UTI = {"61", "62", "63", "74", "75", "76", "77", "78", "79", "80", "81", "82", "83", "85", "86"}
 
-ESPEC_SIH = {
+ESPEC_SIH = {  # só os códigos conferidos; os demais caem em "99" (a tabela completa do SIH tem outros, como 87 e 13/14, com numeração a confirmar)
     "01": "Cirurgia", "02": "Obstetrícia", "03": "Clínica médica", "04": "Crônicos", "05": "Psiquiatria",
-    "06": "Pneumologia sanitária", "07": "Pediatria", "08": "Reabilitação", "09": "Hospital-dia cirúrgico",
-    "10": "Hospital-dia Aids", "11": "Hospital-dia geriatria", "12": "Hospital-dia saúde mental", "99": "Outras especialidades",
+    "06": "Pneumologia sanitária", "07": "Pediatria", "08": "Reabilitação", "09": "Hospital-dia cirúrgico", "99": "Outras especialidades",
 }
 
 CAPITULOS_CID = (

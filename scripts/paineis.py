@@ -142,7 +142,7 @@ PAINEIS = {
         "nav": "Hospitais e leitos",
         "titulo": "Onde ser atendido",
         "h1": "Quais hospitais atendem em Sorocaba e o que cada um trata?",
-        "pergunta": "Que hospitais, UPAs e unidades de saúde existem na cidade, quantos leitos têm, o que mais tratam e quais ficam mais cheios pelo SUS?",
+        "pergunta": "Que hospitais, UPAs e unidades de saúde existem na cidade, quantos leitos têm, o que mais tratam e quanto os leitos SUS são usados?",
         "fonte": "CNES e SIH/SUS — DATASUS, Ministério da Saúde",
         "cta": "Ver hospitais e leitos",
         "tom": "card",

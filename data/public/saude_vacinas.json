@@ -367,11 +367,11 @@
     },
     {
       "idade": "Acamados ou institucionalizados",
-      "nota": "1 dose, se nunca vacinados",
+      "nota": "Conforme avaliação do serviço de saúde",
       "protege": "Doenças pneumocócicas graves",
       "publico": "Idosos (60 anos ou mais)",
       "recorte": "calendario",
-      "vacina": "Pneumocócica conjugada"
+      "vacina": "Pneumocócica 23-valente"
     },
     {
       "idade": "Ao saber da gravidez",
@@ -446,7 +446,7 @@
       "Campanhas conferidas em 2026-10-11 por busca nas páginas da Prefeitura e da imprensa. Conferência manual por busca; nenhuma campanha com data futura ou em andamento foi encontrada.",
       "O esquema de cada vacina pode mudar por orientação do Ministério ou do estado; na dúvida, vale a orientação da UBS e a caderneta de vacinação.",
       "Não há dado aberto confiável de cobertura vacinal por município que dispense registros individuais, por isso o painel não mostra cobertura.",
-      "SHA-256 dos arquivos de curadoria: a4b5cadb373af96ed1662a36adb8068ffa302580abbb471d4ad40e2b26ce2432"
+      "SHA-256 dos arquivos de curadoria: 0c246c0b8fc6c45718b3d47624c23c96a7c70edb7d145f7c391a5354336edaf4"
     ]
   },
   "referencia": {

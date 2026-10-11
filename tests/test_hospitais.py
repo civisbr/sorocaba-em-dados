@@ -225,3 +225,21 @@ def test_sih_variacao_grande_entre_coletas_aborta(tmp_path):
     fetch_sih.coletar(HOJE, tmp_path, listar, lambda c: (b"x", "h"), lambda d, f: iter([_rd("1")] * 10))
     with pytest.raises(ValueError, match="entre coletas"):
         fetch_sih.coletar(HOJE, tmp_path, listar, lambda c: (b"x", "h"), lambda d, f: iter([_rd("1")] * 40))
+
+
+def test_sih_especialidade_desconhecida_vira_outras_e_continuacao_de_aih_nao_conta():
+    rd = [_rd("1", espec="87")] * 6 + [{**_rd("1"), "IDENT": "5"}] * 6 + [{**_rd("1"), "IDENT": "1"}] * 6
+    linhas = fetch_sih.agregar(rd, "202607")
+    assert sum(l["internacoes"] for l in linhas) == 12
+    assert {l["espec"] for l in linhas} == {fetch_sih.ESPEC_OUTRAS, "01"}
+
+
+def test_sih_raw_adulterado_e_recusado_na_coleta_incremental(tmp_path):
+    meses = [f"2025{m:02d}" for m in range(8, 13)] + [f"2026{m:02d}" for m in range(1, 8)]
+    listar = lambda p: [f"RDSP{m[2:]}.dbc" for m in meses]
+    args = (lambda c: (b"x", "h"), lambda d, f: iter([_rd("1")] * 6))
+    fetch_sih.coletar(HOJE, tmp_path, listar, *args)
+    arq = tmp_path / "internacoes.csv"
+    arq.write_text(arq.read_text(encoding="utf-8").replace(";6;", ";7;", 1), encoding="utf-8")
+    with pytest.raises(ValueError, match="hash"):
+        fetch_sih.coletar(HOJE, tmp_path, listar, *args)

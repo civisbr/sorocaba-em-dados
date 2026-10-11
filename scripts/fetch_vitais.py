@@ -123,6 +123,8 @@ def coletar(acesso_em: date, destino: Path = DESTINO, listar: Callable[[str], li
     existente: list[dict] = []
     man = {"anos": {}}
     if arq.exists() and marq.exists():
+        if hashlib.sha256(arq.read_bytes()).hexdigest() != json.loads(marq.read_text(encoding="utf-8")).get("sha256_csv"):
+            raise ValueError("indicadores.csv existente não confere com o hash do manifesto")
         existente = [{"ano": int(r["ano"]), "bloco": r["bloco"], "categoria": r["categoria"], "n": int(r["n"])} for r in csv.DictReader(io.StringIO(arq.read_text(encoding="utf-8")), delimiter=";")]
         man = json.loads(marq.read_text(encoding="utf-8"))
     refazer = [a for a in anos if str(a) not in man["anos"] or a == anos[-1]]  # o último ano ainda é revisado pelo Ministério

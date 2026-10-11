@@ -9,7 +9,7 @@
     <li><span class="cartao-numero">{{ resumo.uti | num }}</span><span class="pequeno">leitos de UTI, {{ resumo.uti_sus | num }} no SUS</span></li>
     <li><span class="cartao-numero">{{ resumo.internacoes | num }}</span><span class="pequeno">internações SUS em 12 meses{% if resumo.pct_de_fora is not none %}; cerca de {{ resumo.pct_de_fora }}% de moradores de outras cidades{% endif %}</span></li>
   </ul>
-  {% if maiores_uso %}<p class="pequeno suave">Pelo uso estimado dos leitos SUS, os hospitais mais cheios nos últimos 12 meses foram {{ maiores_uso[0].nome }} (cerca de {{ maiores_uso[0].uso | brl1 }}%){% if maiores_uso | length > 1 %} e {{ maiores_uso[1].nome }} ({{ maiores_uso[1].uso | brl1 }}%){% endif %}. É uma estimativa, não a lotação do dia.</p>{% endif %}
+  <p class="pequeno suave">Não existe dado aberto de lotação ou fila. O uso estimado de cada hospital, mostrado no cartão, é só uma ordem de grandeza dos leitos SUS usados nos últimos 12 meses; diferenças de poucos pontos entre hospitais não significam nada.</p>
 </section>
 {% endblock %}
 {% block explorar %}
