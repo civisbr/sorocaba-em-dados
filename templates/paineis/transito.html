@@ -1,4 +1,6 @@
 {% extends "paineis/painel.html" %}
+{% from "_mapa.html" import quadro, local, selecionada %}
+{% block scripts %}<script src="{{ raiz }}mapa-interativo.js" defer></script>{% endblock %}
 {% from "_macros.html" import icone %}
 {% block resumo %}
 <section aria-labelledby="resumo" class="resumo-real">
@@ -36,11 +38,12 @@
   {% if ac_calor %}{% set c = ac_calor %}
   <article class="quadro-card" style="margin-top:1.5rem">
     <h3>Onde acontecem ({{ c.ano_ini }} a {{ c.ano }})</h3>
-    <p class="suave">Mapa de calor: áreas de cerca de {{ c.lado_m | num }} m; quanto mais escuro, mais sinistros. Áreas com menos de {{ ac_celula_min }} registros no ano não aparecem.</p>
-    <svg class="mapa-calor" viewBox="0 0 {{ c.mapa.largura }} {{ c.mapa.altura }}" role="img" aria-labelledby="mc-ac-t"><title id="mc-ac-t">Mapa de calor de sinistros de trânsito em Sorocaba: {{ c.n_celulas }} áreas com {{ c.legenda[0].ini | num }} a {{ c.legenda[-1].fim | num }} sinistros em {{ c.ano_ini }} a {{ c.ano }}</title>
-      <path class="contorno" d="{{ c.mapa.caminho }}"/>
-      {% for q in c.celulas %}<rect class="calor-{{ q.nivel }}" x="{{ q.x }}" y="{{ q.y }}" width="{{ q.w }}" height="{{ q.h }}"><title>{{ q.n | num }} sinistros nesta área</title></rect>{% endfor %}
-    </svg>
+    <p class="suave">Mapa de calor sobre o mapa da cidade (aproxime para ver as ruas): áreas de cerca de {{ c.lado_m | num }} m; quanto mais escuro, mais sinistros. Áreas com menos de {{ ac_celula_min }} registros no ano não aparecem.</p>
+    <div class="mapa-interativo">
+    {% call quadro(mb, "Mapa de calor de sinistros de trânsito em Sorocaba: " ~ c.n_celulas ~ " áreas com " ~ c.legenda[0].ini ~ " a " ~ c.legenda[-1].fim ~ " sinistros em " ~ c.ano_ini ~ " a " ~ c.ano, vista=c.vista, rotulo_celula="sinistros nesta área") %}
+      <g class="ms-celulas" style="--cw:{{ c.cw }}px;--ch:{{ c.ch }}px">{% for q in c.celulas %}<rect class="ms-c calor-{{ q.nivel }}" x="{{ q.x }}" y="{{ q.y }}" data-n="{{ q.n }}"/>{% endfor %}</g>
+    {% endcall %}
+    </div>
     <ul class="legenda-calor">{% for l in c.legenda %}<li><span class="amostra-calor calor-{{ l.nivel }}"></span>{{ l.ini | num }}{% if l.fim != l.ini %}–{{ l.fim | num }}{% endif %}</li>{% endfor %}</ul>
     <p class="pequeno suave">{{ c.cobertura | brl1 }}% dos sinistros desses anos têm coordenada válida. Não há pontos individuais nem data e hora exatas; sinistros fatais entram só na contagem mensal.</p>
   </article>{% endif %}
@@ -64,12 +67,22 @@
   <article class="quadro-card">
     <h3>Mapa dos radares com posição conhecida ({{ rm.pontos | length }} individuais e {{ rm.pontos_grupo | length }} de grupo, de {{ n_radares }} radares)</h3>
     <p class="suave">Posição aproximada, tirada do OpenStreetMap: a Semob não publica coordenadas.{% if rm.vista.split()[2] | float < rm.mapa.largura %} O mapa está aproximado da região dos pontos.{% endif %} Ponto cheio: posição de um radar. Anel: câmera de uma via com vários radares da lista; sabe-se que está ali, mas não qual radar é. Radares sem ponto não têm posição segura nos dados abertos; todos estão na lista abaixo.</p>
-    <svg class="mapa-calor" viewBox="{{ rm.vista }}" role="img" aria-labelledby="mr-t"><title id="mr-t">Mapa com a posição aproximada de radares fixos em Sorocaba: {{ rm.pontos | length }} individuais e {{ rm.pontos_grupo | length }} de grupo</title>
-      <path class="contorno" d="{{ rm.mapa.caminho }}"/>
-      {% for p in rm.pontos %}<circle class="radar-pt vel-{{ p.v }}" cx="{{ p.x }}" cy="{{ p.y }}" r="{{ [2, 3 + (p.v - 40) // 10] | max }}"><title>{{ p.local }} — {{ p.v }} km/h ({{ p.precisao }})</title></circle>{% endfor %}
-      {% for p in rm.pontos_grupo %}<circle class="radar-anel vel-{{ p.v }}" cx="{{ p.x }}" cy="{{ p.y }}" r="{{ [3, 4 + (p.v - 40) // 10] | max }}"><title>Uma câmera da via, {{ p.v }} km/h. Radares da lista nesta via: {{ p.locais | join("; ") }}</title></circle>{% endfor %}
-    </svg>
-    <ul class="legenda-calor">{% for v in rm.velocidades %}<li><span class="amostra-radar vel-{{ v }}"></span>{{ v }} km/h</li>{% endfor %}</ul>
+    <div class="mapa-saude mapa-interativo">
+    {% call quadro(mb, "Mapa com a posição aproximada de radares fixos em Sorocaba: " ~ (rm.pontos | length) ~ " individuais e " ~ (rm.pontos_grupo | length) ~ " de grupo", {"radar": "Radar fixo", "radar-grupo": "Câmera de via com vários radares"}, "radar,radar-grupo", "Posição aproximada, em linha reta.", vista=rm.vista) %}
+      <g class="ms-unidades">
+      {% for p in rm.pontos %}<g class="ms-u g-radar vel-{{ p.v }}" transform="translate({{ p.x }} {{ p.y }})" aria-label="{{ p.local }}, {{ p.v }} km/h" data-grupo="radar" data-vel="{{ p.v }}" data-nome="{{ p.local }}" data-resumo="{{ p.v }} km/h" data-detalhes="{{ [["Velocidade", p.v ~ " km/h"], ["Posição", p.precisao]] | tojson | forceescape }}" data-lat="{{ p.lat }}" data-lon="{{ p.lon }}"><title>{{ p.local }}</title><use class="mk" href="#s-radar"/></g>{% endfor %}
+      {% for p in rm.pontos_grupo %}<g class="ms-u g-radar-grupo vel-{{ p.v }}" transform="translate({{ p.x }} {{ p.y }})" aria-label="Câmera da via, {{ p.v }} km/h" data-grupo="radar-grupo" data-vel="{{ p.v }}" data-nome="{{ p.locais | first }}{% if p.locais | length > 1 %} e outros{% endif %}" data-resumo="{{ p.v }} km/h" data-detalhes="{{ [["Velocidade", p.v ~ " km/h"], ["Radares da lista nesta via", p.locais | join("; ")], ["Posição", "uma câmera da via; não se sabe a qual radar corresponde"]] | tojson | forceescape }}" data-lat="{{ p.lat }}" data-lon="{{ p.lon }}"><title>Câmera da via, {{ p.v }} km/h</title><use class="mk" href="#s-radar-grupo"/></g>{% endfor %}
+      </g>
+    {% endcall %}
+    <div class="mapa-lateral">
+      <fieldset class="ms-filtro" data-so-js hidden><legend>Velocidade fiscalizada</legend>
+        {% for v in rm.velocidades %}<label><input type="checkbox" value="{{ v }}" data-filtro="vel" checked><span class="amostra-radar vel-{{ v }}"></span><span>{{ v }} km/h</span></label>{% endfor %}
+      </fieldset>
+      <ul class="ms-legenda-estatica" data-sem-js>{% for v in rm.velocidades %}<li><span class="amostra-radar vel-{{ v }}"></span>{{ v }} km/h</li>{% endfor %}</ul>
+      {{ local("radar", "Radar mais perto de você") }}
+      {{ selecionada() }}
+    </div>
+    </div>
     <p class="pequeno suave">Quanto maior e mais escuro o ponto, maior a velocidade fiscalizada. © colaboradores do <a href="https://www.openstreetmap.org/copyright" rel="noreferrer">OpenStreetMap</a> (ODbL). Erro típico de dezenas de metros. Para ver a rua, procure o endereço da lista no <a href="https://www.openstreetmap.org/search?query=Sorocaba" rel="noreferrer">OpenStreetMap</a>.</p>
   </article>{% endif %}
   <details class="tabela-mes"><summary>Ver os {{ n_radares }} locais, em ordem alfabética</summary>

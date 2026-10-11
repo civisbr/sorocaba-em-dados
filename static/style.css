@@ -258,3 +258,6 @@ div.ms-dica[hidden]{display:none}div.ms-dica.abaixo{transform:translate(-50%,0)}
 .ms-legenda-estatica{display:flex;flex-direction:column;gap:.35rem}.ms-legenda-estatica li{display:flex;align-items:center;gap:.6rem}.mk-escola{fill:inherit;stroke:#fff;stroke-width:2}.mk-livro{fill:#fff}.mk-livro-linha{fill:none;stroke:#fff;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}.mk-radar{fill:inherit;stroke:#fff;stroke-width:2}.mk-radar-grupo{fill:none;stroke:inherit;stroke-width:3}
 .ms-c{stroke:none;cursor:pointer}.ms-c.calor-1{fill-opacity:.3}.ms-c.calor-2{fill-opacity:.46}.ms-c.calor-3{fill-opacity:.62}.ms-c.calor-4{fill-opacity:.78}.ms-c.calor-5{fill-opacity:.92}.ms-c:hover{stroke:#0b1220;stroke-width:calc(var(--k)*1.4)}
 [hidden]{display:none!important}
+rect.ms-c{width:var(--cw);height:var(--ch)}
+.ms-u.vel-40{--cor:var(--sky)}.ms-u.vel-50{--cor:var(--teal)}.ms-u.vel-60{--cor:var(--primary)}.ms-u.vel-70{--cor:var(--navy)}.ms-u.vel-80{--cor:oklch(.2 .08 262)}
+.ms-u .mk-radar{fill:var(--cor,var(--navy))}.ms-u .mk-radar-grupo{stroke:var(--cor,var(--navy));stroke-width:4;fill:rgb(255 255 255/.7)}

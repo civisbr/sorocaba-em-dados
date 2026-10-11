@@ -113,9 +113,8 @@
     function mostrarDica(el) {
       if (!dica) return;
       dica.textContent = "";
-      var b = document.createElement("strong"); b.textContent = el.dataset.nome || el.dataset.dica; dica.appendChild(b);
+      var b = document.createElement("strong"); b.textContent = el.dataset.nome || (Number(el.dataset.n).toLocaleString("pt-BR") + " " + (svg.dataset.rotuloCelula || "")); dica.appendChild(b);
       if (el.dataset.nome) { var s = document.createElement("span"); s.textContent = nomeGrupo(el) + dist(el); dica.appendChild(s); }
-      else if (el.dataset.dica2) { var s2 = document.createElement("span"); s2.textContent = el.dataset.dica2; dica.appendChild(s2); }
       dica.hidden = false;
       var r = el.getBoundingClientRect(), qd = quadro.getBoundingClientRect();
       var x = r.left - qd.left + r.width / 2, y = r.top - qd.top;

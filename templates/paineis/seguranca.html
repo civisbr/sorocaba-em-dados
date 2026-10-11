@@ -1,4 +1,6 @@
 {% extends "paineis/painel.html" %}
+{% from "_mapa.html" import quadro %}
+{% block scripts %}<script src="{{ raiz }}mapa-interativo.js" defer></script>{% endblock %}
 {% from "_macros.html" import icone %}
 {% macro barras(g, id, titulo, desc) %}
 <svg class="grafico" viewBox="0 0 {{ g.largura }} {{ g.altura }}" role="img" aria-labelledby="{{ id }}-t {{ id }}-d">
@@ -66,17 +68,16 @@
 
 <section aria-labelledby="calor-t" class="bloco-painel">
   <h2 id="calor-t" class="h2-medio sem-topo">Onde as ocorrências são registradas ({{ ano_ref }})</h2>
-  <p class="suave">Mapa de calor sobre o contorno oficial do município. Cada quadrado é uma área de cerca de {{ calor.roubos.lado_m | num }} m (roubos) ou {{ calor.furtos.lado_m | num }} m (furtos); quanto mais escuro, mais registros. Áreas com menos de 5 registros não aparecem.</p>
+  <p class="suave">Mapa de calor sobre o mapa da cidade; aproxime para ver as ruas. Cada quadrado é uma área de cerca de {{ calor.roubos.lado_m | num }} m (roubos) ou {{ calor.furtos.lado_m | num }} m (furtos); quanto mais escuro, mais registros. Áreas com menos de 5 registros não aparecem.</p>
   <div class="grade-2">
     {% for g, titulo in [("roubos", "Roubos"), ("furtos", "Furtos")] %}{% set c = calor[g] %}
     <article class="quadro-card">
       <h3>{{ titulo }}</h3>
-      <svg class="mapa-calor" viewBox="0 0 {{ c.mapa.largura }} {{ c.mapa.altura }}" role="img" aria-labelledby="mc-{{ g }}-t mc-{{ g }}-d">
-        <title id="mc-{{ g }}-t">Mapa de calor de {{ titulo | lower }} registrados em Sorocaba em {{ c.ano }}</title>
-        <desc id="mc-{{ g }}-d">{{ c.n_celulas }} áreas com 5 registros ou mais. As concentrações aparecem em tons mais escuros.</desc>
-        <path class="contorno" d="{{ c.mapa.caminho }}"/>
-        {% for q in c.celulas %}<rect class="calor-{{ q.nivel }}" x="{{ q.x }}" y="{{ q.y }}" width="{{ q.w }}" height="{{ q.h }}"><title>{{ q.n | num }} registros nesta área</title></rect>{% endfor %}
-      </svg>
+      <div class="mapa-interativo">
+      {% call quadro(mb, "Mapa de calor de " ~ (titulo | lower) ~ " registrados em Sorocaba em " ~ c.ano ~ ": " ~ c.n_celulas ~ " áreas com 5 registros ou mais", vista=c.vista, rotulo_celula="registros nesta área") %}
+        <g class="ms-celulas" style="--cw:{{ c.cw }}px;--ch:{{ c.ch }}px">{% for q in c.celulas %}<rect class="ms-c calor-{{ q.nivel }}" x="{{ q.x }}" y="{{ q.y }}" data-n="{{ q.n }}"/>{% endfor %}</g>
+      {% endcall %}
+      </div>
       <ul class="legenda-calor" aria-label="Legenda do mapa de {{ titulo | lower }}">{% for l in c.legenda %}<li><span class="amostra-calor calor-{{ l.nivel }}"></span>{{ l.ini | num }}{% if l.fim != l.ini %}–{{ l.fim | num }}{% endif %}</li>{% endfor %}</ul>
       <p class="pequeno suave">Só {{ c.cobertura | brl1 }}% dos {{ titulo | lower }} de {{ c.ano }} têm coordenada válida no município; os demais ficam fora do mapa. Coordenadas vêm do registro da polícia e podem ser aproximadas.</p>
     </article>

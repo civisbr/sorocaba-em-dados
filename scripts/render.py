@@ -19,7 +19,7 @@ from scripts.mapa import projetar as projetar_mapa
 from scripts.contexto_hospitais import contexto_hospitais
 from scripts.contexto_mapa_saude import contexto_mapa_saude
 from scripts.contexto_panorama import contexto_panorama
-from scripts.mapa_base import BASE as BASE_OSM, bairros_json, contexto_base, gerar_svg
+from scripts.mapa_base import BASE as BASE_OSM, bairros_json, contexto_base, gerar_svg, proj_grande
 from scripts.contexto_vacinas import contexto_vacinas
 from scripts.paineis import GRUPOS, PAINEIS
 
@@ -228,7 +228,7 @@ GRUPOS_SEG = {
 
 
 def mapa_de_calor(d: list[dict], grupo: str, malha: Path) -> dict:
-    mapa, ponto = projetar_mapa(malha)
+    mapa, ponto = proj_grande()  # o quadro grande é o dos mapas interativos
     celulas = [r for r in d if r["recorte"] == "grade" and r["grupo"] == grupo]
     cob = next(r for r in d if r["recorte"] == "grade_cobertura" and r["grupo"] == grupo)
     valores = sorted(r["n"] for r in celulas)
@@ -241,7 +241,8 @@ def mapa_de_calor(d: list[dict], grupo: str, malha: Path) -> dict:
     for r in celulas:
         x0, y0 = ponto(r["lat"] + lado / 2, r["lon"] - lado / 2)
         x1, y1 = ponto(r["lat"] - lado / 2, r["lon"] + lado / 2)
-        retangulos.append({"x": round(x0, 1), "y": round(y0, 1), "w": round(x1 - x0, 1), "h": round(y1 - y0, 1), "n": r["n"], "nivel": nivel(r["n"])})
+        retangulos.append({"x": round(x0), "y": round(y0), "w": round(x1 - x0, 1), "h": round(y1 - y0, 1), "n": r["n"], "nivel": nivel(r["n"])})
+    retangulos.sort(key=lambda q: (q["y"], q["x"]))
     limites = [valores[0], *cortes, valores[-1]]
     legenda = []
     for k in range(1, 6):
@@ -250,7 +251,7 @@ def mapa_de_calor(d: list[dict], grupo: str, malha: Path) -> dict:
         legenda.append({"nivel": k, "ini": ini, "fim": max(ini, fim)})
     return {
         "mapa": mapa, "celulas": retangulos, "legenda": legenda, "cobertura": cob["pct"], "com_coordenada": cob["n"],
-        "ano": cob["ano"], "ano_ini": cob["n2"] if grupo == "sinistros" else cob["ano"], "lado_m": round(lado * 111_000), "n_celulas": len(retangulos),
+        "vista": vista_dos_pontos([{"x": q["x"] + q["w"] / 2, "y": q["y"] + q["h"] / 2} for q in retangulos], mapa, folga=0.25, minimo=300.0), "cw": retangulos[0]["w"], "ch": retangulos[0]["h"], "ano": cob["ano"], "ano_ini": cob["n2"] if grupo == "sinistros" else cob["ano"], "lado_m": round(lado * 111_000), "n_celulas": len(retangulos),
     }
 
 
@@ -490,17 +491,17 @@ def contexto_transito(env: dict) -> dict:
     for r in radares:
         por_vel[r["velocidade_kmh"]] = por_vel.get(r["velocidade_kmh"], 0) + 1
     topo = max(por_vel.values())
-    mapa, ponto = projetar_mapa(RAIZ / "data" / "raw" / "ibge" / "malha_3552205.geojson")
+    mapa, ponto = proj_grande()
     pontos, grupos = [], {}
     for r in radares:
         if "lat" in r:
             x, y = ponto(r["lat"], r["lon"])
-            pontos.append({"x": round(x, 1), "y": round(y, 1), "v": r["velocidade_kmh"], "local": r["local"], "precisao": r["precisao"]})
+            pontos.append({"x": round(x, 1), "y": round(y, 1), "v": r["velocidade_kmh"], "local": r["local"], "precisao": r["precisao"], "lat": f"{r['lat']:.5f}", "lon": f"{r['lon']:.5f}"})
         for texto in filter(None, r.get("posicoes_candidatas", "").split("|")):
             lat, lon = (float(x) for x in texto.split(","))
-            g = grupos.setdefault((lat, lon), {"v": r["velocidade_kmh"], "locais": [], "xy": ponto(lat, lon)})
+            g = grupos.setdefault((lat, lon), {"v": r["velocidade_kmh"], "locais": [], "xy": ponto(lat, lon), "lat": f"{lat:.5f}", "lon": f"{lon:.5f}"})
             g["locais"].append(r["local"])
-    pontos_grupo = [{"x": round(g["xy"][0], 1), "y": round(g["xy"][1], 1), "v": g["v"], "locais": sorted(set(g["locais"]))} for g in grupos.values()]
+    pontos_grupo = [{"x": round(g["xy"][0], 1), "y": round(g["xy"][1], 1), "v": g["v"], "locais": sorted(set(g["locais"])), "lat": g["lat"], "lon": g["lon"]} for g in grupos.values()]
     todos = pontos + pontos_grupo
     vel_comum = max(por_vel, key=lambda v: (por_vel[v], -v))  # empate: vale a menor velocidade
     return {
