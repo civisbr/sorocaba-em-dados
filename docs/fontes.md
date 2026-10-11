@@ -334,3 +334,13 @@ estarem prontos (`project.md` §1 e §11). Status abaixo reflete só o que foi v
 ## Emendas parlamentares com destino a Sorocaba
 
 **Status:** `pendente`. Fontes candidatas: Portal da Transparência e SIOP. Nada testado.
+
+## Trânsito e mobilidade (candidato v2, pedido em 2026-10-11)
+
+**Status:** `pendente`. Nada verificado ainda; uma busca inicial não achou portal de dados abertos de trânsito da Prefeitura/URBES. Itens pedidos e o que falta checar:
+
+- **Horário de pico e locais de pico:** exige série de contagem ou velocidade de tráfego. Candidatas: dados da URBES/Semob (existência não confirmada), Waze for Cities (parceria, não aberto), concessionárias das rodovias que cortam o município. Sem fonte pública verificada, não publicar estimativa.
+- **Radares e multas por radar:** número de equipamentos e local por URBES; quantidade de autuações por equipamento exigiria pedido via Lei de Acesso à Informação ou transparência ativa da URBES. Há só uma reportagem antiga (2014: 75.139 autuações de radar fixo em 2013), que não serve como dado atual.
+- **Alagamentos:** a Defesa Civil monitora cerca de 88 pontos críticos (reportagem sem data) e há registro de ocorrências usado em pesquisa da Unesp, mas não foi achado mapa nem dado aberto. Candidatos para chuva: CEMADEN e INMET (dado de precipitação, não de alagamento).
+- **Câmeras ao vivo:** só como link para a página oficial de quem as opera (prefeitura ou concessionária); incorporar transmissão de terceiros exige conferir termos de uso. Não verificado se Sorocaba tem câmeras públicas ao vivo.
+- **Acidentes:** SSP-SP publica ocorrências de trânsito (homicídio culposo e lesão culposa no trânsito já existem no bruto de Segurança, hoje não exibidas), e o Infosiga SP traz sinistros por local; a verificar.
