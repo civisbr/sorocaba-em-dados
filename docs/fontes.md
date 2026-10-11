@@ -337,20 +337,14 @@ estarem prontos (`project.md` §1 e §11). Status abaixo reflete só o que foi v
 
 ## Trânsito e mobilidade (candidato v2, pedido em 2026-10-11)
 
-**Status:** `pendente`. Nada verificado ainda; uma busca inicial não achou portal de dados abertos de trânsito da Prefeitura/URBES. Itens pedidos e o que falta checar:
+**Status:** `parcial`. Há fontes oficiais, mas nenhuma verificada como dado aberto estruturado. Pesquisa de 2026-10-11:
 
-- **Horário de pico e locais de pico:** exige série de contagem ou velocidade de tráfego. Candidatas: dados da URBES/Semob (existência não confirmada), Waze for Cities (parceria, não aberto), concessionárias das rodovias que cortam o município. Sem fonte pública verificada, não publicar estimativa.
-- **Radares e multas por radar:** número de equipamentos e local por URBES; quantidade de autuações por equipamento exigiria pedido via Lei de Acesso à Informação ou transparência ativa da URBES. Há só uma reportagem antiga (2014: 75.139 autuações de radar fixo em 2013), que não serve como dado atual.
-- **Alagamentos:** a Defesa Civil monitora cerca de 88 pontos críticos (reportagem sem data) e há registro de ocorrências usado em pesquisa da Unesp, mas não foi achado mapa nem dado aberto. Candidatos para chuva: CEMADEN e INMET (dado de precipitação, não de alagamento).
-- **Câmeras ao vivo:** só como link para a página oficial de quem as opera (prefeitura ou concessionária); incorporar transmissão de terceiros exige conferir termos de uso. Não verificado se Sorocaba tem câmeras públicas ao vivo.
-- **Acidentes:** SSP-SP publica ocorrências de trânsito (homicídio culposo e lesão culposa no trânsito já existem no bruto de Segurança, hoje não exibidas), e o Infosiga SP traz sinistros por local; a verificar.
+- **Semob (Secretaria de Mobilidade), `semobsorocaba.com.br`:** tem páginas públicas de **Radares** (`/radares`, `/radares/locais-operacao`, lista pesquisável de logradouros com velocidade de 40 a 70 km/h, publicada por decreto), Semáforos, Zona Azul, Multas (serviço ao cidadão), Fiscalização e Centro de Controle Operacional Integrado. A lista de radares é carregada por consulta na página; falta confirmar se há endpoint estável ou se exige coleta do HTML. Não há, nessas páginas, quantidade de multas por radar.
+- **URBES, `urbes.com.br`:** `/dados-operacionais` (transporte coletivo, táxi, fretamento, rodoviária, transporte especial), `/transparencia/pesquisa-origem-destino` e relatórios anuais em PDF (2021 a 2025). Serve para transporte coletivo, não para fluxo viário. Portal da Lei de Acesso à Informação em `leideacesso.etransparencia.com.br/sorocaba.urbes.sp`: é por aí que se pede o número de autuações por equipamento.
+- **Infosiga SP (Detran-SP), `infosiga.detran.sp.gov.br`:** sinistros de trânsito por município com data, hora e local. As páginas de dados abertos testadas responderam 401; o caminho de download não foi confirmado.
+- **Portal de dados abertos da Prefeitura:** não encontrado (`dadosabertos.sorocaba.sp.gov.br` não responde; `/dados-abertos` retorna 404).
+- **Horário e locais de pico de tráfego:** nenhuma fonte pública verificada. Contagem ou velocidade por via exigiria dado da URBES/Semob, de concessionária ou de plataforma (Waze, TomTom, Google), não aberto.
+- **Alagamentos:** a Defesa Civil monitora cerca de 88 pontos críticos (reportagem sem data) e há registro de ocorrências usado em pesquisa da Unesp, mas não foi achado mapa nem dado aberto. Para chuva, CEMADEN e INMET dão precipitação, não alagamento.
+- **Câmeras ao vivo:** o Centro de Controle Operacional Integrado existe; não foi verificado se publica transmissão. Só entra como link para a página de quem opera, após conferir os termos.
 
-## Clima e previsão do tempo (painel "Clima")
-
-**Status:** `verificada` e **implementada** (`fetch_clima.py`, `build_clima.py`, `fetch_previsao.py`, `build_previsao.py`).
-
-- **Previsão oficial:** INMET, `apiprevmet3.inmet.gov.br/previsao/3552205` (código IBGE do município), 5 dias; nos primeiros dias vem por manhã, tarde e noite, nos demais em bloco único. A resposta traz ícones em base64 (~270 KB), que são descartados.
-- **Previsão por modelo:** Open-Meteo Forecast API, ponto central da cidade, 7 dias (temperatura, chuva prevista e probabilidade, vento). Licença CC BY 4.0, uso gratuito não comercial; atribuição na página. As duas fontes **não são misturadas**: a página mostra uma tabela de cada e avisa que podem divergir.
-- **Efêmera:** a previsão não vai para o git. O `deploy.yml` a busca antes de cada publicação e roda todo dia às 06h30 (Brasília); se a coleta falhar, o site sai sem ela e a página avisa.
-- **Clima (normais 1991-2020):** o INMET não tem estação no município de Sorocaba; a mais próxima é a automática A713 (Iperó, operante desde 2006), sem série de 30 anos. Usa-se a reanálise ERA5 (Copernicus/ECMWF) pela Open-Meteo Historical API, célula de grade de ~25 km (-23,51°, -47,46°, altitude do modelo 564 m), série diária de 30 anos guardada em `data/raw/clima/` (10.958 dias, 308 KB, período encerrado). Médias das máximas e mínimas, chuva média mensal, dias com 1 mm ou mais e extremos do modelo. Marcado como `estimativa`, não como observação.
-- **Limite:** ERA5 suaviza extremos e chuva local; não substitui a série de uma estação. Se houver dado de estação aberto para a cidade (por exemplo, da Defesa Civil ou da UNESP), vale substituir ou comparar.
+**Próximos passos propostos:** (1) coletar a lista de radares da Semob se o endpoint for estável; (2) pedido de LAI à URBES/Semob (autuações por equipamento, contagens de tráfego, pontos de alagamento); (3) descobrir o download do Infosiga; (4) só então publicar, sempre como contagem de registro com a limitação explícita.
