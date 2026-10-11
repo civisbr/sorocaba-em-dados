@@ -17,7 +17,9 @@ from scripts.charts import barras_mensais, linhas, linhas_posicao, linhas_preco
 from scripts.mapa import gerar as gerar_mapa
 from scripts.mapa import projetar as projetar_mapa
 from scripts.contexto_hospitais import contexto_hospitais
+from scripts.contexto_mapa_saude import contexto_mapa_saude
 from scripts.contexto_panorama import contexto_panorama
+from scripts.mapa_base import BASE as BASE_OSM, bairros_json, gerar_svg
 from scripts.contexto_vacinas import contexto_vacinas
 from scripts.paineis import GRUPOS, PAINEIS
 
@@ -570,6 +572,9 @@ def renderizar(public: Path, saida: Path) -> None:
     ctx_saude = contexto_saude_doencas(saude, date.today())
     hospitais = json.loads((public / "saude_hospitais.json").read_text(encoding="utf-8"))
     ctx_hosp = contexto_hospitais(hospitais, nome_br)
+    base_osm = json.loads(BASE_OSM.read_text(encoding="utf-8"))
+    mapa_svg, proj = gerar_svg(base_osm)
+    ctx_hosp["mapa_saude"] = contexto_mapa_saude(hospitais, nome_br, proj["mapa"], proj["f"])
     panorama = json.loads((public / "saude_panorama.json").read_text(encoding="utf-8"))
     ctx_pan = contexto_panorama(panorama)
     vacinas = json.loads((public / "saude_vacinas.json").read_text(encoding="utf-8"))
@@ -630,8 +635,10 @@ def renderizar(public: Path, saida: Path) -> None:
         shutil.rmtree(saida)
     (saida / "data").mkdir(parents=True)
     (saida / MARCADOR).write_text("saída gerada por scripts/render.py\n", encoding="utf-8")
-    for nome in ("style.css", "app.js"):
+    for nome in ("style.css", "app.js", "mapa-saude.js"):
         shutil.copy(RAIZ / "static" / nome, saida / nome)
+    (saida / "mapa-base.svg").write_text(mapa_svg, encoding="utf-8")
+    (saida / "data" / "mapa-bairros.json").write_text(bairros_json(base_osm, proj["f"]), encoding="utf-8")
     for nome in ("emprego.json", "combustivel.json", "escolas.json", "perfil.json", "representantes.json", "seguranca.json", "comparativo.json", "clima.json", "radares.json", "infosiga.json", "saude_doencas.json", "saude_hospitais.json", "saude_panorama.json", "saude_vacinas.json"):
         shutil.copy(public / nome, saida / "data" / nome)
 

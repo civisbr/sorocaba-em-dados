@@ -33,21 +33,21 @@ def gerar(caminho: Path) -> dict:
     return _projetar(caminho)[0]
 
 
-def projetar(caminho: Path):
+def projetar(caminho: Path, largura: int = LARGURA, altura: int = ALTURA, margem: int = MARGEM):
     """(mapa, f) onde f(lat, lon) devolve (x, y) no mesmo quadro do contorno."""
-    mapa, f = _projetar(caminho)
+    mapa, f = _projetar(caminho, largura, altura, margem)
     return mapa, f
 
 
-def _projetar(caminho: Path):
+def _projetar(caminho: Path, largura: int = LARGURA, altura: int = ALTURA, margem: int = MARGEM):
     anel = _anel_externo(json.loads(caminho.read_text(encoding="utf-8")))
     lat0 = sum(lat for _, lat in anel) / len(anel)
     k = math.cos(math.radians(lat0))
     plano = [(lon * k, -lat) for lon, lat in anel]
     xs, ys = [x for x, _ in plano], [y for _, y in plano]
-    escala = min((LARGURA - 2 * MARGEM) / (max(xs) - min(xs)), (ALTURA - 2 * MARGEM) / (max(ys) - min(ys)))
-    dx = (LARGURA - escala * (max(xs) - min(xs))) / 2 - escala * min(xs)
-    dy = (ALTURA - escala * (max(ys) - min(ys))) / 2 - escala * min(ys)
+    escala = min((largura - 2 * margem) / (max(xs) - min(xs)), (altura - 2 * margem) / (max(ys) - min(ys)))
+    dx = (largura - escala * (max(xs) - min(xs))) / 2 - escala * min(xs)
+    dy = (altura - escala * (max(ys) - min(ys))) / 2 - escala * min(ys)
 
     def px(p: tuple[float, float]) -> tuple[float, float]:
         return p[0] * escala + dx, p[1] * escala + dy
@@ -60,8 +60,9 @@ def _projetar(caminho: Path):
         return px((lon * k, -lat))
 
     return {
-        "largura": LARGURA,
-        "altura": ALTURA,
+        "largura": largura,
+        "altura": altura,
+        "afim": {"k": k, "escala": escala, "dx": dx, "dy": dy},  # x = lon*k*escala + dx; y = -lat*escala + dy
         "caminho": caminho_svg,
         "centro_x": round(cx, 1),
         "centro_y": round(cy, 1),
