@@ -1,0 +1,24 @@
+{
+  "competencia": "202608",
+  "fonte": "CNES/DATASUS: arquivos ST e LT de SP (FTP) + cadastro aberto de estabelecimentos (nomes e endereços)",
+  "n_estabelecimentos": 57,
+  "n_hospitais": 12,
+  "n_sem_nome": 0,
+  "origem": {
+    "LT": {
+      "arquivo": "LTSP2608.dbc",
+      "bytes": 100689,
+      "sha256": "75ed300f00b080fc7bd09843f6559077805876f6f82a54a5ae14de4161cef980"
+    },
+    "ST": {
+      "arquivo": "STSP2608.dbc",
+      "bytes": 5537434,
+      "sha256": "9119bc095d94cd4aae00e2518b2d0aff01cbc798e46505da2a39259ae1b17fab"
+    }
+  },
+  "sha256_csv": {
+    "estabelecimentos.csv": "61dc57e5850a9835394eeb5a7a2e4fbd17b6662bb55967bd167a467cbaebfe89",
+    "leitos.csv": "e864bb645b4dfb388e6ed02d5f4566d4e2a25dec37a9fbf23385a445e24d66c5"
+  },
+  "verificado_em": "2026-10-11"
+}

@@ -1,0 +1,3889 @@
+{
+  "cobertura": {
+    "ibge": "3552205",
+    "municipio": "Sorocaba",
+    "uf": "SP"
+  },
+  "dados": [
+    {
+      "competencia_cnes": "202608",
+      "primeira": "202508",
+      "recorte": "periodo",
+      "ultima": "202607"
+    },
+    {
+      "cnes": "0605484",
+      "especialidade": "Buco-maxilo-facial",
+      "existentes": 1,
+      "grupo": "Cirúrgicos",
+      "recorte": "leito",
+      "sus": 0
+    },
+    {
+      "cnes": "0605484",
+      "especialidade": "Cardiologia",
+      "existentes": 2,
+      "grupo": "Cirúrgicos",
+      "recorte": "leito",
+      "sus": 0
+    },
+    {
+      "cnes": "0605484",
+      "especialidade": "Cirurgia geral",
+      "existentes": 15,
+      "grupo": "Cirúrgicos",
+      "recorte": "leito",
+      "sus": 5
+    },
+    {
+      "cnes": "0605484",
+      "especialidade": "Endocrinologia",
+      "existentes": 1,
+      "grupo": "Cirúrgicos",
+      "recorte": "leito",
+      "sus": 0
+    },
+    {
+      "cnes": "0605484",
+      "especialidade": "Gastroenterologia",
+      "existentes": 2,
+      "grupo": "Cirúrgicos",
+      "recorte": "leito",
+      "sus": 0
+    },
+    {
+      "cnes": "0605484",
+      "especialidade": "Ginecologia",
+      "existentes": 3,
+      "grupo": "Cirúrgicos",
+      "recorte": "leito",
+      "sus": 0
+    },
+    {
+      "cnes": "0605484",
+      "especialidade": "Nefrologia e urologia",
+      "existentes": 6,
+      "grupo": "Cirúrgicos",
+      "recorte": "leito",
+      "sus": 2
+    },
+    {
+      "cnes": "0605484",
+      "especialidade": "Neurocirurgia",
+      "existentes": 3,
+      "grupo": "Cirúrgicos",
+      "recorte": "leito",
+      "sus": 0
+    },
+    {
+      "cnes": "0605484",
+      "especialidade": "Oncologia",
+      "existentes": 1,
+      "grupo": "Cirúrgicos",
+      "recorte": "leito",
+      "sus": 0
+    },
+    {
+      "cnes": "0605484",
+      "especialidade": "Ortopedia e traumatologia",
+      "existentes": 2,
+      "grupo": "Cirúrgicos",
+      "recorte": "leito",
+      "sus": 0
+    },
+    {
+      "cnes": "0605484",
+      "especialidade": "Plástica",
+      "existentes": 2,
+      "grupo": "Cirúrgicos",
+      "recorte": "leito",
+      "sus": 0
+    },
+    {
+      "cnes": "0605484",
+      "especialidade": "Torácica",
+      "existentes": 1,
+      "grupo": "Cirúrgicos",
+      "recorte": "leito",
+      "sus": 0
+    },
+    {
+      "cnes": "0605484",
+      "especialidade": "Cardiologia clínica",
+      "existentes": 1,
+      "grupo": "Clínicos",
+      "recorte": "leito",
+      "sus": 0
+    },
+    {
+      "cnes": "0605484",
+      "especialidade": "Clínica geral",
+      "existentes": 25,
+      "grupo": "Clínicos",
+      "recorte": "leito",
+      "sus": 18
+    },
+    {
+      "cnes": "0605484",
+      "especialidade": "Dermatologia",
+      "existentes": 1,
+      "grupo": "Clínicos",
+      "recorte": "leito",
+      "sus": 0
+    },
+    {
+      "cnes": "0605484",
+      "especialidade": "Geriatria",
+      "existentes": 1,
+      "grupo": "Clínicos",
+      "recorte": "leito",
+      "sus": 0
+    },
+    {
+      "cnes": "0605484",
+      "especialidade": "Hansenologia",
+      "existentes": 1,
+      "grupo": "Clínicos",
+      "recorte": "leito",
+      "sus": 0
+    },
+    {
+      "cnes": "0605484",
+      "especialidade": "Hematologia",
+      "existentes": 1,
+      "grupo": "Clínicos",
+      "recorte": "leito",
+      "sus": 0
+    },
+    {
+      "cnes": "0605484",
+      "especialidade": "Nefrourologia",
+      "existentes": 1,
+      "grupo": "Clínicos",
+      "recorte": "leito",
+      "sus": 0
+    },
+    {
+      "cnes": "0605484",
+      "especialidade": "Neurologia",
+      "existentes": 1,
+      "grupo": "Clínicos",
+      "recorte": "leito",
+      "sus": 0
+    },
+    {
+      "cnes": "0605484",
+      "especialidade": "Oncologia clínica",
+      "existentes": 1,
+      "grupo": "Clínicos",
+      "recorte": "leito",
+      "sus": 0
+    },
+    {
+      "cnes": "0605484",
+      "especialidade": "Pneumologia",
+      "existentes": 1,
+      "grupo": "Clínicos",
+      "recorte": "leito",
+      "sus": 0
+    },
+    {
+      "cnes": "0605484",
+      "especialidade": "Unidade de isolamento",
+      "existentes": 3,
+      "grupo": "Complementares (UTI e intermediários)",
+      "recorte": "leito",
+      "sus": 0
+    },
+    {
+      "cnes": "0605484",
+      "especialidade": "UTI adulto tipo II",
+      "existentes": 17,
+      "grupo": "Complementares (UTI e intermediários)",
+      "recorte": "leito",
+      "sus": 0
+    },
+    {
+      "cnes": "0605484",
+      "especialidade": "UTI adulto tipo III",
+      "existentes": 3,
+      "grupo": "Complementares (UTI e intermediários)",
+      "recorte": "leito",
+      "sus": 0
+    },
+    {
+      "cnes": "0605484",
+      "especialidade": "Código 95",
+      "existentes": 4,
+      "grupo": "Complementares (UTI e intermediários)",
+      "recorte": "leito",
+      "sus": 0
+    },
+    {
+      "cnes": "0605484",
+      "especialidade": "Pediatria clínica",
+      "existentes": 4,
+      "grupo": "Pediátricos",
+      "recorte": "leito",
+      "sus": 0
+    },
+    {
+      "cnes": "0605484",
+      "especialidade": "Pediatria cirúrgica",
+      "existentes": 6,
+      "grupo": "Pediátricos",
+      "recorte": "leito",
+      "sus": 0
+    },
+    {
+      "cnes": "0605484",
+      "especialidade": "Cirúrgico, diagnóstico ou terapêutico",
+      "existentes": 20,
+      "grupo": "Hospital-dia",
+      "recorte": "leito",
+      "sus": 8
+    },
+    {
+      "cnes": "2062054",
+      "especialidade": "Unidade de isolamento",
+      "existentes": 1,
+      "grupo": "Complementares (UTI e intermediários)",
+      "recorte": "leito",
+      "sus": 1
+    },
+    {
+      "cnes": "2078732",
+      "especialidade": "Cirurgia geral",
+      "existentes": 7,
+      "grupo": "Cirúrgicos",
+      "recorte": "leito",
+      "sus": 0
+    },
+    {
+      "cnes": "2078732",
+      "especialidade": "Ginecologia",
+      "existentes": 12,
+      "grupo": "Cirúrgicos",
+      "recorte": "leito",
+      "sus": 0
+    },
+    {
+      "cnes": "2078732",
+      "especialidade": "Ortopedia e traumatologia",
+      "existentes": 20,
+      "grupo": "Cirúrgicos",
+      "recorte": "leito",
+      "sus": 0
+    },
+    {
+      "cnes": "2078732",
+      "especialidade": "Plástica",
+      "existentes": 5,
+      "grupo": "Cirúrgicos",
+      "recorte": "leito",
+      "sus": 0
+    },
+    {
+      "cnes": "2078732",
+      "especialidade": "Clínica geral",
+      "existentes": 20,
+      "grupo": "Clínicos",
+      "recorte": "leito",
+      "sus": 0
+    },
+    {
+      "cnes": "2078732",
+      "especialidade": "Oncologia clínica",
+      "existentes": 4,
+      "grupo": "Clínicos",
+      "recorte": "leito",
+      "sus": 0
+    },
+    {
+      "cnes": "2078732",
+      "especialidade": "UTI adulto tipo II",
+      "existentes": 20,
+      "grupo": "Complementares (UTI e intermediários)",
+      "recorte": "leito",
+      "sus": 0
+    },
+    {
+      "cnes": "2078732",
+      "especialidade": "UTI pediátrica tipo II",
+      "existentes": 10,
+      "grupo": "Complementares (UTI e intermediários)",
+      "recorte": "leito",
+      "sus": 0
+    },
+    {
+      "cnes": "2078732",
+      "especialidade": "Obstetrícia cirúrgica",
+      "existentes": 4,
+      "grupo": "Obstétricos",
+      "recorte": "leito",
+      "sus": 0
+    },
+    {
+      "cnes": "2078732",
+      "especialidade": "Obstetrícia clínica",
+      "existentes": 18,
+      "grupo": "Obstétricos",
+      "recorte": "leito",
+      "sus": 0
+    },
+    {
+      "cnes": "2078732",
+      "especialidade": "Pediatria clínica",
+      "existentes": 8,
+      "grupo": "Pediátricos",
+      "recorte": "leito",
+      "sus": 0
+    },
+    {
+      "cnes": "2078732",
+      "especialidade": "Pediatria cirúrgica",
+      "existentes": 2,
+      "grupo": "Pediátricos",
+      "recorte": "leito",
+      "sus": 0
+    },
+    {
+      "cnes": "2078813",
+      "especialidade": "Oftalmologia",
+      "existentes": 9,
+      "grupo": "Cirúrgicos",
+      "recorte": "leito",
+      "sus": 5
+    },
+    {
+      "cnes": "2078813",
+      "especialidade": "Otorrinolaringologia",
+      "existentes": 6,
+      "grupo": "Cirúrgicos",
+      "recorte": "leito",
+      "sus": 4
+    },
+    {
+      "cnes": "2078813",
+      "especialidade": "Clínica geral",
+      "existentes": 1,
+      "grupo": "Clínicos",
+      "recorte": "leito",
+      "sus": 1
+    },
+    {
+      "cnes": "2079321",
+      "especialidade": "Cirurgia geral",
+      "existentes": 10,
+      "grupo": "Cirúrgicos",
+      "recorte": "leito",
+      "sus": 6
+    },
+    {
+      "cnes": "2079321",
+      "especialidade": "Hematologia",
+      "existentes": 6,
+      "grupo": "Clínicos",
+      "recorte": "leito",
+      "sus": 4
+    },
+    {
+      "cnes": "2079321",
+      "especialidade": "Oncologia clínica",
+      "existentes": 18,
+      "grupo": "Clínicos",
+      "recorte": "leito",
+      "sus": 10
+    },
+    {
+      "cnes": "2079321",
+      "especialidade": "Unidade de isolamento",
+      "existentes": 1,
+      "grupo": "Complementares (UTI e intermediários)",
+      "recorte": "leito",
+      "sus": 1
+    },
+    {
+      "cnes": "2079321",
+      "especialidade": "UTI pediátrica tipo II",
+      "existentes": 8,
+      "grupo": "Complementares (UTI e intermediários)",
+      "recorte": "leito",
+      "sus": 5
+    },
+    {
+      "cnes": "2079321",
+      "especialidade": "Pediatria clínica",
+      "existentes": 30,
+      "grupo": "Pediátricos",
+      "recorte": "leito",
+      "sus": 30
+    },
+    {
+      "cnes": "2079321",
+      "especialidade": "Cirúrgico, diagnóstico ou terapêutico",
+      "existentes": 17,
+      "grupo": "Hospital-dia",
+      "recorte": "leito",
+      "sus": 8
+    },
+    {
+      "cnes": "2079321",
+      "especialidade": "Intercorrência pós-transplante",
+      "existentes": 2,
+      "grupo": "Hospital-dia",
+      "recorte": "leito",
+      "sus": 2
+    },
+    {
+      "cnes": "2081695",
+      "especialidade": "Cirurgia geral",
+      "existentes": 100,
+      "grupo": "Cirúrgicos",
+      "recorte": "leito",
+      "sus": 100
+    },
+    {
+      "cnes": "2081695",
+      "especialidade": "Neurocirurgia",
+      "existentes": 18,
+      "grupo": "Cirúrgicos",
+      "recorte": "leito",
+      "sus": 18
+    },
+    {
+      "cnes": "2081695",
+      "especialidade": "Ortopedia e traumatologia",
+      "existentes": 38,
+      "grupo": "Cirúrgicos",
+      "recorte": "leito",
+      "sus": 38
+    },
+    {
+      "cnes": "2081695",
+      "especialidade": "Plástica",
+      "existentes": 4,
+      "grupo": "Cirúrgicos",
+      "recorte": "leito",
+      "sus": 4
+    },
+    {
+      "cnes": "2081695",
+      "especialidade": "Aids",
+      "existentes": 6,
+      "grupo": "Clínicos",
+      "recorte": "leito",
+      "sus": 6
+    },
+    {
+      "cnes": "2081695",
+      "especialidade": "Clínica geral",
+      "existentes": 64,
+      "grupo": "Clínicos",
+      "recorte": "leito",
+      "sus": 64
+    },
+    {
+      "cnes": "2081695",
+      "especialidade": "Nefrourologia",
+      "existentes": 4,
+      "grupo": "Clínicos",
+      "recorte": "leito",
+      "sus": 4
+    },
+    {
+      "cnes": "2081695",
+      "especialidade": "Unidade de isolamento",
+      "existentes": 6,
+      "grupo": "Complementares (UTI e intermediários)",
+      "recorte": "leito",
+      "sus": 6
+    },
+    {
+      "cnes": "2081695",
+      "especialidade": "UTI adulto tipo II",
+      "existentes": 32,
+      "grupo": "Complementares (UTI e intermediários)",
+      "recorte": "leito",
+      "sus": 27
+    },
+    {
+      "cnes": "2081695",
+      "especialidade": "UTI adulto tipo III",
+      "existentes": 8,
+      "grupo": "Complementares (UTI e intermediários)",
+      "recorte": "leito",
+      "sus": 8
+    },
+    {
+      "cnes": "2081695",
+      "especialidade": "UTI pediátrica tipo III",
+      "existentes": 10,
+      "grupo": "Complementares (UTI e intermediários)",
+      "recorte": "leito",
+      "sus": 7
+    },
+    {
+      "cnes": "2081695",
+      "especialidade": "UTI neonatal tipo III",
+      "existentes": 18,
+      "grupo": "Complementares (UTI e intermediários)",
+      "recorte": "leito",
+      "sus": 10
+    },
+    {
+      "cnes": "2081695",
+      "especialidade": "UTI de queimados",
+      "existentes": 3,
+      "grupo": "Complementares (UTI e intermediários)",
+      "recorte": "leito",
+      "sus": 3
+    },
+    {
+      "cnes": "2081695",
+      "especialidade": "Cuidados intermediários neonatal convencional",
+      "existentes": 15,
+      "grupo": "Complementares (UTI e intermediários)",
+      "recorte": "leito",
+      "sus": 15
+    },
+    {
+      "cnes": "2081695",
+      "especialidade": "Cuidados intermediários neonatal canguru",
+      "existentes": 5,
+      "grupo": "Complementares (UTI e intermediários)",
+      "recorte": "leito",
+      "sus": 0
+    },
+    {
+      "cnes": "2081695",
+      "especialidade": "Código 95",
+      "existentes": 10,
+      "grupo": "Complementares (UTI e intermediários)",
+      "recorte": "leito",
+      "sus": 10
+    },
+    {
+      "cnes": "2081695",
+      "especialidade": "Obstetrícia cirúrgica",
+      "existentes": 19,
+      "grupo": "Obstétricos",
+      "recorte": "leito",
+      "sus": 19
+    },
+    {
+      "cnes": "2081695",
+      "especialidade": "Obstetrícia clínica",
+      "existentes": 12,
+      "grupo": "Obstétricos",
+      "recorte": "leito",
+      "sus": 12
+    },
+    {
+      "cnes": "2081695",
+      "especialidade": "Pediatria clínica",
+      "existentes": 32,
+      "grupo": "Pediátricos",
+      "recorte": "leito",
+      "sus": 32
+    },
+    {
+      "cnes": "2081695",
+      "especialidade": "Psiquiatria",
+      "existentes": 16,
+      "grupo": "Outras especialidades",
+      "recorte": "leito",
+      "sus": 16
+    },
+    {
+      "cnes": "2081695",
+      "especialidade": "Pneumologia sanitária",
+      "existentes": 4,
+      "grupo": "Outras especialidades",
+      "recorte": "leito",
+      "sus": 4
+    },
+    {
+      "cnes": "2081695",
+      "especialidade": "Cirúrgico, diagnóstico ou terapêutico",
+      "existentes": 6,
+      "grupo": "Hospital-dia",
+      "recorte": "leito",
+      "sus": 6
+    },
+    {
+      "cnes": "2081695",
+      "especialidade": "Aids",
+      "existentes": 4,
+      "grupo": "Hospital-dia",
+      "recorte": "leito",
+      "sus": 4
+    },
+    {
+      "cnes": "2082101",
+      "especialidade": "Buco-maxilo-facial",
+      "existentes": 1,
+      "grupo": "Cirúrgicos",
+      "recorte": "leito",
+      "sus": 0
+    },
+    {
+      "cnes": "2082101",
+      "especialidade": "Cirurgia geral",
+      "existentes": 8,
+      "grupo": "Cirúrgicos",
+      "recorte": "leito",
+      "sus": 0
+    },
+    {
+      "cnes": "2082101",
+      "especialidade": "Gastroenterologia",
+      "existentes": 4,
+      "grupo": "Cirúrgicos",
+      "recorte": "leito",
+      "sus": 0
+    },
+    {
+      "cnes": "2082101",
+      "especialidade": "Ginecologia",
+      "existentes": 4,
+      "grupo": "Cirúrgicos",
+      "recorte": "leito",
+      "sus": 0
+    },
+    {
+      "cnes": "2082101",
+      "especialidade": "Nefrologia e urologia",
+      "existentes": 2,
+      "grupo": "Cirúrgicos",
+      "recorte": "leito",
+      "sus": 0
+    },
+    {
+      "cnes": "2082101",
+      "especialidade": "Neurocirurgia",
+      "existentes": 2,
+      "grupo": "Cirúrgicos",
+      "recorte": "leito",
+      "sus": 0
+    },
+    {
+      "cnes": "2082101",
+      "especialidade": "Oncologia",
+      "existentes": 1,
+      "grupo": "Cirúrgicos",
+      "recorte": "leito",
+      "sus": 0
+    },
+    {
+      "cnes": "2082101",
+      "especialidade": "Otorrinolaringologia",
+      "existentes": 2,
+      "grupo": "Cirúrgicos",
+      "recorte": "leito",
+      "sus": 0
+    },
+    {
+      "cnes": "2082101",
+      "especialidade": "Plástica",
+      "existentes": 2,
+      "grupo": "Cirúrgicos",
+      "recorte": "leito",
+      "sus": 0
+    },
+    {
+      "cnes": "2082101",
+      "especialidade": "Torácica",
+      "existentes": 2,
+      "grupo": "Cirúrgicos",
+      "recorte": "leito",
+      "sus": 0
+    },
+    {
+      "cnes": "2082101",
+      "especialidade": "Cardiologia clínica",
+      "existentes": 1,
+      "grupo": "Clínicos",
+      "recorte": "leito",
+      "sus": 0
+    },
+    {
+      "cnes": "2082101",
+      "especialidade": "Clínica geral",
+      "existentes": 5,
+      "grupo": "Clínicos",
+      "recorte": "leito",
+      "sus": 0
+    },
+    {
+      "cnes": "2082101",
+      "especialidade": "Dermatologia",
+      "existentes": 1,
+      "grupo": "Clínicos",
+      "recorte": "leito",
+      "sus": 0
+    },
+    {
+      "cnes": "2082101",
+      "especialidade": "Geriatria",
+      "existentes": 1,
+      "grupo": "Clínicos",
+      "recorte": "leito",
+      "sus": 0
+    },
+    {
+      "cnes": "2082101",
+      "especialidade": "Hematologia",
+      "existentes": 1,
+      "grupo": "Clínicos",
+      "recorte": "leito",
+      "sus": 0
+    },
+    {
+      "cnes": "2082101",
+      "especialidade": "Nefrourologia",
+      "existentes": 1,
+      "grupo": "Clínicos",
+      "recorte": "leito",
+      "sus": 0
+    },
+    {
+      "cnes": "2082101",
+      "especialidade": "Neurologia",
+      "existentes": 1,
+      "grupo": "Clínicos",
+      "recorte": "leito",
+      "sus": 0
+    },
+    {
+      "cnes": "2082101",
+      "especialidade": "Oncologia clínica",
+      "existentes": 1,
+      "grupo": "Clínicos",
+      "recorte": "leito",
+      "sus": 0
+    },
+    {
+      "cnes": "2082101",
+      "especialidade": "Pneumologia",
+      "existentes": 1,
+      "grupo": "Clínicos",
+      "recorte": "leito",
+      "sus": 0
+    },
+    {
+      "cnes": "2082101",
+      "especialidade": "UTI adulto tipo II",
+      "existentes": 10,
+      "grupo": "Complementares (UTI e intermediários)",
+      "recorte": "leito",
+      "sus": 0
+    },
+    {
+      "cnes": "2082101",
+      "especialidade": "UTI neonatal tipo I",
+      "existentes": 10,
+      "grupo": "Complementares (UTI e intermediários)",
+      "recorte": "leito",
+      "sus": 0
+    },
+    {
+      "cnes": "2082101",
+      "especialidade": "Cuidados intermediários neonatal canguru",
+      "existentes": 4,
+      "grupo": "Complementares (UTI e intermediários)",
+      "recorte": "leito",
+      "sus": 0
+    },
+    {
+      "cnes": "2082101",
+      "especialidade": "Obstetrícia cirúrgica",
+      "existentes": 10,
+      "grupo": "Obstétricos",
+      "recorte": "leito",
+      "sus": 0
+    },
+    {
+      "cnes": "2082101",
+      "especialidade": "Obstetrícia clínica",
+      "existentes": 10,
+      "grupo": "Obstétricos",
+      "recorte": "leito",
+      "sus": 0
+    },
+    {
+      "cnes": "2082101",
+      "especialidade": "Cirúrgico, diagnóstico ou terapêutico",
+      "existentes": 8,
+      "grupo": "Hospital-dia",
+      "recorte": "leito",
+      "sus": 0
+    },
+    {
+      "cnes": "2708558",
+      "especialidade": "Buco-maxilo-facial",
+      "existentes": 1,
+      "grupo": "Cirúrgicos",
+      "recorte": "leito",
+      "sus": 0
+    },
+    {
+      "cnes": "2708558",
+      "especialidade": "Cardiologia",
+      "existentes": 5,
+      "grupo": "Cirúrgicos",
+      "recorte": "leito",
+      "sus": 0
+    },
+    {
+      "cnes": "2708558",
+      "especialidade": "Cirurgia geral",
+      "existentes": 8,
+      "grupo": "Cirúrgicos",
+      "recorte": "leito",
+      "sus": 0
+    },
+    {
+      "cnes": "2708558",
+      "especialidade": "Gastroenterologia",
+      "existentes": 4,
+      "grupo": "Cirúrgicos",
+      "recorte": "leito",
+      "sus": 0
+    },
+    {
+      "cnes": "2708558",
+      "especialidade": "Ginecologia",
+      "existentes": 2,
+      "grupo": "Cirúrgicos",
+      "recorte": "leito",
+      "sus": 0
+    },
+    {
+      "cnes": "2708558",
+      "especialidade": "Nefrologia e urologia",
+      "existentes": 5,
+      "grupo": "Cirúrgicos",
+      "recorte": "leito",
+      "sus": 0
+    },
+    {
+      "cnes": "2708558",
+      "especialidade": "Neurocirurgia",
+      "existentes": 3,
+      "grupo": "Cirúrgicos",
+      "recorte": "leito",
+      "sus": 0
+    },
+    {
+      "cnes": "2708558",
+      "especialidade": "Oncologia",
+      "existentes": 3,
+      "grupo": "Cirúrgicos",
+      "recorte": "leito",
+      "sus": 0
+    },
+    {
+      "cnes": "2708558",
+      "especialidade": "Ortopedia e traumatologia",
+      "existentes": 8,
+      "grupo": "Cirúrgicos",
+      "recorte": "leito",
+      "sus": 0
+    },
+    {
+      "cnes": "2708558",
+      "especialidade": "Otorrinolaringologia",
+      "existentes": 4,
+      "grupo": "Cirúrgicos",
+      "recorte": "leito",
+      "sus": 0
+    },
+    {
+      "cnes": "2708558",
+      "especialidade": "Plástica",
+      "existentes": 3,
+      "grupo": "Cirúrgicos",
+      "recorte": "leito",
+      "sus": 0
+    },
+    {
+      "cnes": "2708558",
+      "especialidade": "Torácica",
+      "existentes": 2,
+      "grupo": "Cirúrgicos",
+      "recorte": "leito",
+      "sus": 0
+    },
+    {
+      "cnes": "2708558",
+      "especialidade": "Cardiologia clínica",
+      "existentes": 2,
+      "grupo": "Clínicos",
+      "recorte": "leito",
+      "sus": 0
+    },
+    {
+      "cnes": "2708558",
+      "especialidade": "Clínica geral",
+      "existentes": 3,
+      "grupo": "Clínicos",
+      "recorte": "leito",
+      "sus": 0
+    },
+    {
+      "cnes": "2708558",
+      "especialidade": "Geriatria",
+      "existentes": 1,
+      "grupo": "Clínicos",
+      "recorte": "leito",
+      "sus": 0
+    },
+    {
+      "cnes": "2708558",
+      "especialidade": "Hematologia",
+      "existentes": 1,
+      "grupo": "Clínicos",
+      "recorte": "leito",
+      "sus": 0
+    },
+    {
+      "cnes": "2708558",
+      "especialidade": "Nefrourologia",
+      "existentes": 1,
+      "grupo": "Clínicos",
+      "recorte": "leito",
+      "sus": 0
+    },
+    {
+      "cnes": "2708558",
+      "especialidade": "Neurologia",
+      "existentes": 1,
+      "grupo": "Clínicos",
+      "recorte": "leito",
+      "sus": 0
+    },
+    {
+      "cnes": "2708558",
+      "especialidade": "Oncologia clínica",
+      "existentes": 10,
+      "grupo": "Clínicos",
+      "recorte": "leito",
+      "sus": 0
+    },
+    {
+      "cnes": "2708558",
+      "especialidade": "Pneumologia",
+      "existentes": 1,
+      "grupo": "Clínicos",
+      "recorte": "leito",
+      "sus": 0
+    },
+    {
+      "cnes": "2708558",
+      "especialidade": "Saúde mental",
+      "existentes": 2,
+      "grupo": "Clínicos",
+      "recorte": "leito",
+      "sus": 0
+    },
+    {
+      "cnes": "2708558",
+      "especialidade": "Unidade de isolamento",
+      "existentes": 4,
+      "grupo": "Complementares (UTI e intermediários)",
+      "recorte": "leito",
+      "sus": 0
+    },
+    {
+      "cnes": "2708558",
+      "especialidade": "UTI adulto tipo III",
+      "existentes": 38,
+      "grupo": "Complementares (UTI e intermediários)",
+      "recorte": "leito",
+      "sus": 0
+    },
+    {
+      "cnes": "2708558",
+      "especialidade": "Cirúrgico, diagnóstico ou terapêutico",
+      "existentes": 14,
+      "grupo": "Hospital-dia",
+      "recorte": "leito",
+      "sus": 0
+    },
+    {
+      "cnes": "2708566",
+      "especialidade": "Cirurgia geral",
+      "existentes": 122,
+      "grupo": "Cirúrgicos",
+      "recorte": "leito",
+      "sus": 0
+    },
+    {
+      "cnes": "2708566",
+      "especialidade": "Transplante",
+      "existentes": 8,
+      "grupo": "Cirúrgicos",
+      "recorte": "leito",
+      "sus": 4
+    },
+    {
+      "cnes": "2708566",
+      "especialidade": "Clínica geral",
+      "existentes": 88,
+      "grupo": "Clínicos",
+      "recorte": "leito",
+      "sus": 4
+    },
+    {
+      "cnes": "2708566",
+      "especialidade": "Neonatologia",
+      "existentes": 4,
+      "grupo": "Clínicos",
+      "recorte": "leito",
+      "sus": 0
+    },
+    {
+      "cnes": "2708566",
+      "especialidade": "UTI adulto tipo II",
+      "existentes": 30,
+      "grupo": "Complementares (UTI e intermediários)",
+      "recorte": "leito",
+      "sus": 4
+    },
+    {
+      "cnes": "2708566",
+      "especialidade": "UTI pediátrica tipo II",
+      "existentes": 9,
+      "grupo": "Complementares (UTI e intermediários)",
+      "recorte": "leito",
+      "sus": 0
+    },
+    {
+      "cnes": "2708566",
+      "especialidade": "UTI neonatal tipo II",
+      "existentes": 16,
+      "grupo": "Complementares (UTI e intermediários)",
+      "recorte": "leito",
+      "sus": 0
+    },
+    {
+      "cnes": "2708566",
+      "especialidade": "Obstetrícia cirúrgica",
+      "existentes": 10,
+      "grupo": "Obstétricos",
+      "recorte": "leito",
+      "sus": 0
+    },
+    {
+      "cnes": "2708566",
+      "especialidade": "Pediatria clínica",
+      "existentes": 7,
+      "grupo": "Pediátricos",
+      "recorte": "leito",
+      "sus": 0
+    },
+    {
+      "cnes": "2708566",
+      "especialidade": "Pediatria cirúrgica",
+      "existentes": 7,
+      "grupo": "Pediátricos",
+      "recorte": "leito",
+      "sus": 0
+    },
+    {
+      "cnes": "2708566",
+      "especialidade": "Cirúrgico, diagnóstico ou terapêutico",
+      "existentes": 29,
+      "grupo": "Hospital-dia",
+      "recorte": "leito",
+      "sus": 1
+    },
+    {
+      "cnes": "2708779",
+      "especialidade": "Cirurgia geral",
+      "existentes": 23,
+      "grupo": "Cirúrgicos",
+      "recorte": "leito",
+      "sus": 23
+    },
+    {
+      "cnes": "2708779",
+      "especialidade": "Oncologia",
+      "existentes": 12,
+      "grupo": "Cirúrgicos",
+      "recorte": "leito",
+      "sus": 12
+    },
+    {
+      "cnes": "2708779",
+      "especialidade": "Ortopedia e traumatologia",
+      "existentes": 7,
+      "grupo": "Cirúrgicos",
+      "recorte": "leito",
+      "sus": 7
+    },
+    {
+      "cnes": "2708779",
+      "especialidade": "Clínica geral",
+      "existentes": 104,
+      "grupo": "Clínicos",
+      "recorte": "leito",
+      "sus": 104
+    },
+    {
+      "cnes": "2708779",
+      "especialidade": "Oncologia clínica",
+      "existentes": 12,
+      "grupo": "Clínicos",
+      "recorte": "leito",
+      "sus": 12
+    },
+    {
+      "cnes": "2708779",
+      "especialidade": "Saúde mental",
+      "existentes": 16,
+      "grupo": "Clínicos",
+      "recorte": "leito",
+      "sus": 16
+    },
+    {
+      "cnes": "2708779",
+      "especialidade": "UTI adulto tipo II",
+      "existentes": 50,
+      "grupo": "Complementares (UTI e intermediários)",
+      "recorte": "leito",
+      "sus": 50
+    },
+    {
+      "cnes": "2708779",
+      "especialidade": "UTI neonatal tipo II",
+      "existentes": 6,
+      "grupo": "Complementares (UTI e intermediários)",
+      "recorte": "leito",
+      "sus": 6
+    },
+    {
+      "cnes": "2708779",
+      "especialidade": "Cuidados intermediários neonatal convencional",
+      "existentes": 3,
+      "grupo": "Complementares (UTI e intermediários)",
+      "recorte": "leito",
+      "sus": 0
+    },
+    {
+      "cnes": "2708779",
+      "especialidade": "Obstetrícia cirúrgica",
+      "existentes": 20,
+      "grupo": "Obstétricos",
+      "recorte": "leito",
+      "sus": 20
+    },
+    {
+      "cnes": "2708779",
+      "especialidade": "Obstetrícia clínica",
+      "existentes": 10,
+      "grupo": "Obstétricos",
+      "recorte": "leito",
+      "sus": 10
+    },
+    {
+      "cnes": "2708779",
+      "especialidade": "Pediatria clínica",
+      "existentes": 2,
+      "grupo": "Pediátricos",
+      "recorte": "leito",
+      "sus": 2
+    },
+    {
+      "cnes": "2708779",
+      "especialidade": "Cirúrgico, diagnóstico ou terapêutico",
+      "existentes": 3,
+      "grupo": "Hospital-dia",
+      "recorte": "leito",
+      "sus": 3
+    },
+    {
+      "cnes": "2765942",
+      "especialidade": "Cardiologia",
+      "existentes": 5,
+      "grupo": "Cirúrgicos",
+      "recorte": "leito",
+      "sus": 4
+    },
+    {
+      "cnes": "2765942",
+      "especialidade": "Cirurgia geral",
+      "existentes": 8,
+      "grupo": "Cirúrgicos",
+      "recorte": "leito",
+      "sus": 4
+    },
+    {
+      "cnes": "2765942",
+      "especialidade": "Gastroenterologia",
+      "existentes": 3,
+      "grupo": "Cirúrgicos",
+      "recorte": "leito",
+      "sus": 2
+    },
+    {
+      "cnes": "2765942",
+      "especialidade": "Ginecologia",
+      "existentes": 5,
+      "grupo": "Cirúrgicos",
+      "recorte": "leito",
+      "sus": 4
+    },
+    {
+      "cnes": "2765942",
+      "especialidade": "Nefrologia e urologia",
+      "existentes": 4,
+      "grupo": "Cirúrgicos",
+      "recorte": "leito",
+      "sus": 3
+    },
+    {
+      "cnes": "2765942",
+      "especialidade": "Ortopedia e traumatologia",
+      "existentes": 6,
+      "grupo": "Cirúrgicos",
+      "recorte": "leito",
+      "sus": 3
+    },
+    {
+      "cnes": "2765942",
+      "especialidade": "Otorrinolaringologia",
+      "existentes": 3,
+      "grupo": "Cirúrgicos",
+      "recorte": "leito",
+      "sus": 2
+    },
+    {
+      "cnes": "2765942",
+      "especialidade": "Plástica",
+      "existentes": 6,
+      "grupo": "Cirúrgicos",
+      "recorte": "leito",
+      "sus": 1
+    },
+    {
+      "cnes": "2765942",
+      "especialidade": "Cardiologia clínica",
+      "existentes": 24,
+      "grupo": "Clínicos",
+      "recorte": "leito",
+      "sus": 24
+    },
+    {
+      "cnes": "2765942",
+      "especialidade": "Clínica geral",
+      "existentes": 5,
+      "grupo": "Clínicos",
+      "recorte": "leito",
+      "sus": 4
+    },
+    {
+      "cnes": "2765942",
+      "especialidade": "Neonatologia",
+      "existentes": 5,
+      "grupo": "Clínicos",
+      "recorte": "leito",
+      "sus": 5
+    },
+    {
+      "cnes": "2765942",
+      "especialidade": "UTI adulto tipo II",
+      "existentes": 10,
+      "grupo": "Complementares (UTI e intermediários)",
+      "recorte": "leito",
+      "sus": 7
+    },
+    {
+      "cnes": "2765942",
+      "especialidade": "UTI neonatal tipo II",
+      "existentes": 10,
+      "grupo": "Complementares (UTI e intermediários)",
+      "recorte": "leito",
+      "sus": 4
+    },
+    {
+      "cnes": "2765942",
+      "especialidade": "Obstetrícia cirúrgica",
+      "existentes": 29,
+      "grupo": "Obstétricos",
+      "recorte": "leito",
+      "sus": 17
+    },
+    {
+      "cnes": "2765942",
+      "especialidade": "Obstetrícia clínica",
+      "existentes": 4,
+      "grupo": "Obstétricos",
+      "recorte": "leito",
+      "sus": 3
+    },
+    {
+      "cnes": "2765942",
+      "especialidade": "Pediatria clínica",
+      "existentes": 17,
+      "grupo": "Pediátricos",
+      "recorte": "leito",
+      "sus": 11
+    },
+    {
+      "cnes": "2765942",
+      "especialidade": "Cirúrgico, diagnóstico ou terapêutico",
+      "existentes": 10,
+      "grupo": "Hospital-dia",
+      "recorte": "leito",
+      "sus": 4
+    },
+    {
+      "cnes": "4662962",
+      "especialidade": "Cirurgia geral",
+      "existentes": 23,
+      "grupo": "Cirúrgicos",
+      "recorte": "leito",
+      "sus": 0
+    },
+    {
+      "cnes": "4662962",
+      "especialidade": "Clínica geral",
+      "existentes": 23,
+      "grupo": "Clínicos",
+      "recorte": "leito",
+      "sus": 0
+    },
+    {
+      "cnes": "4662962",
+      "especialidade": "UTI adulto tipo II",
+      "existentes": 10,
+      "grupo": "Complementares (UTI e intermediários)",
+      "recorte": "leito",
+      "sus": 0
+    },
+    {
+      "cnes": "5883229",
+      "especialidade": "Unidade de isolamento",
+      "existentes": 2,
+      "grupo": "Complementares (UTI e intermediários)",
+      "recorte": "leito",
+      "sus": 2
+    },
+    {
+      "cnes": "9491112",
+      "especialidade": "Cardiologia",
+      "existentes": 30,
+      "grupo": "Cirúrgicos",
+      "recorte": "leito",
+      "sus": 30
+    },
+    {
+      "cnes": "9491112",
+      "especialidade": "Cirurgia geral",
+      "existentes": 36,
+      "grupo": "Cirúrgicos",
+      "recorte": "leito",
+      "sus": 36
+    },
+    {
+      "cnes": "9491112",
+      "especialidade": "Neurocirurgia",
+      "existentes": 10,
+      "grupo": "Cirúrgicos",
+      "recorte": "leito",
+      "sus": 10
+    },
+    {
+      "cnes": "9491112",
+      "especialidade": "Ortopedia e traumatologia",
+      "existentes": 36,
+      "grupo": "Cirúrgicos",
+      "recorte": "leito",
+      "sus": 36
+    },
+    {
+      "cnes": "9491112",
+      "especialidade": "Cardiologia clínica",
+      "existentes": 16,
+      "grupo": "Clínicos",
+      "recorte": "leito",
+      "sus": 16
+    },
+    {
+      "cnes": "9491112",
+      "especialidade": "Clínica geral",
+      "existentes": 36,
+      "grupo": "Clínicos",
+      "recorte": "leito",
+      "sus": 36
+    },
+    {
+      "cnes": "9491112",
+      "especialidade": "UTI adulto tipo II",
+      "existentes": 40,
+      "grupo": "Complementares (UTI e intermediários)",
+      "recorte": "leito",
+      "sus": 30
+    },
+    {
+      "cnes": "9491112",
+      "especialidade": "UTI pediátrica tipo II",
+      "existentes": 10,
+      "grupo": "Complementares (UTI e intermediários)",
+      "recorte": "leito",
+      "sus": 10
+    },
+    {
+      "cnes": "9491112",
+      "especialidade": "UTI neonatal tipo II",
+      "existentes": 10,
+      "grupo": "Complementares (UTI e intermediários)",
+      "recorte": "leito",
+      "sus": 0
+    },
+    {
+      "cnes": "9491112",
+      "especialidade": "Pediatria cirúrgica",
+      "existentes": 16,
+      "grupo": "Pediátricos",
+      "recorte": "leito",
+      "sus": 16
+    },
+    {
+      "cnes": "9491112",
+      "especialidade": "Cirúrgico, diagnóstico ou terapêutico",
+      "existentes": 20,
+      "grupo": "Hospital-dia",
+      "recorte": "leito",
+      "sus": 20
+    },
+    {
+      "atende_sus": 1,
+      "bairro": "V HORTENCIA",
+      "centro_cirurgico": 0,
+      "centro_obstetrico": 0,
+      "cnes": "2034778",
+      "lat": -23.5064,
+      "leitos": 0,
+      "leitos_sus": 0,
+      "leitos_uti": 0,
+      "leitos_uti_sus": 0,
+      "logradouro": "RUA TEODORO KAISEL",
+      "lon": -47.43908,
+      "natureza": "Público",
+      "neonatal": 0,
+      "nome": "CENTRO DE SAUDE VILA HORTENCIA SOROCABA",
+      "numero": "677",
+      "recorte": "unidade",
+      "telefone": "(15)3227-5438",
+      "tipo": "02",
+      "tipo_nome": "Unidade básica de saúde",
+      "urgencia": 0
+    },
+    {
+      "atende_sus": 1,
+      "bairro": "MARIA DO CARMO",
+      "centro_cirurgico": 0,
+      "centro_obstetrico": 0,
+      "cnes": "2034786",
+      "lat": -23.47343,
+      "leitos": 0,
+      "leitos_sus": 0,
+      "leitos_uti": 0,
+      "leitos_uti_sus": 0,
+      "logradouro": "RUA JOAQUIM FERREIRA BARBOSA",
+      "lon": -47.44798,
+      "natureza": "Público",
+      "neonatal": 0,
+      "nome": "CENTRO DE SAUDE MARIA DO CARMO SOROCABA",
+      "numero": "727",
+      "recorte": "unidade",
+      "telefone": "(15)3232-6520",
+      "tipo": "02",
+      "tipo_nome": "Unidade básica de saúde",
+      "urgencia": 0
+    },
+    {
+      "atende_sus": 1,
+      "bairro": "VIL BARAO",
+      "centro_cirurgico": 0,
+      "centro_obstetrico": 0,
+      "cnes": "2034794",
+      "lat": -23.49204,
+      "leitos": 0,
+      "leitos_sus": 0,
+      "leitos_uti": 0,
+      "leitos_uti_sus": 0,
+      "logradouro": "RUA AFONSO MURARO",
+      "lon": -47.4829,
+      "natureza": "Público",
+      "neonatal": 0,
+      "nome": "UNIDADE DE SAUDE DA FAMILIA VILA BARAO SOROCABA",
+      "numero": "41",
+      "recorte": "unidade",
+      "telefone": "(15)3233-1559",
+      "tipo": "02",
+      "tipo_nome": "Unidade básica de saúde",
+      "urgencia": 0
+    },
+    {
+      "atende_sus": 1,
+      "bairro": "VIL HARO",
+      "centro_cirurgico": 0,
+      "centro_obstetrico": 0,
+      "cnes": "2035847",
+      "lat": -23.49981,
+      "leitos": 0,
+      "leitos_sus": 0,
+      "leitos_uti": 0,
+      "leitos_uti_sus": 0,
+      "logradouro": "RUA ARISTIDES DA SILVA LOBO",
+      "lon": -47.43308,
+      "natureza": "Público",
+      "neonatal": 0,
+      "nome": "CENTRO DE SAUDE VILA HARO SOROCABA",
+      "numero": "379",
+      "recorte": "unidade",
+      "telefone": "01532272370",
+      "tipo": "02",
+      "tipo_nome": "Unidade básica de saúde",
+      "urgencia": 0
+    },
+    {
+      "atende_sus": 1,
+      "bairro": "JAD NOVA ESPERANCA",
+      "centro_cirurgico": 0,
+      "centro_obstetrico": 0,
+      "cnes": "2044064",
+      "lat": -23.49481,
+      "leitos": 0,
+      "leitos_sus": 0,
+      "leitos_uti": 0,
+      "leitos_uti_sus": 0,
+      "logradouro": "RUA PAULA MAYER CATTINI",
+      "lon": -47.49322,
+      "natureza": "Público",
+      "neonatal": 0,
+      "nome": "UNIDADE DE SAUDE DA FAMILIA NOVA ESPERANCA SOROCABA",
+      "numero": "689",
+      "recorte": "unidade",
+      "telefone": "(15) 3221-1214",
+      "tipo": "02",
+      "tipo_nome": "Unidade básica de saúde",
+      "urgencia": 0
+    },
+    {
+      "atende_sus": 1,
+      "bairro": "PQ DAS LARANJEIRAS",
+      "centro_cirurgico": 0,
+      "centro_obstetrico": 0,
+      "cnes": "2049244",
+      "lat": -23.45377,
+      "leitos": 0,
+      "leitos_sus": 0,
+      "leitos_uti": 0,
+      "leitos_uti_sus": 0,
+      "logradouro": "RUA SONIA BERNUNCIO",
+      "lon": -47.46946,
+      "natureza": "Público",
+      "neonatal": 0,
+      "nome": "CENTRO DE SAUDE E PA PARQUE LARANJEIRAS SOROCABA",
+      "numero": "24",
+      "recorte": "unidade",
+      "telefone": "(15) 3226-1461",
+      "tipo": "02",
+      "tipo_nome": "Unidade básica de saúde",
+      "urgencia": 1
+    },
+    {
+      "atende_sus": 1,
+      "bairro": "CAJURU DO SUL",
+      "centro_cirurgico": 0,
+      "centro_obstetrico": 0,
+      "cnes": "2049287",
+      "lat": -23.39732,
+      "leitos": 0,
+      "leitos_sus": 0,
+      "leitos_uti": 0,
+      "leitos_uti_sus": 0,
+      "logradouro": "AVENIDA PARANA",
+      "lon": -47.35994,
+      "natureza": "Público",
+      "neonatal": 0,
+      "nome": "UNIDADE DE SAUDE DA FAMILIA CAJURU DO SUL SOROCABA",
+      "numero": "3719",
+      "recorte": "unidade",
+      "telefone": "(15) 3225-1121",
+      "tipo": "02",
+      "tipo_nome": "Unidade básica de saúde",
+      "urgencia": 0
+    },
+    {
+      "atende_sus": 1,
+      "bairro": "VILA NOVA SOROCABA",
+      "centro_cirurgico": 0,
+      "centro_obstetrico": 0,
+      "cnes": "2049295",
+      "lat": -23.46701,
+      "leitos": 0,
+      "leitos_sus": 0,
+      "leitos_uti": 0,
+      "leitos_uti_sus": 0,
+      "logradouro": "AVENIDA AMERICANA",
+      "lon": -47.48513,
+      "natureza": "Público",
+      "neonatal": 0,
+      "nome": "CENTRO DE SAUDE NOVA SOROCABA SOROCABA",
+      "numero": "351",
+      "recorte": "unidade",
+      "telefone": "(15)3223-2488",
+      "tipo": "02",
+      "tipo_nome": "Unidade básica de saúde",
+      "urgencia": 0
+    },
+    {
+      "atende_sus": 1,
+      "bairro": "VIL SANTANA",
+      "centro_cirurgico": 0,
+      "centro_obstetrico": 0,
+      "cnes": "2051990",
+      "lat": -23.48817,
+      "leitos": 0,
+      "leitos_sus": 0,
+      "leitos_uti": 0,
+      "leitos_uti_sus": 0,
+      "logradouro": "RUA DOUTOR DEODORO REIS",
+      "lon": -47.4598,
+      "natureza": "Público",
+      "neonatal": 0,
+      "nome": "CENTRO DE SAUDE VILA SANTANA SOROCABA",
+      "numero": "150",
+      "recorte": "unidade",
+      "telefone": "(15) 3233-1160",
+      "tipo": "02",
+      "tipo_nome": "Unidade básica de saúde",
+      "urgencia": 0
+    },
+    {
+      "atende_sus": 1,
+      "bairro": "VILA MINEIRAO",
+      "centro_cirurgico": 0,
+      "centro_obstetrico": 0,
+      "cnes": "2052032",
+      "lat": -23.46605,
+      "leitos": 0,
+      "leitos_sus": 0,
+      "leitos_uti": 0,
+      "leitos_uti_sus": 0,
+      "logradouro": "RUA TENENTE ERICO DE OLIVEIRA",
+      "lon": -47.46555,
+      "natureza": "Público",
+      "neonatal": 0,
+      "nome": "CENTRO DE SAUDE MINEIRAO SOROCABA",
+      "numero": "110",
+      "recorte": "unidade",
+      "telefone": "(15) 3233-7165",
+      "tipo": "02",
+      "tipo_nome": "Unidade básica de saúde",
+      "urgencia": 0
+    },
+    {
+      "atende_sus": 1,
+      "bairro": "PRQ SAO BENTO",
+      "centro_cirurgico": 0,
+      "centro_obstetrico": 0,
+      "cnes": "2054043",
+      "lat": -23.43543,
+      "leitos": 0,
+      "leitos_sus": 0,
+      "leitos_uti": 0,
+      "leitos_uti_sus": 0,
+      "logradouro": "AV DR GUALBERTO MOREIRA",
+      "lon": -47.50597,
+      "natureza": "Público",
+      "neonatal": 0,
+      "nome": "UNIDADE DE SAUDE DA FAMILIA E PA PARQUE SAO BENTO SOROCABA",
+      "numero": "4985",
+      "recorte": "unidade",
+      "telefone": "(15)32232359",
+      "tipo": "02",
+      "tipo_nome": "Unidade básica de saúde",
+      "urgencia": 0
+    },
+    {
+      "atende_sus": 1,
+      "bairro": "VILA BARCELONA",
+      "centro_cirurgico": 0,
+      "centro_obstetrico": 0,
+      "cnes": "2054353",
+      "lat": -23.51989,
+      "leitos": 0,
+      "leitos_sus": 0,
+      "leitos_uti": 0,
+      "leitos_uti_sus": 0,
+      "logradouro": "RUA COLOMBIA",
+      "lon": -47.43935,
+      "natureza": "Público",
+      "neonatal": 0,
+      "nome": "CENTRO DE SAUDE BARCELONA SOROCABA",
+      "numero": "253",
+      "recorte": "unidade",
+      "telefone": "(15) 3227-4346",
+      "tipo": "02",
+      "tipo_nome": "Unidade básica de saúde",
+      "urgencia": 0
+    },
+    {
+      "atende_sus": 1,
+      "bairro": "VIL JARDINI",
+      "centro_cirurgico": 0,
+      "centro_obstetrico": 0,
+      "cnes": "2055139",
+      "lat": -23.51232,
+      "leitos": 0,
+      "leitos_sus": 0,
+      "leitos_uti": 0,
+      "leitos_uti_sus": 0,
+      "logradouro": "RUA VISCONDE DO RIO BRANCO",
+      "lon": -47.47566,
+      "natureza": "Público",
+      "neonatal": 0,
+      "nome": "UNIDADE DE SAUDE DA FAMILIA CERRADO SOROCABA",
+      "numero": "885",
+      "recorte": "unidade",
+      "telefone": "(15) 3221-7445",
+      "tipo": "02",
+      "tipo_nome": "Unidade básica de saúde",
+      "urgencia": 0
+    },
+    {
+      "atende_sus": 1,
+      "bairro": "EDEN",
+      "centro_cirurgico": 0,
+      "centro_obstetrico": 0,
+      "cnes": "2055449",
+      "lat": -23.41855,
+      "leitos": 0,
+      "leitos_sus": 0,
+      "leitos_uti": 0,
+      "leitos_uti_sus": 0,
+      "logradouro": "RUA SALVADOR LEITE MARQUES",
+      "lon": -47.41581,
+      "natureza": "Público",
+      "neonatal": 0,
+      "nome": "CENTRO DE SAUDE EDEN SOROCABA SOROCABA",
+      "numero": "933",
+      "recorte": "unidade",
+      "telefone": "(15) 3225-3105",
+      "tipo": "02",
+      "tipo_nome": "Unidade básica de saúde",
+      "urgencia": 1
+    },
+    {
+      "atende_sus": 1,
+      "bairro": "VILA OLIMPIA",
+      "centro_cirurgico": 0,
+      "centro_obstetrico": 0,
+      "cnes": "2055678",
+      "lat": -23.47927,
+      "leitos": 0,
+      "leitos_sus": 0,
+      "leitos_uti": 0,
+      "leitos_uti_sus": 0,
+      "logradouro": "RUA ANDRE MANENTE",
+      "lon": -47.4707,
+      "natureza": "Público",
+      "neonatal": 0,
+      "nome": "CENTRO DE SAUDE VILA FIORI DE SOROCABA",
+      "numero": "S/N",
+      "recorte": "unidade",
+      "telefone": "(15)32357171",
+      "tipo": "02",
+      "tipo_nome": "Unidade básica de saúde",
+      "urgencia": 0
+    },
+    {
+      "atende_sus": 1,
+      "bairro": "LAGEADO",
+      "centro_cirurgico": 0,
+      "centro_obstetrico": 0,
+      "cnes": "2055686",
+      "lat": -23.28403,
+      "leitos": 0,
+      "leitos_sus": 0,
+      "leitos_uti": 0,
+      "leitos_uti_sus": 0,
+      "logradouro": "AV PEREIRA INACIO",
+      "lon": -47.6743,
+      "natureza": "Público",
+      "neonatal": 0,
+      "nome": "CENTRO DE SAUDE ESCOLA SOROCABA",
+      "numero": "500",
+      "recorte": "unidade",
+      "telefone": "(15)3232-9150",
+      "tipo": "02",
+      "tipo_nome": "Unidade básica de saúde",
+      "urgencia": 0
+    },
+    {
+      "atende_sus": 1,
+      "bairro": "LOPES DE OLIVEIRA",
+      "centro_cirurgico": 0,
+      "centro_obstetrico": 0,
+      "cnes": "2059487",
+      "lat": -23.46605,
+      "leitos": 0,
+      "leitos_sus": 0,
+      "leitos_uti": 0,
+      "leitos_uti_sus": 0,
+      "logradouro": "AVENIDA RIUSAKU KANIZAWA",
+      "lon": -47.50397,
+      "natureza": "Público",
+      "neonatal": 0,
+      "nome": "UNIDADE DE SAUDE DA FAMILIA LOPES DE OLIVEIRA SOROCABA",
+      "numero": "795",
+      "recorte": "unidade",
+      "telefone": "(15)3223-3256",
+      "tipo": "02",
+      "tipo_nome": "Unidade básica de saúde",
+      "urgencia": 0
+    },
+    {
+      "atende_sus": 1,
+      "bairro": "APARECIDINHA",
+      "centro_cirurgico": 0,
+      "centro_obstetrico": 0,
+      "cnes": "2059533",
+      "lat": -23.44205,
+      "leitos": 0,
+      "leitos_sus": 0,
+      "leitos_uti": 0,
+      "leitos_uti_sus": 0,
+      "logradouro": "RUA JOAQUIM MACHADO",
+      "lon": -47.37707,
+      "natureza": "Público",
+      "neonatal": 0,
+      "nome": "UNIDADE DE SAUDE DA FAMILIA E PA APARECIDINHA SOROCABA",
+      "numero": "620",
+      "recorte": "unidade",
+      "telefone": "(15)3225-2759",
+      "tipo": "02",
+      "tipo_nome": "Unidade básica de saúde",
+      "urgencia": 0
+    },
+    {
+      "atende_sus": 1,
+      "bairro": "JARDIM MARIA EUGENIA",
+      "centro_cirurgico": 0,
+      "centro_obstetrico": 0,
+      "cnes": "2061031",
+      "lat": -23.45567,
+      "leitos": 0,
+      "leitos_sus": 0,
+      "leitos_uti": 0,
+      "leitos_uti_sus": 0,
+      "logradouro": "RUA MARIO ROMANO",
+      "lon": -47.49046,
+      "natureza": "Público",
+      "neonatal": 0,
+      "nome": "CENTRO DE SAUDE MARIA EUGENIA SOROCABA",
+      "numero": "264",
+      "recorte": "unidade",
+      "telefone": "(15) 3226-1370",
+      "tipo": "02",
+      "tipo_nome": "Unidade básica de saúde",
+      "urgencia": 0
+    },
+    {
+      "atende_sus": 1,
+      "bairro": "JARDIM ANA MARIA",
+      "centro_cirurgico": 0,
+      "centro_obstetrico": 0,
+      "cnes": "2063026",
+      "lat": -23.48563,
+      "leitos": 0,
+      "leitos_sus": 0,
+      "leitos_uti": 0,
+      "leitos_uti_sus": 0,
+      "logradouro": "RUA GABRIEL DE LARA",
+      "lon": -47.47365,
+      "natureza": "Público",
+      "neonatal": 0,
+      "nome": "CENTRO DE SAUDE VILA ANGELICA SOROCABA",
+      "numero": "255",
+      "recorte": "unidade",
+      "telefone": "(15)3223-3113",
+      "tipo": "02",
+      "tipo_nome": "Unidade básica de saúde",
+      "urgencia": 0
+    },
+    {
+      "atende_sus": 1,
+      "bairro": "JADIM VERA CRUZ",
+      "centro_cirurgico": 0,
+      "centro_obstetrico": 0,
+      "cnes": "2064316",
+      "lat": -23.51341,
+      "leitos": 0,
+      "leitos_sus": 0,
+      "leitos_uti": 0,
+      "leitos_uti_sus": 0,
+      "logradouro": "JOSE AUGUSTO RABELLO JUNIOR",
+      "lon": -47.49475,
+      "natureza": "Público",
+      "neonatal": 0,
+      "nome": "CENTRO DE SAUDE MARCIA MENDES SOROCABA",
+      "numero": "91",
+      "recorte": "unidade",
+      "telefone": "(15) 3221-3984",
+      "tipo": "02",
+      "tipo_nome": "Unidade básica de saúde",
+      "urgencia": 0
+    },
+    {
+      "atende_sus": 1,
+      "bairro": "VILA ZACARIAS",
+      "centro_cirurgico": 0,
+      "centro_obstetrico": 0,
+      "cnes": "2066890",
+      "lat": -23.52304,
+      "leitos": 0,
+      "leitos_sus": 0,
+      "leitos_uti": 0,
+      "leitos_uti_sus": 0,
+      "logradouro": "RUA DIONIZIO BUENO SAMPAIO",
+      "lon": -47.43947,
+      "natureza": "Público",
+      "neonatal": 0,
+      "nome": "UNIDADE DE SAUDE DA FAMILIA VILA SABIA SOROCABA",
+      "numero": "91",
+      "recorte": "unidade",
+      "telefone": "(15)2330974",
+      "tipo": "02",
+      "tipo_nome": "Unidade básica de saúde",
+      "urgencia": 0
+    },
+    {
+      "atende_sus": 1,
+      "bairro": "VITORIA REGIA",
+      "centro_cirurgico": 0,
+      "centro_obstetrico": 0,
+      "cnes": "2070669",
+      "lat": -23.43611,
+      "leitos": 0,
+      "leitos_sus": 0,
+      "leitos_uti": 0,
+      "leitos_uti_sus": 0,
+      "logradouro": "RUA FRANCISCO DA SILVA MARTINS",
+      "lon": -47.47222,
+      "natureza": "Público",
+      "neonatal": 0,
+      "nome": "UNIDADE DE SAUDE DA FAMILIA VITORIA REGIA SOROCABA",
+      "numero": "35",
+      "recorte": "unidade",
+      "telefone": "1532261001",
+      "tipo": "02",
+      "tipo_nome": "Unidade básica de saúde",
+      "urgencia": 0
+    },
+    {
+      "atende_sus": 1,
+      "bairro": "BRIGADEIRO TOBIAS",
+      "centro_cirurgico": 0,
+      "centro_obstetrico": 0,
+      "cnes": "2070693",
+      "lat": -23.507,
+      "leitos": 0,
+      "leitos_sus": 0,
+      "leitos_uti": 0,
+      "leitos_uti_sus": 0,
+      "logradouro": "RUA ANA GOMES CORREA",
+      "lon": -47.45675,
+      "natureza": "Público",
+      "neonatal": 0,
+      "nome": "UNIDADE SAUDE DA FAMILIA E PA BRIGADEIRO TOBIAS SOROCABA",
+      "numero": "55",
+      "recorte": "unidade",
+      "telefone": "(15) 3236-6005",
+      "tipo": "02",
+      "tipo_nome": "Unidade básica de saúde",
+      "urgencia": 1
+    },
+    {
+      "atende_sus": 1,
+      "bairro": "ANA PAULA ELEUTERIO",
+      "centro_cirurgico": 0,
+      "centro_obstetrico": 0,
+      "cnes": "2690853",
+      "lat": -23.41565,
+      "leitos": 0,
+      "leitos_sus": 0,
+      "leitos_uti": 0,
+      "leitos_uti_sus": 0,
+      "logradouro": "AVENIDA ITAVUVU",
+      "lon": -47.51794,
+      "natureza": "Público",
+      "neonatal": 0,
+      "nome": "UNIDADE DE SAUDE DA FAMILIA E PA HABITETO SOROCABA",
+      "numero": "7000",
+      "recorte": "unidade",
+      "telefone": "(15) 3239-8686",
+      "tipo": "02",
+      "tipo_nome": "Unidade básica de saúde",
+      "urgencia": 0
+    },
+    {
+      "atende_sus": 1,
+      "bairro": "JARDIM SIMUS",
+      "centro_cirurgico": 0,
+      "centro_obstetrico": 0,
+      "cnes": "2690861",
+      "lat": -23.65044,
+      "leitos": 0,
+      "leitos_sus": 0,
+      "leitos_uti": 0,
+      "leitos_uti_sus": 0,
+      "logradouro": "ALAMEDA DOS LIRIOS",
+      "lon": -47.1816,
+      "natureza": "Público",
+      "neonatal": 0,
+      "nome": "CENTRO DE SAUDE JARDIM SIMUS SOROCABA",
+      "numero": "327",
+      "recorte": "unidade",
+      "telefone": "(15) 3221-1177",
+      "tipo": "02",
+      "tipo_nome": "Unidade básica de saúde",
+      "urgencia": 0
+    },
+    {
+      "atende_sus": 1,
+      "bairro": "JULIO MESQUITA FILHO",
+      "centro_cirurgico": 0,
+      "centro_obstetrico": 0,
+      "cnes": "4050576",
+      "lat": -23.50764,
+      "leitos": 0,
+      "leitos_sus": 0,
+      "leitos_uti": 0,
+      "leitos_uti_sus": 0,
+      "logradouro": "AVENIDA DOUTOR AMERICO FIGUEIREDO",
+      "lon": -47.48555,
+      "natureza": "Público",
+      "neonatal": 0,
+      "nome": "CENTRO DE SAUDE E PA SOROCABA I SOROCABA",
+      "numero": "3171",
+      "recorte": "unidade",
+      "telefone": "(15)3221-7922",
+      "tipo": "02",
+      "tipo_nome": "Unidade básica de saúde",
+      "urgencia": 0
+    },
+    {
+      "atende_sus": 1,
+      "bairro": "CONJUNTO HABITACIONA",
+      "centro_cirurgico": 0,
+      "centro_obstetrico": 0,
+      "cnes": "5702593",
+      "lat": -23.43195,
+      "leitos": 0,
+      "leitos_sus": 0,
+      "leitos_uti": 0,
+      "leitos_uti_sus": 0,
+      "logradouro": "RUA FERDINANDO IRINEU CORRA",
+      "lon": -47.45772,
+      "natureza": "Público",
+      "neonatal": 0,
+      "nome": "UNIDADE DE SAUDE DA FAMILIA E PA ULISSES SOROCABA",
+      "numero": "S/N",
+      "recorte": "unidade",
+      "telefone": "(15) 3239-5016",
+      "tipo": "02",
+      "tipo_nome": "Unidade básica de saúde",
+      "urgencia": 0
+    },
+    {
+      "atende_sus": 1,
+      "bairro": "PARQUE DAS PAINEIRAS",
+      "centro_cirurgico": 0,
+      "centro_obstetrico": 0,
+      "cnes": "5878128",
+      "lat": -23.4427,
+      "leitos": 0,
+      "leitos_sus": 0,
+      "leitos_uti": 0,
+      "leitos_uti_sus": 0,
+      "logradouro": "RUA ELIZA STEFANI LAMOS",
+      "lon": -47.47319,
+      "natureza": "Público",
+      "neonatal": 0,
+      "nome": "UNIDADE DE SAUDE DA FAMILIA PAINEIRAS SOROCABA",
+      "numero": "130",
+      "recorte": "unidade",
+      "telefone": "(15)32264176",
+      "tipo": "02",
+      "tipo_nome": "Unidade básica de saúde",
+      "urgencia": 0
+    },
+    {
+      "atende_sus": 1,
+      "bairro": "WANEL VILLE",
+      "centro_cirurgico": 0,
+      "centro_obstetrico": 0,
+      "cnes": "6392989",
+      "lat": -23.49526,
+      "leitos": 0,
+      "leitos_sus": 0,
+      "leitos_uti": 0,
+      "leitos_uti_sus": 0,
+      "logradouro": "RUA ALEXANDRE CALDINI",
+      "lon": -47.50581,
+      "natureza": "Público",
+      "neonatal": 0,
+      "nome": "UNIDADE DE SAUDE DA FAMILIA WANEL VILLE SOROCABA",
+      "numero": "442",
+      "recorte": "unidade",
+      "telefone": "3202-1662",
+      "tipo": "02",
+      "tipo_nome": "Unidade básica de saúde",
+      "urgencia": 0
+    },
+    {
+      "atende_sus": 1,
+      "bairro": "JD SAO GUILHERME",
+      "centro_cirurgico": 0,
+      "centro_obstetrico": 0,
+      "cnes": "7114354",
+      "lat": -23.44667,
+      "leitos": 0,
+      "leitos_sus": 0,
+      "leitos_uti": 0,
+      "leitos_uti_sus": 0,
+      "logradouro": "RUA BELMIRO MOREIRA SOARES",
+      "lon": -47.49039,
+      "natureza": "Público",
+      "neonatal": 0,
+      "nome": "CENTRO DE SAUDE E PA JARDIM SAO GUILHERME SOROCABA",
+      "numero": "1100",
+      "recorte": "unidade",
+      "telefone": "15 3239-9245",
+      "tipo": "02",
+      "tipo_nome": "Unidade básica de saúde",
+      "urgencia": 0
+    },
+    {
+      "atende_sus": 1,
+      "bairro": "LOPES DE OLIVEIRA",
+      "centro_cirurgico": 0,
+      "centro_obstetrico": 0,
+      "cnes": "9132015",
+      "lat": -23.47078,
+      "leitos": 0,
+      "leitos_sus": 0,
+      "leitos_uti": 0,
+      "leitos_uti_sus": 0,
+      "logradouro": "RUA ALPHEU CASTRO SANTOS",
+      "lon": -47.54263,
+      "natureza": "Público",
+      "neonatal": 0,
+      "nome": "UNIDADE DE SAUDE DA FAMILIA JARDIM RODRIGO",
+      "numero": "220",
+      "recorte": "unidade",
+      "telefone": "15 32233256/32233131",
+      "tipo": "02",
+      "tipo_nome": "Unidade básica de saúde",
+      "urgencia": 0
+    },
+    {
+      "atende_sus": 1,
+      "bairro": "JARDIM CARANDA",
+      "centro_cirurgico": 0,
+      "centro_obstetrico": 0,
+      "cnes": "9188304",
+      "lat": -23.49633,
+      "leitos": 0,
+      "leitos_sus": 0,
+      "leitos_uti": 0,
+      "leitos_uti_sus": 0,
+      "logradouro": "RUA JOSE JESUS INFANTI",
+      "lon": -47.51096,
+      "natureza": "Público",
+      "neonatal": 0,
+      "nome": "CENTRO DE SAUDE E PA JARDIM CARANDA SOROCABA",
+      "numero": "260",
+      "recorte": "unidade",
+      "telefone": "",
+      "tipo": "02",
+      "tipo_nome": "Unidade básica de saúde",
+      "urgencia": 1
+    },
+    {
+      "atende_sus": 1,
+      "bairro": "VILA HARO",
+      "centro_cirurgico": 1,
+      "centro_obstetrico": 0,
+      "cnes": "0605484",
+      "lat": -23.49882,
+      "leitos": 130,
+      "leitos_sus": 33,
+      "leitos_uti": 20,
+      "leitos_uti_sus": 0,
+      "logradouro": "RUA PEDRO JOSE SENGER",
+      "lon": -47.44423,
+      "natureza": "Privado",
+      "neonatal": 0,
+      "nome": "AMHE MED SOROCABA",
+      "numero": "213",
+      "recorte": "unidade",
+      "telefone": "",
+      "tipo": "05",
+      "tipo_nome": "Hospital geral",
+      "urgencia": 1
+    },
+    {
+      "atende_sus": 0,
+      "bairro": "CENTRO",
+      "centro_cirurgico": 1,
+      "centro_obstetrico": 1,
+      "cnes": "2078732",
+      "lat": -23.50204,
+      "leitos": 130,
+      "leitos_sus": 0,
+      "leitos_uti": 30,
+      "leitos_uti_sus": 0,
+      "logradouro": "RUA RODRIGUES PACHECO",
+      "lon": -47.45398,
+      "natureza": "Privado",
+      "neonatal": 0,
+      "nome": "HOSPITAL SAMARITANO DE SOROCABA",
+      "numero": "145",
+      "recorte": "unidade",
+      "telefone": "15 32194464",
+      "tipo": "05",
+      "tipo_nome": "Hospital geral",
+      "urgencia": 1
+    },
+    {
+      "atende_sus": 1,
+      "bairro": "JARDIM VERGUEIRO",
+      "centro_cirurgico": 1,
+      "centro_obstetrico": 1,
+      "cnes": "2081695",
+      "lat": -23.31237,
+      "leitos": 434,
+      "leitos_sus": 413,
+      "leitos_uti": 71,
+      "leitos_uti_sus": 55,
+      "logradouro": "AV COMENDADOR PEREIRA INACIO",
+      "lon": -47.27408,
+      "natureza": "Público",
+      "neonatal": 1,
+      "nome": "CONJUNTO HOSPITALAR SOROCABA",
+      "numero": "564",
+      "recorte": "unidade",
+      "telefone": "(15) 33329121",
+      "tipo": "05",
+      "tipo_nome": "Hospital geral",
+      "urgencia": 1
+    },
+    {
+      "atende_sus": 0,
+      "bairro": "TRUJILO",
+      "centro_cirurgico": 1,
+      "centro_obstetrico": 1,
+      "cnes": "2082101",
+      "lat": -23.49341,
+      "leitos": 93,
+      "leitos_sus": 0,
+      "leitos_uti": 20,
+      "leitos_uti_sus": 0,
+      "logradouro": "RUA AFONSO PEDRAZZI",
+      "lon": -47.47414,
+      "natureza": "Privado",
+      "neonatal": 1,
+      "nome": "HOSPITAL MODELO SOROCABA",
+      "numero": "180",
+      "recorte": "unidade",
+      "telefone": "(15) 3212-7600",
+      "tipo": "05",
+      "tipo_nome": "Hospital geral",
+      "urgencia": 1
+    },
+    {
+      "atende_sus": 0,
+      "bairro": "VILA LUCY",
+      "centro_cirurgico": 1,
+      "centro_obstetrico": 0,
+      "cnes": "2708558",
+      "lat": -23.50772,
+      "leitos": 126,
+      "leitos_sus": 0,
+      "leitos_uti": 38,
+      "leitos_uti_sus": 0,
+      "logradouro": "GENERAL CARNEIRO",
+      "lon": -47.48433,
+      "natureza": "Privado",
+      "neonatal": 0,
+      "nome": "HOSPITAL EVANGELICO DE SOROCABA",
+      "numero": "475",
+      "recorte": "unidade",
+      "telefone": "15 21016600",
+      "tipo": "05",
+      "tipo_nome": "Hospital geral",
+      "urgencia": 1
+    },
+    {
+      "atende_sus": 1,
+      "bairro": "PRQ SANTA ISABEL",
+      "centro_cirurgico": 1,
+      "centro_obstetrico": 1,
+      "cnes": "2708566",
+      "lat": -23.53186,
+      "leitos": 330,
+      "leitos_sus": 13,
+      "leitos_uti": 55,
+      "leitos_uti_sus": 4,
+      "logradouro": "RUA ANTONIA DIAS PETRI",
+      "lon": -47.49688,
+      "natureza": "Privado",
+      "neonatal": 0,
+      "nome": "HOSPITAL UNIMED DE SOROCABA DR MIGUEL VILLA NOVA SOEIRO",
+      "numero": "135",
+      "recorte": "unidade",
+      "telefone": "(15)3229-3000",
+      "tipo": "05",
+      "tipo_nome": "Hospital geral",
+      "urgencia": 1
+    },
+    {
+      "atende_sus": 1,
+      "bairro": "ARVORE GRANDE",
+      "centro_cirurgico": 1,
+      "centro_obstetrico": 1,
+      "cnes": "2708779",
+      "lat": -23.49174,
+      "leitos": 268,
+      "leitos_sus": 265,
+      "leitos_uti": 56,
+      "leitos_uti_sus": 56,
+      "logradouro": "AV SAO PAULO",
+      "lon": -47.41299,
+      "natureza": "Sem fins lucrativos",
+      "neonatal": 0,
+      "nome": "SANTA CASA DE SOROCABA",
+      "numero": "750",
+      "recorte": "unidade",
+      "telefone": "(15) 2101-8000",
+      "tipo": "05",
+      "tipo_nome": "Hospital geral",
+      "urgencia": 1
+    },
+    {
+      "atende_sus": 1,
+      "bairro": "JD VERGUEIRO",
+      "centro_cirurgico": 1,
+      "centro_obstetrico": 1,
+      "cnes": "2765942",
+      "lat": -23.22212,
+      "leitos": 154,
+      "leitos_sus": 102,
+      "leitos_uti": 20,
+      "leitos_uti_sus": 11,
+      "logradouro": "RUA CLAUDIO MANOEL DA COSTA",
+      "lon": -47.26824,
+      "natureza": "Sem fins lucrativos",
+      "neonatal": 1,
+      "nome": "HOSPITAL SANTA LUCINDA SOROCABA",
+      "numero": "57",
+      "recorte": "unidade",
+      "telefone": "(15) 3212-9900",
+      "tipo": "05",
+      "tipo_nome": "Hospital geral",
+      "urgencia": 0
+    },
+    {
+      "atende_sus": 0,
+      "bairro": "JARDIM VERGUEIRO",
+      "centro_cirurgico": 1,
+      "centro_obstetrico": 0,
+      "cnes": "4662962",
+      "lat": -23.50907,
+      "leitos": 56,
+      "leitos_sus": 0,
+      "leitos_uti": 10,
+      "leitos_uti_sus": 0,
+      "logradouro": "SALVADOR CORREA",
+      "lon": -47.46189,
+      "natureza": "Privado",
+      "neonatal": 0,
+      "nome": "UNIMED DE SOROCABA COOPERATIVA DE TRABALHO MEDICO",
+      "numero": "258",
+      "recorte": "unidade",
+      "telefone": "(15) 3229 - 3867",
+      "tipo": "05",
+      "tipo_nome": "Hospital geral",
+      "urgencia": 0
+    },
+    {
+      "atende_sus": 1,
+      "bairro": "PARQUE RESERVA FAZEN",
+      "centro_cirurgico": 1,
+      "centro_obstetrico": 0,
+      "cnes": "9491112",
+      "lat": -23.31239,
+      "leitos": 260,
+      "leitos_sus": 240,
+      "leitos_uti": 60,
+      "leitos_uti_sus": 40,
+      "logradouro": "RODOVIA RAPOSO TAVARES",
+      "lon": -47.27541,
+      "natureza": "Público",
+      "neonatal": 1,
+      "nome": "HOSPITAL REGIONAL DE SOROCABA",
+      "numero": "S/N",
+      "recorte": "unidade",
+      "telefone": "(15) 35009900",
+      "tipo": "05",
+      "tipo_nome": "Hospital geral",
+      "urgencia": 1
+    },
+    {
+      "atende_sus": 1,
+      "bairro": "JARDIM EMILIA",
+      "centro_cirurgico": 1,
+      "centro_obstetrico": 0,
+      "cnes": "2078813",
+      "lat": -23.51508,
+      "leitos": 16,
+      "leitos_sus": 10,
+      "leitos_uti": 0,
+      "leitos_uti_sus": 0,
+      "logradouro": "RUA NABECK SHIROMA",
+      "lon": -47.45967,
+      "natureza": "Sem fins lucrativos",
+      "neonatal": 0,
+      "nome": "HOSPITAL OFTALMOLOGICO DE SOROCABA",
+      "numero": "210",
+      "recorte": "unidade",
+      "telefone": "(15) 32127010",
+      "tipo": "07",
+      "tipo_nome": "Hospital especializado",
+      "urgencia": 1
+    },
+    {
+      "atende_sus": 1,
+      "bairro": "JARDIM FACULDADE",
+      "centro_cirurgico": 1,
+      "centro_obstetrico": 0,
+      "cnes": "2079321",
+      "lat": -23.51427,
+      "leitos": 92,
+      "leitos_sus": 66,
+      "leitos_uti": 8,
+      "leitos_uti_sus": 5,
+      "logradouro": "RUA ANTONIO MIGUEL PEREIRA",
+      "lon": -47.46438,
+      "natureza": "Sem fins lucrativos",
+      "neonatal": 0,
+      "nome": "HOSPITAL GPACI SOROCABA",
+      "numero": "45",
+      "recorte": "unidade",
+      "telefone": "(15) 2101- 6555",
+      "tipo": "07",
+      "tipo_nome": "Hospital especializado",
+      "urgencia": 1
+    },
+    {
+      "atende_sus": 1,
+      "bairro": "JARDIM PAGLIATO",
+      "centro_cirurgico": 0,
+      "centro_obstetrico": 0,
+      "cnes": "2070928",
+      "lat": -23.51949,
+      "leitos": 0,
+      "leitos_sus": 0,
+      "leitos_uti": 0,
+      "leitos_uti_sus": 0,
+      "logradouro": "RUA LUIZA DE CARVALHO",
+      "lon": -47.47906,
+      "natureza": "Sem fins lucrativos",
+      "neonatal": 0,
+      "nome": "CAPS IJ SER E CONVIVER ASSOCIACAO CRIANCA SOROCABA",
+      "numero": "108",
+      "recorte": "unidade",
+      "telefone": "(15) 3229-8092",
+      "tipo": "70",
+      "tipo_nome": "Centro de atenção psicossocial (CAPS)",
+      "urgencia": 0
+    },
+    {
+      "atende_sus": 1,
+      "bairro": "JARDIM REFUGIO",
+      "centro_cirurgico": 0,
+      "centro_obstetrico": 0,
+      "cnes": "2071347",
+      "lat": -23.51662,
+      "leitos": 0,
+      "leitos_sus": 0,
+      "leitos_uti": 0,
+      "leitos_uti_sus": 0,
+      "logradouro": "RUA RICARDO MARCOS DE MADUREIRA MOREIRA",
+      "lon": -47.47942,
+      "natureza": "Público",
+      "neonatal": 0,
+      "nome": "CAPS III ALEGRIA DE VIVER SOROCABA",
+      "numero": "61",
+      "recorte": "unidade",
+      "telefone": "15 32111797",
+      "tipo": "70",
+      "tipo_nome": "Centro de atenção psicossocial (CAPS)",
+      "urgencia": 0
+    },
+    {
+      "atende_sus": 1,
+      "bairro": "JARDIM SANTA CECILIA",
+      "centro_cirurgico": 0,
+      "centro_obstetrico": 0,
+      "cnes": "3834476",
+      "lat": -23.38703,
+      "leitos": 0,
+      "leitos_sus": 0,
+      "leitos_uti": 0,
+      "leitos_uti_sus": 0,
+      "logradouro": "AVENIDA ITAVUVU",
+      "lon": -47.47391,
+      "natureza": "Público",
+      "neonatal": 0,
+      "nome": "CAPS IJ AQUARELA SOROCABA",
+      "numero": "3633",
+      "recorte": "unidade",
+      "telefone": "(15) 3226-1534",
+      "tipo": "70",
+      "tipo_nome": "Centro de atenção psicossocial (CAPS)",
+      "urgencia": 0
+    },
+    {
+      "atende_sus": 1,
+      "bairro": "JARDIM MARIA EUGENIA",
+      "centro_cirurgico": 0,
+      "centro_obstetrico": 0,
+      "cnes": "3884937",
+      "lat": -23.45998,
+      "leitos": 0,
+      "leitos_sus": 0,
+      "leitos_uti": 0,
+      "leitos_uti_sus": 0,
+      "logradouro": "RUA GIOVANNI BOLETTA",
+      "lon": -47.48781,
+      "natureza": "Público",
+      "neonatal": 0,
+      "nome": "CAPS AD III SACA SO SOROCABA",
+      "numero": "35",
+      "recorte": "unidade",
+      "telefone": "15-32314604",
+      "tipo": "70",
+      "tipo_nome": "Centro de atenção psicossocial (CAPS)",
+      "urgencia": 0
+    },
+    {
+      "atende_sus": 1,
+      "bairro": "JARDIM PIRATININGA",
+      "centro_cirurgico": 0,
+      "centro_obstetrico": 0,
+      "cnes": "7590504",
+      "lat": -23.49725,
+      "leitos": 0,
+      "leitos_sus": 0,
+      "leitos_uti": 0,
+      "leitos_uti_sus": 0,
+      "logradouro": "RUA MANOEL PADILHA DE OLIVEIRA",
+      "lon": -47.43087,
+      "natureza": "Público",
+      "neonatal": 0,
+      "nome": "CAPS IJ BEM QUERER SOROCABA",
+      "numero": "23",
+      "recorte": "unidade",
+      "telefone": "15 32374363",
+      "tipo": "70",
+      "tipo_nome": "Centro de atenção psicossocial (CAPS)",
+      "urgencia": 0
+    },
+    {
+      "atende_sus": 1,
+      "bairro": "JARDIM MARIA ANTONIA",
+      "centro_cirurgico": 0,
+      "centro_obstetrico": 0,
+      "cnes": "7709641",
+      "lat": -23.47735,
+      "leitos": 0,
+      "leitos_sus": 0,
+      "leitos_uti": 0,
+      "leitos_uti_sus": 0,
+      "logradouro": "AVENIDA ITAVUVU",
+      "lon": -47.47513,
+      "natureza": "Público",
+      "neonatal": 0,
+      "nome": "CAPS III ARTE DO ENCONTRO",
+      "numero": "1083",
+      "recorte": "unidade",
+      "telefone": "15 3327 - 1915",
+      "tipo": "70",
+      "tipo_nome": "Centro de atenção psicossocial (CAPS)",
+      "urgencia": 1
+    },
+    {
+      "atende_sus": 1,
+      "bairro": "JARDIM PAULISTANO",
+      "centro_cirurgico": 0,
+      "centro_obstetrico": 0,
+      "cnes": "7811535",
+      "lat": -23.51375,
+      "leitos": 0,
+      "leitos_sus": 0,
+      "leitos_uti": 0,
+      "leitos_uti_sus": 0,
+      "logradouro": "RUA ANTONIO SOARES",
+      "lon": -47.46405,
+      "natureza": "Público",
+      "neonatal": 0,
+      "nome": "CAPS AD III RODA VIVA SOROCABA",
+      "numero": "161",
+      "recorte": "unidade",
+      "telefone": "",
+      "tipo": "70",
+      "tipo_nome": "Centro de atenção psicossocial (CAPS)",
+      "urgencia": 0
+    },
+    {
+      "atende_sus": 1,
+      "bairro": "VILA BARCELONA",
+      "centro_cirurgico": 0,
+      "centro_obstetrico": 0,
+      "cnes": "9618554",
+      "lat": -23.51565,
+      "leitos": 0,
+      "leitos_sus": 0,
+      "leitos_uti": 0,
+      "leitos_uti_sus": 0,
+      "logradouro": "RUA GUATEMALA",
+      "lon": -47.43969,
+      "natureza": "Público",
+      "neonatal": 0,
+      "nome": "CAPS III VIVER EM LIBERDADE",
+      "numero": "185",
+      "recorte": "unidade",
+      "telefone": "15 3326-1564",
+      "tipo": "70",
+      "tipo_nome": "Centro de atenção psicossocial (CAPS)",
+      "urgencia": 1
+    },
+    {
+      "atende_sus": 1,
+      "bairro": "VILA OLIMPIA",
+      "centro_cirurgico": 0,
+      "centro_obstetrico": 1,
+      "cnes": "2062054",
+      "lat": -23.48348,
+      "leitos": 1,
+      "leitos_sus": 1,
+      "leitos_uti": 0,
+      "leitos_uti_sus": 0,
+      "logradouro": "AV ITAVUVU",
+      "lon": -47.4723,
+      "natureza": "Público",
+      "neonatal": 0,
+      "nome": "UPA UNIDADE DE PRE ATENDIMENTO ZONA NORTE SOROCABA",
+      "numero": "19",
+      "recorte": "unidade",
+      "telefone": "(15) 3234-3199",
+      "tipo": "73",
+      "tipo_nome": "Unidade de pronto atendimento (UPA)",
+      "urgencia": 1
+    },
+    {
+      "atende_sus": 1,
+      "bairro": "V LUCY",
+      "centro_cirurgico": 0,
+      "centro_obstetrico": 0,
+      "cnes": "5883229",
+      "lat": -23.50435,
+      "leitos": 2,
+      "leitos_sus": 2,
+      "leitos_uti": 0,
+      "leitos_uti_sus": 0,
+      "logradouro": "AVENIDA GENERAL CARNEIRO",
+      "lon": -47.47718,
+      "natureza": "Público",
+      "neonatal": 0,
+      "nome": "UPA UNIDADE DE PRE ATENDIMENTO ZONA OESTE SOROCABA",
+      "numero": "1670",
+      "recorte": "unidade",
+      "telefone": "(15) 3202-2495",
+      "tipo": "73",
+      "tipo_nome": "Unidade de pronto atendimento (UPA)",
+      "urgencia": 1
+    },
+    {
+      "atende_sus": 1,
+      "bairro": "JD PORTO BELLO",
+      "centro_cirurgico": 0,
+      "centro_obstetrico": 0,
+      "cnes": "7792522",
+      "lat": -23.42759,
+      "leitos": 0,
+      "leitos_sus": 0,
+      "leitos_uti": 0,
+      "leitos_uti_sus": 0,
+      "logradouro": "RUA MIGUEL JOSE GIMENES",
+      "lon": -47.41509,
+      "natureza": "Público",
+      "neonatal": 0,
+      "nome": "UPA EDEN SOROCABA",
+      "numero": "75",
+      "recorte": "unidade",
+      "telefone": "15 3233-2150 E 2166",
+      "tipo": "73",
+      "tipo_nome": "Unidade de pronto atendimento (UPA)",
+      "urgencia": 1
+    },
+    {
+      "atende_sus": 1,
+      "bairro": "VILA HORTENCIA",
+      "centro_cirurgico": 0,
+      "centro_obstetrico": 0,
+      "cnes": "9794506",
+      "lat": -23.50911,
+      "leitos": 0,
+      "leitos_sus": 0,
+      "leitos_uti": 0,
+      "leitos_uti_sus": 0,
+      "logradouro": "RUA CORONEL NOGUEIRA PADILHA",
+      "lon": -47.43803,
+      "natureza": "Sem fins lucrativos",
+      "neonatal": 0,
+      "nome": "UPA UNIDADE DE PRE ATEND ZONA LESTE SOROCABA SANTA CASA",
+      "numero": "2585",
+      "recorte": "unidade",
+      "telefone": "15 2101-8000",
+      "tipo": "73",
+      "tipo_nome": "Unidade de pronto atendimento (UPA)",
+      "urgencia": 1
+    },
+    {
+      "cnes": "0605484",
+      "competencia": "202508",
+      "internacoes": 94,
+      "recorte": "internacao_mes"
+    },
+    {
+      "cnes": "0605484",
+      "competencia": "202509",
+      "internacoes": 110,
+      "recorte": "internacao_mes"
+    },
+    {
+      "cnes": "0605484",
+      "competencia": "202510",
+      "internacoes": 145,
+      "recorte": "internacao_mes"
+    },
+    {
+      "cnes": "0605484",
+      "competencia": "202511",
+      "internacoes": 63,
+      "recorte": "internacao_mes"
+    },
+    {
+      "cnes": "0605484",
+      "competencia": "202512",
+      "internacoes": 60,
+      "recorte": "internacao_mes"
+    },
+    {
+      "cnes": "0605484",
+      "competencia": "202601",
+      "internacoes": 71,
+      "recorte": "internacao_mes"
+    },
+    {
+      "cnes": "0605484",
+      "competencia": "202602",
+      "internacoes": 76,
+      "recorte": "internacao_mes"
+    },
+    {
+      "cnes": "0605484",
+      "competencia": "202603",
+      "internacoes": 52,
+      "recorte": "internacao_mes"
+    },
+    {
+      "cnes": "0605484",
+      "competencia": "202604",
+      "internacoes": 80,
+      "recorte": "internacao_mes"
+    },
+    {
+      "cnes": "0605484",
+      "competencia": "202605",
+      "internacoes": 151,
+      "recorte": "internacao_mes"
+    },
+    {
+      "cnes": "0605484",
+      "competencia": "202606",
+      "internacoes": 53,
+      "recorte": "internacao_mes"
+    },
+    {
+      "cnes": "0605484",
+      "competencia": "202607",
+      "internacoes": 17,
+      "recorte": "internacao_mes"
+    },
+    {
+      "cnes": "2078813",
+      "competencia": "202508",
+      "internacoes": 158,
+      "recorte": "internacao_mes"
+    },
+    {
+      "cnes": "2078813",
+      "competencia": "202509",
+      "internacoes": 153,
+      "recorte": "internacao_mes"
+    },
+    {
+      "cnes": "2078813",
+      "competencia": "202510",
+      "internacoes": 183,
+      "recorte": "internacao_mes"
+    },
+    {
+      "cnes": "2078813",
+      "competencia": "202511",
+      "internacoes": 176,
+      "recorte": "internacao_mes"
+    },
+    {
+      "cnes": "2078813",
+      "competencia": "202512",
+      "internacoes": 139,
+      "recorte": "internacao_mes"
+    },
+    {
+      "cnes": "2078813",
+      "competencia": "202601",
+      "internacoes": 161,
+      "recorte": "internacao_mes"
+    },
+    {
+      "cnes": "2078813",
+      "competencia": "202602",
+      "internacoes": 161,
+      "recorte": "internacao_mes"
+    },
+    {
+      "cnes": "2078813",
+      "competencia": "202603",
+      "internacoes": 140,
+      "recorte": "internacao_mes"
+    },
+    {
+      "cnes": "2078813",
+      "competencia": "202604",
+      "internacoes": 153,
+      "recorte": "internacao_mes"
+    },
+    {
+      "cnes": "2078813",
+      "competencia": "202605",
+      "internacoes": 181,
+      "recorte": "internacao_mes"
+    },
+    {
+      "cnes": "2078813",
+      "competencia": "202606",
+      "internacoes": 182,
+      "recorte": "internacao_mes"
+    },
+    {
+      "cnes": "2078813",
+      "competencia": "202607",
+      "internacoes": 186,
+      "recorte": "internacao_mes"
+    },
+    {
+      "cnes": "2079321",
+      "competencia": "202508",
+      "internacoes": 249,
+      "recorte": "internacao_mes"
+    },
+    {
+      "cnes": "2079321",
+      "competencia": "202509",
+      "internacoes": 232,
+      "recorte": "internacao_mes"
+    },
+    {
+      "cnes": "2079321",
+      "competencia": "202510",
+      "internacoes": 279,
+      "recorte": "internacao_mes"
+    },
+    {
+      "cnes": "2079321",
+      "competencia": "202511",
+      "internacoes": 276,
+      "recorte": "internacao_mes"
+    },
+    {
+      "cnes": "2079321",
+      "competencia": "202512",
+      "internacoes": 240,
+      "recorte": "internacao_mes"
+    },
+    {
+      "cnes": "2079321",
+      "competencia": "202601",
+      "internacoes": 217,
+      "recorte": "internacao_mes"
+    },
+    {
+      "cnes": "2079321",
+      "competencia": "202602",
+      "internacoes": 245,
+      "recorte": "internacao_mes"
+    },
+    {
+      "cnes": "2079321",
+      "competencia": "202603",
+      "internacoes": 282,
+      "recorte": "internacao_mes"
+    },
+    {
+      "cnes": "2079321",
+      "competencia": "202604",
+      "internacoes": 272,
+      "recorte": "internacao_mes"
+    },
+    {
+      "cnes": "2079321",
+      "competencia": "202605",
+      "internacoes": 299,
+      "recorte": "internacao_mes"
+    },
+    {
+      "cnes": "2079321",
+      "competencia": "202606",
+      "internacoes": 268,
+      "recorte": "internacao_mes"
+    },
+    {
+      "cnes": "2079321",
+      "competencia": "202607",
+      "internacoes": 249,
+      "recorte": "internacao_mes"
+    },
+    {
+      "cnes": "2081695",
+      "competencia": "202508",
+      "internacoes": 1738,
+      "recorte": "internacao_mes"
+    },
+    {
+      "cnes": "2081695",
+      "competencia": "202509",
+      "internacoes": 1715,
+      "recorte": "internacao_mes"
+    },
+    {
+      "cnes": "2081695",
+      "competencia": "202510",
+      "internacoes": 1747,
+      "recorte": "internacao_mes"
+    },
+    {
+      "cnes": "2081695",
+      "competencia": "202511",
+      "internacoes": 1626,
+      "recorte": "internacao_mes"
+    },
+    {
+      "cnes": "2081695",
+      "competencia": "202512",
+      "internacoes": 1628,
+      "recorte": "internacao_mes"
+    },
+    {
+      "cnes": "2081695",
+      "competencia": "202601",
+      "internacoes": 1577,
+      "recorte": "internacao_mes"
+    },
+    {
+      "cnes": "2081695",
+      "competencia": "202602",
+      "internacoes": 1546,
+      "recorte": "internacao_mes"
+    },
+    {
+      "cnes": "2081695",
+      "competencia": "202603",
+      "internacoes": 1768,
+      "recorte": "internacao_mes"
+    },
+    {
+      "cnes": "2081695",
+      "competencia": "202604",
+      "internacoes": 1621,
+      "recorte": "internacao_mes"
+    },
+    {
+      "cnes": "2081695",
+      "competencia": "202605",
+      "internacoes": 1834,
+      "recorte": "internacao_mes"
+    },
+    {
+      "cnes": "2081695",
+      "competencia": "202606",
+      "internacoes": 1655,
+      "recorte": "internacao_mes"
+    },
+    {
+      "cnes": "2081695",
+      "competencia": "202607",
+      "internacoes": 1700,
+      "recorte": "internacao_mes"
+    },
+    {
+      "cnes": "2708566",
+      "competencia": "202508",
+      "internacoes": 30,
+      "recorte": "internacao_mes"
+    },
+    {
+      "cnes": "2708566",
+      "competencia": "202509",
+      "internacoes": 26,
+      "recorte": "internacao_mes"
+    },
+    {
+      "cnes": "2708566",
+      "competencia": "202510",
+      "internacoes": 43,
+      "recorte": "internacao_mes"
+    },
+    {
+      "cnes": "2708566",
+      "competencia": "202511",
+      "internacoes": 35,
+      "recorte": "internacao_mes"
+    },
+    {
+      "cnes": "2708566",
+      "competencia": "202512",
+      "internacoes": 44,
+      "recorte": "internacao_mes"
+    },
+    {
+      "cnes": "2708566",
+      "competencia": "202601",
+      "internacoes": 30,
+      "recorte": "internacao_mes"
+    },
+    {
+      "cnes": "2708566",
+      "competencia": "202602",
+      "internacoes": 25,
+      "recorte": "internacao_mes"
+    },
+    {
+      "cnes": "2708566",
+      "competencia": "202603",
+      "internacoes": 35,
+      "recorte": "internacao_mes"
+    },
+    {
+      "cnes": "2708566",
+      "competencia": "202604",
+      "internacoes": 29,
+      "recorte": "internacao_mes"
+    },
+    {
+      "cnes": "2708566",
+      "competencia": "202605",
+      "internacoes": 32,
+      "recorte": "internacao_mes"
+    },
+    {
+      "cnes": "2708566",
+      "competencia": "202606",
+      "internacoes": 27,
+      "recorte": "internacao_mes"
+    },
+    {
+      "cnes": "2708566",
+      "competencia": "202607",
+      "internacoes": 47,
+      "recorte": "internacao_mes"
+    },
+    {
+      "cnes": "2708779",
+      "competencia": "202508",
+      "internacoes": 1302,
+      "recorte": "internacao_mes"
+    },
+    {
+      "cnes": "2708779",
+      "competencia": "202509",
+      "internacoes": 1363,
+      "recorte": "internacao_mes"
+    },
+    {
+      "cnes": "2708779",
+      "competencia": "202510",
+      "internacoes": 1430,
+      "recorte": "internacao_mes"
+    },
+    {
+      "cnes": "2708779",
+      "competencia": "202511",
+      "internacoes": 1377,
+      "recorte": "internacao_mes"
+    },
+    {
+      "cnes": "2708779",
+      "competencia": "202512",
+      "internacoes": 1512,
+      "recorte": "internacao_mes"
+    },
+    {
+      "cnes": "2708779",
+      "competencia": "202601",
+      "internacoes": 1349,
+      "recorte": "internacao_mes"
+    },
+    {
+      "cnes": "2708779",
+      "competencia": "202602",
+      "internacoes": 1257,
+      "recorte": "internacao_mes"
+    },
+    {
+      "cnes": "2708779",
+      "competencia": "202603",
+      "internacoes": 1378,
+      "recorte": "internacao_mes"
+    },
+    {
+      "cnes": "2708779",
+      "competencia": "202604",
+      "internacoes": 1446,
+      "recorte": "internacao_mes"
+    },
+    {
+      "cnes": "2708779",
+      "competencia": "202605",
+      "internacoes": 1405,
+      "recorte": "internacao_mes"
+    },
+    {
+      "cnes": "2708779",
+      "competencia": "202606",
+      "internacoes": 1364,
+      "recorte": "internacao_mes"
+    },
+    {
+      "cnes": "2708779",
+      "competencia": "202607",
+      "internacoes": 1416,
+      "recorte": "internacao_mes"
+    },
+    {
+      "cnes": "2765942",
+      "competencia": "202508",
+      "internacoes": 722,
+      "recorte": "internacao_mes"
+    },
+    {
+      "cnes": "2765942",
+      "competencia": "202509",
+      "internacoes": 736,
+      "recorte": "internacao_mes"
+    },
+    {
+      "cnes": "2765942",
+      "competencia": "202510",
+      "internacoes": 486,
+      "recorte": "internacao_mes"
+    },
+    {
+      "cnes": "2765942",
+      "competencia": "202511",
+      "internacoes": 551,
+      "recorte": "internacao_mes"
+    },
+    {
+      "cnes": "2765942",
+      "competencia": "202512",
+      "internacoes": 686,
+      "recorte": "internacao_mes"
+    },
+    {
+      "cnes": "2765942",
+      "competencia": "202601",
+      "internacoes": 593,
+      "recorte": "internacao_mes"
+    },
+    {
+      "cnes": "2765942",
+      "competencia": "202602",
+      "internacoes": 520,
+      "recorte": "internacao_mes"
+    },
+    {
+      "cnes": "2765942",
+      "competencia": "202603",
+      "internacoes": 446,
+      "recorte": "internacao_mes"
+    },
+    {
+      "cnes": "2765942",
+      "competencia": "202604",
+      "internacoes": 507,
+      "recorte": "internacao_mes"
+    },
+    {
+      "cnes": "2765942",
+      "competencia": "202605",
+      "internacoes": 574,
+      "recorte": "internacao_mes"
+    },
+    {
+      "cnes": "2765942",
+      "competencia": "202606",
+      "internacoes": 720,
+      "recorte": "internacao_mes"
+    },
+    {
+      "cnes": "2765942",
+      "competencia": "202607",
+      "internacoes": 843,
+      "recorte": "internacao_mes"
+    },
+    {
+      "cnes": "9491112",
+      "competencia": "202508",
+      "internacoes": 991,
+      "recorte": "internacao_mes"
+    },
+    {
+      "cnes": "9491112",
+      "competencia": "202509",
+      "internacoes": 1082,
+      "recorte": "internacao_mes"
+    },
+    {
+      "cnes": "9491112",
+      "competencia": "202510",
+      "internacoes": 925,
+      "recorte": "internacao_mes"
+    },
+    {
+      "cnes": "9491112",
+      "competencia": "202511",
+      "internacoes": 878,
+      "recorte": "internacao_mes"
+    },
+    {
+      "cnes": "9491112",
+      "competencia": "202512",
+      "internacoes": 821,
+      "recorte": "internacao_mes"
+    },
+    {
+      "cnes": "9491112",
+      "competencia": "202601",
+      "internacoes": 988,
+      "recorte": "internacao_mes"
+    },
+    {
+      "cnes": "9491112",
+      "competencia": "202602",
+      "internacoes": 872,
+      "recorte": "internacao_mes"
+    },
+    {
+      "cnes": "9491112",
+      "competencia": "202603",
+      "internacoes": 968,
+      "recorte": "internacao_mes"
+    },
+    {
+      "cnes": "9491112",
+      "competencia": "202604",
+      "internacoes": 1018,
+      "recorte": "internacao_mes"
+    },
+    {
+      "cnes": "9491112",
+      "competencia": "202605",
+      "internacoes": 938,
+      "recorte": "internacao_mes"
+    },
+    {
+      "cnes": "9491112",
+      "competencia": "202606",
+      "internacoes": 980,
+      "recorte": "internacao_mes"
+    },
+    {
+      "cnes": "9491112",
+      "competencia": "202607",
+      "internacoes": 1066,
+      "recorte": "internacao_mes"
+    },
+    {
+      "cnes": "0605484",
+      "especialidade": "Cirurgia",
+      "internacoes": 326,
+      "recorte": "internacao_especialidade"
+    },
+    {
+      "cnes": "0605484",
+      "especialidade": "Clínica médica",
+      "internacoes": 646,
+      "recorte": "internacao_especialidade"
+    },
+    {
+      "cnes": "2078813",
+      "especialidade": "Cirurgia",
+      "internacoes": 1884,
+      "recorte": "internacao_especialidade"
+    },
+    {
+      "cnes": "2078813",
+      "especialidade": "Clínica médica",
+      "internacoes": 89,
+      "recorte": "internacao_especialidade"
+    },
+    {
+      "cnes": "2079321",
+      "especialidade": "Cirurgia",
+      "internacoes": 958,
+      "recorte": "internacao_especialidade"
+    },
+    {
+      "cnes": "2079321",
+      "especialidade": "Clínica médica",
+      "internacoes": 533,
+      "recorte": "internacao_especialidade"
+    },
+    {
+      "cnes": "2079321",
+      "especialidade": "Pediatria",
+      "internacoes": 1617,
+      "recorte": "internacao_especialidade"
+    },
+    {
+      "cnes": "2081695",
+      "especialidade": "Cirurgia",
+      "internacoes": 8100,
+      "recorte": "internacao_especialidade"
+    },
+    {
+      "cnes": "2081695",
+      "especialidade": "Clínica médica",
+      "internacoes": 5824,
+      "recorte": "internacao_especialidade"
+    },
+    {
+      "cnes": "2081695",
+      "especialidade": "Hospital-dia cirúrgico",
+      "internacoes": 1274,
+      "recorte": "internacao_especialidade"
+    },
+    {
+      "cnes": "2081695",
+      "especialidade": "Obstetrícia",
+      "internacoes": 2459,
+      "recorte": "internacao_especialidade"
+    },
+    {
+      "cnes": "2081695",
+      "especialidade": "Pediatria",
+      "internacoes": 2115,
+      "recorte": "internacao_especialidade"
+    },
+    {
+      "cnes": "2081695",
+      "especialidade": "Psiquiatria",
+      "internacoes": 383,
+      "recorte": "internacao_especialidade"
+    },
+    {
+      "cnes": "2708566",
+      "especialidade": "Cirurgia",
+      "internacoes": 369,
+      "recorte": "internacao_especialidade"
+    },
+    {
+      "cnes": "2708566",
+      "especialidade": "Clínica médica",
+      "internacoes": 34,
+      "recorte": "internacao_especialidade"
+    },
+    {
+      "cnes": "2708779",
+      "especialidade": "Cirurgia",
+      "internacoes": 4548,
+      "recorte": "internacao_especialidade"
+    },
+    {
+      "cnes": "2708779",
+      "especialidade": "Clínica médica",
+      "internacoes": 9261,
+      "recorte": "internacao_especialidade"
+    },
+    {
+      "cnes": "2708779",
+      "especialidade": "Hospital-dia cirúrgico",
+      "internacoes": 251,
+      "recorte": "internacao_especialidade"
+    },
+    {
+      "cnes": "2708779",
+      "especialidade": "Obstetrícia",
+      "internacoes": 2244,
+      "recorte": "internacao_especialidade"
+    },
+    {
+      "cnes": "2708779",
+      "especialidade": "Pediatria",
+      "internacoes": 295,
+      "recorte": "internacao_especialidade"
+    },
+    {
+      "cnes": "2765942",
+      "especialidade": "Cirurgia",
+      "internacoes": 3040,
+      "recorte": "internacao_especialidade"
+    },
+    {
+      "cnes": "2765942",
+      "especialidade": "Clínica médica",
+      "internacoes": 1197,
+      "recorte": "internacao_especialidade"
+    },
+    {
+      "cnes": "2765942",
+      "especialidade": "Obstetrícia",
+      "internacoes": 2440,
+      "recorte": "internacao_especialidade"
+    },
+    {
+      "cnes": "2765942",
+      "especialidade": "Pediatria",
+      "internacoes": 707,
+      "recorte": "internacao_especialidade"
+    },
+    {
+      "cnes": "9491112",
+      "especialidade": "Cirurgia",
+      "internacoes": 6864,
+      "recorte": "internacao_especialidade"
+    },
+    {
+      "cnes": "9491112",
+      "especialidade": "Clínica médica",
+      "internacoes": 3773,
+      "recorte": "internacao_especialidade"
+    },
+    {
+      "cnes": "9491112",
+      "especialidade": "Hospital-dia cirúrgico",
+      "internacoes": 890,
+      "recorte": "internacao_especialidade"
+    },
+    {
+      "capitulo": "Doenças respiratórias",
+      "cnes": "0605484",
+      "internacoes": 289,
+      "recorte": "internacao_capitulo"
+    },
+    {
+      "capitulo": "Doenças do aparelho urinário e genital",
+      "cnes": "0605484",
+      "internacoes": 222,
+      "recorte": "internacao_capitulo"
+    },
+    {
+      "capitulo": "Doenças do aparelho digestivo",
+      "cnes": "0605484",
+      "internacoes": 186,
+      "recorte": "internacao_capitulo"
+    },
+    {
+      "capitulo": "Doenças infecciosas e parasitárias",
+      "cnes": "0605484",
+      "internacoes": 60,
+      "recorte": "internacao_capitulo"
+    },
+    {
+      "capitulo": "Doenças do coração e da circulação",
+      "cnes": "0605484",
+      "internacoes": 54,
+      "recorte": "internacao_capitulo"
+    },
+    {
+      "capitulo": "Doenças endócrinas e metabólicas",
+      "cnes": "0605484",
+      "internacoes": 40,
+      "recorte": "internacao_capitulo"
+    },
+    {
+      "capitulo": "Doenças do olho",
+      "cnes": "2078813",
+      "internacoes": 1266,
+      "recorte": "internacao_capitulo"
+    },
+    {
+      "capitulo": "Doenças respiratórias",
+      "cnes": "2078813",
+      "internacoes": 476,
+      "recorte": "internacao_capitulo"
+    },
+    {
+      "capitulo": "Doenças do ouvido",
+      "cnes": "2078813",
+      "internacoes": 61,
+      "recorte": "internacao_capitulo"
+    },
+    {
+      "capitulo": "Contatos com serviços de saúde",
+      "cnes": "2078813",
+      "internacoes": 47,
+      "recorte": "internacao_capitulo"
+    },
+    {
+      "capitulo": "Malformações congênitas",
+      "cnes": "2078813",
+      "internacoes": 10,
+      "recorte": "internacao_capitulo"
+    },
+    {
+      "capitulo": "Doenças respiratórias",
+      "cnes": "2079321",
+      "internacoes": 757,
+      "recorte": "internacao_capitulo"
+    },
+    {
+      "capitulo": "Doenças do aparelho digestivo",
+      "cnes": "2079321",
+      "internacoes": 470,
+      "recorte": "internacao_capitulo"
+    },
+    {
+      "capitulo": "Doenças do aparelho urinário e genital",
+      "cnes": "2079321",
+      "internacoes": 430,
+      "recorte": "internacao_capitulo"
+    },
+    {
+      "capitulo": "Tumores (neoplasias)",
+      "cnes": "2079321",
+      "internacoes": 362,
+      "recorte": "internacao_capitulo"
+    },
+    {
+      "capitulo": "Doenças infecciosas e parasitárias",
+      "cnes": "2079321",
+      "internacoes": 202,
+      "recorte": "internacao_capitulo"
+    },
+    {
+      "capitulo": "Malformações congênitas",
+      "cnes": "2079321",
+      "internacoes": 99,
+      "recorte": "internacao_capitulo"
+    },
+    {
+      "capitulo": "Lesões, envenenamentos e outras causas externas",
+      "cnes": "2081695",
+      "internacoes": 4284,
+      "recorte": "internacao_capitulo"
+    },
+    {
+      "capitulo": "Tumores (neoplasias)",
+      "cnes": "2081695",
+      "internacoes": 3031,
+      "recorte": "internacao_capitulo"
+    },
+    {
+      "capitulo": "Gravidez, parto e puerpério",
+      "cnes": "2081695",
+      "internacoes": 2445,
+      "recorte": "internacao_capitulo"
+    },
+    {
+      "capitulo": "Doenças do aparelho urinário e genital",
+      "cnes": "2081695",
+      "internacoes": 2188,
+      "recorte": "internacao_capitulo"
+    },
+    {
+      "capitulo": "Doenças do aparelho digestivo",
+      "cnes": "2081695",
+      "internacoes": 1780,
+      "recorte": "internacao_capitulo"
+    },
+    {
+      "capitulo": "Doenças respiratórias",
+      "cnes": "2081695",
+      "internacoes": 1026,
+      "recorte": "internacao_capitulo"
+    },
+    {
+      "capitulo": "Doenças do coração e da circulação",
+      "cnes": "2708566",
+      "internacoes": 276,
+      "recorte": "internacao_capitulo"
+    },
+    {
+      "capitulo": "Doenças do aparelho digestivo",
+      "cnes": "2708566",
+      "internacoes": 5,
+      "recorte": "internacao_capitulo"
+    },
+    {
+      "capitulo": "Doenças do sistema nervoso",
+      "cnes": "2708566",
+      "internacoes": 5,
+      "recorte": "internacao_capitulo"
+    },
+    {
+      "capitulo": "Gravidez, parto e puerpério",
+      "cnes": "2708779",
+      "internacoes": 2548,
+      "recorte": "internacao_capitulo"
+    },
+    {
+      "capitulo": "Doenças do aparelho digestivo",
+      "cnes": "2708779",
+      "internacoes": 2252,
+      "recorte": "internacao_capitulo"
+    },
+    {
+      "capitulo": "Doenças do coração e da circulação",
+      "cnes": "2708779",
+      "internacoes": 2209,
+      "recorte": "internacao_capitulo"
+    },
+    {
+      "capitulo": "Tumores (neoplasias)",
+      "cnes": "2708779",
+      "internacoes": 2044,
+      "recorte": "internacao_capitulo"
+    },
+    {
+      "capitulo": "Doenças do aparelho urinário e genital",
+      "cnes": "2708779",
+      "internacoes": 1790,
+      "recorte": "internacao_capitulo"
+    },
+    {
+      "capitulo": "Doenças respiratórias",
+      "cnes": "2708779",
+      "internacoes": 1488,
+      "recorte": "internacao_capitulo"
+    },
+    {
+      "capitulo": "Gravidez, parto e puerpério",
+      "cnes": "2765942",
+      "internacoes": 2804,
+      "recorte": "internacao_capitulo"
+    },
+    {
+      "capitulo": "Doenças do coração e da circulação",
+      "cnes": "2765942",
+      "internacoes": 1833,
+      "recorte": "internacao_capitulo"
+    },
+    {
+      "capitulo": "Doenças do aparelho urinário e genital",
+      "cnes": "2765942",
+      "internacoes": 630,
+      "recorte": "internacao_capitulo"
+    },
+    {
+      "capitulo": "Doenças respiratórias",
+      "cnes": "2765942",
+      "internacoes": 440,
+      "recorte": "internacao_capitulo"
+    },
+    {
+      "capitulo": "Doenças do aparelho digestivo",
+      "cnes": "2765942",
+      "internacoes": 338,
+      "recorte": "internacao_capitulo"
+    },
+    {
+      "capitulo": "Afecções do período perinatal",
+      "cnes": "2765942",
+      "internacoes": 316,
+      "recorte": "internacao_capitulo"
+    },
+    {
+      "capitulo": "Doenças do coração e da circulação",
+      "cnes": "9491112",
+      "internacoes": 3626,
+      "recorte": "internacao_capitulo"
+    },
+    {
+      "capitulo": "Doenças do aparelho digestivo",
+      "cnes": "9491112",
+      "internacoes": 2643,
+      "recorte": "internacao_capitulo"
+    },
+    {
+      "capitulo": "Lesões, envenenamentos e outras causas externas",
+      "cnes": "9491112",
+      "internacoes": 1874,
+      "recorte": "internacao_capitulo"
+    },
+    {
+      "capitulo": "Doenças do aparelho urinário e genital",
+      "cnes": "9491112",
+      "internacoes": 502,
+      "recorte": "internacao_capitulo"
+    },
+    {
+      "capitulo": "Doenças respiratórias",
+      "cnes": "9491112",
+      "internacoes": 484,
+      "recorte": "internacao_capitulo"
+    },
+    {
+      "capitulo": "Tumores (neoplasias)",
+      "cnes": "9491112",
+      "internacoes": 306,
+      "recorte": "internacao_capitulo"
+    },
+    {
+      "cnes": "0605484",
+      "dias": 5410,
+      "dias_uti": 0,
+      "internacoes": 972,
+      "leitos_sus": 33,
+      "meses": 12,
+      "pct_de_fora": 2.4,
+      "recorte": "internacao_total",
+      "uso_estimado_pct": 44.9
+    },
+    {
+      "cnes": "2078813",
+      "dias": 502,
+      "dias_uti": 0,
+      "internacoes": 1973,
+      "leitos_sus": 10,
+      "meses": 12,
+      "pct_de_fora": 79.9,
+      "recorte": "internacao_total",
+      "uso_estimado_pct": null
+    },
+    {
+      "cnes": "2079321",
+      "dias": 15539,
+      "dias_uti": 1243,
+      "internacoes": 3108,
+      "leitos_sus": 66,
+      "meses": 12,
+      "pct_de_fora": 16.5,
+      "recorte": "internacao_total",
+      "uso_estimado_pct": 64.5
+    },
+    {
+      "cnes": "2081695",
+      "dias": 127965,
+      "dias_uti": 18318,
+      "internacoes": 20155,
+      "leitos_sus": 413,
+      "meses": 12,
+      "pct_de_fora": 69.6,
+      "recorte": "internacao_total",
+      "uso_estimado_pct": 84.9
+    },
+    {
+      "cnes": "2708566",
+      "dias": 843,
+      "dias_uti": 67,
+      "internacoes": 403,
+      "leitos_sus": 13,
+      "meses": 12,
+      "pct_de_fora": 87.6,
+      "recorte": "internacao_total",
+      "uso_estimado_pct": null
+    },
+    {
+      "cnes": "2708779",
+      "dias": 82356,
+      "dias_uti": 19704,
+      "internacoes": 16599,
+      "leitos_sus": 265,
+      "meses": 12,
+      "pct_de_fora": 7.7,
+      "recorte": "internacao_total",
+      "uso_estimado_pct": 85.1
+    },
+    {
+      "cnes": "2765942",
+      "dias": 22701,
+      "dias_uti": 3607,
+      "internacoes": 7384,
+      "leitos_sus": 102,
+      "meses": 12,
+      "pct_de_fora": 14.3,
+      "recorte": "internacao_total",
+      "uso_estimado_pct": 61.0
+    },
+    {
+      "cnes": "9491112",
+      "dias": 54422,
+      "dias_uti": 10570,
+      "internacoes": 11527,
+      "leitos_sus": 240,
+      "meses": 12,
+      "pct_de_fora": 85.9,
+      "recorte": "internacao_total",
+      "uso_estimado_pct": 62.1
+    }
+  ],
+  "fonte": {
+    "acesso_em": "2026-10-11",
+    "licenca": "Dados abertos do Ministério da Saúde (DATASUS); citar a fonte",
+    "nome": "CNES e SIH/SUS — DATASUS, Ministério da Saúde",
+    "url": "https://datasus.saude.gov.br/"
+  },
+  "painel": "saude_hospitais",
+  "qualidade": {
+    "flag": "estimativa",
+    "n_registros": 414,
+    "notas": [
+      "Cadastro de estabelecimentos e leitos do CNES, competência 08/2026. O cadastro é declarado pelos próprios estabelecimentos e pode estar defasado.",
+      "Internações do SIH/SUS de 08/2025 a 07/2026: só as pagas pelo SUS, sem as de convênios e particulares. Contam hospitais localizados em Sorocaba, inclusive pacientes de outras cidades.",
+      "Não existe dado aberto de ocupação ou fila de hospital. O 'uso estimado dos leitos SUS' divide os dias de internação SUS dos últimos 12 meses pelos leitos SUS existentes vezes 365. É uma ordem de grandeza, não a lotação do dia.",
+      "O uso estimado só aparece para hospitais com 20 leitos SUS ou mais.",
+      "Contagem de internações e de dias não mede qualidade do hospital: depende do porte, da especialidade e da gravidade dos casos.",
+      "SHA-256 dos recortes de coleta: 05993e7f0d6aa5a297cf86cffe18661ad04b72d49dffbe7dc3c1b352584234dc"
+    ]
+  },
+  "referencia": {
+    "fim": "2026-07-31",
+    "granularidade": "mensal",
+    "inicio": "2025-08-01"
+  },
+  "schema_version": "1.0"
+}

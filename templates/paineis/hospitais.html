@@ -1,0 +1,81 @@
+{% extends "paineis/painel.html" %}
+{% from "_macros.html" import icone %}
+{% block resumo %}
+<section aria-labelledby="resumo" class="resumo-real">
+  <h2 id="resumo" class="rotulo-resumo">A rede hospitalar em números ({{ ref_hosp }})</h2>
+  <ul class="hosp-numeros">
+    <li><span class="cartao-numero">{{ resumo.n_hospitais }}</span><span class="pequeno">hospitais com leitos no CNES, {{ resumo.n_hospitais_sus }} deles atendendo pelo SUS</span></li>
+    <li><span class="cartao-numero">{{ resumo.leitos | num }}</span><span class="pequeno">leitos existentes, {{ resumo.leitos_sus | num }} à disposição do SUS</span></li>
+    <li><span class="cartao-numero">{{ resumo.uti | num }}</span><span class="pequeno">leitos de UTI, {{ resumo.uti_sus | num }} no SUS</span></li>
+    <li><span class="cartao-numero">{{ resumo.internacoes | num }}</span><span class="pequeno">internações SUS em 12 meses{% if resumo.pct_de_fora is not none %}; cerca de {{ resumo.pct_de_fora }}% de moradores de outras cidades{% endif %}</span></li>
+  </ul>
+  {% if maiores_uso %}<p class="pequeno suave">Pelo uso estimado dos leitos SUS, os hospitais mais cheios nos últimos 12 meses foram {{ maiores_uso[0].nome }} (cerca de {{ maiores_uso[0].uso | brl1 }}%){% if maiores_uso | length > 1 %} e {{ maiores_uso[1].nome }} ({{ maiores_uso[1].uso | brl1 }}%){% endif %}. É uma estimativa, não a lotação do dia.</p>{% endif %}
+</section>
+{% endblock %}
+{% block explorar %}
+<section aria-labelledby="hospitais" class="bloco-painel">
+  <h2 id="hospitais" class="h2-medio sem-topo">Hospitais</h2>
+  <p class="suave">Em ordem de internações SUS nos últimos 12 meses. O que cada hospital trata vem do diagnóstico principal das internações; os leitos, do cadastro do CNES.</p>
+  <ul class="hosp-lista">
+    {% for h in hospitais %}
+    <li class="quadro-card hosp-card">
+      <h3>{{ h.nome }}</h3>
+      <p class="pequeno suave">{{ h.natureza }} · {{ "atende pelo SUS" if h.atende_sus else "não atende pelo SUS" }}<br>{{ h.endereco }}{% if h.telefone %} · {{ h.telefone }}{% endif %}</p>
+      <dl class="hosp-dados">
+        <div><dt>Leitos</dt><dd>{{ h.leitos | num }}{% if h.atende_sus %} ({{ h.leitos_sus | num }} SUS){% endif %}</dd></div>
+        <div><dt>UTI</dt><dd>{{ h.leitos_uti | num }}{% if h.atende_sus and h.leitos_uti %} ({{ h.leitos_uti_sus | num }} SUS){% endif %}</dd></div>
+        <div><dt>Internações SUS em 12 meses</dt><dd>{% if h.internacoes is not none %}{{ h.internacoes | num }}{% else %}sem registro{% endif %}</dd></div>
+        {% if h.pct_de_fora is not none %}<div><dt>Pacientes de outras cidades</dt><dd>{{ h.pct_de_fora | brl1 }}%</dd></div>{% endif %}
+      </dl>
+      {% if h.internacoes %}<svg class="hosp-barra" viewBox="0 0 100 4" preserveAspectRatio="none" role="img" aria-label="Internações SUS em relação ao hospital com mais internações: {{ h.barra_internacoes }}%"><rect width="100" height="4" class="fundo"/><rect width="{{ h.barra_internacoes }}" height="4" class="valor"/></svg>{% endif %}
+      {% if h.uso is not none %}<p class="hosp-uso"><strong>Uso estimado dos leitos SUS: {{ h.uso | brl1 }}%</strong> <span class="pequeno suave">(dias de internação SUS em 12 meses ÷ leitos SUS × 365; ordem de grandeza)</span></p>{% endif %}
+      {% if h.servicos %}<p><strong>Serviços:</strong> {{ h.servicos | join(", ") }}.</p>{% endif %}
+      {% if h.tratamentos %}<p><strong>O que mais trata (SUS):</strong> {% for t in h.tratamentos %}{{ t.nome | lower }} ({{ t.n | num }}){{ ", " if not loop.last else "." }}{% endfor %}</p>{% endif %}
+      <details class="tabela-mes"><summary>Leitos por especialidade{% if h.n_especialidades > h.especialidades | length %} (as {{ h.especialidades | length }} maiores de {{ h.n_especialidades }}){% endif %}</summary>
+        <div class="rolagem"><table>
+          <caption class="so-leitor">Leitos de {{ h.nome }} por especialidade</caption>
+          <thead><tr><th scope="col">Especialidade</th><th scope="col">Existentes</th><th scope="col">SUS</th></tr></thead>
+          <tbody>{% for e in h.especialidades %}<tr><th scope="row">{{ e.nome }}</th><td>{{ e.existentes | num }}</td><td>{{ e.sus | num }}</td></tr>{% endfor %}</tbody>
+        </table></div>
+      </details>
+      {% if h.por_especialidade %}<details class="tabela-mes"><summary>Internações SUS por tipo de leito</summary>
+        <ul class="setores">{% for e in h.por_especialidade %}<li><span class="nome">{{ e.nome }}</span><span class="val">{{ e.n | num }}</span></li>{% endfor %}</ul>
+      </details>{% endif %}
+    </li>
+    {% endfor %}
+  </ul>
+</section>
+
+<section aria-labelledby="urgencia" class="bloco-painel">
+  <h2 id="urgencia" class="h2-medio sem-topo">UPAs e pronto atendimento</h2>
+  <ul class="rede-lista quadro-card">
+    {% for u in urgencias %}<li><strong>{{ u.nome }}</strong><span class="pequeno suave">{{ u.endereco }}{% if u.telefone %} · {{ u.telefone }}{% endif %}</span></li>{% endfor %}
+  </ul>
+  <p class="pequeno suave">Para emergências, o telefone é o 192 (SAMU).</p>
+</section>
+
+<section aria-labelledby="ubs" class="bloco-painel">
+  <h2 id="ubs" class="h2-medio sem-topo">Unidades básicas de saúde ({{ ubs | length }})</h2>
+  <p class="suave">Porta de entrada do SUS: consultas, vacinas, pré-natal e acompanhamento contínuo. Procure a unidade do seu bairro.</p>
+  <details class="tabela-mes quadro-card"><summary>Ver a lista completa</summary>
+    <ul class="rede-lista">{% for u in ubs %}<li><strong>{{ u.nome }}</strong><span class="pequeno suave">{{ u.endereco }}{% if u.telefone %} · {{ u.telefone }}{% endif %}</span></li>{% endfor %}</ul>
+  </details>
+</section>
+
+<section aria-labelledby="caps" class="bloco-painel">
+  <h2 id="caps" class="h2-medio sem-topo">Saúde mental: CAPS ({{ caps | length }})</h2>
+  <details class="tabela-mes quadro-card"><summary>Ver a lista completa</summary>
+    <ul class="rede-lista">{% for u in caps %}<li><strong>{{ u.nome }}</strong><span class="pequeno suave">{{ u.endereco }}{% if u.telefone %} · {{ u.telefone }}{% endif %}</span></li>{% endfor %}</ul>
+  </details>
+</section>
+<p class="pequeno suave">Fonte: <a href="{{ env.fonte.url }}">CNES e SIH/SUS (DATASUS)</a>, coletado em {{ env.fonte.acesso_em | data_br }}. <a href="{{ raiz }}data/saude_hospitais.json">saude_hospitais.json</a>.</p>
+{% endblock %}
+{% block metodologia %}<ul class="lista-curta">{% for n in env.qualidade.notas %}{% if not n.startswith("SHA-256") %}<li>{{ n }}</li>{% endif %}{% endfor %}</ul>{% endblock %}
+{% block proveniencia %}
+<dl class="proveniencia">
+  <dt>Fonte</dt><dd><a href="{{ env.fonte.url }}">{{ env.fonte.nome }}</a></dd>
+  <dt>Verificado em</dt><dd>{{ env.fonte.acesso_em | data_br }}</dd>
+  <dt>Dados</dt><dd><a href="{{ raiz }}data/saude_hospitais.json">saude_hospitais.json</a></dd>
+  <dt>Código</dt><dd><a href="{{ repo_url }}/blob/main/{{ script }}">{{ script }}</a></dd>
+</dl>
+{% endblock %}

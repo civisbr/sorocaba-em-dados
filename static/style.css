@@ -209,3 +209,9 @@ table{width:100%;border-collapse:collapse;font-size:.95rem}th,td{padding:.4rem .
 .nivel-2{border-left-color:oklch(.82 .16 90)}.nivel-2 .nivel-ponto{color:oklch(.82 .16 90)}
 .nivel-3{border-left-color:oklch(.7 .17 55)}.nivel-3 .nivel-ponto{color:oklch(.7 .17 55)}
 .nivel-4{border-left-color:oklch(.55 .2 27)}.nivel-4 .nivel-ponto{color:oklch(.55 .2 27)}
+.hosp-numeros{display:grid;gap:1rem;margin-top:1rem;grid-template-columns:repeat(auto-fit,minmax(11rem,1fr))}.hosp-numeros li{display:flex;flex-direction:column;gap:.25rem}
+.hosp-lista{display:grid;gap:1.5rem;margin-top:1.5rem}@media(min-width:900px){.hosp-lista{grid-template-columns:1fr 1fr}}
+.hosp-card{display:flex;flex-direction:column;gap:.75rem}.hosp-card p{margin:0}.hosp-dados{display:grid;grid-template-columns:repeat(auto-fit,minmax(8rem,1fr));gap:.5rem 1rem;margin:0}.hosp-dados dt{font-size:.8125rem;color:var(--muted-foreground)}.hosp-dados dd{margin:0;font-weight:700}
+.hosp-barra{display:block;width:100%;height:.5rem;border-radius:.25rem}.hosp-barra .fundo{fill:var(--border)}.hosp-barra .valor{fill:var(--navy)}
+.rede-lista li{display:flex;flex-direction:column;padding:.5rem 0;border-bottom:1px solid var(--border)}.rede-lista li:last-child{border-bottom:0}
+.hosp-card .tabela-mes{margin-top:0}

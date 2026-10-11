@@ -85,6 +85,9 @@
         {% if saude.doencas %}<span class="cartao-numero">{{ saude.doencas[0].casos_8s | num }}</span>
         <span class="cartao-ctx">casos notificados de {{ saude.doencas[0].rotulo | lower }} nas últimas 8 semanas; alerta {{ saude.doencas[0].nivel_rotulo.split(":")[0] | lower }} ({{ saude.ref_saude }})</span>
         {% else %}<span class="cartao-numero">—</span><span class="cartao-ctx">sem dado recente de arboviroses</span>{% endif %}
+        {% elif p.id == "hospitais" %}
+        <span class="cartao-numero">{{ hosp.resumo.leitos_sus | num }}</span>
+        <span class="cartao-ctx">leitos SUS em {{ hosp.resumo.n_hospitais_sus }} hospitais; {{ hosp.resumo.internacoes | num }} internações SUS em 12 meses</span>
         {% elif p.id == "seguranca" %}
         <span class="cartao-numero">{{ seg.roubos_atual | num }}</span>
         <span class="cartao-ctx">roubos registrados nos 12 meses até {{ seg.mes_fim_curto }}</span>

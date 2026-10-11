@@ -1,0 +1,69 @@
+{
+  "competencias": {
+    "202508": {
+      "bytes": 19971764,
+      "coletado_em": "2026-10-11",
+      "sha256": "0b3cf56dd6b2be9071a41b079407e0a540c80043bd9b9a7ca2045fafc4033167"
+    },
+    "202509": {
+      "bytes": 19857932,
+      "coletado_em": "2026-10-11",
+      "sha256": "40e4d759d4fb685d4a6f61854661f44032bc14a54c0eea80a43eb30caa776bca"
+    },
+    "202510": {
+      "bytes": 20454448,
+      "coletado_em": "2026-10-11",
+      "sha256": "97555b9cb9a271df984564f58c10e70966d7561e7a64ba82556bcd6dc0d03668"
+    },
+    "202511": {
+      "bytes": 18936955,
+      "coletado_em": "2026-10-11",
+      "sha256": "d9d12be337cf062c1128c3c2700154ac7321bdff2b58c987065057f3b3ea9d11"
+    },
+    "202512": {
+      "bytes": 18239225,
+      "coletado_em": "2026-10-11",
+      "sha256": "93f73288de6cdabaed97178e2eb0317ed9054611e54a02b2798ef35b69b29fff"
+    },
+    "202601": {
+      "bytes": 19001866,
+      "coletado_em": "2026-10-11",
+      "sha256": "e21b744cdae9c769adc94e013b1d425bd9c03d0071b321dcf7a8ffb1f20a77dc"
+    },
+    "202602": {
+      "bytes": 18295212,
+      "coletado_em": "2026-10-11",
+      "sha256": "dcdd71ac8aa3f6e6f2b1877c8eab935989a123f33e0e7a2b498d205ae7ee845c"
+    },
+    "202603": {
+      "bytes": 20197206,
+      "coletado_em": "2026-10-11",
+      "sha256": "3c7c51a06070d9ab0d486ce44503e910ea22d8543f274e165dfad0d9dce93857"
+    },
+    "202604": {
+      "bytes": 19865281,
+      "coletado_em": "2026-10-11",
+      "sha256": "e7c54d5f8fcbeb5af0532c4f790adeeb2e5a217e068ea75bde43b7d365245a01"
+    },
+    "202605": {
+      "bytes": 20410906,
+      "coletado_em": "2026-10-11",
+      "sha256": "bfc92c13ad42fd31898f9968433ceeb0cd030f2060a19e17c9fb7473c6afaf6c"
+    },
+    "202606": {
+      "bytes": 19951666,
+      "coletado_em": "2026-10-11",
+      "sha256": "c8a3cddec6f3f491debd47d2da3ef73fa01aaa5c9104ed5e884978b16f242d21"
+    },
+    "202607": {
+      "bytes": 20203637,
+      "coletado_em": "2026-10-11",
+      "sha256": "ddceed3771e35c0eb38b02f1bb2cbd5c03312d1e1582d07e6aecf79ac7931081"
+    }
+  },
+  "fonte": "SIH/SUS (AIH reduzida, RD) de SP, DATASUS; recorte: hospital em Sorocaba",
+  "primeira": "202508",
+  "sha256_csv": "33f224093afaf764d43eb3b8f16fe0743024ad995b41a7815c492b81760d97b1",
+  "ultima": "202607",
+  "verificado_em": "2026-10-11"
+}

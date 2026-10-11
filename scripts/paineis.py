@@ -5,7 +5,8 @@ from __future__ import annotations
 GRUPOS = [
     ("A cidade", ["cidade", "comparativo", "clima"]),
     ("Economia", ["emprego", "combustivel"]),
-    ("Serviços e segurança", ["escolas", "saude", "seguranca", "transito"]),
+    ("Saúde", ["saude", "hospitais"]),
+    ("Serviços e segurança", ["escolas", "seguranca", "transito"]),
     ("Política", ["representantes"]),
 ]
 
@@ -137,8 +138,34 @@ PAINEIS = {
             "Não avaliamos desempenho nem fazemos ranking de mérito; a ordem dos deputados é só a de votos na cidade.",
         ],
     },
+    "hospitais": {
+        "nav": "Hospitais e leitos",
+        "titulo": "Onde ser atendido",
+        "h1": "Quais hospitais atendem em Sorocaba e o que cada um trata?",
+        "pergunta": "Que hospitais, UPAs e unidades de saúde existem na cidade, quantos leitos têm, o que mais tratam e quais ficam mais cheios pelo SUS?",
+        "fonte": "CNES e SIH/SUS — DATASUS, Ministério da Saúde",
+        "cta": "Ver hospitais e leitos",
+        "tom": "card",
+        "descricao": "Hospitais da cidade com leitos, serviços, o que mais tratam e uso estimado dos leitos SUS; UPAs, CAPS e unidades básicas com endereço e telefone.",
+        "meta_desc": "Hospitais, leitos, UPAs e unidades de saúde de Sorocaba segundo o CNES, com internações SUS dos últimos 12 meses e uso estimado dos leitos.",
+        "palavras": ["hospital", "hospitais", "leitos", "uti", "upa", "ubs", "posto de saúde", "pronto atendimento", "santa casa", "especialidades", "internações", "sus", "caps"],
+        "blocos": [],
+        "glossario": [
+            ("Leito existente e leito SUS", "Leito existente é o que o hospital declara ter. Leito SUS é a parte deles colocada à disposição do SUS; o restante atende convênios e particulares."),
+            ("Internação SUS", "Internação autorizada e paga pelo SUS (AIH). Não inclui internações de convênio ou particulares, então não retrata o movimento total do hospital."),
+            ("Uso estimado dos leitos SUS", "Dias de internação SUS dos últimos 12 meses divididos pelos leitos SUS existentes vezes 365. Mostra a ordem de grandeza da ocupação, não a lotação do dia. Não existe dado aberto de fila ou ocupação em tempo real."),
+            ("UPA", "Unidade de pronto atendimento: urgências de média complexidade, 24 horas, sem substituir o pronto-socorro de hospital para os casos mais graves."),
+            ("CAPS", "Centro de atenção psicossocial: atendimento de saúde mental e de uso de álcool e outras drogas pelo SUS."),
+        ],
+        "limitacoes": [
+            "O cadastro de leitos e serviços (CNES) é declarado pelos próprios estabelecimentos e pode estar defasado.",
+            "Número de internações e de dias não mede qualidade: depende do porte, da especialidade e da gravidade dos casos.",
+            "Hospitais que atendem pouco ou nenhum SUS aparecem com poucas ou nenhuma internação, porque o dado cobre só o SUS.",
+            "Lotação em tempo real e tempo de espera não são publicados como dado aberto; consulte o hospital ou a UPA antes de ir, em casos que não sejam emergência.",
+        ],
+    },
     "saude": {
-        "nav": "Saúde",
+        "nav": "Doenças do momento",
         "titulo": "Doenças do momento",
         "h1": "Quais doenças estão circulando em Sorocaba agora?",
         "pergunta": "Como está a dengue e a chikungunya na cidade nesta semana, e como isso se compara aos anos anteriores?",
@@ -158,7 +185,7 @@ PAINEIS = {
         "limitacoes": [
             "Notificação não é diagnóstico confirmado, e as últimas semanas ainda sobem quando as notificações atrasadas chegam.",
             "O nível de alerta vem de um modelo; use as orientações da Vigilância em Saúde de Sorocaba para decisões de saúde.",
-            "Por enquanto o painel cobre arboviroses; rede de saúde, internações, mortes e vacinas ainda não estão aqui.",
+            "Este painel cobre só as arboviroses; hospitais, leitos e internações estão no painel Hospitais e leitos.",
         ],
     },
     "seguranca": {
