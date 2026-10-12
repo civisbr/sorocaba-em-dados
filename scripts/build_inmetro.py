@@ -13,7 +13,7 @@ from pathlib import Path
 from schemas.envelope import Cobertura, Envelope, Flag, Fonte, Granularidade, Qualidade, Referencia
 
 RAIZ = Path(__file__).resolve().parent.parent
-PRECISOES = {"porta", "cruzamento", "km", "número", "via"}
+PRECISOES = {"porta", "cruzamento", "km", "número", "numeração", "via"}
 
 
 def _coordenadas(raw: Path) -> dict[str, tuple[float, float, str, str]]:

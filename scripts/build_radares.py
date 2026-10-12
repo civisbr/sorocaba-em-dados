@@ -13,7 +13,7 @@ from pathlib import Path
 from schemas.envelope import Cobertura, Envelope, Flag, Fonte, Granularidade, Qualidade, Referencia
 
 PRECISOES_EXATAS = {"endereço", "câmera no OSM"}
-PRECISOES_APROXIMADAS = {"cruzamento", "km", "número", "via"}
+PRECISOES_APROXIMADAS = {"cruzamento", "km", "número", "numeração", "via"}
 PRECISOES = PRECISOES_EXATAS | PRECISOES_APROXIMADAS
 FONTE_POSICAO = "© colaboradores do OpenStreetMap, ODbL 1.0"
 RAIZ = Path(__file__).resolve().parent.parent

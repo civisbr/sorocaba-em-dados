@@ -44,7 +44,7 @@ def test_posicoes_publicadas_estao_no_municipio():
     from scripts.fetch_infosiga import carregar_contorno, dentro
     c = carregar_contorno()
     com = [r for r in construir(RAIZ / "data/raw/radares").dados if "lat" in r]
-    assert all(dentro(c, r["lat"], r["lon"]) and r["precisao"] in ("endereço", "câmera no OSM", "cruzamento", "km", "número", "via") for r in com)
+    assert all(dentro(c, r["lat"], r["lon"]) and r["precisao"] in ("endereço", "câmera no OSM", "cruzamento", "km", "número", "numeração", "via") for r in com)
 
 
 def _cam(via, **tags):

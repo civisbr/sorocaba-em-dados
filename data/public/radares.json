@@ -1640,24 +1640,24 @@
       "velocidade_kmh": 60
     },
     {
-      "detalhe": "",
+      "detalhe": "estimada pela numeração da via, com 13 endereços do OSM, além dos endereços conhecidos",
       "fonte_posicao": "© colaboradores do OpenStreetMap, ODbL 1.0",
-      "lat": -23.524232,
+      "lat": -23.532683,
       "local": "RUA DR. LUIZ MENDES ALMEIDA (B/C), Nº 2635",
-      "lon": -47.498526,
+      "lon": -47.503729,
       "ponto": "F167",
-      "precisao": "via",
+      "precisao": "numeração",
       "tipo": "FIXO - CONTROLADOR",
       "velocidade_kmh": 60
     },
     {
-      "detalhe": "",
+      "detalhe": "estimada pela numeração da via, com 13 endereços do OSM, além dos endereços conhecidos",
       "fonte_posicao": "© colaboradores do OpenStreetMap, ODbL 1.0",
-      "lat": -23.524232,
+      "lat": -23.532577,
       "local": "RUA DR. LUIZ MENDES ALMEIDA , Nº 2622",
-      "lon": -47.498526,
+      "lon": -47.503671,
       "ponto": "F168",
-      "precisao": "via",
+      "precisao": "numeração",
       "tipo": "FIXO - CONTROLADOR",
       "velocidade_kmh": 60
     },

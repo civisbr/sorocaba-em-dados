@@ -60,7 +60,7 @@
       <a href="{{ p.id }}/" class="cartao quadro tom-{{ p.tom }}">
         <span class="cartao-topo"><span>{{ p.nav }}</span><span class="cartao-status-{{ p.status }}"><span aria-hidden="true">● </span>{{ "Dado real" if p.status == "real" else "Pendente" }}</span></span>
         {% if p.id == "emprego" %}
-        <span class="cartao-numero {{ 'pos' if emprego.ultimo.saldo > 0 else ('neg' if emprego.ultimo.saldo < 0 else '') }}">{{ emprego.ultimo.saldo | sinal }}</span>
+        <span class="saldo cartao-numero {{ 'pos' if emprego.ultimo.saldo > 0 else ('neg' if emprego.ultimo.saldo < 0 else '') }}">{{ emprego.ultimo.saldo | sinal }}</span>
         <span class="cartao-ctx">de saldo de empregos formais em {{ emprego.ultimo_mes }}</span>
         {% elif p.id == "combustivel" %}
         {% set gas = comb.produtos | selectattr("nome", "equalto", "Gasolina comum") | first | default(comb.produtos[0]) %}

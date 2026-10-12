@@ -238,7 +238,7 @@
     }
     function refiltrar() {
       unidades.forEach(function (u) { u.classList.toggle("ms-off", !passa(u)); });
-      if (atual && atual.classList.contains("ms-off") && painelSel) { painelSel.textContent = ""; var h0 = document.createElement("h3"); h0.textContent = "Unidade selecionada"; var p0 = document.createElement("p"); p0.className = "suave pequeno"; p0.textContent = "A unidade escolhida saiu do mapa com esses filtros."; painelSel.appendChild(h0); painelSel.appendChild(p0); atual = null; }
+      if (atual && atual.classList.contains("ms-off") && painelSel) { painelSel.textContent = ""; var h0 = document.createElement("h3"); h0.textContent = "Ponto selecionado"; var p0 = document.createElement("p"); p0.className = "suave pequeno"; p0.textContent = "O ponto escolhido saiu do mapa com esses filtros."; painelSel.appendChild(h0); painelSel.appendChild(p0); atual = null; }
       celulas.forEach(function (c) { c.classList.toggle("ms-off", !passa(c)); });
       if (posicao) listarProximas(false);
     }
@@ -342,7 +342,7 @@
         li.appendChild(b); ul.appendChild(li);
       });
       painelProx.appendChild(ul);
-      if (!achou.length) { var vazio = document.createElement("p"); vazio.className = "suave pequeno"; vazio.textContent = "Nenhuma unidade com esses filtros."; painelProx.appendChild(vazio); }
+      if (!achou.length) { var vazio = document.createElement("p"); vazio.className = "suave pequeno"; vazio.textContent = "Nenhum ponto com esses filtros."; painelProx.appendChild(vazio); }
       if (NOTA) { var nota = document.createElement("p"); nota.className = "pequeno suave"; nota.textContent = NOTA; painelProx.appendChild(nota); }
       painelProx.hidden = false;
       if (reenquadrar !== false && achou.length) enquadrar(achou.concat([xy(posicao.lat, posicao.lon)]), 0.35);
@@ -354,7 +354,7 @@
       btnGps.disabled = true;
       navigator.geolocation.getCurrentPosition(function (p) {
         btnGps.disabled = false;
-        if (p.coords.accuracy > 3000) { aviso("O navegador só soube sua posição com erro de vários quilômetros. Escolha o bairro para ver as unidades mais perto."); return; }
+        if (p.coords.accuracy > 3000) { aviso("O navegador só soube sua posição com erro de vários quilômetros. Escolha o bairro para ver os pontos mais perto."); return; }
         marcar(p.coords.latitude, p.coords.longitude, "sua localização" + (p.coords.accuracy > 1000 ? " (aproximada)" : ""));
       }, function (err) {
         btnGps.disabled = false;

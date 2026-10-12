@@ -1,7 +1,7 @@
 chave;lat;lon;precisao;osm_ref;geocodificado_em;detalhe
 005b3c3fce986df1;-23.51233;-47.45843;número;;2026-10-12;entre os nº 202 e 1297
 02bffaca006c9114;-23.45297;-47.46016;cruzamento;;2026-10-12;
-0321850a3d16458d;-23.52423;-47.49853;via;;2026-10-12;
+0321850a3d16458d;-23.53268;-47.50373;numeração;;2026-10-12;estimada pela numeração da via, com 13 endereços do OSM, além dos endereços conhecidos
 07a9e4404de1a860;-23.47750;-47.46161;número;;2026-10-12;entre os nº 709 e 927
 0967c2525928a97d;-23.47758;-47.46180;número;;2026-10-12;entre os nº 709 e 927
 0c631ce5577132b5;-23.48341;-47.43928;número;;2026-10-12;endereço nº 3303 no OSM
@@ -24,7 +24,7 @@ chave;lat;lon;precisao;osm_ref;geocodificado_em;detalhe
 3245fe37d32e55f0;-23.49487;-47.51570;número;;2026-10-12;perto do nº 225
 32b757590cb2368b;-23.45297;-47.46016;cruzamento;;2026-10-12;
 3c12172c92ea2340;-23.51531;-47.31238;km;;2026-10-12;"km 82,55, a 19,45 km do marco 102; marco distante, erro maior"
-3eb8d9ce53d21a87;-23.52423;-47.49853;via;;2026-10-12;
+3eb8d9ce53d21a87;-23.53268;-47.50373;numeração;;2026-10-12;estimada pela numeração da via, com 13 endereços do OSM, além dos endereços conhecidos
 3f75abe6ec7e28f4;-23.44528;-47.43918;número;;2026-10-12;entre os nº 587 e 880
 422589685c5e2d06;-23.49394;-47.44772;cruzamento;;2026-10-12;
 446311e91ae7be63;-23.46402;-47.43201;via;;2026-10-12;

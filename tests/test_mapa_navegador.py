@@ -58,7 +58,7 @@ def test_saude_marcadores_selecao_filtro_e_bairro(pagina_nova, url):
     pg, erros = _abrir(pagina_nova, url, "hospitais/")
     assert pg.locator(".ms-u").count() >= 40
     pg.locator(".ms-u[data-grupo=hospital]").first.dispatch_event("click")
-    assert pg.locator(".ms-selecionada h3").inner_text() != "Unidade selecionada"
+    assert pg.locator(".ms-selecionada h3").inner_text() != "Ponto selecionado"
     pg.locator('.ms-filtro input[value="ubs"]').uncheck()
     assert pg.locator(".ms-u.g-ubs.ms-off").count() == pg.locator(".ms-u.g-ubs").count() > 0
     pg.fill(".ms-bairro", "Vila Hortência")

@@ -295,6 +295,7 @@ def contexto_seguranca(env: dict) -> dict:
         topo = itens[0][1] if itens else 1
         ranking[g] = [{"bairro": b, "n": n, "pct": round(n / topo * 100, 1)} for b, n in itens]
     ult = atual["roubos"]
+    ini = min((m[0]["ano"], m[0]["mes"]) for m in mensal.values() if m)
     return {
         "grupos_nome": GRUPOS_SEG,
         "series": series,
@@ -308,6 +309,7 @@ def contexto_seguranca(env: dict) -> dict:
         "ranking": ranking,
         "calor": {g: mapa_de_calor(d, g, RAIZ / "data" / "raw" / "ibge" / "malha_3552205.geojson") for g in ("roubos", "furtos")},
         "mes_fim": f"{MESES[ult['mes'] - 1]} de {ult['ano']}",
+        "mes_ini": "{} de {}".format(MESES[ini[1] - 1], ini[0]),
         "mes_fim_curto": f"{ABREV[ult['mes'] - 1]}/{str(ult['ano'])[2:]}",
         "mes_ini_curto": f"{ABREV[(ult['mes']) % 12]}/{str(ult['ano'] - (0 if ult['mes'] == 12 else 1))[2:]}",
         "roubos_atual": atual["roubos"]["n"],

@@ -30,7 +30,7 @@ Hospitais, escolas, segurança e trânsito usam um mapa único (`static/mapa-int
 
 ### Radares: posições e verificação
 
-- A Semob não publica coordenadas. Cada um dos 160 radares da lista aparece no mapa de trânsito: ponto cheio quando a posição vem de um endereço exato ou de uma câmera mapeada no OpenStreetMap; ponto tracejado quando é só aproximada (calculada pelo texto do local sobre as vias, endereços e marcos de km do OSM: cruzamento, número do endereço, km da rodovia ou meio da via); anel quando só se sabe o conjunto de câmeras possíveis na via. Ao tocar no ponto, o painel diz como a posição foi calculada.
+- A Semob não publica coordenadas. Cada um dos 160 radares da lista aparece no mapa de trânsito: ponto cheio quando a posição vem de um endereço exato ou de uma câmera mapeada no OpenStreetMap; ponto tracejado quando é só aproximada (calculada pelo texto do local sobre as vias, endereços e marcos de km do OSM: cruzamento, número do endereço, numeração ao longo da avenida, km da rodovia ou meio da via); anel quando só se sabe o conjunto de câmeras possíveis na via. Ao tocar no ponto, o painel diz como a posição foi calculada.
 - A verificação metrológica dos medidores vem do Portal de Serviços do Inmetro (dados abertos, CC0). O host do Inmetro bloqueia os servidores do GitHub, então essa coleta é manual (`fetch_inmetro` e `build_inmetro`, de uma máquina no Brasil); o workflow `inmetro-aviso.yml` abre uma issue quando a última coleta passa de 14 dias.
 - Os locais chegam da fonte em caixa alta; o site mostra em formato legível ("Av. Dom Aguirre, próx. à Rua Com. Hélio Monzoni"), sem alterar os dados guardados.
 

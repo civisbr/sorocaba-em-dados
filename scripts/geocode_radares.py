@@ -213,6 +213,8 @@ def main() -> None:
                 "ponto": r["ponto"], "local": r["local"], "lat": f"{achado[0]:.6f}" if achado else "", "lon": f"{achado[1]:.6f}" if achado else "",
                 "precisao": achado[2] if achado else "", "fonte_osm": FONTE if achado or cand else "", "osm_ref": achado[3] if achado else "", "geocodificado_em": achado[4] if achado else hoje if cand else "", "candidatas": cand, "detalhe": detalhe,
             }
+            if ant and ant["local"] == r["local"] and (ant["lat"], ant["lon"], ant["precisao"]) == (saida[r["ponto"]]["lat"], saida[r["ponto"]]["lon"], saida[r["ponto"]]["precisao"]) and ant.get("geocodificado_em"):
+                saida[r["ponto"]]["geocodificado_em"] = ant["geocodificado_em"]  # a data diz quando a posição foi obtida, não quando o script rodou
             print(f"[{i}/{len(radares)}] {r['ponto']} {saida[r['ponto']]['precisao'] or 'sem posição'}")
     perdidos = sorted(p for p, a in antigos.items() if a["lat"] and not saida.get(p, {}).get("lat"))
     ganhos = sum(1 for p, a in saida.items() if a["lat"] and not antigos.get(p, {}).get("lat"))

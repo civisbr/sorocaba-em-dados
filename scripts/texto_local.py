@@ -14,6 +14,7 @@ ROTULOS = {
     "cruzamento": "aproximada, perto do cruzamento das duas vias",
     "número": "aproximada, pelo número do endereço",
     "km": "aproximada, pelo km da rodovia",
+    "numeração": "aproximada, estimada pela numeração ao longo da via",
     "via": "aproximada, no meio da via (sem endereço no mapa)",
 }
 

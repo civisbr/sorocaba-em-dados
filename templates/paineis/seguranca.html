@@ -36,8 +36,8 @@
   <div class="grade-2">
     {% for g, titulo in [("roubos", "Roubos"), ("furtos", "Furtos"), ("mortes_dolosas", "Mortes por crime doloso")] %}
     <article class="quadro-card">
-      <h3>{{ titulo }}</h3><p class="suave">Registros por mês, desde 2022.</p>
-      {{ barras(series[g], "s-" ~ g, titulo ~ " registrados por mês em Sorocaba", "Barras mensais desde janeiro de 2022 até " ~ mes_fim ~ ".") }}
+      <h3>{{ titulo }}</h3><p class="suave">Registros por mês, desde {{ mes_ini }}.</p>
+      {{ barras(series[g], "s-" ~ g, titulo ~ " registrados por mês em Sorocaba", "Barras mensais desde " ~ mes_ini ~ " até " ~ mes_fim ~ ".") }}
     </article>
     {% endfor %}
   </div>
@@ -108,7 +108,7 @@
   <h2 id="bairro-t" class="h2-medio sem-topo">Por bairro ({{ ano_ref }})</h2>
   <p class="suave">Contagem de roubos e furtos registrados, em ordem alfabética. Não é ranking nem medida de risco: o número depende do tamanho do bairro, do comércio e do movimento de pessoas, e o nome do bairro é digitado no boletim, com grafias variadas.</p>
   <details class="tabela-mes">
-    <summary>Ver os {{ bairros | length }} bairros com 50 ou mais roubos e furtos no ano</summary>
+    <summary>Ver a tabela: {{ bairros | length }} bairros com 50 ou mais roubos e furtos no ano, mais uma linha com todos os demais</summary>
     <div class="rolagem"><table>
       <caption class="so-leitor">Roubos e furtos registrados por bairro em {{ ano_ref }}</caption>
       <thead><tr><th scope="col">Bairro</th><th scope="col">Roubos</th><th scope="col">Furtos</th></tr></thead>

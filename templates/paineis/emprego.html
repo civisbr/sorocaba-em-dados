@@ -3,7 +3,7 @@
 {% block resumo %}
 <section aria-labelledby="resumo" class="resumo-real">
   <h2 id="resumo" class="rotulo-resumo">Resumo de {{ ultimo_mes }}</h2>
-  <p class="numero-grande {{ 'pos' if ultimo.saldo > 0 else ('neg' if ultimo.saldo < 0 else '') }}">{{ ultimo.saldo | sinal }}</p>
+  <p class="saldo numero-grande {{ 'pos' if ultimo.saldo > 0 else ('neg' if ultimo.saldo < 0 else '') }}">{{ ultimo.saldo | sinal }}</p>
   <p class="resumo-texto">{{ 'vagas a mais' if ultimo.saldo >= 0 else 'vagas a menos' }} com carteira assinada em {{ ultimo_mes }}: {{ ultimo.admissoes | num }} contratações e {{ ultimo.desligamentos | num }} desligamentos.</p>
   <p class="resumo-texto">Nos 12 meses de {{ inicio_12m }} a {{ fim_12m }}, o saldo somou <strong>{{ saldo_12m | sinal }}</strong>.</p>
   <p class="pequeno suave">Os últimos meses ainda podem mudar quando empresas corrigem declarações antigas.</p>
@@ -13,7 +13,7 @@
 <section aria-labelledby="explorar" class="bloco-painel">
   <h2 id="explorar" class="h2-medio sem-topo">Explore os dados</h2>
   <div class="grade-2">
-    <article class="quadro-card">
+    <article class="quadro-card saldo">
       <h3>Saldo mensal de empregos</h3><p class="suave">Evolução de {{ primeiro_mes }} a {{ fim_12m }}.</p>
       <svg class="grafico" viewBox="0 0 {{ grafico.largura }} {{ grafico.altura }}" role="img" aria-labelledby="g1-t g1-d">
         <title id="g1-t">Saldo mensal de empregos formais em Sorocaba</title>
@@ -38,7 +38,7 @@
       <p class="legenda"><span class="amostra amostra-adm"></span> contratações <span class="amostra amostra-des"></span> desligamentos (tracejada)</p>
     </article>
 
-    <article class="quadro-card">
+    <article class="quadro-card saldo">
       <h3>Setores econômicos</h3><p class="suave">Saldo de {{ inicio_12m }} a {{ fim_12m }}, do setor que mais criou ao que mais cortou vagas.</p>
       <ul class="setores">
         {% for s in secoes %}<li><span class="nome">{{ s.secao_nome }}</span><span class="val {{ 'pos' if s.saldo >= 0 else 'neg' }}">{{ s.saldo | sinal }}</span><span class="setor-barra {{ 'pos' if s.saldo >= 0 else 'neg' }}" style="width: {{ s.pct }}%"></span></li>{% endfor %}

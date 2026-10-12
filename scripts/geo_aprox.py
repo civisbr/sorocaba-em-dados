@@ -1,7 +1,7 @@
 """Posição aproximada de um local escrito em texto ("AV. X, Nº 100", "AV. X x RUA Y", "RODOVIA SP-270 KM 94+017M") sobre dados do OpenStreetMap (ODbL).
 
 Puro e offline: recebe vias, endereços e marcos de km já baixados (ver `baixar_osm`). Cada resultado traz um nível de precisão, do mais ao menos exato:
-cruzamento, km (percorrendo a rodovia a partir do marco de km mais próximo), número (interpolado entre endereços vizinhos do OSM) e via (meio da via).
+cruzamento, km (percorrendo a rodovia a partir do marco de km mais próximo), número (interpolado entre endereços vizinhos do OSM), numeração (reta ajustada entre os números e a distância ao longo da via) e via (meio da via).
 Rua homônima em trechos distantes só recebe posição se o número ou a via de referência desempatar. Quem chama decide o que fazer com cada nível.
 """
 
@@ -13,6 +13,7 @@ import heapq
 import json
 import math
 import re
+import statistics
 import time
 import unicodedata
 from dataclasses import dataclass
@@ -30,6 +31,7 @@ LIMITE_INTERPOLACAO_M = 2000
 LIMITE_NUMERO_VIZINHO = 300
 LIMITE_AMBIGUIDADE = 0.3
 RAIO_ENDERECO_M = 80
+EXTRAPOLACAO_MAX = 0.8  # fração da amplitude de numeração conhecida que ainda se aceita além do último endereço
 M_POR_GRAU = 111_000
 STOP = {"AVENIDA", "RUA", "DE", "DA", "DO", "DAS", "DOS", "E", "DOUTOR", "DOUTORA", "PROFESSOR", "PROFESSORA", "TRAVESSA", "RODOVIA", "ALAMEDA", "PRACA", "ESTRADA"}
 CLASSES_RODOVIA = {"motorway", "trunk", "primary", "secondary", "tertiary"}
@@ -270,6 +272,159 @@ def por_numero(osm: OSM, pedidas: frozenset[str], trecho: list[Via], numero: int
     return None
 
 
+def _dijkstra(g: dict[Ponto, list[tuple[Ponto, float]]], inicio: Ponto) -> dict[Ponto, float]:
+    dist = {inicio: 0.0}
+    fila = [(0.0, inicio)]
+    while fila:
+        d, p = heapq.heappop(fila)
+        if d > dist[p]:
+            continue
+        for q, w in g[p]:
+            if d + w < dist.get(q, float("inf")):
+                dist[q] = d + w
+                heapq.heappush(fila, (d + w, q))
+    return dist
+
+
+def _ligar_componentes(g: dict[Ponto, list[tuple[Ponto, float]]]) -> None:
+    """Vias do mesmo nome cortadas no OSM (pistas em ways separadas) viram um traçado só: liga o maior pedaço ao mais próximo, até 150 m."""
+    while True:
+        compos: list[set[Ponto]] = []
+        vistos: set[Ponto] = set()
+        for p in g:
+            if p not in vistos:
+                c = set(_dijkstra(g, p))
+                compos.append(c)
+                vistos |= c
+        if len(compos) < 2:
+            return
+        compos.sort(key=len, reverse=True)
+        a, resto = compos[0], [p for c in compos[1:] for p in c]
+        melhor = min(((_metros(p, q), p, q) for p in a for q in resto), key=lambda x: x[0])
+        if melhor[0] > RAIO_AGRUPAR_M:
+            return
+        d, p, q = melhor
+        g[p].append((q, d))
+        g[q].append((p, d))
+
+
+def _eixo(trecho: list[Via]) -> tuple[list[Ponto], list[float]] | None:
+    """Traçado principal da via: o maior caminho entre duas pontas (ramos e alças ficam de fora), com a distância acumulada em cada vértice."""
+    g: dict[Ponto, list[tuple[Ponto, float]]] = {}
+    for v in trecho:
+        pts = [(round(la, 6), round(lo, 6)) for la, lo in v.pontos]
+        for a, b in zip(pts, pts[1:]):
+            d = _metros(a, b)
+            g.setdefault(a, []).append((b, d))
+            g.setdefault(b, []).append((a, d))
+    if not g:
+        return None
+    _ligar_componentes(g)
+    d0 = _dijkstra(g, next(iter(g)))
+    u = max(d0, key=d0.__getitem__)
+    du, prev = _dijkstra_prev(g, u)
+    p = max(du, key=du.__getitem__)
+    caminho = [p]
+    while p != u:
+        p = prev[p]
+        caminho.append(p)
+    caminho.reverse()
+    return caminho, [du[q] for q in caminho]
+
+
+def _dijkstra_prev(g: dict[Ponto, list[tuple[Ponto, float]]], inicio: Ponto) -> tuple[dict[Ponto, float], dict[Ponto, Ponto]]:
+    dist, prev = {inicio: 0.0}, {}
+    fila = [(0.0, inicio)]
+    while fila:
+        d, p = heapq.heappop(fila)
+        if d > dist[p]:
+            continue
+        for q, w in g[p]:
+            if d + w < dist.get(q, float("inf")):
+                dist[q], prev[q] = d + w, p
+                heapq.heappush(fila, (d + w, q))
+    return dist, prev
+
+
+def _projetar(eixo: tuple[list[Ponto], list[float]], p: Ponto) -> tuple[float, float]:
+    """(distância ao traçado, posição s ao longo dele) do ponto projetado no segmento mais próximo."""
+    caminho, acum = eixo
+    melhor = (float("inf"), 0.0)
+    for i in range(len(caminho) - 1):
+        d, q = _no_segmento(p, caminho[i], caminho[i + 1])
+        if d < melhor[0]:
+            melhor = (d, acum[i] + _metros(caminho[i], q))
+    return melhor
+
+
+def _ponto_em(eixo: tuple[list[Ponto], list[float]], s: float) -> Ponto:
+    caminho, acum = eixo
+    for i in range(len(caminho) - 1):
+        if acum[i + 1] >= s:
+            t = 0.0 if acum[i + 1] == acum[i] else (s - acum[i]) / (acum[i + 1] - acum[i])
+            return caminho[i][0] + t * (caminho[i + 1][0] - caminho[i][0]), caminho[i][1] + t * (caminho[i + 1][1] - caminho[i][1])
+    return caminho[-1]
+
+
+def _sem_discrepantes(pares: list[tuple[int, float]]) -> list[tuple[int, float]]:
+    """Tira endereço fora da reta (nome repetido em outra via, número digitado errado), pelo resíduo sem o próprio ponto; com poucos pontos a reta se ajusta ao erro e o resíduo comum não mostraria nada."""
+    for _ in range(2):
+        if len(pares) < 5:
+            return pares
+        resid = []
+        for i, (n, s) in enumerate(pares):
+            a, b, _ = _ajuste(pares[:i] + pares[i + 1 :])
+            resid.append(abs(a * n + b - s))
+        corte = max(2.5 * 1.4826 * statistics.median(resid), 100)
+        mantidos = [p for p, e in zip(pares, resid) if e <= corte]
+        if len(mantidos) == len(pares):
+            return pares
+        pares = mantidos
+    return pares
+
+
+def por_numeracao(osm: OSM, pedidas: frozenset[str], trecho: list[Via], numero: int) -> Posicao | None:
+    """Estima onde fica o número ajustando uma reta entre a numeração dos endereços do OSM e a distância ao longo do traçado principal da via; vale para ruas
+    longas em que o OSM só tem endereços em parte, desde que a numeração acompanhe bem o traçado (r² >= 0,9) e o número fique perto do intervalo conhecido."""
+    eixo = _eixo(trecho)
+    if not eixo:
+        return None
+    comprimento = eixo[1][-1]
+    pares = []
+    for ps, n, la, lo, _ in osm.enderecos:
+        if casa(pedidas, ps):
+            d, s = _projetar(eixo, (la, lo))
+            if d <= RAIO_ENDERECO_M:
+                pares.append((n, s))
+    pares = _sem_discrepantes(pares)
+    if len(pares) < 4:
+        return None
+    a, b, r2 = _ajuste(pares)
+    ns, ss = [n for n, _ in pares], [s for _, s in pares]
+    amplitude = max(ns) - min(ns)
+    folga = EXTRAPOLACAO_MAX * amplitude
+    if r2 < 0.9 or amplitude < 50 or max(ss) - min(ss) < 300 or not (min(ns) - folga <= numero <= max(ns) + folga):
+        return None
+    s = a * numero + b
+    if not 0 <= s <= comprimento:
+        return None
+    ponto = _ponto_em(eixo, s)
+    fora = "" if min(ns) <= numero <= max(ns) else ", além dos endereços conhecidos"
+    return Posicao(ponto[0], ponto[1], "numeração", f"estimada pela numeração da via, com {len(pares)} endereços do OSM{fora}")
+
+
+def _ajuste(pares: list[tuple[int, float]]) -> tuple[float, float, float]:
+    """Reta s = a*n + b por mínimos quadrados e r²."""
+    n = len(pares)
+    mx, my = sum(x for x, _ in pares) / n, sum(y for _, y in pares) / n
+    sxx = sum((x - mx) ** 2 for x, _ in pares)
+    syy = sum((y - my) ** 2 for _, y in pares)
+    sxy = sum((x - mx) * (y - my) for x, y in pares)
+    if sxx == 0 or syy == 0:
+        return 0.0, my, 0.0
+    return sxy / sxx, my - sxy / sxx * mx, sxy * sxy / (sxx * syy)
+
+
 def _km(texto: str) -> float | None:
     m = re.search(r"KM\s*[:.]?\s*0*(\d+)(?:\s*[+,]\s*(\d+))?(?:\s*M(?:ETROS)?\s*[:.]?\s*(\d+))?", texto.upper())
     if not m:
@@ -423,8 +578,8 @@ def aproximar(local: str, osm: OSM, dentro) -> Posicao | None:
     if escolha is None:
         return None
     if l.numero is not None:
-        achado = por_numero(osm, pedidas, escolha, l.numero)
+        achado = por_numero(osm, pedidas, escolha, l.numero) or por_numeracao(osm, pedidas, escolha, l.numero)
         if achado and dentro(achado.lat, achado.lon):
-            return achado
+            return Posicao(achado.lat, achado.lon, achado.nivel, "; ".join(x for x in (achado.detalhe, nota) if x))
     achado = meio_da_via(escolha)
     return Posicao(achado.lat, achado.lon, achado.nivel, nota) if dentro(achado.lat, achado.lon) else None

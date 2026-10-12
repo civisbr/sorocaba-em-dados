@@ -70,7 +70,12 @@ def main() -> None:
                 feitos[k] = {"chave": k, "lat": f"{achado[0]:.5f}", "lon": f"{achado[1]:.5f}", "precisao": "porta", "osm_ref": achado[2], "geocodificado_em": hoje, "detalhe": ""}
                 continue
             aprox = geo_aprox.aproximar(str(m["LocalVerificacao"]), osm, lambda la, lo: dentro(contorno, la, lo))
-            feitos[k] = {"chave": k, "lat": f"{aprox.lat:.5f}" if aprox else "", "lon": f"{aprox.lon:.5f}" if aprox else "", "precisao": aprox.nivel if aprox else "", "osm_ref": "", "geocodificado_em": hoje, "detalhe": aprox.detalhe if aprox else ""}
+            antes = feitos.get(k)
+            if antes and aprox and (antes["lat"], antes["lon"], antes["precisao"]) == (f"{aprox.lat:.5f}", f"{aprox.lon:.5f}", aprox.nivel):
+                hoje_k = antes["geocodificado_em"]  # data da posição, não da execução
+            else:
+                hoje_k = hoje
+            feitos[k] = {"chave": k, "lat": f"{aprox.lat:.5f}" if aprox else "", "lon": f"{aprox.lon:.5f}" if aprox else "", "precisao": aprox.nivel if aprox else "", "osm_ref": "", "geocodificado_em": hoje_k, "detalhe": aprox.detalhe if aprox else ""}
     RAW.mkdir(parents=True, exist_ok=True)
     with SAIDA.open("w", encoding="utf-8", newline="") as f:
         w = csv.DictWriter(f, fieldnames=CAMPOS, delimiter=";", lineterminator="\n")
