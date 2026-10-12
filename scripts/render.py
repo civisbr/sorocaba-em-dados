@@ -599,7 +599,7 @@ def renderizar(public: Path, saida: Path) -> None:
     flag_c = combustivel["qualidade"]["flag"]
     paineis["combustivel"].update(
         status=flag_c, rotulo_status=ROTULO_STATUS[flag_c],
-        referencia=f"semana de {data_br(ctx_comb['semana_ini'])[:5]} a {data_br(ctx_comb['semana_fim'])[:5]}",
+        referencia=f"semana de {data_br(ctx_comb['semana_ini'])} a {data_br(ctx_comb['semana_fim'])}",
     )
     flag_e = escolas["qualidade"]["flag"]
     paineis["escolas"].update(
@@ -618,7 +618,7 @@ def renderizar(public: Path, saida: Path) -> None:
         status="real", rotulo_status="Dado real",
         referencia=("previsão de " + data_br(previsao["referencia"]["inicio"])[:5] + " a " + data_br(previsao["referencia"]["fim"])[:5]) if previsao else "normais 1991–2020",
     )
-    paineis["transito"].update(status="real", rotulo_status="Dado real", referencia=f"sinistros até {ctx_trans['ac_fim']}; {ctx_trans['n_radares']} radares fixos listados")
+    paineis["transito"].update(status="real", rotulo_status="Dado real", referencia=f"sinistros até {ctx_trans['ac_fim']}")
     if sorted(p for _, ids in GRUPOS for p in ids) != sorted(paineis):
         raise ValueError("todo painel precisa estar em exatamente um grupo de scripts.paineis.GRUPOS")
     grupos = [{"nome": nome, "paineis": [paineis[i] for i in ids]} for nome, ids in GRUPOS]

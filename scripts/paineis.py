@@ -92,7 +92,7 @@ PAINEIS = {
         "busca": True,
     },
     "cidade": {
-        "nav": "A cidade",
+        "nav": "Perfil da cidade",
         "titulo": "Quem somos em números",
         "h1": "Quanta gente mora em Sorocaba e o que a economia produz?",
         "pergunta": "Qual o tamanho da cidade, em população, território e economia, e a que região ela pertence?",

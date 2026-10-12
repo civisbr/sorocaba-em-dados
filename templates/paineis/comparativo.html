@@ -27,7 +27,7 @@
 {% for b in blocos %}
 <section aria-labelledby="h-{{ b.id }}" id="{{ b.id }}" class="bloco-painel">
   <h2 id="h-{{ b.id }}" class="h2-medio sem-topo">{{ b.nome }}</h2>
-  <p class="suave">Em {{ b.ultimo.ano }}: {{ fmt_ind(b.tipo, b.ultimo.valor) }}, <strong>{{ b.ultimo.pos_sp | num }}º entre {{ b.ultimo.n_sp | num }} municípios paulistas</strong> e <strong>{{ b.ultimo.pos_br | num }}º entre {{ b.ultimo.n_br | num }} no Brasil</strong>.{% if b.ultimo.empatados_sp %} Há {{ b.ultimo.empatados_sp }} municípios paulistas empatados nessa posição.{% endif %} Em {{ b.primeiro.ano }}, a posição paulista era {{ b.primeiro.pos_sp | num }}º.</p>
+  <p class="suave">Em {{ b.ultimo.ano }}: {{ fmt_ind(b.tipo, b.ultimo.valor) }}, <strong>{{ b.ultimo.pos_sp | num }}º entre {{ b.ultimo.n_sp | num }} municípios paulistas</strong> e <strong>{{ b.ultimo.pos_br | num }}º entre {{ b.ultimo.n_br | num }} no Brasil</strong>.{% if b.ultimo.empatados_sp %} Sorocaba empata nessa posição com {{ b.ultimo.empatados_sp }} outros municípios paulistas.{% endif %} Em {{ b.primeiro.ano }}, a posição paulista era {{ b.primeiro.pos_sp | num }}º.</p>
   <div class="grade-2">
     <article class="quadro-card"><h3>Posição entre os municípios de SP</h3><p class="suave">Quanto mais alto no gráfico, mais perto do 1º lugar.</p>{{ serie(b.grafico_sp, "sp-" ~ b.id, "Posição de Sorocaba entre os municípios paulistas: " ~ b.nome) }}</article>
     <article class="quadro-card"><h3>Posição entre os municípios do Brasil</h3><p class="suave">Mesma leitura, comparando com o país.</p>{{ serie(b.grafico_br, "br-" ~ b.id, "Posição de Sorocaba entre os municípios brasileiros: " ~ b.nome) }}</article>
@@ -44,7 +44,7 @@
       </details>
     </article>
     <article class="quadro-card">
-      <h3>Quem está perto, no ranking paulista ({{ b.ano_viz }})</h3>
+      <h3>Quem está perto, na classificação paulista ({{ b.ano_viz }})</h3>
       {% if b.ultimo.empatados_sp and b.ultimo.empatados_sp > 3 %}<p class="suave">Sorocaba empata com {{ b.ultimo.empatados_sp }} outros municípios paulistas ({{ fmt_ind(b.tipo, b.ultimo.valor) }}), então não há vizinhos de ranking bem definidos.</p>{% else %}
       <ul class="lista-simples lista-1col">{% for v in b.vizinhos %}<li{% if v.codigo == "3552205" %} class="destaque-lista"{% endif %}><span>{{ v.pos_sp | num }}º · {{ v.municipio }}</span> <span class="suave">{{ fmt_ind(b.tipo, v.valor) }}</span></li>{% endfor %}</ul>{% endif %}
     </article>
@@ -59,7 +59,7 @@
 <dl class="proveniencia">
   <dt>Fontes</dt><dd><a href="https://sidra.ibge.gov.br/">IBGE (SIDRA)</a>, <a href="https://www.gov.br/inep/pt-br/areas-de-atuacao/pesquisas-estatisticas-e-indicadores/ideb">INEP (IDEB)</a></dd>
   <dt>Período</dt><dd>{{ env.referencia.inicio[:4] }} a {{ env.referencia.fim[:4] }}</dd>
-  <dt>Verificado em</dt><dd>{{ env.fonte.acesso_em | data_br }}</dd>
+  <dt>Coletado em</dt><dd>{{ env.fonte.acesso_em | data_br }}</dd>
   <dt>Dados</dt><dd><a href="{{ raiz }}data/comparativo.json">comparativo.json</a></dd>
   <dt>Código</dt><dd><a href="{{ repo_url }}/blob/main/{{ script }}">{{ script }}</a></dd>
 </dl>

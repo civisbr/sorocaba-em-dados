@@ -5,7 +5,7 @@ from __future__ import annotations
 import re
 from collections.abc import Callable
 
-REDES = (("municipal", "Municipal", "Escola municipal"), ("estadual", "Estadual", "Escola estadual"), ("federal", "Federal", "Escola federal"), ("privada", "Privada", "Escola particular"))
+REDES = (("municipal", "Municipal", "Escola municipal"), ("estadual", "Estadual", "Escola estadual"), ("federal", "Federal", "Escola federal"), ("privada", "Privada", "Escola privada"))
 ETAPAS = (("infantil", "Educação infantil", "mat_infantil"), ("iniciais", "Anos iniciais (1º ao 5º)", "mat_anos_iniciais"), ("finais", "Anos finais (6º ao 9º)", "mat_anos_finais"),
           ("medio", "Ensino médio", "mat_medio"), ("eja", "Educação de jovens e adultos", "mat_eja"),
           ("outras", "Outras (técnica, profissional, especial ou sem matrícula regular)", None))

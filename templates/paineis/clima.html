@@ -28,7 +28,7 @@
     <tbody>{% for r in prev.modelo %}<tr><th scope="row">{{ (r.dia | data_br)[:5] }} <span class="suave">{{ dia_semana(r.dia) }}</span></th><td>{{ r.resumo }}</td><td>{{ r.tmin | brl1 }}°</td><td>{{ r.tmax | brl1 }}°</td><td>{{ r.chuva_mm | brl1 }}{% if r.chuva_mm is not none %} mm{% endif %}</td><td>{{ (r.prob_chuva ~ "%") if r.prob_chuva is not none else "—" }}</td></tr>{% endfor %}</tbody>
   </table></div>
   {% endif %}
-  <p class="pequeno suave">Atualizada em {{ prev.env.fonte.acesso_em | data_br }}. Previsão muda a cada atualização e perde precisão com os dias; as duas fontes podem divergir. Em risco de temporal, siga a Defesa Civil.</p>
+  <p class="pequeno suave">Coletada em {{ prev.env.fonte.acesso_em | data_br }}. Previsão muda a cada atualização e perde precisão com os dias; as duas fontes podem divergir. Em risco de temporal, siga a Defesa Civil.</p>
   {% else %}
   <p class="quadro-card pendente-texto">{{ icone("relogio") }} A previsão não está disponível no momento. O clima típico de cada mês continua abaixo.</p>
   {% endif %}

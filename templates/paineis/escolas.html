@@ -22,7 +22,7 @@
 <section aria-labelledby="mapa-t" class="bloco-painel">
   <h2 id="mapa-t" class="h2-medio sem-topo">Mapa das escolas</h2>
   <p class="suave" data-sem-js>O mapa precisa de JavaScript; a lista abaixo traz todas as escolas.</p>
-  <p class="suave">{{ me.pontos | length }} das {{ me.total }} escolas têm posição no mapa. Passe o mouse ou toque num ponto para ver o nome; abra para ver endereço, etapas de ensino e a página da escola. <span data-so-js hidden>Escolha as etapas e informe onde você está para ver as escolas mais perto. Não há ranking: o mapa mostra onde ficam, não qual é melhor.</span></p>
+  <p class="suave">{{ me.pontos | length }} das {{ me.total }} escolas (sem contar unidades prisionais e socioeducativas) têm posição no mapa. Passe o mouse ou toque num ponto para ver o nome; abra para ver endereço, etapas de ensino e a página da escola. <span data-so-js hidden>Escolha as etapas e informe onde você está para ver as escolas mais perto. Não há ranking: o mapa mostra onde ficam, não qual é melhor.</span></p>
   <div class="mapa-saude mapa-interativo">
     {% call quadro(mb, "Mapa de Sorocaba com as escolas em atividade, coloridas por rede de ensino", me.nomes, me.ordem, "Distância em linha reta, não pelo caminho. Posições aproximadas, a partir do endereço do Censo Escolar.", pontos_url=raiz ~ "data/mapa-escolas.json", campos=me.campos, valores=me.valores, rotulo_url="Ver a página da escola", so_js=true) %}
     <g class="ms-unidades"></g>
