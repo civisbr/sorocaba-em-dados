@@ -267,3 +267,4 @@ div.ms-dica[hidden]{display:none}div.ms-dica.abaixo{transform:translate(-50%,0)}
 .proveniencia dd a,.rodape-links a{display:inline-block;min-height:1.5rem;line-height:1.5rem}
 .mapa-saude{grid-template-columns:minmax(0,1fr)}.mapa-saude>*,.mapa-lateral>*{min-width:0}.ms-filtro label>span{min-width:0;overflow-wrap:anywhere}
 @media(min-width:900px){.mapa-saude{grid-template-columns:minmax(0,1.6fr) minmax(0,1fr)}}
+.mk-inmetro-ok{fill:#0f8a5f;stroke:#fff;stroke-width:2}.mk-check{fill:none;stroke:#fff;stroke-width:2.4;stroke-linecap:round;stroke-linejoin:round}.mk-inmetro-alerta{fill:#c0392b;stroke:#fff;stroke-width:2;stroke-linejoin:round}

@@ -82,14 +82,14 @@
   var f = document.getElementById("inmetro-filtro");
   if (!f) return;
   f.hidden = false;
-  var q = document.getElementById("inmetro-busca"), n = document.getElementById("inmetro-contagem");
-  var linhas = Array.prototype.slice.call(document.querySelectorAll("#inmetro-tabela-invalidos tbody tr[data-busca], #inmetro-tabela-validos tbody tr[data-busca]"));
+  var q = document.getElementById("inmetro-busca"), n = document.getElementById("inmetro-contagem"), espera = null;
+  var linhas = Array.prototype.slice.call(document.querySelectorAll("#inmetro-tabela-invalidos tbody tr[data-busca], #inmetro-tabela-validos tbody tr[data-busca], #inmetro-tabela-antigos tbody tr[data-busca]"));
   function filtrar() {
-    var t = q.value.trim().toLowerCase(), vistos = 0;
-    linhas.forEach(function (l) { var ok = !t || l.dataset.busca.indexOf(t) !== -1; l.hidden = !ok; if (ok) vistos++; });
-    if (t) document.querySelectorAll("#inmetro-tabela-validos").forEach(function (tb) { var d = tb.closest("details"); if (d) d.open = true; });
+    var t = q.value.trim().toLowerCase(), d = t.replace(/\D/g, ""), vistos = 0;
+    linhas.forEach(function (l) { var ok = !t || l.dataset.busca.indexOf(t) !== -1 || (d.length >= 4 && d.length >= t.replace(/[\s.\-/]/g, "").length - 1 && l.dataset.digitos.indexOf(d) !== -1); l.hidden = !ok; if (ok) vistos++; });
+    if (t) document.querySelectorAll("#inmetro-tabela-validos, #inmetro-tabela-antigos").forEach(function (tb) { var det = tb.closest("details"); if (det) det.open = true; });
     n.textContent = t ? (vistos ? vistos + " medidor(es) encontrado(s)" : "Nenhum medidor encontrado. Confira o número digitado e tente o portal oficial.") : "";
   }
-  q.addEventListener("input", filtrar);
+  q.addEventListener("input", function () { clearTimeout(espera); espera = setTimeout(filtrar, 300); });
   f.addEventListener("submit", function (e) { e.preventDefault(); });
 })();

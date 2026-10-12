@@ -42,8 +42,9 @@ def test_classificacao_vencida_reprovada_e_em_dia(tmp_path):
     ctx = contexto_inmetro(env, date(2026, 10, 11))
     por = {m["local"]: m for m in ctx["inm_invalidos"]}
     assert set(por) == {"VENCIDO", "REPROVADO"} and por["VENCIDO"]["situacao"] == "vencida" and por["VENCIDO"]["dias_vencida"] == 132
-    assert len(ctx["inm_validos"]) == 20 and ctx["inm_total"] == 22
-    assert contexto_inmetro(env, date(2028, 1, 1))["inm_invalidos"].__len__() == 22  # com o tempo, tudo vence
+    assert len(ctx["inm_validos"]) == 20 and ctx["inm_total"] == 22 and ctx["inm_antigos"] == []
+    longe = contexto_inmetro(env, date(2028, 1, 1))
+    assert len(longe["inm_validos"]) == 0 and len(longe["inm_antigos"]) == 22  # com o tempo, registros sem nova verificação viram "antigos", fora da contagem principal
 
 
 def test_hash_adulterado_e_recusado(tmp_path):
@@ -59,4 +60,20 @@ def test_pagina_de_transito_tem_secao_e_link_oficial(tmp_path):
     r = subprocess.run([sys.executable, "-m", "scripts.render", "--saida", str(tmp_path)], capture_output=True, text=True)
     assert r.returncode == 0, r.stderr
     html = (tmp_path / "transito" / "index.html").read_text(encoding="utf-8")
-    assert "Os radares estão com a verificação em dia?" in html and "https://servicos.rbmlq.gov.br/Instrumento" in html and "não se uma multa é válida" in html
+    assert "Os radares estão com a verificação em dia?" in html and "https://servicos.rbmlq.gov.br/Instrumento" in html and "Ela não diz se uma multa é válida" in html
+
+
+def test_reparado_com_laudo_aprovado_vigente_nao_e_invalido(tmp_path):
+    m = _medidor(local="REPARADO", validade="", resultado="Reparado")
+    m["DataValidade"] = ""
+    m["Historico"] = [{"NumeroCertificado": "1", "DataLaudo": "01/06/2026", "DataValidade": "31/05/2027", "Resultado": "Aprovado"}]
+    _coletar(tmp_path, [_medidor(local=f"L{i}") for i in range(20)] + [m])
+    ctx = contexto_inmetro(build_inmetro.construir(tmp_path).model_dump(mode="json"), date(2026, 10, 11))
+    assert "REPARADO" not in [x["local"] for x in ctx["inm_invalidos"]] and "REPARADO" in [x["local"] for x in ctx["inm_validos"]]
+
+
+def test_registro_antigo_no_mesmo_endereco_de_um_vigente_e_marcado_como_substituido(tmp_path):
+    itens = [_medidor(local=f"L{i}") for i in range(20)] + [_medidor(local="AV. TESTE, Nº 10", validade="01/01/2023"), _medidor(local="AV. TESTE, N° 10")]
+    _coletar(tmp_path, itens)
+    ctx = contexto_inmetro(build_inmetro.construir(tmp_path).model_dump(mode="json"), date(2026, 10, 11))
+    assert [m["local"] for m in ctx["inm_antigos"]] == ["AV. TESTE, Nº 10"] and ctx["inm_antigos"][0]["substituido"] and not ctx["inm_invalidos"]

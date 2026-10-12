@@ -68,13 +68,20 @@
     <h3>Mapa dos radares com posição conhecida ({{ rm.pontos | length }} individuais e {{ rm.pontos_grupo | length }} de grupo, de {{ n_radares }} radares)</h3>
     <p class="suave">Posição aproximada, tirada do OpenStreetMap: a Semob não publica coordenadas.{% if rm.vista.split()[2] | float < rm.mapa.largura %} O mapa está aproximado da região dos pontos.{% endif %} Ponto cheio: posição de um radar. Anel: câmera de uma via com vários radares da lista; sabe-se que está ali, mas não qual radar é. Radares sem ponto não têm posição segura nos dados abertos; todos estão na lista abaixo.</p>
     <div class="mapa-saude mapa-interativo">
-    {% call quadro(mb, "Mapa com a posição aproximada de radares fixos em Sorocaba: " ~ (rm.pontos | length) ~ " individuais e " ~ (rm.pontos_grupo | length) ~ " de grupo", {"radar": "Radar fixo", "radar-grupo": "Câmera de via com vários radares"}, "radar,radar-grupo", "Posição aproximada, em linha reta.", vista=rm.vista, defs=false) %}
+    {% call quadro(mb, "Mapa com a posição aproximada de radares fixos em Sorocaba: " ~ (rm.pontos | length) ~ " individuais e " ~ (rm.pontos_grupo | length) ~ " de grupo", {"radar": "Radar fixo (relação da Semob)", "radar-grupo": "Câmera de via com vários radares", "inmetro-ok": "Medidor do Inmetro, verificação em dia", "inmetro-alerta": "Medidor do Inmetro, verificação vencida ou sem aprovação"}, "inmetro-alerta,inmetro-ok,radar,radar-grupo", "Posição aproximada, em linha reta.", vista=rm.vista, defs=false) %}
       <g class="ms-unidades">
+      {% for p in inm_pontos %}<g class="ms-u g-{{ p.g }}" transform="translate({{ p.x }} {{ p.y }})" aria-label="{{ p.nome }}: {{ 'verificação em dia' if p.g == 'inmetro-ok' else 'verificação vencida ou sem aprovação' }}" data-grupo="{{ p.g }}" data-vel="{{ p.vel }}" data-nome="{{ p.nome }}" data-resumo="{{ 'verificação em dia' if p.g == 'inmetro-ok' else 'ATENÇÃO: verificação vencida ou sem aprovação' }}" data-detalhes="{{ p.detalhes | tojson | forceescape }}" data-lat="{{ p.lat }}" data-lon="{{ p.lon }}"><use class="mk" href="#s-{{ p.g }}"/></g>{% endfor %}
       {% for p in rm.pontos %}<g class="ms-u g-radar vel-{{ p.v }}" transform="translate({{ p.x }} {{ p.y }})" aria-label="{{ p.local }}, {{ p.v }} km/h" data-grupo="radar" data-vel="{{ p.v }}" data-nome="{{ p.local }}" data-resumo="{{ p.v }} km/h" data-detalhes="{{ [["Velocidade", p.v ~ " km/h"], ["Posição", p.precisao]] | tojson | forceescape }}" data-lat="{{ p.lat }}" data-lon="{{ p.lon }}"><use class="mk" href="#s-radar"/></g>{% endfor %}
       {% for p in rm.pontos_grupo %}<g class="ms-u g-radar-grupo vel-{{ p.v }}" transform="translate({{ p.x }} {{ p.y }})" aria-label="Câmera da via, {{ p.v }} km/h" data-grupo="radar-grupo" data-vel="{{ p.v }}" data-nome="{{ p.locais | first }}{% if p.locais | length > 1 %} e outros{% endif %}" data-resumo="{{ p.v }} km/h" data-detalhes="{{ [["Velocidade", p.v ~ " km/h"], ["Radares da lista nesta via", p.locais | join("; ")], ["Posição", "uma câmera da via; não se sabe a qual radar corresponde"]] | tojson | forceescape }}" data-lat="{{ p.lat }}" data-lon="{{ p.lon }}"><use class="mk" href="#s-radar-grupo"/></g>{% endfor %}
       </g>
     {% endcall %}
     <div class="mapa-lateral">
+      <fieldset class="ms-filtro" data-so-js hidden><legend>O que mostrar</legend>
+        <label><input type="checkbox" value="inmetro-alerta" data-filtro="grupo" checked><svg class="ms-chave" viewBox="-16 -16 32 32" aria-hidden="true"><use href="#s-inmetro-alerta"/></svg><span>Inmetro: verificação vencida ou sem aprovação <span class="suave">({{ inm_pontos | selectattr("g", "equalto", "inmetro-alerta") | list | length }})</span></span></label>
+        <label><input type="checkbox" value="inmetro-ok" data-filtro="grupo" checked><svg class="ms-chave" viewBox="-16 -16 32 32" aria-hidden="true"><use href="#s-inmetro-ok"/></svg><span>Inmetro: verificação em dia <span class="suave">({{ inm_pontos | selectattr("g", "equalto", "inmetro-ok") | list | length }})</span></span></label>
+        <label><input type="checkbox" value="radar" data-filtro="grupo" checked><span class="amostra-radar vel-60"></span><span>Radar da relação da Semob</span></label>
+        <label><input type="checkbox" value="radar-grupo" data-filtro="grupo" checked><span class="amostra-radar vel-60"></span><span>Câmera de via com vários radares</span></label>
+      </fieldset>
       <fieldset class="ms-filtro" data-so-js hidden><legend>Velocidade fiscalizada</legend>
         {% for v in rm.velocidades %}<label><input type="checkbox" value="{{ v }}" data-filtro="vel" checked><span class="amostra-radar vel-{{ v }}"></span><span>{{ v }} km/h</span></label>{% endfor %}
       </fieldset>
@@ -97,27 +104,36 @@
 <section aria-labelledby="inmetro-t" class="bloco-painel">
   <h2 id="inmetro-t" class="h2-medio sem-topo">Os radares estão com a verificação em dia?</h2>
   <article class="quadro-card">
-    <p class="suave">O Inmetro, por meio dos órgãos de metrologia dos estados, verifica os medidores de velocidade. Se você recebeu uma multa de radar, confira se o equipamento tinha verificação válida na data da infração: o número do Inmetro aparece na notificação. A consulta oficial é a do <a href="{{ inm_link }}" rel="noreferrer">Portal de Serviços do Inmetro nos Estados (PSIE)</a>.</p>
-    <p><strong>{{ inm_invalidos | length }} dos {{ inm_total }} medidores de velocidade de Sorocaba na base do Inmetro estão com verificação vencida ou sem resultado aprovado</strong> (dados coletados em {{ inm_coleta }}).</p>
-    <p class="pequeno suave"><strong>Atenção:</strong> isso mostra a situação da verificação metrológica, não se uma multa é válida ou não: isso depende do auto de infração e da análise do órgão autuador, e a verificação pode ter estado em dia na data da multa. Verificação vencida também pode indicar equipamento retirado ou substituído. Use o número do Inmetro da notificação no portal oficial para confirmar.</p>
+    <p class="aviso-amostra">{{ icone("alerta") }} Esta página mostra a situação <strong>de hoje</strong> da verificação metrológica do Inmetro. Ela não diz se uma multa é válida: isso depende do auto de infração, da data da infração e da análise do órgão autuador. Uma verificação vencida hoje não anula uma multa antiga nem dispensa o prazo de recurso ou de pagamento. Para a data da infração, consulte o histórico no portal oficial.</p>
+    <p class="suave">O Inmetro, por meio dos órgãos de metrologia dos estados, verifica os medidores de velocidade. O número do Inmetro aparece na notificação da multa. A consulta oficial é a do <a href="{{ inm_link }}" rel="noreferrer">Portal de Serviços do Inmetro nos Estados (PSIE)</a>.</p>
+    <p><strong>{{ inm_invalidos | length }} de {{ inm_total }} medidores de Sorocaba na base do Inmetro estão com verificação vencida recentemente (até 6 meses) ou sem resultado aprovado.</strong> Situação em {{ inm_hoje }}, com dados coletados em {{ inm_coleta }}.{% if inm_antigos %} Outros {{ inm_antigos | length }} registros venceram há mais de 6 meses, muitos de equipamentos trocados, e ficam numa lista à parte, fora dessa conta.{% endif %}</p>
+    {% if inm_defasagem %}<p class="aviso-amostra">{{ icone("alerta") }} A base do Inmetro não é atualizada aqui há {{ inm_defasagem }} dias; a situação pode ter mudado.</p>{% endif %}
     <form class="filtro filtro-busca" id="inmetro-filtro" role="search" aria-label="Buscar medidor por local, número do Inmetro ou de série" hidden>
       <div><label for="inmetro-busca">Número do Inmetro, número de série ou local</label><input id="inmetro-busca" type="search" autocomplete="off" placeholder="Ex.: 15842251 ou Avenida Itavuvu"></div>
       <p class="pequeno suave" id="inmetro-contagem" role="status" aria-live="polite"></p>
     </form>
-    <h3>Verificação vencida ou sem resultado aprovado ({{ inm_invalidos | length }})</h3>
+    <h3>Vencida recentemente ou sem resultado aprovado ({{ inm_invalidos | length }})</h3>
     <div class="rolagem"><table id="inmetro-tabela-invalidos">
-      <caption class="so-leitor">Medidores de velocidade de Sorocaba com verificação vencida ou sem resultado aprovado</caption>
+      <caption class="so-leitor">Medidores de velocidade de Sorocaba com verificação vencida recentemente ou sem resultado aprovado</caption>
       <thead><tr><th scope="col">Local verificado</th><th scope="col">Nº Inmetro</th><th scope="col">Nº de série</th><th scope="col">km/h</th><th scope="col">Validade</th><th scope="col">Situação</th></tr></thead>
-      <tbody>{% for m in inm_invalidos %}<tr data-busca="{{ m.busca }}"><th scope="row">{{ m.local }}</th><td>{{ m.inmetros }}</td><td>{{ m.series }}</td><td>{{ m.velocidades or "—" }}</td><td>{{ m.validade_br }}</td><td>{{ m.situacao | capitalize }}{% if m.dias_vencida %} há {{ m.dias_vencida | num }} dias{% endif %}</td></tr>{% else %}<tr><td colspan="6">Nenhum medidor nesta situação na base do Inmetro.</td></tr>{% endfor %}</tbody>
+      <tbody>{% for m in inm_invalidos %}<tr data-busca="{{ m.busca }}" data-digitos="{{ m.digitos }}"><th scope="row">{{ m.local }}{% if m.via_estadual %} <span class="suave">(via estadual ou concessão)</span>{% endif %}</th><td>{{ m.inmetros }}</td><td>{{ m.series }}</td><td>{{ m.velocidades or "—" }}</td><td>{{ m.validade_br }}</td><td>{{ m.situacao | capitalize }}{% if m.dias_vencida %} há {{ m.dias_vencida | num }} dias{% endif %}</td></tr>{% else %}<tr><td colspan="6">Nenhum medidor nesta situação na base do Inmetro.</td></tr>{% endfor %}</tbody>
     </table></div>
-    <details class="tabela-mes"><summary>Ver os {{ inm_validos | length }} medidores com verificação em dia</summary>
+    <details class="tabela-mes"><summary>Ver os {{ inm_validos | length }} medidores com verificação em dia{% if inm_validos | selectattr("reparado") | list %} (inclui reparados com laudo aprovado vigente){% endif %}</summary>
       <div class="rolagem"><table id="inmetro-tabela-validos">
         <caption class="so-leitor">Medidores de velocidade de Sorocaba com verificação em dia</caption>
         <thead><tr><th scope="col">Local verificado</th><th scope="col">Nº Inmetro</th><th scope="col">Nº de série</th><th scope="col">km/h</th><th scope="col">Validade</th></tr></thead>
-        <tbody>{% for m in inm_validos %}<tr data-busca="{{ m.busca }}"><th scope="row">{{ m.local }}</th><td>{{ m.inmetros }}</td><td>{{ m.series }}</td><td>{{ m.velocidades or "—" }}</td><td>{{ m.validade_br }}</td></tr>{% endfor %}</tbody>
+        <tbody>{% for m in inm_validos %}<tr data-busca="{{ m.busca }}" data-digitos="{{ m.digitos }}"><th scope="row">{{ m.local }}{% if m.via_estadual %} <span class="suave">(via estadual ou concessão)</span>{% endif %}</th><td>{{ m.inmetros }}</td><td>{{ m.series }}</td><td>{{ m.velocidades or "—" }}</td><td>{{ m.validade_br }}{% if m.reparado %} (reparado; confirme no portal){% endif %}</td></tr>{% endfor %}</tbody>
       </table></div>
     </details>
-    <p class="pequeno suave">Fonte: <a href="{{ inm_dados }}" rel="noreferrer">Inmetro, dados abertos do PSIE</a> (licença CC0), medidores de velocidade do estado de São Paulo, recorte de Sorocaba. Local e velocidade vêm do cadastro do Inmetro e podem diferir da relação da Semob. <a href="{{ raiz }}data/radares_inmetro.json">radares_inmetro.json</a>.</p>
+    {% if inm_antigos %}<details class="tabela-mes"><summary>Ver os {{ inm_antigos | length }} registros antigos (vencidos há mais de 6 meses)</summary>
+      <p class="pequeno suave">Registros que o Inmetro mantém sem nova verificação. Em vários, o mesmo endereço aparece com outro equipamento já verificado: o aparelho foi provavelmente trocado ou retirado. Não é possível saber pela base se ainda estão em operação.</p>
+      <div class="rolagem"><table id="inmetro-tabela-antigos">
+        <caption class="so-leitor">Registros antigos de medidores de velocidade de Sorocaba, vencidos há mais de seis meses</caption>
+        <thead><tr><th scope="col">Local verificado</th><th scope="col">Nº Inmetro</th><th scope="col">Nº de série</th><th scope="col">Validade</th><th scope="col">Observação</th></tr></thead>
+        <tbody>{% for m in inm_antigos %}<tr data-busca="{{ m.busca }}" data-digitos="{{ m.digitos }}"><th scope="row">{{ m.local }}</th><td>{{ m.inmetros }}</td><td>{{ m.series }}</td><td>{{ m.validade_br }}</td><td>{% if m.substituido %}Há equipamento vigente no mesmo endereço{% else %}Vencido há {{ m.dias_vencida | num }} dias{% endif %}</td></tr>{% endfor %}</tbody>
+      </table></div>
+    </details>{% endif %}
+    <p class="pequeno suave">Fonte: <a href="{{ inm_dados }}" rel="noreferrer">Inmetro, dados abertos do PSIE</a> (licença CC0). A base inclui equipamentos em rodovias estaduais e concessionadas no município, além dos da Semob. Local e velocidade vêm do cadastro do Inmetro e podem diferir da relação da Semob. <a href="{{ raiz }}data/radares_inmetro.json">radares_inmetro.json</a>.</p>
   </article>
 </section>
 <section aria-labelledby="falta-t" class="bloco-painel">

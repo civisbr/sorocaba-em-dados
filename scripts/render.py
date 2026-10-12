@@ -17,7 +17,7 @@ from scripts.charts import barras_mensais, linhas, linhas_posicao, linhas_preco
 from scripts.mapa import gerar as gerar_mapa
 from scripts.mapa import projetar as projetar_mapa
 from scripts.contexto_hospitais import contexto_hospitais
-from scripts.contexto_inmetro import contexto_inmetro
+from scripts.contexto_inmetro import contexto_inmetro, pontos_mapa
 from scripts.contexto_mapa_escolas import contexto_mapa_escolas
 from scripts.contexto_mapa_saude import contexto_mapa_saude
 from scripts.contexto_panorama import contexto_panorama
@@ -590,6 +590,7 @@ def renderizar(public: Path, saida: Path) -> None:
     inmetro = json.loads((public / "radares_inmetro.json").read_text(encoding="utf-8"))
     ctx_trans.update(contexto_inmetro(inmetro, date.today()))
     ctx_trans["env_inm"] = inmetro
+    ctx_trans["inm_pontos"] = pontos_mapa(ctx_trans["inm_linhas"], proj_grande()[1])
     escolas = json.loads((public / "escolas.json").read_text(encoding="utf-8"))
     ctx_esc = contexto_escolas(escolas)
     ctx_esc["mapa_escolas"] = contexto_mapa_escolas(escolas, nome_br, proj_grande()[1])
