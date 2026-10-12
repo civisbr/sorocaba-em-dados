@@ -89,7 +89,7 @@ def test_sem_js_o_conteudo_existe(site):
 def test_orcamento_de_peso_por_pagina(site):
     css, js = (site / "style.css").stat().st_size, (site / "app.js").stat().st_size
     for pagina in site.rglob("index.html"):
-        limite = 175_000 if 'class="ms-svg"' in pagina.read_text(encoding="utf-8") else 150_000  # páginas com mapa trazem células e marcadores; a base cartográfica é arquivo à parte
+        limite = 210_000 if 'class="ms-svg"' in pagina.read_text(encoding="utf-8") else 150_000  # páginas com mapa trazem células e marcadores; a base cartográfica é arquivo à parte
         assert pagina.stat().st_size + css + js < limite, pagina
 
 

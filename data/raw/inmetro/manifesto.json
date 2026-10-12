@@ -1,0 +1,9 @@
+{
+  "acesso_em": "2026-10-11",
+  "bytes_origem": 18142779,
+  "fonte": "https://servicos.rbmlq.gov.br/dados-abertos/SP/medidores.json",
+  "licenca": "Creative Commons CCZero (dados.gov.br)",
+  "n_medidores": 114,
+  "sha256_filtrado": "f9b80ff9c93328dca5d54a4c4745f22347748754406fe957df242d74d46fcdc2",
+  "sha256_origem": "ac5cbc140a5c16738f01e0f18da5ef484709a1683bee503d4841f90d52b93e90"
+}

@@ -78,3 +78,18 @@
     r.setAttribute("aria-label", cap ? cap.textContent.trim() : "Tabela com rolagem horizontal");
   });
 })();
+(function () {
+  var f = document.getElementById("inmetro-filtro");
+  if (!f) return;
+  f.hidden = false;
+  var q = document.getElementById("inmetro-busca"), n = document.getElementById("inmetro-contagem");
+  var linhas = Array.prototype.slice.call(document.querySelectorAll("#inmetro-tabela-invalidos tbody tr[data-busca], #inmetro-tabela-validos tbody tr[data-busca]"));
+  function filtrar() {
+    var t = q.value.trim().toLowerCase(), vistos = 0;
+    linhas.forEach(function (l) { var ok = !t || l.dataset.busca.indexOf(t) !== -1; l.hidden = !ok; if (ok) vistos++; });
+    if (t) document.querySelectorAll("#inmetro-tabela-validos").forEach(function (tb) { var d = tb.closest("details"); if (d) d.open = true; });
+    n.textContent = t ? (vistos ? vistos + " medidor(es) encontrado(s)" : "Nenhum medidor encontrado. Confira o número digitado e tente o portal oficial.") : "";
+  }
+  q.addEventListener("input", filtrar);
+  f.addEventListener("submit", function (e) { e.preventDefault(); });
+})();

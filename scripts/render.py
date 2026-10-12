@@ -17,6 +17,7 @@ from scripts.charts import barras_mensais, linhas, linhas_posicao, linhas_preco
 from scripts.mapa import gerar as gerar_mapa
 from scripts.mapa import projetar as projetar_mapa
 from scripts.contexto_hospitais import contexto_hospitais
+from scripts.contexto_inmetro import contexto_inmetro
 from scripts.contexto_mapa_escolas import contexto_mapa_escolas
 from scripts.contexto_mapa_saude import contexto_mapa_saude
 from scripts.contexto_panorama import contexto_panorama
@@ -586,6 +587,9 @@ def renderizar(public: Path, saida: Path) -> None:
     acidentes = json.loads((public / "infosiga.json").read_text(encoding="utf-8"))
     ctx_trans.update(contexto_acidentes(acidentes))
     ctx_trans["env_ac"] = acidentes
+    inmetro = json.loads((public / "radares_inmetro.json").read_text(encoding="utf-8"))
+    ctx_trans.update(contexto_inmetro(inmetro, date.today()))
+    ctx_trans["env_inm"] = inmetro
     escolas = json.loads((public / "escolas.json").read_text(encoding="utf-8"))
     ctx_esc = contexto_escolas(escolas)
     ctx_esc["mapa_escolas"] = contexto_mapa_escolas(escolas, nome_br, proj_grande()[1])
@@ -648,7 +652,7 @@ def renderizar(public: Path, saida: Path) -> None:
         me = ctx_esc["mapa_escolas"]
         (saida / "data" / "mapa-escolas.json").write_text(json.dumps({"fonte": "INEP (endereço) e OpenStreetMap/Nominatim (posição)", "licenca": "Posições © colaboradores do OpenStreetMap, ODbL 1.0 (https://www.openstreetmap.org/copyright)", "pontos": me["pontos"]}, ensure_ascii=False, separators=(",", ":")), encoding="utf-8")
     (saida / "data" / "mapa-bairros.json").write_text(bairros_json(base_osm, proj["f"]), encoding="utf-8")
-    for nome in ("emprego.json", "combustivel.json", "escolas.json", "perfil.json", "representantes.json", "seguranca.json", "comparativo.json", "clima.json", "radares.json", "infosiga.json", "saude_doencas.json", "saude_hospitais.json", "saude_panorama.json", "saude_vacinas.json"):
+    for nome in ("emprego.json", "combustivel.json", "escolas.json", "perfil.json", "representantes.json", "seguranca.json", "comparativo.json", "clima.json", "radares.json", "infosiga.json", "radares_inmetro.json", "saude_doencas.json", "saude_hospitais.json", "saude_panorama.json", "saude_vacinas.json"):
         shutil.copy(public / nome, saida / "data" / nome)
 
     comum = {"paineis": ordem, "grupos": grupos, "repo_url": REPO_URL}

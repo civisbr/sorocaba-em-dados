@@ -94,6 +94,32 @@
   </details>
   <p class="pequeno suave">“(C/B)” e “(B/C)” indicam o sentido da via (centro/bairro ou bairro/centro), como na lista da Semob.</p>
 </section>
+<section aria-labelledby="inmetro-t" class="bloco-painel">
+  <h2 id="inmetro-t" class="h2-medio sem-topo">Os radares estão com a verificação em dia?</h2>
+  <article class="quadro-card">
+    <p class="suave">O Inmetro, por meio dos órgãos de metrologia dos estados, verifica os medidores de velocidade. Se você recebeu uma multa de radar, confira se o equipamento tinha verificação válida na data da infração: o número do Inmetro aparece na notificação. A consulta oficial é a do <a href="{{ inm_link }}" rel="noreferrer">Portal de Serviços do Inmetro nos Estados (PSIE)</a>.</p>
+    <p><strong>{{ inm_invalidos | length }} dos {{ inm_total }} medidores de velocidade de Sorocaba na base do Inmetro estão com verificação vencida ou sem resultado aprovado</strong> (dados coletados em {{ inm_coleta }}).</p>
+    <p class="pequeno suave"><strong>Atenção:</strong> isso mostra a situação da verificação metrológica, não se uma multa é válida ou não: isso depende do auto de infração e da análise do órgão autuador, e a verificação pode ter estado em dia na data da multa. Verificação vencida também pode indicar equipamento retirado ou substituído. Use o número do Inmetro da notificação no portal oficial para confirmar.</p>
+    <form class="filtro filtro-busca" id="inmetro-filtro" role="search" aria-label="Buscar medidor por local, número do Inmetro ou de série" hidden>
+      <div><label for="inmetro-busca">Número do Inmetro, número de série ou local</label><input id="inmetro-busca" type="search" autocomplete="off" placeholder="Ex.: 15842251 ou Avenida Itavuvu"></div>
+      <p class="pequeno suave" id="inmetro-contagem" role="status" aria-live="polite"></p>
+    </form>
+    <h3>Verificação vencida ou sem resultado aprovado ({{ inm_invalidos | length }})</h3>
+    <div class="rolagem"><table id="inmetro-tabela-invalidos">
+      <caption class="so-leitor">Medidores de velocidade de Sorocaba com verificação vencida ou sem resultado aprovado</caption>
+      <thead><tr><th scope="col">Local verificado</th><th scope="col">Nº Inmetro</th><th scope="col">Nº de série</th><th scope="col">km/h</th><th scope="col">Validade</th><th scope="col">Situação</th></tr></thead>
+      <tbody>{% for m in inm_invalidos %}<tr data-busca="{{ m.busca }}"><th scope="row">{{ m.local }}</th><td>{{ m.inmetros }}</td><td>{{ m.series }}</td><td>{{ m.velocidades or "—" }}</td><td>{{ m.validade_br }}</td><td>{{ m.situacao | capitalize }}{% if m.dias_vencida %} há {{ m.dias_vencida | num }} dias{% endif %}</td></tr>{% else %}<tr><td colspan="6">Nenhum medidor nesta situação na base do Inmetro.</td></tr>{% endfor %}</tbody>
+    </table></div>
+    <details class="tabela-mes"><summary>Ver os {{ inm_validos | length }} medidores com verificação em dia</summary>
+      <div class="rolagem"><table id="inmetro-tabela-validos">
+        <caption class="so-leitor">Medidores de velocidade de Sorocaba com verificação em dia</caption>
+        <thead><tr><th scope="col">Local verificado</th><th scope="col">Nº Inmetro</th><th scope="col">Nº de série</th><th scope="col">km/h</th><th scope="col">Validade</th></tr></thead>
+        <tbody>{% for m in inm_validos %}<tr data-busca="{{ m.busca }}"><th scope="row">{{ m.local }}</th><td>{{ m.inmetros }}</td><td>{{ m.series }}</td><td>{{ m.velocidades or "—" }}</td><td>{{ m.validade_br }}</td></tr>{% endfor %}</tbody>
+      </table></div>
+    </details>
+    <p class="pequeno suave">Fonte: <a href="{{ inm_dados }}" rel="noreferrer">Inmetro, dados abertos do PSIE</a> (licença CC0), medidores de velocidade do estado de São Paulo, recorte de Sorocaba. Local e velocidade vêm do cadastro do Inmetro e podem diferir da relação da Semob. <a href="{{ raiz }}data/radares_inmetro.json">radares_inmetro.json</a>.</p>
+  </article>
+</section>
 <section aria-labelledby="falta-t" class="bloco-painel">
   <h2 id="falta-t" class="h2-medio sem-topo">O que ainda não é público</h2>
   <article class="quadro-card">
