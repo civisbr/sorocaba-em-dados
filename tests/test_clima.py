@@ -72,3 +72,63 @@ def test_pagina_clima_com_previsao_e_campos_nulos(tmp_path):
     renderizar(public, tmp_path / "dist")
     html = (tmp_path / "dist/clima/index.html").read_text(encoding="utf-8")
     assert "Trovoadas" in html and "None" not in html
+    assert 'data-previsao-coleta="2026-10-11" hidden' in html  # o aviso de previsão parada só aparece, pelo JS, depois de 2 dias
+
+
+def test_inmet_valida_tipos_faixas_e_formato_dos_dias():
+    from scripts.fetch_previsao import validar_inmet
+    ok = {"resumo": "Sol", "temp_max": 30, "temp_min": 18, "umidade_max": 90, "umidade_min": 40, "dir_vento": "S", "int_vento": "Fracos", "nascer": "05h42", "ocaso": "18h13", "dia_semana": "Domingo"}
+    ruim = {**ok, "temp_max": "muito quente", "umidade_max": 400, "nascer": "amanhecer", "dir_vento": "x" * 50}
+    dias = validar_inmet({"11/10/2026": {"manha": ok, "tarde": ruim}, "12/10/2026": {"dia": {**ok, "temp_min": None}}, "31/02/2026": {"dia": ok}, "ontem": {"dia": ok}})
+    assert list(dias) == ["11/10/2026"] and list(dias["11/10/2026"]) == ["manha"]
+
+
+def test_inmet_sem_nenhum_dia_aproveitavel_e_rejeitado():
+    from scripts.fetch_previsao import validar_inmet
+    with pytest.raises(ValueError):
+        validar_inmet({"11/10/2026": {"dia": {"resumo": "", "temp_max": 1, "temp_min": 0}}})
+    with pytest.raises(ValueError):
+        validar_inmet(["não", "é", "dict"])
+
+
+
+
+def test_inmet_anula_pares_incompletos_e_rejeita_faixas_invertidas():
+    from scripts.fetch_previsao import validar_inmet
+    base = {"resumo": "Sol", "temp_max": 30, "temp_min": 18, "umidade_max": 90, "umidade_min": 40, "dir_vento": "S", "int_vento": "Fracos"}
+    dias = validar_inmet({
+        "11/10/2026": {"dia": {**base, "umidade_max": None, "int_vento": None}},
+        "12/10/2026": {"dia": {**base, "temp_min": 35}},
+        "13/10/2026": {"dia": {**base, "resumo": "Sol‮forte"}},
+    })
+    bloco = dias["11/10/2026"]["dia"]
+    assert list(dias) == ["11/10/2026"] and bloco["umidade_min"] is None and bloco["dir_vento"] is None
+
+
+def test_inmet_rejeitado_apaga_o_arquivo_antigo_e_mantem_o_open_meteo(tmp_path, monkeypatch):
+    from datetime import date
+
+    from scripts import fetch_previsao
+
+    (tmp_path / "inmet.json").write_text("{}", encoding="utf-8")
+    respostas = {fetch_previsao.OPEN_METEO: {"daily": {"time": []}}, fetch_previsao.INMET: {"3552205": {"11/10/2026": {"dia": {"resumo": "", "temp_max": 99}}}}}
+    monkeypatch.setattr(fetch_previsao, "baixar", lambda c, url: respostas[url])
+    assert fetch_previsao.coletar(date(2026, 10, 11), tmp_path) == ["open_meteo"]
+    assert not (tmp_path / "inmet.json").exists() and (tmp_path / "open_meteo.json").exists()
+
+
+def test_pagina_clima_avisa_quando_falta_o_inmet(tmp_path):
+    import json as _j
+
+    from scripts.render import renderizar
+
+    public = tmp_path / "public"
+    shutil.copytree(RAIZ / "data/public", public)
+    raw = tmp_path / "raw"
+    raw.mkdir()
+    (raw / "open_meteo.json").write_text(_j.dumps({"coletado_em": "2026-10-11", "dados": {"daily": {
+        "time": ["2026-10-11"], "weather_code": [3], "temperature_2m_max": [28.0], "temperature_2m_min": [18.0],
+        "precipitation_sum": [0.0], "precipitation_probability_max": [10], "wind_speed_10m_max": [10.0]}}}), encoding="utf-8")
+    (public / "previsao.json").write_text(previsao(raw).model_dump_json(), encoding="utf-8")
+    renderizar(public, tmp_path / "dist")
+    assert "previsão oficial do INMET não está disponível" in (tmp_path / "dist/clima/index.html").read_text(encoding="utf-8")

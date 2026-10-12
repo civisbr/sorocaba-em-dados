@@ -30,6 +30,9 @@ jobs:
         run: |
           if uv run python -m scripts.fetch_previsao --acesso-em "$(date -u +%F)" && uv run python -m scripts.build_previsao; then
             echo "previsão publicada; sha256 de data/public/previsao.json: $(sha256sum data/public/previsao.json | cut -d' ' -f1)" | tee -a "$GITHUB_STEP_SUMMARY"
+            for fonte in inmet open_meteo; do
+              [ -f "data/raw/previsao/$fonte.json" ] || { echo "::warning::fonte de previsão ausente neste deploy: $fonte"; echo "Fonte de previsão ausente neste deploy: $fonte" >> "$GITHUB_STEP_SUMMARY"; }
+            done
           else
             echo "::warning::previsão indisponível; o site sai sem ela"
             echo "Previsão indisponível neste deploy." >> "$GITHUB_STEP_SUMMARY"

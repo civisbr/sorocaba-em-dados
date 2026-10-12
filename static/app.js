@@ -93,3 +93,9 @@
   q.addEventListener("input", function () { clearTimeout(espera); espera = setTimeout(filtrar, 300); });
   f.addEventListener("submit", function (e) { e.preventDefault(); });
 })();
+(function () {
+  var av = document.querySelector("[data-previsao-coleta]");
+  if (!av) return;
+  var coleta = Date.parse(av.dataset.previsaoColeta + "T12:00:00-03:00");
+  if (!isNaN(coleta) && Date.now() - coleta > 2 * 86400000) av.hidden = false;
+})();
