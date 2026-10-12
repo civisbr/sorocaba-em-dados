@@ -27,7 +27,7 @@
 {% for b in blocos %}
 <section aria-labelledby="h-{{ b.id }}" id="{{ b.id }}" class="bloco-painel">
   <h2 id="h-{{ b.id }}" class="h2-medio sem-topo">{{ b.nome }}</h2>
-  <p class="suave">Em {{ b.ultimo.ano }}: {{ fmt_ind(b.tipo, b.ultimo.valor) }}, <strong>{{ b.ultimo.pos_sp | num }}º entre {{ b.ultimo.n_sp | num }} municípios paulistas</strong> e <strong>{{ b.ultimo.pos_br | num }}º entre {{ b.ultimo.n_br | num }} no Brasil</strong>.{% if b.ultimo.empatados_sp %} Sorocaba empata nessa posição com {{ b.ultimo.empatados_sp }} outros municípios paulistas.{% endif %} Em {{ b.primeiro.ano }}, a posição paulista era {{ b.primeiro.pos_sp | num }}º.</p>
+  <p class="suave">Em {{ b.ultimo.ano }}: {{ fmt_ind(b.tipo, b.ultimo.valor) }}, <strong>{{ b.ultimo.pos_sp | num }}º entre {{ b.ultimo.n_sp | num }} municípios paulistas</strong> e <strong>{{ b.ultimo.pos_br | num }}º entre {{ b.ultimo.n_br | num }} no Brasil</strong>.{% if b.ultimo.empatados_sp %} Sorocaba empata nessa posição com {{ b.ultimo.empatados_sp | num }} {{ 'outro município paulista' if b.ultimo.empatados_sp == 1 else 'outros municípios paulistas' }}.{% endif %}{% if b.ultimo.empatados_br %} No Brasil, o empate é com {{ b.ultimo.empatados_br | num }} {{ 'outro município' if b.ultimo.empatados_br == 1 else 'outros municípios' }}.{% endif %} Em {{ b.primeiro.ano }}, a posição paulista era {{ b.primeiro.pos_sp | num }}º.</p>
   <div class="grade-2">
     <article class="quadro-card"><h3>Posição entre os municípios de SP</h3><p class="suave">Quanto mais alto no gráfico, mais perto do 1º lugar.</p>{{ serie(b.grafico_sp, "sp-" ~ b.id, "Posição de Sorocaba entre os municípios paulistas: " ~ b.nome) }}</article>
     <article class="quadro-card"><h3>Posição entre os municípios do Brasil</h3><p class="suave">Mesma leitura, comparando com o país.</p>{{ serie(b.grafico_br, "br-" ~ b.id, "Posição de Sorocaba entre os municípios brasileiros: " ~ b.nome) }}</article>
@@ -39,7 +39,7 @@
         <div class="rolagem"><table class="tabela-quebra">
           <caption class="so-leitor">{{ b.nome }}: valor e posição por ano</caption>
           <thead><tr><th scope="col">Ano</th><th scope="col">Valor</th><th scope="col">Posição em SP</th><th scope="col">Posição no Brasil</th></tr></thead>
-          <tbody>{% for r in b.anos %}<tr><th scope="row">{{ r.ano }}{% if r.origem %} <span class="suave">({{ r.origem }})</span>{% endif %}</th><td>{{ fmt_ind(b.tipo, r.valor) }}</td><td>{{ r.pos_sp | num }}º de {{ r.n_sp | num }}</td><td>{{ r.pos_br | num }}º de {{ r.n_br | num }}</td></tr>{% endfor %}</tbody>
+          <tbody>{% for r in b.anos %}<tr><th scope="row">{{ r.ano }}{% if r.origem %} <span class="suave">({{ r.origem }})</span>{% endif %}</th><td>{{ fmt_ind(b.tipo, r.valor) }}</td><td>{{ r.pos_sp | num }}º de {{ r.n_sp | num }}{% if r.empatados_sp %} <span class="suave">(empata com {{ r.empatados_sp | num }})</span>{% endif %}</td><td>{{ r.pos_br | num }}º de {{ r.n_br | num }}{% if r.empatados_br %} <span class="suave">(empata com {{ r.empatados_br | num }})</span>{% endif %}</td></tr>{% endfor %}</tbody>
         </table></div>
       </details>
     </article>

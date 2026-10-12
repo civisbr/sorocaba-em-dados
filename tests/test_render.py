@@ -179,3 +179,8 @@ def test_marcadores_coincidentes_sao_afastados():
     sozinho = {"x": 50.0, "y": 50.0}
     espalhar_coincidentes([a, b], [c, sozinho])
     assert len({(p["x"], p["y"]) for p in (a, b, c)}) == 3 and sozinho == {"x": 50.0, "y": 50.0}
+
+
+def test_comparativo_avisa_empate_no_brasil(site):
+    html = (site / "comparativo/index.html").read_text(encoding="utf-8")
+    assert "No Brasil, o empate é com" in html and "(empata com" in html
