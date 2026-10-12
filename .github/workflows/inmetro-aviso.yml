@@ -1,0 +1,47 @@
+name: inmetro-aviso
+
+on:
+  schedule:
+    - cron: "0 12 * * 1"
+  workflow_dispatch:
+
+permissions: {}
+
+concurrency: aviso-${{ github.workflow }}
+
+jobs:
+  conferir:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      issues: write
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
+        with:
+          persist-credentials: false
+      - name: Coleta do Inmetro tem mais de 14 dias?
+        id: idade
+        run: |
+          python3 - <<'PY' >> "$GITHUB_OUTPUT"
+          import json, datetime
+          d = json.load(open("data/raw/inmetro/manifesto.json"))
+          dias = (datetime.date.today() - datetime.date.fromisoformat(d["acesso_em"])).days
+          print(f"dias={dias}")
+          print(f"velho={'sim' if dias > 14 else 'nao'}")
+          PY
+      - name: Abrir issue pedindo nova coleta
+        if: always() && (failure() || steps.idade.outputs.velho == 'sim')
+        env:
+          GH_TOKEN: ${{ github.token }}
+          GH_REPO: ${{ github.repository }}
+          DIAS: ${{ steps.idade.outputs.dias || 'desconhecido (falha ao ler data/raw/inmetro/manifesto.json)' }}
+        run: |
+          titulo="Atualizar a verificação dos radares (Inmetro)"
+          aberta=$(gh issue list --state open --search "\"$titulo\" in:title" --json number,title --jq "[.[] | select(.title == \"$titulo\")][0].number")
+          corpo="Última coleta do Inmetro há ${DIAS} dias. O host bloqueia os runners do GitHub; rodar de uma máquina no Brasil: uv run python -m scripts.fetch_inmetro --acesso-em AAAA-MM-DD && uv run python -m scripts.build_inmetro && uv run pytest -q; conferir n_medidores e o diff do manifesto antes de commitar; se o build indicar medidores sem posição, rodar scripts.geocode_inmetro."
+          if [ -n "$aberta" ] && [ "$aberta" != "null" ]; then
+            gh issue comment "$aberta" --body "$corpo"
+          else
+            gh issue create --title "$titulo" --body "$corpo"
+          fi
