@@ -79,7 +79,7 @@ def test_teclado_uma_parada_de_tab_e_setas(pagina_nova, url):
 
 def test_celulas_de_calor_tem_tamanho(pagina_nova, url):
     pg, erros = _abrir(pagina_nova, url, "seguranca/")
-    caixa = pg.evaluate("(() => { const b = document.querySelector('.ms-c').getBBox(); return [b.width, b.height]; })()")
+    caixa = pg.evaluate("(() => { const b = document.querySelector('.ms-c:not(.ms-off)').getBBox(); return [b.width, b.height]; })()")
     assert caixa[0] > 5 and caixa[1] > 5
     assert not erros
 
