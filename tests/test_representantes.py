@@ -1,4 +1,8 @@
+import csv
+import json
 import re
+
+import pytest
 
 from scripts.build_representantes import RAIZ, construir, em_exercicio, tokens
 
@@ -141,3 +145,26 @@ def test_fonte_da_classificacao_registrada():
 
     m = json.loads((RAIZ / "data/raw/ideologia/manifesto.json").read_text(encoding="utf-8"))
     assert m["doi"].startswith("10.1590/") and m["sha256_csv"]
+
+
+@pytest.mark.parametrize("sigla_tse,bloco", [
+    ("PT", "esquerda"), ("PC do B", "esquerda"), ("PSB", "centro"), ("SOLIDARIEDADE", "centro"), ("CIDADANIA", "centro"),
+    ("PSD", "direita"), ("PP", "direita"), ("REPUBLICANOS", "direita"), ("UNIÃO", "direita"), ("PATRIOTA", "direita"), ("PL", "direita"),
+])
+def test_siglas_do_tse_chegam_ao_bloco_certo(sigla_tse, bloco):
+    from scripts.build_representantes import classificar
+    tabela = {r["partido"]: r["categoria"] for r in csv.DictReader((RAIZ / "data/raw/ideologia/classificacao_experts.csv").open(encoding="utf-8"), delimiter=";")}
+    assert classificar(sigla_tse, tabela)[1] == bloco
+
+
+def test_mapeamento_de_siglas_so_aponta_para_partidos_da_tabela_e_blocos_cobrem_as_categorias():
+    from scripts.build_representantes import BLOCOS, SIGLA_ESPECIALISTAS
+    tabela = {r["partido"]: r["categoria"] for r in csv.DictReader((RAIZ / "data/raw/ideologia/classificacao_experts.csv").open(encoding="utf-8"), delimiter=";")}
+    assert set(SIGLA_ESPECIALISTAS.values()) <= set(tabela)
+    assert set(tabela.values()) <= set(BLOCOS)
+
+
+def test_partidos_publicados_sem_bloco_sao_so_os_conhecidos():
+    dados = json.loads((RAIZ / "data/public/representantes.json").read_text(encoding="utf-8"))["dados"]
+    sem_bloco = {r["partido"] for r in dados if r.get("partido") and not r.get("bloco")}
+    assert sem_bloco <= {"MISSÃO"}, f"partido novo sem classificação dos especialistas: {sem_bloco}"
