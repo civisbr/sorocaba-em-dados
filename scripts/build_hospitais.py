@@ -61,7 +61,6 @@ def construir(raw_cnes: Path, raw_sih: Path) -> Envelope:
                       "leitos": a["leitos"], "leitos_sus": a["sus"], "leitos_uti": a["uti"], "leitos_uti_sus": a["uti_sus"]})
     meses = sorted({r["competencia"] for r in sih})
     tot: dict[str, dict] = defaultdict(lambda: {"n": 0, "dias": 0, "uti": 0, "fora": 0})
-    mes: dict[tuple, int] = defaultdict(int)
     esp: dict[tuple, int] = defaultdict(int)
     cap: dict[tuple, int] = defaultdict(int)
     for r in sih:
@@ -73,13 +72,8 @@ def construir(raw_cnes: Path, raw_sih: Path) -> Envelope:
         t["dias"] += int(r["dias"])
         t["uti"] += int(r["dias_uti"])
         t["fora"] += n * (1 - int(r["residente"]))
-        mes[(c, r["competencia"])] += n
         esp[(c, ESPEC_SIH[r["espec"]])] += n
         cap[(c, r["capitulo"])] += n
-    for (c, m), n in sorted(mes.items()):
-        if n < CELULA_MINIMA:
-            continue
-        dados.append({"recorte": "internacao_mes", "cnes": c, "competencia_processamento": m, "internacoes": n})
     for (c, nome), n in sorted(esp.items()):
         if n < CELULA_MINIMA:
             continue

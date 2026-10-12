@@ -90,3 +90,32 @@ def test_ler_dbf_campos_maiores_que_o_registro():
     struct.pack_into("<H", dbf, 10, 5)
     with pytest.raises(DbcInvalido):
         list(ler_dbf(bytes(dbf)))
+
+
+def _amostra() -> bytes:
+    linhas = [f"{i:07d}355220{(i * 7) % 1000:03d}ABC{'X' * (i % 9)}".encode() for i in range(300)]
+    return b"\n".join(linhas) + b"AAAAAAAAAAAAAAAA" * 30 + bytes(range(256))
+
+
+@pytest.mark.parametrize("dicionario", [4, 5, 6])
+@pytest.mark.parametrize("codificado", [True, False])
+def test_ida_e_volta_do_dcl_com_todos_os_modos(dicionario, codificado):
+    from tests.dcl import comprimir
+    dados = _amostra()
+    assert descomprimir(comprimir(dados, dicionario, codificado)) == dados
+
+
+def test_ida_e_volta_com_copia_sobreposta_e_comprimento_2():
+    from tests.dcl import comprimir
+    dados = b"abababababababababab" + b"xyxy" + b"z" * 50
+    assert descomprimir(comprimir(dados)) == dados
+
+
+def test_dbc_completo_gerado_por_codificador_independente():
+    from tests.dcl import comprimir
+    dbf = _dbf([(f"{i:07d}", "355220" if i % 2 == 0 else "350000", str(i % 100)) for i in range(120)])
+    tam_cab = struct.unpack_from("<H", dbf, 8)[0]
+    dbc = dbf[:tam_cab] + b"\0\0\0\0" + comprimir(dbf[tam_cab:])
+    todos = list(ler_dbc(dbc))
+    assert len(todos) == 120 and todos[1]["CNES"] == "0000001"
+    assert [r["CNES"] for r in ler_dbc(dbc, ("CODUFMUN", "355220"))] == [f"{i:07d}" for i in range(0, 120, 2)]

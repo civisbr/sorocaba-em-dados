@@ -36,9 +36,16 @@ LEITOS = {
 }
 UTI = {"61", "62", "63", "74", "75", "76", "77", "78", "79", "80", "81", "82", "83", "85", "86"}
 
-ESPEC_SIH = {  # só os códigos conferidos; os demais caem em "99" (a tabela completa do SIH tem outros, como 87 e 13/14, com numeração a confirmar)
-    "01": "Cirurgia", "02": "Obstetrícia", "03": "Clínica médica", "04": "Crônicos", "05": "Psiquiatria",
-    "06": "Pneumologia sanitária", "07": "Pediatria", "08": "Reabilitação", "09": "Hospital-dia cirúrgico", "99": "Outras especialidades",
+ESPEC_SIH = {  # LEITOS.CNV de TAB_SIH.zip (DATASUS); "99" é nosso, para código fora da tabela
+    "01": "Cirúrgico", "02": "Obstétrico", "03": "Clínico", "04": "Crônicos", "05": "Psiquiatria", "06": "Pneumologia sanitária (tisiologia)",
+    "07": "Pediátrico", "08": "Reabilitação", "09": "Leito-dia cirúrgico", "10": "Leito-dia Aids", "11": "Leito-dia fibrose cística",
+    "12": "Leito-dia intercorrência pós-transplante", "13": "Leito-dia geriatria", "14": "Leito-dia saúde mental", "51": "UTI adulto II Covid-19",
+    "52": "UTI pediátrica II Covid-19", "64": "Unidade intermediária", "65": "Unidade intermediária neonatal", "74": "UTI I", "75": "UTI adulto II",
+    "76": "UTI adulto III", "77": "UTI infantil I", "78": "UTI infantil II", "79": "UTI infantil III", "80": "UTI neonatal I", "81": "UTI neonatal II",
+    "82": "UTI neonatal III", "83": "UTI de queimados", "84": "Acolhimento noturno", "85": "UTI coronariana II", "86": "UTI coronariana III",
+    "87": "Saúde mental (clínico)", "88": "Queimado adulto (clínico)", "89": "Queimado pediátrico (clínico)", "90": "Queimado adulto (cirúrgico)",
+    "91": "Queimado pediátrico (cirúrgico)", "92": "Cuidados intermediários neonatal convencional", "93": "Cuidados intermediários neonatal canguru",
+    "94": "Cuidados intermediários pediátrico", "95": "Cuidados intermediários adulto", "96": "Suporte ventilatório pulmonar Covid-19", "99": "Outras especialidades",
 }
 
 CAPITULOS_CID = (

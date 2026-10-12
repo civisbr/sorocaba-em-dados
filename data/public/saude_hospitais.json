@@ -2772,589 +2772,13 @@
     },
     {
       "cnes": "0605484",
-      "competencia_processamento": "202508",
-      "internacoes": 94,
-      "recorte": "internacao_mes"
-    },
-    {
-      "cnes": "0605484",
-      "competencia_processamento": "202509",
-      "internacoes": 110,
-      "recorte": "internacao_mes"
-    },
-    {
-      "cnes": "0605484",
-      "competencia_processamento": "202510",
-      "internacoes": 145,
-      "recorte": "internacao_mes"
-    },
-    {
-      "cnes": "0605484",
-      "competencia_processamento": "202511",
-      "internacoes": 63,
-      "recorte": "internacao_mes"
-    },
-    {
-      "cnes": "0605484",
-      "competencia_processamento": "202512",
-      "internacoes": 60,
-      "recorte": "internacao_mes"
-    },
-    {
-      "cnes": "0605484",
-      "competencia_processamento": "202601",
-      "internacoes": 71,
-      "recorte": "internacao_mes"
-    },
-    {
-      "cnes": "0605484",
-      "competencia_processamento": "202602",
-      "internacoes": 76,
-      "recorte": "internacao_mes"
-    },
-    {
-      "cnes": "0605484",
-      "competencia_processamento": "202603",
-      "internacoes": 52,
-      "recorte": "internacao_mes"
-    },
-    {
-      "cnes": "0605484",
-      "competencia_processamento": "202604",
-      "internacoes": 80,
-      "recorte": "internacao_mes"
-    },
-    {
-      "cnes": "0605484",
-      "competencia_processamento": "202605",
-      "internacoes": 151,
-      "recorte": "internacao_mes"
-    },
-    {
-      "cnes": "0605484",
-      "competencia_processamento": "202606",
-      "internacoes": 53,
-      "recorte": "internacao_mes"
-    },
-    {
-      "cnes": "0605484",
-      "competencia_processamento": "202607",
-      "internacoes": 17,
-      "recorte": "internacao_mes"
-    },
-    {
-      "cnes": "2078813",
-      "competencia_processamento": "202508",
-      "internacoes": 158,
-      "recorte": "internacao_mes"
-    },
-    {
-      "cnes": "2078813",
-      "competencia_processamento": "202509",
-      "internacoes": 153,
-      "recorte": "internacao_mes"
-    },
-    {
-      "cnes": "2078813",
-      "competencia_processamento": "202510",
-      "internacoes": 183,
-      "recorte": "internacao_mes"
-    },
-    {
-      "cnes": "2078813",
-      "competencia_processamento": "202511",
-      "internacoes": 176,
-      "recorte": "internacao_mes"
-    },
-    {
-      "cnes": "2078813",
-      "competencia_processamento": "202512",
-      "internacoes": 139,
-      "recorte": "internacao_mes"
-    },
-    {
-      "cnes": "2078813",
-      "competencia_processamento": "202601",
-      "internacoes": 161,
-      "recorte": "internacao_mes"
-    },
-    {
-      "cnes": "2078813",
-      "competencia_processamento": "202602",
-      "internacoes": 161,
-      "recorte": "internacao_mes"
-    },
-    {
-      "cnes": "2078813",
-      "competencia_processamento": "202603",
-      "internacoes": 140,
-      "recorte": "internacao_mes"
-    },
-    {
-      "cnes": "2078813",
-      "competencia_processamento": "202604",
-      "internacoes": 153,
-      "recorte": "internacao_mes"
-    },
-    {
-      "cnes": "2078813",
-      "competencia_processamento": "202605",
-      "internacoes": 181,
-      "recorte": "internacao_mes"
-    },
-    {
-      "cnes": "2078813",
-      "competencia_processamento": "202606",
-      "internacoes": 182,
-      "recorte": "internacao_mes"
-    },
-    {
-      "cnes": "2078813",
-      "competencia_processamento": "202607",
-      "internacoes": 186,
-      "recorte": "internacao_mes"
-    },
-    {
-      "cnes": "2079321",
-      "competencia_processamento": "202508",
-      "internacoes": 249,
-      "recorte": "internacao_mes"
-    },
-    {
-      "cnes": "2079321",
-      "competencia_processamento": "202509",
-      "internacoes": 232,
-      "recorte": "internacao_mes"
-    },
-    {
-      "cnes": "2079321",
-      "competencia_processamento": "202510",
-      "internacoes": 279,
-      "recorte": "internacao_mes"
-    },
-    {
-      "cnes": "2079321",
-      "competencia_processamento": "202511",
-      "internacoes": 276,
-      "recorte": "internacao_mes"
-    },
-    {
-      "cnes": "2079321",
-      "competencia_processamento": "202512",
-      "internacoes": 240,
-      "recorte": "internacao_mes"
-    },
-    {
-      "cnes": "2079321",
-      "competencia_processamento": "202601",
-      "internacoes": 217,
-      "recorte": "internacao_mes"
-    },
-    {
-      "cnes": "2079321",
-      "competencia_processamento": "202602",
-      "internacoes": 245,
-      "recorte": "internacao_mes"
-    },
-    {
-      "cnes": "2079321",
-      "competencia_processamento": "202603",
-      "internacoes": 282,
-      "recorte": "internacao_mes"
-    },
-    {
-      "cnes": "2079321",
-      "competencia_processamento": "202604",
-      "internacoes": 272,
-      "recorte": "internacao_mes"
-    },
-    {
-      "cnes": "2079321",
-      "competencia_processamento": "202605",
-      "internacoes": 299,
-      "recorte": "internacao_mes"
-    },
-    {
-      "cnes": "2079321",
-      "competencia_processamento": "202606",
-      "internacoes": 268,
-      "recorte": "internacao_mes"
-    },
-    {
-      "cnes": "2079321",
-      "competencia_processamento": "202607",
-      "internacoes": 249,
-      "recorte": "internacao_mes"
-    },
-    {
-      "cnes": "2081695",
-      "competencia_processamento": "202508",
-      "internacoes": 1738,
-      "recorte": "internacao_mes"
-    },
-    {
-      "cnes": "2081695",
-      "competencia_processamento": "202509",
-      "internacoes": 1715,
-      "recorte": "internacao_mes"
-    },
-    {
-      "cnes": "2081695",
-      "competencia_processamento": "202510",
-      "internacoes": 1747,
-      "recorte": "internacao_mes"
-    },
-    {
-      "cnes": "2081695",
-      "competencia_processamento": "202511",
-      "internacoes": 1626,
-      "recorte": "internacao_mes"
-    },
-    {
-      "cnes": "2081695",
-      "competencia_processamento": "202512",
-      "internacoes": 1628,
-      "recorte": "internacao_mes"
-    },
-    {
-      "cnes": "2081695",
-      "competencia_processamento": "202601",
-      "internacoes": 1577,
-      "recorte": "internacao_mes"
-    },
-    {
-      "cnes": "2081695",
-      "competencia_processamento": "202602",
-      "internacoes": 1546,
-      "recorte": "internacao_mes"
-    },
-    {
-      "cnes": "2081695",
-      "competencia_processamento": "202603",
-      "internacoes": 1768,
-      "recorte": "internacao_mes"
-    },
-    {
-      "cnes": "2081695",
-      "competencia_processamento": "202604",
-      "internacoes": 1621,
-      "recorte": "internacao_mes"
-    },
-    {
-      "cnes": "2081695",
-      "competencia_processamento": "202605",
-      "internacoes": 1834,
-      "recorte": "internacao_mes"
-    },
-    {
-      "cnes": "2081695",
-      "competencia_processamento": "202606",
-      "internacoes": 1655,
-      "recorte": "internacao_mes"
-    },
-    {
-      "cnes": "2081695",
-      "competencia_processamento": "202607",
-      "internacoes": 1700,
-      "recorte": "internacao_mes"
-    },
-    {
-      "cnes": "2708566",
-      "competencia_processamento": "202508",
-      "internacoes": 30,
-      "recorte": "internacao_mes"
-    },
-    {
-      "cnes": "2708566",
-      "competencia_processamento": "202509",
-      "internacoes": 26,
-      "recorte": "internacao_mes"
-    },
-    {
-      "cnes": "2708566",
-      "competencia_processamento": "202510",
-      "internacoes": 43,
-      "recorte": "internacao_mes"
-    },
-    {
-      "cnes": "2708566",
-      "competencia_processamento": "202511",
-      "internacoes": 35,
-      "recorte": "internacao_mes"
-    },
-    {
-      "cnes": "2708566",
-      "competencia_processamento": "202512",
-      "internacoes": 44,
-      "recorte": "internacao_mes"
-    },
-    {
-      "cnes": "2708566",
-      "competencia_processamento": "202601",
-      "internacoes": 30,
-      "recorte": "internacao_mes"
-    },
-    {
-      "cnes": "2708566",
-      "competencia_processamento": "202602",
-      "internacoes": 25,
-      "recorte": "internacao_mes"
-    },
-    {
-      "cnes": "2708566",
-      "competencia_processamento": "202603",
-      "internacoes": 35,
-      "recorte": "internacao_mes"
-    },
-    {
-      "cnes": "2708566",
-      "competencia_processamento": "202604",
-      "internacoes": 29,
-      "recorte": "internacao_mes"
-    },
-    {
-      "cnes": "2708566",
-      "competencia_processamento": "202605",
-      "internacoes": 32,
-      "recorte": "internacao_mes"
-    },
-    {
-      "cnes": "2708566",
-      "competencia_processamento": "202606",
-      "internacoes": 27,
-      "recorte": "internacao_mes"
-    },
-    {
-      "cnes": "2708566",
-      "competencia_processamento": "202607",
-      "internacoes": 47,
-      "recorte": "internacao_mes"
-    },
-    {
-      "cnes": "2708779",
-      "competencia_processamento": "202508",
-      "internacoes": 1302,
-      "recorte": "internacao_mes"
-    },
-    {
-      "cnes": "2708779",
-      "competencia_processamento": "202509",
-      "internacoes": 1363,
-      "recorte": "internacao_mes"
-    },
-    {
-      "cnes": "2708779",
-      "competencia_processamento": "202510",
-      "internacoes": 1430,
-      "recorte": "internacao_mes"
-    },
-    {
-      "cnes": "2708779",
-      "competencia_processamento": "202511",
-      "internacoes": 1377,
-      "recorte": "internacao_mes"
-    },
-    {
-      "cnes": "2708779",
-      "competencia_processamento": "202512",
-      "internacoes": 1512,
-      "recorte": "internacao_mes"
-    },
-    {
-      "cnes": "2708779",
-      "competencia_processamento": "202601",
-      "internacoes": 1349,
-      "recorte": "internacao_mes"
-    },
-    {
-      "cnes": "2708779",
-      "competencia_processamento": "202602",
-      "internacoes": 1257,
-      "recorte": "internacao_mes"
-    },
-    {
-      "cnes": "2708779",
-      "competencia_processamento": "202603",
-      "internacoes": 1378,
-      "recorte": "internacao_mes"
-    },
-    {
-      "cnes": "2708779",
-      "competencia_processamento": "202604",
-      "internacoes": 1446,
-      "recorte": "internacao_mes"
-    },
-    {
-      "cnes": "2708779",
-      "competencia_processamento": "202605",
-      "internacoes": 1420,
-      "recorte": "internacao_mes"
-    },
-    {
-      "cnes": "2708779",
-      "competencia_processamento": "202606",
-      "internacoes": 1385,
-      "recorte": "internacao_mes"
-    },
-    {
-      "cnes": "2708779",
-      "competencia_processamento": "202607",
-      "internacoes": 1433,
-      "recorte": "internacao_mes"
-    },
-    {
-      "cnes": "2765942",
-      "competencia_processamento": "202508",
-      "internacoes": 722,
-      "recorte": "internacao_mes"
-    },
-    {
-      "cnes": "2765942",
-      "competencia_processamento": "202509",
-      "internacoes": 736,
-      "recorte": "internacao_mes"
-    },
-    {
-      "cnes": "2765942",
-      "competencia_processamento": "202510",
-      "internacoes": 486,
-      "recorte": "internacao_mes"
-    },
-    {
-      "cnes": "2765942",
-      "competencia_processamento": "202511",
-      "internacoes": 551,
-      "recorte": "internacao_mes"
-    },
-    {
-      "cnes": "2765942",
-      "competencia_processamento": "202512",
-      "internacoes": 686,
-      "recorte": "internacao_mes"
-    },
-    {
-      "cnes": "2765942",
-      "competencia_processamento": "202601",
-      "internacoes": 593,
-      "recorte": "internacao_mes"
-    },
-    {
-      "cnes": "2765942",
-      "competencia_processamento": "202602",
-      "internacoes": 520,
-      "recorte": "internacao_mes"
-    },
-    {
-      "cnes": "2765942",
-      "competencia_processamento": "202603",
-      "internacoes": 446,
-      "recorte": "internacao_mes"
-    },
-    {
-      "cnes": "2765942",
-      "competencia_processamento": "202604",
-      "internacoes": 507,
-      "recorte": "internacao_mes"
-    },
-    {
-      "cnes": "2765942",
-      "competencia_processamento": "202605",
-      "internacoes": 574,
-      "recorte": "internacao_mes"
-    },
-    {
-      "cnes": "2765942",
-      "competencia_processamento": "202606",
-      "internacoes": 720,
-      "recorte": "internacao_mes"
-    },
-    {
-      "cnes": "2765942",
-      "competencia_processamento": "202607",
-      "internacoes": 843,
-      "recorte": "internacao_mes"
-    },
-    {
-      "cnes": "9491112",
-      "competencia_processamento": "202508",
-      "internacoes": 991,
-      "recorte": "internacao_mes"
-    },
-    {
-      "cnes": "9491112",
-      "competencia_processamento": "202509",
-      "internacoes": 1082,
-      "recorte": "internacao_mes"
-    },
-    {
-      "cnes": "9491112",
-      "competencia_processamento": "202510",
-      "internacoes": 925,
-      "recorte": "internacao_mes"
-    },
-    {
-      "cnes": "9491112",
-      "competencia_processamento": "202511",
-      "internacoes": 878,
-      "recorte": "internacao_mes"
-    },
-    {
-      "cnes": "9491112",
-      "competencia_processamento": "202512",
-      "internacoes": 821,
-      "recorte": "internacao_mes"
-    },
-    {
-      "cnes": "9491112",
-      "competencia_processamento": "202601",
-      "internacoes": 988,
-      "recorte": "internacao_mes"
-    },
-    {
-      "cnes": "9491112",
-      "competencia_processamento": "202602",
-      "internacoes": 872,
-      "recorte": "internacao_mes"
-    },
-    {
-      "cnes": "9491112",
-      "competencia_processamento": "202603",
-      "internacoes": 968,
-      "recorte": "internacao_mes"
-    },
-    {
-      "cnes": "9491112",
-      "competencia_processamento": "202604",
-      "internacoes": 1018,
-      "recorte": "internacao_mes"
-    },
-    {
-      "cnes": "9491112",
-      "competencia_processamento": "202605",
-      "internacoes": 938,
-      "recorte": "internacao_mes"
-    },
-    {
-      "cnes": "9491112",
-      "competencia_processamento": "202606",
-      "internacoes": 980,
-      "recorte": "internacao_mes"
-    },
-    {
-      "cnes": "9491112",
-      "competencia_processamento": "202607",
-      "internacoes": 1066,
-      "recorte": "internacao_mes"
-    },
-    {
-      "cnes": "0605484",
-      "especialidade": "Cirurgia",
+      "especialidade": "Cirúrgico",
       "internacoes": 309,
       "recorte": "internacao_especialidade"
     },
     {
       "cnes": "0605484",
-      "especialidade": "Clínica médica",
+      "especialidade": "Clínico",
       "internacoes": 621,
       "recorte": "internacao_especialidade"
     },
@@ -3366,13 +2790,13 @@
     },
     {
       "cnes": "2078813",
-      "especialidade": "Cirurgia",
+      "especialidade": "Cirúrgico",
       "internacoes": 1851,
       "recorte": "internacao_especialidade"
     },
     {
       "cnes": "2078813",
-      "especialidade": "Clínica médica",
+      "especialidade": "Clínico",
       "internacoes": 52,
       "recorte": "internacao_especialidade"
     },
@@ -3384,13 +2808,13 @@
     },
     {
       "cnes": "2079321",
-      "especialidade": "Cirurgia",
+      "especialidade": "Cirúrgico",
       "internacoes": 943,
       "recorte": "internacao_especialidade"
     },
     {
       "cnes": "2079321",
-      "especialidade": "Clínica médica",
+      "especialidade": "Clínico",
       "internacoes": 511,
       "recorte": "internacao_especialidade"
     },
@@ -3402,31 +2826,31 @@
     },
     {
       "cnes": "2079321",
-      "especialidade": "Pediatria",
+      "especialidade": "Pediátrico",
       "internacoes": 1614,
       "recorte": "internacao_especialidade"
     },
     {
       "cnes": "2081695",
-      "especialidade": "Cirurgia",
+      "especialidade": "Cirúrgico",
       "internacoes": 8095,
       "recorte": "internacao_especialidade"
     },
     {
       "cnes": "2081695",
-      "especialidade": "Clínica médica",
+      "especialidade": "Clínico",
       "internacoes": 5823,
       "recorte": "internacao_especialidade"
     },
     {
       "cnes": "2081695",
-      "especialidade": "Hospital-dia cirúrgico",
+      "especialidade": "Leito-dia cirúrgico",
       "internacoes": 1261,
       "recorte": "internacao_especialidade"
     },
     {
       "cnes": "2081695",
-      "especialidade": "Obstetrícia",
+      "especialidade": "Obstétrico",
       "internacoes": 2445,
       "recorte": "internacao_especialidade"
     },
@@ -3438,7 +2862,7 @@
     },
     {
       "cnes": "2081695",
-      "especialidade": "Pediatria",
+      "especialidade": "Pediátrico",
       "internacoes": 2096,
       "recorte": "internacao_especialidade"
     },
@@ -3450,13 +2874,13 @@
     },
     {
       "cnes": "2708566",
-      "especialidade": "Cirurgia",
+      "especialidade": "Cirúrgico",
       "internacoes": 338,
       "recorte": "internacao_especialidade"
     },
     {
       "cnes": "2708566",
-      "especialidade": "Clínica médica",
+      "especialidade": "Clínico",
       "internacoes": 5,
       "recorte": "internacao_especialidade"
     },
@@ -3468,55 +2892,61 @@
     },
     {
       "cnes": "2708779",
-      "especialidade": "Cirurgia",
+      "especialidade": "Cirúrgico",
       "internacoes": 4530,
       "recorte": "internacao_especialidade"
     },
     {
       "cnes": "2708779",
-      "especialidade": "Clínica médica",
+      "especialidade": "Clínico",
       "internacoes": 9248,
       "recorte": "internacao_especialidade"
     },
     {
       "cnes": "2708779",
-      "especialidade": "Hospital-dia cirúrgico",
+      "especialidade": "Leito-dia cirúrgico",
       "internacoes": 232,
       "recorte": "internacao_especialidade"
     },
     {
       "cnes": "2708779",
-      "especialidade": "Obstetrícia",
+      "especialidade": "Obstétrico",
       "internacoes": 2218,
       "recorte": "internacao_especialidade"
     },
     {
       "cnes": "2708779",
       "especialidade": "Outras especialidades",
-      "internacoes": 157,
+      "internacoes": 111,
       "recorte": "internacao_especialidade"
     },
     {
       "cnes": "2708779",
-      "especialidade": "Pediatria",
+      "especialidade": "Pediátrico",
       "internacoes": 267,
       "recorte": "internacao_especialidade"
     },
     {
+      "cnes": "2708779",
+      "especialidade": "Saúde mental (clínico)",
+      "internacoes": 220,
+      "recorte": "internacao_especialidade"
+    },
+    {
       "cnes": "2765942",
-      "especialidade": "Cirurgia",
+      "especialidade": "Cirúrgico",
       "internacoes": 3017,
       "recorte": "internacao_especialidade"
     },
     {
       "cnes": "2765942",
-      "especialidade": "Clínica médica",
+      "especialidade": "Clínico",
       "internacoes": 1187,
       "recorte": "internacao_especialidade"
     },
     {
       "cnes": "2765942",
-      "especialidade": "Obstetrícia",
+      "especialidade": "Obstétrico",
       "internacoes": 2415,
       "recorte": "internacao_especialidade"
     },
@@ -3528,25 +2958,25 @@
     },
     {
       "cnes": "2765942",
-      "especialidade": "Pediatria",
+      "especialidade": "Pediátrico",
       "internacoes": 700,
       "recorte": "internacao_especialidade"
     },
     {
       "cnes": "9491112",
-      "especialidade": "Cirurgia",
+      "especialidade": "Cirúrgico",
       "internacoes": 6856,
       "recorte": "internacao_especialidade"
     },
     {
       "cnes": "9491112",
-      "especialidade": "Clínica médica",
+      "especialidade": "Clínico",
       "internacoes": 3773,
       "recorte": "internacao_especialidade"
     },
     {
       "cnes": "9491112",
-      "especialidade": "Hospital-dia cirúrgico",
+      "especialidade": "Leito-dia cirúrgico",
       "internacoes": 866,
       "recorte": "internacao_especialidade"
     },
@@ -3877,14 +3307,14 @@
     },
     {
       "cnes": "2708779",
-      "dias": 83216,
+      "dias": 86485,
       "dias_uti": 19645,
-      "internacoes": 16652,
+      "internacoes": 16826,
       "leitos_sus": 265,
       "meses": 12,
       "pct_de_fora": 7.7,
       "recorte": "internacao_total",
-      "uso_estimado_pct": 86.0
+      "uso_estimado_pct": 89.4
     },
     {
       "cnes": "2765942",
@@ -3918,14 +3348,14 @@
   "painel": "saude_hospitais",
   "qualidade": {
     "flag": "estimativa",
-    "n_registros": 422,
+    "n_registros": 327,
     "notas": [
       "Cadastro de estabelecimentos e leitos do CNES, competência 08/2026. O cadastro é declarado pelos próprios estabelecimentos e pode estar defasado.",
       "Internações do SIH/SUS de 08/2025 a 07/2026: só as pagas pelo SUS, sem as de convênios e particulares. Contam hospitais localizados em Sorocaba, inclusive pacientes de outras cidades.",
       "Não existe dado aberto de ocupação ou fila de hospital. O 'uso estimado dos leitos SUS' divide os dias de internação SUS dos últimos 12 meses pelos leitos SUS existentes vezes 365. É uma ordem de grandeza, não a lotação do dia. Os dias de células com menos de 5 internações foram zerados por privacidade, o que subestima um pouco o valor.",
       "O uso estimado só aparece para hospitais com 20 leitos SUS ou mais.",
       "Contagem de internações e de dias não mede qualidade do hospital: depende do porte, da especialidade e da gravidade dos casos.",
-      "SHA-256 dos recortes de coleta: 70baa459619f1bc7d4215d7b10616ed6e9ba587733059e8f8e8dd5d77aba5778"
+      "SHA-256 dos recortes de coleta: ddcb0c7353639bce265561229e2f019633c9ffceb28f93f07248f3a07cb17cc6"
     ]
   },
   "referencia": {

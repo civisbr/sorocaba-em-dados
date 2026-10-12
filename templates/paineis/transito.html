@@ -41,7 +41,7 @@
     <p class="suave">Mapa de calor sobre o mapa da cidade (aproxime para ver as ruas): áreas de cerca de {{ c.lado_m | num }} m; quanto mais escuro, mais sinistros. Áreas com menos de {{ ac_celula_min }} registros no ano não aparecem.</p>
     <div class="mapa-interativo">
     {% call quadro(mb, "Mapa de calor de sinistros de trânsito em Sorocaba: " ~ c.n_celulas ~ " áreas com " ~ c.legenda[0].ini ~ " a " ~ c.legenda[-1].fim ~ " sinistros em " ~ c.ano_ini ~ " a " ~ c.ano, vista=c.vista, rotulo_celula="sinistros nesta área") %}
-      <g class="ms-celulas">{% for q in c.celulas %}<rect class="ms-c calor-{{ q.nivel }}" x="{{ q.x }}" y="{{ q.y }}" width="{{ c.cw }}" height="{{ c.ch }}" data-n="{{ q.n }}"/>{% endfor %}</g>
+      <g class="ms-celulas">{% for q in c.celulas %}<rect class="ms-c calor-{{ q.nivel }}" x="{{ q.x }}" y="{{ q.y }}" width="{{ c.cw }}" height="{{ c.ch }}" data-n="{{ q.n }}"><title>{{ q.n | num }} sinistros nesta área</title></rect>{% endfor %}</g>
     {% endcall %}
     </div>
     <ul class="legenda-calor">{% for l in c.legenda %}<li><span class="amostra-calor calor-{{ l.nivel }}"></span>{{ l.ini | num }}{% if l.fim != l.ini %}–{{ l.fim | num }}{% endif %}</li>{% endfor %}</ul>

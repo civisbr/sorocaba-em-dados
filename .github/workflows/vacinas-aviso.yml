@@ -1,0 +1,47 @@
+name: vacinas-aviso
+
+on:
+  schedule:
+    - cron: "0 12 1 * *"
+  workflow_dispatch:
+
+permissions: {}
+
+concurrency: aviso-${{ github.workflow }}
+
+jobs:
+  conferir:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      issues: write
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
+        with:
+          persist-credentials: false
+      - name: Calendário e campanhas conferidos há mais de 120 dias?
+        id: idade
+        run: |
+          python3 - <<'PY' >> "$GITHUB_OUTPUT"
+          import json, datetime
+          d = json.load(open("data/public/saude_vacinas.json"))
+          dias = (datetime.date.today() - datetime.date.fromisoformat(d["fonte"]["acesso_em"])).days
+          print(f"dias={dias}")
+          print(f"velho={'sim' if dias > 120 else 'nao'}")
+          PY
+      - name: Abrir issue pedindo nova conferência
+        if: steps.idade.outputs.velho == 'sim'
+        env:
+          GH_TOKEN: ${{ github.token }}
+          GH_REPO: ${{ github.repository }}
+          DIAS: ${{ steps.idade.outputs.dias }}
+        run: |
+          titulo="Reconferir o calendário de vacinação e as campanhas"
+          aberta=$(gh issue list --state open --search "\"$titulo\" in:title" --json number,title --jq "[.[] | select(.title == \"$titulo\")][0].number")
+          corpo="O painel de vacinas foi conferido pela última vez há ${DIAS} dias. Conferir o Calendário Nacional (gov.br/saude/pt-br/vacinacao/calendario) e as campanhas da Prefeitura, editar data/raw/vacinas e rodar uv run python -m scripts.build_vacinas."
+          if [ -n "$aberta" ] && [ "$aberta" != "null" ]; then
+            gh issue comment "$aberta" --body "$corpo"
+          else
+            gh issue create --title "$titulo" --body "$corpo"
+          fi

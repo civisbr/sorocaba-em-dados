@@ -228,7 +228,7 @@ def test_sih_variacao_grande_entre_coletas_aborta(tmp_path):
 
 
 def test_sih_especialidade_desconhecida_vira_outras_e_continuacao_de_aih_nao_conta():
-    rd = [_rd("1", espec="87")] * 6 + [{**_rd("1"), "IDENT": "5"}] * 6 + [{**_rd("1"), "IDENT": "1"}] * 6
+    rd = [_rd("1", espec="00")] * 6 + [{**_rd("1"), "IDENT": "5"}] * 6 + [{**_rd("1"), "IDENT": "1"}] * 6
     linhas = fetch_sih.agregar(rd, "202607")
     assert sum(l["internacoes"] for l in linhas) == 12
     assert {l["espec"] for l in linhas} == {fetch_sih.ESPEC_OUTRAS, "01"}
