@@ -6,19 +6,29 @@ import argparse
 import csv
 import hashlib
 import json
+import math
 from datetime import date, datetime
 from pathlib import Path
 
 from schemas.envelope import Cobertura, Envelope, Flag, Fonte, Granularidade, Qualidade, Referencia
 
 RAIZ = Path(__file__).resolve().parent.parent
+PRECISOES = {"porta", "cruzamento", "km", "número", "via"}
 
 
-def _coordenadas(raw: Path) -> dict[str, tuple[float, float]]:
+def _coordenadas(raw: Path) -> dict[str, tuple[float, float, str, str]]:
     arq = raw / "coordenadas.csv"
     if not arq.exists():
         return {}
-    return {r["chave"]: (round(float(r["lat"]), 5), round(float(r["lon"]), 5)) for r in csv.DictReader(arq.open(encoding="utf-8"), delimiter=";") if r["precisao"] == "porta"}
+    saida = {}
+    for r in csv.DictReader(arq.open(encoding="utf-8"), delimiter=";"):
+        if not r["precisao"]:
+            continue
+        lat, lon = float(r["lat"]), float(r["lon"])
+        if r["precisao"] not in PRECISOES or not (math.isfinite(lat) and math.isfinite(lon) and -24 < lat < -23 and -48 < lon < -47):
+            raise ValueError(f"coordenada implausível em {r['chave']}")
+        saida[r["chave"]] = (round(lat, 5), round(lon, 5), r["precisao"], r.get("detalhe", ""))
+    return saida
 
 
 def _data(t) -> str | None:
@@ -48,7 +58,7 @@ def construir(raw: Path) -> Envelope:
             "ultima_verificacao": _data(m.get("DataUltimaVerificacao")), "validade": _data(m.get("DataValidade")), "resultado": m.get("UltimoResultado") or "",
             "inmetros": "; ".join(sorted({str(f["NumeroInmetro"]) for f in faixas if f.get("NumeroInmetro")})), "series": "; ".join(sorted({str(f["NumeroSerie"]) for f in faixas if f.get("NumeroSerie")})),
             "velocidades": "; ".join(sorted({str(int(f["VelocidadeNominal"])) for f in faixas if str(f.get("VelocidadeNominal", "")).isdigit() and int(f["VelocidadeNominal"]) > 0}, key=int)),
-            "validade_laudo": _data(laudo.get("DataValidade")), "lat": coords.get(chave(m), (None, None))[0], "lon": coords.get(chave(m), (None, None))[1], "n_faixas": len(faixas), "certificado": str(ultimo.get("NumeroCertificado") or ""), "n_verificacoes": len(hist),
+            "validade_laudo": _data(laudo.get("DataValidade")), "lat": coords.get(chave(m), (None,) * 4)[0], "lon": coords.get(chave(m), (None,) * 4)[1], "posicao": coords.get(chave(m), (None,) * 4)[2] or "", "posicao_detalhe": coords.get(chave(m), (None,) * 4)[3] or "", "n_faixas": len(faixas), "certificado": str(ultimo.get("NumeroCertificado") or ""), "n_verificacoes": len(hist),
         })
     acesso = date.fromisoformat(man["acesso_em"])
     return Envelope(
@@ -59,7 +69,7 @@ def construir(raw: Path) -> Envelope:
         qualidade=Qualidade(flag=Flag.REAL, n_registros=len(dados), notas=[
             "Situação da verificação metrológica do Inmetro, não da validade jurídica de uma multa: essa depende do auto de infração e da análise do órgão autuador.",
             "Verificação vencida pode significar equipamento retirado ou substituído, e verificação em dia pode estar atrasada na base. Confirme sempre no portal oficial com o número do Inmetro da notificação.",
-            "As posições no mapa (OpenStreetMap, ODbL) vêm do endereço do cadastro e só existem quando o OSM tem o número da porta; os demais aparecem só nas tabelas. A relação de radares da Semob não traz número do Inmetro; por isso este quadro lista os medidores da base do Inmetro em Sorocaba, sem cruzar com a lista da Semob.",
+            "As posições no mapa (OpenStreetMap, ODbL) vêm do endereço do cadastro: imóvel exato quando o OSM tem o número da porta e, nos demais, posição aproximada calculada sobre as vias, endereços e marcos de km do OSM (cruzamento, km da rodovia, número entre endereços vizinhos ou meio da via), com erro de dezenas de metros a alguns quilômetros. A relação de radares da Semob não traz número do Inmetro; por isso este quadro lista os medidores da base do Inmetro em Sorocaba, sem cruzar com a lista da Semob.",
             f"SHA-256 do arquivo filtrado: {man['sha256_filtrado']}",
         ]),
         dados=dados,

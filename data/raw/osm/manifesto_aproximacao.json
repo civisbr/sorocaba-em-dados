@@ -1,0 +1,12 @@
+{
+  "acesso_em": "2026-10-11",
+  "bbox": "-23.62,-47.64,-23.36,-47.30",
+  "contagens": {
+    "enderecos": 17759,
+    "marcos": 213,
+    "rodovias": 818,
+    "vias": 20012
+  },
+  "fonte": "OpenStreetMap via Overpass (ODbL 1.0)",
+  "sha256": "09402b0b0f92c9ea3e7f14daa8975b22162bfb0a5ffe3cef31fb690e87d6da1f"
+}

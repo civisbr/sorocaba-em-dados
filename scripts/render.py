@@ -4,6 +4,7 @@ from __future__ import annotations
 
 import argparse
 import json
+import math
 import re
 import unicodedata
 import shutil
@@ -17,7 +18,9 @@ from scripts.charts import barras_mensais, linhas, linhas_posicao, linhas_preco
 from scripts.mapa import gerar as gerar_mapa
 from scripts.mapa import projetar as projetar_mapa
 from scripts.contexto_hospitais import contexto_hospitais
+from scripts.build_radares import PRECISOES_APROXIMADAS
 from scripts.contexto_inmetro import contexto_inmetro, pontos_mapa
+from scripts.texto_local import legivel, rotulo_posicao
 from scripts.contexto_mapa_escolas import contexto_mapa_escolas
 from scripts.contexto_mapa_saude import contexto_mapa_saude
 from scripts.contexto_panorama import contexto_panorama
@@ -487,8 +490,21 @@ def vista_dos_pontos(pontos: list[dict], mapa: dict, folga: float = 0.35, minimo
     return f"{x:.1f} {y:.1f} {w:.1f} {h:.1f}"
 
 
+def espalhar_coincidentes(*listas: list[dict]) -> None:
+    """Afasta, em círculo, marcadores que caem no mesmo ponto (posição aproximada de vários radares na mesma via); sem isso só o de cima receberia o toque."""
+    por_ponto: dict[tuple[float, float], list[dict]] = {}
+    for p in (p for lista in listas for p in lista):
+        por_ponto.setdefault((p["x"], p["y"]), []).append(p)
+    for (x, y), grupo in por_ponto.items():
+        if len(grupo) > 1:
+            raio = max(9.0, 4.5 * len(grupo))
+            for i, p in enumerate(grupo):
+                ang = 2 * math.pi * i / len(grupo)
+                p["x"], p["y"] = round(x + raio * math.cos(ang), 1), round(y + raio * math.sin(ang), 1)
+
+
 def contexto_transito(env: dict) -> dict:
-    radares = env["dados"]
+    radares = [{**r, "local": legivel(r["local"])} for r in env["dados"]]
     por_vel: dict[int, int] = {}
     for r in radares:
         por_vel[r["velocidade_kmh"]] = por_vel.get(r["velocidade_kmh"], 0) + 1
@@ -498,7 +514,7 @@ def contexto_transito(env: dict) -> dict:
     for r in radares:
         if "lat" in r:
             x, y = ponto(r["lat"], r["lon"])
-            pontos.append({"x": round(x, 1), "y": round(y, 1), "v": r["velocidade_kmh"], "local": r["local"], "precisao": r["precisao"], "lat": f"{r['lat']:.5f}", "lon": f"{r['lon']:.5f}"})
+            pontos.append({"x": round(x, 1), "y": round(y, 1), "v": r["velocidade_kmh"], "local": r["local"], "precisao": r["precisao"], "rotulo": rotulo_posicao(r["precisao"], r.get("detalhe", "")), "aprox": r["precisao"] in PRECISOES_APROXIMADAS, "lat": f"{r['lat']:.5f}", "lon": f"{r['lon']:.5f}"})
         for texto in filter(None, r.get("posicoes_candidatas", "").split("|")):
             lat, lon = (float(x) for x in texto.split(","))
             g = grupos.setdefault((lat, lon), {"v": r["velocidade_kmh"], "locais": [], "xy": ponto(lat, lon), "lat": f"{lat:.5f}", "lon": f"{lon:.5f}"})
@@ -508,7 +524,7 @@ def contexto_transito(env: dict) -> dict:
     vel_comum = max(por_vel, key=lambda v: (por_vel[v], -v))  # empate: vale a menor velocidade
     return {
         "vel_comum": vel_comum,
-        "radar_mapa": {"mapa": mapa, "pontos": pontos, "pontos_grupo": pontos_grupo, "velocidades": sorted({p["v"] for p in todos}), "vista": vista_dos_pontos(todos, mapa)} if todos else None,
+        "radar_mapa": {"mapa": mapa, "pontos": pontos, "n_exatos": sum(1 for p in pontos if not p["aprox"]), "n_aprox": sum(1 for p in pontos if p["aprox"]), "pontos_grupo": pontos_grupo, "velocidades": sorted({p["v"] for p in todos}), "vista": vista_dos_pontos(todos, mapa)} if todos else None,
         "radares": sorted(radares, key=lambda r: (chave_alfabetica(r["local"]), r["ponto"])),
         "por_vel": [{"v": v, "n": n, "pct": round(n / topo * 100, 1)} for v, n in sorted(por_vel.items())],
         "n_radares": len(radares),
@@ -591,6 +607,8 @@ def renderizar(public: Path, saida: Path) -> None:
     ctx_trans.update(contexto_inmetro(inmetro, date.today()))
     ctx_trans["env_inm"] = inmetro
     ctx_trans["inm_pontos"] = pontos_mapa(ctx_trans["inm_linhas"], proj_grande()[1])
+    if ctx_trans["radar_mapa"]:
+        espalhar_coincidentes(ctx_trans["radar_mapa"]["pontos"], ctx_trans["radar_mapa"]["pontos_grupo"], ctx_trans["inm_pontos"])
     escolas = json.loads((public / "escolas.json").read_text(encoding="utf-8"))
     ctx_esc = contexto_escolas(escolas)
     ctx_esc["mapa_escolas"] = contexto_mapa_escolas(escolas, nome_br, proj_grande()[1])

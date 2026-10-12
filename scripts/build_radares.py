@@ -12,7 +12,9 @@ from pathlib import Path
 
 from schemas.envelope import Cobertura, Envelope, Flag, Fonte, Granularidade, Qualidade, Referencia
 
-PRECISOES = {"endereço", "câmera no OSM"}
+PRECISOES_EXATAS = {"endereço", "câmera no OSM"}
+PRECISOES_APROXIMADAS = {"cruzamento", "km", "número", "via"}
+PRECISOES = PRECISOES_EXATAS | PRECISOES_APROXIMADAS
 FONTE_POSICAO = "© colaboradores do OpenStreetMap, ODbL 1.0"
 RAIZ = Path(__file__).resolve().parent.parent
 
@@ -43,14 +45,15 @@ def construir(raw: Path) -> Envelope:
             lat, lon = float(c["lat"]), float(c["lon"])
             if not (math.isfinite(lat) and math.isfinite(lon) and -24 < lat < -23 and -48 < lon < -47) or c["precisao"] not in PRECISOES:
                 raise ValueError(f"coordenada implausível em {r['ponto']}")
-            r.update(lat=lat, lon=lon, precisao=c["precisao"], fonte_posicao=FONTE_POSICAO)
+            r.update(lat=lat, lon=lon, precisao=c["precisao"], detalhe=c.get("detalhe", ""), fonte_posicao=FONTE_POSICAO)
         elif c and c["local"] == r["local"] and c.get("candidatas"):
             r["posicoes_candidatas"] = "|".join(f"{q['lat']:.6f},{q['lon']:.6f}" for q in (ponto_valido(x, r["ponto"]) for x in c["candidatas"].split("|")))
             r["fonte_posicao"] = FONTE_POSICAO
     desatualizados = [r["ponto"] for r in dados if r["ponto"] not in coord or coord[r["ponto"]]["local"] != r["local"]]
     if desatualizados:
         print(f"aviso: {len(desatualizados)} radares novos ou com local alterado sem geocodificação: {desatualizados[:10]}; rode scripts.geocode_radares")
-    n_pos = sum(1 for r in dados if "lat" in r)
+    n_pos = sum(1 for r in dados if r.get("precisao") in PRECISOES_EXATAS)
+    n_aprox = sum(1 for r in dados if r.get("precisao") in PRECISOES_APROXIMADAS)
     n_grupo = sum(1 for r in dados if "posicoes_candidatas" in r)
     if len(dados) != man["n_radares"]:
         raise ValueError("radares.csv diverge do manifesto")
@@ -68,7 +71,7 @@ def construir(raw: Path) -> Envelope:
                 "Lista oficial de radares fixos em operação, publicada pela Semob. Não informa quantas multas cada radar aplicou.",
                 *([f"A página declara {declarado} radares, mas a paginação oficial lista {man['n_radares']}; os {declarado - man['n_radares']} restantes não são acessíveis pela página e ficam fora." ] if declarado and declarado != man["n_radares"] else []),
                 "O número de série dos equipamentos não é reproduzido aqui.",
-                f"A Semob não publica coordenadas. Posição aproximada (erro típico de dezenas de metros; o ponto do OSM é colaborativo e não confirmado pela Semob) para {n_pos} dos {len(dados)} radares e, para outros {n_grupo}, só o conjunto de posições possíveis na via (não se sabe qual câmera é de qual radar), obtidas no OpenStreetMap (© colaboradores do OpenStreetMap, licença ODbL): endereço com número ou câmera de velocidade mapeada que casa de forma única com a via e a velocidade da lista. Os demais ficam sem ponto no mapa para não apontar o lugar errado.",
+                f"A Semob não publica coordenadas. Posição com erro típico de dezenas de metros (o ponto do OSM é colaborativo e não confirmado pela Semob) para {n_pos} dos {len(dados)} radares: endereço com número ou câmera de velocidade mapeada que casa de forma única com a via e a velocidade da lista. Para outros {n_aprox}, posição só aproximada, calculada a partir do texto do local sobre as vias, endereços e marcos de km do OpenStreetMap (© colaboradores do OpenStreetMap, licença ODbL): cruzamento das duas vias, km da rodovia, número entre endereços vizinhos ou meio da via. O erro vai de dezenas de metros (cruzamento, número) a centenas ou alguns quilômetros (meio da via, km). Para os últimos {n_grupo}, só o conjunto de posições possíveis na via (não se sabe qual câmera é de qual radar).",
                 f"SHA-256 do manifesto de coleta: {h}",
             ],
         ),

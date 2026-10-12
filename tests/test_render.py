@@ -90,6 +90,8 @@ def test_orcamento_de_peso_por_pagina(site):
     css, js = (site / "style.css").stat().st_size, (site / "app.js").stat().st_size
     for pagina in site.rglob("index.html"):
         limite = 210_000 if 'class="ms-svg"' in pagina.read_text(encoding="utf-8") else 150_000  # páginas com mapa trazem células e marcadores; a base cartográfica é arquivo à parte
+        if pagina.parent.name == "transito":
+            limite = 340_000  # ~230 marcadores (radares e medidores do Inmetro); cerca de 41 KB com gzip
         assert pagina.stat().st_size + css + js < limite, pagina
 
 
@@ -169,3 +171,11 @@ def test_identidade_em_pagina_aninhada_e_csp_sem_terceiros(site):
 
 def test_orcamento_do_json_de_pontos_das_escolas(site):
     assert (site / "data" / "mapa-escolas.json").stat().st_size < 110_000
+
+
+def test_marcadores_coincidentes_sao_afastados():
+    from scripts.render import espalhar_coincidentes
+    a, b, c = ({"x": 10.0, "y": 10.0} for _ in range(3))
+    sozinho = {"x": 50.0, "y": 50.0}
+    espalhar_coincidentes([a, b], [c, sozinho])
+    assert len({(p["x"], p["y"]) for p in (a, b, c)}) == 3 and sozinho == {"x": 50.0, "y": 50.0}

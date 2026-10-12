@@ -12,3 +12,4 @@ votacao_candidato_munzona_*.csv
 *.xlsx
 data/raw/previsao/
 data/public/previsao.json
+data/raw/osm/cache/

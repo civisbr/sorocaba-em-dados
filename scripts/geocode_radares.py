@@ -4,6 +4,7 @@ A Semob não publica coordenadas. Este script roda à mão, não no cron, e grav
 Duas fontes, nesta ordem: (1) endereço com número no Nominatim, só quando o OSM tem o número da porta;
 (2) câmera de velocidade mapeada no OSM (Overpass), com maxspeed igual ao do radar, quando uma única câmera casa com a via do radar
 e vice-versa. Casos ambíguos ficam sem posição: é melhor omitir do que apontar o lugar errado.
+Radar sem posição exata nem câmera candidata recebe posição aproximada de scripts/geo_aprox.py (cruzamento, km da rodovia, número vizinho ou meio da via).
 Pontos fora do contorno do município são descartados. Uso moderado, conforme as políticas dos dois serviços.
 """
 
@@ -30,7 +31,7 @@ SAIDA = RAIZ / "data" / "raw" / "radares" / "coordenadas.csv"
 NOMINATIM = "https://nominatim.openstreetmap.org/search"
 OVERPASS = "https://overpass-api.de/api/interpreter"
 HOSTS = {"nominatim.openstreetmap.org", "overpass-api.de"}
-CAMPOS = ["ponto", "local", "lat", "lon", "precisao", "fonte_osm", "osm_ref", "geocodificado_em", "candidatas"]
+CAMPOS = ["ponto", "local", "lat", "lon", "precisao", "fonte_osm", "osm_ref", "geocodificado_em", "candidatas", "detalhe"]
 AGENTE = "SorocabaEmDados/1.0 (+https://github.com/civisbr/sorocaba-em-dados)"
 TITULOS = {
     "AV": "AVENIDA", "R": "RUA", "DR": "DOUTOR", "DRA": "DOUTORA", "PROF": "PROFESSOR", "PROFA": "PROFESSORA", "ENG": "ENGENHEIRO",
@@ -39,6 +40,7 @@ TITULOS = {
     "ROD": "RODOVIA", "AL": "ALAMEDA", "PC": "PRAÇA", "PÇA": "PRAÇA", "CÔN": "CÔNEGO", "MONS": "MONSENHOR", "CDOR": "COMENDADOR",
 }
 FONTE = "OpenStreetMap contributors (ODbL)"
+CACHE_OSM = RAIZ / "data" / "raw" / "osm" / "cache" / "aproximacao.json"
 
 
 def so_host_confiavel(r: httpx.Request) -> None:
@@ -175,6 +177,9 @@ def main() -> None:
     antigos = ler_csv(SAIDA) if SAIDA.exists() else {}
     hoje = date.today().isoformat()
     saida: dict[str, dict] = {}
+    from scripts import geo_aprox
+
+    osm = geo_aprox.montar(geo_aprox.baixar_osm(CACHE_OSM))
     with contexto_http() as c:
         todas = cameras_osm(c, contorno)
         cams = casar_cameras(radares, todas)
@@ -199,9 +204,14 @@ def main() -> None:
                 cam = cams[r["ponto"]]
                 achado = (cam["lat"], cam["lon"], "câmera no OSM", f"node/{cam['id']}", hoje)
             cand = "" if achado else "|".join(f"{g['lat']:.6f},{g['lon']:.6f},node/{g['id']}" for g in grupos.get(r["ponto"], []))
+            detalhe = ""
+            if achado is None and not cand:
+                aprox = geo_aprox.aproximar(r["local"], osm, lambda la, lo: dentro(contorno, la, lo))
+                if aprox:
+                    achado, detalhe = (aprox.lat, aprox.lon, aprox.nivel, "", hoje), aprox.detalhe
             saida[r["ponto"]] = {
                 "ponto": r["ponto"], "local": r["local"], "lat": f"{achado[0]:.6f}" if achado else "", "lon": f"{achado[1]:.6f}" if achado else "",
-                "precisao": achado[2] if achado else "", "fonte_osm": FONTE if achado or cand else "", "osm_ref": achado[3] if achado else "", "geocodificado_em": achado[4] if achado else hoje if cand else "", "candidatas": cand,
+                "precisao": achado[2] if achado else "", "fonte_osm": FONTE if achado or cand else "", "osm_ref": achado[3] if achado else "", "geocodificado_em": achado[4] if achado else hoje if cand else "", "candidatas": cand, "detalhe": detalhe,
             }
             print(f"[{i}/{len(radares)}] {r['ponto']} {saida[r['ponto']]['precisao'] or 'sem posição'}")
     perdidos = sorted(p for p, a in antigos.items() if a["lat"] and not saida.get(p, {}).get("lat"))

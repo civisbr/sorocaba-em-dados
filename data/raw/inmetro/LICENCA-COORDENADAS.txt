@@ -1,0 +1,5 @@
+coordenadas.csv contém dados derivados do OpenStreetMap (Nominatim e Overpass).
+© colaboradores do OpenStreetMap, disponíveis sob a Open Database License (ODbL) 1.0:
+https://www.openstreetmap.org/copyright
+Quem redistribuir ou adaptar este arquivo deve manter a atribuição e compartilhar sob a mesma licença.
+Os medidores (medidores_sorocaba.json) vêm do Inmetro (dados abertos, CC0) e não estão sob a ODbL.

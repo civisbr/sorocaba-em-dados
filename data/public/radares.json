@@ -6,36 +6,62 @@
   },
   "dados": [
     {
+      "detalhe": "entre os nº 2455 e 2702",
+      "fonte_posicao": "© colaboradores do OpenStreetMap, ODbL 1.0",
+      "lat": -23.500074,
       "local": "AV. DR. AFONSO VERGUEIRO Nº 2635 (B/C)",
+      "lon": -47.475431,
       "ponto": "F013",
+      "precisao": "número",
       "tipo": "FIXO - CONTROLADOR",
       "velocidade_kmh": 60
     },
     {
+      "detalhe": "entre os nº 282 e 850",
+      "fonte_posicao": "© colaboradores do OpenStreetMap, ODbL 1.0",
+      "lat": -23.510431,
       "local": "RUA DR. CAMPOS SALLES , Nº 333 (C/B)",
+      "lon": -47.448697,
       "ponto": "F014",
+      "precisao": "número",
       "tipo": "FIXO - CONTROLADOR",
       "velocidade_kmh": 50
     },
     {
+      "detalhe": "entre os nº 167 e 327",
+      "fonte_posicao": "© colaboradores do OpenStreetMap, ODbL 1.0",
+      "lat": -23.514427,
       "local": "AV. SANTA CRUZ (C/B) , Nº 290",
+      "lon": -47.493357,
       "ponto": "F015",
+      "precisao": "número",
       "tipo": "FIXO - CONTROLADOR",
       "velocidade_kmh": 50
     },
     {
+      "detalhe": "",
+      "fonte_posicao": "© colaboradores do OpenStreetMap, ODbL 1.0",
+      "lat": -23.520507,
       "local": "AV. DR. ARMANDO PANNUNZIO X R. VICÊNCIA LEONETTI (C/B)",
+      "lon": -47.490945,
       "ponto": "F016",
+      "precisao": "cruzamento",
       "tipo": "FIXO - CONTROLADOR",
       "velocidade_kmh": 60
     },
     {
+      "detalhe": "entre os nº 676 e 709",
+      "fonte_posicao": "© colaboradores do OpenStreetMap, ODbL 1.0",
+      "lat": -23.478379,
       "local": "RUA PAES DE LINHARES , Nº 700 (C/B)",
+      "lon": -47.463616,
       "ponto": "F017",
+      "precisao": "número",
       "tipo": "FIXO - CONTROLADOR",
       "velocidade_kmh": 40
     },
     {
+      "detalhe": "",
       "fonte_posicao": "© colaboradores do OpenStreetMap, ODbL 1.0",
       "lat": -23.452036,
       "local": "RUA MICHEL CHICRI MALUF , 660 (C/B)",
@@ -46,14 +72,24 @@
       "velocidade_kmh": 50
     },
     {
+      "detalhe": "",
+      "fonte_posicao": "© colaboradores do OpenStreetMap, ODbL 1.0",
+      "lat": -23.500967,
       "local": "RUA MAESTRO ZEFERINO SANTANA , OPOSTO Nº 95 (C/B)",
+      "lon": -47.471297,
       "ponto": "F019",
+      "precisao": "via",
       "tipo": "FIXO - CONTROLADOR",
       "velocidade_kmh": 50
     },
     {
+      "detalhe": "entre os nº 109 e 555",
+      "fonte_posicao": "© colaboradores do OpenStreetMap, ODbL 1.0",
+      "lat": -23.514665,
       "local": "AV. PROF. ARTHUR FONSECA , Nº 425 (B/C)",
+      "lon": -47.45971,
       "ponto": "F020",
+      "precisao": "número",
       "tipo": "FIXO - CONTROLADOR",
       "velocidade_kmh": 50
     },
@@ -66,48 +102,84 @@
       "velocidade_kmh": 70
     },
     {
+      "detalhe": "entre os nº 327 e 995",
+      "fonte_posicao": "© colaboradores do OpenStreetMap, ODbL 1.0",
+      "lat": -23.513542,
       "local": "AV. SANTA CRUZ , Nº 600 (C/B)",
+      "lon": -47.496032,
       "ponto": "F022",
+      "precisao": "número",
       "tipo": "FIXO - CONTROLADOR",
       "velocidade_kmh": 50
     },
     {
+      "detalhe": "entre os nº 1300 e 1380",
+      "fonte_posicao": "© colaboradores do OpenStreetMap, ODbL 1.0",
+      "lat": -23.52759,
       "local": "AV. ANTONIO CARLOS COMITRE , PRÓX AO Nº 1315 (B/C)",
+      "lon": -47.465395,
       "ponto": "F023",
+      "precisao": "número",
       "tipo": "FIXO - CONTROLADOR",
       "velocidade_kmh": 60
     },
     {
+      "detalhe": "entre os nº 1297 e 1855",
+      "fonte_posicao": "© colaboradores do OpenStreetMap, ODbL 1.0",
+      "lat": -23.516175,
       "local": "AV. WASHINGTON LUIZ , Nº 1313 (B/C)",
+      "lon": -47.466208,
       "ponto": "F024",
+      "precisao": "número",
       "tipo": "FIXO - CONTROLADOR",
       "velocidade_kmh": 60
     },
     {
+      "detalhe": "entre os nº 519 e 1001",
+      "fonte_posicao": "© colaboradores do OpenStreetMap, ODbL 1.0",
+      "lat": -23.482687,
       "local": "AV. JOSÉ JOAQUIM DE LACERDA (C/B ) , Nº 552",
+      "lon": -47.462109,
       "ponto": "F025",
+      "precisao": "número",
       "tipo": "FIXO - CONTROLADOR",
       "velocidade_kmh": 50
     },
     {
+      "detalhe": "entre os nº 1405 e 1481",
+      "fonte_posicao": "© colaboradores do OpenStreetMap, ODbL 1.0",
+      "lat": -23.486963,
       "local": "RUA COMENDADOR OETTERER, PROX AO Nº1432 (C/B)",
+      "lon": -47.465075,
       "ponto": "F026",
+      "precisao": "número",
       "tipo": "FIXO - CONTROLADOR",
       "velocidade_kmh": 50
     },
     {
+      "detalhe": "entre os nº 76 e 844",
+      "fonte_posicao": "© colaboradores do OpenStreetMap, ODbL 1.0",
+      "lat": -23.505529,
       "local": "RUA DR. AMÉRICO FIGUEIREDO , Nº 717 (C/B)",
+      "lon": -47.491142,
       "ponto": "F027",
+      "precisao": "número",
       "tipo": "FIXO - CONTROLADOR",
       "velocidade_kmh": 50
     },
     {
+      "detalhe": "",
+      "fonte_posicao": "© colaboradores do OpenStreetMap, ODbL 1.0",
+      "lat": -23.463797,
       "local": "RUA ANTÔNIO ROQUE RODRIGUES, OPOSTO AO Nº 211",
+      "lon": -47.440594,
       "ponto": "F028",
+      "precisao": "via",
       "tipo": "FIXO - CONTROLADOR",
       "velocidade_kmh": 50
     },
     {
+      "detalhe": "",
       "fonte_posicao": "© colaboradores do OpenStreetMap, ODbL 1.0",
       "lat": -23.455261,
       "local": "RUA ADELAIDE LAMBERTI DIENER,PRÓX. AO N°187 (C/B)",
@@ -118,32 +190,57 @@
       "velocidade_kmh": 40
     },
     {
+      "detalhe": "entre os nº 570 e 707",
+      "fonte_posicao": "© colaboradores do OpenStreetMap, ODbL 1.0",
+      "lat": -23.504444,
       "local": "AV. GENERAL CARNEIRO, 633 (B/C)",
+      "lon": -47.474313,
       "ponto": "F030",
+      "precisao": "número",
       "tipo": "FIXO - CONTROLADOR",
       "velocidade_kmh": 50
     },
     {
+      "detalhe": "endereço nº 1027 no OSM",
+      "fonte_posicao": "© colaboradores do OpenStreetMap, ODbL 1.0",
+      "lat": -23.48529,
       "local": "RUA APARECIDA , Nº 1027 (C/B)",
+      "lon": -47.450625,
       "ponto": "F031",
+      "precisao": "número",
       "tipo": "FIXO - CONTROLADOR",
       "velocidade_kmh": 50
     },
     {
+      "detalhe": "entre os nº 2180 e 2545",
+      "fonte_posicao": "© colaboradores do OpenStreetMap, ODbL 1.0",
+      "lat": -23.482186,
       "local": "AV. ENG. CARLOS REINALDO MENDES , Nº 2235",
+      "lon": -47.424506,
       "ponto": "F032",
+      "precisao": "número",
       "tipo": "FIXO - CONTROLADOR",
       "velocidade_kmh": 60
     },
     {
+      "detalhe": "entre os nº 2970 e 3043",
+      "fonte_posicao": "© colaboradores do OpenStreetMap, ODbL 1.0",
+      "lat": -23.475022,
       "local": "AV. ENG. CARLOS REINALDO MENDES, Nº 3041 (C/B)",
+      "lon": -47.422417,
       "ponto": "F033",
+      "precisao": "número",
       "tipo": "FIXO - CONTROLADOR",
       "velocidade_kmh": 60
     },
     {
+      "detalhe": "",
+      "fonte_posicao": "© colaboradores do OpenStreetMap, ODbL 1.0",
+      "lat": -23.511071,
       "local": "RUA VICENTE DECARIA , OPOSTO AO Nº 312",
+      "lon": -47.427954,
       "ponto": "F034",
+      "precisao": "via",
       "tipo": "FIXO - CONTROLADOR",
       "velocidade_kmh": 50
     },
@@ -156,8 +253,13 @@
       "velocidade_kmh": 50
     },
     {
+      "detalhe": "endereço nº 2750 no OSM",
+      "fonte_posicao": "© colaboradores do OpenStreetMap, ODbL 1.0",
+      "lat": -23.500283,
       "local": "AV. DR. AFONSO VERGUEIRO Nº 2750 (C/B)",
+      "lon": -47.476618,
       "ponto": "F036",
+      "precisao": "número",
       "tipo": "FIXO - CONTROLADOR",
       "velocidade_kmh": 60
     },
@@ -170,74 +272,134 @@
       "velocidade_kmh": 50
     },
     {
+      "detalhe": "",
+      "fonte_posicao": "© colaboradores do OpenStreetMap, ODbL 1.0",
+      "lat": -23.493944,
       "local": "AV. DOM AGUIRRE (C/B ) PRÓX RUA CDOR. HELIO MONZONI",
+      "lon": -47.447718,
       "ponto": "F038",
+      "precisao": "cruzamento",
       "tipo": "FIXO - CONTROLADOR",
       "velocidade_kmh": 70
     },
     {
+      "detalhe": "",
+      "fonte_posicao": "© colaboradores do OpenStreetMap, ODbL 1.0",
+      "lat": -23.493944,
       "local": "AV. DOM AGUIRRE (B/C ) PRÓX RUA CDOR. HELIO MONZONI",
+      "lon": -47.447718,
       "ponto": "F039",
+      "precisao": "cruzamento",
       "tipo": "FIXO - CONTROLADOR",
       "velocidade_kmh": 70
     },
     {
+      "detalhe": "perto do nº 830",
+      "fonte_posicao": "© colaboradores do OpenStreetMap, ODbL 1.0",
+      "lat": -23.489131,
       "local": "RUA CDOR. HERMELINO MATARAZZO , Nº 1123 (C/B)",
+      "lon": -47.461416,
       "ponto": "F040",
+      "precisao": "número",
       "tipo": "FIXO - CONTROLADOR",
       "velocidade_kmh": 50
     },
     {
+      "detalhe": "entre os nº 5880 e 5900",
+      "fonte_posicao": "© colaboradores do OpenStreetMap, ODbL 1.0",
+      "lat": -23.452151,
       "local": "AV. IPANEMA , Nº 5885 (B/C)",
+      "lon": -47.511395,
       "ponto": "F041",
+      "precisao": "número",
       "tipo": "FIXO - CONTROLADOR",
       "velocidade_kmh": 50
     },
     {
+      "detalhe": "entre os nº 2500 e 2580",
+      "fonte_posicao": "© colaboradores do OpenStreetMap, ODbL 1.0",
+      "lat": -23.473021,
       "local": "AV. IPANEMA OPOSTO , Nº 2575 (C/B)",
+      "lon": -47.488728,
       "ponto": "F042",
+      "precisao": "número",
       "tipo": "FIXO - CONTROLADOR",
       "velocidade_kmh": 50
     },
     {
+      "detalhe": "entre os nº 5420 e 5676",
+      "fonte_posicao": "© colaboradores do OpenStreetMap, ODbL 1.0",
+      "lat": -23.45305,
       "local": "AV. IPANEMA , OPOSTO Nº 5661",
+      "lon": -47.50921,
       "ponto": "F043",
+      "precisao": "número",
       "tipo": "FIXO - CONTROLADOR",
       "velocidade_kmh": 50
     },
     {
+      "detalhe": "entre os nº 1850 e 1879",
+      "fonte_posicao": "© colaboradores do OpenStreetMap, ODbL 1.0",
+      "lat": -23.504427,
       "local": "RUA DR. AMÉRICO FIGUEIREDO , Nº 1865",
+      "lon": -47.494086,
       "ponto": "F044",
+      "precisao": "número",
       "tipo": "FIXO - CONTROLADOR",
       "velocidade_kmh": 50
     },
     {
+      "detalhe": "entre os nº 550 e 668",
+      "fonte_posicao": "© colaboradores do OpenStreetMap, ODbL 1.0",
+      "lat": -23.436962,
       "local": "RUA ANTONIO SILVA SALADINO , Nº 565",
+      "lon": -47.472311,
       "ponto": "F045",
+      "precisao": "número",
       "tipo": "FIXO - CONTROLADOR",
       "velocidade_kmh": 50
     },
     {
+      "detalhe": "",
+      "fonte_posicao": "© colaboradores do OpenStreetMap, ODbL 1.0",
+      "lat": -23.423752,
       "local": "RUA PEREIRA DA FONSECA, 782",
+      "lon": -47.410734,
       "ponto": "F046",
+      "precisao": "via",
       "tipo": "FIXO - CONTROLADOR",
       "velocidade_kmh": 60
     },
     {
+      "detalhe": "",
+      "fonte_posicao": "© colaboradores do OpenStreetMap, ODbL 1.0",
+      "lat": -23.435073,
       "local": "RUA ANTONIO SILVA SALADINO , Nº 1826 (C/B)",
+      "lon": -47.466217,
       "ponto": "F047",
+      "precisao": "via",
       "tipo": "FIXO - CONTROLADOR",
       "velocidade_kmh": 50
     },
     {
+      "detalhe": "endereço nº 4455 no OSM",
+      "fonte_posicao": "© colaboradores do OpenStreetMap, ODbL 1.0",
+      "lat": -23.448839,
       "local": "AV. ITAVUVU , OPOSTO Nº 4455",
+      "lon": -47.480599,
       "ponto": "F048",
+      "precisao": "número",
       "tipo": "FIXO - CONTROLADOR",
       "velocidade_kmh": 50
     },
     {
+      "detalhe": "perto do nº 1855",
+      "fonte_posicao": "© colaboradores do OpenStreetMap, ODbL 1.0",
+      "lat": -23.517387,
       "local": "AV. WASHINGTON LUIZ , Nº 1900 (C/B)",
+      "lon": -47.472632,
       "ponto": "F049",
+      "precisao": "número",
       "tipo": "FIXO - CONTROLADOR",
       "velocidade_kmh": 60
     },
@@ -250,14 +412,24 @@
       "velocidade_kmh": 70
     },
     {
+      "detalhe": "perto do nº 436",
+      "fonte_posicao": "© colaboradores do OpenStreetMap, ODbL 1.0",
+      "lat": -23.501026,
       "local": "RUA HUMBERTO DE CAMPOS, PROX Nº 416",
+      "lon": -47.481595,
       "ponto": "F051",
+      "precisao": "número",
       "tipo": "FIXO - CONTROLADOR",
       "velocidade_kmh": 50
     },
     {
+      "detalhe": "entre os nº 1852 e 2185",
+      "fonte_posicao": "© colaboradores do OpenStreetMap, ODbL 1.0",
+      "lat": -23.492409,
       "local": "AV. SÃO PAULO , Nº 2055 (B/C)",
+      "lon": -47.434105,
       "ponto": "F052",
+      "precisao": "número",
       "tipo": "FIXO - CONTROLADOR",
       "velocidade_kmh": 60
     },
@@ -270,36 +442,62 @@
       "velocidade_kmh": 70
     },
     {
+      "detalhe": "",
+      "fonte_posicao": "© colaboradores do OpenStreetMap, ODbL 1.0",
+      "lat": -23.503122,
       "local": "RUA CEL. CAVALHEIROS , PROX A RUA BRIGADEIRO TOBIAS (C/B)",
+      "lon": -47.455575,
       "ponto": "F054",
+      "precisao": "cruzamento",
       "tipo": "FIXO - CONTROLADOR",
       "velocidade_kmh": 40
     },
     {
+      "detalhe": "endereço nº 684 no OSM",
+      "fonte_posicao": "© colaboradores do OpenStreetMap, ODbL 1.0",
+      "lat": -23.482012,
       "local": "RUA OSWALDO CRUZ , Nº 684 (C/B)",
+      "lon": -47.455926,
       "ponto": "F055",
+      "precisao": "número",
       "tipo": "FIXO - CONTROLADOR",
       "velocidade_kmh": 50
     },
     {
+      "detalhe": "",
+      "fonte_posicao": "© colaboradores do OpenStreetMap, ODbL 1.0",
+      "lat": -23.472844,
       "local": "AV. QUINZE DE AGOSTO (C/B) , Nº 6440",
+      "lon": -47.441877,
       "ponto": "F056",
+      "precisao": "via",
       "tipo": "FIXO - CONTROLADOR",
       "velocidade_kmh": 50
     },
     {
+      "detalhe": "entre os nº 867 e 1307",
+      "fonte_posicao": "© colaboradores do OpenStreetMap, ODbL 1.0",
+      "lat": -23.512607,
       "local": "AV. BARÃO DE TATUI , OPOSTO Nº 1108 (B/C)",
+      "lon": -47.464164,
       "ponto": "F057",
+      "precisao": "número",
       "tipo": "FIXO - CONTROLADOR",
       "velocidade_kmh": 50
     },
     {
+      "detalhe": "",
+      "fonte_posicao": "© colaboradores do OpenStreetMap, ODbL 1.0",
+      "lat": -23.503332,
       "local": "RUA WALDOMIRO DE ALMEIDA BARROS Nº 50 (B/C)",
+      "lon": -47.509318,
       "ponto": "F058",
+      "precisao": "via",
       "tipo": "FIXO - CONTROLADOR",
       "velocidade_kmh": 50
     },
     {
+      "detalhe": "",
       "fonte_posicao": "© colaboradores do OpenStreetMap, ODbL 1.0",
       "lat": -23.493862,
       "local": "RUA PROFESSOR TOLEDO , Nº 1156 (B/C)",
@@ -318,8 +516,13 @@
       "velocidade_kmh": 60
     },
     {
+      "detalhe": "",
+      "fonte_posicao": "© colaboradores do OpenStreetMap, ODbL 1.0",
+      "lat": -23.487158,
       "local": "AV. ADÃO PEREIRA DE CAMARGO, 714 (C/B)",
+      "lon": -47.491814,
       "ponto": "F061",
+      "precisao": "via",
       "tipo": "FIXO - CONTROLADOR",
       "velocidade_kmh": 60
     },
@@ -332,36 +535,62 @@
       "velocidade_kmh": 60
     },
     {
+      "detalhe": "entre os nº 147 e 989",
+      "fonte_posicao": "© colaboradores do OpenStreetMap, ODbL 1.0",
+      "lat": -23.49312,
       "local": "AV. DR. ARMANDO SALES DE OLIVEIRA ,Nº 605 (B/C)",
+      "lon": -47.472554,
       "ponto": "F063",
+      "precisao": "número",
       "tipo": "FIXO - CONTROLADOR",
       "velocidade_kmh": 50
     },
     {
+      "detalhe": "perto do nº 890",
+      "fonte_posicao": "© colaboradores do OpenStreetMap, ODbL 1.0",
+      "lat": -23.445961,
       "local": "ALAMEDA DO HORTO , OPOSTO Nº 1075 (C/B)",
+      "lon": -47.496229,
       "ponto": "F064",
+      "precisao": "número",
       "tipo": "FIXO - CONTROLADOR",
       "velocidade_kmh": 50
     },
     {
+      "detalhe": "entre os nº 202 e 1297",
+      "fonte_posicao": "© colaboradores do OpenStreetMap, ODbL 1.0",
+      "lat": -23.512417,
       "local": "AV. WASHINGTON LUIZ , Nº 319 (B/C)",
+      "lon": -47.458812,
       "ponto": "F065",
+      "precisao": "número",
       "tipo": "FIXO - CONTROLADOR",
       "velocidade_kmh": 60
     },
     {
+      "detalhe": "",
+      "fonte_posicao": "© colaboradores do OpenStreetMap, ODbL 1.0",
+      "lat": -23.50591,
       "local": "RUA FERNANDO LUIZ GROHMAN OPOSTO , Nº 532 (B/C)",
+      "lon": -47.434826,
       "ponto": "F066",
+      "precisao": "via",
       "tipo": "FIXO - CONTROLADOR",
       "velocidade_kmh": 50
     },
     {
+      "detalhe": "perto do nº 298",
+      "fonte_posicao": "© colaboradores do OpenStreetMap, ODbL 1.0",
+      "lat": -23.491115,
       "local": "RUA APARECIDA , Nº 44",
+      "lon": -47.454134,
       "ponto": "F067",
+      "precisao": "número",
       "tipo": "FIXO - CONTROLADOR",
       "velocidade_kmh": 50
     },
     {
+      "detalhe": "",
       "fonte_posicao": "© colaboradores do OpenStreetMap, ODbL 1.0",
       "lat": -23.514538,
       "local": "RUA PROFESSORA GUIDA MARES , Nº 246 (C/B)",
@@ -372,74 +601,134 @@
       "velocidade_kmh": 50
     },
     {
+      "detalhe": "entre os nº 510 e 830",
+      "fonte_posicao": "© colaboradores do OpenStreetMap, ODbL 1.0",
+      "lat": -23.490006,
       "local": "RUA CDOR. HERMELINO MATARAZZO , Nº 734 (C/B)",
+      "lon": -47.461023,
       "ponto": "F069",
+      "precisao": "número",
       "tipo": "FIXO - CONTROLADOR",
       "velocidade_kmh": 50
     },
     {
+      "detalhe": "perto do nº 222",
+      "fonte_posicao": "© colaboradores do OpenStreetMap, ODbL 1.0",
+      "lat": -23.49608,
       "local": "RUA CDOR. OETTERER OPOSTO , Nº 166 (B/C)",
+      "lon": -47.45829,
       "ponto": "F070",
+      "precisao": "número",
       "tipo": "FIXO - CONTROLADOR",
       "velocidade_kmh": 50
     },
     {
+      "detalhe": "",
+      "fonte_posicao": "© colaboradores do OpenStreetMap, ODbL 1.0",
+      "lat": -23.457962,
       "local": "AV. CDOR. CAMILLO JULIO , OPOSTO AO Nº 2511 (C/B)",
+      "lon": -47.451812,
       "ponto": "F071",
+      "precisao": "via",
       "tipo": "FIXO - CONTROLADOR",
       "velocidade_kmh": 60
     },
     {
+      "detalhe": "",
+      "fonte_posicao": "© colaboradores do OpenStreetMap, ODbL 1.0",
+      "lat": -23.51615,
       "local": "RUA CDOR VICENTE AMARAL , OPOSTO RUA WALDEMAR BELLIA (B/C)",
+      "lon": -47.51697,
       "ponto": "F072",
+      "precisao": "cruzamento",
       "tipo": "FIXO - CONTROLADOR",
       "velocidade_kmh": 50
     },
     {
+      "detalhe": "entre os nº 867 e 1307",
+      "fonte_posicao": "© colaboradores do OpenStreetMap, ODbL 1.0",
+      "lat": -23.512607,
       "local": "AV. BARÃO DE TATUI , Nº 1108 (C/B)",
+      "lon": -47.464164,
       "ponto": "F073",
+      "precisao": "número",
       "tipo": "FIXO - CONTROLADOR",
       "velocidade_kmh": 50
     },
     {
+      "detalhe": "perto do nº 219",
+      "fonte_posicao": "© colaboradores do OpenStreetMap, ODbL 1.0",
+      "lat": -23.515921,
       "local": "RUA KARIM JAMMAL , Nº 333 (B/C)",
+      "lon": -47.496454,
       "ponto": "F074",
+      "precisao": "número",
       "tipo": "FIXO - CONTROLADOR",
       "velocidade_kmh": 50
     },
     {
+      "detalhe": "perto do nº 140",
+      "fonte_posicao": "© colaboradores do OpenStreetMap, ODbL 1.0",
+      "lat": -23.521252,
       "local": "RUA LITUÂNIA OPOSTO , Nº 20",
+      "lon": -47.478918,
       "ponto": "F075",
+      "precisao": "número",
       "tipo": "FIXO - CONTROLADOR",
       "velocidade_kmh": 50
     },
     {
+      "detalhe": "entre os nº 672 e 881",
+      "fonte_posicao": "© colaboradores do OpenStreetMap, ODbL 1.0",
+      "lat": -23.522508,
       "local": "RUA LITUÂNIA OPOSTO (C/B) , Nº 870",
+      "lon": -47.485313,
       "ponto": "F076",
+      "precisao": "número",
       "tipo": "FIXO - CONTROLADOR",
       "velocidade_kmh": 50
     },
     {
+      "detalhe": "entre os nº 202 e 1297",
+      "fonte_posicao": "© colaboradores do OpenStreetMap, ODbL 1.0",
+      "lat": -23.512325,
       "local": "AV. WASHINGTON LUIZ (C/B), Nº 270",
+      "lon": -47.458426,
       "ponto": "F077",
+      "precisao": "número",
       "tipo": "FIXO - CONTROLADOR",
       "velocidade_kmh": 60
     },
     {
+      "detalhe": "",
+      "fonte_posicao": "© colaboradores do OpenStreetMap, ODbL 1.0",
+      "lat": -23.455278,
       "local": "AV. CDOR CAMILLO JULIO, APROX. 150M APÓS A AV. TADAO YOSHIDA",
+      "lon": -47.450915,
       "ponto": "F078",
+      "precisao": "cruzamento",
       "tipo": "FIXO - CONTROLADOR",
       "velocidade_kmh": 60
     },
     {
+      "detalhe": "endereço nº 5555 no OSM",
+      "fonte_posicao": "© colaboradores do OpenStreetMap, ODbL 1.0",
+      "lat": -23.437599,
       "local": "AV. ITAVUVU , Nº 5555 (B/C)",
+      "lon": -47.477697,
       "ponto": "F079",
+      "precisao": "número",
       "tipo": "FIXO - CONTROLADOR",
       "velocidade_kmh": 50
     },
     {
+      "detalhe": "perto do nº 225",
+      "fonte_posicao": "© colaboradores do OpenStreetMap, ODbL 1.0",
+      "lat": -23.494865,
       "local": "RUA LEONDINA GONÇALVES MOBAIER , PROXIMO AO Nº 82 (C/B)",
+      "lon": -47.515697,
       "ponto": "F080",
+      "precisao": "número",
       "tipo": "FIXO - CONTROLADOR",
       "velocidade_kmh": 40
     },
@@ -452,54 +741,95 @@
       "velocidade_kmh": 70
     },
     {
+      "detalhe": "perto do nº 501",
+      "fonte_posicao": "© colaboradores do OpenStreetMap, ODbL 1.0",
+      "lat": -23.493029,
       "local": "RUA MASCARENHAS CAMELO , Nº 800 (B/C)",
+      "lon": -47.457977,
       "ponto": "F082",
+      "precisao": "número",
       "tipo": "FIXO - CONTROLADOR",
       "velocidade_kmh": 50
     },
     {
+      "detalhe": "",
+      "fonte_posicao": "© colaboradores do OpenStreetMap, ODbL 1.0",
+      "lat": -23.50252,
       "local": "RUA PROFª. MARIA BENEDITA AUGUSTO KELLER , Nº 268 (B/C)",
+      "lon": -47.51695,
       "ponto": "F083",
+      "precisao": "via",
       "tipo": "FIXO - CONTROLADOR",
       "velocidade_kmh": 50
     },
     {
+      "detalhe": "as duas vias passam a 80 m uma da outra",
+      "fonte_posicao": "© colaboradores do OpenStreetMap, ODbL 1.0",
+      "lat": -23.515424,
       "local": "AV. JUVENAL DE CAMPOS , PRÓXIMO A RUA JORGE MENDES (C/B)",
+      "lon": -47.451248,
       "ponto": "F084",
+      "precisao": "cruzamento",
       "tipo": "FIXO - CONTROLADOR",
       "velocidade_kmh": 70
     },
     {
+      "detalhe": "endereço nº 931 no OSM",
+      "fonte_posicao": "© colaboradores do OpenStreetMap, ODbL 1.0",
+      "lat": -23.490513,
       "local": "RUA CDOR OETTERER , Nº 931",
+      "lon": -47.461931,
       "ponto": "F085",
+      "precisao": "número",
       "tipo": "FIXO - CONTROLADOR",
       "velocidade_kmh": 50
     },
     {
+      "detalhe": "entre os nº 770 e 811",
+      "fonte_posicao": "© colaboradores do OpenStreetMap, ODbL 1.0",
+      "lat": -23.474842,
       "local": "RUA GALILEU PASQUINELLI , Nº 780 (B/C)",
+      "lon": -47.459309,
       "ponto": "F086",
+      "precisao": "número",
       "tipo": "FIXO - CONTROLADOR",
       "velocidade_kmh": 50
     },
     {
+      "detalhe": "entre os nº 709 e 927",
+      "fonte_posicao": "© colaboradores do OpenStreetMap, ODbL 1.0",
+      "lat": -23.477497,
       "local": "RUA PAES DE LINHARES (C/B) , Nº 918",
+      "lon": -47.461609,
       "ponto": "F087",
+      "precisao": "número",
       "tipo": "FIXO - CONTROLADOR",
       "velocidade_kmh": 40
     },
     {
+      "detalhe": "",
+      "fonte_posicao": "© colaboradores do OpenStreetMap, ODbL 1.0",
+      "lat": -23.452965,
       "local": "AV. TADAO YOSHIDA (C/B) PRÓX. PONTE ENG. JOSÉ NELSON CARNEIRO DO VAL",
+      "lon": -47.460156,
       "ponto": "F088",
+      "precisao": "cruzamento",
       "tipo": "FIXO - CONTROLADOR",
       "velocidade_kmh": 60
     },
     {
+      "detalhe": "entre os nº 1416 e 1530",
+      "fonte_posicao": "© colaboradores do OpenStreetMap, ODbL 1.0",
+      "lat": -23.47467,
       "local": "RUA PAES DE LINHARES , Nº 1470 (C/B)",
+      "lon": -47.457566,
       "ponto": "F089",
+      "precisao": "número",
       "tipo": "FIXO - CONTROLADOR",
       "velocidade_kmh": 40
     },
     {
+      "detalhe": "",
       "fonte_posicao": "© colaboradores do OpenStreetMap, ODbL 1.0",
       "lat": -23.47847,
       "local": "RUA ABBUD BACHIR ABDALLA COM PRAÇA AVELINO LEITE DE CAMARGO (B/C)",
@@ -510,104 +840,189 @@
       "velocidade_kmh": 50
     },
     {
+      "detalhe": "endereço nº 995 no OSM",
+      "fonte_posicao": "© colaboradores do OpenStreetMap, ODbL 1.0",
+      "lat": -23.512064,
       "local": "AV. SANTA CRUZ OPOSTO , 995 (C/B)",
+      "lon": -47.499426,
       "ponto": "F091",
+      "precisao": "número",
       "tipo": "FIXO - CONTROLADOR",
       "velocidade_kmh": 50
     },
     {
+      "detalhe": "entre os nº 245 e 394",
+      "fonte_posicao": "© colaboradores do OpenStreetMap, ODbL 1.0",
+      "lat": -23.494979,
       "local": "AV. PERCITO DE SOUZA QUEIROZ , Nº 272 (C/B)",
+      "lon": -47.482734,
       "ponto": "F092",
+      "precisao": "número",
       "tipo": "FIXO - CONTROLADOR",
       "velocidade_kmh": 50
     },
     {
+      "detalhe": "",
+      "fonte_posicao": "© colaboradores do OpenStreetMap, ODbL 1.0",
+      "lat": -23.435538,
       "local": "RUA TEREZA CONCEIÇÃO GROSSO DE LUCA,677 (B/C)",
+      "lon": -47.484506,
       "ponto": "F093",
+      "precisao": "via",
       "tipo": "FIXO - CONTROLADOR",
       "velocidade_kmh": 50
     },
     {
+      "detalhe": "",
+      "fonte_posicao": "© colaboradores do OpenStreetMap, ODbL 1.0",
+      "lat": -23.51182,
       "local": "AV. SALVADOR MILEGO COM PRAÇA MARCIA MENDES (B/C)",
+      "lon": -47.494086,
       "ponto": "F094",
+      "precisao": "via",
       "tipo": "FIXO - CONTROLADOR",
       "velocidade_kmh": 50
     },
     {
+      "detalhe": "entre os nº 400 e 1002",
+      "fonte_posicao": "© colaboradores do OpenStreetMap, ODbL 1.0",
+      "lat": -23.511607,
       "local": "AV. SALVADOR MILEGO Nº 514 (C/B)",
+      "lon": -47.493512,
       "ponto": "F095",
+      "precisao": "número",
       "tipo": "FIXO - CONTROLADOR",
       "velocidade_kmh": 50
     },
     {
+      "detalhe": "entre os nº 2970 e 3043",
+      "fonte_posicao": "© colaboradores do OpenStreetMap, ODbL 1.0",
+      "lat": -23.475022,
       "local": "AV. ENG. CARLOS REINALDO MENDES, OPOSTO AO Nº 3041 (C/B)",
+      "lon": -47.422417,
       "ponto": "F096",
+      "precisao": "número",
       "tipo": "FIXO - CONTROLADOR",
       "velocidade_kmh": 60
     },
     {
+      "detalhe": "entre os nº 1245 e 1306",
+      "fonte_posicao": "© colaboradores do OpenStreetMap, ODbL 1.0",
+      "lat": -23.445406,
       "local": "AV. EDWARD FRUFRU MARCIANO DA SILVA (C/B) , Nº 1278",
+      "lon": -47.492398,
       "ponto": "F097",
+      "precisao": "número",
       "tipo": "FIXO - CONTROLADOR",
       "velocidade_kmh": 50
     },
     {
+      "detalhe": "entre os nº 4101 e 4790",
+      "fonte_posicao": "© colaboradores do OpenStreetMap, ODbL 1.0",
+      "lat": -23.500954,
       "local": "RUA DR. AMÉRICO FIGUEIREDO, OPOSTO Nº 4664 (B/C)",
+      "lon": -47.525738,
       "ponto": "F098",
+      "precisao": "número",
       "tipo": "FIXO - CONTROLADOR",
       "velocidade_kmh": 60
     },
     {
+      "detalhe": "perto do nº 930",
+      "fonte_posicao": "© colaboradores do OpenStreetMap, ODbL 1.0",
+      "lat": -23.490824,
       "local": "AV. PAULO EMANUEL DE ALMEIDA Nº 1043 (C/B)",
+      "lon": -47.503129,
       "ponto": "F099",
+      "precisao": "número",
       "tipo": "FIXO - CONTROLADOR",
       "velocidade_kmh": 60
     },
     {
+      "detalhe": "",
+      "fonte_posicao": "© colaboradores do OpenStreetMap, ODbL 1.0",
+      "lat": -23.44815,
       "local": "RUA ANTÔNIO PIANTORI,2110 (C/B)",
+      "lon": -47.490793,
       "ponto": "F100",
+      "precisao": "via",
       "tipo": "FIXO - CONTROLADOR",
       "velocidade_kmh": 40
     },
     {
+      "detalhe": "perto do nº 691",
+      "fonte_posicao": "© colaboradores do OpenStreetMap, ODbL 1.0",
+      "lat": -23.483583,
       "local": "RUA JULIO RIBEIRO , Nº 419 (B/C)",
+      "lon": -47.457225,
       "ponto": "F101",
+      "precisao": "número",
       "tipo": "FIXO - CONTROLADOR",
       "velocidade_kmh": 50
     },
     {
+      "detalhe": "",
+      "fonte_posicao": "© colaboradores do OpenStreetMap, ODbL 1.0",
+      "lat": -23.458383,
       "local": "RUA MARIA ARRUDA DE MOURA BARROS, N ° 262 (B/C)",
+      "lon": -47.486909,
       "ponto": "F102",
+      "precisao": "via",
       "tipo": "FIXO - CONTROLADOR",
       "velocidade_kmh": 60
     },
     {
+      "detalhe": "",
+      "fonte_posicao": "© colaboradores do OpenStreetMap, ODbL 1.0",
+      "lat": -23.514427,
       "local": "AV PROFº. FLAVIO FAZANO , Nº 315 (B/C)",
+      "lon": -47.511829,
       "ponto": "F103",
+      "precisao": "via",
       "tipo": "FIXO - CONTROLADOR",
       "velocidade_kmh": 50
     },
     {
+      "detalhe": "entre os nº 168 e 372",
+      "fonte_posicao": "© colaboradores do OpenStreetMap, ODbL 1.0",
+      "lat": -23.480013,
       "local": "RUA PAES DE LINHARES, PRÓX. AO Nº 272",
+      "lon": -47.467374,
       "ponto": "F104",
+      "precisao": "número",
       "tipo": "FIXO - CONTROLADOR",
       "velocidade_kmh": 50
     },
     {
+      "detalhe": "perto do nº 519",
+      "fonte_posicao": "© colaboradores do OpenStreetMap, ODbL 1.0",
+      "lat": -23.482352,
       "local": "AV. JOSÉ JOAQUIM DE LACERDA Nº 288 (C/B)",
+      "lon": -47.462521,
       "ponto": "F105",
+      "precisao": "número",
       "tipo": "FIXO - CONTROLADOR",
       "velocidade_kmh": 50
     },
     {
+      "detalhe": "entre os nº 1080 e 1820",
+      "fonte_posicao": "© colaboradores do OpenStreetMap, ODbL 1.0",
+      "lat": -23.495196,
       "local": "AV ELIAS MALUF N º 1560 (C/B)",
+      "lon": -47.510122,
       "ponto": "F106",
+      "precisao": "número",
       "tipo": "FIXO - CONTROLADOR",
       "velocidade_kmh": 50
     },
     {
+      "detalhe": "",
+      "fonte_posicao": "© colaboradores do OpenStreetMap, ODbL 1.0",
+      "lat": -23.479921,
       "local": "RUA ADOLFO FREDERICO SCHLEIFER Nº 804 (B/C)",
+      "lon": -47.480626,
       "ponto": "F107",
+      "precisao": "via",
       "tipo": "FIXO - CONTROLADOR",
       "velocidade_kmh": 50
     },
@@ -620,18 +1035,29 @@
       "velocidade_kmh": 70
     },
     {
+      "detalhe": "",
+      "fonte_posicao": "© colaboradores do OpenStreetMap, ODbL 1.0",
+      "lat": -23.514427,
       "local": "AV. PROF. FLAVIO FAZANO, 110 (C/B)",
+      "lon": -47.511829,
       "ponto": "F109",
+      "precisao": "via",
       "tipo": "FIXO - CONTROLADOR",
       "velocidade_kmh": 50
     },
     {
+      "detalhe": "entre os nº 327 e 995",
+      "fonte_posicao": "© colaboradores do OpenStreetMap, ODbL 1.0",
+      "lat": -23.511917,
       "local": "AV. SANTA CRUZ , Nº 955 (B/C)",
+      "lon": -47.498788,
       "ponto": "F110",
+      "precisao": "número",
       "tipo": "FIXO - CONTROLADOR",
       "velocidade_kmh": 50
     },
     {
+      "detalhe": "",
       "fonte_posicao": "© colaboradores do OpenStreetMap, ODbL 1.0",
       "lat": -23.504477,
       "local": "RUA DIVA MUGNAINI RAVACCI (C/B) , Nº 15",
@@ -642,26 +1068,46 @@
       "velocidade_kmh": 50
     },
     {
+      "detalhe": "perto do nº 601",
+      "fonte_posicao": "© colaboradores do OpenStreetMap, ODbL 1.0",
+      "lat": -23.417833,
       "local": "RUA JOSÉ LUIZ FLAQUER , Nº 810 (C/B)",
+      "lon": -47.415945,
       "ponto": "F112",
+      "precisao": "número",
       "tipo": "FIXO - CONTROLADOR",
       "velocidade_kmh": 50
     },
     {
+      "detalhe": "entre os nº 1800 e 2430",
+      "fonte_posicao": "© colaboradores do OpenStreetMap, ODbL 1.0",
+      "lat": -23.526559,
       "local": "AV. DR. ARMANDO PANNUNZIO , Nº 1893",
+      "lon": -47.490353,
       "ponto": "F113",
+      "precisao": "número",
       "tipo": "FIXO - CONTROLADOR",
       "velocidade_kmh": 60
     },
     {
+      "detalhe": "",
+      "fonte_posicao": "© colaboradores do OpenStreetMap, ODbL 1.0",
+      "lat": -23.457962,
       "local": "AV. CDOR.CAMILLO JULIO , Nº 255",
+      "lon": -47.451812,
       "ponto": "F114",
+      "precisao": "via",
       "tipo": "FIXO - CONTROLADOR",
       "velocidade_kmh": 60
     },
     {
+      "detalhe": "entre os nº 109 e 555",
+      "fonte_posicao": "© colaboradores do OpenStreetMap, ODbL 1.0",
+      "lat": -23.514094,
       "local": "AV. PROF. ARTHUR FONSECA OPOSTO Nº 305",
+      "lon": -47.458524,
       "ponto": "F115",
+      "precisao": "número",
       "tipo": "FIXO - CONTROLADOR",
       "velocidade_kmh": 50
     },
@@ -698,42 +1144,73 @@
       "velocidade_kmh": 60
     },
     {
+      "detalhe": "entre os nº 986 e 1415",
+      "fonte_posicao": "© colaboradores do OpenStreetMap, ODbL 1.0",
+      "lat": -23.489921,
       "local": "AV. GENERAL OSÓRIO Nº 1347",
+      "lon": -47.474654,
       "ponto": "F120",
+      "precisao": "número",
       "tipo": "FIXO - CONTROLADOR",
       "velocidade_kmh": 60
     },
     {
+      "detalhe": "",
+      "fonte_posicao": "© colaboradores do OpenStreetMap, ODbL 1.0",
+      "lat": -23.472844,
       "local": "AV. QUINZE DE AGOSTO ( B/C ), OPOSTO AO Nº 6440",
+      "lon": -47.441877,
       "ponto": "F121",
+      "precisao": "via",
       "tipo": "FIXO - CONTROLADOR",
       "velocidade_kmh": 50
     },
     {
+      "detalhe": "",
+      "fonte_posicao": "© colaboradores do OpenStreetMap, ODbL 1.0",
+      "lat": -23.503332,
       "local": "RUA WALDOMIRO DE ALMEIDA BARROS Nº 585",
+      "lon": -47.509318,
       "ponto": "F122",
+      "precisao": "via",
       "tipo": "FIXO - CONTROLADOR",
       "velocidade_kmh": 50
     },
     {
+      "detalhe": "perto do nº 964",
+      "fonte_posicao": "© colaboradores do OpenStreetMap, ODbL 1.0",
+      "lat": -23.435695,
       "local": "RUA ANTONIO SILVA SALADINO , Nº 1123",
+      "lon": -47.467036,
       "ponto": "F123",
+      "precisao": "número",
       "tipo": "FIXO - CONTROLADOR",
       "velocidade_kmh": 50
     },
     {
+      "detalhe": "perto do nº 964",
+      "fonte_posicao": "© colaboradores do OpenStreetMap, ODbL 1.0",
+      "lat": -23.435695,
       "local": "RUA ANTONIO SILVA SALADINO , N º 1120",
+      "lon": -47.467036,
       "ponto": "F124",
+      "precisao": "número",
       "tipo": "FIXO - CONTROLADOR",
       "velocidade_kmh": 50
     },
     {
+      "detalhe": "",
+      "fonte_posicao": "© colaboradores do OpenStreetMap, ODbL 1.0",
+      "lat": -23.457962,
       "local": "AV. CDOR CAMILLO JULIO PRÓX. AO Nº 1256",
+      "lon": -47.451812,
       "ponto": "F125",
+      "precisao": "via",
       "tipo": "FIXO - CONTROLADOR",
       "velocidade_kmh": 60
     },
     {
+      "detalhe": "",
       "fonte_posicao": "© colaboradores do OpenStreetMap, ODbL 1.0",
       "lat": -23.460146,
       "local": "AV. IPANEMA, 4495",
@@ -744,38 +1221,68 @@
       "velocidade_kmh": 50
     },
     {
+      "detalhe": "perto do nº 2059",
+      "fonte_posicao": "© colaboradores do OpenStreetMap, ODbL 1.0",
+      "lat": -23.515936,
       "local": "RUA CAP. BENTO MASCARENHAS JEQUITINHONHA Nº 2231",
+      "lon": -47.473785,
       "ponto": "F127",
+      "precisao": "número",
       "tipo": "FIXO - CONTROLADOR",
       "velocidade_kmh": 50
     },
     {
+      "detalhe": "endereço nº 464 no OSM",
+      "fonte_posicao": "© colaboradores do OpenStreetMap, ODbL 1.0",
+      "lat": -23.500159,
       "local": "RUA ARTHUR GOMES , Nº 464",
+      "lon": -47.465439,
       "ponto": "F128",
+      "precisao": "número",
       "tipo": "FIXO - CONTROLADOR",
       "velocidade_kmh": 50
     },
     {
+      "detalhe": "",
+      "fonte_posicao": "© colaboradores do OpenStreetMap, ODbL 1.0",
+      "lat": -23.49128,
       "local": "AV. PÉRCITO DE SOUZA QUEIROZ (C/B), Nº 1017",
+      "lon": -47.486392,
       "ponto": "F129",
+      "precisao": "via",
       "tipo": "FIXO - CONTROLADOR",
       "velocidade_kmh": 50
     },
     {
+      "detalhe": "",
+      "fonte_posicao": "© colaboradores do OpenStreetMap, ODbL 1.0",
+      "lat": -23.488513,
       "local": "AV. PÉRCITO DE SOUZA QUEIROZ PRÓX RUA MONSENHOR BENEDITO MARIO CALAZANS",
+      "lon": -47.489737,
       "ponto": "F130",
+      "precisao": "cruzamento",
       "tipo": "FIXO - CONTROLADOR",
       "velocidade_kmh": 50
     },
     {
+      "detalhe": "entre os nº 790 e 876",
+      "fonte_posicao": "© colaboradores do OpenStreetMap, ODbL 1.0",
+      "lat": -23.461845,
       "local": "AV BETÂNIA , Nº 852",
+      "lon": -47.500964,
       "ponto": "F131",
+      "precisao": "número",
       "tipo": "FIXO - CONTROLADOR",
       "velocidade_kmh": 50
     },
     {
+      "detalhe": "entre os nº 327 e 1134",
+      "fonte_posicao": "© colaboradores do OpenStreetMap, ODbL 1.0",
+      "lat": -23.499133,
       "local": "AV SÃO PAULO, 643",
+      "lon": -47.4456,
       "ponto": "F132",
+      "precisao": "número",
       "tipo": "FIXO - CONTROLADOR",
       "velocidade_kmh": 50
     },
@@ -788,18 +1295,29 @@
       "velocidade_kmh": 50
     },
     {
+      "detalhe": "",
+      "fonte_posicao": "© colaboradores do OpenStreetMap, ODbL 1.0",
+      "lat": -23.472844,
       "local": "AV. QUINZE DE AGOSTO COM A PONTE LUIZ F. DAMIAN LUIZITO",
+      "lon": -47.441877,
       "ponto": "F134",
+      "precisao": "via",
       "tipo": "FIXO - CONTROLADOR",
       "velocidade_kmh": 50
     },
     {
+      "detalhe": "",
+      "fonte_posicao": "© colaboradores do OpenStreetMap, ODbL 1.0",
+      "lat": -23.472844,
       "local": "AV. QUINZE DE AGOSTO PRÓX. Nº 5210",
+      "lon": -47.441877,
       "ponto": "F135",
+      "precisao": "via",
       "tipo": "FIXO - CONTROLADOR",
       "velocidade_kmh": 50
     },
     {
+      "detalhe": "",
       "fonte_posicao": "© colaboradores do OpenStreetMap, ODbL 1.0",
       "lat": -23.453592,
       "local": "RUA ATÁNAZIO SOARES , PRÓX AO Nº 2332",
@@ -810,18 +1328,29 @@
       "velocidade_kmh": 50
     },
     {
+      "detalhe": "perto do nº 395",
+      "fonte_posicao": "© colaboradores do OpenStreetMap, ODbL 1.0",
+      "lat": -23.494129,
       "local": "RUA BELMIRA LOUREIRO DE ALMEIDA Nº 466",
+      "lon": -47.429929,
       "ponto": "F137",
+      "precisao": "número",
       "tipo": "FIXO - CONTROLADOR",
       "velocidade_kmh": 50
     },
     {
+      "detalhe": "as duas vias passam a 280 m uma da outra",
+      "fonte_posicao": "© colaboradores do OpenStreetMap, ODbL 1.0",
+      "lat": -23.509755,
       "local": "RUA NILVA ZILAH SILVATTI VIANA PRÓX. R. ARNALDO BARBOZA SANTOS",
+      "lon": -47.518693,
       "ponto": "F138",
+      "precisao": "cruzamento",
       "tipo": "FIXO - CONTROLADOR",
       "velocidade_kmh": 50
     },
     {
+      "detalhe": "",
       "fonte_posicao": "© colaboradores do OpenStreetMap, ODbL 1.0",
       "lat": -23.512851,
       "local": "RUA DELCIO FERREIRA DE AZEVEDO OPOSTO N.567",
@@ -832,8 +1361,13 @@
       "velocidade_kmh": 50
     },
     {
+      "detalhe": "entre os nº 245 e 394",
+      "fonte_posicao": "© colaboradores do OpenStreetMap, ODbL 1.0",
+      "lat": -23.494549,
       "local": "AV. PERCITO DE SOUZA QUEIROZ Nº 323",
+      "lon": -47.482922,
       "ponto": "F140",
+      "precisao": "número",
       "tipo": "FIXO - CONTROLADOR",
       "velocidade_kmh": 50
     },
@@ -854,12 +1388,18 @@
       "velocidade_kmh": 60
     },
     {
+      "detalhe": "endereço nº 1800 no OSM",
+      "fonte_posicao": "© colaboradores do OpenStreetMap, ODbL 1.0",
+      "lat": -23.529058,
       "local": "AV. DR. ARMANDO PANNUNZIO , Nº 1800",
+      "lon": -47.49026,
       "ponto": "F143",
+      "precisao": "número",
       "tipo": "FIXO - CONTROLADOR",
       "velocidade_kmh": 60
     },
     {
+      "detalhe": "",
       "fonte_posicao": "© colaboradores do OpenStreetMap, ODbL 1.0",
       "lat": -23.436411,
       "local": "AV. DR. GUALBERTO MOREIRA , Nº 880",
@@ -870,6 +1410,7 @@
       "velocidade_kmh": 50
     },
     {
+      "detalhe": "",
       "fonte_posicao": "© colaboradores do OpenStreetMap, ODbL 1.0",
       "lat": -23.435785,
       "local": "AV. DR. GUALBERTO MOREIRA , Nº 881",
@@ -896,92 +1437,167 @@
       "velocidade_kmh": 50
     },
     {
+      "detalhe": "",
+      "fonte_posicao": "© colaboradores do OpenStreetMap, ODbL 1.0",
+      "lat": -23.440785,
       "local": "RUA JOSEMAR TOUZON DAMIÃO, PRÓX. RUA IZIDRO ROQUE DA SILVA",
+      "lon": -47.497423,
       "ponto": "F148",
+      "precisao": "cruzamento",
       "tipo": "FIXO - CONTROLADOR",
       "velocidade_kmh": 50
     },
     {
+      "detalhe": "entre os nº 269 e 774",
+      "fonte_posicao": "© colaboradores do OpenStreetMap, ODbL 1.0",
+      "lat": -23.490223,
       "local": "AV. ENG. CARLOS REINALDO MENDES OPOSTO , Nº 576",
+      "lon": -47.43809,
       "ponto": "F149",
+      "precisao": "número",
       "tipo": "FIXO - CONTROLADOR",
       "velocidade_kmh": 60
     },
     {
+      "detalhe": "entre os nº 269 e 774",
+      "fonte_posicao": "© colaboradores do OpenStreetMap, ODbL 1.0",
+      "lat": -23.490223,
       "local": "AV. ENG. CARLOS REINALDO MENDES Nº 576",
+      "lon": -47.43809,
       "ponto": "F150",
+      "precisao": "número",
       "tipo": "FIXO - CONTROLADOR",
       "velocidade_kmh": 60
     },
     {
+      "detalhe": "",
+      "fonte_posicao": "© colaboradores do OpenStreetMap, ODbL 1.0",
+      "lat": -23.464528,
       "local": "RUA DR. ALTINO ARANTES, OPOSTO AO Nº 917",
+      "lon": -47.468975,
       "ponto": "F151",
+      "precisao": "via",
       "tipo": "FIXO - CONTROLADOR",
       "velocidade_kmh": 50
     },
     {
+      "detalhe": "perto do nº 5600",
+      "fonte_posicao": "© colaboradores do OpenStreetMap, ODbL 1.0",
+      "lat": -23.43805,
       "local": "AV. ITAVUVU , Nº 5830 (C/B)",
+      "lon": -47.477016,
       "ponto": "F152",
+      "precisao": "número",
       "tipo": "FIXO - CONTROLADOR",
       "velocidade_kmh": 60
     },
     {
+      "detalhe": "",
+      "fonte_posicao": "© colaboradores do OpenStreetMap, ODbL 1.0",
+      "lat": -23.489557,
       "local": "AV. PAULO EMANUEL DE ALMEIDA (B/C) , PRÓXIMO A RUA MITRE FIUZA AYRES",
+      "lon": -47.49792,
       "ponto": "F153",
+      "precisao": "cruzamento",
       "tipo": "FIXO - CONTROLADOR",
       "velocidade_kmh": 50
     },
     {
+      "detalhe": "",
+      "fonte_posicao": "© colaboradores do OpenStreetMap, ODbL 1.0",
+      "lat": -23.519073,
       "local": "AV. JUVENAL DE CAMPOS PRÓX. E OPOSTO AV. CDOR PEREIRA INÁCIO",
+      "lon": -47.452987,
       "ponto": "F154",
+      "precisao": "cruzamento",
       "tipo": "FIXO - CONTROLADOR",
       "velocidade_kmh": 70
     },
     {
+      "detalhe": "",
+      "fonte_posicao": "© colaboradores do OpenStreetMap, ODbL 1.0",
+      "lat": -23.519073,
       "local": "AV. JUVENAL DE CAMPOS PRÓX. AV. CDOR PEREIRA INÁCIO",
+      "lon": -47.452987,
       "ponto": "F155",
+      "precisao": "cruzamento",
       "tipo": "FIXO - CONTROLADOR",
       "velocidade_kmh": 70
     },
     {
+      "detalhe": "",
+      "fonte_posicao": "© colaboradores do OpenStreetMap, ODbL 1.0",
+      "lat": -23.457962,
       "local": "AV. CDOR CAMILLO JULIO (B/C) , Nº 2511",
+      "lon": -47.451812,
       "ponto": "F156",
+      "precisao": "via",
       "tipo": "FIXO - CONTROLADOR",
       "velocidade_kmh": 60
     },
     {
+      "detalhe": "",
+      "fonte_posicao": "© colaboradores do OpenStreetMap, ODbL 1.0",
+      "lat": -23.452965,
       "local": "AV. TADAO YOSHIDA PRÓX. PONTE ENG. JOSÉ NELSON CARNEIRO DO VAL",
+      "lon": -47.460156,
       "ponto": "F157",
+      "precisao": "cruzamento",
       "tipo": "FIXO - CONTROLADOR",
       "velocidade_kmh": 60
     },
     {
+      "detalhe": "",
+      "fonte_posicao": "© colaboradores do OpenStreetMap, ODbL 1.0",
+      "lat": -23.435073,
       "local": "RUA ANTONIO SILVA SALADINO, Nº 1666 (C/B)",
+      "lon": -47.466217,
       "ponto": "F158",
+      "precisao": "via",
       "tipo": "FIXO - CONTROLADOR",
       "velocidade_kmh": 60
     },
     {
+      "detalhe": "entre os nº 455 e 587",
+      "fonte_posicao": "© colaboradores do OpenStreetMap, ODbL 1.0",
+      "lat": -23.445148,
       "local": "AV. VICTOR ANDREW , Nº 540",
+      "lon": -47.439173,
       "ponto": "F159",
+      "precisao": "número",
       "tipo": "FIXO - CONTROLADOR",
       "velocidade_kmh": 60
     },
     {
+      "detalhe": "entre os nº 587 e 880",
+      "fonte_posicao": "© colaboradores do OpenStreetMap, ODbL 1.0",
+      "lat": -23.445282,
       "local": "AV. VICTOR ANDREW , OPOSTO Nº 615",
+      "lon": -47.439181,
       "ponto": "F160",
+      "precisao": "número",
       "tipo": "FIXO - CONTROLADOR",
       "velocidade_kmh": 60
     },
     {
+      "detalhe": "entre os nº 2550 e 4100",
+      "fonte_posicao": "© colaboradores do OpenStreetMap, ODbL 1.0",
+      "lat": -23.427821,
       "local": "AV. VICTOR ANDREW , OPOSTO Nº 3861",
+      "lon": -47.431076,
       "ponto": "F161",
+      "precisao": "número",
       "tipo": "FIXO - CONTROLADOR",
       "velocidade_kmh": 60
     },
     {
+      "detalhe": "endereço nº 2550 no OSM",
+      "fonte_posicao": "© colaboradores do OpenStreetMap, ODbL 1.0",
+      "lat": -23.428634,
       "local": "AV. VICTOR ANDREW (C/B) , OPOSTO AO Nº 2550",
+      "lon": -47.435337,
       "ponto": "F162",
+      "precisao": "número",
       "tipo": "FIXO - CONTROLADOR",
       "velocidade_kmh": 60
     },
@@ -1002,50 +1618,90 @@
       "velocidade_kmh": 50
     },
     {
+      "detalhe": "entre os nº 38 e 153",
+      "fonte_posicao": "© colaboradores do OpenStreetMap, ODbL 1.0",
+      "lat": -23.447907,
       "local": "ESTRADA DO DINORAH , Nº 125",
+      "lon": -47.504747,
       "ponto": "F165",
+      "precisao": "número",
       "tipo": "FIXO - CONTROLADOR",
       "velocidade_kmh": 60
     },
     {
+      "detalhe": "entre os nº 153 e 1420",
+      "fonte_posicao": "© colaboradores do OpenStreetMap, ODbL 1.0",
+      "lat": -23.448163,
       "local": "ESTRADA DO DINORAH, Nº 576",
+      "lon": -47.504709,
       "ponto": "F166",
+      "precisao": "número",
       "tipo": "FIXO - CONTROLADOR",
       "velocidade_kmh": 60
     },
     {
+      "detalhe": "",
+      "fonte_posicao": "© colaboradores do OpenStreetMap, ODbL 1.0",
+      "lat": -23.524232,
       "local": "RUA DR. LUIZ MENDES ALMEIDA (B/C), Nº 2635",
+      "lon": -47.498526,
       "ponto": "F167",
+      "precisao": "via",
       "tipo": "FIXO - CONTROLADOR",
       "velocidade_kmh": 60
     },
     {
+      "detalhe": "",
+      "fonte_posicao": "© colaboradores do OpenStreetMap, ODbL 1.0",
+      "lat": -23.524232,
       "local": "RUA DR. LUIZ MENDES ALMEIDA , Nº 2622",
+      "lon": -47.498526,
       "ponto": "F168",
+      "precisao": "via",
       "tipo": "FIXO - CONTROLADOR",
       "velocidade_kmh": 60
     },
     {
+      "detalhe": "entre os nº 1146 e 1844",
+      "fonte_posicao": "© colaboradores do OpenStreetMap, ODbL 1.0",
+      "lat": -23.475702,
       "local": "AV. MANOEL DE CAMARGO SAMPAIO, ALTURA DO Nº 1709",
+      "lon": -47.50514,
       "ponto": "F169",
+      "precisao": "número",
       "tipo": "FIXO - CONTROLADOR",
       "velocidade_kmh": 60
     },
     {
+      "detalhe": "entre os nº 973 e 1600",
+      "fonte_posicao": "© colaboradores do OpenStreetMap, ODbL 1.0",
+      "lat": -23.503163,
       "local": "RUA DR. AMÉRICO FIGUEIREDO , PRÓXMO AO Nº 1421",
+      "lon": -47.497514,
       "ponto": "F170",
+      "precisao": "número",
       "tipo": "FIXO - CONTROLADOR",
       "velocidade_kmh": 50
     },
     {
+      "detalhe": "perto do nº 519",
+      "fonte_posicao": "© colaboradores do OpenStreetMap, ODbL 1.0",
+      "lat": -23.482352,
       "local": "AV. JOSÉ JOAQUIM DE LACERDA (B/C) , OPOSTO AO Nº 422",
+      "lon": -47.462521,
       "ponto": "F171",
+      "precisao": "número",
       "tipo": "FIXO - CONTROLADOR",
       "velocidade_kmh": 50
     },
     {
+      "detalhe": "entre os nº 530 e 674",
+      "fonte_posicao": "© colaboradores do OpenStreetMap, ODbL 1.0",
+      "lat": -23.477956,
       "local": "RUA PEDRO ALVARES CABRAL , Nº 571",
+      "lon": -47.443849,
       "ponto": "F172",
+      "precisao": "número",
       "tipo": "FIXO - CONTROLADOR",
       "velocidade_kmh": 50
     }
@@ -1064,7 +1720,7 @@
       "Lista oficial de radares fixos em operação, publicada pela Semob. Não informa quantas multas cada radar aplicou.",
       "A página declara 172 radares, mas a paginação oficial lista 160; os 12 restantes não são acessíveis pela página e ficam fora.",
       "O número de série dos equipamentos não é reproduzido aqui.",
-      "A Semob não publica coordenadas. Posição aproximada (erro típico de dezenas de metros; o ponto do OSM é colaborativo e não confirmado pela Semob) para 11 dos 160 radares e, para outros 20, só o conjunto de posições possíveis na via (não se sabe qual câmera é de qual radar), obtidas no OpenStreetMap (© colaboradores do OpenStreetMap, licença ODbL): endereço com número ou câmera de velocidade mapeada que casa de forma única com a via e a velocidade da lista. Os demais ficam sem ponto no mapa para não apontar o lugar errado.",
+      "A Semob não publica coordenadas. Posição com erro típico de dezenas de metros (o ponto do OSM é colaborativo e não confirmado pela Semob) para 11 dos 160 radares: endereço com número ou câmera de velocidade mapeada que casa de forma única com a via e a velocidade da lista. Para outros 129, posição só aproximada, calculada a partir do texto do local sobre as vias, endereços e marcos de km do OpenStreetMap (© colaboradores do OpenStreetMap, licença ODbL): cruzamento das duas vias, km da rodovia, número entre endereços vizinhos ou meio da via. O erro vai de dezenas de metros (cruzamento, número) a centenas ou alguns quilômetros (meio da via, km). Para os últimos 20, só o conjunto de posições possíveis na via (não se sabe qual câmera é de qual radar).",
       "SHA-256 do manifesto de coleta: b1ccbb04877fc9990755a90275e9539544fa47d752ff4fd3ec92acee09102f5d"
     ]
   },
