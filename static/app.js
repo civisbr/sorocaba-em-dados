@@ -69,3 +69,12 @@
     aberto.querySelector("summary").focus();
   });
 })();
+(function () {
+  // Tabelas largas rolam na horizontal: precisam ser alcançáveis pelo teclado e ter nome (WCAG 2.1.1, 4.1.2).
+  document.querySelectorAll(".rolagem").forEach(function (r) {
+    r.setAttribute("tabindex", "0");
+    r.setAttribute("role", "region");
+    var cap = r.querySelector("caption");
+    r.setAttribute("aria-label", cap ? cap.textContent.trim() : "Tabela com rolagem horizontal");
+  });
+})();

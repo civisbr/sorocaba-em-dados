@@ -264,3 +264,6 @@ div.ms-dica[hidden]{display:none}div.ms-dica.abaixo{transform:translate(-50%,0)}
 .ms-filtro+.ms-filtro{margin-top:0}
 .ms-longe .g-municipal .mk,.ms-longe .g-estadual .mk,.ms-longe .g-federal .mk,.ms-longe .g-privada .mk{transform:scale(calc(var(--k)*.62))}.ms-longe .ms-u.ms-sel .mk{transform:scale(calc(var(--k)*1.2))}
 .lista-curta li{overflow-wrap:anywhere}
+.proveniencia dd a,.rodape-links a{display:inline-block;min-height:1.5rem;line-height:1.5rem}
+.mapa-saude{grid-template-columns:minmax(0,1fr)}.mapa-saude>*,.mapa-lateral>*{min-width:0}.ms-filtro label>span{min-width:0;overflow-wrap:anywhere}
+@media(min-width:900px){.mapa-saude{grid-template-columns:minmax(0,1.6fr) minmax(0,1fr)}}
