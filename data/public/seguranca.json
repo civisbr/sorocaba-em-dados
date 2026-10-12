@@ -10068,7 +10068,7 @@
       "Bairros em ordem alfabética, sem ranking. O campo é digitado no boletim (grafias variam) e bairros com menos de 50 roubos e furtos no ano ficam em 'demais'. Contagem não mede risco: depende de população, comércio e fluxo de pessoas.",
       "Mapa de calor: registros de roubos e furtos de 2025 em células de cerca de 550 m, só com 5 ou mais registros. Só entram boletins com coordenada válida dentro do município; a parcela coberta é indicada no mapa, e pontos sem geocodificação ficam de fora.",
       "Séries antigas usam as mesmas categorias com grafia normalizada (ex.: TRAFICO e TRÁFICO). Categorias que só aparecem a partir de 2023 ficaram de fora para não distorcer a comparação.",
-      "SHA-256 do manifesto de coleta: 7927d94672f19038b00c74c17eee07e0c90cff1e86462ef67dea8cff2ac9fecf"
+      "SHA-256 do manifesto de coleta: 5d9ff8d83378516947f17ebe1a14a5502c56877bec08b1dff169db785fe7d7cb"
     ]
   },
   "referencia": {
