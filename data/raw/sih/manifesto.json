@@ -47,17 +47,17 @@
     },
     "202605": {
       "bytes": 20410906,
-      "coletado_em": "2026-10-11",
+      "coletado_em": "2026-10-12",
       "sha256": "bfc92c13ad42fd31898f9968433ceeb0cd030f2060a19e17c9fb7473c6afaf6c"
     },
     "202606": {
       "bytes": 19951666,
-      "coletado_em": "2026-10-11",
+      "coletado_em": "2026-10-12",
       "sha256": "c8a3cddec6f3f491debd47d2da3ef73fa01aaa5c9104ed5e884978b16f242d21"
     },
     "202607": {
       "bytes": 20203637,
-      "coletado_em": "2026-10-11",
+      "coletado_em": "2026-10-12",
       "sha256": "ddceed3771e35c0eb38b02f1bb2cbd5c03312d1e1582d07e6aecf79ac7931081"
     }
   },
@@ -65,5 +65,5 @@
   "primeira": "202508",
   "sha256_csv": "6d177450625f0ce6fe48707ee8ca94c9756d90670c26a36e477b986c5e12b2d2",
   "ultima": "202607",
-  "verificado_em": "2026-10-11"
+  "verificado_em": "2026-10-12"
 }

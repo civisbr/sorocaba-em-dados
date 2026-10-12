@@ -3340,7 +3340,7 @@
     }
   ],
   "fonte": {
-    "acesso_em": "2026-10-11",
+    "acesso_em": "2026-10-12",
     "licenca": "Dados abertos do Ministério da Saúde (DATASUS); citar a fonte",
     "nome": "CNES e SIH/SUS — DATASUS, Ministério da Saúde",
     "url": "https://datasus.saude.gov.br/"
@@ -3352,7 +3352,7 @@
     "notas": [
       "Cadastro de estabelecimentos e leitos do CNES, competência 08/2026. O cadastro é declarado pelos próprios estabelecimentos e pode estar defasado.",
       "Internações do SIH/SUS de 08/2025 a 07/2026: só as pagas pelo SUS, sem as de convênios e particulares. Contam hospitais localizados em Sorocaba, inclusive pacientes de outras cidades.",
-      "Não existe dado aberto de ocupação ou fila de hospital. O 'uso estimado dos leitos SUS' divide os dias de internação SUS dos últimos 12 meses pelos leitos SUS existentes vezes 365. É uma ordem de grandeza, não a lotação do dia. Os dias de células com menos de 5 internações foram zerados por privacidade, o que subestima um pouco o valor.",
+      "Não existe dado aberto de ocupação ou fila de hospital. O 'uso estimado dos leitos SUS' divide os dias de internação SUS dos últimos 12 meses pelo número de leitos SUS existentes multiplicado por 365. É uma ordem de grandeza, não a lotação do dia. Os dias de células com menos de 5 internações foram zerados por privacidade, o que subestima um pouco o valor.",
       "O uso estimado só aparece para hospitais com 20 leitos SUS ou mais.",
       "Contagem de internações e de dias não mede qualidade do hospital: depende do porte, da especialidade e da gravidade dos casos.",
       "SHA-256 dos recortes de coleta: ddcb0c7353639bce265561229e2f019633c9ffceb28f93f07248f3a07cb17cc6"
