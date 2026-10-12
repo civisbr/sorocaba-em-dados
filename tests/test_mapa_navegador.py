@@ -100,3 +100,16 @@ def test_mapa_sem_js_mostra_conteudo_e_esconde_controles(navegador, url):
     pg = navegador.new_context(java_script_enabled=False).new_page()
     pg.goto(url + "hospitais/")
     assert pg.locator(".ms-u").count() >= 40 and not pg.locator(".ms-filtro").is_visible() and not pg.locator(".ms-local").is_visible()
+
+
+def test_seguranca_tipo_de_ocorrencia_e_registros_perto_do_bairro(pagina_nova, url):
+    pg, erros = _abrir(pagina_nova, url, "seguranca/")
+    visiveis = lambda: pg.evaluate("[...new Set([...document.querySelectorAll('.ms-c')].filter(c => !c.classList.contains('ms-off')).map(c => c.dataset.grupo))]")
+    assert visiveis() == ["roubos"]
+    pg.fill(".ms-bairro", "Vila Hortência")
+    pg.click(".ms-bairro-form button")
+    pg.wait_for_function("document.querySelector('.ms-proximas') && !document.querySelector('.ms-proximas').hidden")
+    assert "Roubos:" in pg.locator(".ms-proximas").inner_text()
+    pg.locator('.ms-filtro input[value="furtos"]').check()
+    assert visiveis() == ["furtos"] and "Furtos:" in pg.locator(".ms-proximas").inner_text()
+    assert not erros

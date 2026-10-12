@@ -242,7 +242,11 @@
       celulas.forEach(function (c) { c.classList.toggle("ms-off", !passa(c)); });
       if (posicao) listarProximas(false);
     }
-    filtros.forEach(function (c) { c.addEventListener("change", refiltrar); });
+    function legendas() {
+      var marcado = filtros.filter(function (c) { return c.checked && c.type === "radio"; }).map(function (c) { return c.value; });
+      raiz.querySelectorAll("[data-legenda]").forEach(function (e) { e.hidden = marcado.length > 0 && marcado.indexOf(e.dataset.legenda) === -1; });
+    }
+    filtros.forEach(function (c) { c.addEventListener("change", function () { refiltrar(); legendas(); }); });
     function visivel(u) { return !u.classList.contains("ms-off"); }
 
     // localização, sempre calculada no navegador
@@ -288,7 +292,36 @@
       listarProximas();
       if (atual) selecionar(atual);
     }
+    function registrosPerto() {
+      if (!painelProx || !posicao || !celulas.length) return false;
+      var p0 = xy(posicao.lat, posicao.lon), upm = afim.escala / 111320, porGrupo = {};
+      celulas.forEach(function (c) {
+        if (c.classList.contains("ms-off")) return;
+        var cx = +c.getAttribute("x") + (+c.getAttribute("width")) / 2, cy = +c.getAttribute("y") + (+c.getAttribute("height")) / 2;
+        var m = Math.hypot(cx - p0.x, cy - p0.y) / upm, g = c.dataset.grupo || "total", o = porGrupo[g] = porGrupo[g] || { r1: 0, r2: 0, r5: 0, areas: 0 };
+        var n = +c.dataset.n;
+        if (m <= 1000) o.r1 += n;
+        if (m <= 2000) o.r2 += n;
+        if (m <= 5000) { o.r5 += n; o.areas++; }
+      });
+      painelProx.textContent = "";
+      var h = document.createElement("h3"); h.textContent = "Registros perto de você"; painelProx.appendChild(h);
+      var ul = document.createElement("ul"); ul.className = "ms-prox";
+      Object.keys(porGrupo).forEach(function (g) {
+        var o = porGrupo[g], li = document.createElement("li"), b = document.createElement("div"); b.className = "ms-prox-b";
+        var t = document.createElement("strong"); t.textContent = (NOMES[g] || g) + ": " + o.r5.toLocaleString("pt-BR") + " registros em áreas a até 5 km";
+        var d = document.createElement("span"); d.className = "ms-prox-d"; d.textContent = o.r1.toLocaleString("pt-BR") + " a até 1 km · " + o.r2.toLocaleString("pt-BR") + " a até 2 km";
+        b.appendChild(t); b.appendChild(d); li.appendChild(b); ul.appendChild(li);
+      });
+      painelProx.appendChild(ul);
+      var nota = document.createElement("p"); nota.className = "pequeno suave";
+      nota.textContent = NOTA || "Soma das áreas do mapa cujo centro fica dentro do raio. Áreas com menos de 5 registros não entram, e nem toda ocorrência tem coordenada. Não indica risco nem segurança do local.";
+      painelProx.appendChild(nota);
+      painelProx.hidden = false;
+      return true;
+    }
     function listarProximas(reenquadrar) {
+      if (registrosPerto()) { if (reenquadrar !== false) { var c0 = xy(posicao.lat, posicao.lon); enquadrar([c0, { x: c0.x + 5000 * afim.escala / 111320, y: c0.y }, { x: c0.x - 5000 * afim.escala / 111320, y: c0.y }], 0.15); } return; }
       if (!painelProx) return;
       painelProx.textContent = "";
       var titulo = document.createElement("h3"); titulo.textContent = "Mais perto de você"; painelProx.appendChild(titulo);
