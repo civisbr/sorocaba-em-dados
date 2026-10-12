@@ -347,7 +347,7 @@ def contexto_comparativo(env: dict) -> dict:
     return {"blocos": blocos, "ref_comp": "posição " + str(max(b["ultimo"]["ano"] for b in blocos))}
 
 
-NIVEIS = {1: "Verde: baixa incidência", 2: "Amarelo: condições favoráveis ao mosquito", 3: "Laranja: transmissão em curso", 4: "Vermelho: incidência alta"}
+NIVEIS = {1: "Verde: incidência baixa", 2: "Amarelo: condições favoráveis ao mosquito", 3: "Laranja: transmissão em curso", 4: "Vermelho: incidência alta"}
 NOMES_DOENCA = {"dengue": "Dengue", "chikungunya": "Chikungunya", "zika": "Zika"}
 
 

@@ -138,7 +138,7 @@ def test_render_gera_pagina_de_saude_com_nivel_em_texto(tmp_path):
     r = subprocess.run([sys.executable, "-m", "scripts.render", "--saida", str(tmp_path)], capture_output=True, text=True)
     assert r.returncode == 0, r.stderr
     html = (tmp_path / "saude" / "index.html").read_text(encoding="utf-8")
-    assert "Quais doenças estão circulando" in html and "Ver os valores por semana" in html
+    assert "Como estão a dengue e a chikungunya" in html and "Ver os valores por semana" in html
     assert any(n in html for n in ("Verde", "Amarelo", "Laranja", "Vermelho"))
     assert (tmp_path / "data" / "saude_doencas.json").exists()
     assert "Saúde" in (tmp_path / "index.html").read_text(encoding="utf-8")

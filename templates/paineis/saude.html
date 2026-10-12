@@ -2,7 +2,7 @@
 {% from "_macros.html" import icone %}
 {% block resumo %}
 <section aria-labelledby="resumo" class="resumo-real">
-  <h2 id="resumo" class="rotulo-resumo">Situação nesta semana ({{ ref_saude }})</h2>
+  <h2 id="resumo" class="rotulo-resumo">Semana mais recente publicada ({{ ref_saude }})</h2>
   {% if dias_sem_coleta %}<p class="aviso-amostra">{{ icone("alerta") }} Os dados não são atualizados há {{ dias_sem_coleta }} dias; a situação pode ter mudado.</p>{% endif %}
   <ul class="doencas-faixas">
     {% for d in doencas %}

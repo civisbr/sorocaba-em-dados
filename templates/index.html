@@ -61,7 +61,7 @@
         <span class="cartao-topo"><span>{{ p.nav }}</span><span class="cartao-status-{{ p.status }}"><span aria-hidden="true">● </span>{{ "Atualizado" if p.status == "real" else "Pendente" }}</span></span>
         {% if p.id == "emprego" %}
         <span class="cartao-numero {{ 'pos' if emprego.ultimo.saldo > 0 else ('neg' if emprego.ultimo.saldo < 0 else '') }}">{{ emprego.ultimo.saldo | sinal }}</span>
-        <span class="cartao-ctx">vagas formais em {{ emprego.ultimo_mes }}</span>
+        <span class="cartao-ctx">de saldo de empregos formais em {{ emprego.ultimo_mes }}</span>
         {% elif p.id == "combustivel" %}
         {% set gas = comb.produtos | selectattr("nome", "equalto", "Gasolina comum") | first | default(comb.produtos[0]) %}
         {% set eta = comb.produtos | selectattr("nome", "equalto", "Etanol") | first | default(none) %}
@@ -82,7 +82,7 @@
         <span class="cartao-ctx">máxima e mínima médias do ano, normais 1991–2020</span>{% endif %}
         {% elif p.id == "comparativo" %}
         <span class="cartao-numero">{{ comp.blocos[0].ultimo.pos_sp }}º</span>
-        <span class="cartao-ctx">maior município paulista em população, entre {{ comp.blocos[0].ultimo.n_sp }} ({{ comp.blocos[0].ultimo.ano }})</span>
+        <span class="cartao-ctx">maior município paulista em população, entre os {{ comp.blocos[0].ultimo.n_sp }} ({{ comp.blocos[0].ultimo.ano }})</span>
         {% elif p.id == "saude" %}
         {% if saude.doencas %}<span class="cartao-numero">{{ saude.doencas[0].casos_8s | num }}</span>
         <span class="cartao-ctx">casos notificados de {{ saude.doencas[0].rotulo | lower }} nas últimas 8 semanas; alerta {{ saude.doencas[0].nivel_rotulo.split(":")[0] | lower }} ({{ saude.ref_saude }})</span>
@@ -122,7 +122,7 @@
 <section aria-labelledby="ajuda" class="contido bloco-largo">
   <div class="texto-estreito">
     <h2 id="ajuda" class="h2-grande">Como os dados ajudam você</h2>
-    <p class="lead">Três perguntas do dia a dia que os painéis ajudam a responder.</p>
+    <p class="lead">Três usos do dia a dia que os painéis ajudam a resolver.</p>
   </div>
   <ol class="perguntas">
     {% for p, t in [("emprego", "Entender quais setores estão criando ou reduzindo empregos."), ("combustivel", "Comparar a trajetória de preços entre os postos pesquisados."), ("escolas", "Conhecer os indicadores de uma escola antes de buscar mais informações.")] %}

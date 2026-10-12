@@ -104,7 +104,7 @@ def construir(raw_cnes: Path, raw_sih: Path) -> Envelope:
             notas=[
                 f"Cadastro de estabelecimentos e leitos do CNES, competência {mc['competencia'][4:]}/{mc['competencia'][:4]}. O cadastro é declarado pelos próprios estabelecimentos e pode estar defasado.",
                 f"Internações do SIH/SUS de {meses[0][4:]}/{meses[0][:4]} a {meses[-1][4:]}/{meses[-1][:4]}: só as pagas pelo SUS, sem as de convênios e particulares. Contam hospitais localizados em Sorocaba, inclusive pacientes de outras cidades.",
-                "Não existe dado aberto de ocupação ou fila de hospital. O 'uso estimado dos leitos SUS' divide os dias de internação SUS dos últimos 12 meses pelos leitos SUS existentes vezes 365. É uma ordem de grandeza, não a lotação do dia. Os dias de células com menos de 5 internações foram zerados por privacidade, o que subestima um pouco o valor.",
+                "Não existe dado aberto de ocupação ou fila de hospital. O 'uso estimado dos leitos SUS' divide os dias de internação SUS dos últimos 12 meses pelo número de leitos SUS existentes multiplicado por 365. É uma ordem de grandeza, não a lotação do dia. Os dias de células com menos de 5 internações foram zerados por privacidade, o que subestima um pouco o valor.",
                 f"O uso estimado só aparece para hospitais com {LEITOS_SUS_MINIMOS} leitos SUS ou mais.",
                 "Contagem de internações e de dias não mede qualidade do hospital: depende do porte, da especialidade e da gravidade dos casos.",
                 f"SHA-256 dos recortes de coleta: {h}",

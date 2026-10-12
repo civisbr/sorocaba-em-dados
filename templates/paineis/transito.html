@@ -21,7 +21,7 @@
 <section aria-labelledby="ac-t" class="bloco-painel">
   <h2 id="ac-t" class="h2-medio sem-topo">Acidentes de trânsito (Infosiga SP)</h2>
   {% if ac_ult12 is not none %}<p class="suave">Nos 12 meses até {{ ac_fim }}: <strong>{{ ac_ult12 | num }} sinistros</strong> com vítima registrados em Sorocaba{% if ac_ant12 is not none %} (contra {{ ac_ant12 | num }} nos 12 meses anteriores){% endif %}, com <strong>{{ ac_mortes12 | num }} vítimas fatais</strong> registradas. O mês mais recente costuma subir quando o Detran-SP completa os registros.{% if ac_ant12 is none %} A comparação com os 12 meses anteriores não é mostrada: a parcela de notificações (registros incompletos, fora da contagem) mudou muito entre os períodos e a diferença não indicaria melhora ou piora.{% endif %}</p>{% else %}<p class="suave">Resumo dos últimos 12 meses indisponível: a série mensal tem meses faltando.</p>{% endif %}
-  {% if ac_notif_ano is not none %}<p class="pequeno suave">Em {{ ac_ano }}, {{ ac_notif_ano }}% dos registros são notificações e ficam fora de hora, dia, tipo, vias e mapa; esses detalhes subcontam {{ ac_ano }} e não se comparam com anos de menos notificações.</p>{% endif %}
+  {% if ac_notif_ano is not none %}<p class="pequeno suave">Em {{ ac_ano }}, {{ ac_notif_ano }}% dos registros são notificações e ficam fora de hora, dia, tipo, vias e mapa; esses detalhes subcontam {{ ac_ano }} e não se comparam com anos com menos notificações.</p>{% endif %}
   <div class="grade-2">
     <article class="quadro-card"><h3>Sinistros por mês</h3><p class="suave">Sem as notificações, que têm informação incompleta.</p>{{ barras(ac_mensal, "ac-m", "Sinistros de trânsito por mês em Sorocaba") }}
       <details class="tabela-mes"><summary>Ver os valores por mês</summary>
@@ -88,7 +88,7 @@
   <details class="tabela-mes"><summary>Ver os {{ n_radares }} locais, em ordem alfabética</summary>
     <div class="rolagem"><table>
       <caption class="so-leitor">Radares fixos de Sorocaba por local e velocidade</caption>
-      <thead><tr><th scope="col">Local</th><th scope="col">Ponto</th><th scope="col">Km/h</th></tr></thead>
+      <thead><tr><th scope="col">Local</th><th scope="col">Ponto</th><th scope="col">km/h</th></tr></thead>
       <tbody>{% for r in radares %}<tr><th scope="row">{{ r.local }}</th><td>{{ r.ponto }}</td><td>{{ r.velocidade_kmh }}</td></tr>{% endfor %}</tbody>
     </table></div>
   </details>

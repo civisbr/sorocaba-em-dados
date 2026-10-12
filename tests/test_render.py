@@ -35,7 +35,7 @@ def test_paginas_esperadas(site):
 
 def test_titulos_com_topônimo(site):
     t = (site / "emprego/index.html").read_text(encoding="utf-8")
-    assert "<title>Emprego em Sorocaba | Sorocaba em Dados</title>" in t
+    assert "<title>O trabalho em Sorocaba | Sorocaba em Dados</title>" in t
 
 
 def test_numero_publicado_vem_do_json(site):

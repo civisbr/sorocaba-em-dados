@@ -34,7 +34,7 @@
       <ul class="lista-simples">{% for v in vereadores %}<li><span>{{ v.nome | nome_br }}</span> <span class="suave"><span class="chip-bloco bloco-{{ v.bloco or 'nenhum' }}" aria-hidden="true"></span>{{ v.partido }} <span class="so-leitor">({{ rotulo_bloco(v.bloco) }})</span></span></li>{% endfor %}</ul>
     </article>
     <article class="quadro-card">
-      <h3>Vagas por partido</h3><p class="suave">Quantos vereadores cada partido elegeu em 2024.</p>
+      <h3>Cadeiras por partido</h3><p class="suave">Quantos vereadores cada partido elegeu em 2024.</p>
       <ul class="setores">{% for p, n in partidos %}<li><span class="nome">{{ p }}</span><span class="val">{{ n }}</span><span class="setor-barra pos" style="width: {{ n / partidos[0][1] * 100 }}%"></span></li>{% endfor %}</ul>
     </article>
   </div>
@@ -42,7 +42,7 @@
 
 <section aria-labelledby="dep-t" class="bloco-painel">
   <h2 id="dep-t" class="h2-medio sem-topo">Deputados mais votados em Sorocaba</h2>
-  <p class="suave">Deputados são eleitos pelo estado inteiro. Abaixo, os {{ topo }} eleitos que mais receberam votos nominais em Sorocaba em cada eleição.</p>
+  <p class="suave">Deputados são eleitos pelo estado inteiro. Abaixo, os {{ topo }} eleitos que receberam mais votos nominais em Sorocaba em cada eleição.</p>
   {% for titulo, blocos in deputados %}
   <h3 class="h3-sec">{{ titulo }}</h3>
   <div class="grade-2">

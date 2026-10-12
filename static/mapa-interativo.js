@@ -21,7 +21,7 @@
       });
       return true;
     }, function () {
-      var m = raiz.querySelector(".ms-msg"); if (m) m.textContent = "Não consegui carregar os pontos do mapa.";
+      var m = raiz.querySelector(".ms-msg"); if (m) m.textContent = "Não foi possível carregar os pontos do mapa.";
       return false;
     }).then(function () { iniciar(raiz); });
   }
@@ -267,7 +267,7 @@
       if (!dentroDoMunicipio(lat, lon)) {
         posicao = null; distancias.clear(); gAneis.textContent = ""; gVoce.setAttribute("hidden", ""); if (painelProx) painelProx.hidden = true;
         if (atual) selecionar(atual);
-        aviso("Esse ponto fica fora de Sorocaba, então não mostro distâncias. Escolha um bairro da cidade.");
+        aviso("Esse ponto fica fora de Sorocaba, por isso as distâncias não são mostradas. Escolha um bairro da cidade.");
         return;
       }
       posicao = { lat: lat, lon: lon };
@@ -325,7 +325,7 @@
         marcar(p.coords.latitude, p.coords.longitude, "sua localização" + (p.coords.accuracy > 1000 ? " (aproximada)" : ""));
       }, function (err) {
         btnGps.disabled = false;
-        aviso(err.code === 1 ? "A localização foi negada. Escolha o bairro ao lado." : "Não consegui sua posição. Escolha o bairro ao lado.");
+        aviso(err.code === 1 ? "A localização foi negada. Escolha o bairro no campo indicado." : "Não foi possível obter sua posição. Escolha o bairro no campo indicado.");
       }, { enableHighAccuracy: false, timeout: 12000, maximumAge: 60000 });
     });
 
@@ -337,7 +337,7 @@
         bairros = d.bairros;
         var visto = {};
         bairros.forEach(function (b) { if (visto[b.n]) return; visto[b.n] = 1; var o = document.createElement("option"); o.value = b.n; lista.appendChild(o); });
-      }).catch(function () { aviso("Não consegui carregar a lista de bairros."); });
+      }).catch(function () { aviso("Não foi possível carregar a lista de bairros."); });
       return carregando;
     }
     if (campo && form) {
@@ -351,10 +351,10 @@
           var achados = iguais.length ? iguais : bairros.filter(function (x) { return norm(x.n).indexOf(qb) !== -1; });
           var nomes = {};
           achados.forEach(function (x) { nomes[x.n] = 1; });
-          if (!achados.length) { aviso("Não achei esse bairro. Escolha um da lista."); return; }
+          if (!achados.length) { aviso("Bairro não encontrado. Escolha um da lista."); return; }
           if (Object.keys(nomes).length > 1) { aviso("Vários bairros combinam com “" + campo.value + "”. Digite mais letras e escolha da lista."); return; }
           var b = achados[0];
-          marcar(b.la, b.lo, "centro do bairro " + b.n + (achados.length > 1 ? " (há mais de um com esse nome; usei o primeiro)" : "") + ", aproximado");
+          marcar(b.la, b.lo, "centro do bairro " + b.n + (achados.length > 1 ? " (há mais de um com esse nome; foi usado o primeiro)" : "") + ", aproximado");
         });
       });
     }

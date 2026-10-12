@@ -50,7 +50,7 @@
     <p class="pequeno suave">Do menor para o maior preço. Diferença em relação à mediana da amostra da semana. Apenas os postos que a ANP pesquisou; outros postos da cidade não aparecem aqui.</p>
     <div class="rolagem"><table>
       <caption class="so-leitor">Postos pesquisados de {{ pr.nome | lower }}</caption>
-      <thead><tr><th scope="col">Posto</th><th scope="col">Bairro</th><th scope="col">Bandeira</th><th scope="col">R$/litro</th><th scope="col">Vs. mediana</th><th scope="col">Semanas acima da mediana</th></tr></thead>
+      <thead><tr><th scope="col">Posto</th><th scope="col">Bairro</th><th scope="col">Bandeira</th><th scope="col">R$/litro</th><th scope="col">Diferença da mediana</th><th scope="col">Semanas acima da mediana</th></tr></thead>
       <tbody>{% for r in pr.postos %}<tr><th scope="row">{{ r.posto }}</th><td>{{ r.bairro }}</td><td>{{ r.bandeira }}</td><td>{{ r.preco | brl }}</td><td>{{ r.dif_mediana_pct | pct }}</td><td>{% if r.semanas_acima_mediana is none %}histórico insuficiente ({{ r.semanas_observadas }} sem.){% else %}{{ r.semanas_acima_mediana }} de {{ r.semanas_observadas }}{% endif %}</td></tr>{% endfor %}</tbody>
     </table></div>
   </details>

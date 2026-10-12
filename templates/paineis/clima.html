@@ -4,7 +4,7 @@
 <section aria-labelledby="resumo" class="resumo-real">
   <h2 id="resumo" class="rotulo-resumo">Clima de Sorocaba, 1991 a 2020</h2>
   <p class="numero-grande">{{ anual.tmax_media | brl1 }}° / {{ anual.tmin_media | brl1 }}°</p>
-  <p class="resumo-texto">média das máximas e das mínimas ao longo do ano. Chovem cerca de <strong>{{ anual.chuva_mm | inteiro_br }} mm por ano</strong> em {{ anual.dias_chuva | inteiro_br }} dias. O mês mais chuvoso é {{ meses[mes_mais_chuvoso.mes - 1] }} ({{ mes_mais_chuvoso.chuva_mm | inteiro_br }} mm) e o mais seco, {{ meses[mes_mais_seco.mes - 1] }} ({{ mes_mais_seco.chuva_mm | inteiro_br }} mm).</p>
+  <p class="resumo-texto">média das máximas e das mínimas ao longo do ano. Chove cerca de <strong>{{ anual.chuva_mm | inteiro_br }} mm por ano</strong> em {{ anual.dias_chuva | inteiro_br }} dias. O mês mais chuvoso é {{ meses[mes_mais_chuvoso.mes - 1] }} ({{ mes_mais_chuvoso.chuva_mm | inteiro_br }} mm) e o mais seco, {{ meses[mes_mais_seco.mes - 1] }} ({{ mes_mais_seco.chuva_mm | inteiro_br }} mm).</p>
   <p class="pequeno suave">Valores de modelo (reanálise ERA5), não de uma estação na cidade.</p>
 </section>
 {% endblock %}

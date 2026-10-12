@@ -55,7 +55,7 @@
     <details class="tabela-mes"><summary>Nascimentos, óbitos e mortalidade infantil por ano</summary>
       <div class="rolagem"><table>
         <caption class="so-leitor">Totais por ano</caption>
-        <thead><tr><th scope="col">Ano</th><th scope="col">Nascidos vivos</th><th scope="col">Óbitos</th><th scope="col">Óbitos de menores de 1 ano</th><th scope="col">Por mil nascidos</th></tr></thead>
+        <thead><tr><th scope="col">Ano</th><th scope="col">Nascidos vivos</th><th scope="col">Óbitos</th><th scope="col">Óbitos de menores de 1 ano</th><th scope="col">Por mil nascidos vivos</th></tr></thead>
         <tbody>{% for a in por_ano %}<tr><th scope="row">{{ a.ano }}</th><td>{{ a.nascidos | num }}</td><td>{{ a.obitos | num }}</td><td>{{ a.infantis | num if a.infantis is not none else "—" }}</td><td>{{ a.tmi | brl1 if a.tmi is not none else "—" }}</td></tr>{% endfor %}</tbody>
       </table></div>
     </details>

@@ -55,7 +55,7 @@
         {% if h.pct_de_fora is not none %}<div><dt>Pacientes de outras cidades</dt><dd>{{ h.pct_de_fora | brl1 }}%</dd></div>{% endif %}
       </dl>
       {% if h.internacoes %}<svg class="hosp-barra" viewBox="0 0 100 4" preserveAspectRatio="none" role="img" aria-label="Internações SUS em relação ao hospital com mais internações: {{ h.barra_internacoes }}%"><rect width="100" height="4" class="fundo"/><rect width="{{ h.barra_internacoes }}" height="4" class="valor"/></svg>{% endif %}
-      {% if h.uso is not none %}<p class="hosp-uso"><strong>Uso estimado dos leitos SUS: {{ h.uso | brl1 }}%</strong> <span class="pequeno suave">(dias de internação SUS em 12 meses ÷ leitos SUS × 365; ordem de grandeza)</span></p>{% endif %}
+      {% if h.uso is not none %}<p class="hosp-uso"><strong>Uso estimado dos leitos SUS: {{ h.uso | brl1 }}%</strong> <span class="pequeno suave">(dias de internação SUS em 12 meses ÷ (leitos SUS × 365); ordem de grandeza)</span></p>{% endif %}
       {% if h.servicos %}<p><strong>Serviços:</strong> {{ h.servicos | join(", ") }}.</p>{% endif %}
       {% if h.tratamentos %}<p><strong>O que mais trata (SUS):</strong> {% for t in h.tratamentos %}{{ t.nome | lower }} ({{ t.n | num }}){{ ", " if not loop.last else "." }}{% endfor %}</p>{% endif %}
       <details class="tabela-mes"><summary>Leitos por especialidade{% if h.n_especialidades > h.especialidades | length %} (as {{ h.especialidades | length }} maiores de {{ h.n_especialidades }}){% endif %}</summary>

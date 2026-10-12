@@ -17,7 +17,7 @@ PAINEIS = {
         "h1": "Sorocaba está gerando mais ou menos empregos?",
         "pergunta": "O mercado de trabalho de Sorocaba está crescendo ou encolhendo? Quais setores estão contratando?",
         "fonte": "Novo CAGED — Ministério do Trabalho e Emprego",
-        "cta": "Explorar emprego",
+        "cta": "Ver emprego",
         "tom": "secundario",
         "descricao": "Acompanhe admissões, desligamentos, saldo de empregos e os setores que movimentam o mercado de trabalho local.",
         "meta_desc": "Admissões, desligamentos, saldo de empregos e setores do mercado de trabalho de Sorocaba, com fonte e data de referência.",
@@ -44,7 +44,7 @@ PAINEIS = {
         "h1": "Como os preços dos combustíveis mudam ao longo do tempo?",
         "pergunta": "Como os preços dos postos pesquisados evoluíram ao longo do tempo? Quais estão acima ou abaixo da referência municipal?",
         "fonte": "Levantamento de Preços de Combustíveis — ANP",
-        "cta": "Explorar combustíveis",
+        "cta": "Ver combustíveis",
         "tom": "acento",
         "etiqueta": "Histórico, não só a cotação da semana",
         "descricao": "Entenda como os preços dos combustíveis variam entre os postos pesquisados e como mudam ao longo das semanas.",
@@ -71,7 +71,7 @@ PAINEIS = {
         "h1": "O que os dados mostram sobre cada escola?",
         "pergunta": "Quais indicadores ajudam a conhecer as escolas de Sorocaba e como consultar informações sobre uma escola específica?",
         "fonte": "Censo Escolar e IDEB — INEP",
-        "cta": "Explorar escolas",
+        "cta": "Ver escolas",
         "tom": "card",
         "descricao": "Consulte indicadores educacionais, matrículas, infraestrutura e informações disponíveis sobre cada escola.",
         "meta_desc": "Consulte matrículas, infraestrutura e IDEB das escolas de Sorocaba, com o ano de referência de cada indicador.",
@@ -112,7 +112,7 @@ PAINEIS = {
         "limitacoes": [
             "Cada indicador tem seu ano; nem todos são do mesmo período.",
             "A divisão por setor usa o último ano que o IBGE publicou para Sorocaba, indicado no próprio gráfico.",
-            "Não calculamos PIB per capita: o IBGE não publica esse valor nessa tabela.",
+            "Aqui não mostramos PIB per capita: o IBGE não publica esse valor nessa tabela. O painel Comparativo o calcula (PIB dividido pela população do mesmo ano).",
         ],
     },
     "representantes": {
@@ -129,7 +129,7 @@ PAINEIS = {
         "blocos": [],
         "glossario": [
             ("Eleito não é o mesmo que em exercício", "O TSE informa quem ganhou a eleição. Licenças, renúncias e suplentes que assumem podem alterar quem exerce o mandato hoje."),
-            ("Deputado da cidade?", "Deputados federais e estaduais são eleitos pelo estado inteiro. Aqui listamos os eleitos que mais receberam votos em Sorocaba; isso não os torna representantes exclusivos da cidade."),
+            ("Deputado da cidade?", "Deputados federais e estaduais são eleitos pelo estado inteiro. Aqui listamos os eleitos que receberam mais votos em Sorocaba; isso não os torna representantes exclusivos da cidade."),
             ("Mandato", "Prefeito, vice e vereadores: 4 anos, a partir de 1º de janeiro após a eleição. Deputados federais e estaduais: 4 anos, começando no ano seguinte à eleição."),
         ],
         "limitacoes": [
@@ -151,16 +151,16 @@ PAINEIS = {
         "palavras": ["hospital", "hospitais", "leitos", "uti", "upa", "ubs", "posto de saúde", "pronto atendimento", "santa casa", "especialidades", "internações", "sus", "caps"],
         "blocos": [],
         "glossario": [
-            ("Leito existente e leito SUS", "Leito existente é o que o hospital declara ter. Leito SUS é a parte deles colocada à disposição do SUS; o restante atende convênios e particulares."),
+            ("Leito existente e leito SUS", "Leito existente é o que o hospital declara ter. Leito SUS é a parte desses leitos colocada à disposição do SUS; o restante atende convênios e particulares."),
             ("Internação SUS", "Internação autorizada e paga pelo SUS (AIH). Não inclui internações de convênio ou particulares, então não retrata o movimento total do hospital."),
-            ("Uso estimado dos leitos SUS", "Dias de internação SUS dos últimos 12 meses divididos pelos leitos SUS existentes vezes 365. Mostra a ordem de grandeza da ocupação, não a lotação do dia. Não existe dado aberto de fila ou ocupação em tempo real."),
+            ("Uso estimado dos leitos SUS", "Dias de internação SUS dos últimos 12 meses divididos pelo número de leitos SUS existentes multiplicado por 365. Mostra a ordem de grandeza da ocupação, não a lotação do dia. Não existe dado aberto de fila ou ocupação em tempo real."),
             ("UPA", "Unidade de pronto atendimento: urgências de média complexidade, 24 horas, sem substituir o pronto-socorro de hospital para os casos mais graves."),
             ("CAPS", "Centro de atenção psicossocial: atendimento de saúde mental e de uso de álcool e outras drogas pelo SUS."),
         ],
         "limitacoes": [
             "O cadastro de leitos e serviços (CNES) é declarado pelos próprios estabelecimentos e pode estar defasado.",
             "Número de internações e de dias não mede qualidade: depende do porte, da especialidade e da gravidade dos casos.",
-            "Hospitais que atendem pouco ou nenhum SUS aparecem com poucas ou nenhuma internação, porque o dado cobre só o SUS.",
+            "Hospitais que atendem pouco ou nenhum SUS aparecem com poucas internações ou nenhuma, porque o dado cobre só o SUS.",
             "Lotação em tempo real e tempo de espera não são publicados como dado aberto; consulte o hospital ou a UPA antes de ir, em casos que não sejam emergência.",
         ],
     },
@@ -218,8 +218,8 @@ PAINEIS = {
     "saude": {
         "nav": "Doenças do momento",
         "titulo": "Doenças do momento",
-        "h1": "Quais doenças estão circulando em Sorocaba agora?",
-        "pergunta": "Como está a dengue e a chikungunya na cidade nesta semana, e como isso se compara aos anos anteriores?",
+        "h1": "Como estão a dengue e a chikungunya em Sorocaba?",
+        "pergunta": "Como estão a dengue e a chikungunya na cidade nesta semana, e como isso se compara aos anos anteriores?",
         "fonte": "InfoDengue (Fiocruz/FGV), a partir das notificações de vigilância",
         "cta": "Ver a situação das doenças",
         "tom": "card",
@@ -259,7 +259,7 @@ PAINEIS = {
         ],
         "limitacoes": [
             "Contagem de registros não mede risco: depende de população, comércio, fluxo de pessoas e do hábito de registrar.",
-            "Não apresentamos ranking de bairros nem de ruas. Os bairros aparecem em ordem alfabética, com a ressalva de que o campo é digitado e as grafias variam.",
+            "Os bairros com mais registros são listados com a ressalva de que contagem de ocorrências não mede risco; a tabela completa está em ordem alfabética. O bairro é digitado no boletim e as grafias variam.",
             "Muitos boletins de furto não trazem horário: o furto costuma ser descoberto depois de ocorrer.",
         ],
     },
@@ -313,7 +313,7 @@ PAINEIS = {
     },
     "transito": {
         "nav": "Trânsito",
-        "titulo": "Radares e mobilidade",
+        "titulo": "Sinistros e radares",
         "h1": "Como estão os acidentes de trânsito e onde ficam os radares em Sorocaba?",
         "pergunta": "Quantos sinistros de trânsito acontecem em Sorocaba, onde, e quais radares fixos operam na cidade?",
         "fonte": "Semob Sorocaba (radares) e Infosiga SP (Detran-SP)",
