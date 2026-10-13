@@ -2948,7 +2948,7 @@
     {
       "categoria": "atual",
       "grupo": "dengue",
-      "n": 14,
+      "n": 16,
       "recorte": "situacao",
       "se": 202639
     },
@@ -5895,7 +5895,7 @@
     {
       "categoria": "atual",
       "grupo": "chikungunya",
-      "n": 14,
+      "n": 16,
       "recorte": "situacao",
       "se": 202639
     },
@@ -6787,13 +6787,13 @@
     {
       "categoria": "desatualizado",
       "grupo": "zika",
-      "n": 973,
+      "n": 975,
       "recorte": "situacao",
       "se": 202407
     }
   ],
   "fonte": {
-    "acesso_em": "2026-10-11",
+    "acesso_em": "2026-10-13",
     "licenca": "Dados públicos do InfoDengue (Fiocruz/FGV); citar a fonte. Termos em https://info.dengue.mat.br/ (não verificados em texto)",
     "nome": "InfoDengue (Fiocruz/FGV) — alertas municipais de arboviroses",
     "url": "https://info.dengue.mat.br/"
@@ -6808,7 +6808,7 @@
       "O nível de alerta (verde, amarelo, laranja, vermelho) é calculado pelo modelo do InfoDengue com casos, clima e transmissão; não é um aviso oficial da Prefeitura.",
       "O campo de notificações acumuladas do ano da API não é usado: não bate com a soma das semanas.",
       "Sem semanas nos últimos 56 dias, aparece como sem dado recente: zika.",
-      "SHA-256 do manifesto de coleta: 1339045d32aa73cd01f365564809c467de65e5df91ce425bca78a93a036847e0"
+      "SHA-256 do manifesto de coleta: 5f3f6999a2e2d075425df7ab489cb1e86a868699cdc4634bbf09406fe0a73e51"
     ]
   },
   "referencia": {
