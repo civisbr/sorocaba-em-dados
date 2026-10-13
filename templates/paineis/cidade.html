@@ -57,6 +57,18 @@
     </article>
   </div>
 </section>
+<section aria-labelledby="cam-cidade-t" class="bloco-painel">
+  <h2 id="cam-cidade-t" class="h2-medio sem-topo">Câmeras da cidade</h2>
+  <article class="quadro-card">
+    <p class="suave">Procuramos câmeras ao vivo do centro e das ruas de Sorocaba e <strong>não achamos nenhuma transmissão pública e oficial</strong>. As transmissões que aparecem em buscas são de terceiros, sem operador identificado, e não foram incluídas aqui porque não dá para confirmar o que mostram nem se podem ser reproduzidas.</p>
+    <ul class="lista-curta">
+      <li>A Prefeitura mantém o Centro de Controle Operacional Integrado (CCOI), com mais de 2.500 câmeras em vias, praças, terminais e ônibus, operadas por agentes de trânsito e pela Guarda Civil Municipal. A <a href="https://noticias.sorocaba.sp.gov.br/prefeitura-de-sorocaba-inaugura-centro-de-controle-operacional-integrado-ccoi/" rel="noreferrer">notícia oficial</a> não fala em imagens abertas ao público.</li>
+      <li>Para pedir informação sobre o monitoramento: <a href="https://central156.sorocaba.sp.gov.br/Carta-Servicos/Home/Servico/81d1bb99-921f-e711-9b29-005056bf74cb" rel="noreferrer">Central 156 (monitoramento urbano)</a>.</li>
+      <li>Câmeras das rodovias que cortam o município: veja a seção “Câmeras” na página de <a href="{{ raiz }}transito/">Trânsito</a>.</li>
+    </ul>
+    <p class="pequeno suave">Verificado em 13/10/2026. Se a Prefeitura abrir imagens ao público, elas entram aqui com link para a fonte oficial.</p>
+  </article>
+</section>
 {% endblock %}
 {% block metodologia %}
 <ul class="lista-curta">{% for n in env.qualidade.notas %}{% if not n.startswith("SHA-256") %}<li>{{ n }}</li>{% endif %}{% endfor %}</ul>
