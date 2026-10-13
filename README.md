@@ -21,7 +21,7 @@ O menu agrupa os painéis em cinco áreas.
 | Saúde | [Vacinas](https://civisbr.github.io/sorocaba-em-dados/vacinas/) | Quais vacinas tomar em cada idade e há campanha acontecendo? | Calendário Nacional (Ministério da Saúde) e campanhas da Prefeitura | curadoria manual, com aviso quando passa de 120 dias |
 | Serviços e segurança | [Escolas](https://civisbr.github.io/sorocaba-em-dados/escolas/) | O que os dados mostram sobre cada escola? Mapa e página por escola, sem ranking. | Censo Escolar e IDEB (INEP) | anual |
 | Serviços e segurança | [Segurança](https://civisbr.github.io/sorocaba-em-dados/seguranca/) | Que ocorrências são registradas, quando e com que tendência? Mapa de roubos e furtos com "registros perto de você". | SSP-SP | mensal |
-| Serviços e segurança | [Trânsito](https://civisbr.github.io/sorocaba-em-dados/transito/) | Como estão os acidentes e onde ficam os radares? Os radares estão com a verificação em dia? | Semob Sorocaba, Infosiga SP (Detran-SP) e Inmetro | mensal (Inmetro: coleta manual) |
+| Serviços e segurança | [Trânsito](https://civisbr.github.io/sorocaba-em-dados/transito/) | Como estão os acidentes e onde ficam os radares? Os radares estão com a verificação em dia? | Semob Sorocaba, Infosiga SP (Detran-SP), ARTESP (rodovias) e Inmetro | mensal (Inmetro: coleta manual) |
 | Política | [Representantes](https://civisbr.github.io/sorocaba-em-dados/representantes/) | Quem governa e quem representa Sorocaba? Posição ideológica dos partidos (esquerda, centro, direita), segundo especialistas. | TSE, Câmara dos Deputados, Alesp e Bolognesi et al. (2025) | por eleição |
 
 ### Mapas interativos
@@ -60,6 +60,7 @@ fetch (só rede)  →  data/raw/  →  build (puro, offline)  →  data/public/*
 | CAGED | FTP do MTE, janela de 24 meses | saldo = movimentações + fora de prazo − exclusões, por competência |
 | ANP | CSV "últimas 4 semanas" | o histórico se forma acumulando as coletas |
 | INEP | zips de IDEB por escola e Censo Escolar | o servidor não envia o certificado intermediário; ele está em `certs/` e a cadeia TLS segue validada |
+| ARTESP (CCM) | API de ocorrências rodoviárias, com chave pessoal no segredo `ARTESP_API_KEY` | só contagens por mês, rodovia, tipo e trecho de 5 km; relato, veículos e pontos exatos não são guardados; `data/public/artesp.json` herda a licença CC BY-NC 4.0 (uso não comercial, com atribuição) |
 | SSP-SP, Infosiga | planilhas de ocorrências e de sinistros | só o recorte de Sorocaba; células pequenas são suprimidas na coleta (limites em `scripts/infosiga_regras.py`) |
 | DATASUS | CNES, SIH/SUS (FTP), SIM e SINASC | `scripts/dbc.py` descomprime os `.dbc` em Python puro |
 | Inmetro | `medidores.json` do PSIE (SP) | coleta manual; guarda só os medidores de Sorocaba, com hash |

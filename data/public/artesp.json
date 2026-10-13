@@ -1,0 +1,802 @@
+{
+  "cobertura": {
+    "ibge": "3552205",
+    "municipio": "Sorocaba",
+    "uf": "SP"
+  },
+  "dados": [
+    {
+      "ano": 2021,
+      "categoria": null,
+      "mes": 12,
+      "n": 8,
+      "n2": 2,
+      "n3": 16,
+      "n4": 1,
+      "recorte": "mensal"
+    },
+    {
+      "ano": 2022,
+      "categoria": null,
+      "mes": 1,
+      "n": 3,
+      "n2": 4,
+      "n3": 3,
+      "n4": 0,
+      "recorte": "mensal"
+    },
+    {
+      "ano": 2022,
+      "categoria": null,
+      "mes": 2,
+      "n": 8,
+      "n2": 5,
+      "n3": 6,
+      "n4": 0,
+      "recorte": "mensal"
+    },
+    {
+      "ano": 2022,
+      "categoria": null,
+      "mes": 3,
+      "n": 6,
+      "n2": 1,
+      "n3": 4,
+      "n4": 0,
+      "recorte": "mensal"
+    },
+    {
+      "ano": 2022,
+      "categoria": null,
+      "mes": 4,
+      "n": 5,
+      "n2": 2,
+      "n3": 3,
+      "n4": 1,
+      "recorte": "mensal"
+    },
+    {
+      "ano": 2022,
+      "categoria": null,
+      "mes": 5,
+      "n": 3,
+      "n2": 0,
+      "n3": 0,
+      "n4": 2,
+      "recorte": "mensal"
+    },
+    {
+      "ano": 2022,
+      "categoria": null,
+      "mes": 6,
+      "n": 1,
+      "n2": 0,
+      "n3": 1,
+      "n4": 2,
+      "recorte": "mensal"
+    },
+    {
+      "ano": 2022,
+      "categoria": null,
+      "mes": 7,
+      "n": 10,
+      "n2": 0,
+      "n3": 14,
+      "n4": 1,
+      "recorte": "mensal"
+    },
+    {
+      "ano": 2022,
+      "categoria": null,
+      "mes": 8,
+      "n": 4,
+      "n2": 0,
+      "n3": 7,
+      "n4": 0,
+      "recorte": "mensal"
+    },
+    {
+      "ano": 2022,
+      "categoria": null,
+      "mes": 9,
+      "n": 2,
+      "n2": 1,
+      "n3": 3,
+      "n4": 1,
+      "recorte": "mensal"
+    },
+    {
+      "ano": 2022,
+      "categoria": null,
+      "mes": 10,
+      "n": 2,
+      "n2": 1,
+      "n3": 2,
+      "n4": 3,
+      "recorte": "mensal"
+    },
+    {
+      "ano": 2022,
+      "categoria": null,
+      "mes": 11,
+      "n": 1,
+      "n2": 1,
+      "n3": 0,
+      "n4": 4,
+      "recorte": "mensal"
+    },
+    {
+      "ano": 2022,
+      "categoria": null,
+      "mes": 12,
+      "n": 2,
+      "n2": 1,
+      "n3": 0,
+      "n4": 2,
+      "recorte": "mensal"
+    },
+    {
+      "ano": 2023,
+      "categoria": null,
+      "mes": 1,
+      "n": 8,
+      "n2": 2,
+      "n3": 3,
+      "n4": 5,
+      "recorte": "mensal"
+    },
+    {
+      "ano": 2023,
+      "categoria": null,
+      "mes": 2,
+      "n": 4,
+      "n2": 1,
+      "n3": 2,
+      "n4": 2,
+      "recorte": "mensal"
+    },
+    {
+      "ano": 2023,
+      "categoria": null,
+      "mes": 3,
+      "n": 7,
+      "n2": 1,
+      "n3": 5,
+      "n4": 0,
+      "recorte": "mensal"
+    },
+    {
+      "ano": 2023,
+      "categoria": null,
+      "mes": 4,
+      "n": 5,
+      "n2": 2,
+      "n3": 3,
+      "n4": 3,
+      "recorte": "mensal"
+    },
+    {
+      "ano": 2023,
+      "categoria": null,
+      "mes": 5,
+      "n": 12,
+      "n2": 1,
+      "n3": 14,
+      "n4": 6,
+      "recorte": "mensal"
+    },
+    {
+      "ano": 2023,
+      "categoria": null,
+      "mes": 6,
+      "n": 6,
+      "n2": 2,
+      "n3": 1,
+      "n4": 1,
+      "recorte": "mensal"
+    },
+    {
+      "ano": 2023,
+      "categoria": null,
+      "mes": 7,
+      "n": 6,
+      "n2": 3,
+      "n3": 4,
+      "n4": 2,
+      "recorte": "mensal"
+    },
+    {
+      "ano": 2023,
+      "categoria": null,
+      "mes": 8,
+      "n": 7,
+      "n2": 3,
+      "n3": 2,
+      "n4": 0,
+      "recorte": "mensal"
+    },
+    {
+      "ano": 2023,
+      "categoria": null,
+      "mes": 9,
+      "n": 6,
+      "n2": 2,
+      "n3": 4,
+      "n4": 1,
+      "recorte": "mensal"
+    },
+    {
+      "ano": 2023,
+      "categoria": null,
+      "mes": 10,
+      "n": 2,
+      "n2": 0,
+      "n3": 2,
+      "n4": 1,
+      "recorte": "mensal"
+    },
+    {
+      "ano": 2023,
+      "categoria": null,
+      "mes": 11,
+      "n": 3,
+      "n2": 1,
+      "n3": 1,
+      "n4": 2,
+      "recorte": "mensal"
+    },
+    {
+      "ano": 2023,
+      "categoria": null,
+      "mes": 12,
+      "n": 4,
+      "n2": 0,
+      "n3": 4,
+      "n4": 6,
+      "recorte": "mensal"
+    },
+    {
+      "ano": 2024,
+      "categoria": null,
+      "mes": 1,
+      "n": 5,
+      "n2": 1,
+      "n3": 4,
+      "n4": 1,
+      "recorte": "mensal"
+    },
+    {
+      "ano": 2024,
+      "categoria": null,
+      "mes": 2,
+      "n": 3,
+      "n2": 0,
+      "n3": 2,
+      "n4": 3,
+      "recorte": "mensal"
+    },
+    {
+      "ano": 2024,
+      "categoria": null,
+      "mes": 3,
+      "n": 6,
+      "n2": 2,
+      "n3": 10,
+      "n4": 1,
+      "recorte": "mensal"
+    },
+    {
+      "ano": 2024,
+      "categoria": null,
+      "mes": 4,
+      "n": 10,
+      "n2": 3,
+      "n3": 9,
+      "n4": 1,
+      "recorte": "mensal"
+    },
+    {
+      "ano": 2024,
+      "categoria": null,
+      "mes": 5,
+      "n": 5,
+      "n2": 2,
+      "n3": 3,
+      "n4": 6,
+      "recorte": "mensal"
+    },
+    {
+      "ano": 2024,
+      "categoria": null,
+      "mes": 6,
+      "n": 3,
+      "n2": 0,
+      "n3": 2,
+      "n4": 1,
+      "recorte": "mensal"
+    },
+    {
+      "ano": 2024,
+      "categoria": null,
+      "mes": 7,
+      "n": 9,
+      "n2": 2,
+      "n3": 8,
+      "n4": 2,
+      "recorte": "mensal"
+    },
+    {
+      "ano": 2024,
+      "categoria": null,
+      "mes": 8,
+      "n": 7,
+      "n2": 5,
+      "n3": 29,
+      "n4": 1,
+      "recorte": "mensal"
+    },
+    {
+      "ano": 2024,
+      "categoria": null,
+      "mes": 9,
+      "n": 3,
+      "n2": 1,
+      "n3": 3,
+      "n4": 9,
+      "recorte": "mensal"
+    },
+    {
+      "ano": 2024,
+      "categoria": null,
+      "mes": 10,
+      "n": 5,
+      "n2": 1,
+      "n3": 1,
+      "n4": 5,
+      "recorte": "mensal"
+    },
+    {
+      "ano": 2024,
+      "categoria": null,
+      "mes": 11,
+      "n": 7,
+      "n2": 1,
+      "n3": 6,
+      "n4": 2,
+      "recorte": "mensal"
+    },
+    {
+      "ano": 2024,
+      "categoria": null,
+      "mes": 12,
+      "n": 3,
+      "n2": 0,
+      "n3": 4,
+      "n4": 4,
+      "recorte": "mensal"
+    },
+    {
+      "ano": 2025,
+      "categoria": null,
+      "mes": 1,
+      "n": 6,
+      "n2": 2,
+      "n3": 15,
+      "n4": 2,
+      "recorte": "mensal"
+    },
+    {
+      "ano": 2025,
+      "categoria": null,
+      "mes": 2,
+      "n": 2,
+      "n2": 0,
+      "n3": 3,
+      "n4": 0,
+      "recorte": "mensal"
+    },
+    {
+      "ano": 2025,
+      "categoria": null,
+      "mes": 3,
+      "n": 6,
+      "n2": 3,
+      "n3": 5,
+      "n4": 1,
+      "recorte": "mensal"
+    },
+    {
+      "ano": 2025,
+      "categoria": null,
+      "mes": 4,
+      "n": 8,
+      "n2": 7,
+      "n3": 8,
+      "n4": 0,
+      "recorte": "mensal"
+    },
+    {
+      "ano": 2025,
+      "categoria": null,
+      "mes": 5,
+      "n": 2,
+      "n2": 2,
+      "n3": 0,
+      "n4": 0,
+      "recorte": "mensal"
+    },
+    {
+      "ano": 2025,
+      "categoria": "sem registro",
+      "mes": 6,
+      "n": 0,
+      "n2": 0,
+      "n3": 0,
+      "n4": 0,
+      "recorte": "mensal"
+    },
+    {
+      "ano": 2025,
+      "categoria": null,
+      "mes": 7,
+      "n": 8,
+      "n2": 4,
+      "n3": 7,
+      "n4": 0,
+      "recorte": "mensal"
+    },
+    {
+      "ano": 2025,
+      "categoria": null,
+      "mes": 8,
+      "n": 9,
+      "n2": 2,
+      "n3": 3,
+      "n4": 0,
+      "recorte": "mensal"
+    },
+    {
+      "ano": 2025,
+      "categoria": null,
+      "mes": 9,
+      "n": 4,
+      "n2": 2,
+      "n3": 1,
+      "n4": 1,
+      "recorte": "mensal"
+    },
+    {
+      "ano": 2025,
+      "categoria": null,
+      "mes": 10,
+      "n": 6,
+      "n2": 3,
+      "n3": 1,
+      "n4": 0,
+      "recorte": "mensal"
+    },
+    {
+      "ano": 2025,
+      "categoria": "sem registro",
+      "mes": 11,
+      "n": 0,
+      "n2": 0,
+      "n3": 0,
+      "n4": 0,
+      "recorte": "mensal"
+    },
+    {
+      "ano": 2025,
+      "categoria": "sem registro",
+      "mes": 12,
+      "n": 0,
+      "n2": 0,
+      "n3": 0,
+      "n4": 0,
+      "recorte": "mensal"
+    },
+    {
+      "ano": 2026,
+      "categoria": null,
+      "mes": 1,
+      "n": 4,
+      "n2": 4,
+      "n3": 1,
+      "n4": 0,
+      "recorte": "mensal"
+    },
+    {
+      "ano": 2026,
+      "categoria": null,
+      "mes": 2,
+      "n": 1,
+      "n2": 0,
+      "n3": 3,
+      "n4": 0,
+      "recorte": "mensal"
+    },
+    {
+      "ano": 2026,
+      "categoria": null,
+      "mes": 3,
+      "n": 4,
+      "n2": 1,
+      "n3": 3,
+      "n4": 0,
+      "recorte": "mensal"
+    },
+    {
+      "ano": 2026,
+      "categoria": null,
+      "mes": 4,
+      "n": 2,
+      "n2": 1,
+      "n3": 2,
+      "n4": 1,
+      "recorte": "mensal"
+    },
+    {
+      "ano": 2026,
+      "categoria": null,
+      "mes": 5,
+      "n": 3,
+      "n2": 1,
+      "n3": 19,
+      "n4": 2,
+      "recorte": "mensal"
+    },
+    {
+      "ano": 2026,
+      "categoria": null,
+      "mes": 6,
+      "n": 5,
+      "n2": 4,
+      "n3": 2,
+      "n4": 0,
+      "recorte": "mensal"
+    },
+    {
+      "ano": 2026,
+      "categoria": null,
+      "mes": 7,
+      "n": 6,
+      "n2": 2,
+      "n3": 3,
+      "n4": 2,
+      "recorte": "mensal"
+    },
+    {
+      "ano": 2026,
+      "categoria": null,
+      "mes": 8,
+      "n": 5,
+      "n2": 3,
+      "n3": 2,
+      "n4": 0,
+      "recorte": "mensal"
+    },
+    {
+      "ano": 2026,
+      "categoria": null,
+      "mes": 9,
+      "n": 5,
+      "n2": 3,
+      "n3": 17,
+      "n4": 1,
+      "recorte": "mensal"
+    },
+    {
+      "ano": 2025,
+      "categoria": "SP 270",
+      "mes": null,
+      "n": 26,
+      "n2": null,
+      "n3": null,
+      "n4": null,
+      "recorte": "rodovia"
+    },
+    {
+      "ano": 2025,
+      "categoria": "SP 075",
+      "mes": null,
+      "n": 11,
+      "n2": null,
+      "n3": null,
+      "n4": null,
+      "recorte": "rodovia"
+    },
+    {
+      "ano": 2025,
+      "categoria": "SP 280",
+      "mes": null,
+      "n": 3,
+      "n2": null,
+      "n3": null,
+      "n4": null,
+      "recorte": "rodovia"
+    },
+    {
+      "ano": 2025,
+      "categoria": "SPI 091/270",
+      "mes": null,
+      "n": 3,
+      "n2": null,
+      "n3": null,
+      "n4": null,
+      "recorte": "rodovia"
+    },
+    {
+      "ano": 2025,
+      "categoria": "SPM 270 D",
+      "mes": null,
+      "n": 3,
+      "n2": null,
+      "n3": null,
+      "n4": null,
+      "recorte": "rodovia"
+    },
+    {
+      "ano": 2025,
+      "categoria": "Colisão",
+      "mes": null,
+      "n": 19,
+      "n2": null,
+      "n3": null,
+      "n4": null,
+      "recorte": "tipo"
+    },
+    {
+      "ano": 2025,
+      "categoria": "Atropelamento",
+      "mes": null,
+      "n": 9,
+      "n2": null,
+      "n3": null,
+      "n4": null,
+      "recorte": "tipo"
+    },
+    {
+      "ano": 2025,
+      "categoria": "Choque",
+      "mes": null,
+      "n": 9,
+      "n2": null,
+      "n3": null,
+      "n4": null,
+      "recorte": "tipo"
+    },
+    {
+      "ano": 2025,
+      "categoria": "Engavetamento",
+      "mes": null,
+      "n": 6,
+      "n2": null,
+      "n3": null,
+      "n4": null,
+      "recorte": "tipo"
+    },
+    {
+      "ano": 2025,
+      "categoria": "Tombamento",
+      "mes": null,
+      "n": 5,
+      "n2": null,
+      "n3": null,
+      "n4": null,
+      "recorte": "tipo"
+    },
+    {
+      "ano": 2025,
+      "categoria": "SP 270",
+      "km": 105,
+      "mes": null,
+      "n": 9,
+      "n2": null,
+      "n3": null,
+      "n4": null,
+      "recorte": "trecho"
+    },
+    {
+      "ano": 2025,
+      "categoria": "SP 270",
+      "km": 95,
+      "mes": null,
+      "n": 7,
+      "n2": null,
+      "n3": null,
+      "n4": null,
+      "recorte": "trecho"
+    },
+    {
+      "ano": 2025,
+      "categoria": "SP 075",
+      "km": 5,
+      "mes": null,
+      "n": 5,
+      "n2": null,
+      "n3": null,
+      "n4": null,
+      "recorte": "trecho"
+    },
+    {
+      "ano": 2025,
+      "categoria": "SP 270",
+      "km": 90,
+      "mes": null,
+      "n": 4,
+      "n2": null,
+      "n3": null,
+      "n4": null,
+      "recorte": "trecho"
+    },
+    {
+      "ano": 2025,
+      "categoria": "SP 270",
+      "km": 100,
+      "mes": null,
+      "n": 4,
+      "n2": null,
+      "n3": null,
+      "n4": null,
+      "recorte": "trecho"
+    },
+    {
+      "ano": 2025,
+      "categoria": "SP 075",
+      "km": 0,
+      "mes": null,
+      "n": 3,
+      "n2": null,
+      "n3": null,
+      "n4": null,
+      "recorte": "trecho"
+    },
+    {
+      "ano": 2025,
+      "categoria": "SP 075",
+      "km": 10,
+      "mes": null,
+      "n": 3,
+      "n2": null,
+      "n3": null,
+      "n4": null,
+      "recorte": "trecho"
+    },
+    {
+      "ano": 2025,
+      "categoria": "SPI 091/270",
+      "km": 0,
+      "mes": null,
+      "n": 3,
+      "n2": null,
+      "n3": null,
+      "n4": null,
+      "recorte": "trecho"
+    }
+  ],
+  "fonte": {
+    "acesso_em": "2026-10-13",
+    "licenca": "Creative Commons Atribuição-NãoComercial 4.0 (CC BY-NC 4.0)",
+    "nome": "ARTESP — Centro de Controle Multimodal (CCM), ocorrências rodoviárias",
+    "url": "https://ccm.artesp.sp.gov.br/rodovias/ocorrencias"
+  },
+  "painel": "artesp",
+  "qualidade": {
+    "flag": "real",
+    "n_registros": 76,
+    "notas": [
+      "Só rodovias concedidas monitoradas pelo CCM da ARTESP (como SP-270, SP-075 e SP-280); ruas e avenidas da cidade não entram. Parte desses acidentes também aparece no Infosiga SP: as fontes se sobrepõem e os números não devem ser somados.",
+      "Os dados são enviados pelas concessionárias e podem ser corrigidos depois; a ARTESP não garante exatidão nem completude. Vítimas fatais e feridos são os registrados na ocorrência e podem diferir de outras bases (Infosiga, boletins policiais).",
+      "Contagem por mês de ocorrência, em meses inteiros (a série começa em 16/11/2021). Acidente é o que a ARTESP classifica como tal; “outras ocorrências” reúne as demais classes publicadas, sem obras. A API traz só as ocorrências publicadas pelo CCM (algumas dezenas de acidentes por ano em Sorocaba, com proporção alta de mortes): não é o total de acidentes nas rodovias. Meses sem nenhum registro na fonte aparecem como “sem registro” e podem ser lacuna, não ausência de acidentes. Rodovia e tipo de acidente usam 2025, o último ano fechado, e só aparecem com 3 ou mais acidentes.",
+      "Trechos de 5 km com 3 ou mais acidentes em 2025; contagem por trecho não mede perigo, depende do tráfego e da extensão. Não são publicados pontos individuais nem relatos.",
+      "Um acidente que cruza o limite do município pode entrar em mais de uma cidade. Rodovias são mostradas com o nome da fonte (SPI e SPM, por exemplo, são vias de ligação e marginais de outra rodovia).",
+      "SHA-256 do manifesto de coleta: 311a2d46863d8633e47ad1ac50adb084e6e0a5c27599408f5c826efbfe18b2b8"
+    ]
+  },
+  "referencia": {
+    "fim": "2026-09-28",
+    "granularidade": "mensal",
+    "inicio": "2021-12-01"
+  },
+  "schema_version": "1.0"
+}

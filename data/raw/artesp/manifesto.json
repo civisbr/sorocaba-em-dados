@@ -1,0 +1,134 @@
+{
+  "anos": {
+    "2021": {
+      "agregadas": 10,
+      "anunciadas": 10,
+      "descartadas": {},
+      "janela": [
+        "2021-11-16",
+        "2021-12-31"
+      ],
+      "meses": [
+        11,
+        12
+      ],
+      "sha256": "b9343d7ceba4ed4eba8c7da6ebb2029bdba5b2f89521bd553ed2291c1040ce52"
+    },
+    "2022": {
+      "agregadas": 65,
+      "anunciadas": 65,
+      "descartadas": {},
+      "janela": [
+        "2022-01-01",
+        "2022-12-31"
+      ],
+      "meses": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12
+      ],
+      "sha256": "fd28abf64a44d11ca008cdc4b835fd28e0ceabc6abc68090bfbf01002a030a3e"
+    },
+    "2023": {
+      "agregadas": 103,
+      "anunciadas": 103,
+      "descartadas": {},
+      "janela": [
+        "2023-01-01",
+        "2023-12-31"
+      ],
+      "meses": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12
+      ],
+      "sha256": "0887137fc4ced208d89f5f088fcd39ff5525af1ef7c5cef4afe5b711559f342f"
+    },
+    "2024": {
+      "agregadas": 105,
+      "anunciadas": 105,
+      "descartadas": {},
+      "janela": [
+        "2024-01-01",
+        "2024-12-31"
+      ],
+      "meses": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12
+      ],
+      "sha256": "f5318c9be3c00c624417a02cd7d7dfb15312a9e4d8933666334254b6ea7a8c4d"
+    },
+    "2025": {
+      "agregadas": 55,
+      "anunciadas": 55,
+      "descartadas": {},
+      "janela": [
+        "2025-01-01",
+        "2025-12-31"
+      ],
+      "meses": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        7,
+        8,
+        9,
+        10
+      ],
+      "sha256": "9ef5328f016dc029ca109eb3da43c79a5c8a7469f40a04fa8d5e36890633ccfa"
+    },
+    "2026": {
+      "agregadas": 42,
+      "anunciadas": 42,
+      "descartadas": {},
+      "janela": [
+        "2026-01-01",
+        "2026-10-13"
+      ],
+      "meses": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10
+      ],
+      "sha256": "c1d8500b1bb09ba961d46e49c09a155028bd378ea56937ea6375b8b12791f536"
+    }
+  },
+  "verificado_em": "2026-10-13"
+}

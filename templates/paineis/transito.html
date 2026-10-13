@@ -55,6 +55,26 @@
   <p class="pequeno suave">Fonte: <a href="{{ env_ac.fonte.url }}">Infosiga SP (Detran-SP)</a>, {{ env_ac.fonte.licenca }}, coletado em {{ env_ac.fonte.acesso_em | data_br }}. <a href="{{ raiz }}data/infosiga.json">infosiga.json</a>.</p>
 </section>
 
+<section aria-labelledby="rod-t" class="bloco-painel">
+  <h2 id="rod-t" class="h2-medio sem-topo">Acidentes nas rodovias de Sorocaba (ARTESP)</h2>
+  <p class="suave">Nos 12 meses até {{ rod_ult12.fim }}: <strong>{{ rod_ult12.acidentes | num }} acidentes</strong> publicados pelo CCM da ARTESP nas rodovias concedidas que cortam o município, com <strong>{{ rod_ult12.fatais | num }} vítimas fatais</strong> e {{ rod_ult12.feridos | num }} feridos registrados, além de {{ rod_ult12.outras | num }} outras ocorrências. <strong>Não é o total de acidentes nas rodovias</strong>: a API traz só as ocorrências que o CCM publica, e a proporção de mortes é alta por isso. Também <strong>não se soma</strong> aos sinistros do Infosiga acima: as fontes se sobrepõem.</p>
+  {% if rod_ult12.sem_registro %}<p class="pequeno suave">Sem nenhum registro na fonte em {{ rod_ult12.sem_registro | join(", ") }}: pode ser lacuna da fonte, e não ausência de acidentes. Esses meses entram como zero no gráfico e no total.</p>{% endif %}
+  <div class="grade-2">
+    <article class="quadro-card"><h3>Acidentes por mês</h3>{{ barras(rod_mensal, "rod-m", "Acidentes por mês nas rodovias de Sorocaba") }}
+      <details class="tabela-mes"><summary>Ver os valores por mês</summary>
+        <div class="rolagem"><table>
+          <caption class="so-leitor">Acidentes, vítimas fatais, feridos e outras ocorrências por mês nas rodovias de Sorocaba</caption>
+          <thead><tr><th scope="col">Mês</th><th scope="col">Acidentes</th><th scope="col">Vítimas fatais</th><th scope="col">Feridos</th><th scope="col">Outras ocorrências</th></tr></thead>
+          <tbody>{% for m in rod_tabela %}{% if m.sem_registro %}<tr><th scope="row">{{ m.rotulo }}</th><td colspan="4">sem registro na fonte</td></tr>{% else %}<tr><th scope="row">{{ m.rotulo }}</th><td>{{ m.n | num }}</td><td>{{ m.fatais | num }}</td><td>{{ m.feridos | num }}</td><td>{{ m.outras | num }}</td></tr>{% endif %}{% endfor %}</tbody>
+        </table></div>
+      </details></article>
+    <article class="quadro-card"><h3>Por rodovia ({{ rod_ano }})</h3><ul class="setores">{% for v in rod_rodovias %}<li><span class="nome">{{ v.nome }}</span><span class="val">{{ v.n | num }}</span><span class="setor-barra pos" style="width: {{ v.pct }}%"></span></li>{% endfor %}</ul></article>
+    <article class="quadro-card"><h3>Tipo de acidente ({{ rod_ano }})</h3><ul class="setores">{% for t in rod_tipos %}<li><span class="nome">{{ t.nome }}</span><span class="val">{{ t.n | num }}</span><span class="setor-barra pos" style="width: {{ t.pct }}%"></span></li>{% endfor %}</ul></article>
+    <article class="quadro-card"><h3>Trechos de 5 km com mais acidentes ({{ rod_ano }})</h3><ul class="setores">{% for t in rod_trechos %}<li><span class="nome">{{ t.nome }}</span><span class="val">{{ t.n | num }}</span><span class="setor-barra pos" style="width: {{ t.pct }}%"></span></li>{% endfor %}</ul><p class="pequeno suave">Mais acidentes não significa trecho mais perigoso: depende do tráfego e da extensão.</p></article>
+  </div>
+  <p class="pequeno suave">Fonte: <a href="{{ env_rod.fonte.url }}" rel="noreferrer">ARTESP — Centro de Controle Multimodal</a> ({{ env_rod.fonte.licenca }}), coletado em {{ env_rod.fonte.acesso_em | data_br }}. <a href="{{ raiz }}data/artesp.json">artesp.json</a>.</p>
+</section>
+
 <section aria-labelledby="vel-t" class="bloco-painel">
   <h2 id="vel-t" class="h2-medio sem-topo">Radares por velocidade fiscalizada</h2>
   <article class="quadro-card">
@@ -136,6 +156,23 @@
     <p class="pequeno suave">Fonte: <a href="{{ inm_dados }}" rel="noreferrer">Inmetro, dados abertos do PSIE</a> (licença CC0). A base inclui equipamentos em rodovias estaduais e concessionadas no município, além dos da Semob. Local e velocidade vêm do cadastro do Inmetro e podem diferir da relação da Semob. <a href="{{ raiz }}data/radares_inmetro.json">radares_inmetro.json</a>.</p>
   </article>
 </section>
+<section aria-labelledby="cam-t" class="bloco-painel">
+  <h2 id="cam-t" class="h2-medio sem-topo">Câmeras</h2>
+  <article class="quadro-card">
+    <p class="suave">Não há, até onde se conseguiu verificar, transmissão pública e oficial de câmeras das ruas de Sorocaba, nem lista aberta de onde ficam. Por isso este site não mostra imagens: só indica o que existe.</p>
+    <h3>Na cidade</h3>
+    <ul class="lista-curta">
+      <li>O Centro de Controle Operacional Integrado (CCOI) da Prefeitura reúne mais de 2.500 câmeras em vias, praças, terminais e ônibus, operadas por agentes de trânsito e pela Guarda Civil Municipal. As imagens são compartilhadas com as polícias, mas a <a href="https://noticias.sorocaba.sp.gov.br/prefeitura-de-sorocaba-inaugura-centro-de-controle-operacional-integrado-ccoi/" rel="noreferrer">notícia da Prefeitura</a> não fala em acesso do público.</li>
+      <li>Para pedir informação ou sugerir câmera, o canal é a <a href="https://central156.sorocaba.sp.gov.br/Carta-Servicos/Home/Servico/81d1bb99-921f-e711-9b29-005056bf74cb" rel="noreferrer">Central 156 (monitoramento urbano)</a>.</li>
+    </ul>
+    <h3>Nas rodovias</h3>
+    <ul class="lista-curta">
+      <li>O <a href="https://ccm.artesp.sp.gov.br/rodovias/trafego" rel="noreferrer">CCM da ARTESP</a> mostra tráfego e ocorrências das rodovias concedidas, sem imagens de câmeras que tenhamos encontrado.</li>
+      <li>A <a href="https://rodovias.motiva.com.br/sorocabana/" rel="noreferrer">Sorocabana (Motiva)</a>, concessionária de trechos como a SP-270 (a ARTESP a lista como responsável por ocorrências em Sorocaba), tem um mapa com a aba “Câmeras”; o acesso e os termos de uso são dela, e este site não incorpora as imagens. Não verificamos o que a concessionária da SP-280 oferece.</li>
+    </ul>
+    <p class="pequeno suave">Detalhes e a data da verificação em <a href="{{ repo_url }}/blob/main/docs/fontes.md">docs/fontes.md</a>.</p>
+  </article>
+</section>
 <section aria-labelledby="falta-t" class="bloco-painel">
   <h2 id="falta-t" class="h2-medio sem-topo">O que ainda não é público</h2>
   <article class="quadro-card">
@@ -149,7 +186,7 @@
 </section>
 {% endblock %}
 {% block metodologia %}
-<ul class="lista-curta">{% for n in env_ac.qualidade.notas %}{% if not n.startswith("SHA-256") %}<li>{{ n }}</li>{% endif %}{% endfor %}{% for n in env.qualidade.notas %}{% if not n.startswith("SHA-256") %}<li>{{ n }}</li>{% endif %}{% endfor %}</ul>
+<ul class="lista-curta">{% for n in env_ac.qualidade.notas %}{% if not n.startswith("SHA-256") %}<li>{{ n }}</li>{% endif %}{% endfor %}{% for n in env_rod.qualidade.notas %}{% if not n.startswith("SHA-256") %}<li>{{ n }}</li>{% endif %}{% endfor %}{% for n in env.qualidade.notas %}{% if not n.startswith("SHA-256") %}<li>{{ n }}</li>{% endif %}{% endfor %}</ul>
 {% endblock %}
 {% block proveniencia %}
 <dl class="proveniencia">

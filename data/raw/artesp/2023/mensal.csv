@@ -1,0 +1,28 @@
+ano;mes;classe;ocorrencias;vitimas_fatais;feridos
+2023;1;Acidente;8;2;3
+2023;1;Evento natural;2;0;0
+2023;1;Ocorrência;3;0;0
+2023;2;Acidente;4;1;2
+2023;2;Ocorrência;2;0;0
+2023;3;Acidente;7;1;5
+2023;3;Obra;1;0;0
+2023;4;Acidente;5;2;3
+2023;4;Ocorrência;3;0;0
+2023;5;Acidente;12;1;14
+2023;5;Ocorrência;6;0;0
+2023;6;Acidente;6;2;1
+2023;6;Obra;1;0;0
+2023;6;Ocorrência;1;0;0
+2023;7;Acidente;6;3;4
+2023;7;Obra;2;0;0
+2023;7;Ocorrência;2;0;0
+2023;8;Acidente;7;3;2
+2023;9;Acidente;6;2;4
+2023;9;Ocorrência;1;0;0
+2023;10;Acidente;2;0;2
+2023;10;Ocorrência;1;0;0
+2023;11;Acidente;3;1;1
+2023;11;Evento natural;1;0;0
+2023;11;Ocorrência;1;0;0
+2023;12;Acidente;4;0;4
+2023;12;Ocorrência;6;0;0

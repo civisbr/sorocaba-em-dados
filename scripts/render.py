@@ -13,6 +13,7 @@ from pathlib import Path
 
 from jinja2 import Environment, FileSystemLoader, select_autoescape
 
+from scripts.fetch_artesp import TRECHO_KM
 from scripts.infosiga_regras import CELULA_MINIMA, VIA_MINIMA
 from scripts.charts import barras_mensais, linhas, linhas_posicao, linhas_preco
 from scripts.mapa import gerar as gerar_mapa
@@ -505,6 +506,27 @@ def espalhar_coincidentes(*listas: list[dict]) -> None:
                 p["x"], p["y"] = round(x + raio * math.cos(ang), 1), round(y + raio * math.sin(ang), 1)
 
 
+def contexto_artesp(env: dict) -> dict:
+    d = env["dados"]
+    mensal = [r for r in d if r["recorte"] == "mensal"]
+    rot = {i: f"{ABREV[r['mes'] - 1]}/{str(r['ano'])[2:]}" for i, r in enumerate(mensal) if (i % 12 == 1 and len(mensal) - 1 - i >= 9) or i == len(mensal) - 1}
+    ult12 = mensal[-12:]
+    ano_ref = next((r["ano"] for r in d if r["recorte"] in ("rodovia", "tipo", "trecho")), None)
+    def barra(recorte: str, nome) -> list[dict]:
+        linhas = sorted((r for r in d if r["recorte"] == recorte), key=lambda r: -r["n"])
+        topo = linhas[0]["n"] if linhas else 1
+        return [{"nome": nome(r), "n": r["n"], "pct": round(r["n"] / topo * 100, 1)} for r in linhas]
+    return {
+        "rod_ano": ano_ref,
+        "rod_mensal": barras_mensais([(f"{ABREV[r['mes'] - 1]}/{r['ano']}", r["n"]) for r in mensal], rot),
+        "rod_ult12": {"acidentes": sum(r["n"] for r in ult12), "fatais": sum(r["n2"] for r in ult12), "feridos": sum(r["n3"] for r in ult12), "outras": sum(r["n4"] for r in ult12), "fim": f"{ABREV[ult12[-1]['mes'] - 1]}/{ult12[-1]['ano']}", "sem_registro": [f"{ABREV[r['mes'] - 1]}/{r['ano']}" for r in ult12 if r["categoria"] == "sem registro"]},
+        "rod_tabela": [{"rotulo": f"{ABREV[r['mes'] - 1]}/{r['ano']}", "n": r["n"], "fatais": r["n2"], "feridos": r["n3"], "outras": r["n4"], "sem_registro": r["categoria"] == "sem registro"} for r in mensal],
+        "rod_rodovias": barra("rodovia", lambda r: r["categoria"]),
+        "rod_tipos": barra("tipo", lambda r: r["categoria"]),
+        "rod_trechos": barra("trecho", lambda r: f"{r['categoria']}, km {r['km']} ao {r['km'] + TRECHO_KM}"),
+    }
+
+
 def contexto_transito(env: dict) -> dict:
     radares = [{**r, "local": legivel(r["local"])} for r in env["dados"]]
     por_vel: dict[int, int] = {}
@@ -605,6 +627,9 @@ def renderizar(public: Path, saida: Path) -> None:
     acidentes = json.loads((public / "infosiga.json").read_text(encoding="utf-8"))
     ctx_trans.update(contexto_acidentes(acidentes))
     ctx_trans["env_ac"] = acidentes
+    artesp = json.loads((public / "artesp.json").read_text(encoding="utf-8"))
+    ctx_trans.update(contexto_artesp(artesp))
+    ctx_trans["env_rod"] = artesp
     inmetro = json.loads((public / "radares_inmetro.json").read_text(encoding="utf-8"))
     ctx_trans.update(contexto_inmetro(inmetro, date.today()))
     ctx_trans["env_inm"] = inmetro
@@ -673,7 +698,7 @@ def renderizar(public: Path, saida: Path) -> None:
         me = ctx_esc["mapa_escolas"]
         (saida / "data" / "mapa-escolas.json").write_text(json.dumps({"fonte": "INEP (endereço) e OpenStreetMap/Nominatim (posição)", "licenca": "Posições © colaboradores do OpenStreetMap, ODbL 1.0 (https://www.openstreetmap.org/copyright)", "pontos": me["pontos"]}, ensure_ascii=False, separators=(",", ":")), encoding="utf-8")
     (saida / "data" / "mapa-bairros.json").write_text(bairros_json(base_osm, proj["f"]), encoding="utf-8")
-    for nome in ("emprego.json", "combustivel.json", "escolas.json", "perfil.json", "representantes.json", "seguranca.json", "comparativo.json", "clima.json", "radares.json", "infosiga.json", "radares_inmetro.json", "saude_doencas.json", "saude_hospitais.json", "saude_panorama.json", "saude_vacinas.json"):
+    for nome in ("emprego.json", "combustivel.json", "escolas.json", "perfil.json", "representantes.json", "seguranca.json", "comparativo.json", "clima.json", "radares.json", "infosiga.json", "artesp.json", "radares_inmetro.json", "saude_doencas.json", "saude_hospitais.json", "saude_panorama.json", "saude_vacinas.json"):
         shutil.copy(public / nome, saida / "data" / nome)
 
     comum = {"paineis": ordem, "grupos": grupos, "repo_url": REPO_URL}
@@ -701,7 +726,7 @@ def renderizar(public: Path, saida: Path) -> None:
         ("Hospitais e leitos", "CNES e SIH/SUS — DATASUS", flag_h),
         ("Mortes e nascimentos", "SIM e SINASC — DATASUS", flag_pa),
         ("Vacinas", "Ministério da Saúde e Prefeitura de Sorocaba (curadoria manual)", flag_v),
-        ("Trânsito", "Semob Sorocaba (radares) e Infosiga SP (Detran-SP)", "real"),
+        ("Trânsito", "Semob Sorocaba (radares), Infosiga SP (Detran-SP) e ARTESP (rodovias)", "real"),
     ])
     escrever(
         "emprego/index.html", "paineis/emprego.html", "../",
