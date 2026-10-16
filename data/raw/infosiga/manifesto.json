@@ -308,7 +308,7 @@
     },
     "2025": {
       "celulas_descartadas": 323,
-      "coletado_em": "2026-10-11",
+      "coletado_em": "2026-10-16",
       "com_coordenada": 1668,
       "meses": [
         1,
@@ -410,7 +410,7 @@
     },
     "2026": {
       "celulas_descartadas": 316,
-      "coletado_em": "2026-10-11",
+      "coletado_em": "2026-10-16",
       "com_coordenada": 1215,
       "meses": [
         1,
@@ -484,5 +484,5 @@
     }
   },
   "fonte": "Infosiga SP (Detran-SP), eventos de sinistro, CC BY 4.0, via dadosabertos.sp.gov.br",
-  "verificado_em": "2026-10-11"
+  "verificado_em": "2026-10-16"
 }

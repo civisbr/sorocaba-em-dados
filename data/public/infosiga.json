@@ -4315,7 +4315,7 @@
     }
   ],
   "fonte": {
-    "acesso_em": "2026-10-11",
+    "acesso_em": "2026-10-16",
     "licenca": "Creative Commons Attribution 4.0",
     "nome": "Infosiga SP (Detran-SP) — eventos de sinistro",
     "url": "https://dadosabertos.sp.gov.br/dataset/eventos-de-sinistro"
@@ -4331,7 +4331,7 @@
       "Hora, dia da semana, tipo e vias usam 2025, o último ano completo. Vias aparecem só com 10 ou mais sinistros no ano, e combinações de hora/dia da semana e tipos com menos de 3 no ano são omitidas (filtros aplicados já na coleta, por isso, e por linhas com hora ou dia inválidos, os totais de hora, dia e tipo podem ficar um pouco abaixo da contagem mensal); contagem por via não mede perigo, depende do tamanho e do movimento da via.",
       "Mapa: sinistros de 2022 a 2025, em células de cerca de 555 m com 5 ou mais registros; a contagem mínima vale por ano (células com menos de 5 registros num ano são descartadas antes de somar os anos); entram só os anos em que ao menos 80% dos sinistros têm coordenada dentro do município. Não são publicados pontos individuais, e a contagem mensal inclui sinistros fatais, sem data nem hora exatas.",
       "O percentual de coordenada inclui as células descartadas por terem poucos registros.",
-      "SHA-256 do manifesto de coleta: 0805ba6c7c3cf7038aeaeef45568527e75d03b335f519601f4e3e8dbd4fb170a"
+      "SHA-256 do manifesto de coleta: cdbb602959289bf2bf18ee0efdd090b689088bb7fb454eef4a485db527c1ab5f"
     ]
   },
   "referencia": {
