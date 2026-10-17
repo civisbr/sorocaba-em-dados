@@ -775,7 +775,7 @@
     }
   ],
   "fonte": {
-    "acesso_em": "2026-10-13",
+    "acesso_em": "2026-10-17",
     "licenca": "Creative Commons Atribuição-NãoComercial 4.0 (CC BY-NC 4.0)",
     "nome": "ARTESP — Centro de Controle Multimodal (CCM), ocorrências rodoviárias",
     "url": "https://ccm.artesp.sp.gov.br/rodovias/ocorrencias"
@@ -790,7 +790,7 @@
       "Contagem por mês de ocorrência, em meses inteiros (a série começa em 16/11/2021). Acidente é o que a ARTESP classifica como tal; “outras ocorrências” reúne as demais classes publicadas, sem obras. A API traz só as ocorrências publicadas pelo CCM (algumas dezenas de acidentes por ano em Sorocaba, com proporção alta de mortes): não é o total de acidentes nas rodovias. Meses sem nenhum registro na fonte aparecem como “sem registro” e podem ser lacuna, não ausência de acidentes. Rodovia e tipo de acidente usam 2025, o último ano fechado, e só aparecem com 3 ou mais acidentes.",
       "Trechos de 5 km com 3 ou mais acidentes em 2025; contagem por trecho não mede perigo, depende do tráfego e da extensão. Não são publicados pontos individuais nem relatos.",
       "Um acidente que cruza o limite do município pode entrar em mais de uma cidade. Rodovias são mostradas com o nome da fonte (SPI e SPM, por exemplo, são vias de ligação e marginais de outra rodovia).",
-      "SHA-256 do manifesto de coleta: 311a2d46863d8633e47ad1ac50adb084e6e0a5c27599408f5c826efbfe18b2b8"
+      "SHA-256 do manifesto de coleta: b25207697b8874950f8aa2b3d33a2361b960266c57a7cfd3f7bfd6b10f96661c"
     ]
   },
   "referencia": {
