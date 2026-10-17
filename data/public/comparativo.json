@@ -1942,7 +1942,7 @@
     }
   ],
   "fonte": {
-    "acesso_em": "2026-10-11",
+    "acesso_em": "2026-10-17",
     "licenca": "Dados abertos do IBGE e do INEP",
     "nome": "IBGE (população e PIB dos municípios) e INEP (IDEB municipal)",
     "url": "https://sidra.ibge.gov.br/"
@@ -1959,7 +1959,7 @@
       "PIB per capita é calculado aqui (PIB do ano ÷ população do mesmo ano, ambos do IBGE), porque o IBGE não o publica na tabela usada. Anos sem população do mesmo ano ficam de fora.",
       "PIB a preços correntes: valores nominais. A posição não depende da inflação, mas o valor em reais sim.",
       "IDEB reflete também o perfil socioeconômico dos alunos; comparar municípios é uma leitura entre outras, não um veredito sobre a rede de ensino.",
-      "SHA-256 do manifesto de coleta: 2e1236cf59d0306e0a4bb4b785786230dea59845b6315f58764a1ca061a4204f"
+      "SHA-256 do manifesto de coleta: b1f4bd8e785222becafc9aba5064def596ae29fe054b4ae8035b6eeaaedb0024"
     ]
   },
   "referencia": {
