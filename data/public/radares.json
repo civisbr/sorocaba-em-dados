@@ -796,13 +796,8 @@
       "velocidade_kmh": 50
     },
     {
-      "detalhe": "entre os nº 709 e 927",
-      "fonte_posicao": "© colaboradores do OpenStreetMap, ODbL 1.0",
-      "lat": -23.477497,
-      "local": "RUA PAES DE LINHARES (C/B) , Nº 918",
-      "lon": -47.461609,
+      "local": "RUA PAES DE LINHARES (C/B) , OPOSTO AO Nº 898",
       "ponto": "F087",
-      "precisao": "número",
       "tipo": "FIXO - CONTROLADOR",
       "velocidade_kmh": 40
     },
@@ -1380,10 +1375,8 @@
       "velocidade_kmh": 60
     },
     {
-      "fonte_posicao": "© colaboradores do OpenStreetMap, ODbL 1.0",
-      "local": "AV. CONDE ZEPPELIN OPOSTO Nº 1930",
+      "local": "AV. ENG. CARLOS REINALDO MENDES, OPOSTO Nº 2235 (C/B)",
       "ponto": "F142",
-      "posicoes_candidatas": "-23.430653,-47.399452|-23.423426,-47.406524",
       "tipo": "FIXO - CONTROLADOR",
       "velocidade_kmh": 60
     },
@@ -1707,7 +1700,7 @@
     }
   ],
   "fonte": {
-    "acesso_em": "2026-10-11",
+    "acesso_em": "2026-10-18",
     "licenca": "Informação pública publicada pela Prefeitura (sem licença explícita); coordenadas (lat, lon, precisao): © colaboradores do OpenStreetMap, ODbL 1.0",
     "nome": "Semob Sorocaba — locais de operação dos radares",
     "url": "https://www.semobsorocaba.com.br/radares/locais-operacao"
@@ -1720,14 +1713,14 @@
       "Lista oficial de radares fixos em operação, publicada pela Semob. Não informa quantas multas cada radar aplicou.",
       "A página declara 172 radares, mas a paginação oficial lista 160; os 12 restantes não são acessíveis pela página e ficam fora.",
       "O número de série dos equipamentos não é reproduzido aqui.",
-      "A Semob não publica coordenadas. Posição com erro típico de dezenas de metros (o ponto do OSM é colaborativo e não confirmado pela Semob) para 11 dos 160 radares: endereço com número ou câmera de velocidade mapeada que casa de forma única com a via e a velocidade da lista. Para outros 129, posição só aproximada, calculada a partir do texto do local sobre as vias, endereços e marcos de km do OpenStreetMap (© colaboradores do OpenStreetMap, licença ODbL): cruzamento das duas vias, km da rodovia, número entre endereços vizinhos ou meio da via. O erro vai de dezenas de metros (cruzamento, número) a centenas ou alguns quilômetros (meio da via, km). Para os últimos 20, só o conjunto de posições possíveis na via (não se sabe qual câmera é de qual radar).",
-      "SHA-256 do manifesto de coleta: b1ccbb04877fc9990755a90275e9539544fa47d752ff4fd3ec92acee09102f5d"
+      "A Semob não publica coordenadas. Posição com erro típico de dezenas de metros (o ponto do OSM é colaborativo e não confirmado pela Semob) para 11 dos 160 radares: endereço com número ou câmera de velocidade mapeada que casa de forma única com a via e a velocidade da lista. Para outros 128, posição só aproximada, calculada a partir do texto do local sobre as vias, endereços e marcos de km do OpenStreetMap (© colaboradores do OpenStreetMap, licença ODbL): cruzamento das duas vias, km da rodovia, número entre endereços vizinhos ou meio da via. O erro vai de dezenas de metros (cruzamento, número) a centenas ou alguns quilômetros (meio da via, km). Para os últimos 19, só o conjunto de posições possíveis na via (não se sabe qual câmera é de qual radar).",
+      "SHA-256 do manifesto de coleta: c3ca934c83bc5dc06020b2ab546f951cf2222a5e8c630fd37fef392cd0e504b9"
     ]
   },
   "referencia": {
-    "fim": "2026-10-11",
+    "fim": "2026-10-18",
     "granularidade": "mensal",
-    "inicio": "2026-10-11"
+    "inicio": "2026-10-18"
   },
   "schema_version": "1.0"
 }
