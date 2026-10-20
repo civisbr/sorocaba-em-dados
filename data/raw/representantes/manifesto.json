@@ -6,8 +6,8 @@
       "url": "https://www.al.sp.gov.br/repositorioDados/deputados/deputados.xml"
     },
     "camara_deputados_sp.json": {
-      "coletado_em": "2026-10-11",
-      "sha256": "444edcdfd96af81ad3f0030cb7f35abc0fb11d9a462d4d7c196857b1bb51b61c",
+      "coletado_em": "2026-10-20",
+      "sha256": "8183c5eeb26647a3427cdfaefe68f1f0536d067b22fdf79c3d181ccf9767380f",
       "url": "https://dadosabertos.camara.leg.br/api/v2/deputados?siglaUf=SP&itens=100"
     },
     "eleitos_municipais_2024.csv": {
@@ -41,5 +41,5 @@
       "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_candidato_munzona/votacao_candidato_munzona_2026.zip"
     }
   },
-  "verificado_em": "2026-10-11"
+  "verificado_em": "2026-10-20"
 }

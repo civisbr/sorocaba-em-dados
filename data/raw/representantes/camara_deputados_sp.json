@@ -90,12 +90,6 @@
   "uf": "SP"
  },
  {
-  "id": 154700,
-  "nome": "Paulo Soares",
-  "partido": "PODE",
-  "uf": "SP"
- },
- {
   "id": 160545,
   "nome": "Alexandre Leite",
   "partido": "UNIÃO",
@@ -183,6 +177,12 @@
   "id": 178987,
   "nome": "Orlando Silva",
   "partido": "PCdoB",
+  "uf": "SP"
+ },
+ {
+  "id": 178989,
+  "nome": "Renata Abreu",
+  "partido": "PODE",
   "uf": "SP"
  },
  {

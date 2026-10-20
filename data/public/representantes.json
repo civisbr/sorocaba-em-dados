@@ -665,7 +665,7 @@
     }
   ],
   "fonte": {
-    "acesso_em": "2026-10-11",
+    "acesso_em": "2026-10-20",
     "licenca": "Dados abertos",
     "nome": "TSE (resultados), Câmara dos Deputados e Alesp (dados abertos)",
     "url": "https://dadosabertos.tse.jus.br/"
@@ -683,7 +683,7 @@
       "Posição ideológica do partido: classificação de especialistas em ciência política (surveys de 2018 e 2022, categoria final pela média ponderada; Bolognesi, Ribeiro, Codato e Silva, Opinião Pública, 2025, doi 10.1590/1807-0191202531120). É a posição do partido, não do político, e a fonte avalia partidos, não pessoas.",
       "Blocos: esquerda = extrema esquerda e esquerda; centro = centro-esquerda, centro e centro-direita; direita = direita e extrema direita. É um agrupamento deste projeto sobre as sete categorias da fonte, mostradas no detalhe.",
       "Partido sem classificação na fonte (por exemplo, criado depois de 2022) fica fora das porcentagens e é contado à parte.",
-      "SHA-256 do manifesto de coleta: fbf08c21d7165eee06ebf52ef8ca3a6a12133ed29a068decefa28b32fac3ebc0"
+      "SHA-256 do manifesto de coleta: 5cee091d2eafedd5243724f379cd1d012455e4a79b717d58bc89a1abd8c6ceb2"
     ]
   },
   "referencia": {
