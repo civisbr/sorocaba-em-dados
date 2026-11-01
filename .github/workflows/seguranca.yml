@@ -22,7 +22,7 @@ jobs:
         with:
           ref: ${{ github.ref_name }}
           persist-credentials: false
-      - uses: astral-sh/setup-uv@07a047e608db84b3d8c06cd9a7c7dcc9c355c18e # v10.3.2
+      - uses: astral-sh/setup-uv@68559e99cc807c1eb7e9238fd43a15bba460eec2 # v10.3.3
       - run: uv sync --frozen
       - name: Fetch
         run: uv run python -m scripts.fetch_ssp --acesso-em "$(date -u +%F)"
