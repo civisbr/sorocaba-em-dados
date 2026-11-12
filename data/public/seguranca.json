@@ -3707,8 +3707,74 @@
       "grupo": "roubos",
       "lat": null,
       "lon": null,
-      "mes": 8,
-      "n": 1021,
+      "mes": 9,
+      "n": 71,
+      "pct": null,
+      "recorte": "mensal"
+    },
+    {
+      "ano": 2026,
+      "categoria": null,
+      "grupo": "furtos",
+      "lat": null,
+      "lon": null,
+      "mes": 9,
+      "n": 476,
+      "pct": null,
+      "recorte": "mensal"
+    },
+    {
+      "ano": 2026,
+      "categoria": null,
+      "grupo": "mortes_dolosas",
+      "lat": null,
+      "lon": null,
+      "mes": 9,
+      "n": 0,
+      "pct": null,
+      "recorte": "mensal"
+    },
+    {
+      "ano": 2026,
+      "categoria": null,
+      "grupo": "lesao_dolosa",
+      "lat": null,
+      "lon": null,
+      "mes": 9,
+      "n": 226,
+      "pct": null,
+      "recorte": "mensal"
+    },
+    {
+      "ano": 2026,
+      "categoria": null,
+      "grupo": "estupros",
+      "lat": null,
+      "lon": null,
+      "mes": 9,
+      "n": 22,
+      "pct": null,
+      "recorte": "mensal"
+    },
+    {
+      "ano": 2026,
+      "categoria": null,
+      "grupo": "trafico",
+      "lat": null,
+      "lon": null,
+      "mes": 9,
+      "n": 44,
+      "pct": null,
+      "recorte": "mensal"
+    },
+    {
+      "ano": 2026,
+      "categoria": null,
+      "grupo": "roubos",
+      "lat": null,
+      "lon": null,
+      "mes": 9,
+      "n": 991,
       "pct": null,
       "recorte": "janela_atual"
     },
@@ -3718,8 +3784,8 @@
       "grupo": "roubos",
       "lat": null,
       "lon": null,
-      "mes": 8,
-      "n": 1396,
+      "mes": 9,
+      "n": 1384,
       "pct": null,
       "recorte": "janela_anterior"
     },
@@ -3729,8 +3795,8 @@
       "grupo": "furtos",
       "lat": null,
       "lon": null,
-      "mes": 8,
-      "n": 10471,
+      "mes": 9,
+      "n": 9918,
       "pct": null,
       "recorte": "janela_atual"
     },
@@ -3740,8 +3806,8 @@
       "grupo": "furtos",
       "lat": null,
       "lon": null,
-      "mes": 8,
-      "n": 11490,
+      "mes": 9,
+      "n": 11642,
       "pct": null,
       "recorte": "janela_anterior"
     },
@@ -3751,8 +3817,8 @@
       "grupo": "mortes_dolosas",
       "lat": null,
       "lon": null,
-      "mes": 8,
-      "n": 53,
+      "mes": 9,
+      "n": 49,
       "pct": null,
       "recorte": "janela_atual"
     },
@@ -3762,8 +3828,8 @@
       "grupo": "mortes_dolosas",
       "lat": null,
       "lon": null,
-      "mes": 8,
-      "n": 64,
+      "mes": 9,
+      "n": 61,
       "pct": null,
       "recorte": "janela_anterior"
     },
@@ -3773,8 +3839,8 @@
       "grupo": "lesao_dolosa",
       "lat": null,
       "lon": null,
-      "mes": 8,
-      "n": 2446,
+      "mes": 9,
+      "n": 2481,
       "pct": null,
       "recorte": "janela_atual"
     },
@@ -3784,8 +3850,8 @@
       "grupo": "lesao_dolosa",
       "lat": null,
       "lon": null,
-      "mes": 8,
-      "n": 2243,
+      "mes": 9,
+      "n": 2260,
       "pct": null,
       "recorte": "janela_anterior"
     },
@@ -3795,8 +3861,8 @@
       "grupo": "estupros",
       "lat": null,
       "lon": null,
-      "mes": 8,
-      "n": 250,
+      "mes": 9,
+      "n": 242,
       "pct": null,
       "recorte": "janela_atual"
     },
@@ -3806,8 +3872,8 @@
       "grupo": "estupros",
       "lat": null,
       "lon": null,
-      "mes": 8,
-      "n": 276,
+      "mes": 9,
+      "n": 289,
       "pct": null,
       "recorte": "janela_anterior"
     },
@@ -3817,8 +3883,8 @@
       "grupo": "trafico",
       "lat": null,
       "lon": null,
-      "mes": 8,
-      "n": 566,
+      "mes": 9,
+      "n": 564,
       "pct": null,
       "recorte": "janela_atual"
     },
@@ -3828,8 +3894,8 @@
       "grupo": "trafico",
       "lat": null,
       "lon": null,
-      "mes": 8,
-      "n": 240,
+      "mes": 9,
+      "n": 268,
       "pct": null,
       "recorte": "janela_anterior"
     },
@@ -10050,7 +10116,7 @@
     }
   ],
   "fonte": {
-    "acesso_em": "2026-10-11",
+    "acesso_em": "2026-11-12",
     "licenca": "Dados abertos da SSP-SP",
     "nome": "SSP-SP — Estatísticas de segurança (SPDados, ocorrências registradas)",
     "url": "https://www.ssp.sp.gov.br/estatistica/dados-mensais"
@@ -10058,21 +10124,21 @@
   "painel": "seguranca",
   "qualidade": {
     "flag": "real",
-    "n_registros": 913,
+    "n_registros": 919,
     "notas": [
       "Os números são boletins de ocorrência registrados, não crimes: crime não registrado não entra, e mudanças na forma de registrar alteram a série.",
-      "Ocorrências com município de circunscrição igual a Sorocaba (código IBGE 3552205), por mês de registro na estatística oficial, de 01/2022 a 08/2026.",
+      "Ocorrências com município de circunscrição igual a Sorocaba (código IBGE 3552205), por mês de registro na estatística oficial, de 01/2022 a 09/2026.",
       "O mês mais recente tende a subir quando registros atrasados são incluídos pela SSP-SP.",
       "Mortes por crime doloso = homicídio doloso + latrocínio + lesão corporal seguida de morte. Não inclui mortes por intervenção policial nem homicídio no trânsito.",
       "Período do dia, tipos de furto e bairros usam o ano completo mais recente (2025). Horário: usa a hora exata do boletim e, sem ela, a faixa do dia informada; a parcela sem nenhuma das duas é mostrada. A hora 00h pode estar inflada por preenchimento padrão (00:00 exato).",
       "Bairros em ordem alfabética, sem ranking. O campo é digitado no boletim (grafias variam) e bairros com menos de 50 roubos e furtos no ano ficam em 'demais'. Contagem não mede risco: depende de população, comércio e fluxo de pessoas.",
       "Mapa de calor: registros de roubos e furtos de 2025 em células de cerca de 550 m, só com 5 ou mais registros. Só entram boletins com coordenada válida dentro do município; a parcela coberta é indicada no mapa, e pontos sem geocodificação ficam de fora.",
       "Séries antigas usam as mesmas categorias com grafia normalizada (ex.: TRAFICO e TRÁFICO). Categorias que só aparecem a partir de 2023 ficaram de fora para não distorcer a comparação.",
-      "SHA-256 do manifesto de coleta: 5d9ff8d83378516947f17ebe1a14a5502c56877bec08b1dff169db785fe7d7cb"
+      "SHA-256 do manifesto de coleta: 0da632c9f07b1a791b6e61912f54775ab1a12df3f50b7dc5ce1af4e4589b2897"
     ]
   },
   "referencia": {
-    "fim": "2026-08-28",
+    "fim": "2026-09-28",
     "granularidade": "mensal",
     "inicio": "2022-01-01"
   },

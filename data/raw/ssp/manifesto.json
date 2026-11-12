@@ -97,24 +97,24 @@
         "JAN-JUN_2026",
         "JUL-DEZ_2026"
       ],
-      "bytes_xlsx": 126209129,
-      "coletado_em": "2026-10-11",
+      "bytes_xlsx": 139931418,
+      "coletado_em": "2026-11-12",
       "fora_do_ano": 0,
-      "fora_dos_grupos": 816,
-      "last_modified": "Thu, 08 Oct 2026 14:27:12 GMT",
-      "registros_sorocaba": 10421,
-      "sem_coordenada_valida": 2063,
+      "fora_dos_grupos": 916,
+      "last_modified": "Wed, 28 Oct 2026 19:54:44 GMT",
+      "registros_sorocaba": 11360,
+      "sem_coordenada_valida": 2187,
       "sem_natureza": 0,
       "sha256_csv": {
-        "bairro": "1510a6cd64398b4e120a14c6aaf72a75a4b36b1714d38e6a85c0bd7010393cb1",
-        "conduta": "58aaf66afc099890872dbac1b1f0227717e8ae1725e8bd98e381d385336fba93",
-        "grade": "3525f701a624a9db7fb4212984f73f231806003b545f568380002d2aaacf3b65",
-        "hora": "64c8c844cd8702b6d28769c32a4bb79c9bd5a2310eb7e3cbe57444ea25e3d073",
-        "mensal": "83bcc4cd0507f03c50303863a98e672c22f64cc357a1ad53ee8ea51a34632480"
+        "bairro": "624ec737922b02ef6732a36b46872100333cdfe78161ef419590aa5db095ebc3",
+        "conduta": "84b1c3d0b047b31c9e5543746e5467b6435d0bfd01d93917559c6a3ef1e240fa",
+        "grade": "8c4ba55e527ad2bb5593657cf3ed4f8e8db10b230c5ce7cbf7e6c0a366b3866e",
+        "hora": "9e77f414764323684930dcd7e798436ca07e212988fc133d95d7e8e4eb7d00b8",
+        "mensal": "36c06ab45919e3cd32f7a44ae45e6a9706b3d39303ad05dad1411820820b083c"
       },
-      "sha256_xlsx": "a2f003954f8c1c9912d242081fabb5736439af5fb2f7792298f9dc13305eff29",
+      "sha256_xlsx": "f627d84ea8d95ae9301180d92e267610176b00d58a3eed5f7b1a8cd4e65acbaf",
       "url": "https://www.ssp.sp.gov.br/assets/estatistica/transparencia/spDados/SPDadosCriminais_2026.xlsx"
     }
   },
-  "verificado_em": "2026-10-12"
+  "verificado_em": "2026-11-12"
 }
