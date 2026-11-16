@@ -1,0 +1,16 @@
+{
+  "acesso_em": "2026-11-16",
+  "arquivos": {
+    "diesel-gnv.csv": {
+      "sha256_filtrado": "ad1daf46124703769019671dc1e5e9db113b80cb5778f2a84f70827f27acbaa1",
+      "sha256_origem": "78f924ec63507e7c750ffc0e0b29c9510af788311430a36e00f00473a3f9a65e",
+      "url": "https://www.gov.br/anp/pt-br/centrais-de-conteudo/dados-abertos/arquivos/shpc/qus/ultimas-4-semanas-diesel-gnv.csv"
+    },
+    "gasolina-etanol.csv": {
+      "sha256_filtrado": "0e01493f75f2629e92b1d9917e0bfb4f205625e865ca911bc25a642a241877be",
+      "sha256_origem": "31c86b8ff422e1e53e6741f2b1ed6da3a13429b70983d084d335a4a21cc8489e",
+      "url": "https://www.gov.br/anp/pt-br/centrais-de-conteudo/dados-abertos/arquivos/shpc/qus/ultimas-4-semanas-gasolina-etanol.csv"
+    }
+  },
+  "ultima_coleta": "2026-11-11"
+}
