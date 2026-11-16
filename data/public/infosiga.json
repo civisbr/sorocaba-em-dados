@@ -528,7 +528,7 @@
       "lat": null,
       "lon": null,
       "mes": 8,
-      "n": 170,
+      "n": 169,
       "n2": 14,
       "pct": null,
       "recorte": "mensal"
@@ -672,8 +672,20 @@
       "lat": null,
       "lon": null,
       "mes": 8,
-      "n": 187,
-      "n2": 9,
+      "n": 188,
+      "n2": 10,
+      "pct": null,
+      "recorte": "mensal"
+    },
+    {
+      "ano": 2026,
+      "categoria": "28|11",
+      "grupo": null,
+      "lat": null,
+      "lon": null,
+      "mes": 9,
+      "n": 137,
+      "n2": 7,
       "pct": null,
       "recorte": "mensal"
     },
@@ -720,7 +732,7 @@
       "lat": null,
       "lon": null,
       "mes": null,
-      "n": 23,
+      "n": 22,
       "n2": null,
       "pct": null,
       "recorte": "hora"
@@ -1032,7 +1044,7 @@
       "lat": null,
       "lon": null,
       "mes": null,
-      "n": 251,
+      "n": 250,
       "n2": null,
       "pct": null,
       "recorte": "dia_semana"
@@ -1104,7 +1116,7 @@
       "lat": null,
       "lon": null,
       "mes": null,
-      "n": 236,
+      "n": 235,
       "n2": null,
       "pct": null,
       "recorte": "tipo"
@@ -1152,7 +1164,7 @@
       "lat": null,
       "lon": null,
       "mes": null,
-      "n": 54,
+      "n": 53,
       "n2": null,
       "pct": null,
       "recorte": "via"
@@ -2352,7 +2364,7 @@
       "lat": -23.5025,
       "lon": -47.4525,
       "mes": null,
-      "n": 150,
+      "n": 149,
       "n2": null,
       "pct": null,
       "recorte": "grade"
@@ -4308,14 +4320,14 @@
       "lat": null,
       "lon": null,
       "mes": null,
-      "n": 9079,
+      "n": 9078,
       "n2": 2022,
       "pct": 96.5,
       "recorte": "grade_cobertura"
     }
   ],
   "fonte": {
-    "acesso_em": "2026-10-16",
+    "acesso_em": "2026-11-16",
     "licenca": "Creative Commons Attribution 4.0",
     "nome": "Infosiga SP (Detran-SP) — eventos de sinistro",
     "url": "https://dadosabertos.sp.gov.br/dataset/eventos-de-sinistro"
@@ -4323,7 +4335,7 @@
   "painel": "infosiga",
   "qualidade": {
     "flag": "real",
-    "n_registros": 359,
+    "n_registros": 360,
     "notas": [
       "Sinistro é um registro de trânsito com vítima comunicado às autoridades; “fatal” significa que houve morte. “Vítimas fatais” é a soma registrada nos eventos e pode diferir da base de óbitos do Infosiga, que tem critério próprio (morte em até 30 dias).",
       "Notificações são registros com informação incompleta e ficam fora das contagens principais e do detalhe (hora, tipo, vias e mapa); em 2025 elas somam 47% dos registros, então o detalhe de 2025 subconta e não se compara com o de anos em que elas pesavam menos. A parcela varia muito de um ano para outro.",
@@ -4331,11 +4343,11 @@
       "Hora, dia da semana, tipo e vias usam 2025, o último ano completo. Vias aparecem só com 10 ou mais sinistros no ano, e combinações de hora/dia da semana e tipos com menos de 3 no ano são omitidas (filtros aplicados já na coleta, por isso, e por linhas com hora ou dia inválidos, os totais de hora, dia e tipo podem ficar um pouco abaixo da contagem mensal); contagem por via não mede perigo, depende do tamanho e do movimento da via.",
       "Mapa: sinistros de 2022 a 2025, em células de cerca de 555 m com 5 ou mais registros; a contagem mínima vale por ano (células com menos de 5 registros num ano são descartadas antes de somar os anos); entram só os anos em que ao menos 80% dos sinistros têm coordenada dentro do município. Não são publicados pontos individuais, e a contagem mensal inclui sinistros fatais, sem data nem hora exatas.",
       "O percentual de coordenada inclui as células descartadas por terem poucos registros.",
-      "SHA-256 do manifesto de coleta: cdbb602959289bf2bf18ee0efdd090b689088bb7fb454eef4a485db527c1ab5f"
+      "SHA-256 do manifesto de coleta: a673fdc857e2703831ba2642e5ebd103aed936bcaa683cdad71dd87bd8d6666b"
     ]
   },
   "referencia": {
-    "fim": "2026-08-28",
+    "fim": "2026-09-28",
     "granularidade": "mensal",
     "inicio": "2022-01-01"
   },
