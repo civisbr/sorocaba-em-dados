@@ -586,6 +586,16 @@
       "recorte": "mensal"
     },
     {
+      "ano": 2026,
+      "categoria": null,
+      "mes": 10,
+      "n": 3,
+      "n2": 1,
+      "n3": 6,
+      "n4": 0,
+      "recorte": "mensal"
+    },
+    {
       "ano": 2025,
       "categoria": "SP 270",
       "mes": null,
@@ -775,7 +785,7 @@
     }
   ],
   "fonte": {
-    "acesso_em": "2026-10-17",
+    "acesso_em": "2026-11-17",
     "licenca": "Creative Commons Atribuição-NãoComercial 4.0 (CC BY-NC 4.0)",
     "nome": "ARTESP — Centro de Controle Multimodal (CCM), ocorrências rodoviárias",
     "url": "https://ccm.artesp.sp.gov.br/rodovias/ocorrencias"
@@ -783,18 +793,18 @@
   "painel": "artesp",
   "qualidade": {
     "flag": "real",
-    "n_registros": 76,
+    "n_registros": 77,
     "notas": [
       "Só rodovias concedidas monitoradas pelo CCM da ARTESP (como SP-270, SP-075 e SP-280); ruas e avenidas da cidade não entram. Parte desses acidentes também aparece no Infosiga SP: as fontes se sobrepõem e os números não devem ser somados.",
       "Os dados são enviados pelas concessionárias e podem ser corrigidos depois; a ARTESP não garante exatidão nem completude. Vítimas fatais e feridos são os registrados na ocorrência e podem diferir de outras bases (Infosiga, boletins policiais).",
       "Contagem por mês de ocorrência, em meses inteiros (a série começa em 16/11/2021). Acidente é o que a ARTESP classifica como tal; “outras ocorrências” reúne as demais classes publicadas, sem obras. A API traz só as ocorrências publicadas pelo CCM (algumas dezenas de acidentes por ano em Sorocaba, com proporção alta de mortes): não é o total de acidentes nas rodovias. Meses sem nenhum registro na fonte aparecem como “sem registro” e podem ser lacuna, não ausência de acidentes. Rodovia e tipo de acidente usam 2025, o último ano fechado, e só aparecem com 3 ou mais acidentes.",
       "Trechos de 5 km com 3 ou mais acidentes em 2025; contagem por trecho não mede perigo, depende do tráfego e da extensão. Não são publicados pontos individuais nem relatos.",
       "Um acidente que cruza o limite do município pode entrar em mais de uma cidade. Rodovias são mostradas com o nome da fonte (SPI e SPM, por exemplo, são vias de ligação e marginais de outra rodovia).",
-      "SHA-256 do manifesto de coleta: b25207697b8874950f8aa2b3d33a2361b960266c57a7cfd3f7bfd6b10f96661c"
+      "SHA-256 do manifesto de coleta: 1bca172ff54c6e9c56fa963b3e1d0add0d20c8ba5a7ccc32f36f4d2b16d0829e"
     ]
   },
   "referencia": {
-    "fim": "2026-09-28",
+    "fim": "2026-10-28",
     "granularidade": "mensal",
     "inicio": "2021-12-01"
   },

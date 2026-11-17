@@ -108,12 +108,12 @@
       "sha256": "9ef5328f016dc029ca109eb3da43c79a5c8a7469f40a04fa8d5e36890633ccfa"
     },
     "2026": {
-      "agregadas": 42,
-      "anunciadas": 42,
+      "agregadas": 49,
+      "anunciadas": 49,
       "descartadas": {},
       "janela": [
         "2026-01-01",
-        "2026-10-17"
+        "2026-11-17"
       ],
       "meses": [
         1,
@@ -125,10 +125,11 @@
         7,
         8,
         9,
-        10
+        10,
+        11
       ],
-      "sha256": "c1d8500b1bb09ba961d46e49c09a155028bd378ea56937ea6375b8b12791f536"
+      "sha256": "9d6082a97c957a4e7fa0bfe74dbb8e178b9107ee3c914de4f8a4fee176cfd853"
     }
   },
-  "verificado_em": "2026-10-17"
+  "verificado_em": "2026-11-17"
 }
