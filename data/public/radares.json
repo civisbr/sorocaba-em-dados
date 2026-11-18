@@ -61,13 +61,8 @@
       "velocidade_kmh": 40
     },
     {
-      "detalhe": "",
-      "fonte_posicao": "© colaboradores do OpenStreetMap, ODbL 1.0",
-      "lat": -23.452036,
-      "local": "RUA MICHEL CHICRI MALUF , 660 (C/B)",
-      "lon": -47.472933,
+      "local": "RUA MICHEL CHICRI MALUF , OPOSTO AO Nº 557 (C/B)",
       "ponto": "F018",
-      "precisao": "câmera no OSM",
       "tipo": "FIXO - CONTROLADOR",
       "velocidade_kmh": 50
     },
@@ -113,13 +108,8 @@
       "velocidade_kmh": 50
     },
     {
-      "detalhe": "entre os nº 1300 e 1380",
-      "fonte_posicao": "© colaboradores do OpenStreetMap, ODbL 1.0",
-      "lat": -23.52759,
-      "local": "AV. ANTONIO CARLOS COMITRE , PRÓX AO Nº 1315 (B/C)",
-      "lon": -47.465395,
+      "local": "AV. ANTONIO CARLOS COMITRE , Nº 1315 (B/C)",
       "ponto": "F023",
-      "precisao": "número",
       "tipo": "FIXO - CONTROLADOR",
       "velocidade_kmh": 60
     },
@@ -146,13 +136,8 @@
       "velocidade_kmh": 50
     },
     {
-      "detalhe": "entre os nº 1405 e 1481",
-      "fonte_posicao": "© colaboradores do OpenStreetMap, ODbL 1.0",
-      "lat": -23.486963,
-      "local": "RUA COMENDADOR OETTERER, PROX AO Nº1432 (C/B)",
-      "lon": -47.465075,
+      "local": "RUA COMENDADOR OETTERER, PROX AO Nº1432 (B/C)",
       "ponto": "F026",
-      "precisao": "número",
       "tipo": "FIXO - CONTROLADOR",
       "velocidade_kmh": 50
     },
@@ -168,13 +153,8 @@
       "velocidade_kmh": 50
     },
     {
-      "detalhe": "",
-      "fonte_posicao": "© colaboradores do OpenStreetMap, ODbL 1.0",
-      "lat": -23.463797,
-      "local": "RUA ANTÔNIO ROQUE RODRIGUES, OPOSTO AO Nº 211",
-      "lon": -47.440594,
+      "local": "AV. SÃO PAULO, 571 (B/C)",
       "ponto": "F028",
-      "precisao": "via",
       "tipo": "FIXO - CONTROLADOR",
       "velocidade_kmh": 50
     },
@@ -223,13 +203,8 @@
       "velocidade_kmh": 60
     },
     {
-      "detalhe": "entre os nº 2970 e 3043",
-      "fonte_posicao": "© colaboradores do OpenStreetMap, ODbL 1.0",
-      "lat": -23.475022,
-      "local": "AV. ENG. CARLOS REINALDO MENDES, Nº 3041 (C/B)",
-      "lon": -47.422417,
+      "local": "AV. ENG. CARLOS REINALDO MENDES, OPOSTO Nº 3041 (C/B)",
       "ponto": "F033",
-      "precisao": "número",
       "tipo": "FIXO - CONTROLADOR",
       "velocidade_kmh": 60
     },
@@ -890,13 +865,8 @@
       "velocidade_kmh": 50
     },
     {
-      "detalhe": "entre os nº 2970 e 3043",
-      "fonte_posicao": "© colaboradores do OpenStreetMap, ODbL 1.0",
-      "lat": -23.475022,
-      "local": "AV. ENG. CARLOS REINALDO MENDES, OPOSTO AO Nº 3041 (C/B)",
-      "lon": -47.422417,
+      "local": "AV. ENG. CARLOS REINALDO MENDES, Nº 3041 (C/B)",
       "ponto": "F096",
-      "precisao": "número",
       "tipo": "FIXO - CONTROLADOR",
       "velocidade_kmh": 60
     },
@@ -1150,13 +1120,8 @@
       "velocidade_kmh": 60
     },
     {
-      "detalhe": "",
-      "fonte_posicao": "© colaboradores do OpenStreetMap, ODbL 1.0",
-      "lat": -23.472844,
-      "local": "AV. QUINZE DE AGOSTO ( B/C ), OPOSTO AO Nº 6440",
-      "lon": -47.441877,
+      "local": "AV. QUINZE DE AGOSTO ( B/C ), Nº 6440",
       "ponto": "F121",
-      "precisao": "via",
       "tipo": "FIXO - CONTROLADOR",
       "velocidade_kmh": 50
     },
@@ -1260,13 +1225,8 @@
       "velocidade_kmh": 50
     },
     {
-      "detalhe": "entre os nº 790 e 876",
-      "fonte_posicao": "© colaboradores do OpenStreetMap, ODbL 1.0",
-      "lat": -23.461845,
-      "local": "AV BETÂNIA , Nº 852",
-      "lon": -47.500964,
+      "local": "RUA JOSE CARLOS DE FREITAS, Nº 50",
       "ponto": "F131",
-      "precisao": "número",
       "tipo": "FIXO - CONTROLADOR",
       "velocidade_kmh": 50
     },
@@ -1323,13 +1283,8 @@
       "velocidade_kmh": 50
     },
     {
-      "detalhe": "perto do nº 395",
-      "fonte_posicao": "© colaboradores do OpenStreetMap, ODbL 1.0",
-      "lat": -23.494129,
-      "local": "RUA BELMIRA LOUREIRO DE ALMEIDA Nº 466",
-      "lon": -47.429929,
+      "local": "AGUARDANDO INSTALAÇÃO",
       "ponto": "F137",
-      "precisao": "número",
       "tipo": "FIXO - CONTROLADOR",
       "velocidade_kmh": 50
     },
@@ -1700,7 +1655,7 @@
     }
   ],
   "fonte": {
-    "acesso_em": "2026-10-18",
+    "acesso_em": "2026-11-18",
     "licenca": "Informação pública publicada pela Prefeitura (sem licença explícita); coordenadas (lat, lon, precisao): © colaboradores do OpenStreetMap, ODbL 1.0",
     "nome": "Semob Sorocaba — locais de operação dos radares",
     "url": "https://www.semobsorocaba.com.br/radares/locais-operacao"
@@ -1713,14 +1668,14 @@
       "Lista oficial de radares fixos em operação, publicada pela Semob. Não informa quantas multas cada radar aplicou.",
       "A página declara 172 radares, mas a paginação oficial lista 160; os 12 restantes não são acessíveis pela página e ficam fora.",
       "O número de série dos equipamentos não é reproduzido aqui.",
-      "A Semob não publica coordenadas. Posição com erro típico de dezenas de metros (o ponto do OSM é colaborativo e não confirmado pela Semob) para 11 dos 160 radares: endereço com número ou câmera de velocidade mapeada que casa de forma única com a via e a velocidade da lista. Para outros 128, posição só aproximada, calculada a partir do texto do local sobre as vias, endereços e marcos de km do OpenStreetMap (© colaboradores do OpenStreetMap, licença ODbL): cruzamento das duas vias, km da rodovia, número entre endereços vizinhos ou meio da via. O erro vai de dezenas de metros (cruzamento, número) a centenas ou alguns quilômetros (meio da via, km). Para os últimos 19, só o conjunto de posições possíveis na via (não se sabe qual câmera é de qual radar).",
-      "SHA-256 do manifesto de coleta: c3ca934c83bc5dc06020b2ab546f951cf2222a5e8c630fd37fef392cd0e504b9"
+      "A Semob não publica coordenadas. Posição com erro típico de dezenas de metros (o ponto do OSM é colaborativo e não confirmado pela Semob) para 10 dos 160 radares: endereço com número ou câmera de velocidade mapeada que casa de forma única com a via e a velocidade da lista. Para outros 120, posição só aproximada, calculada a partir do texto do local sobre as vias, endereços e marcos de km do OpenStreetMap (© colaboradores do OpenStreetMap, licença ODbL): cruzamento das duas vias, km da rodovia, número entre endereços vizinhos ou meio da via. O erro vai de dezenas de metros (cruzamento, número) a centenas ou alguns quilômetros (meio da via, km). Para os últimos 19, só o conjunto de posições possíveis na via (não se sabe qual câmera é de qual radar).",
+      "SHA-256 do manifesto de coleta: 1ab9deccb750e2371edc7d89ddf9718d38a07b0415a62d8fe10eaded2decfbf3"
     ]
   },
   "referencia": {
-    "fim": "2026-10-18",
+    "fim": "2026-11-18",
     "granularidade": "mensal",
-    "inicio": "2026-10-18"
+    "inicio": "2026-11-18"
   },
   "schema_version": "1.0"
 }
